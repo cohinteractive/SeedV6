@@ -20,3 +20,32 @@ these before assuming retention itself improves play.
 No external development-test result has been independently audited for this unit;
 implementation evidence supports experiments, not a quantitative expected Elo gain.
 No external source code is incorporated into SeedV6 by these inspections.
+
+## Development evidence and deeper representation check
+
+[Ethereal's shallow first-quiet update series](https://github.com/AndyGrant/Ethereal/commit/aef4e6c92aaa15ad77b4789cdde8027edb36056f)
+reports a cumulative5.15±2.23 Elo LTC result over23,563 games, while the final
+depth3 increment did not pass its own SPRT and depth4 regressed. Thus neither the
+isolated threshold nor monotonic benefit is established by that report. Its
+[later update-formula change](https://github.com/AndyGrant/Ethereal/commit/3997875c92271220a267155bc114a540eeec0ab1)
+reports a much smaller1.41±1.13 Elo LTC result over50,480 games. These author-reported
+results motivate outcome-quality investigation, not copied thresholds or a SeedV6
+effect estimate. Underlying complete game sets were not independently audited.
+
+[Stockfish CMHC development](https://github.com/official-stockfish/Stockfish/pull/6653)
+reports passing STC/LTC SPRTs after103,264/47,406 games for context-dependent
+continuation update weights. The direct Fishtest result endpoint was inaccessible
+through the research tool; the claim is attributed to the primary PR, not independently
+confirmed. SeedV6's single continuation context lacks that supporting structure.
+This does not justify adding a large context table without measured transfer value.
+
+Additional pinned Bagatur history files are hashed in
+`external-followup-manifest.json`. HistoryTable maintains signed depth-squared
+good-minus-bad totals and all-attempt totals per moving piece/destination, returning
+an offset normalized ratio. Its clear operation halves both totals with a positive
+denominator floor. ContinuationHistory wraps those tables by prior piece/destination.
+The call cadence of clear is not established by these classes alone. This explains
+why its neutral-centered LMR term cannot be directly applied to SeedV6's gravity
+values: magnitude there is normalized by exposure, whereas SeedV6 magnitude also
+reflects frequency, depth and retained lifetime. An exposure-normalized or differently
+weighted SeedV6 signal is a contingent hypothesis, not selected code.

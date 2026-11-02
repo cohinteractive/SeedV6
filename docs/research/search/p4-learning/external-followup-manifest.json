@@ -1,0 +1,22 @@
+[
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\bagatur-HistoryTable.java",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/history/HistoryTable.java",
+    "sha256": "db41f10c171706113dcdc8e4286c2b82851ddc89267bee5dc8b4a416e2afc2da"
+  },
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\bagatur-ContinuationHistory.java",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/history/ContinuationHistory.java",
+    "sha256": "016c5bfb2fb2f10739d136101f38247fdea7c2547531d6128a163a376080f9a6"
+  },
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\bagatur-IHistoryTable.java",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/history/IHistoryTable.java",
+    "sha256": "edfcff216f5c09bd24808967d3b3b6ca8c1c28a1da96f8bc66fa2b05c75523c4"
+  },
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\ethereal-history-development.json",
+    "url": "https://api.github.com/repos/AndyGrant/Ethereal/commits?path=src/history.c&sha=96cde8d2f82a3ab0536bf33572405fda96f6e236&per_page=30",
+    "sha256": "63d61de1b01d65224f7b14e3e124a91852c7ab2b0d6d0daaa54011295a128017"
+  }
+]

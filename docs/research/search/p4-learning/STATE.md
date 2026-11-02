@@ -2,7 +2,9 @@
 
 **Active, 2 November 2026. Strength objective unmet. HL-R1 request retention and
 HL-G1 retained learning with bounded history-guided effort are implemented as
-explicit experimental profiles. No finalist selected or strength games run.**
+explicit experimental profiles. G1's first32-pair W1 development screen passed:
+30W/18D/16L against80. This promising exploratory signal is not champion-relative
+confirmation. A retention-only reverse ablation is next; no finalist yet.**
 Read [CONTRACT](CONTRACT.md), then this state. Owner request and initial file/hash
 checks are in `bootstrap-manifest.json`; external source identities are in
 `external-manifest.json`. Raw evidence is local-only and must be checked before reuse.
@@ -22,9 +24,30 @@ changed83→84 after qualification, with exact baseline-byte and resulting-byte/
 verification. The user-owned version fields remain0.0.0. The commit contains the
 opt-in core policies, research launcher/harness/tests and this objective's records;
 find it by `research(search): add retained learning and history-guided effort`.
-Production remains flags3407871. `verifyProjectBoundaries` passed. Rebuild/freeze
-the committed research runtime and verify its classes against the tested prototype
-before games. No push, release, default change or champion advancement is authorized.
+Production remains flags3407871. `verifyProjectBoundaries` passed. The committed
+runtime was rebuilt/frozen and verified against the tested prototype before games.
+No push, release, default change or champion advancement is authorized.
+
+Implementation commit: `b8ea8b2856eed3f6c774860ca540375054e4de30`. The committed
+build84 runtime is frozen in `raw/runtime-build84-v1`; its manifest and
+`build84-artifact-qualification.json` verify2132 entries/files against the prototype,
+with only generated version metadata changed, plus4 successful candidate preflight
+requests. Screen protocol/input freeze commit is `447f813e`.
+
+Completed `g1-screen-v1-protocol.json`,32pairs W1 against frozen80, under
+`raw/g1-screen-v1-w1`. Summary passed:64 normal games,8,729 audited requests,
+no missing-score warnings, stable inputs and drained engine handles;1931.67s total
+wall (1929.19s games),1946.09s combined engine CPU. Candidate30W/18D/16L,
+score60.9375%, paired normal95 interval52.15-69.72%, conservative bounded95
+36.93-84.95%. Exploratory reuse/selection and broad uncertainty preclude confirmation.
+Frozen80 is not the champion; no games are pooled with historical campaigns.
+
+Prepared next operation: `r1-screen-v1-protocol.json`,32pairs W1 retain-only versus80,
+same frozen build84 artifact and development inputs. This reverse ablation asks
+whether history-guided effort deserves retention in the integrated finalist; it is
+not an independent discovery test or a requirement that each component win alone.
+The owned runner will preserve/drain all work; read final results before any next
+allocation. No concurrent heavy build/diagnostic execution during games.
 
 Actual build79/80 runtime JARs and CP64/Java executable match historical manifests.
 Source80's qualified accounting fix remains present. Current optional H1/H2/F3
@@ -91,9 +114,19 @@ Candidate W4 checks verify bounded legal PV/accounting/lifecycle, not equality.
 
 Clean costs completed:162 requests including54 warmups,45.45s total. G1/control
 wall ratios1.0153 W1/0.9921 W4 and R1/control0.9948/0.9918 show no prohibitive
-observed overhead; no speed claim. Next: freeze a coherent committed artifact and
-a32-pair W1 G1 screen against actual frozen80. Preserve R1 as a reverse ablation;
-do not select a finalist from depth/node diagnostics. No prototype has been promoted.
+observed overhead; no speed claim. G1's first game screen is now positive as above.
+Run R1 reverse ablation, then selected-formulation W4 risk before independent W1
+confirmation. Do not select a finalist from depth/node diagnostics. Nothing promoted.
+
+Prospective `reference-audit-v1-protocol.json` was frozen before reading game outcomes.
+Research harness build passed(2.55s); core classes match frozen84, only generated
+version metadata differs. Audit passed in3.96s:43 sampled reductions across9 roots,
+all reduced/nominal recursive TT-off references completed with legal PV and real-history
+replay.42 stayed below the original threshold at both depths; one negative-history
+sample(opening-6,depth3,reduction1,main-26/continuation-25) crossed from-382 to-357
+at threshold-358. It is a horizon-disagreement witness, not a measured flat-kernel
+error or population rate; original selective context/mate distance are absent.
+There is no demonstrated correctness defect or evidence here to tune a new constant.
 
 1. Measure baseline history magnitudes/lifetime and actually exercised reduction
    decisions using existing selectivity hooks. Establish request-scoped retention
@@ -112,20 +145,40 @@ Deferred: cross-request decay, richer continuation contexts, stronger selective
 coupling or F3 integration require actual evidence of a useful dependency. These
 are choices within this objective, not an automatic feature queue.
 
+Further static dependency: `ExactSearch.searchWindow` clears learned tables on
+Aborted. A later cross-request formulation cannot work merely by skipping the next
+request's initial reset: a budget-ended final iteration would have discarded them.
+Any such formulation must distinguish completed subtree cutoff labels (published
+only after completion checkpoint) from incomplete enclosing iterations, preserving
+truthful completion and completed-root guidance rules. Request-local R1/G1 retain
+the existing abort clearing; no cross-request behavior has been implemented.
+Also, VERIFIED_NULL requires all original Construction flags, so a lifetime ablation
+must preserve that valid composition rather than silently remove a feature/dependency.
+
 ## Resources, validation and gates
 
 Bootstrap:12 logical processors, about32GiB RAM/15GiB available, existing research
 Python/chess/Fastchess tools. Unrelated IDE/Gradle processes were observed and left
 alone. Prior490/529s eight-pair TTF runs anchor the initial cost plan; current costs
-still need measurement. Runtime qualification above is complete; no games have run.
+are now measured. Runtime qualification and the first32-pair screen are complete.
 
 Aggregate allowance:128 exploratory pairs (reserve32 W4),160 fresh W1 confirmation
-pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:0 games,
-0 confirmation attempts,0 game wall; about228s build/diagnostic execution through
-clean costs (32+32+62s Gradle,48.1s observed diagnostics,8.04s isolation,45.45s costs).
+pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:32/128
+exploratory pairs(64 games),0 confirmation attempts/pairs,1931.67s charged game wall;
+about240s active build/diagnostic execution including artifact preflights and reference
+audit (about228s through clean costs plus packaging/preflights and6.51s reference work).
 Minor setup/analysis/inspection time is not engine compute; later build/package
 checks and all failed executions must be added before further allocation.
 Record measured runtime costs and failed runs before selecting additional work.
+
+Prospective power reminder (not a frozen confirmation protocol): at one-sided
+alpha0.025 and80% normal-approximation power,160 independent pairs target roughly
+5.54/6.87/7.75 score points at pair SD0.25/0.31/0.35. A3-point gain at SD0.31 needs
+about839 pairs, materially outside this envelope. Final planning must use actual
+exploratory variance and a credible effect, not the pilot point estimate alone.
+The named legal16 opening source is locally available. Fresh confirmation inputs
+must exclude exposed inputs without opening either forbidden BOUNDARY2 study;
+the final input/protocol design remains a pre-confirmation dependency.
 
 Human actions: none blocking repository execution. After Frontier update, owner
 refresh to P4-F017 is non-blocking here and blocks only mirror-dependent planning.

@@ -1,0 +1,35 @@
+{
+  "id": "HL-R1-SCREEN-V1",
+  "frozenUtc": "2026-11-02T01:30:31.158997+00:00",
+  "question": "Retention-only reverse ablation against corrected80, under the same development roots as G1; assess integrated effort contribution without requiring isolated component significance",
+  "namePrefix": "r1-screen-v1",
+  "workers": [
+    1
+  ],
+  "pairs": 32,
+  "tc": "10+0.1",
+  "seed": 2026110202,
+  "timeoutSeconds": 4800,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "baselineProfile": "control",
+  "candidateProfile": "retain",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\runtime80-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json"
+  ],
+  "adapterSha256": "f139984fcbd6f6b90842e0f170c57f31a4eabdeb6f9b71dccf21b0013cc54275",
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\development-v1-openings.pgn",
+  "openingSha256": "3a57e5e7062ac0acadefccde3a02a002d531698c3c52724ac81c4d52b2ebf954",
+  "selection": "Same32 established development opening inputs in unchanged order; no result filtering. Reuse is explicitly exploratory, not independent confirmation. Historical games not pooled; frozen BOUNDARY2 studies unopened. Intentional input fixture falls under existing *-openings.pgn exception.",
+  "candidateIdentity": "HL-R1 request-scoped worker-private learning; commitb8ea8b2856eed3f6c774860ca540375054e4de30/build84 flags36962303",
+  "controlIdentity": "accounting-corrected80 source0bfb4ea8422ef78443e309930166ad46df5cc454; artifact9fec1d2af379827d105d523c32162fd771905cb9, flags3407871; not champion",
+  "common": "CP64 SHA8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b, S6CNU002 eight heads BT4_Q_LOGIT400_V1; PVS/ADAPTIVE16,Hash64 2097152 entries/50331648payload bytes, unchanged BOUNDARY2, no book/tablebase/adjudication",
+  "resources": "W1 OWNER, one game, Windows Ryzen5500 Java21+35 Xms256m Xmx512m ActiveProcessorCount4; owned process runner/trace audit, no concurrent heavy work",
+  "expectedCost": "32pairs about1930s(32min) based on completed G1 batch; hard4800s; no outcome-based extension",
+  "cumulativeBefore": "32/128 exploratory pairs,0/160 confirmation pairs;1931.67s charged game wall and about240s build/diagnostic execution; reserve32 exploratory pairs for W4",
+  "stopping": "Fixed32 complete color-reversed pairs or first legality/PV/terminal/accounting/input/drain/unapproved protocol failure. Audited scoreless legal clock fallback only under already-qualified full trace rule. No score-based early stop or extra games. Preserve all partial/failed evidence.",
+  "analysis": "WDL and pair score distribution, descriptive paired95 normal interval and bounded Hoeffding95 sensitivity. Exploratory selected candidate; no adjusted discovery, champion comparison, equivalence or acceptance.",
+  "nextDecision": "Compare descriptive results with G1 alongside actual history/effort/reference evidence, accounting for shared openings and exploratory selection. No isolated-component significance requirement. Then selected-formulation W4 risk and a fresh prospective champion-relative W1 confirmation if still justified."
+}

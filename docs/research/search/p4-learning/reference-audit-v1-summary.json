@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "input": "docs\\research\\search\\p4-learning\\raw\\reference-audit-v1.jsonl",
+  "inputSha256": "3ebfe4781d211539ee18c7e0774b225c5ae9392e45c8789c6086a0250a48a24f",
+  "samples": 43,
+  "counts": {
+    "reduced-low/nominal-low": 42,
+    "reduced-low/nominal-high": 1
+  },
+  "byBand": {
+    "history-band-1": {
+      "reduced-low/nominal-low": 27
+    },
+    "history-band-2": {
+      "reduced-low/nominal-low": 5
+    },
+    "history-band-0": {
+      "reduced-low/nominal-low": 10,
+      "reduced-low/nominal-high": 1
+    }
+  },
+  "depths": {
+    "3": 13,
+    "4": 14,
+    "5": 16
+  },
+  "witnesses": [
+    {
+      "root": "opening-6",
+      "sample": {
+        "kind": "history-band-0",
+        "board": [
+          -7926018616103534447,
+          -9171786197063531647,
+          2500172052727890724,
+          -5568871191747231744,
+          2622159,
+          232744081503170832
+        ],
+        "move": 789733,
+        "path": [
+          394508,
+          658619,
+          395150
+        ],
+        "ply": 3,
+        "depth": 3,
+        "alpha": -358,
+        "beta": -357,
+        "raw": -352,
+        "history": -26,
+        "continuation": -25,
+        "reduction": 1
+      },
+      "reduced": -382,
+      "nominal": -357
+    }
+  ],
+  "interpretation": "Prospective first-event stratified samples, not random population frequencies. Threshold disagreement between independent reduced and nominal TT-off qtrees is not a correctness defect or actual flat-kernel false-low count. Real history replay and legal PV checks passed; selective extension/order/TT context and original mate distance are not reproduced."
+}

@@ -57,4 +57,15 @@ retain the exact prototype. Clean costs (`cost-v1-summary.json`) measured54 requ
 per domain after27 warmups/domain. G1/control geometric-mean wall ratios1.0153 W1
 and0.9921 W4; R1/control0.9948/0.9918. Short windows and per-root variability preclude
 a speed claim, but expose no prohibitive cost for an exploratory strength screen.
-No game result is available yet.
+First development screen(`g1-screen-v1-w1-summary.json`):32pairs/64 normal games
+against actual frozen80,30W/18D/16L,60.94% score, paired normal95 interval52.15-69.72%.
+Bounded Hoeffding95 interval36.93-84.95% illustrates remaining uncertainty. Runtime
+audit passed with no missing-score warnings or lifecycle failures.1931.67s total
+wall. Positive exploratory signal; no independent or champion-relative inference.
+Next compare the retention-only reverse ablation under the same development inputs.
+
+The prospective reference audit completed43 first-event stratified samples, all
+with complete independent reduced/nominal TT-off qtrees and legal real-history replay.
+One negative-band depth3 sample crossed its threshold only at nominal depth;42 did
+not cross at either depth. No population rate, flat-kernel error count or safety
+defect follows. See `reference-audit-v1-summary.json` for the witness and limits.

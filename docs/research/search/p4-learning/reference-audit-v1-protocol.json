@@ -1,0 +1,15 @@
+{
+  "id": "HL-REFERENCE-AUDIT-V1",
+  "frozenUtc": "2026-11-02T00:59:43.830544+00:00",
+  "purpose": "Characterize selected reduction/nominal-reference disagreement and learning-band hypotheses, not exact equivalence or strength",
+  "profile": "guided",
+  "candidate": "HL-G1 commitb8ea8b2856eed3f6c774860ca540375054e4de30/build84, flags104071167",
+  "harnessSha256": "d0cd15f6d79f2f1001ba33a6010386a8aeae4a1d7e33f2313dbddc5e3bd967dd",
+  "corpus": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+  "collection": "W1 CP64 Hash64 ADAPTIVE16, depth8 max200000 admitted nodes/root,9 roots. First actual reduced event per root/depth3..5/combined-history band(-32 or lower,between,32 or higher). No result-based selection. <=81 samples.",
+  "reference": "Replay full root game history plus sampled legal path; independent recursive TT-off ordered/unpruned qsearch owner. Compare actual reduced child nominal depth vs unreduced child nominal depth at original ordinary null threshold. Rerooted mate distance and absent selective context remain limitations.",
+  "limits": "50000/200000 recursive-node cap reduced/nominal reference, preserve incompletes without invented classification; outer900s timeout. Stop if path restoration/PV/legality fails.",
+  "expectedCost": "<120s from baseline2-6s per1.5m whole-request nodes; at most20.25m recursive reference nodes plus collection. Execute only after the game batch drains.",
+  "analysis": "Report sampled bands/depths, completed/incomplete counts and reduced fail-low versus nominal fail-high witnesses; no population frequency or chess-strength inference. Investigate genuine rule/state defects, not reject selective approximations automatically.",
+  "cumulativeBefore": "G1screen32pairs in flight; no result read for protocol selection. No independent confirmation games exposed."
+}
