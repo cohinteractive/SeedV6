@@ -1,0 +1,26 @@
+[
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.ConstructionSearchTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.589"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.P4LearningTest",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.235"
+  },
+  {
+    "name": "com.ohinteractive.seedv6.search.exact.VerifiedNullAccountingTest",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.811"
+  }
+]

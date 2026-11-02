@@ -1,0 +1,38 @@
+{
+  "objective": "HL-R001",
+  "observedUtc": "2026-11-02T00:38:27.039365+00:00",
+  "initialHead": "ada8032ab64e0febc5b22bb2b6a87ed6e2120cfd",
+  "initialWorktree": "clean main",
+  "masters": {
+    "contract": "P4-R003",
+    "frontier": "P4-F016"
+  },
+  "journalPresent": false,
+  "versionBaseline": {
+    "tuple": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 83
+    },
+    "sha256": "ebb852886aa096d6a18a10f4d680d4cafa99c7fa3c2becaf946091d5b4eedab6",
+    "hex": "7b0a2020226d616a6f72223a20302c0a2020226d696e6f72223a20302c0a2020227061746368223a20302c0a2020226275696c64223a2038330a7d0a",
+    "regularSingleLink": true
+  },
+  "request": {
+    "path": "raw/owner-request.txt",
+    "sha256": "24b40145192c0d176e187b9c1ae7ad22b8c8519d4ef0ce3540cb18e9827ef3e1"
+  },
+  "checks": {
+    "runtime79": {
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime79\\lib\\app-uci.jar": true,
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime79\\lib\\engine-core.jar": true
+    },
+    "runtime80": {
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\lib\\app-uci.jar": true,
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\lib\\engine-core.jar": true
+    },
+    "cp64": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "java": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950"
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\stockfish-search.cpp",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/search.cpp",
+    "sha256": "a934524dd2f386ec38cdf95b7b2e41cecdc85c9b17e12c0668621e6ae16be28a"
+  },
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\stockfish-history.h",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/history.h",
+    "sha256": "f6e957d6e717348f58aa308f88aefddb5975e6a6c1d23e936ecf3548cbb48c39"
+  },
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\ethereal-search.c",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/search.c",
+    "sha256": "4d2ede2539b3eed669dba3d72244bf1e9b8de5ba64edeca831f6b179a5b16b92"
+  },
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\ethereal-history.c",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/history.c",
+    "sha256": "a082df0305d5d8bc0e86548a7d9f75f0ec1f80c820ce67f34f42d908d2e989ff"
+  },
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\ethereal-thread.c",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/thread.c",
+    "sha256": "48da01c15e5ba3adbbfc7bb4d85f26951c7ec1075090d10f5d35519595b3c776"
+  },
+  {
+    "path": "docs\\research\\search\\p4-learning\\raw\\external\\bagatur-search.java",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/alg/impl1/Search_PVS_NWS.java",
+    "sha256": "f4c6b540257d88899febd0f441f63c20638683b8ed22e163a1a417790e4cb02c"
+  }
+]

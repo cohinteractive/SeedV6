@@ -1,0 +1,238 @@
+{
+  "status": "passed",
+  "inputs": [
+    {
+      "input": "docs\\research\\search\\p4-learning\\raw\\cost-v1-w1.jsonl",
+      "sha256": "4ad3c0511b47bfb5e7f9810f7f8466cf79c471b5d32cb3a1c46100667840405d",
+      "measuredRequests": 54,
+      "warmupRequests": 27,
+      "profiles": {
+        "control": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 1.0,
+            "minRootRatio": 1.0,
+            "maxRootRatio": 1.0,
+            "rootRatios": {
+              "opening-1": 1.0,
+              "opening-2": 1.0,
+              "opening-3": 1.0,
+              "opening-4": 1.0,
+              "opening-5": 1.0,
+              "opening-6": 1.0,
+              "opening-7": 1.0,
+              "opening-8": 1.0,
+              "start": 1.0
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 1.0,
+            "minRootRatio": 1.0,
+            "maxRootRatio": 1.0,
+            "rootRatios": {
+              "opening-1": 1.0,
+              "opening-2": 1.0,
+              "opening-3": 1.0,
+              "opening-4": 1.0,
+              "opening-5": 1.0,
+              "opening-6": 1.0,
+              "opening-7": 1.0,
+              "opening-8": 1.0,
+              "start": 1.0
+            }
+          },
+          "nodes": 3600000,
+          "meanCompletedDepth": 7.444444444444445
+        },
+        "guided": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 1.0153309683107474,
+            "minRootRatio": 0.9529463930466749,
+            "maxRootRatio": 1.11066836789924,
+            "rootRatios": {
+              "opening-1": 1.0024430437210223,
+              "opening-2": 0.9529463930466749,
+              "opening-3": 1.0400728306527607,
+              "opening-4": 1.0638828347090787,
+              "opening-5": 1.0230807525363286,
+              "opening-6": 1.0128985755027156,
+              "opening-7": 0.9770759207547873,
+              "opening-8": 1.11066836789924,
+              "start": 0.964704657258329
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 1.0020168438771715,
+            "minRootRatio": 0.8666666666666667,
+            "maxRootRatio": 1.1590909090909092,
+            "rootRatios": {
+              "opening-1": 0.9743589743589743,
+              "opening-2": 0.9565217391304348,
+              "opening-3": 1.0512820512820513,
+              "opening-4": 1.1162790697674418,
+              "opening-5": 0.975609756097561,
+              "opening-6": 1.0,
+              "opening-7": 0.95,
+              "opening-8": 1.1590909090909092,
+              "start": 0.8666666666666667
+            }
+          },
+          "nodes": 3600000,
+          "meanCompletedDepth": 7.222222222222222
+        },
+        "retain": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 0.9947576101999782,
+            "minRootRatio": 0.941508683250489,
+            "maxRootRatio": 1.0580360454749556,
+            "rootRatios": {
+              "opening-1": 0.9964819758350028,
+              "opening-2": 0.941508683250489,
+              "opening-3": 0.9933082214408263,
+              "opening-4": 0.9806300974151893,
+              "opening-5": 1.0580360454749556,
+              "opening-6": 1.0403542567137851,
+              "opening-7": 0.9741639584649585,
+              "opening-8": 0.9864055775137571,
+              "start": 0.9867408725229213
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 0.975617332543991,
+            "minRootRatio": 0.8888888888888888,
+            "maxRootRatio": 1.048780487804878,
+            "rootRatios": {
+              "opening-1": 0.9487179487179487,
+              "opening-2": 0.9130434782608695,
+              "opening-3": 0.9743589743589743,
+              "opening-4": 0.9767441860465116,
+              "opening-5": 1.048780487804878,
+              "opening-6": 1.0222222222222221,
+              "opening-7": 0.975,
+              "opening-8": 1.0454545454545454,
+              "start": 0.8888888888888888
+            }
+          },
+          "nodes": 3600000,
+          "meanCompletedDepth": 7.222222222222222
+        }
+      }
+    },
+    {
+      "input": "docs\\research\\search\\p4-learning\\raw\\cost-v1-w4.jsonl",
+      "sha256": "4c10aefb05fad09b44eb8350b78b374963de405ac63bf7fa287d8b216da1b2f3",
+      "measuredRequests": 54,
+      "warmupRequests": 27,
+      "profiles": {
+        "control": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 1.0,
+            "minRootRatio": 1.0,
+            "maxRootRatio": 1.0,
+            "rootRatios": {
+              "opening-1": 1.0,
+              "opening-2": 1.0,
+              "opening-3": 1.0,
+              "opening-4": 1.0,
+              "opening-5": 1.0,
+              "opening-6": 1.0,
+              "opening-7": 1.0,
+              "opening-8": 1.0,
+              "start": 1.0
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 1.0,
+            "minRootRatio": 1.0,
+            "maxRootRatio": 1.0,
+            "rootRatios": {
+              "opening-1": 1.0,
+              "opening-2": 1.0,
+              "opening-3": 1.0,
+              "opening-4": 1.0,
+              "opening-5": 1.0,
+              "opening-6": 1.0,
+              "opening-7": 1.0,
+              "opening-8": 1.0,
+              "start": 1.0
+            }
+          },
+          "nodes": 3600000,
+          "meanCompletedDepth": 7.333333333333333
+        },
+        "guided": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 0.9921248302950277,
+            "minRootRatio": 0.8098995838761691,
+            "maxRootRatio": 1.1264289088332546,
+            "rootRatios": {
+              "opening-1": 1.0767173041703193,
+              "opening-2": 0.9547944036897098,
+              "opening-3": 1.0046748283822093,
+              "opening-4": 0.9324990455584149,
+              "opening-5": 0.8098995838761691,
+              "opening-6": 0.9108733925377208,
+              "opening-7": 1.1137716556131085,
+              "opening-8": 1.0447737570383462,
+              "start": 1.1264289088332546
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 1.0032621054763158,
+            "minRootRatio": 0.8448275862068966,
+            "maxRootRatio": 1.1875,
+            "rootRatios": {
+              "opening-1": 0.8448275862068966,
+              "opening-2": 1.1875,
+              "opening-3": 0.9827586206896551,
+              "opening-4": 1.027027027027027,
+              "opening-5": 1.1428571428571428,
+              "opening-6": 1.11864406779661,
+              "opening-7": 0.9545454545454546,
+              "opening-8": 0.9696969696969697,
+              "start": 0.859375
+            }
+          },
+          "nodes": 3600000,
+          "meanCompletedDepth": 7.222222222222222
+        },
+        "retain": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 0.9918199251923276,
+            "minRootRatio": 0.8695914035425601,
+            "maxRootRatio": 1.1026233526037796,
+            "rootRatios": {
+              "opening-1": 1.0515116944268412,
+              "opening-2": 0.9166689939772587,
+              "opening-3": 0.9730239820442674,
+              "opening-4": 1.066202018067599,
+              "opening-5": 0.8695914035425601,
+              "opening-6": 0.9210775777480528,
+              "opening-7": 1.1026233526037796,
+              "opening-8": 0.9587015485427444,
+              "start": 1.0969420949902406
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 0.9292943625643993,
+            "minRootRatio": 0.796875,
+            "maxRootRatio": 1.0625,
+            "rootRatios": {
+              "opening-1": 1.0,
+              "opening-2": 1.0625,
+              "opening-3": 0.9827586206896551,
+              "opening-4": 0.8783783783783784,
+              "opening-5": 0.9107142857142857,
+              "opening-6": 1.0,
+              "opening-7": 0.9318181818181818,
+              "opening-8": 0.8333333333333334,
+              "start": 0.796875
+            }
+          },
+          "nodes": 3600000,
+          "meanCompletedDepth": 7.277777777777778
+        }
+      }
+    }
+  ],
+  "limits": "Short fixed-node requests, rotated order, one warmup/two measured rounds. Descriptive wall/CPU ratios, no confidence/speed/strength claim; differing completed depths are selective outcomes, not correctness proofs."
+}

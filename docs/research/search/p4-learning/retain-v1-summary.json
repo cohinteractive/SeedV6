@@ -1,0 +1,308 @@
+{
+  "W1": {
+    "control": {
+      "requests": 9,
+      "nodes": 1458372,
+      "eligibleCombinedBins": [
+        0,
+        0,
+        0,
+        1,
+        26343,
+        36306,
+        1965,
+        281,
+        57,
+        11,
+        0
+      ],
+      "eligible": 64964,
+      "reductions": 51736,
+      "rootResults": [
+        {
+          "root": "start",
+          "nodes": 85443,
+          "depth": 8,
+          "score": 78
+        },
+        {
+          "root": "opening-1",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 205
+        },
+        {
+          "root": "opening-2",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 15
+        },
+        {
+          "root": "opening-3",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 232
+        },
+        {
+          "root": "opening-4",
+          "nodes": 198591,
+          "depth": 8,
+          "score": 197
+        },
+        {
+          "root": "opening-5",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 204
+        },
+        {
+          "root": "opening-6",
+          "nodes": 200000,
+          "depth": 6,
+          "score": 358
+        },
+        {
+          "root": "opening-7",
+          "nodes": 38608,
+          "depth": 8,
+          "score": 123
+        },
+        {
+          "root": "opening-8",
+          "nodes": 135730,
+          "depth": 8,
+          "score": 224
+        }
+      ]
+    },
+    "retain": {
+      "requests": 9,
+      "nodes": 1543212,
+      "eligibleCombinedBins": [
+        0,
+        0,
+        0,
+        11,
+        49882,
+        13515,
+        2829,
+        1272,
+        450,
+        85,
+        1
+      ],
+      "eligible": 68045,
+      "reductions": 53198,
+      "rootResults": [
+        {
+          "root": "start",
+          "nodes": 127464,
+          "depth": 8,
+          "score": 70
+        },
+        {
+          "root": "opening-1",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 205
+        },
+        {
+          "root": "opening-2",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 15
+        },
+        {
+          "root": "opening-3",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 263
+        },
+        {
+          "root": "opening-4",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 196
+        },
+        {
+          "root": "opening-5",
+          "nodes": 200000,
+          "depth": 6,
+          "score": 203
+        },
+        {
+          "root": "opening-6",
+          "nodes": 200000,
+          "depth": 6,
+          "score": 348
+        },
+        {
+          "root": "opening-7",
+          "nodes": 41885,
+          "depth": 8,
+          "score": 122
+        },
+        {
+          "root": "opening-8",
+          "nodes": 173863,
+          "depth": 8,
+          "score": 224
+        }
+      ]
+    }
+  },
+  "W4": {
+    "control": {
+      "requests": 9,
+      "nodes": 1509235,
+      "eligibleCombinedBins": [
+        0,
+        0,
+        0,
+        0,
+        24911,
+        41531,
+        2583,
+        237,
+        33,
+        0,
+        0
+      ],
+      "eligible": 69295,
+      "reductions": 55864,
+      "rootResults": [
+        {
+          "root": "start",
+          "nodes": 119283,
+          "depth": 8,
+          "score": 78
+        },
+        {
+          "root": "opening-1",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 205
+        },
+        {
+          "root": "opening-2",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 56
+        },
+        {
+          "root": "opening-3",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 232
+        },
+        {
+          "root": "opening-4",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 196
+        },
+        {
+          "root": "opening-5",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 204
+        },
+        {
+          "root": "opening-6",
+          "nodes": 200000,
+          "depth": 6,
+          "score": 358
+        },
+        {
+          "root": "opening-7",
+          "nodes": 42629,
+          "depth": 8,
+          "score": 123
+        },
+        {
+          "root": "opening-8",
+          "nodes": 147323,
+          "depth": 8,
+          "score": 224
+        }
+      ]
+    },
+    "retain": {
+      "requests": 9,
+      "nodes": 1498225,
+      "eligibleCombinedBins": [
+        0,
+        0,
+        0,
+        8,
+        32894,
+        30841,
+        2299,
+        505,
+        79,
+        5,
+        0
+      ],
+      "eligible": 66631,
+      "reductions": 52829,
+      "rootResults": [
+        {
+          "root": "start",
+          "nodes": 85136,
+          "depth": 8,
+          "score": 78
+        },
+        {
+          "root": "opening-1",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 205
+        },
+        {
+          "root": "opening-2",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 15
+        },
+        {
+          "root": "opening-3",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 232
+        },
+        {
+          "root": "opening-4",
+          "nodes": 195076,
+          "depth": 8,
+          "score": 204
+        },
+        {
+          "root": "opening-5",
+          "nodes": 200000,
+          "depth": 7,
+          "score": 204
+        },
+        {
+          "root": "opening-6",
+          "nodes": 200000,
+          "depth": 6,
+          "score": 358
+        },
+        {
+          "root": "opening-7",
+          "nodes": 43259,
+          "depth": 8,
+          "score": 123
+        },
+        {
+          "root": "opening-8",
+          "nodes": 174754,
+          "depth": 8,
+          "score": 224
+        }
+      ]
+    }
+  },
+  "status": "passed",
+  "limits": "Fixed node budget/depth, descriptive histogram, no strength or speed inference; observation-neutrality checked in every W1 request. W4 scheduling varies."
+}

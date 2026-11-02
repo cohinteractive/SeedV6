@@ -1,0 +1,23 @@
+{
+  "args": [
+    "C:/java/jdk-21/bin/java.exe",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "--add-modules=jdk.incubator.vector",
+    "-cp",
+    "docs\\research\\search\\p4-learning\\raw\\guided-v1-runtime\\classes;docs\\research\\search\\p4-learning\\raw\\guided-v1-runtime\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4LearningStudy",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+    "docs\\research\\search\\p4-learning\\raw\\cost-v1-w1.jsonl",
+    "1",
+    "cost",
+    "2",
+    "20",
+    "200000",
+    "control,retain,guided"
+  ],
+  "exitCode": 0,
+  "wallSeconds": 28.57860090000031
+}

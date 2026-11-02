@@ -1,0 +1,23 @@
+{
+  "args": [
+    "C:/java/jdk-21/bin/java.exe",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "--add-modules=jdk.incubator.vector",
+    "-cp",
+    "build/research/runtime/classes;build/research/runtime/lib/*",
+    "com.ohinteractive.seedv6.search.exact.P4LearningStudy",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+    "docs\\research\\search\\p4-learning\\raw\\baseline-v1-w4.jsonl",
+    "4",
+    "observe",
+    "1",
+    "8",
+    "200000",
+    "control"
+  ],
+  "exitCode": 0,
+  "wallSeconds": 2.4207457000011345
+}

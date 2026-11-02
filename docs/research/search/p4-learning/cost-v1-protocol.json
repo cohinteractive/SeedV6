@@ -1,0 +1,24 @@
+{
+  "id": "HL-COST-V1",
+  "frozenUtc": "2026-11-02T00:50:40.536330+00:00",
+  "purpose": "Same-runtime clean request costs, rotated profile order; lifetime and effort controls, no strength inference",
+  "runtimeManifest": "guided-v1-runtime-manifest.json",
+  "profiles": [
+    "control",
+    "retain",
+    "guided"
+  ],
+  "workers": [
+    1,
+    4
+  ],
+  "corpus": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+  "warmupRounds": 1,
+  "measuredRounds": 2,
+  "depth": 20,
+  "budget": 200000,
+  "limits": "60s/request,15min/domain; fail on board/PV/accounting/drain or safety deadline; no observer",
+  "expectedCost": "<2min total from observed request costs",
+  "cumulativeBefore": "0 games;126s builds,48.1s diagnostic processes,8.04s isolation; no confirmation exposure",
+  "analysis": "Per-root/profile arithmetic mean measured elapsed/CPU, geometric mean paired ratios; report spread. JVM allocation counts cover initial live threads; W4 misses subsequently created helpers, no whole-process memory claim."
+}

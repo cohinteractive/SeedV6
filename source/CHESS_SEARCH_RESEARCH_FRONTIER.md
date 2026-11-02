@@ -1,13 +1,42 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F016**
+Internal frontier revision: **P4-F017**
 
-Status: **ACTIVE Phase4 programme - 30 October2026. TTF-R001 is accepted and closed as a successfully completed, limited foundational engineering objective; GPT technical reconciliation and explicit owner acceptance are complete. Its W4 exploratory game signal remains adverse; stronger play and competitive neutrality are unproven. The prior TT-memory campaign remains bounded INCONCLUSIVE with its separate pending reconciliation unchanged. No active or authorized successor, champion advancement or production promotion.**
+Status: **ACTIVE Phase4 programme - 2 November2026. HL-R001 retained Search learning and history-guided effort allocation is owner-authorized and active, with W1 strength acceptance and mandatory W4 competitive-risk investigation. TTF-R001 remains accepted and closed for its limited foundational purpose, with adverse W4 evidence. TT-R001 remains inconclusive with separate reconciliation pending. No champion advancement or production promotion.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
 Governing [Contract P4-R003](CHESS_SEARCH_CONTRACT.md). This Frontier records
 current state, opportunities and dependencies; it supplies no independent launch
 or promotion authority.
+
+## Active objective - retained learning and effort allocation
+
+The 2 November2026 owner request authorizes **HL-R001**, governed by the focused
+[CONTRACT](../docs/research/search/p4-learning/CONTRACT.md) and resumable
+[STATE](../docs/research/search/p4-learning/STATE.md). The objective is independently
+confirmed practical W1 strength improvement directly against champion79, with the
+accounting-corrected80 bridge and mandatory W4 risk investigation. It is not a
+foundational-only objective. Existing learning lifetimes, outcome quality, ordering,
+graded reductions and worker behavior are investigated together; routine affordable
+engineering and experiments are authorized, production/promotion are not.
+
+Bootstrap verifies clean HEAD ada8032a, P4-R003/P4-F016, build83 and available
+hash-matching79/80 controls/CP64. Initial source inspection confirms repeated
+Construction-history resets and distinct W4 quiet-history seeding. Explicit HL-R1
+request retention and HL-G1 retained history-guided effort prototypes have passed
+330 selected tests, bounded causal/cost diagnostics and65 UCI checks plus4 stop/reset
+checks; current production/control W1 matches frozen80. No playing-strength result
+is yet established. Build80 is the initial technical control;
+F3/build83 is optional only on a justified integration hypothesis, with its H2
+dependencies and adverse W4 evidence visible. Historical campaigns are unchanged.
+The initial aggregate resource plan and prospective confirmation requirements live
+in HL-R001's contract; no unlimited tuning or larger precision campaign is implied.
+
+The owner confirms **P4-R003/P4-F016** Project mirrors were current at launch.
+The repository pair is now **P4-R003/P4-F017**. Owner refresh of the Frontier mirror
+is required before mirror-dependent Project planning and does not block this
+authorized repository work. Historical no-successor statements below describe
+their respective completed decisions, not a veto on this new explicit authority.
 
 ## Owner decision - improvement-oriented research
 
@@ -219,8 +248,8 @@ these findings establishes a SeedV6 playing-strength improvement.
 | Baseline and correction | Immutable build79 baseline/champion retained; build80 is the separate accounting-corrected technical foundation. No champion advancement or research-driven production promotion. |
 | Completed preparatory work | Inventory, accounting investigation/correction, P4-F002 consolidation and external research-map investigation are closed. The map is reconciled and accepted; Contract initialization statements describe historical sequencing, not unfinished work. |
 | A. Useful TT memory for selective PVS | **First authorized CGLHW: Codex execution complete, bounded inconclusive result; separate GPT/owner reconciliation pending.** Investigated hypothesis: retained heuristic scores with suitable admission, selective provenance, bound interpretation, retention/replacement and preserved completed-move guidance may strengthen existing CP64/PVS. Interactions include extensions, selective pruning, aspiration and repeated-window work. |
-| Foundational TT information architecture | **Owner-authorized and active: [TTF-R001](../docs/research/search/p4-tt-foundation/CONTRACT.md), [resume STATE](../docs/research/search/p4-tt-foundation/STATE.md).** Investigate the information lifecycle and actual downstream consumers, beyond isolated score-cutoff policy. The bootstrap challenge identified separate raw-evaluation retention and bound-aware selective admission as initial testable hypotheses; no technical success or strength claim yet. This new foundational objective neither reopens TT-R001 nor retroactively qualifies H1/H2. |
-| B. Retained learning that allocates Search effort | **High priority; strongest competing first direction.** Hypothesis: useful history lifetime plus graded history-informed LMR and compatible learning/protection may improve strength. Build on existing history mechanisms. |
+| Foundational TT information architecture | **TTF-R001 accepted and closed:** [terminal STATE](../docs/research/search/p4-tt-foundation/STATE.md). TTF-F3-v1 packed coherent main-node information is qualified for its limited foundational purpose; speed/strength/competitive neutrality remain unproven and W4 evidence adverse. No reopening of TT-R001 or retroactive H1/H2 qualification. |
+| B. Retained learning that allocates Search effort | **Owner-authorized and active as HL-R001:** [CONTRACT](../docs/research/search/p4-learning/CONTRACT.md), [STATE](../docs/research/search/p4-learning/STATE.md). Investigate useful learning lifetime/quality with history-informed ordering, reductions and compatible protection for independent champion-relative W1 strength, with mandatory W4 risk investigation. No success yet. |
 | C. Tactical coverage through verification and extensions | **Promising, dependent on reliable information and more expensive qualification.** Alternatives include TT-supported singular/forced-line verification and tactical ProbCut/qsearch cutoffs. Consider addition, substitution and reverse ablation through valid configurations. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
 | E. ROOT_REUSE cooperation and W2-16 information exchange | **Important, comparatively expensive and variable to qualify.** Shared useful TT information, selected history persistence/sharing, root-job ordering or overlapping Search structures; preserve concurrency, complete accounting, truthful completion, cancellation and draining. Stockfish-scale results do not transfer quantitatively by assumption. |

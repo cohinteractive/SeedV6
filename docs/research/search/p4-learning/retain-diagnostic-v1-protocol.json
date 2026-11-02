@@ -1,0 +1,22 @@
+{
+  "id": "HL-RETAIN-DIAGNOSTIC-V1",
+  "frozenUtc": "2026-11-02T00:45:41.177440+00:00",
+  "purpose": "Measure request-scoped worker-local retention and histogram scale; no strength or speed claim",
+  "profiles": [
+    "control",
+    "retain"
+  ],
+  "workers": [
+    1,
+    4
+  ],
+  "rounds": 1,
+  "depth": 8,
+  "budgetPerRequest": 200000,
+  "corpus": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+  "corpusSha256": "b2815c85298025ea353f9d4b2b5752d1a527978b27f0aa96eb7d5a6e2c1d0464",
+  "resources": "CP64 Hash64 Java21 Xms256m Xmx512m ActiveProcessorCount4, no concurrent heavy work",
+  "stopping": "Each request 60s, each domain <=15min; fail on illegal PV, board mutation, accounting mismatch, undrained workers or W1 observation changing deterministic work/score/PV. Preserve partial output.",
+  "costPlan": "9 roots x2 profiles/domain, with18 additional clean W1 neutrality requests; expected <1min, 30min maximum",
+  "cumulativeBefore": "0 games; baseline build32s and diagnostics8.57s; retention build/test underway"
+}

@@ -224,6 +224,9 @@ public final class ExactSearch {
             result.put("nullAttempts",s.nullAttempts);result.put("nullProbeNodes",s.nullProbeNodes);
             result.put("nullVerificationNodes",s.nullVerificationNodes);result.put("nullCutoffs",s.nullCutoffs);
         }
+        if(construction.has(FlatSearchConfig.Feature.HISTORY_EFFORT)) {
+            result.put("historyMore",s.historyMore);result.put("historyLess",s.historyLess);
+        }
         return java.util.Collections.unmodifiableMap(result);
     }
 
@@ -463,6 +466,7 @@ public final class ExactSearch {
         clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
         rootJobReuse=rootJobHistory=false;
+        clearRequestLearning();
         requestActive = true;
     }
 
@@ -490,7 +494,10 @@ public final class ExactSearch {
 
     void seedRootHistoryFrom(ExactSearch source) {
         if(active || source.active || !rootJobReuse) throw new IllegalStateException("Undrained root history transfer");
-        if(source != this) System.arraycopy(source.quietHistory,0,quietHistory,0,quietHistory.length);
+        // HL-R001 retains each worker's own labels; repeated seeding would erase
+        // its previous root jobs. No new sharing or concurrent table reads.
+        if(source != this && !requestLearning())
+            System.arraycopy(source.quietHistory,0,quietHistory,0,quietHistory.length);
         rootJobHistory=true;
     }
 
@@ -511,10 +518,10 @@ public final class ExactSearch {
         if(active) throw new IllegalStateException("Active root ordering");
         long[] list=new long[MAX_MOVES]; int[] keys=new int[MAX_MOVES];
         int count=Gen.genAll(board[0],board[1],board[2],board[3],(int)board[Board.STATUS],board[Board.KEY],true,list,generatorScratch);
-        if(quietHistory != null) Arrays.fill(quietHistory,0);
+        if(quietHistory != null && !(requestLearning() && requestActive)) Arrays.fill(quietHistory,0);
         snapshotOrdering(board,list,count,preferred,keys,0);
         if(constructionState!=null) {
-            constructionState.reset();
+            constructionState.reset(requestLearning() && requestActive);
             constructionState.order(list,0,count,Board.enPassantSquare((int)board[Board.STATUS]),preferred,keys,0,0,quietHistory);
         }
         Sort.full(list,keys,0,count,SORT_CROSSOVER);
@@ -801,6 +808,7 @@ public final class ExactSearch {
         advanceGeneration();
         clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
+        clearRequestLearning();
         requestActive = true;
     }
 
@@ -809,6 +817,7 @@ public final class ExactSearch {
         requestActive = false;
         clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
+        clearRequestLearning();
     }
 
     public void newGame() {
@@ -816,6 +825,17 @@ public final class ExactSearch {
         if(table != null) table.clear();
         clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
+        clearRequestLearning();
+    }
+
+    private boolean requestLearning() {
+        return construction!=null && construction.has(FlatSearchConfig.Feature.REQUEST_LEARNING);
+    }
+    private void clearRequestLearning() {
+        if(requestLearning()) {
+            Arrays.fill(quietHistory,0);
+            constructionState.reset();
+        }
     }
 
     private void advanceGeneration() {
@@ -928,8 +948,9 @@ public final class ExactSearch {
                     depth, requestActive && consumedQplies < 0, alpha, beta);
             // Invocation-local by default; SR-005 may retain only a completed adjacent iteration.
             if(captureHistory != null) Arrays.fill(captureHistory, 0);
-            if(constructionState!=null) constructionState.reset();
-            if(quietHistory != null && !retainHistory) Arrays.fill(quietHistory, 0);
+            boolean retainLearning=requestLearning() && requestActive;
+            if(constructionState!=null) constructionState.reset(retainLearning);
+            if(quietHistory != null && !retainHistory && !retainLearning) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
             if(killers != null) Arrays.fill(killers, 0);
             if(countermoves != null) Arrays.fill(countermoves, 0);
@@ -1293,6 +1314,13 @@ public final class ExactSearch {
                                 || (construction.has(FlatSearchConfig.Feature.IMPROVING) && constructionImproving(board,ply)))) {
                         reduction--;constructionState.relief++;
                     }
+                    if(baseReduction>0 && !nullVerification && construction!=null
+                            && construction.has(FlatSearchConfig.Feature.HISTORY_EFFORT)) {
+                        int adjusted=constructionState.historyReduction(reduction,depth,ply,move,quietHistory);
+                        if(adjusted>reduction)constructionState.historyMore++;
+                        if(adjusted<reduction)constructionState.historyLess++;
+                        reduction=adjusted;
+                    }
                     if(selectivityTrace!=null && !nullProbeActive && !nullVerification) {
                         int context=ContinuationHistory.context(constructionState.pathMoves[ply]);
                         int continuation=constructionState.continuation!=null && context>=0
@@ -1387,6 +1415,8 @@ public final class ExactSearch {
         if(reduction==0) return false;
         if((construction.has(FlatSearchConfig.Feature.CAUTION) && (flags&8)!=0)
                 || (construction.has(FlatSearchConfig.Feature.IMPROVING) && constructionImproving(board,ply))) reduction--;
+        if(!nullVerification && construction.has(FlatSearchConfig.Feature.HISTORY_EFFORT))
+            reduction=constructionState.historyReduction(reduction,depth,ply,move,quietHistory);
         int assigned=depth-1-reduction;
         if(assigned>2) return false;
         int marginDepth=construction.has(FlatSearchConfig.Feature.REDUCTION_FUTILITY)?assigned:depth;

@@ -17,6 +17,7 @@ final class FlatSearchState {
     long captureUpdates,quietUpdates,filtered,orderingChanges;
     long reductions,verifications,fullRetries,refuted,relief,extensions,futilityOmissions,reverseCutoffs,protectedMoves,evaluations;
     long nullAttempts,nullProbeNodes,nullVerificationNodes,nullCutoffs;
+    long historyMore,historyLess;
 
     FlatSearchState(FlatSearchConfig config) {
         this.config=config;
@@ -27,16 +28,34 @@ final class FlatSearchState {
         counters=config.has(COUNTERMOVES)?new long[Countermoves.SIZE]:null;
     }
     void reset() {
+        reset(false);
+    }
+    /** Retain only learned tables; path, evaluation, extension and event scratch
+     * always belongs to the next invocation. Called only by the idle private owner. */
+    void reset(boolean retainLearning) {
         Arrays.fill(pathMoves,0);
         Arrays.fill(credits,0);Arrays.fill(rawEval,Integer.MIN_VALUE);
         if(ttRawEval!=null) Arrays.fill(ttRawEval,Integer.MIN_VALUE);
-        if(captures!=null) Arrays.fill(captures,0);
-        if(continuation!=null) Arrays.fill(continuation,(short)0);
-        if(killers!=null) Arrays.fill(killers,0);
-        if(counters!=null) Arrays.fill(counters,0);
+        if(!retainLearning) {
+            if(captures!=null) Arrays.fill(captures,0);
+            if(continuation!=null) Arrays.fill(continuation,(short)0);
+            if(killers!=null) Arrays.fill(killers,0);
+            if(counters!=null) Arrays.fill(counters,0);
+        }
         captureUpdates=quietUpdates=filtered=orderingChanges=0;
         reductions=verifications=fullRetries=refuted=relief=extensions=futilityOmissions=reverseCutoffs=protectedMoves=evaluations=0;
         nullAttempts=nullProbeNodes=nullVerificationNodes=nullCutoffs=0;
+        historyMore=historyLess=0;
+    }
+    /** HL-G1: signed bounded effort adjustment on the measured SeedV6 gravity
+     * scale. Half a 64-unit band rounds away from zero; at most two plies.
+     * This predicts effort only, never a score, extension or cutoff label. */
+    int historyReduction(int reduction,int depth,int ply,long move,int[] history) {
+        int context=ContinuationHistory.context(pathMoves[ply]);
+        int evidence=history[QuietHistory.index(move)]
+                +(continuation!=null && context>=0?continuation[ContinuationHistory.index(context,move)]/2:0);
+        int adjustment=Integer.signum(evidence)*Math.min(2,(Math.abs(evidence)+32)/64);
+        return Math.max(0,Math.min(depth-2,reduction-adjustment));
     }
     void order(long[] moves,int from,int count,int ep,long hash,int[] keys,int base,int ply,int[] history) {
         int context=ContinuationHistory.context(pathMoves[ply]);
