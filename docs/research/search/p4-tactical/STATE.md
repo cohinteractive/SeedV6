@@ -63,8 +63,8 @@ before admission. Reserve independent capacity; do not spend it on development.
 
 ## Resources and ownership
 
-[Resource ledger](resources.json): charged experimental wall **65.0136844/64,800s**;
-remaining **64734.9863156s**. Initiated games **0/1,120**: W1 development0/384,
+[Resource ledger](resources.json): charged experimental wall **66.4474747/64,800s**;
+remaining **64733.5525253s**. Initiated games **0/1,120**: W1 development0/384,
 W4 risk0/96, confirmation0/640 and attempts0/1. Each outer execution receipt is
 charged once, including UCI qualifications; overlapping summaries are not added.
 No owned running experiment, test or match. All recorded execution processes drained.
@@ -76,17 +76,18 @@ signal alone is not a valid reason to discard a game after seeing its result.
 
 ## Next admissible work and dependencies
 
-1. Commit qualified TC-P1 with exactly build88->89; rebuild and freeze an immutable
-   build89 runtime, verify all JAR payloads against the qualified prototype except
-   generated version metadata, and run committed preflights before matches.
-2. Freeze a32-pair serial W1 development screen versus exact84 using established
-   development openings and runner. No score-based early stopping; resource/PC-use
-   failures preserve all initiated games and wall. Inspect full results only after
-   the bounded batch and audit; choose further work from structural evidence.
+1. TC-P1 committed at `a7c45dff` with verified build88->89. Immutable runtime
+   `runtime-build89-p1-v1-manifest.json` passes bridge:2117 JAR entries and29 other
+   files compared; only generated version metadata differs; four W1 preflights pass.
+2. `p1-screen-v1-protocol.json` freezes32 paired W1 development openings versus
+   exact84, one active game, below-normal ownership, no outcome-driven stops.
+   Ready to launch after protocol commit. A transient35% CPU observation was
+   followed by6% total CPU and about17GiB available RAM; no gaming/runner observed.
+   No game started yet. No competing extended diagnostics during the match.
 3. Ask for controlled window when heavy W4 work or confirmation is concrete. No
    finalist or independent confirmation selected. W4 qualification remains outstanding.
 
-Current champion exact HL-G1/build84; normal build85 HL-G1 policy unchanged. Planned committed
+Current champion exact HL-G1/build84; normal build85 HL-G1 policy unchanged. Current
 repository build89; no push, release, deployment, promotion or successor. TT-R001
 reconciliation remains separate and both frozen BOUNDARY2 studies remain unopened.
 Qualification masters now P4-R010/P4-F026. Owner-confirmed mirrors last P4-R005/F021;

@@ -1,0 +1,50 @@
+{
+  "id": "TC-P1-SCREEN-V1",
+  "status": "prospectively frozen before games",
+  "frozenUtc": "2026-11-02T19:57:04.953260+00:00",
+  "question": "Does bounded capture verification over HL-G1 improve practical W1 performance against exact frozen84 at 10+0.1?",
+  "category": "W1 development",
+  "namePrefix": "p1-screen-v1",
+  "workers": [
+    1
+  ],
+  "pairs": 32,
+  "tc": "10+0.1",
+  "seed": 2026110308,
+  "timeoutSeconds": 3600,
+  "estimatedMatchSeconds": 2300,
+  "remainingCategoryGames": 384,
+  "remainingTotalGames": 1120,
+  "remainingMatchSeconds": 64733.55252530004,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "probcut",
+  "candidateIdentity": {
+    "name": "TC-P1 bounded capture verification over HL-G1",
+    "source": "a7c45dffeaffc362bc7c7026d03a2e6434472be2",
+    "build": 89,
+    "flags": 1177812991
+  },
+  "controlIdentity": {
+    "name": "HL-G1 request-scoped retained learning and history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\development-v1-openings.pgn",
+  "openingSha256": "46bc3cc35f181429f6c19b24162b5744af9d1a4df4945b0677358d2e896158a2",
+  "openingQualification": "32 unique legal16-ply nonterminal starting-position histories independently reparsed; prior CH development inputs deliberately reused as exploratory material, no fresh-claim status",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json"
+  ],
+  "adapterSha256": "a01e010361d420b7c2178123e4d0c3c2f8de8867e78811734d75449d8b3407d4",
+  "resources": "Serial W1 OWNER, one active game, CP64 Hash64, Java21+35 Xms256m/Xmx512m ActiveProcessorCount4 symmetrically; below-normal owned runner and engine descendants; BOUNDARY2 unchanged. Desktop headroom required; no gaming observed before admission.",
+  "audit": "Existing owned Windows Job, live/full trace audit, independent PGN legal/history/PV/terminal/full-request accounting, narrow audited-fallback warning policy, hash-stable inputs and complete handle draining. Any other warning/failure stops and preserves evidence.",
+  "stopping": "Fixed32 complete color-reversed pairs/64 games; no outcome-driven early stop or discarding. Operational/resource/owner-use interruption preserves every initiated game/partial pair and charged time. Failed batch is not a confirmation and is not silently replayed.",
+  "analysis": "Descriptive WDL and pair-level normal95 plus bounded Hoeffding95; exploratory repeated selection, no independent strength or neutrality claim. No partial-score decisions.",
+  "nextDecision": "Use full audited screen plus causal/cost evidence to select further structural investigation; no blind tuning or automatic confirmation. W4 qualification and controlled-window scheduling remain pending.",
+  "reservedConfirmation": "640 games/320 fresh pairs and one claim attempt remain unspent; reserve at least24000 charged seconds prospectively before more development."
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "category": "charged committed preflight",
+  "wallSeconds": 1.4337902999832295,
+  "gamesInitiated": 0,
+  "processDrained": true,
+  "endedUtc": "2026-11-02T19:56:17.514239+00:00",
+  "raw": "raw/build89-v1"
+}

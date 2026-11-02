@@ -1,7 +1,7 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 65.01368439997896,
-  "remainingWallSeconds": 64734.98631560002,
+  "chargedWallSeconds": 66.44747469996219,
+  "remainingWallSeconds": 64733.55252530004,
   "initiatedGames": 0,
   "remainingGames": 1120,
   "developmentGames": 0,
@@ -33,6 +33,11 @@
       "receipt": "p1-runtime-v1-execution.json",
       "wallSeconds": 1.2560912999906577,
       "category": "charged bounded UCI qualification"
+    },
+    {
+      "receipt": "build89-preflight-execution.json",
+      "wallSeconds": 1.4337902999832295,
+      "category": "charged committed preflight"
     }
   ],
   "accounting": "Outer elapsed receipts charged once; inner summaries overlap and are not added. Selected correctness tests/compilation recorded separately. No interrupted/failed experimental execution so far."

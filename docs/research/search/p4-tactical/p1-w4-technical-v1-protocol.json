@@ -1,0 +1,22 @@
+{
+  "id": "TC-P1-W4-TECHNICAL-V1",
+  "profiles": [
+    "guided",
+    "probcut"
+  ],
+  "workers": [
+    4
+  ],
+  "runtimeManifest": "runtime-build89-p1-v1-manifest.json",
+  "corpus": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+  "rounds": 1,
+  "depth": 8,
+  "budget": 200000,
+  "mode": "observe",
+  "resources": "W4 ROOT_REUSE, one request at a time, Hash64, Java21+35 Xms256m/Xmx512m ActiveProcessorCount4, below-normal; requires owner controlled PC-use window",
+  "timeoutSeconds": 300,
+  "games": 0,
+  "charge": "All elapsed execution including failures; max900s aggregate for three commands; ask owner before launch",
+  "additionalChecks": "W4 UCI isolation/runtime paths and process draining; no schedule-equality requirement; no games in this technical pass",
+  "corpusSha256": "b2815c85298025ea353f9d4b2b5752d1a527978b27f0aa96eb7d5a6e2c1d0464"
+}
