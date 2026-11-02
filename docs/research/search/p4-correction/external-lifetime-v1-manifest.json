@@ -1,0 +1,21 @@
+{
+  "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+  "files": [
+    {
+      "path": "docs\\research\\search\\p4-correction\\raw\\external\\stockfish-engine.cpp",
+      "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/engine.cpp",
+      "sha256": "7ed812f6e7d20204e553471c333afd8b57bd6e4445b78b5f2ee79b911db74a46"
+    },
+    {
+      "path": "docs\\research\\search\\p4-correction\\raw\\external\\stockfish-thread.cpp",
+      "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/thread.cpp",
+      "sha256": "5db5e874a0c35a8e29b474bcd7252e426682a4ce43e01e2be649b73f63d59228"
+    },
+    {
+      "path": "docs\\research\\search\\p4-correction\\raw\\external\\stockfish-uci.cpp",
+      "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/uci.cpp",
+      "sha256": "4f793f0d375613fe1cfe7124e899ba1c0b0f063a02fd5ae2567c8213c98e6036"
+    }
+  ],
+  "note": "Pinned text captured through GitHub connector; local LF representation hashed. No external empirical result independently audited."
+}

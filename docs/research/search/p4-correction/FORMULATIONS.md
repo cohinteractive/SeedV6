@@ -69,15 +69,15 @@ Optional diagnostics count learning by bound, exclusions, correction magnitude a
 changed improving decisions without changing traversal. They are disabled in games.
 
 CH-C1 source d51d1479/build86 completed the first W1 screen against exact84:
-22W/16D/26L,46.875%, paired95 interval35.08?58.67%. No gain established.
+22W/16D/26L,46.875%, paired95 interval35.08-58.67%. No gain established.
 Costs were1.0041x W1/1.0313x W4 in short clean diagnostics; not speed claims.
 The optional deeper-omission trace mislabeled working as raw, discovered after
 freeze. No game observer was enabled and the diagnostic counters ignored that
 argument; the source fix and independent constant-evaluator regression passed for future artifacts.
 
-## CH-C2 ? pawn correction shared by main decisions and qsearch stand-pat
+## CH-C2 - pawn correction shared by main decisions and qsearch stand-pat
 
-**Technically qualified; build87 artifact freeze next; no games yet.**
+**Technically qualified; build87 frozen;32-pair W1 screen in progress.**
 Profile `corrected-q`,flags506724351. Adds CORRECTED_QSEARCH to CH-C1 while keeping
 its pawn key, update eligibility/EMA/cap, request lifetime and HL-G1 effort policy.
 At non-check, nonterminal ordinary qsearch nodes, raw evaluator output is validated,
@@ -93,3 +93,15 @@ Risks: self-referential feedback, broad pawn-context generalization, increased
 qnode hash work and tactical distortion. No claim that external integration transfers
 its strength or constants. The same32 development pairs will provide a descriptive
 common-input screen; selection remains exploratory and confirmation stays untouched.
+
+## Conditional lifetime follow-up - source fact, not a selected candidate
+
+Pinned Stockfish19 engine.cpp/thread.cpp/uci.cpp (local text hashes in
+`external-lifetime-v1-manifest.json`) connect UCI ucinewgame/Clear Hash to
+Engine.search_clear, ThreadPool.clear and Worker.clear. Normal Engine.go starts
+thinking without those clears; the inspected search.cpp clears correction tables
+in Worker.clear, not on each ordinary request. This supports cross-request lifetime
+as a concrete transfer question. SeedV6 currently clears correction at request
+boundaries and abort, so a retained formulation would need explicit completed-label,
+reset/new-game, decay, failure and worker-private guarantees. No implementation or
+match is selected from this source fact alone; await CH-C2 evidence first.
