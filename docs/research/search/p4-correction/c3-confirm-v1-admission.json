@@ -1,0 +1,17 @@
+{
+  "status": "passed; launch admitted",
+  "protocol": "c3-confirm-v1-protocol.json",
+  "protocolSha256": "49c294eac41fceed5c9eaff22111ee51a9f224e5acc1cdb06ae74db3b406d3b6",
+  "w4CompleteAudited": true,
+  "completedExploratoryGames": 192,
+  "completedW4Games": 64,
+  "confirmationGames": 0,
+  "confirmationAttemptsStarted": 0,
+  "chargedMatchSeconds": 7918.395477800004,
+  "remainingMatchSeconds": 35281.604522199996,
+  "remainingTotalGames": 384,
+  "remainingConfirmationGames": 320,
+  "estimatedConfirmationSeconds": 10000,
+  "hardRunnerTimeoutSeconds": 12000,
+  "decision": "W4 result49.21875% with broad interval is inconclusive, not equivalence or a demonstrated regression; mandatory correctness/audit/process/identity gates pass. Candidate unchanged. Primary W1 comparison within all limits; one attempt only."
+}

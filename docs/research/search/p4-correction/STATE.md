@@ -1,34 +1,37 @@
 # CH-R001 resume state
 
-**ACTIVE: selected C3 W4 risk match running; W1 confirmation prospectively frozen.** Read [CONTRACT](CONTRACT.md)
+**ACTIVE: W4 complete; frozen single C3 W1 confirmation admitted.** Read [CONTRACT](CONTRACT.md)
 first. The governing strength objective is not yet demonstrated. Normal production
 HL-G1/build85 policy and the accepted research champion HL-G1/build84 are unchanged.
 
 ## Resume and ownership
 
-All three W1 screens are complete, fully audited and drained. W4 risk match is now active (live handles below); no technical process remains active. C3 original session4158 exited0; run status passed,
-engine handles drained and observed Python28640/31444/Fastchess33428 absent. Never
-restart existing outputs. Independent arithmetic cross-checks of C2/C3 pair means
-and standard errors match the runner. No partial score informed selection/stopping.
+All three exploratory W1 screens and the W4 risk study are complete, audited and
+drained. No engine process is active at this admission recording. W4 original
+session37537 exited0; observed Python15912/29272/Fastchess12020 are absent. Never
+restart completed outputs. W4 independent pair arithmetic agrees with the runner.
 
-C3 is the prospective finalist from positive but selected/inconclusive development:
-complete the prospectively specified mixed-phase technical check from C1 histories,
-prepare fresh independent inputs, then run the bounded W4 risk study and freeze the
-single160-pair W1 confirmation. Candidate remains source d530b28a/build88 with profile
-corrected-retained/flags1043595263; do not change it based on confirmation outcomes.
-No extra formulation or exploratory match is currently justified. Remaining exploratory
-allowance is a reserve, not a target. A material defect/warning must be investigated.
-No confirmation attempt or W4 competitive match has started.
+Next: execute `c3-confirm-v1-protocol.json` once after checking for an existing
+`raw/c3-confirm-v1-champion84-w1` run. All launch gates passed in
+`c3-confirm-v1-admission.json`: exact frozen artifacts/inputs/tool hashes, W4 technical
+qualification, and actual remaining resources above frozen conservative floors.
+Candidate source d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9/build88,
+corrected-retained/flags1043595263 remains unchanged. No score-based stopping,
+candidate/criterion changes, pooling, automatic retry or extra confirmation attempt.
+After full audit/drain apply the frozen analysis once, then reconcile the governing
+strength outcome and close out for GPT/owner review. No extra formulation or
+exploratory match is justified. No strength success yet; no confirmation game has
+started at this admission recording. Later live-handle entry supersedes this line.
 
 ## Resource ledger
 
-Completed spend:96 W1 exploratory pairs/192 games;0 confirmation pairs/games/attempts;
-0 W4 pairs/games. Charged match wall5972.1286874s, including setup/audit.
+Completed spend:96 W1 exploratory pairs/192 games;32 W4 pairs/64 games;
+0 confirmation pairs/games/attempts. Charged match wall7918.3954778s, including setup/audit.
 Remaining:32 W1 exploratory pairs/64 games;160 confirmation pairs/320 games;
-32 W4 pairs/64 games;448 total games;37,227.8713126s of43,200s match wall.
-W4 reserves32 pairs/64 games and<=3600 runner seconds; reconcile actual spend at
-drainage. Ordinary technical work is separate and summarized below.
-Budgets are ceilings, not consumption targets. No pooling exploration and confirmation.
+0 W4 pairs/games;384 total games;35,281.6045222s of43,200s match wall.
+Confirmation admission reserves160 pairs/320 games, estimate10000s/hard12000s.
+Record actual execution, including failures/partials; the single attempt cannot be
+silently reused. Technical work is separate. Budgets are ceilings, not targets.
 
 ## Authority and bootstrap challenge
 
@@ -319,3 +322,20 @@ all identity/audit/stop gates. The admission balances384 total games/33000s are
 conservative post-W4 floors, not claimed completed spend; actual ledger must satisfy
 them after W4 drains. No confirmation has launched. No candidate/criterion changes
 may use confirmation outcomes. Current version/build88 remains unchanged.
+
+
+## W4 completed risk and confirmation admission
+
+`c3-risk-v1-w4-summary.json`:32 pairs/64 normal games,22W/19D/23L,49.21875%.
+Paired-normal95 interval39.0209-59.4166%; bounded95 interval25.2107-73.2268%.
+All8947 request audits pass, no warnings, inputs stable and engine handles drained;
+observed OS handles absent. Whole wall1946.2667904s, runner1944.2711801s.
+No W4 superiority, neutrality or regression established. Prior HL84 W4-versus79
+adverse/inconclusive evidence remains separate, as does the unknown79/80 bridge.
+No new technical failure or material competitive signal justifies altering the
+frozen finalist. The primary objective remains explicitly W1-only.
+
+Final launch checks verified all frozen runtime manifests/files, exact84, opening/
+selection/analysis/adapter identities and version bytes; actual35281.60s and384 total
+games remain, exceeding the prospective33000s/384-game admission floors. The sole
+confirmation is admitted with unchanged protocol and candidate; see admission JSON.
