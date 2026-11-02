@@ -51,11 +51,22 @@ G1's score is15.625 points higher. Separate timed runs/shared development inputs
 and exploratory selection preclude an independent component or champion claim.
 This supports the integrated G1 formulation rather than retention alone.
 
-**In-flight operation:** `g1-w4-risk-v1-protocol.json`,32pairs W4 G1 versus80,
-launched2 November02:05:55 UTC under owned supervision; Fastchess PID22812.
-Fresh-opening preparation passed after R1 drained,51.96s including supervision.
-Keep G1 source/artifact unchanged. The owned runner must drain before further
-heavy work; running JSON alone is not liveness on resume.
+Completed G1 W4 risk against80:32pairs/64 normal games,32W/13D/19L,
+60.15625% score, paired normal95 interval49.19-71.13%, bounded95 36.15-84.16%.
+8,993 audited requests, no missing-score warnings, stable inputs and drained handles;
+1969.98s wall. Candidate/base engine CPU2094.86/2119.63s; total admitted nodes
+1,181,396,858/1,157,855,386 over roughly979s request wall per side. These operational
+and workload observations do not establish W4 speed, superiority or equivalence.
+No new correctness/lifecycle defect or adverse competitive point estimate emerged.
+
+**Next operation:** `g1-w4-champion-v1-protocol.json`, final32 exploratory pairs,
+direct W4 G1 versus79 to resolve part of the material uncertainty left by80's
+historical adverse/inconclusive champion bridge. Expected1970s, hard3000s; current
+5835.21s plus this cap and the12000s confirmation cap is20835.21s, below21600s.
+Keep G1 unchanged. Drain all owned work before another heavy execution; running
+JSON alone is not liveness on resume. Fresh-opening preparation passed after R1
+drained,51.96s. A separate input audit confirmed160 unique legal roots across five
+first moves and27 first-move/reply families, without changing selection.
 
 `g1-confirm-v1-protocol.json` is prospectively frozen while W4 runs, before any
 confirmation game: unchanged G1/build84 directly versus champion79,160 fresh pairs,
@@ -181,8 +192,8 @@ alone. Prior490/529s eight-pair TTF runs anchor the initial cost plan; current c
 are now measured. Runtime qualification and the first32-pair screen are complete.
 
 Aggregate allowance:128 exploratory pairs (reserve32 W4),160 fresh W1 confirmation
-pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:64/128
-exploratory pairs(128 games),0 confirmation attempts/pairs,3865.23s charged game wall;
+pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:96/128
+exploratory pairs(192 games),0 confirmation attempts/pairs,5835.21s charged game wall;
 about292s active build/diagnostic execution including input preparation, artifact preflights and reference
 audit (about228s through clean costs plus packaging/preflights and6.51s reference work).
 Minor setup/analysis/inspection time is not engine compute; later build/package

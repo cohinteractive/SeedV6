@@ -72,6 +72,13 @@ roots,15.625 points below G1. This common-control exploratory comparison support
 prioritizing the integrated G1 formulation; it is not an independent isolated-component
 gain or champion comparison. Keep G1 unchanged for W4 risk and fresh W1 confirmation.
 
+W4 ROOT_REUSE risk screen against80:32W/13D/19L in32 pairs,60.16%, paired normal95
+interval49.19-71.13%.64 normal games and8,993 request audits passed, with stable inputs,
+drained lifetimes and no missing-score warning.1969.98s wall. This positive point
+estimate is still inconclusive for superiority/equivalence; baseline80's uncertain
+W4 champion relationship motivates a direct79 risk bridge within the final32-pair
+exploration allocation. W1 and W4 results are never pooled.
+
 The prospective reference audit completed43 first-event stratified samples, all
 with complete independent reduced/nominal TT-off qtrees and legal real-history replay.
 One negative-band depth3 sample crossed its threshold only at nominal depth;42 did

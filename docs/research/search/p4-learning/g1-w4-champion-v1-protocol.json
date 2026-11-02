@@ -1,0 +1,35 @@
+{
+  "id": "HL-G1-W4-CHAMPION-V1",
+  "frozenUtc": "2026-11-02T02:39:37.919801+00:00",
+  "question": "Direct W4 champion-relative competitive-risk bridge for G1, because the corrected80/champion79 W4 relationship is unresolved; exploratory risk only, not W4 superiority confirmation",
+  "namePrefix": "g1-w4-champion-v1",
+  "workers": [
+    4
+  ],
+  "pairs": 32,
+  "tc": "10+0.1",
+  "seed": 2026110205,
+  "timeoutSeconds": 3000,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime79",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "baselineProfile": "control",
+  "candidateProfile": "guided",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\runtime79-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json"
+  ],
+  "adapterSha256": "f139984fcbd6f6b90842e0f170c57f31a4eabdeb6f9b71dccf21b0013cc54275",
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\development-v1-openings.pgn",
+  "openingSha256": "3a57e5e7062ac0acadefccde3a02a002d531698c3c52724ac81c4d52b2ebf954",
+  "selection": "Same32 established development opening inputs in unchanged order; no result filtering. Reuse is explicitly exploratory, not independent confirmation. Historical games not pooled; frozen BOUNDARY2 studies unopened. Intentional input fixture falls under existing *-openings.pgn exception.",
+  "candidateIdentity": "HL-G1, retained worker-private learning plus bounded history64 effort; commitb8ea8b2856eed3f6c774860ca540375054e4de30/build84 flags104071167",
+  "controlIdentity": "Champion P4-BASELINE-001 build79 source753367614b8aa7e32dee337fd76b542737141ac1, flags3407871; actual frozen runtime79",
+  "common": "CP64 SHA8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b, S6CNU002 eight heads BT4_Q_LOGIT400_V1; PVS/ADAPTIVE16,Hash64 2097152 entries/50331648payload bytes, unchanged BOUNDARY2, no book/tablebase/adjudication",
+  "resources": "W4 ROOT_REUSE, one game, Windows Ryzen5500 Java21+35 Xms256m Xmx512m ActiveProcessorCount4; owned process runner/trace audit, no concurrent heavy work",
+  "expectedCost": "32pairs about1970s(33min) based on completed G1 W4 screen; hard3000s, no score-based stopping/extension. This leaves the frozen12000s W1 confirmation timeout inside21600s aggregate game wall cap.",
+  "cumulativeBefore": "96/128 exploratory pairs completed;0/160 confirmation pairs,0 attempts;5835.21s charged game wall, about292s active build/diagnostic/input work. This batch uses the final32 exploratory pairs.",
+  "stopping": "Fixed32 complete color-reversed pairs or first legality/PV/terminal/accounting/input/drain/unapproved protocol failure. Audited scoreless legal clock fallback only under already-qualified full trace rule. No score-based early stop or extra games. Preserve all partial/failed evidence.",
+  "analysis": "WDL and pair score distribution, descriptive paired95 normal interval and bounded Hoeffding95 sensitivity. Exploratory selected candidate; no adjusted discovery, champion comparison, equivalence or acceptance.",
+  "nextDecision": "Retain direct79 W4 WDL/paired uncertainty and operational/effort findings alongside the separate80 screen and historical bridge. No pooling or equivalence/superiority claim. Investigate any genuine defect before further work; unexplained competitive risk limits W4 claims but does not by itself invalidate owner-authorized W1 domain-limited confirmation. Then check resource/qualification gates and execute frozen independent W1 protocol unchanged."
+}
