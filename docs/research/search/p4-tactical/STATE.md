@@ -1,7 +1,6 @@
 # TC-R001 resume state
 
-3 November 2026 (Pacific/Auckland). **Active bootstrap; no candidate or strength
-result yet.** Read [CONTRACT](CONTRACT.md). Governing objective remains unachieved.
+3 November 2026 (Pacific/Auckland). **Active implementation/qualification; TC-P1 prototype, no strength result yet.** Read [CONTRACT](CONTRACT.md). Governing objective remains unachieved.
 
 ## Verified starting point and prerequisite
 
@@ -17,55 +16,80 @@ result yet.** Read [CONTRACT](CONTRACT.md). Governing objective remains unachiev
 - Four observed inherited Java processes belong to VS Code/Gradle; no observed
   engine tournament or Overwatch process. They are unrelated and untouched.
 
-## Initial challenge and selection rationale
+## Current formulation and technical evidence
 
-Actual flattened Search broadly suppresses ordinary TT scores whenever either
-production extension flag is set. Legal completed hints survive. A singular-extension
-proposal cannot merely consume ordinary bound/depth fields as if populated. Optional
-F3 would add dependency/qualification cost and carries adverse W4 evidence.
+**TC-P1 - bounded capture verification over HL-G1**, profile `probcut`,
+flags1177812991, is ready for its first W1 development screen after the committed
+artifact bridge. [FORMULATIONS](FORMULATIONS.md) records verified external evidence,
+Seed differences, dependencies and the untuned hypothesis. It adds qsearch/reduced
+legal verification at eligible depth4-8 non-check null-window nodes, beta+150,
+raw+300 admission, at most3 SEE-nonnegative tacticals, child depth-3. Returns beta
+as selective threshold, never a mate claim. Full original guards and HL-G1 remain;
+no TT foundation/correction/default/clock/evaluator change.
 
-First branch under investigation: tactical capture verification using qsearch plus
-reduced legal Search before a selective cutoff. It potentially uses existing legal
-generation, QXRAY, capture history, real-history handling and bounded re-entry,
-without requiring a new TT foundation. External formulations use richer TT filters;
-their absence and Seed's score scale/low-depth search are transfer risks. No algorithm
-or parameter is yet frozen, and no gain is assumed. Extension/qsearch alternatives
-remain admissible if evidence warrants them. Do not turn preparation into an indefinite
-inventory. Before implementation, finish re-entry scratch/accounting eligibility review
-and record a concrete formulation with causal/cost qualification.
+Qualification of the source-hashed prototype:
 
-Exact84 availability is established. Confirmation freshness must exclude all prior
-exposed inputs, including CH confirmation and mixed-phase diagnostics, not merely
-this campaign's games. Prior throughput suggests640 games cost about5.4 hours;
-18 hours is plausible, not guaranteed for a slower candidate. Reserve capacity before
-development admission and measure early. One accepted claim attempt remains binding.
+- Four focused tests pass, including discarded-prediction parity of scores/PVs and
+  learning with exact extra-work accounting, actual cutoff reachability, incremental
+  versus rebuilt evaluation, node limits, cancellation/failure history restoration
+  and profile/default isolation. The expanded regression then passes288 tests
+  (including those4 again), no skips/failures, plus ownership boundaries. Build/test
+  wall73.41s and67.53s are separately reported, not added as experiments.
+- Nine opening roots:18 observed requests plus18 clean repeats pass;1711 tactical
+  candidates,881 reduced verifications,835 cutoffs observed.20 mixed-phase real-history
+  roots:40 observed requests plus40 clean repeats pass;3873 candidates,2419
+  verifications,2255 cutoffs. Counters from aborted/reset invocations may be absent;
+  full-request resource accounting remains authoritative. Legal PV/restoration and
+  observation neutrality checked. These are mechanism evidence, not strength.
+-44 W1 UCI isolation requests pass exact84/default/guided equality and candidate
+  accounting/PV; two stop/reset checks pass.10 candidate runtime requests plus one
+  stop pass clocks, mate/stalemate, repetition/rule50 and reuse/reset. W4 not yet run.
+- Clean rotated W1 cost:72 requests including18 warmups,27 measured profile pairs;
+  candidate/guided geometric mean wall0.96887, process CPU0.95372, allocation0.99967;
+  max sampled heap305,814,504 bytes. Short changed-work costs do not prove speed or
+  strength. See p1-cost-v1-summary and raw per-request observations.
+
+External singular extensions need reliable TT bound/depth production; current
+production suppresses ordinary scores broadly with extensions. F3 remains optional,
+with adverse W4 evidence, and is not selected. Capture verification avoids that
+initial dependency. Failed first adapter import used system Python without chess;
+no engine ran. Use existing `build/research/venv/Scripts/python.exe`. Bootstrap JSON
+CRLF whitespace warnings were corrected in the next commit without changing values.
+No experimental failure, interrupted match or discarded outcome has occurred.
+
+Confirmation must exclude prior exposed roots including CH confirmation and mixed
+phase inputs. Prior throughput suggests640 games about5.4h; confirm actual cost
+before admission. Reserve independent capacity; do not spend it on development.
 
 ## Resources and ownership
 
-Charged experimental wall: **0 /64,800 seconds**. Initiated games: **0 /1,120**.
-W1 development0/384; W4 risk0/96; independent confirmation0/640; attempts0/1.
-No owned running experimental process or incomplete batch. No runtime computation
-has started. Inspection/bootstrap engineering is separate ordinary work.
+[Resource ledger](resources.json): charged experimental wall **65.0136844/64,800s**;
+remaining **64734.9863156s**. Initiated games **0/1,120**: W1 development0/384,
+W4 risk0/96, confirmation0/640 and attempts0/1. Each outer execution receipt is
+charged once, including UCI qualifications; overlapping summaries are not added.
+No owned running experiment, test or match. All recorded execution processes drained.
 
-Owner PC-use reply: **ask when heavy tests are ready**. Do not launch W4 or independent
-confirmation until an agreed controlled window. Lightweight bounded W1 diagnostics
-and source/engineering may continue. This is a later scheduling gate, not a bootstrap
-blocker. Preserve VS Code, Codex, browsing, RustDesk and all unrelated work.
+Owner reply: **ask when heavy tests are ready**. No W4 or independent confirmation
+launch until an agreed controlled PC-use window. Continue bounded lightweight W1
+work; preserve desktop use and unrelated processes. A normal-priority desktop use
+signal alone is not a valid reason to discard a game after seeing its result.
 
 ## Next admissible work and dependencies
 
-1. Complete proportionate source/external investigation; freeze a first opt-in
-   integrated tactical formulation and diagnostic protocol.
-2. Implement and incrementally test legality/history/PV, score/provenance, accounting,
-   cancellation/drain/reset and production isolation; establish actual reachability
-   and costs before matches. Freeze source/runtime artifacts for admitted games.
-3. Run serial bounded development under the resource ledger. Ask for a controlled
-   window when heavy tests become concrete. No selected finalist/confirmation yet.
+1. Commit qualified TC-P1 with exactly build88->89; rebuild and freeze an immutable
+   build89 runtime, verify all JAR payloads against the qualified prototype except
+   generated version metadata, and run committed preflights before matches.
+2. Freeze a32-pair serial W1 development screen versus exact84 using established
+   development openings and runner. No score-based early stopping; resource/PC-use
+   failures preserve all initiated games and wall. Inspect full results only after
+   the bounded batch and audit; choose further work from structural evidence.
+3. Ask for controlled window when heavy W4 work or confirmation is concrete. No
+   finalist or independent confirmation selected. W4 qualification remains outstanding.
 
-Current champion exact HL-G1/build84; normal build85 HL-G1 policy unchanged. Current
-repository build88; no push, release, deployment, promotion or successor. TT-R001
+Current champion exact HL-G1/build84; normal build85 HL-G1 policy unchanged. Planned committed
+repository build89; no push, release, deployment, promotion or successor. TT-R001
 reconciliation remains separate and both frozen BOUNDARY2 studies remain unopened.
-Bootstrap masters now P4-R009/P4-F025. Owner-confirmed mirrors last P4-R005/F021;
+Qualification masters now P4-R010/P4-F026. Owner-confirmed mirrors last P4-R005/F021;
 refresh current revised masters before
 mirror-dependent planning, non-blocking for authorized repository-only execution.
 

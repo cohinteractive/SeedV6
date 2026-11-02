@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T19:50:30.025898+00:00",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical-runtime-check.py",
+    "--runtime",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-p1-prototype-v1",
+    "--manifest",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-p1-prototype-v1-manifest.json",
+    "--name",
+    "p1-runtime-v1",
+    "--workers",
+    "1"
+  ],
+  "category": "charged bounded UCI qualification",
+  "gamesInitiated": 0,
+  "pid": 13388,
+  "exitCode": 0,
+  "wallSeconds": 1.2560912999906577,
+  "endedUtc": "2026-11-02T19:50:31.282680+00:00",
+  "processDrained": true
+}

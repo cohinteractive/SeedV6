@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "raw": "raw/p1-cost-v1/observations.jsonl",
+  "requests": 72,
+  "workers": 1,
+  "warmupRequests": 18,
+  "measuredPairs": 27,
+  "geomeanWallRatio": 0.9688723335322893,
+  "geomeanCpuRatio": 0.9537210499447776,
+  "geomeanAllocatedRatio": 0.9996659886818134,
+  "maxHeapUsed": 305814504,
+  "limits": "Short warmed W1 same-root bounded requests; includes changed work/decisions, not isolated speed or strength; process CPU includes JVM activity."
+}

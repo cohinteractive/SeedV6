@@ -191,6 +191,17 @@ public final class ExactSearch {
     private SelectivityTrace selectivityTrace;
     private boolean constructionNullProbe,constructionNullVerify,constructionNullObserve;
     private long[] constructionNullMoves;
+    private long[] tacticalProbeMoves;
+    private int[] tacticalProbeKeys;
+    private boolean tacticalProbeActive,tacticalObserve;
+
+    /** Discard tactical cutoff predictions while charging all actual probe work.
+     * Used only by explicit counterfactual research controls, never a game default. */
+    public ExactSearch withTacticalObservation(boolean observe) {
+        if(active || requestActive || tacticalProbeMoves==null)
+            throw new IllegalStateException("Idle tactical-verification owner required");
+        tacticalObserve=observe;return this;
+    }
 
     /** Explicit observe-only research seam: discarded extra work still consumes
      * request nodes; private root EFFORT excludes it just as retained SR-018 does. */
@@ -228,6 +239,11 @@ public final class ExactSearch {
         if(construction.has(FlatSearchConfig.Feature.HISTORY_EFFORT)) {
             result.put("historyMore",s.historyMore);result.put("historyLess",s.historyLess);
         }
+        if(construction.has(FlatSearchConfig.Feature.TACTICAL_VERIFICATION)) {
+            result.put("tacticalCandidates",s.tacticalCandidates);result.put("tacticalQpasses",s.tacticalQpasses);
+            result.put("tacticalVerifications",s.tacticalVerifications);result.put("tacticalCutoffs",s.tacticalCutoffs);
+            result.put("tacticalProbeNodes",s.tacticalProbeNodes);
+        }
         return java.util.Collections.unmodifiableMap(result);
     }
 
@@ -253,6 +269,9 @@ public final class ExactSearch {
         search.withFlatSearchResearch(true).withRepeatedRootPassResearch();
         search.construction=config;
         if(config.has(FlatSearchConfig.Feature.VERIFIED_NULL)) search.constructionNullMoves=new long[MAX_MOVES];
+        if(config.has(FlatSearchConfig.Feature.TACTICAL_VERIFICATION)) {
+            search.tacticalProbeMoves=new long[MAX_MOVES];search.tacticalProbeKeys=new int[MAX_MOVES];
+        }
         return search;
     }
 
@@ -1242,6 +1261,15 @@ public final class ExactSearch {
                             && constructionNull(board,ply,depth,originalBeta,legalMoves,count)) {
                         selectiveEpoch++;score=originalBeta;pvLength[ply]=0;state=2;continue;
                     }
+                    if(tacticalProbeMoves!=null && !nullProbeActive && !nullVerification
+                            && ply>0 && depth>=4 && depth<=8 && (flags&1)==0
+                            && originalBeta==originalAlpha+1 && originalAlpha>=-MAX_STATIC_SCORE
+                            && originalBeta<=MAX_STATIC_SCORE-150
+                            && Board.halfMoveClock(status)+depth<DrawAdjudicator.FIFTY_MOVE_HALFMOVES
+                            && constructionEval(board,ply)+300>=originalBeta
+                            && constructionTactical(board,ply,depth,originalBeta,legalMoves,count,hashMove)) {
+                        selectiveEpoch++;score=originalBeta;state=2;continue;
+                    }
                     if(construction!=null && !nullProbeActive && construction.has(FlatSearchConfig.Feature.BAD_TACTICAL_LAST) && (flags&2)!=0) {
                         count=appendQuiets(board,legalMoves,count);flags&=~2;
                     }
@@ -1431,6 +1459,64 @@ public final class ExactSearch {
             return true;
         }
         return false;
+    }
+
+    /** TC-P1: real tactical edges, qsearch precheck, then a reduced legal search.
+     * Borrow only descendant scratch. The existing legal-verification isolation
+     * mode suppresses learning, hints, heuristic TT and iteration feedback; it
+     * does not create a synthetic history barrier. No nested verifier is admitted.
+     * Successful predictions return beta, never the probe's mate/bound domain. */
+    private boolean constructionTactical(long[] board,int ply,int depth,int beta,
+            long[] legalMoves,int count,long hashMove) {
+        int ep=Board.enPassantSquare((int)board[Board.STATUS]),candidates=0;
+        for(int i=0;i<count;i++) {
+            long move=legalMoves[i];
+            if(CaptureHistory.isTactical(move,ep) && See.atLeastGeneratedLegal(board,move,0))
+                tacticalProbeMoves[candidates++]=move;
+        }
+        if(candidates==0) return false;
+        snapshotOrdering(board,tacticalProbeMoves,candidates,hashMove,tacticalProbeKeys,0);
+        constructionState.order(tacticalProbeMoves,0,candidates,ep,hashMove,tacticalProbeKeys,0,ply,quietHistory);
+        int threshold=beta+150;
+        long before=nodes,epoch=selectiveEpoch,ruleBefore=correctionRuleEpoch;
+        nullVerification=true;tacticalProbeActive=true;
+        try {
+            for(int i=0;i<Math.min(3,candidates);i++) {
+                checkpoint();Sort.next(tacticalProbeMoves,tacticalProbeKeys,0,i,candidates);
+                long move=tacticalProbeMoves[i];long[] child=boards[ply+1];
+                Board.makeMoveInto(board[0],board[1],board[2],board[3],(int)board[Board.STATUS],board[Board.KEY],move,child);
+                constructionState.pathMoves[ply+1]=move;
+                constructionState.credits[ply+1]=constructionState.credits[ply];
+                evaluator.child(board,child,ply,0);
+                history.pushRealPosition(child);
+                historyKeys[ply+1]=SearchKey.childHistory(historyKeys[ply],history.currentKey(),(int)child[Board.STATUS]);
+                constructionState.tacticalCandidates++;
+                int value;
+                try {
+                    value=-flatQuiescence(ply+1,0,-threshold,-threshold+1);
+                    if(value>=threshold && value<=MAX_STATIC_SCORE) {
+                        constructionState.tacticalQpasses++;constructionState.tacticalVerifications++;
+                        evaluator.reenter(ply+1);
+                        value=-flatNegamax(depth-3,-threshold,-threshold+1,ply+1,true);
+                    } else continue;
+                } finally {history.popRealPosition();evaluator.reenter(ply);}
+                checkpoint();
+                if(value>=threshold && value<=MAX_STATIC_SCORE) {
+                    constructionState.tacticalCutoffs++;
+                    if(!tacticalObserve) {pv[ply][0]=move;pvLength[ply]=1;return true;}
+                    return false;
+                }
+            }
+            return false;
+        } finally {
+            nullVerification=false;tacticalProbeActive=false;
+            constructionState.tacticalProbeNodes+=nodes-before;
+            correctionRuleEpoch=ruleBefore;
+            // Probe approximations are not part of the resumed nominal traversal.
+            // An accepted prediction is explicitly tainted by the caller instead.
+            selectiveEpoch=epoch;
+            if(tacticalObserve) observationNodes+=nodes-before;
+        }
     }
 
     /** Default-OFF CP64 research: compare a nominal margin foundation with the

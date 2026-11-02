@@ -21,6 +21,7 @@ final class FlatSearchState {
     long reductions,verifications,fullRetries,refuted,relief,extensions,futilityOmissions,reverseCutoffs,protectedMoves,evaluations;
     long nullAttempts,nullProbeNodes,nullVerificationNodes,nullCutoffs;
     long historyMore,historyLess;
+    long tacticalCandidates,tacticalQpasses,tacticalVerifications,tacticalCutoffs,tacticalProbeNodes;
 
     FlatSearchState(FlatSearchConfig config) {
         this.config=config;
@@ -54,6 +55,7 @@ final class FlatSearchState {
         reductions=verifications=fullRetries=refuted=relief=extensions=futilityOmissions=reverseCutoffs=protectedMoves=evaluations=0;
         nullAttempts=nullProbeNodes=nullVerificationNodes=nullCutoffs=0;
         historyMore=historyLess=0;
+        tacticalCandidates=tacticalQpasses=tacticalVerifications=tacticalCutoffs=tacticalProbeNodes=0;
     }
     /** HL-G1: signed bounded effort adjustment on the measured SeedV6 gravity
      * scale. Half a 64-unit band rounds away from zero; at most two plies.

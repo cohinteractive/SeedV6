@@ -1,0 +1,39 @@
+{
+  "objective": "TC-R001",
+  "chargedWallSeconds": 65.01368439997896,
+  "remainingWallSeconds": 64734.98631560002,
+  "initiatedGames": 0,
+  "remainingGames": 1120,
+  "developmentGames": 0,
+  "riskGames": 0,
+  "confirmationGames": 0,
+  "confirmationAttempts": 0,
+  "executions": [
+    {
+      "receipt": "p1-cost-v1-execution.json",
+      "wallSeconds": 23.34101949998876,
+      "category": "charged extended Search diagnostic"
+    },
+    {
+      "receipt": "p1-diagnostic-v1-execution.json",
+      "wallSeconds": 13.183693400002085,
+      "category": "charged extended Search diagnostic"
+    },
+    {
+      "receipt": "p1-isolation-v1-execution.json",
+      "wallSeconds": 5.75917639999534,
+      "category": "charged bounded UCI qualification"
+    },
+    {
+      "receipt": "p1-mixed-v1-execution.json",
+      "wallSeconds": 21.473703800002113,
+      "category": "charged extended Search diagnostic"
+    },
+    {
+      "receipt": "p1-runtime-v1-execution.json",
+      "wallSeconds": 1.2560912999906577,
+      "category": "charged bounded UCI qualification"
+    }
+  ],
+  "accounting": "Outer elapsed receipts charged once; inner summaries overlap and are not added. Selected correctness tests/compilation recorded separately. No interrupted/failed experimental execution so far."
+}

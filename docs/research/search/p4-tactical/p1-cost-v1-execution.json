@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T19:52:32.828086+00:00",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=2",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-p1-prototype-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-p1-prototype-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4TacticalStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-cost-v1\\observations.jsonl",
+    "1",
+    "cost",
+    "3",
+    "8",
+    "200000",
+    "guided,probcut"
+  ],
+  "protocol": "p1-cost-mixed-v1-protocol.json",
+  "category": "charged extended Search diagnostic",
+  "gamesInitiated": 0,
+  "timeoutSeconds": 300,
+  "pid": 25540,
+  "exitCode": 0,
+  "wallSeconds": 23.34101949998876,
+  "endedUtc": "2026-11-02T19:52:56.169649+00:00",
+  "processDrained": true
+}

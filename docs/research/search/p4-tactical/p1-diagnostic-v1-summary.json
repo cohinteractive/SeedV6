@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "requests": 18,
+  "cleanNeutralRepeats": 18,
+  "workers": 1,
+  "counterTotalsAcrossAttempts": {
+    "tacticalCandidates": 1711,
+    "tacticalQpasses": 881,
+    "tacticalVerifications": 881,
+    "tacticalCutoffs": 835,
+    "tacticalProbeNodes": 159418
+  },
+  "perRoot": [
+    {
+      "root": "opening-1",
+      "guidedNodes": 200000,
+      "probcutNodes": 200000,
+      "guidedDepth": 7,
+      "probcutDepth": 7,
+      "guidedScore": 205,
+      "probcutScore": 205,
+      "sameMove": true
+    },
+    {
+      "root": "opening-2",
+      "guidedNodes": 200000,
+      "probcutNodes": 200000,
+      "guidedDepth": 7,
+      "probcutDepth": 7,
+      "guidedScore": 15,
+      "probcutScore": 15,
+      "sameMove": true
+    },
+    {
+      "root": "opening-3",
+      "guidedNodes": 200000,
+      "probcutNodes": 200000,
+      "guidedDepth": 7,
+      "probcutDepth": 7,
+      "guidedScore": 263,
+      "probcutScore": 263,
+      "sameMove": true
+    },
+    {
+      "root": "opening-4",
+      "guidedNodes": 200000,
+      "probcutNodes": 200000,
+      "guidedDepth": 7,
+      "probcutDepth": 7,
+      "guidedScore": 196,
+      "probcutScore": 196,
+      "sameMove": true
+    },
+    {
+      "root": "opening-5",
+      "guidedNodes": 200000,
+      "probcutNodes": 200000,
+      "guidedDepth": 6,
+      "probcutDepth": 6,
+      "guidedScore": 203,
+      "probcutScore": 194,
+      "sameMove": false
+    },
+    {
+      "root": "opening-6",
+      "guidedNodes": 200000,
+      "probcutNodes": 200000,
+      "guidedDepth": 6,
+      "probcutDepth": 6,
+      "guidedScore": 348,
+      "probcutScore": 348,
+      "sameMove": true
+    },
+    {
+      "root": "opening-7",
+      "guidedNodes": 43610,
+      "probcutNodes": 39956,
+      "guidedDepth": 8,
+      "probcutDepth": 8,
+      "guidedScore": 122,
+      "probcutScore": 123,
+      "sameMove": true
+    },
+    {
+      "root": "opening-8",
+      "guidedNodes": 156013,
+      "probcutNodes": 151852,
+      "guidedDepth": 8,
+      "probcutDepth": 8,
+      "guidedScore": 224,
+      "probcutScore": 224,
+      "sameMove": true
+    },
+    {
+      "root": "start",
+      "guidedNodes": 169775,
+      "probcutNodes": 161635,
+      "guidedDepth": 8,
+      "probcutDepth": 8,
+      "guidedScore": 70,
+      "probcutScore": 70,
+      "sameMove": true
+    }
+  ],
+  "raw": "raw/p1-diagnostic-v1/observations.jsonl",
+  "limitations": "Nine inherited opening roots; no mixed-phase coverage here. Observer-neutral W1 outcomes passed; selective outcome differences are not automatically correctness defects. Cold observed timings are not clean costs or strength."
+}

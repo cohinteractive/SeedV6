@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "raw": "raw/p1-mixed-v1/observations.jsonl",
+  "requests": 40,
+  "workers": 1,
+  "cleanNeutralRepeats": 40,
+  "counterTotalsAcrossAttempts": {
+    "tacticalCandidates": 3873,
+    "tacticalQpasses": 2419,
+    "tacticalVerifications": 2419,
+    "tacticalCutoffs": 2255,
+    "tacticalProbeNodes": 317030
+  },
+  "limits": "20 inherited mixed-phase roots, true histories; observer-neutral repeats pass, no strength claim; completed-attempt counters can omit aborted invocation counters reset by lifecycle."
+}

@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "exitCode": 0,
+  "wallSeconds": 73.40660119999666,
+  "category": "selected correctness tests and compilation; not extended diagnostics",
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--no-daemon",
+    "--max-workers=1",
+    ":research:test",
+    "--tests",
+    "*P4TacticalTest",
+    ":installResearchWorkspace",
+    "verifyProjectBoundaries"
+  ],
+  "raw": "raw/p1-tests-v1",
+  "utc": "2026-11-02T19:47:58.769317+00:00",
+  "suite": {
+    "name": "com.ohinteractive.seedv6.search.exact.P4TacticalTest",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "12.13"
+  },
+  "scope": "W1 counterfactual parity/learning isolation, mechanism reachability and cutoff witnesses, incremental/full-rebuild equality, hard node accounting, cancellation/evaluator failure restoration, default isolation. No W4 yet."
+}

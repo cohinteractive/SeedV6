@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R009**
+Internal revision: **P4-R010**
 
-Status: **ACTIVE - 3 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build88 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 is technically completed and owner-accepted as unsuccessful on 3 November 2026: independent W1 strength criterion failed. TC-R001 tactical-coverage research is separately owner-authorized and active after its prerequisite documentation commit. No promotion or deployment.**
+Status: **ACTIVE - 3 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build89 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 is technically completed and owner-accepted as unsuccessful on 3 November 2026: independent W1 strength criterion failed. TC-R001 tactical-coverage research is separately owner-authorized and active after its prerequisite documentation commit. No promotion or deployment.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -506,7 +506,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R009/P4-F025** pair before mirror-dependent Project planning; the Frontier
+**P4-R010/P4-F026** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

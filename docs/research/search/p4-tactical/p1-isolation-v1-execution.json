@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T19:50:24.258138+00:00",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical-isolation.py",
+    "--runtime",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-p1-prototype-v1",
+    "--manifest",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-p1-prototype-v1-manifest.json",
+    "--name",
+    "p1-isolation-v1",
+    "--workers",
+    "1"
+  ],
+  "category": "charged bounded UCI qualification",
+  "gamesInitiated": 0,
+  "pid": 18812,
+  "exitCode": 0,
+  "wallSeconds": 5.75917639999534,
+  "endedUtc": "2026-11-02T19:50:30.018019+00:00",
+  "processDrained": true
+}

@@ -1,0 +1,25 @@
+{
+  "id": "TC-P1-COST-MIXED-V1",
+  "profiles": [
+    "guided",
+    "probcut"
+  ],
+  "workers": [
+    1
+  ],
+  "runtimeManifest": "runtime-p1-prototype-v1-manifest.json",
+  "corpus": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+  "rounds": 3,
+  "depth": 8,
+  "budget": 200000,
+  "mode": "cost",
+  "resources": "W1 Hash64 Java21+35 Xms256m Xmx512m ActiveProcessorCount2 below-normal; rotated profiles; one warmup plus3 measured rounds; diagnostic mixed-phase separately",
+  "timeoutSeconds": 300,
+  "games": 0,
+  "charge": "Each execution separately charged from launch through exit; one300s cap per command; serial only; no match games",
+  "additionalChecks": "W1 frozen84/default/guided equality, candidate legal PV/accounting and stop/reset; max300s separately",
+  "corpusSha256": "b2815c85298025ea353f9d4b2b5752d1a527978b27f0aa96eb7d5a6e2c1d0464",
+  "mixedPhaseCorpus": "docs/research/search/p4-correction/mixedphase-v1-roots.tsv",
+  "mixedPhaseSha256": "191f79788729bcb35fe92b11b6572749e8794b4d8fee4af256fa5764b1685ae2",
+  "mixedPhaseMode": "observe,1 round,depth8/node200000, same profiles; real retained histories from prior frozen input, no generated continuation"
+}
