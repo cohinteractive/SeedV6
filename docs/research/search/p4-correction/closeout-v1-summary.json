@@ -1,0 +1,200 @@
+{
+  "status": "authorized research execution complete; strength criterion failed; GPT/owner reconciliation pending",
+  "utc": "2026-11-02T16:53:39.105113+00:00",
+  "objective": "CH-R001",
+  "selectedCandidate": "CH-C3 decayed completed pawn correction across requests, main+qsearch consumers",
+  "candidateSource": "d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9",
+  "candidateBuild": 88,
+  "candidateFlags": 1043595263,
+  "candidateProfile": "corrected-retained",
+  "comparator": "Exact frozen HL-G1/build84, guided/flags104071167, source b8ea8b2856eed3f6c774860ca540375054e4de30",
+  "experiments": [
+    {
+      "experiment": "c1-screen-v1-w1",
+      "pairs": 32,
+      "games": 64,
+      "wdl": [
+        22,
+        16,
+        26
+      ],
+      "score": 0.46875,
+      "pairedNormal95Score": [
+        0.35078146504775204,
+        0.5867185349522479
+      ],
+      "pairedHoeffding95Score": [
+        0.22866930217001982,
+        0.7088306978299802
+      ],
+      "wallSeconds": 1951.7385865999968,
+      "runnerWallSeconds": 1948.4820657999953,
+      "auditedRequests": 8780,
+      "status": "passed",
+      "inputsStable": true,
+      "engineHandlesDrained": true,
+      "summarySha256": "9846121a6de03393372d15f1e2d006fb82b32c437f82918377ca2f4805c4390f"
+    },
+    {
+      "experiment": "c2-screen-v1-w1",
+      "pairs": 32,
+      "games": 64,
+      "wdl": [
+        22,
+        13,
+        29
+      ],
+      "score": 0.4453125,
+      "pairedNormal95Score": [
+        0.3337022517701467,
+        0.5569227482298533
+      ],
+      "pairedHoeffding95Score": [
+        0.20523180217001982,
+        0.6853931978299802
+      ],
+      "wallSeconds": 2037.1115853999945,
+      "runnerWallSeconds": 2034.7643092000071,
+      "auditedRequests": 9407,
+      "status": "passed",
+      "inputsStable": true,
+      "engineHandlesDrained": true,
+      "summarySha256": "000a9d8d3392e3c1d01aeff19e9259621f4d8c51eda6ca939392c3a08b14a1cd"
+    },
+    {
+      "experiment": "c3-screen-v1-w1",
+      "pairs": 32,
+      "games": 64,
+      "wdl": [
+        27,
+        19,
+        18
+      ],
+      "score": 0.5703125,
+      "pairedNormal95Score": [
+        0.47897586010581616,
+        0.6616491398941838
+      ],
+      "pairedHoeffding95Score": [
+        0.3302318021700198,
+        0.8103931978299802
+      ],
+      "wallSeconds": 1983.2785154000012,
+      "runnerWallSeconds": 1981.1440745,
+      "auditedRequests": 9013,
+      "status": "passed",
+      "inputsStable": true,
+      "engineHandlesDrained": true,
+      "summarySha256": "3f96679e70eb18656d60026a10f3b2475a4538911bfbf684cbe166f10d3737f4"
+    },
+    {
+      "experiment": "c3-risk-v1-w4",
+      "pairs": 32,
+      "games": 64,
+      "wdl": [
+        22,
+        19,
+        23
+      ],
+      "score": 0.4921875,
+      "pairedNormal95Score": [
+        0.39020899908659845,
+        0.5941660009134015
+      ],
+      "pairedHoeffding95Score": [
+        0.2521068021700198,
+        0.7322681978299802
+      ],
+      "wallSeconds": 1946.2667904000118,
+      "runnerWallSeconds": 1944.2711800999969,
+      "auditedRequests": 8947,
+      "status": "passed",
+      "inputsStable": true,
+      "engineHandlesDrained": true,
+      "summarySha256": "d7b81ac44259228b1565dcd92838f5c595273b470231ecf7ee15acc7b0e3e98f"
+    },
+    {
+      "experiment": "c3-confirm-v1-champion84-w1",
+      "pairs": 160,
+      "games": 320,
+      "wdl": [
+        100,
+        87,
+        133
+      ],
+      "score": 0.4484375,
+      "pairedNormal95Score": [
+        0.4018277997294392,
+        0.49504720027056076
+      ],
+      "pairedHoeffding95Score": [
+        0.3410701479133156,
+        0.5558048520866844
+      ],
+      "wallSeconds": 9772.9762377,
+      "runnerWallSeconds": 9768.350016199998,
+      "auditedRequests": 44291,
+      "status": "passed",
+      "inputsStable": true,
+      "engineHandlesDrained": true,
+      "summarySha256": "e3c3780b283846e8a023ed923833cd6ec5ff7450c2687ad8ce46afa96356b9cd"
+    }
+  ],
+  "completedGames": 576,
+  "auditedRequests": 80438,
+  "chargedMatchWallSeconds": 17691.371715500005,
+  "remainingMatchWallSeconds": 25508.628284499995,
+  "exploratoryW1": {
+    "pairsSpent": 96,
+    "gamesSpent": 192,
+    "pairsUnused": 32,
+    "gamesUnused": 64
+  },
+  "confirmationW1": {
+    "pairsSpent": 160,
+    "gamesSpent": 320,
+    "attemptsSpent": 1,
+    "additionalAttemptAuthorized": false
+  },
+  "riskW4": {
+    "pairsSpent": 32,
+    "gamesSpent": 64,
+    "gamesUnused": 0
+  },
+  "technicalQualification": "C1 selected215 tests; C2 selected59; C3 selected62 plus12 focused repeats after observation additions (overlapping suites, not distinct counts). UCI/default isolation, raw/working/null/provenance/history/PV/accounting/cancellation/drain/reset and mixed-phase observations passed. Failed test-fixture/diagnostic compilation logs retained.",
+  "skippedVerification": "Full GUI/native/macOS/mobile/training/platform matrix and deployment tests not run; no production promotion or deployment requested.",
+  "normalPrimaryPassed": false,
+  "strengthObjective": "unmet; adverse independent W1 result, not a successful foundational relabeling or universal mechanism rejection",
+  "remainingBoundary": "One independent attempt and W4 budget exhausted. Unused exploratory games/time do not authorize another confirmation or a successor. Further strength claims need explicit renewed owner authority and fresh independent design.",
+  "promotions": "None; HL-G1/build84 champion and build85 normal production policy unchanged; no push, release or deployment.",
+  "localEvidence": "Ignored raw evidence remains at recorded paths; a fresh checkout must check availability before analysis.",
+  "closeoutValidation": {
+    "utc": "2026-11-02T17:04:31.864090+00:00",
+    "status": "passed",
+    "frozenManifestsReverified": {
+      "build84Files": 33,
+      "build86Files": 35,
+      "build87Files": 35,
+      "build88Files": 35,
+      "c3SourceFiles": 9
+    },
+    "confirmationProtocolRunPgnAnalysisToolHashes": "match prospective analysis identities",
+    "resourceAndPairStatistics": "five summary hashes and arithmetic rechecked; 576 normal games, 80438 request audits, 17691.3717155 charged seconds; independent pair mean/variance reproduced",
+    "localMarkdownLinksChecked": 86,
+    "ownedProcesses": "confirmation launcher13280/worker14800/Fastchess19100 absent; no matching correction research Java/Fastchess/Python process",
+    "rawOutput": "all five run.json, games.pgn and uci-trace.log present and ignored; no raw output tracked",
+    "runtimeChangesSinceC3Commit": "none in engine-core/research/app-uci; candidate source manifest also matches",
+    "version": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 88
+    },
+    "versionSha256": "c5716852b62716a63cf540cbc6582f5d3d978ad24431da48e672789e9f5557a8",
+    "versionDisposition": "no_bump; docs/analysis-only closeout, all bytes unchanged; strict UTF8 object, regular single-link nonreparse file checked",
+    "journal": "root CODEXLOG_CURRENT.md absent; not created",
+    "gitBeforeCloseoutCommit": "main at6ae287fb; eight attributable closeout documents/results only; baseline79 detached worktree remains75336761",
+    "canon": "P4-R007/P4-F023; owner mirror refresh required before mirror-dependent planning",
+    "scope": "read-only closeout verification, not another runtime test suite or confirmation attempt"
+  }
+}

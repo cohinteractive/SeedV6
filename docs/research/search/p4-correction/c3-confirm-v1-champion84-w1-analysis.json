@@ -1,0 +1,49 @@
+{
+  "score": 0.4484375,
+  "pairScoreStandardError": 0.023780896301264787,
+  "oneSidedAlpha": 0.025,
+  "normalCriticalValue": 1.9599639845400536,
+  "pairedNormalLower": 0.4018277997294392,
+  "boundedHoeffdingLower": 0.3410701479133156,
+  "primaryLower": 0.4018277997294392,
+  "primaryMethod": "paired normal approximation",
+  "practicalMinimumScore": 0.53,
+  "primaryCriterionPassed": false,
+  "conservativeSensitivityPositive": false,
+  "status": "completed prospective analysis",
+  "claimAttempt": 1,
+  "domain": "W1 OWNER, CP64 Hash64, 10+0.1, frozen fresh opening distribution",
+  "candidate": {
+    "name": "CH-C3 decayed completed pawn correction across requests with main and qsearch consumers",
+    "source": "d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9",
+    "build": 88,
+    "flags": 1043595263
+  },
+  "opponent": {
+    "name": "HL-G1 retained learning with history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "wdl": [
+    100,
+    87,
+    133
+  ],
+  "pentanomial": [
+    28,
+    34,
+    58,
+    23,
+    17
+  ],
+  "pairs": 160,
+  "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\c3-confirm-v1-protocol.json",
+  "protocolSha256": "49c294eac41fceed5c9eaff22111ee51a9f224e5acc1cdb06ae74db3b406d3b6",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\c3-confirm-v1-champion84-w1",
+  "runSha256": "27187e522c66a5093bc1661f62fc801b316a593a8fcfaf1bbca7da976b250271",
+  "pgnSha256": "04d99b939e660560b69549948c975f7474451621e2cfd1a89cc0342b347b0cf3",
+  "analysisToolSha256": "b12bbeb653ac99e934eddb399e7722f111cd5140b18fa4ea355404a5d517daba",
+  "interpretation": "One frozen finalist, fresh direct champion comparison, one nominal one-sided alpha .025 attempt. Pair-level normal inference is approximate; conservative bounded sensitivity is retained, not silently discarded. No pooling with exploration or historical claims. No arbitrary-position, worker, clock or platform generalization.",
+  "acceptance": "Research criterion only. Mandatory W4 characterization and technical qualification remain separately applicable; GPT/owner reconciliation, acceptance and any promotion are distinct."
+}

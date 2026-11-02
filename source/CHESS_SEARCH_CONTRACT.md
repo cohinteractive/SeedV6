@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R006**
+Internal revision: **P4-R007**
 
-Status: **ACTIVE - 2 November 2026. Owner-authorized HL-G1 experimental production default across W1-W16, integrated as build85. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 search-feedback correction/evaluation-guided selectivity is now owner-authorized and active. Production remains build85; no deployment.**
+Status: **ACTIVE - 3 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build88 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 authorized execution is complete: independent W1 strength criterion failed; GPT/owner reconciliation pending. No promotion or deployment.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -35,13 +35,16 @@ separated under the established `research`/test ownership boundaries; production
 must not depend on research or acquire a competing engine implementation.
 Exclude unrelated GUI/application work, independent evaluator training or
 architecture programmes, broad unrelated rewrites and external deployment.
-This revision records the separately owner-authorized CH-R001 strength-development
-CGLHW: search-feedback correction history and evaluation-guided selectivity. Its
-[focused contract](../docs/research/search/p4-correction/CONTRACT.md) freezes the
-objective, finite resources, exact build84 comparator and independent W1 criterion;
-[STATE](../docs/research/search/p4-correction/STATE.md) owns execution continuity.
-HL-G1/build85 remains production across W1-W16. No promotion, push, release,
-installation or deployment is authorized.
+This revision records closeout of the owner-authorized CH-R001 strength-development
+CGLHW. Its [focused contract](../docs/research/search/p4-correction/CONTRACT.md)
+retains the objective, finite resources, exact build84 comparator and independent
+W1 criterion. [RESULTS](../docs/research/search/p4-correction/RESULTS.md) records
+completed authorized execution with the strength criterion failed;
+[STATE](../docs/research/search/p4-correction/STATE.md) owns terminal continuity.
+Technical qualification is not a successful foundational relabelling. The sole
+confirmation attempt is spent; further independent work needs renewed authority.
+HL-G1 normal production policy remains unchanged across W1-W16. No promotion,
+push, release, installation, deployment or successor is authorized.
 
 ## Strength-first, externally informed research
 
@@ -472,14 +475,16 @@ are not changed by this new authority.
 
 The separately authorized implementation inventory, external research map and first
 TT-memory campaign's technical execution are complete; the Frontier records their
-dispositions and the still-unachieved TT strength-development aspiration. CH-R001 is separately owner-authorized; this revision
-does not reopen the completed campaigns or authorize any successor to CH-R001. The Frontier is a small set
-of priorities and hypotheses, not a predetermined exhaustive queue.
+dispositions and the still-unachieved TT strength-development aspiration. CH-R001
+has completed authorized execution with its strength objective unmet; GPT/owner
+reconciliation remains pending. This revision neither reopens completed campaigns
+nor authorizes a successor. The Frontier records priorities and hypotheses, not
+a predetermined exhaustive queue.
 For any future CGLHW objective, the owner must supply the **complete current
 authoritative premade CGLHW GPT prompt generator before GPT prepares its execution
 prompt**. Each objective requires a dedicated GPT conversation for its complete
-coordination and closeout. The prior production integration was not a CGLHW; the owner has now supplied
-the dedicated CH-R001 execution request in a new Codex conversation.
+coordination and closeout. The prior production integration was not a CGLHW; the
+owner supplied the dedicated CH-R001 execution request in a new Codex conversation.
 After legitimate closeout and required reconciliation, GPT selects the next
 appropriate research objective from the then-current authoritative Frontier.
 Codex must not select or launch a new CGLHW on its own authority.
@@ -488,7 +493,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R006/P4-F022** pair before mirror-dependent Project planning; the Frontier
+**P4-R007/P4-F023** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

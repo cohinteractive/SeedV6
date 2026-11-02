@@ -91,38 +91,33 @@ estimate relative to raw leaf scores. Sharing it with the leaf consumer may make
 learned structural bias useful to returned evaluations and pruning together.
 Risks: self-referential feedback, broad pawn-context generalization, increased
 qnode hash work and tactical distortion. No claim that external integration transfers
-its strength or constants. The same32 development pairs will provide a descriptive
-common-input screen; selection remains exploratory and confirmation stays untouched.
+its strength or constants. The same32 development pairs supplied a descriptive
+common-input screen; selection remained exploratory and confirmation was separate.
 
-## Conditional lifetime follow-up - source fact, not a selected candidate
+## Lifetime investigation that justified C3
 
 Pinned Stockfish19 engine.cpp/thread.cpp/uci.cpp (local text hashes in
 `external-lifetime-v1-manifest.json`) connect UCI ucinewgame/Clear Hash to
 Engine.search_clear, ThreadPool.clear and Worker.clear. Normal Engine.go starts
 thinking without those clears; the inspected search.cpp clears correction tables
-in Worker.clear, not on each ordinary request. This supports cross-request lifetime
-as a concrete transfer question. SeedV6 currently clears correction at request
-boundaries and abort, so a retained formulation would need explicit completed-label,
-reset/new-game, decay, failure and worker-private guarantees. No implementation or
-match is selected from this source fact alone; await CH-C2 evidence first.
+in Worker.clear, not on each ordinary request. This supported a concrete transfer
+question after C2. Seed C1/C2 cleared correction at request boundaries and abort.
 
-Seed lifecycle inspection adds two concrete constraints for that conditional branch.
-`ExactSearch` clears correction when an invocation aborts, and managed clock/node
-requests commonly finish on an aborted final iteration. Merely retaining at request
-end would therefore preserve nothing useful; a candidate would need a separate
-snapshot of completed-invocation feedback and rollback of unfinished updates.
-ParallelSearch.newGame currently clears the shared TT only, which is sufficient for
-current request-scoped histories. Any longer-lived private correction would also
-need an idle/drained per-worker reset there. These are prospective dependencies,
-not defects in the existing C1/C2 lifetime and not authorization for broad parallel
-redesign. No retention code has been implemented or selected yet.
+Seed lifecycle inspection established two supporting dependencies. ExactSearch
+aborts clear current feedback, while managed requests commonly finish on an aborted
+final iteration; retaining only at request end would save no useful state. C3
+therefore added completed-invocation snapshots and rollback. ParallelSearch.newGame
+previously cleared only shared TT, sufficient for request-only histories; C3 adds
+idle/drained per-worker correction reset. These were dependencies of longer-lived
+state, not defects in C1/C2 or grounds for broad parallel redesign. C3 implemented
+and qualified these dependencies before competitive selection.
 
 C2 completed22W/13D/29L (44.53125%), paired95 interval33.37-55.69%; all audits
 passed. No gain established. Common-input difference from C1 is descriptive only.
 
 ## CH-C3 - decayed completed correction across Search requests
 
-**Source d530b28a/build88 frozen; positive exploratory screen; prospective finalist.**
+**Source d530b28a/build88 frozen; selected finalist failed independent confirmation.**
 Profile `corrected-retained`, flags1043595263. Extends C2 main+qsearch correction
 with a private64KiB completed-invocation snapshot.
 Successful managed invocations replace the snapshot; an aborted invocation restores
@@ -144,6 +139,14 @@ measurements. Default/exact84 controls remain equal and frozen C1/C2 artifacts i
 
 C3 screen:27W/19D/18L,57.03125%, paired95 interval47.90-66.16%, conservative
 bounded95 interval33.02-81.04%;64 normal games and9013 request audits passed.
-Selected as prospective integrated finalist after development, subject to planned
-mixed-phase qualification/W4 risk and the sole fresh160-pair confirmation. These
-selected32-pair results establish neither a gain nor an isolated retention effect.
+Selected as the integrated finalist after development, with mixed-phase technical
+qualification and W4 risk completed before the sole fresh160-pair confirmation.
+These selected32-pair results established neither a gain nor an isolated retention
+effect. W4 risk scored49.21875% (normal95%39.02-59.42%), inconclusive.
+
+Independent W1 confirmation:100W/87D/133L,44.84375%, normal95%40.18-49.50%,
+conservative bounded95%34.11-55.58%. Both frozen primary conditions failed.
+All320 games/44,291 request audits passed; that technical validity does not imply
+strength. The selected exploratory result did not generalize; causation is not
+diagnosed. See [RESULTS](RESULTS.md) for qualifications, costs, resource accounting
+and the terminal authority boundary. No retuning, repeat attempt or promotion.
