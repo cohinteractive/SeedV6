@@ -1,0 +1,28 @@
+{
+  "status": "failed",
+  "startedUtc": "2026-11-02T20:02:31.212192+00:00",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical-isolation.py",
+    "--runtime",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1",
+    "--manifest",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json",
+    "--name",
+    "p1-w4-isolation-v1",
+    "--workers",
+    "4"
+  ],
+  "protocol": "p1-w4-technical-v1-protocol.json",
+  "window": "p1-w4-window-v1.json",
+  "category": "charged W4 technical qualification",
+  "gamesInitiated": 0,
+  "pid": 21884,
+  "exitCode": 1,
+  "ownedProcessesRemaining": 0,
+  "ownedCpuSeconds": 12.171875,
+  "wallSeconds": 5.052252099994803,
+  "endedUtc": "2026-11-02T20:02:36.265109+00:00",
+  "processDrained": true
+}

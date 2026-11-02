@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T20:03:21.464347+00:00",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical-runtime-check.py",
+    "--runtime",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1",
+    "--manifest",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json",
+    "--name",
+    "p1-w4-runtime-v1",
+    "--workers",
+    "4"
+  ],
+  "protocol": "p1-w4-technical-v1-protocol.json",
+  "window": "p1-w4-window-v1.json",
+  "category": "charged W4 technical qualification",
+  "gamesInitiated": 0,
+  "toolSha256": "08a32b0f7f8c7e2622c415005f252f17f05752daba1224db37f16cc7287bd586",
+  "retryNote": "original remaining protocol command",
+  "pid": 36948,
+  "exitCode": 0,
+  "ownedProcessesRemaining": 0,
+  "ownedCpuSeconds": 3.046875,
+  "wallSeconds": 1.4063889000099152,
+  "endedUtc": "2026-11-02T20:03:22.871536+00:00",
+  "processDrained": true
+}

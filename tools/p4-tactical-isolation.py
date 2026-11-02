@@ -59,11 +59,12 @@ def main(args):
                         engine.send('ucinewgame'); engine.send('isready'); engine.until('readyok')
             finally:
                 engine.close()
-        for position, request in [(p,'depth 5') for p in positions]+[('startpos','nodes 20000'),('startpos','nodes 100000')]:
-            values = [m.stable(r['result']) for r in report['rows'] if r['profile'] in ('frozen84','production','researchControl')
-                      and r['workers']==1 and r['position']==position and r['request']==request]
-            if len(values)!=3 or any(v!=values[0] for v in values):
-                raise ValueError('W1 control mismatch '+position+' '+request)
+        if 1 in args.workers:
+            for position, request in [(p,'depth 5') for p in positions]+[('startpos','nodes 20000'),('startpos','nodes 100000')]:
+                values = [m.stable(r['result']) for r in report['rows'] if r['profile'] in ('frozen84','production','researchControl')
+                          and r['workers']==1 and r['position']==position and r['request']==request]
+                if len(values)!=3 or any(v!=values[0] for v in values):
+                    raise ValueError('W1 control mismatch '+position+' '+request)
         if any(b.digest(p)!=h for p,h in frozen.items()): raise ValueError('Input changed')
         report.update(status='passed',inputsStable=True)
     except BaseException as error:
@@ -72,8 +73,9 @@ def main(args):
         report['wallSeconds'] = time.monotonic()-started
         b.save(out/'observations.json',report)
     summary = {k:v for k,v in report.items() if k not in ('rows','filesBefore')}
-    summary.update(requests=len(report['rows']),raw=str(out),
-        interpretation='W1 frozen84 guided, current production and research control match. Candidate/W4 checks establish bounded accounting/PV/lifecycle qualification, not strength or scheduling equality.')
+    summary.update(requests=len(report['rows']),raw=str(out),workers=args.workers,
+        w1ControlEqualityChecked=1 in args.workers,
+        interpretation='Equality is checked only for executed W1 controls. Candidate/W4 checks establish bounded accounting/PV/lifecycle qualification, not strength or scheduling equality.')
     b.save(m.OUT/(args.name+'-summary.json'),summary)
     print(json.dumps({'status':report['status'],'requests':len(report['rows']),'wallSeconds':report['wallSeconds']}))
 

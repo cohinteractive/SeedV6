@@ -1,0 +1,23 @@
+{
+  "status": "failed",
+  "startedUtc": "2026-11-02T20:00:08.135961+00:00",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical-openings.py",
+    "--output",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\confirmation-v1-openings.pgn",
+    "--count",
+    "320",
+    "--seed",
+    "2026110309"
+  ],
+  "category": "charged protected input preparation",
+  "gamesInitiated": 0,
+  "pid": 1680,
+  "wallSeconds": 46.48697840000386,
+  "endedUtc": "2026-11-02T20:00:54.622941+00:00",
+  "processDrained": true,
+  "supervisorFailure": "Immediate Job active-process assertion after launcher wait was nonzero; Job closed in finally. Parent was reaped. Completed input files retained; independent validation required, no rerun or result relabeling.",
+  "disposition": "Observed no remaining selector process; corrected future supervision waits up to5s for owned Job drain. Original status was running despite endedUtc due missing exception-status assignment. All46.4869784s charged."
+}

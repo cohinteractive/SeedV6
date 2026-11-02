@@ -1,0 +1,7 @@
+{
+  "ownerReply": "PC available now for 15 minutes",
+  "observedUtc": "2026-11-02T20:01:48.834851+00:00",
+  "deadlineUtc": "2026-11-02T20:16:48.834851+00:00",
+  "scope": "TC-P1/build89 four-worker technical checks only, no match games",
+  "protocol": "p1-w4-technical-v1-protocol.json"
+}

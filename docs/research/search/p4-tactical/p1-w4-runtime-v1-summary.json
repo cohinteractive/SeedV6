@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "identities": {
+    "4": "info string mode=research experimental=true formulation=TC-P1 profile=probcut evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=1177812991 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE learning=request-worker-private-no-seed effort=history64-bounded2 tactical=qverify-d4to8-margin150-max3-childdminus3 ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=89 source=a7c45dffeaff ttMiB=64"
+  },
+  "runtimeManifest": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json",
+  "manifestSha256": "6d79afb52fac5a87c230ec68951d4a770927cc11ee4cf2177bb58fc3aba18b9a",
+  "toolSha256": "08a32b0f7f8c7e2622c415005f252f17f05752daba1224db37f16cc7287bd586",
+  "reuseChecks": [
+    {
+      "workers": 4,
+      "freshResetW1Equal": false,
+      "retainedRequestDifferent": true
+    }
+  ],
+  "enginesClosed": true,
+  "wallSeconds": 0.9799807000090368,
+  "requests": 10,
+  "stopRequests": 1,
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-w4-runtime-v1",
+  "limits": "Bounded W1/W4 UCI technical checks, not a clock-policy qualification or competitive evidence."
+}

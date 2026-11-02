@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "workers": 4,
+  "requests": 18,
+  "counterSnapshotsAcrossWorkerAttempts": {
+    "tacticalCandidates": 139,
+    "tacticalQpasses": 94,
+    "tacticalVerifications": 94,
+    "tacticalCutoffs": 86,
+    "tacticalProbeNodes": 29929
+  },
+  "perWorkerCounters": [
+    {
+      "tacticalCandidates": 62,
+      "tacticalQpasses": 30,
+      "tacticalVerifications": 30,
+      "tacticalCutoffs": 26,
+      "tacticalProbeNodes": 5985
+    },
+    {
+      "tacticalCandidates": 22,
+      "tacticalQpasses": 19,
+      "tacticalVerifications": 19,
+      "tacticalCutoffs": 18,
+      "tacticalProbeNodes": 7251
+    },
+    {
+      "tacticalCandidates": 30,
+      "tacticalQpasses": 23,
+      "tacticalVerifications": 23,
+      "tacticalCutoffs": 21,
+      "tacticalProbeNodes": 5898
+    },
+    {
+      "tacticalCandidates": 25,
+      "tacticalQpasses": 22,
+      "tacticalVerifications": 22,
+      "tacticalCutoffs": 21,
+      "tacticalProbeNodes": 10795
+    }
+  ],
+  "counterCaution": "Snapshot sums can duplicate idle worker last-job counters or omit reset aborted jobs; reachability evidence, not exact global work accounting. Full request nodes are authoritative.",
+  "raw": "raw/p1-w4-observe-v1/observations.jsonl",
+  "qualification": "State/history/legal PV/accounting checks pass; all four private kernels reached tactical verification. No deterministic schedule equality or W4 strength claim."
+}

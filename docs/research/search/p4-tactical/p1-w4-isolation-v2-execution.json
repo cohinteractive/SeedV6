@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-02T20:03:16.820365+00:00",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical-isolation.py",
+    "--runtime",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1",
+    "--manifest",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json",
+    "--name",
+    "p1-w4-isolation-v2",
+    "--workers",
+    "4"
+  ],
+  "protocol": "p1-w4-technical-v1-protocol.json",
+  "window": "p1-w4-window-v1.json",
+  "category": "charged W4 technical qualification",
+  "gamesInitiated": 0,
+  "toolSha256": "b677814b1d3f574bbeb91aeeb38e38e06dbce08a20cc1c3f778f88fa7082f58e",
+  "retryNote": "W4 isolation v1 completed W4 requests but incorrectly demanded absent W1 controls; W4-only harness assertion now scoped correctly. Runtime unchanged.",
+  "pid": 2412,
+  "exitCode": 0,
+  "ownedProcessesRemaining": 0,
+  "ownedCpuSeconds": 11.421875,
+  "wallSeconds": 4.62612669999362,
+  "endedUtc": "2026-11-02T20:03:21.457480+00:00",
+  "processDrained": true
+}

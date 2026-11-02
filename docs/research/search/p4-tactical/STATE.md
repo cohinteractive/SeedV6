@@ -43,7 +43,7 @@ Qualification of the source-hashed prototype:
   observation neutrality checked. These are mechanism evidence, not strength.
 -44 W1 UCI isolation requests pass exact84/default/guided equality and candidate
   accounting/PV; two stop/reset checks pass.10 candidate runtime requests plus one
-  stop pass clocks, mate/stalemate, repetition/rule50 and reuse/reset. W4 not yet run.
+  stop pass clocks, mate/stalemate, repetition/rule50 and reuse/reset. W4 technical checks now pass; separate details below.
 - Clean rotated W1 cost:72 requests including18 warmups,27 measured profile pairs;
   candidate/guided geometric mean wall0.96887, process CPU0.95372, allocation0.99967;
   max sampled heap305,814,504 bytes. Short changed-work costs do not prove speed or
@@ -55,7 +55,10 @@ with adverse W4 evidence, and is not selected. Capture verification avoids that
 initial dependency. Failed first adapter import used system Python without chess;
 no engine ran. Use existing `build/research/venv/Scripts/python.exe`. Bootstrap JSON
 CRLF whitespace warnings were corrected in the next commit without changing values.
-No experimental failure, interrupted match or discarded outcome has occurred.
+No competitive game or discarded outcome has occurred. Two technical supervision/
+harness failures are preserved and charged: input generation immediate Job-drain
+assertion (completed files independently validated, original failure retained), and
+W4-only isolation demanding absent W1 rows (scope guard repaired; fresh v2 passes).
 
 Confirmation must exclude prior exposed roots including CH confirmation and mixed
 phase inputs. Prior throughput suggests640 games about5.4h; confirm actual cost
@@ -63,16 +66,28 @@ before admission. Reserve independent capacity; do not spend it on development.
 
 ## Resources and ownership
 
-[Resource ledger](resources.json): charged experimental wall **66.4474747/64,800s**;
-remaining **64733.5525253s**. Initiated games **0/1,120**: W1 development0/384,
-W4 risk0/96, confirmation0/640 and attempts0/1. Each outer execution receipt is
-charged once, including UCI qualifications; overlapping summaries are not added.
-No owned running experiment, test or match. All recorded execution processes drained.
+[Resource ledger](resources.json): charged **128.5070890/64,800s**,
+remaining **64671.4929110s**. Initiated games0/1,120:
+W1 development0/384, W4 risk0/96, independent confirmation0/640; attempts0/1.
+Include both failed technical runs; never add overlapping inner summaries.
+No running experiment or engine; all processes drained after qualification.
 
-Owner reply: **ask when heavy tests are ready**. No W4 or independent confirmation
-launch until an agreed controlled PC-use window. Continue bounded lightweight W1
-work; preserve desktop use and unrelated processes. A normal-priority desktop use
-signal alone is not a valid reason to discard a game after seeing its result.
+Owner granted15 minutes for TC-P1/build89 W4 technical checks only, recorded in
+`p1-w4-window-v1.json`; all completed by20:03:23 UTC on2 November, no games.
+W4 observer18 requests, isolation8 requests plus2 stops, runtime10 requests plus1
+stop pass. All four private kernels reach tactical verification; exact work uses
+request counters, not sums of repeated worker snapshots. W4 strength remains unknown.
+The first isolation run's8 W4 requests passed before a harness-only W1-row assertion;
+its raw failure remains. Future W4 competitive/confirmation work still needs asking
+for a controlled PC-use window. Continue serial lightweight W1 development.
+
+Protected320-pair confirmation inputs were selected from895 eligible unique roots
+before development games, with no candidate evaluation/outcome filtering. Independent
+reparse checks legality/history/hash/order, prior keyed receipts and current diagnostic
+root disjointness. Do not inspect selected moves/keys to choose candidates. Original
+selector supervisor failure remains failed despite valid retained files; no rerun.
+Non-key historical receipt review and future-development disjointness remain admission
+checks before any independent claim. No finalist or confirmation attempt selected.
 
 ## Next admissible work and dependencies
 
@@ -84,8 +99,9 @@ signal alone is not a valid reason to discard a game after seeing its result.
    Ready to launch after protocol commit. A transient35% CPU observation was
    followed by6% total CPU and about17GiB available RAM; no gaming/runner observed.
    No game started yet. No competing extended diagnostics during the match.
-3. Ask for controlled window when heavy W4 work or confirmation is concrete. No
-   finalist or independent confirmation selected. W4 qualification remains outstanding.
+3. Assess the complete W1 screen before choosing another justified formulation or
+   risk/confirmation work. W4 technical qualification is complete, competitive risk
+   remains outstanding and requires an agreed window. No finalist selected.
 
 Current champion exact HL-G1/build84; normal build85 HL-G1 policy unchanged. Current
 repository build89; no push, release, deployment, promotion or successor. TT-R001

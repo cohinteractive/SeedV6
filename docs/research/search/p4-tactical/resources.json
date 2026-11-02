@@ -1,7 +1,7 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 66.44747469996219,
-  "remainingWallSeconds": 64733.55252530004,
+  "chargedWallSeconds": 128.50708899996243,
+  "remainingWallSeconds": 64671.49291100004,
   "initiatedGames": 0,
   "remainingGames": 1120,
   "developmentGames": 0,
@@ -10,35 +10,71 @@
   "confirmationAttempts": 0,
   "executions": [
     {
+      "receipt": "build89-preflight-execution.json",
+      "wallSeconds": 1.4337902999832295,
+      "category": "charged committed preflight",
+      "status": "passed"
+    },
+    {
+      "receipt": "confirmation-input-v1-execution.json",
+      "wallSeconds": 46.48697840000386,
+      "category": "charged protected input preparation",
+      "status": "failed"
+    },
+    {
       "receipt": "p1-cost-v1-execution.json",
       "wallSeconds": 23.34101949998876,
-      "category": "charged extended Search diagnostic"
+      "category": "charged extended Search diagnostic",
+      "status": "passed"
     },
     {
       "receipt": "p1-diagnostic-v1-execution.json",
       "wallSeconds": 13.183693400002085,
-      "category": "charged extended Search diagnostic"
+      "category": "charged extended Search diagnostic",
+      "status": "passed"
     },
     {
       "receipt": "p1-isolation-v1-execution.json",
       "wallSeconds": 5.75917639999534,
-      "category": "charged bounded UCI qualification"
+      "category": "charged bounded UCI qualification",
+      "status": "passed"
     },
     {
       "receipt": "p1-mixed-v1-execution.json",
       "wallSeconds": 21.473703800002113,
-      "category": "charged extended Search diagnostic"
+      "category": "charged extended Search diagnostic",
+      "status": "passed"
     },
     {
       "receipt": "p1-runtime-v1-execution.json",
       "wallSeconds": 1.2560912999906577,
-      "category": "charged bounded UCI qualification"
+      "category": "charged bounded UCI qualification",
+      "status": "passed"
     },
     {
-      "receipt": "build89-preflight-execution.json",
-      "wallSeconds": 1.4337902999832295,
-      "category": "charged committed preflight"
+      "receipt": "p1-w4-isolation-v1-execution.json",
+      "wallSeconds": 5.052252099994803,
+      "category": "charged W4 technical qualification",
+      "status": "failed"
+    },
+    {
+      "receipt": "p1-w4-isolation-v2-execution.json",
+      "wallSeconds": 4.62612669999362,
+      "category": "charged W4 technical qualification",
+      "status": "passed"
+    },
+    {
+      "receipt": "p1-w4-observe-v1-execution.json",
+      "wallSeconds": 4.487868199998047,
+      "category": "charged W4 technical qualification",
+      "status": "passed"
+    },
+    {
+      "receipt": "p1-w4-runtime-v1-execution.json",
+      "wallSeconds": 1.4063889000099152,
+      "category": "charged W4 technical qualification",
+      "status": "passed"
     }
   ],
-  "accounting": "Outer elapsed receipts charged once; inner summaries overlap and are not added. Selected correctness tests/compilation recorded separately. No interrupted/failed experimental execution so far."
+  "accounting": "Outer elapsed receipts charged once, including failed input supervisor and failed W4-only harness. Overlapping summaries not added; ordinary compilation/selected tests separate."
 }

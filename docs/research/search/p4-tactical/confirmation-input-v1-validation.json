@@ -1,0 +1,12 @@
+{
+  "status": "passed independent file validation; original supervisor remains failed",
+  "count": 320,
+  "availableFreshPool": 895,
+  "inputSha256": "9b9f82ed54f4c433b0e362ddaf315179f1100fdaba010417bf3e6e749687e06e",
+  "legalHistoryAndSelectionOrder": true,
+  "priorReceiptAndCurrentDiagnosticRootDisjoint": true,
+  "selectedRootsNotReviewedForCandidateSelection": true,
+  "remainingGate": "Review listed historical non-key receipts and any later development input disjointness before confirmation; no confirmation game/attempt admitted.",
+  "originalFailure": "confirmation-input-v1-execution.json",
+  "utc": "2026-11-02T20:04:11.704337+00:00"
+}
