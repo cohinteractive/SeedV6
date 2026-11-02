@@ -1,0 +1,110 @@
+{
+  "status": "passed",
+  "inputs": [
+    {
+      "input": "docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-cost-w4.jsonl",
+      "sha256": "2a04190884e2fbea2375f3df8f0f537c8f7139507b678ee364e1f792c03f5c29",
+      "measuredRequests": 42,
+      "warmupRequests": 21,
+      "profiles": {
+        "control": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 1.0,
+            "minRootRatio": 1.0,
+            "maxRootRatio": 1.0,
+            "rootRatios": {
+              "game1-ply16": 1.0,
+              "game1-ply40": 1.0,
+              "game1-ply64": 1.0,
+              "game1-ply88": 1.0,
+              "game2-ply40": 1.0,
+              "game2-ply64": 1.0,
+              "game2-ply88": 1.0
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 1.0,
+            "minRootRatio": 1.0,
+            "maxRootRatio": 1.0,
+            "rootRatios": {
+              "game1-ply16": 1.0,
+              "game1-ply40": 1.0,
+              "game1-ply64": 1.0,
+              "game1-ply88": 1.0,
+              "game2-ply40": 1.0,
+              "game2-ply64": 1.0,
+              "game2-ply88": 1.0
+            }
+          },
+          "nodes": 2800000,
+          "meanCompletedDepth": 7.142857142857143
+        },
+        "guided": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 1.0354949894668848,
+            "minRootRatio": 0.8757489303654569,
+            "maxRootRatio": 1.4348730543533774,
+            "rootRatios": {
+              "game1-ply16": 0.9607696583135524,
+              "game1-ply40": 1.0428046625035876,
+              "game1-ply64": 0.9941043973702635,
+              "game1-ply88": 0.8757489303654569,
+              "game2-ply40": 1.4348730543533774,
+              "game2-ply64": 0.8983469504899647,
+              "game2-ply88": 1.1353887338227433
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 0.9534900246425304,
+            "minRootRatio": 0.7647058823529411,
+            "maxRootRatio": 1.162162162162162,
+            "rootRatios": {
+              "game1-ply16": 0.9583333333333334,
+              "game1-ply40": 0.9285714285714286,
+              "game1-ply64": 0.9298245614035088,
+              "game1-ply88": 1.162162162162162,
+              "game2-ply40": 0.7647058823529411,
+              "game2-ply64": 0.9230769230769231,
+              "game2-ply88": 1.0555555555555556
+            }
+          },
+          "nodes": 2800000,
+          "meanCompletedDepth": 7
+        },
+        "retain": {
+          "elapsedNanos": {
+            "geometricMeanRatio": 1.0171806194526916,
+            "minRootRatio": 0.7730599802147089,
+            "maxRootRatio": 1.2741220989873088,
+            "rootRatios": {
+              "game1-ply16": 0.892995795442987,
+              "game1-ply40": 1.0422055704515247,
+              "game1-ply64": 1.1678514623152132,
+              "game1-ply88": 0.7730599802147089,
+              "game2-ply40": 1.2741220989873088,
+              "game2-ply64": 0.990231570969328,
+              "game2-ply88": 1.062759796313014
+            }
+          },
+          "processCpuNanos": {
+            "geometricMeanRatio": 1.0251615788428035,
+            "minRootRatio": 0.7647058823529411,
+            "maxRootRatio": 1.2857142857142858,
+            "rootRatios": {
+              "game1-ply16": 1.0208333333333333,
+              "game1-ply40": 1.2857142857142858,
+              "game1-ply64": 0.9298245614035088,
+              "game1-ply88": 1.2162162162162162,
+              "game2-ply40": 0.7647058823529411,
+              "game2-ply64": 0.8205128205128205,
+              "game2-ply88": 1.2777777777777777
+            }
+          },
+          "nodes": 2800000,
+          "meanCompletedDepth": 7
+        }
+      }
+    }
+  ],
+  "limits": "Short fixed-node requests, rotated order, one warmup/two measured rounds. Descriptive wall/CPU ratios, no confidence/speed/strength claim; differing completed depths are selective outcomes, not correctness proofs."
+}

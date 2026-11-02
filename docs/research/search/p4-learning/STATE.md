@@ -59,14 +59,31 @@ Completed G1 W4 risk against80:32pairs/64 normal games,32W/13D/19L,
 and workload observations do not establish W4 speed, superiority or equivalence.
 No new correctness/lifecycle defect or adverse competitive point estimate emerged.
 
-**Next operation:** `g1-w4-champion-v1-protocol.json`, final32 exploratory pairs,
-direct W4 G1 versus79 to resolve part of the material uncertainty left by80's
-historical adverse/inconclusive champion bridge. Expected1970s, hard3000s; current
-5835.21s plus this cap and the12000s confirmation cap is20835.21s, below21600s.
-Keep G1 unchanged. Drain all owned work before another heavy execution; running
-JSON alone is not liveness on resume. Fresh-opening preparation passed after R1
-drained,51.96s. A separate input audit confirmed160 unique legal roots across five
-first moves and27 first-move/reply families, without changing selection.
+Completed direct W4 champion79 bridge:19W/21D/24L,46.09375%, paired normal95
+interval36.48-55.71%, bounded95 22.09-70.10%.64 normal games,9,577 audited requests,
+no missing-score warnings, stable inputs and drained handles;2040.14s wall.
+Candidate/champion CPU2059.69/2097.86s. This adverse point estimate is inconclusive,
+not proof of regression; together with the separate80 screen and historical bridge,
+it leaves material W4 competitive uncertainty. Do not pool the controls or claim
+W4 neutrality. Node rates against79 are confounded by its known accounting difference.
+
+Proportionate follow-up `w4-replay-v1-protocol.json` selected the first two games by
+schedule and seven unique real-history prefixes at plies16/40/64/88, without outcome
+filtering. Frozen84 runtime ran126 requests including21 clean W1 observation checks
+and21 W4 warmups; all board/PV/admission/deadline/drain assertions passed in35.08s.
+Each private W4 worker exercised history-guided effort. Clean W4 G1/control wall
+ratio1.0355 is a small, variable seven-root measurement, not a speed/strength claim.
+No operational defect was found; the W4 competitive result remains unexplained.
+W4 is not strength/equivalence qualified, and broader use is not supported.
+
+**Next operation:** execute the already frozen independent W1 protocol unchanged.
+All exploration is complete/drained:7875.35s charged game wall; adding its full
+12000s timeout gives19875.35s, below21600s. Mandatory W4 risk investigation is
+complete for this bounded campaign, with the unresolved adverse point estimate
+explicitly retained. Owner-authorized W1 acceptance does not require W4 superiority.
+Fresh-opening preparation passed after R1 drained,51.96s. A separate input audit
+confirmed160 unique legal roots across five first moves and27 first-move/reply
+families, without changing selection.
 
 `g1-confirm-v1-protocol.json` is prospectively frozen while W4 runs, before any
 confirmation game: unchanged G1/build84 directly versus champion79,160 fresh pairs,
@@ -192,9 +209,9 @@ alone. Prior490/529s eight-pair TTF runs anchor the initial cost plan; current c
 are now measured. Runtime qualification and the first32-pair screen are complete.
 
 Aggregate allowance:128 exploratory pairs (reserve32 W4),160 fresh W1 confirmation
-pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:96/128
-exploratory pairs(192 games),0 confirmation attempts/pairs,5835.21s charged game wall;
-about292s active build/diagnostic execution including input preparation, artifact preflights and reference
+pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:128/128
+exploratory pairs(256 games),0 confirmation attempts/pairs,7875.35s charged game wall;
+about327s active build/diagnostic execution including W4 replay, input preparation, artifact preflights and reference
 audit (about228s through clean costs plus packaging/preflights and6.51s reference work).
 Minor setup/analysis/inspection time is not engine compute; later build/package
 checks and all failed executions must be added before further allocation.

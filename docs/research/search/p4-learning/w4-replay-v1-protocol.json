@@ -1,0 +1,59 @@
+{
+  "id": "HL-W4-REPLAY-V1",
+  "frozenUtc": "2026-11-02T03:17:11.198572+00:00",
+  "purpose": "Proportionate lifecycle, history-consumption and clean-cost diagnosis after adverse/inconclusive direct79 W4 point estimate; no strength inference",
+  "sourcePgn": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\g1-w4-champion-v1-w4\\games.pgn",
+  "sourceSha256": "659be347e6c8f2dea11eed0a7c4a84d4f7396a8206933ebeed72a4cf18b2ed85",
+  "selection": [
+    {
+      "id": "game1-ply16",
+      "scheduledGame": 1,
+      "ply": 16
+    },
+    {
+      "id": "game1-ply40",
+      "scheduledGame": 1,
+      "ply": 40
+    },
+    {
+      "id": "game1-ply64",
+      "scheduledGame": 1,
+      "ply": 64
+    },
+    {
+      "id": "game1-ply88",
+      "scheduledGame": 1,
+      "ply": 88
+    },
+    {
+      "id": "game2-ply40",
+      "scheduledGame": 2,
+      "ply": 40
+    },
+    {
+      "id": "game2-ply64",
+      "scheduledGame": 2,
+      "ply": 64
+    },
+    {
+      "id": "game2-ply88",
+      "scheduledGame": 2,
+      "ply": 88
+    }
+  ],
+  "selectionRule": "First two scheduled complete games, plies16/40/64/88 if available and nonterminal, deduplicate identical real move prefixes; no result/evaluation filtering. Dependent exploratory trajectories.",
+  "corpus": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-roots.tsv",
+  "corpusSha256": "63639a6dde0f8c8a3be5f0142f40cecefb7d3186776e77c357a4c78727749d88",
+  "runtimeManifest": "runtime-build84-v1-manifest.json",
+  "profiles": [
+    "control",
+    "retain",
+    "guided"
+  ],
+  "settings": "CP64 Hash64 ADAPTIVE16 unchanged BOUNDARY2, maxdepth20/max200000 admitted nodes; W1/W4 one observed round each, W1 clean-neutrality replay; W4 clean one warmup and two measured rotated rounds.",
+  "limits": "60s per request, outer600s per process, no concurrent matches. Board restoration, legal PV, accounting and drain assertions must pass.",
+  "expectedCost": "Under60s based on prior fixed-node costs; active diagnostic budget remains about6900s.",
+  "limitations": "Current control is corrected80 composition, not old79. Fixed-node diagnostics are not game clocks. W4 scheduling varies; final-job counters are not complete request totals; traces observe actual decisions but may affect scheduling. No claim that this explains the competitive result.",
+  "runnerSha256": "a0d2e5ca88fc61eed998dab9c8723ec5bd18348a33af7cd1f5484a446c335f79",
+  "harnessSha256": "b933092e95ab50c74f377a9cb1493bd2241c0164bd27da1fe6f9cc4949d8b0eb"
+}

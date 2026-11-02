@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "domains": {
+    "W1": {
+      "input": "docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-observe-w1.jsonl",
+      "sha256": "5f6fd74d147a4c7bb9f67187e4deb0a7a041742c324f4e54c0755e9bace9ba89",
+      "requests": 21,
+      "extraCleanNeutralityRequests": 21,
+      "profiles": {
+        "control": {
+          "requests": 7,
+          "nodes": 1400000,
+          "eligibleDecisionCountsByWorker": [
+            56858
+          ],
+          "historyEffortObservedByWorker": [
+            false
+          ],
+          "completedDepths": {
+            "game1-ply16": 7,
+            "game1-ply40": 8,
+            "game1-ply64": 7,
+            "game1-ply88": 8,
+            "game2-ply40": 7,
+            "game2-ply64": 7,
+            "game2-ply88": 7
+          }
+        },
+        "retain": {
+          "requests": 7,
+          "nodes": 1400000,
+          "eligibleDecisionCountsByWorker": [
+            57724
+          ],
+          "historyEffortObservedByWorker": [
+            false
+          ],
+          "completedDepths": {
+            "game1-ply16": 7,
+            "game1-ply40": 8,
+            "game1-ply64": 7,
+            "game1-ply88": 8,
+            "game2-ply40": 7,
+            "game2-ply64": 6,
+            "game2-ply88": 7
+          }
+        },
+        "guided": {
+          "requests": 7,
+          "nodes": 1400000,
+          "eligibleDecisionCountsByWorker": [
+            56690
+          ],
+          "historyEffortObservedByWorker": [
+            true
+          ],
+          "completedDepths": {
+            "game1-ply16": 7,
+            "game1-ply40": 8,
+            "game1-ply64": 7,
+            "game1-ply88": 7,
+            "game2-ply40": 7,
+            "game2-ply64": 6,
+            "game2-ply88": 7
+          }
+        }
+      }
+    },
+    "W4": {
+      "input": "docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-observe-w4.jsonl",
+      "sha256": "3da8cbe654e6b9f7295f4319c56d23c2633f226ad1e5cce499bb9933ffdaddd7",
+      "requests": 21,
+      "extraCleanNeutralityRequests": 0,
+      "profiles": {
+        "control": {
+          "requests": 7,
+          "nodes": 1400000,
+          "eligibleDecisionCountsByWorker": [
+            27490,
+            9845,
+            9536,
+            9109
+          ],
+          "historyEffortObservedByWorker": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "completedDepths": {
+            "game1-ply16": 7,
+            "game1-ply40": 8,
+            "game1-ply64": 7,
+            "game1-ply88": 7,
+            "game2-ply40": 7,
+            "game2-ply64": 6,
+            "game2-ply88": 7
+          }
+        },
+        "retain": {
+          "requests": 7,
+          "nodes": 1400000,
+          "eligibleDecisionCountsByWorker": [
+            29807,
+            8217,
+            9174,
+            8115
+          ],
+          "historyEffortObservedByWorker": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "completedDepths": {
+            "game1-ply16": 7,
+            "game1-ply40": 8,
+            "game1-ply64": 7,
+            "game1-ply88": 7,
+            "game2-ply40": 7,
+            "game2-ply64": 6,
+            "game2-ply88": 7
+          }
+        },
+        "guided": {
+          "requests": 7,
+          "nodes": 1400000,
+          "eligibleDecisionCountsByWorker": [
+            35234,
+            8002,
+            7748,
+            7497
+          ],
+          "historyEffortObservedByWorker": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "completedDepths": {
+            "game1-ply16": 7,
+            "game1-ply40": 8,
+            "game1-ply64": 7,
+            "game1-ply88": 8,
+            "game2-ply40": 7,
+            "game2-ply64": 6,
+            "game2-ply88": 7
+          }
+        }
+      }
+    }
+  },
+  "runtimeManifest": "runtime-build84-v1-manifest.json",
+  "reportedRequests": 105,
+  "extraCleanW1NeutralityRequests": 21,
+  "totalRequestsIncludingCleanAndWarmup": 126,
+  "cleanCostSummary": "w4-replay-v1-cost-summary.json",
+  "wallSeconds": 35.08414600000833,
+  "findings": "All legal-PV, board restoration, full admission accounting, safety deadline and drain assertions passed. W1 observations matched clean identical-profile outcomes. Actual guided history-effort changes were observed for each of four private workers; no seeding/lifetime omission was found in this sample. Clean W4 guided/control geometric mean wall ratio1.0355, with root variability, is descriptive and not a speed or strength claim.",
+  "limits": "Seven dependent roots from first two games, no outcome selection. Instrumentation can affect W4 scheduling. Final-job counters only show that effort was exercised, not whole-request event totals. No identified correctness or lifecycle defect; adverse/inconclusive W4 champion-relative competitive result remains unexplained and W4 is not qualified for strength/neutrality."
+}

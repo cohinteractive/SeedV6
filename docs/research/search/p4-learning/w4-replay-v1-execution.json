@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "runs": [
+    {
+      "name": "w4-replay-v1-observe-w1",
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=4",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\lib\\*",
+        "com.ohinteractive.seedv6.search.exact.P4LearningStudy",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-roots.tsv",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-observe-w1.jsonl",
+        "1",
+        "observe",
+        "1",
+        "20",
+        "200000",
+        "control,retain,guided"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 15.480622799994308,
+      "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-observe-w1.jsonl",
+      "sha256": "5f6fd74d147a4c7bb9f67187e4deb0a7a041742c324f4e54c0755e9bace9ba89",
+      "requests": 21
+    },
+    {
+      "name": "w4-replay-v1-observe-w4",
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=4",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\lib\\*",
+        "com.ohinteractive.seedv6.search.exact.P4LearningStudy",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-roots.tsv",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-observe-w4.jsonl",
+        "4",
+        "observe",
+        "1",
+        "20",
+        "200000",
+        "control,retain,guided"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 6.514404600005946,
+      "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-observe-w4.jsonl",
+      "sha256": "3da8cbe654e6b9f7295f4319c56d23c2633f226ad1e5cce499bb9933ffdaddd7",
+      "requests": 21
+    },
+    {
+      "name": "w4-replay-v1-cost-w4",
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-Xms256m",
+        "-Xmx512m",
+        "-XX:ActiveProcessorCount=4",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\lib\\*",
+        "com.ohinteractive.seedv6.search.exact.P4LearningStudy",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-roots.tsv",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-cost-w4.jsonl",
+        "4",
+        "cost",
+        "2",
+        "20",
+        "200000",
+        "control,retain,guided"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 13.009205999987898,
+      "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\w4-replay-v1-cost-w4.jsonl",
+      "sha256": "2a04190884e2fbea2375f3df8f0f537c8f7139507b678ee364e1f792c03f5c29",
+      "requests": 63
+    }
+  ],
+  "protocolSha256": "5f919e690606af826bbd286d42287b697b68765d4af810a828845eb60f4d730f",
+  "wallSeconds": 35.08414600000833
+}

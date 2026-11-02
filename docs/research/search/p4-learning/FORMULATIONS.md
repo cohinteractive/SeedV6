@@ -79,6 +79,17 @@ estimate is still inconclusive for superiority/equivalence; baseline80's uncerta
 W4 champion relationship motivates a direct79 risk bridge within the final32-pair
 exploration allocation. W1 and W4 results are never pooled.
 
+Direct W4 champion79 bridge completed19W/21D/24L,46.09%, paired normal95
+interval36.48-55.71%; all64 games and9,577 request audits passed,2040.14s wall.
+This adverse/inconclusive signal remains material and unexplained. Seven positions
+from the first two scheduled games were replayed with complete real histories:
+126 bounded requests including warmups/clean W1 checks passed all invariants and
+showed actual effort changes in each of four private workers. Clean W4 G1/control
+wall ratio1.0355 is descriptive; neither this nor different game CPU usage explains
+the competitive result. No new correctness/lifecycle defect was established.
+Mandatory W4 investigation is complete for the bounded campaign, but W4 strength
+or neutrality is not qualified. Fresh W1 confirmation remains a separate endpoint.
+
 The prospective reference audit completed43 first-event stratified samples, all
 with complete independent reduced/nominal TT-off qtrees and legal real-history replay.
 One negative-band depth3 sample crossed its threshold only at nominal depth;42 did
