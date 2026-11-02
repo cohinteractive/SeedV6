@@ -1,0 +1,37 @@
+{
+  "objective": "TC-R001",
+  "observedUtc": "2026-11-02T19:39:31.167636+00:00",
+  "initialHead": "ffb8526e",
+  "prerequisiteCommit": "8e95d23d40afab5567998054fbc6e94006064051",
+  "initialWorktree": "clean main",
+  "prerequisiteMasters": [
+    "P4-R008",
+    "P4-F024"
+  ],
+  "journalPresent": false,
+  "versionBaseline": {
+    "tuple": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 88
+    },
+    "sha256": "c5716852b62716a63cf540cbc6582f5d3d978ad24431da48e672789e9f5557a8",
+    "hex": "7b0a2020226d616a6f72223a20302c0a2020226d696e6f72223a20302c0a2020227061746368223a20302c0a2020226275696c64223a2038380a7d0a",
+    "regularSingleLinkNonReparse": true
+  },
+  "request": {
+    "path": "raw/owner-request.txt",
+    "sha256": "181e31a8529aece954e42115065b5fa8778d95374bbb5455c176ec08a4a21009"
+  },
+  "identityChecks": {
+    "build84Manifest": "../p4-learning/runtime-build84-v1-manifest.json",
+    "runtimeFilesVerified": 33,
+    "mismatches": [],
+    "javaSha256": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+    "modelSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "externalManifest": "../p4-learning/external-manifest.json",
+    "externalFilesVerified": 6
+  },
+  "limitations": "Hash verification, not new runtime qualification. No experimental computation yet. Four inherited Java processes belong to VS Code/Gradle; no observed engine tournament or Overwatch process. Approximately 18.6 GiB available RAM at initial observation. Idle window requested before heavy testing."
+}

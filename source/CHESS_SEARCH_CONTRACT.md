@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R008**
+Internal revision: **P4-R009**
 
-Status: **ACTIVE - 3 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build88 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 is technically completed and owner-accepted as unsuccessful on 3 November 2026: independent W1 strength criterion failed. No promotion or deployment.**
+Status: **ACTIVE - 3 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build88 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 is technically completed and owner-accepted as unsuccessful on 3 November 2026: independent W1 strength criterion failed. TC-R001 tactical-coverage research is separately owner-authorized and active after its prerequisite documentation commit. No promotion or deployment.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -35,8 +35,8 @@ separated under the established `research`/test ownership boundaries; production
 must not depend on research or acquire a competing engine implementation.
 Exclude unrelated GUI/application work, independent evaluator training or
 architecture programmes, broad unrelated rewrites and external deployment.
-This revision synchronizes the 3 November 2026 owner-accepted unsuccessful closeout
-of the CH-R001 strength-development
+The preceding P4-R008 revision synchronized the 3 November 2026 owner-accepted
+unsuccessful closeout of the CH-R001 strength-development
 CGLHW. Its [focused contract](../docs/research/search/p4-correction/CONTRACT.md)
 retains the objective, finite resources, exact build84 comparator and independent
 W1 criterion. [RESULTS](../docs/research/search/p4-correction/RESULTS.md) records
@@ -47,8 +47,15 @@ Technical qualification is not a successful foundational relabelling. The sole
 confirmation attempt is spent; further independent work needs renewed authority.
 HL-G1 normal production policy remains unchanged across W1-W16. No promotion,
 push, release, installation, deployment or additional research authorization follows
-from this acceptance. The separately requested tactical objective may begin only
-after this documentation-only synchronization is verified and committed.
+from this acceptance. Its documentation-only synchronization was verified and
+committed at `8e95d23d`. The separate 3 November owner request now authorizes
+**TC-R001 - tactical coverage through selective verification and extensions**,
+governed by its [focused contract](../docs/research/search/p4-tactical/CONTRACT.md)
+and [resume STATE](../docs/research/search/p4-tactical/STATE.md):18 hours charged
+experimental wall, at most1,120 initiated games, exact84 comparator and one reserved
+independent W1 attempt (up to320 fresh pairs; score>=53%, paired-normal95% lower>50%).
+W4 risk and PC coexistence remain mandatory; heavy tests await an agreed owner window.
+This authority changes neither the champion nor production defaults.
 
 ## Strength-first, externally informed research
 
@@ -483,7 +490,8 @@ dispositions and the still-unachieved TT strength-development aspiration. CH-R00
 is technically completed and owner-accepted as unsuccessful on 3 November 2026,
 with its strength objective unmet. Its sole confirmation attempt remains spent.
 This acceptance neither reopens completed campaigns nor authorizes a successor;
-the separately supplied tactical execution request has its own prerequisite boundary. The Frontier records priorities and hypotheses, not
+the separately supplied tactical execution request has satisfied its prerequisite
+commit boundary and governs TC-R001. The Frontier records priorities and hypotheses, not
 a predetermined exhaustive queue.
 For any future CGLHW objective, the owner must supply the **complete current
 authoritative premade CGLHW GPT prompt generator before GPT prepares its execution
@@ -498,7 +506,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R008/P4-F024** pair before mirror-dependent Project planning; the Frontier
+**P4-R009/P4-F025** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the
