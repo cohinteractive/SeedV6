@@ -1,6 +1,6 @@
 # CH-R001 resume state
 
-**ACTIVE â€” CH-C1 technically qualified prototype, 3 November2026.**
+**ACTIVE — CH-C1 technically qualified prototype, 3 November2026.**
 Read [CONTRACT](CONTRACT.md) first. CH-C1 is experimental; no strength result yet.
 No match running. Normal production policy and research champion HL-G1/build84
 are unchanged. This is progress from bootstrap, not research completion.
@@ -20,7 +20,7 @@ All33 exact frozen84 runtime manifest files hash-match, as do CP64 and Java21+35
 Host is Windows11 10.0.26300, Ryzen5 5500,6C/12T, about32GiB installed and16GiB free
 at bootstrap. Existing owned-job Fastchess runner supports audited scoreless legal
 fallbacks and independent history/PV/accounting audits; it will be qualified before
-games. Prior HL complete match costs (~30â€“32s/game) suggest640 games ~5.7h, leaving
+games. Prior HL complete match costs (~30–32s/game) suggest640 games ~5.7h, leaving
 margin below12h; this is an estimate, not a resource waiver. Fresh160 roots remain
 feasible using the retained independent source and exclusion receipts without reading
 the forbidden clock studies. Inputs still need their own prospective selection/freeze.
@@ -126,3 +126,31 @@ same implementation commit, not a production-policy promotion. Version SHA256:
 artifact equivalence checks are the next required step before games.
 `c1-runtime-v1-summary.json` adds14 W1/W4 managed-clock/movetime/history/terminal/
 post-stop-reset requests plus2 stop checks, passed in1.74s with closed processes.
+
+## Committed artifact and first match admission
+
+CH-C1 source **d51d147920bfe1e0f30caee47c90d7191cfbf52a/build86** is frozen in
+`raw/runtime-build86-c1-v1`. `build86-c1-qualification.json` compares2114 JAR
+entries against the prototype: only generated version metadata differs; all core
+implementation bytes match. Four artifact preflight requests passed. The rebuilt
+launcher then passed14 managed/history/terminal/reuse requests plus2 stops.
+Normal production policy remains HL-G1; this build identifies opt-in experimental code.
+
+`development-v1-openings.pgn` prospectively selects32 distinct legal16 roots from
+20,127 unique hash-bucket0 positions, seed2026110301, no evaluator/outcome filtering.
+Its tracked receipt pins input identity/history. Existing narrow input exception
+applies; generated games remain in ignored raw/. Parsing consumed42.93s technical time.
+No forbidden BOUNDARY2 study was opened.
+
+**Admitted next:** `c1-screen-v1-protocol.json`,32 W1 pairs/64 games, exact84 guided
+against86 corrected,10+0.1, one active game. Estimate2300s, hard runner cap3600s,
+inside remaining43,200s. No score-based decision until completed audit. At this
+recording the match has not started; before any restart inspect the exact runner
+process and `raw/c1-screen-v1-w1/run.json`/execution log. Never relaunch into an
+existing output path or infer completion from silence. Resource counters above
+remain0 until actual execution is reconciled; this admission reserves64 exploratory games.
+
+The initial admission-state append encountered a Windows default text-decoding
+error after protocol creation; no game had started. It was corrected to explicit
+UTF-8 and the attributable state text repaired. Frozen protocol/artifact/input
+bytes remain unchanged. No runtime code changed or additional build increment.
