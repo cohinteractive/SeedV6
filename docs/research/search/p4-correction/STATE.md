@@ -1,32 +1,36 @@
 # CH-R001 resume state
 
-**ACTIVE: W4 complete; frozen single C3 W1 confirmation admitted.** Read [CONTRACT](CONTRACT.md)
+**ACTIVE: the sole frozen C3 W1 confirmation is running.** Read [CONTRACT](CONTRACT.md)
 first. The governing strength objective is not yet demonstrated. Normal production
 HL-G1/build85 policy and the accepted research champion HL-G1/build84 are unchanged.
 
 ## Resume and ownership
 
-All three exploratory W1 screens and the W4 risk study are complete, audited and
-drained. No engine process is active at this admission recording. W4 original
-session37537 exited0; observed Python15912/29272/Fastchess12020 are absent. Never
-restart completed outputs. W4 independent pair arithmetic agrees with the runner.
+All development and W4 risk batches are complete, audited and drained. The sole
+independent W1 confirmation is now active: original execution session57956,
+Python launcher13280/worker14800, owned Fastchess19100. Authoritative output is
+`raw/c3-confirm-v1-champion84-w1/run.json` (observed running,0 games at first check).
+Revalidate exact processes/output on resume; never restart or overwrite this run.
+Admission commitaa03b93c. No concurrent engine computation or frozen-input changes.
 
-Next: execute `c3-confirm-v1-protocol.json` once after checking for an existing
-`raw/c3-confirm-v1-champion84-w1` run. All launch gates passed in
-`c3-confirm-v1-admission.json`: exact frozen artifacts/inputs/tool hashes, W4 technical
-qualification, and actual remaining resources above frozen conservative floors.
-Candidate source d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9/build88,
-corrected-retained/flags1043595263 remains unchanged. No score-based stopping,
-candidate/criterion changes, pooling, automatic retry or extra confirmation attempt.
-After full audit/drain apply the frozen analysis once, then reconcile the governing
-strength outcome and close out for GPT/owner review. No extra formulation or
-exploratory match is justified. No strength success yet; no confirmation game has
-started at this admission recording. Later live-handle entry supersedes this line.
+Await the original supervisor's final independent audit and process drain. Do not
+inspect partial scores for a decision, alter the candidate/criteria, stop on score,
+extend, pool, or retry. Exactly one confirmation attempt is now in flight. After full
+completion, run `tools/p4-correction-confirm-analysis.py --protocol c3-confirm-v1-protocol.json`
+once, reconcile the strength outcome and all resource use, then close out for
+GPT/owner reconciliation. No extra formulation/competitive experiment is authorized
+as an automatic continuation after this attempt. No strength success yet.
+
+Frozen candidate: d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9/build88,
+corrected-retained/flags1043595263; exact comparator HL-G1/build84. Full protocol
+c3-confirm-v1-protocol.json was committed9ebc3df4 and admitted after W4. All
+technical/input/artifact gates passed; no runtime source edits after candidate freeze.
 
 ## Resource ledger
 
 Completed spend:96 W1 exploratory pairs/192 games;32 W4 pairs/64 games;
-0 confirmation pairs/games/attempts. Charged match wall7918.3954778s, including setup/audit.
+0 completed confirmation pairs/games;1 confirmation attempt in flight.
+Charged completed match wall7918.3954778s, including setup/audit.
 Remaining:32 W1 exploratory pairs/64 games;160 confirmation pairs/320 games;
 0 W4 pairs/games;384 total games;35,281.6045222s of43,200s match wall.
 Confirmation admission reserves160 pairs/320 games, estimate10000s/hard12000s.
@@ -339,3 +343,19 @@ Final launch checks verified all frozen runtime manifests/files, exact84, openin
 selection/analysis/adapter identities and version bytes; actual35281.60s and384 total
 games remain, exceeding the prospective33000s/384-game admission floors. The sole
 confirmation is admitted with unchanged protocol and candidate; see admission JSON.
+
+
+Confirmation live launch observed: Python13280/14800, Fastchess19100, execution
+session57956; raw status running and0 completed games at first observation. This
+supersedes the prelaunch admission note. No second attempt or candidate revision is
+authorized from the remaining exploratory allowance. Preserve any failed/partial
+output and charge actual execution. Original supervisor owns hard timeout/audits/drain.
+
+
+Closeout continuity note: affected masters stillP4-R006/P4-F022 launch state. Update
+both once to the actual CH execution/strength outcome, preserving champion/default
+and acceptance boundaries. Frontier's final historical HL paragraph calls launch
+mirrorsP4-R003/P4-F016 the last confirmed state; clarify that historical timing and
+use the owner's later explicit CH-launch confirmationP4-R005/P4-F021 as current
+last-confirmed mirror state. Refresh both revised Project mirrors before dependent
+Project planning; no registry/CEC or historical research result change is needed.
