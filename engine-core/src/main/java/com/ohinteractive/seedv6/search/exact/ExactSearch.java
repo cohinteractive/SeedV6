@@ -468,6 +468,7 @@ public final class ExactSearch {
         if(iterationReuse != null) iterationReuse.clear();
         rootJobReuse=rootJobHistory=false;
         clearRequestLearning();
+        if(retainedCorrection()) constructionState.correction.beginRequest();
         requestActive = true;
     }
 
@@ -810,6 +811,7 @@ public final class ExactSearch {
         clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
         clearRequestLearning();
+        if(retainedCorrection()) constructionState.correction.beginRequest();
         requestActive = true;
     }
 
@@ -827,6 +829,22 @@ public final class ExactSearch {
         clearFeedback();
         if(iterationReuse != null) iterationReuse.clear();
         clearRequestLearning();
+        clearRetainedCorrection();
+    }
+
+    /** Called only by the idle owner, including drained parallel workers. */
+    void clearRetainedCorrection() {
+        if(active || requestActive) throw new IllegalStateException("Search request active.");
+        discardRetainedCorrection();
+    }
+
+    void discardRetainedCorrection() {
+        if(active) throw new IllegalStateException("Active Search invocation.");
+        if(retainedCorrection()) constructionState.correction.forget();
+    }
+
+    private boolean retainedCorrection() {
+        return constructionState!=null && constructionState.correction!=null && constructionState.correction.saved!=null;
     }
 
     private boolean requestLearning() {
@@ -918,7 +936,7 @@ public final class ExactSearch {
         if(flatQFrames!=null) requireFlatQuiescenceDomain();
         if(flatMainFrames!=null) requireFlatMainDomain();
         gameHistory.requireCurrent(board);
-        if(!requestActive) { advanceGeneration(); clearFeedback(); }
+        if(!requestActive) { advanceGeneration(); clearFeedback(); clearRetainedCorrection(); }
         long start = System.nanoTime();
         active = true;
         nodes = 0;
@@ -981,10 +999,12 @@ public final class ExactSearch {
                         || (score>alpha && score<beta && !TranspositionScores.isMateScore(score))))
                 iterationReuse.complete(depth, pv[0], pvLength[0]);
             long[] line = Arrays.copyOf(pv[0], pvLength[0]);
+            if(requestActive && retainedCorrection()) constructionState.correction.saveCompleted();
             return new ExactSearchResult(depth, true, line.length == 0 ? 0 : line[0], score,
                     line, nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), selective, maximumExtensionPlies);
         } catch(Aborted ignored) {
             if(constructionState!=null) constructionState.reset();
+            if(requestActive && retainedCorrection()) constructionState.correction.rollback();
             if(iterationReuse != null) iterationReuse.clear();
             if(quietHistory != null) Arrays.fill(quietHistory, 0);
             if(continuationHistory != null) Arrays.fill(continuationHistory, (short) 0);
@@ -994,6 +1014,7 @@ public final class ExactSearch {
                     nodes, System.nanoTime() - start, qnodes, Math.max(0, maximumQply - Math.max(0, consumedQplies)), false, maximumExtensionPlies);
         } catch(RuntimeException | Error failure) {
             if(constructionState!=null) constructionState.reset();
+            if(retainedCorrection()) constructionState.correction.forget();
             if(iterationReuse != null) iterationReuse.clear();
             throw failure;
         } finally {

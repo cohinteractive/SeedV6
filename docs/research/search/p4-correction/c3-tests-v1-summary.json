@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "suites": {
+    "com.ohinteractive.seedv6.search.exact.Cp64FlatNullTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.FlatExactSearchTest": {
+      "tests": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.P4CorrectionTest": {
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.P4LearningTest": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.Sr002FlatQuiescenceTest": {
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.VerifiedNullAccountingTest": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "totals": {
+    "tests": 62,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "buildWallSecondsApprox": 53,
+  "log": "raw/c3-tests-v1.txt",
+  "xml": "raw/c3-tests-v1-xml",
+  "scope": "C3 retention/abort/decay/new-game/failure/private-worker cases; C1/C2 controls; null/accounting/exact main and q references; project boundaries. Diagnostic-only sequence harness is subsequent."
+}

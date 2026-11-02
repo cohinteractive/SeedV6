@@ -24,7 +24,7 @@ final class FlatSearchState {
 
     FlatSearchState(FlatSearchConfig config) {
         this.config=config;
-        correction=config.has(EVAL_CORRECTION)?new CorrectionHistory():null;
+        correction=config.has(EVAL_CORRECTION)?new CorrectionHistory(config.has(RETAINED_CORRECTION)):null;
         workingEval=correction!=null?new int[ExactSearch.MAX_DEPTH+1]:null;
         ruleEpoch=correction!=null?new long[ExactSearch.MAX_DEPTH+1]:null;
         ttRawEval=config.has(TT_INFORMATION)?new int[ExactSearch.MAX_DEPTH+1]:null;

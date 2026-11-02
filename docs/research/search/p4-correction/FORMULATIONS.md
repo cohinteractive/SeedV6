@@ -77,7 +77,7 @@ argument; the source fix and independent constant-evaluator regression passed fo
 
 ## CH-C2 - pawn correction shared by main decisions and qsearch stand-pat
 
-**Technically qualified; build87 frozen;32-pair W1 screen in progress.**
+**Technically qualified; build87 screen complete, adverse/inconclusive.**
 Profile `corrected-q`,flags506724351. Adds CORRECTED_QSEARCH to CH-C1 while keeping
 its pawn key, update eligibility/EMA/cap, request lifetime and HL-G1 effort policy.
 At non-check, nonterminal ordinary qsearch nodes, raw evaluator output is validated,
@@ -105,3 +105,39 @@ as a concrete transfer question. SeedV6 currently clears correction at request
 boundaries and abort, so a retained formulation would need explicit completed-label,
 reset/new-game, decay, failure and worker-private guarantees. No implementation or
 match is selected from this source fact alone; await CH-C2 evidence first.
+
+Seed lifecycle inspection adds two concrete constraints for that conditional branch.
+`ExactSearch` clears correction when an invocation aborts, and managed clock/node
+requests commonly finish on an aborted final iteration. Merely retaining at request
+end would therefore preserve nothing useful; a candidate would need a separate
+snapshot of completed-invocation feedback and rollback of unfinished updates.
+ParallelSearch.newGame currently clears the shared TT only, which is sufficient for
+current request-scoped histories. Any longer-lived private correction would also
+need an idle/drained per-worker reset there. These are prospective dependencies,
+not defects in the existing C1/C2 lifetime and not authorization for broad parallel
+redesign. No retention code has been implemented or selected yet.
+
+C2 completed22W/13D/29L (44.53125%), paired95 interval33.37-55.69%; all audits
+passed. No gain established. Common-input difference from C1 is descriptive only.
+
+## CH-C3 - decayed completed correction across Search requests
+
+**Technically qualified; committed artifact freeze next; no games admitted.**
+Profile `corrected-retained`, flags1043595263. Extends C2 main+qsearch correction
+with a private64KiB completed-invocation snapshot.
+Successful managed invocations replace the snapshot; an aborted invocation restores
+it and discards unfinished updates. Each new request decays saved values7/8 toward
+zero before use (about5 requests half-life). New-game and runtime errors clear all
+correction state; W4 new-game explicitly forgets private snapshots after draining.
+Other HL histories retain their existing request-only lifetime. Unmanaged standalone
+invocations do not participate in retained learning. No shared mutable table or
+parallel cooperation redesign. This addresses a verified lifetime difference from
+the pinned Stockfish source, not an inferred causal explanation of C2 losses.
+Additional copying/aging and stale broad pawn aliases are measured risks.
+
+C3 qualification passed62 selected tests plus12 focused repeats, W1/W4 observations,
+sequence retention/rollback/reset and clean costs,78 UCI isolation requests+8 stops,
+and20 runtime requests+2 stops. All18 later W1 requests read retained feedback;12
+first evaluations and14 final request outcomes change. No independent label truth or
+strength follows. Clean wall ratios1.00527 W1/1.00582 W4 versus guided, short-variable
+measurements. Default/exact84 controls remain equal and frozen C1/C2 artifacts intact.

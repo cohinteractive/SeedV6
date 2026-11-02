@@ -1,39 +1,41 @@
 # CH-R001 resume state
 
-**ACTIVE: CH-C2 frozen W1 exploratory screen running.** Read [CONTRACT](CONTRACT.md)
+**ACTIVE: CH-C3 technically qualified; committed artifact freeze next.** Read [CONTRACT](CONTRACT.md)
 first. The governing strength objective is not yet demonstrated. Normal production
 HL-G1/build85 policy and the accepted research champion HL-G1/build84 are unchanged.
 
 ## Resume and ownership
 
-CH-C1 is complete and drained. CH-C2 uses `c2-screen-v1-protocol.json`, frozen in
-commit `eea24b5e`, and output `raw/c2-screen-v1-w1`. Its original execution session
-is94506, observed Python launcher31132/worker10508 and owned Fastchess16848.
-Revalidate `run.json`, output and exact processes before any action; identifiers
-are observations, not perpetual liveness claims. Never relaunch into existing output.
-At the latest inspection30 of64 games were complete and status was running. No
-partial score has informed selection or stopping. The original qualified supervisor
-owns timeout, warning handling and process draining. Await its final independent
-audit and handle drain before reading results or running other engine computation.
-A chat observer produced excessive repeated output; this did not restart or alter
-the match. Authoritative evidence is the existing runner output, not chat polling.
+C1 and C2 are complete, fully audited and drained. No competitive or diagnostic process remains active. C3 sequential diagnostics
+(session31779/Python34300) completed with six successful execution records and
+clean process exits; its UCI checks also closed all engines. C2's original session94506 is no longer available; its
+run record says passed/exit0, all engine handles drained and observed OS PIDs are
+absent. Never restart either output. The independent arithmetic cross-check of C2
+pair mean/standard error agrees with the qualified runner.
 
-Next: reconcile the completed C2 audit and actual games/wall time; assess its result
-alongside mechanism/cost evidence. Select further bounded development only for a
-specific credible question, or freeze a justified finalist for W4 risk and the single
-fresh160-pair W1 confirmation. No owner decision currently blocks continuation.
-Cross-request lifetime is a conditional investigation, not a selected implementation.
-No independent confirmation or W4 competitive match has started.
+Next: implement and qualify CH-C3, bounded cross-request retention of completed
+correction feedback over the main+qsearch integration. Snapshot only completed
+invocations; abort restores that snapshot; each request decays it7/8; new-game or
+runtime failure forgets it. Propagate private forgetting through the idle/drained
+parallel new-game path. HL histories remain request-scoped. This is a specific
+lifetime hypothesis grounded in inspected external lifetime and current timed-search
+abort behavior, not a parameter sweep. No C3 game is admitted until meaningful
+lifetime/rollback/worker/default-isolation and runtime/cost checks pass.
+
+Remaining development can fund a32-pair C3 screen if qualified; further spend depends
+on evidence. No finalist selected, no independent confirmation/W4 match started.
+The confirmation analysis tool has been adapted to the exact84 comparator; seven
+synthetic cases pass, including practical-minimum rejection and disagreement with
+bounded sensitivity. Degenerate zero variance cannot replace the required normal
+criterion with a different success rule. This preparation uses no confirmation data.
 
 ## Resource ledger
 
-Completed spend:32 W1 exploratory pairs/64 games;0 confirmation pairs/games/attempts;
-0 W4 pairs/games. Charged match wall1951.7385866s, conservatively including setup/audit.
-Completed-spend balance:96 W1 exploratory pairs/192 games;160 confirmation pairs/320
-games;32 W4 pairs/64 games;576 total games;41,248.2614134s of43,200s match wall.
-C2 currently reserves32 exploratory pairs/64 games and at most3600 runner seconds;
-add actual execution, including partial/failed games and whole run wall, at drainage.
-Ordinary technical work is separate; summaries below identify bounded tests/diagnostics.
+Completed spend:64 W1 exploratory pairs/128 games;0 confirmation pairs/games/attempts;
+0 W4 pairs/games. Charged match wall3988.850172s, including setup/audit.
+Remaining:64 W1 exploratory pairs/128 games;160 confirmation pairs/320 games;
+32 W4 pairs/64 games;512 total games;39,211.149828s of43,200s match wall.
+No active reservation. Ordinary technical work is separate and summarized below.
 Budgets are ceilings, not consumption targets. No pooling exploration and confirmation.
 
 ## Authority and bootstrap challenge
@@ -127,7 +129,7 @@ C2 source84c951287ea7c9ef0a280d32baacf976715c90c5/build87; frozen
 the prototype except generated version metadata, all27 non-JAR files identical,
 4 preflights passed. Direct build86->87 changed only build; current version hash
  a32ab6aaab3b2923b3a3def16f7c4e7457540b83115e33dbd7ed2e36d0f1479d.
-No runtime edits after that freeze. Full GUI/training/platform tests were not run;
+C3 changes will follow this freeze; the frozen C2 artifact is preserved. Full GUI/training/platform tests were not run;
 no GUI/native integration or deployment conclusion. Technical qualifications do not
 establish playing strength.
 
@@ -170,3 +172,59 @@ JSON uses CRLF; CRLF-aware `git diff --check` passes without persistent Git conf
 rewriting frozen bytes. Raw evidence is local-only and must be checked for availability
 on a fresh checkout. No unrelated inherited work was absorbed or discarded. Latest
 known HEAD eea24b5e; current uncommitted continuity/lifetime records belong to CH-R001.
+
+## C2 completed result and C3 decision
+
+`c2-screen-v1-w1-summary.json`:64 normal games/32 pairs,22W/13D/29L,44.53125%.
+Paired-normal95 interval33.3702-55.6923%; Hoeffding95 interval20.5232-68.5393%.
+All9407 request audits passed, no warnings, inputs stable, handles drained; observed
+OS processes absent. Whole wall2037.1115854s, runner2034.7643092s. Raw evidence stays
+at `raw/c2-screen-v1-w1`. No result was used before complete audit/drain.
+C2 did not establish a gain. Its2.34 percentage-point difference below C1 on common
+inputs is descriptive and too uncertain/selected to isolate a qsearch effect.
+
+The next question is whether repeated rebuilding/discarding feedback each move
+limits useful structural learning. C3 retains a completed-invocation snapshot and
+ages it, while preserving raw/working distinctions and all C2 eligibility/consumers.
+The7/8 per-request factor gives roughly5-request half-life without tuning to game
+scores; it limits stale structural/tactical aliases, but cannot eliminate them.
+Additional payload is64KiB/worker; copies occur only at completed invocation and
+request boundaries. Risks remain context collisions, nonpawn changes and feedback
+self-reinforcement. W1/W4 tests and representative sequential-history diagnostics
+must establish actual retention/abort rollback and new-game/error clearing. This is
+not a strength promise or automatic promotion of C2 despite negative evidence.
+
+
+C3 initial qualification passed62 selected tests in53s. The new sequence diagnostic
+initially failed compilation for a missing Move import (raw log retained); after
+repair,12 focused correction tests passed and research workspace installed in6s.
+Prototype `runtime-c3-prototype-v1-manifest.json` and `c3-source-v1-manifest.json`
+pin uncommitted C3 atopf9af98d4 with inherited build87 metadata. This is not a new
+committed application build. Main observation and three-request sequence observation/
+clean cost protocols were frozen before execution. Session31779 owns their sequential
+Java execution; no competitive games. Await all execution records before summarizing.
+
+
+C3 completed qualification: `c3-diagnostic-v1-summary.json` records54 main observed
+requests plus108 sequence requests and81 clean W1 repeats. All invariants and W1
+observation neutrality pass. Current C2 reproduces all9 prior frozen W1 root outcomes;
+C3's9 first sequence requests match C2, while14/18 later W1 outcomes differ. All18
+later W1 requests consume carried feedback,12 change their first evaluation; W4 has
+69 retained-worker requests and23 changed first reads. W1 sequences save249 completed
+invocations and restore25 aborts; W4 saves5200/restores79. Max correction253 W1/227 W4,
+no near-saturation counts. These are mechanism facts, not independently true labels.
+
+Clean sequence cost:486 requests including162 warmups,67.20s execution total. C3/
+guided geometric-mean wall1.00527 W1/1.00582 W4; simultaneous C2 ratios0.99662/0.99728.
+These short variable measurements include changed work, not isolated speed effects.
+C3 UCI isolation passed78 requests+8 stop/reset checks; exact84/default/guided W1
+controls match. Runtime checks passed20 requests+2 stops, including W1 fresh versus
+Clear Hash reset equality and repeated-request reuse; processes closed. See
+`c3-cost-v1-summary.json`, `c3-isolation-v1-summary.json`, `c3-runtime-v1-summary.json`.
+C3 is ready for direct qualifying build handling, committed rebuild/artifact bridge,
+and prospective32-pair screen. No C3 match has started or been admitted yet.
+
+Direct qualifying finalization verified build87->88 with unchanged user fields and
+all other version bytes; hashc5716852b62716a63cf540cbc6582f5d3d978ad24431da48e672789e9f5557a8.
+This identifies the attributable opt-in retained-feedback implementation in its own
+commit. No finalizer, production/default promotion or extra documentation bump.

@@ -12,7 +12,7 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
         IMPROVING, CAUTION, CHECK_EXTENSION, RECAPTURE_EXTENSION, FUTILITY, REVERSE_FUTILITY, HISTORY_PROTECTION,
         LAZY_IMPROVING, REDUCTION_FUTILITY, NOMINAL_FUTILITY, VERIFIED_NULL,
         HEURISTIC_TT_MEMORY, AGED_HEURISTIC_TT_MEMORY, TT_INFORMATION, REQUEST_LEARNING, HISTORY_EFFORT,
-        EVAL_CORRECTION, CORRECTED_QSEARCH }
+        EVAL_CORRECTION, CORRECTED_QSEARCH, RETAINED_CORRECTION }
 
     public FlatSearchConfig(long flags) { this(flags,100,200); }
 
@@ -49,6 +49,8 @@ public record FlatSearchConfig(long flags,int futilityMargin,int reverseMargin) 
             throw new IllegalArgumentException("Evaluation correction requires request learning");
         if((flags&(1L<<Feature.CORRECTED_QSEARCH.ordinal()))!=0 && (flags&(1L<<Feature.EVAL_CORRECTION.ordinal()))==0)
             throw new IllegalArgumentException("Corrected qsearch requires evaluation correction");
+        if((flags&(1L<<Feature.RETAINED_CORRECTION.ordinal()))!=0 && (flags&(1L<<Feature.EVAL_CORRECTION.ordinal()))==0)
+            throw new IllegalArgumentException("Retained correction requires evaluation correction");
     }
     public boolean has(Feature feature) { return (flags&(1L<<feature.ordinal()))!=0; }
     public FlatSearchConfig with(Feature feature,boolean enabled) {

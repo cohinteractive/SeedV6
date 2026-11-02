@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "suites": {
+    "com.ohinteractive.seedv6.search.exact.P4CorrectionTest": {
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "log": "raw/c3-tests-v3-and-build.txt",
+  "buildWallSecondsApprox": 6,
+  "failedPriorCompile": "raw/c3-tests-v2-and-build.txt: new sequence diagnostic omitted Move import; fixed before running any diagnostic; no engine defect.",
+  "scope": "12 correction tests rerun after diagnostic counters/sequence harness; installed workspace built."
+}

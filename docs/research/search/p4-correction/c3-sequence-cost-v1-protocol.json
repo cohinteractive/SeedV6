@@ -1,0 +1,23 @@
+{
+  "id": "CH-C3-SEQUENCE-COST-V1",
+  "study": "P4CorrectionSequenceStudy",
+  "profiles": [
+    "guided",
+    "corrected-q",
+    "corrected-retained"
+  ],
+  "workers": [
+    1,
+    4
+  ],
+  "rounds": 2,
+  "depth": 8,
+  "budget": 100000,
+  "corpus": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+  "corpusSha256": "b2815c85298025ea353f9d4b2b5752d1a527978b27f0aa96eb7d5a6e2c1d0464",
+  "runtimeManifest": "runtime-c3-prototype-v1-manifest.json",
+  "resources": "Hash64 Java21+35 Xms256m Xmx512m ActiveProcessorCount4, sequential W1/W4; no competing heavy work",
+  "stop": "60s per request,300s per domain; fail invariants/observation mismatch and preserve output",
+  "sequence": "For sequence studies, three roots at final prefix minus4/minus2/0 plies from each established real history; FEN-only roots repeat, never candidate-selected continuation. Same driver reused without new-game between roots; fresh per sequence/profile; new-game clearing checked. Cost uses one warmup round and no correction observer.",
+  "games": 0
+}

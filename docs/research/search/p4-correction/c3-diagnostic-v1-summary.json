@@ -1,0 +1,404 @@
+{
+  "status": "passed",
+  "main": {
+    "1": {
+      "requests": 27,
+      "profiles": {
+        "corrected-q": {
+          "reads": 1088253,
+          "changed": 133671,
+          "absoluteCorrection": 2480912,
+          "directionRejected": 17671,
+          "changedUpdates": 1722,
+          "nearSaturation": 0,
+          "guardRejected": 192454,
+          "ruleRejected": 273,
+          "improvingChanged": 1893,
+          "qreads": 849931,
+          "qchanged": 81238,
+          "qabsoluteCorrection": 1375796,
+          "retainedRequests": 0,
+          "retainedEntries": 0,
+          "savedInvocations": 0,
+          "abortedRestores": 0,
+          "retainedFirstReads": 0,
+          "retainedFirstChanged": 0,
+          "maxCorrection": 243,
+          "updates": [
+            339,
+            131,
+            1262
+          ]
+        },
+        "corrected-retained": {
+          "reads": 1088253,
+          "changed": 133671,
+          "absoluteCorrection": 2480912,
+          "directionRejected": 17671,
+          "changedUpdates": 1722,
+          "nearSaturation": 0,
+          "guardRejected": 192454,
+          "ruleRejected": 273,
+          "improvingChanged": 1893,
+          "qreads": 849931,
+          "qchanged": 81238,
+          "qabsoluteCorrection": 1375796,
+          "retainedRequests": 0,
+          "retainedEntries": 0,
+          "savedInvocations": 91,
+          "abortedRestores": 6,
+          "retainedFirstReads": 0,
+          "retainedFirstChanged": 0,
+          "maxCorrection": 243,
+          "updates": [
+            339,
+            131,
+            1262
+          ]
+        }
+      },
+      "c2FrozenPrototypeOutcomesUnchanged": 9
+    },
+    "4": {
+      "requests": 27,
+      "profiles": {
+        "corrected-q": {
+          "reads": 1154283,
+          "changed": 110361,
+          "absoluteCorrection": 1730426,
+          "directionRejected": 19980,
+          "changedUpdates": 2312,
+          "nearSaturation": 0,
+          "guardRejected": 200706,
+          "ruleRejected": 293,
+          "improvingChanged": 1826,
+          "qreads": 896794,
+          "qchanged": 63819,
+          "qabsoluteCorrection": 945344,
+          "retainedRequests": 0,
+          "retainedEntries": 0,
+          "savedInvocations": 0,
+          "abortedRestores": 0,
+          "retainedFirstReads": 0,
+          "retainedFirstChanged": 0,
+          "maxCorrection": 125,
+          "updates": [
+            544,
+            193,
+            1590
+          ]
+        },
+        "corrected-retained": {
+          "reads": 1044410,
+          "changed": 105028,
+          "absoluteCorrection": 1695974,
+          "directionRejected": 17116,
+          "changedUpdates": 1757,
+          "nearSaturation": 0,
+          "guardRejected": 188188,
+          "ruleRejected": 280,
+          "improvingChanged": 851,
+          "qreads": 809816,
+          "qchanged": 63843,
+          "qabsoluteCorrection": 979221,
+          "retainedRequests": 0,
+          "retainedEntries": 0,
+          "savedInvocations": 1963,
+          "abortedRestores": 21,
+          "retainedFirstReads": 0,
+          "retainedFirstChanged": 0,
+          "maxCorrection": 113,
+          "updates": [
+            371,
+            124,
+            1274
+          ]
+        }
+      }
+    }
+  },
+  "sequences": {
+    "1": {
+      "requests": 54,
+      "retainedCumulative": {
+        "reads": 1869642,
+        "changed": 278740,
+        "absoluteCorrection": 7386098,
+        "directionRejected": 33192,
+        "changedUpdates": 3307,
+        "nearSaturation": 0,
+        "guardRejected": 327223,
+        "ruleRejected": 395,
+        "improvingChanged": 4669,
+        "qreads": 1438903,
+        "qchanged": 163985,
+        "qabsoluteCorrection": 4302622,
+        "retainedRequests": 18,
+        "retainedEntries": 642,
+        "savedInvocations": 249,
+        "abortedRestores": 25,
+        "retainedFirstReads": 18,
+        "retainedFirstChanged": 12,
+        "maxCorrection": 253,
+        "updates": [
+          641,
+          392,
+          2307
+        ]
+      },
+      "perWorker": [
+        {
+          "reads": 1869642,
+          "changed": 278740,
+          "absoluteCorrection": 7386098,
+          "directionRejected": 33192,
+          "changedUpdates": 3307,
+          "nearSaturation": 0,
+          "guardRejected": 327223,
+          "ruleRejected": 395,
+          "improvingChanged": 4669,
+          "qreads": 1438903,
+          "qchanged": 163985,
+          "qabsoluteCorrection": 4302622,
+          "retainedRequests": 18,
+          "retainedEntries": 642,
+          "savedInvocations": 249,
+          "abortedRestores": 25,
+          "retainedFirstReads": 18,
+          "retainedFirstChanged": 12,
+          "maxCorrection": 253,
+          "updates": [
+            641,
+            392,
+            2307
+          ]
+        }
+      ],
+      "savedNonzeroAtEnd": [
+        [
+          97
+        ],
+        [
+          30
+        ],
+        [
+          52
+        ],
+        [
+          58
+        ],
+        [
+          33
+        ],
+        [
+          70
+        ],
+        [
+          68
+        ],
+        [
+          41
+        ],
+        [
+          77
+        ]
+      ],
+      "firstRequestsEqualC2": 9,
+      "laterRequestsWithChangedOutcome": 14
+    },
+    "4": {
+      "requests": 54,
+      "retainedCumulative": {
+        "reads": 1931348,
+        "changed": 243147,
+        "absoluteCorrection": 4597847,
+        "directionRejected": 33342,
+        "changedUpdates": 3729,
+        "nearSaturation": 0,
+        "guardRejected": 326673,
+        "ruleRejected": 450,
+        "improvingChanged": 2574,
+        "qreads": 1504278,
+        "qchanged": 145446,
+        "qabsoluteCorrection": 2612027,
+        "retainedRequests": 69,
+        "retainedEntries": 1169,
+        "savedInvocations": 5200,
+        "abortedRestores": 79,
+        "retainedFirstReads": 69,
+        "retainedFirstChanged": 23,
+        "maxCorrection": 227,
+        "updates": [
+          702,
+          431,
+          2637
+        ]
+      },
+      "perWorker": [
+        {
+          "reads": 1056786,
+          "changed": 158958,
+          "absoluteCorrection": 3751989,
+          "directionRejected": 16659,
+          "changedUpdates": 2107,
+          "nearSaturation": 0,
+          "guardRejected": 171599,
+          "ruleRejected": 289,
+          "improvingChanged": 2412,
+          "qreads": 823518,
+          "qchanged": 96615,
+          "qabsoluteCorrection": 2156992,
+          "retainedRequests": 18,
+          "retainedEntries": 474,
+          "savedInvocations": 1511,
+          "abortedRestores": 24,
+          "retainedFirstReads": 18,
+          "retainedFirstChanged": 10,
+          "maxCorrection": 227,
+          "updates": [
+            416,
+            383,
+            1335
+          ]
+        },
+        {
+          "reads": 276965,
+          "changed": 28900,
+          "absoluteCorrection": 314163,
+          "directionRejected": 4867,
+          "changedUpdates": 608,
+          "nearSaturation": 0,
+          "guardRejected": 51660,
+          "ruleRejected": 50,
+          "improvingChanged": 67,
+          "qreads": 213587,
+          "qchanged": 16557,
+          "qabsoluteCorrection": 174528,
+          "retainedRequests": 17,
+          "retainedEntries": 243,
+          "savedInvocations": 1182,
+          "abortedRestores": 18,
+          "retainedFirstReads": 17,
+          "retainedFirstChanged": 6,
+          "maxCorrection": 167,
+          "updates": [
+            112,
+            13,
+            491
+          ]
+        },
+        {
+          "reads": 283742,
+          "changed": 26484,
+          "absoluteCorrection": 234081,
+          "directionRejected": 5728,
+          "changedUpdates": 496,
+          "nearSaturation": 0,
+          "guardRejected": 50820,
+          "ruleRejected": 51,
+          "improvingChanged": 0,
+          "qreads": 219968,
+          "qchanged": 15323,
+          "qabsoluteCorrection": 126751,
+          "retainedRequests": 17,
+          "retainedEntries": 210,
+          "savedInvocations": 1215,
+          "abortedRestores": 18,
+          "retainedFirstReads": 17,
+          "retainedFirstChanged": 4,
+          "maxCorrection": 60,
+          "updates": [
+            96,
+            18,
+            385
+          ]
+        },
+        {
+          "reads": 313855,
+          "changed": 28805,
+          "absoluteCorrection": 297614,
+          "directionRejected": 6088,
+          "changedUpdates": 518,
+          "nearSaturation": 0,
+          "guardRejected": 52594,
+          "ruleRejected": 60,
+          "improvingChanged": 95,
+          "qreads": 247205,
+          "qchanged": 16951,
+          "qabsoluteCorrection": 153756,
+          "retainedRequests": 17,
+          "retainedEntries": 242,
+          "savedInvocations": 1292,
+          "abortedRestores": 19,
+          "retainedFirstReads": 17,
+          "retainedFirstChanged": 3,
+          "maxCorrection": 100,
+          "updates": [
+            78,
+            17,
+            426
+          ]
+        }
+      ],
+      "savedNonzeroAtEnd": [
+        [
+          104,
+          68,
+          43,
+          31
+        ],
+        [
+          34,
+          13,
+          15,
+          20
+        ],
+        [
+          51,
+          11,
+          9,
+          11
+        ],
+        [
+          34,
+          22,
+          20,
+          29
+        ],
+        [
+          32,
+          15,
+          6,
+          6
+        ],
+        [
+          52,
+          17,
+          25,
+          21
+        ],
+        [
+          41,
+          35,
+          31,
+          39
+        ],
+        [
+          43,
+          17,
+          24,
+          19
+        ],
+        [
+          41,
+          34,
+          36,
+          34
+        ]
+      ]
+    }
+  },
+  "w1CleanObservationRepeats": 81,
+  "raw": "raw/c3-observe-v1-w1.jsonl, raw/c3-observe-v1-w4.jsonl, raw/c3-sequence-observe-v1-w1.jsonl, raw/c3-sequence-observe-v1-w4.jsonl",
+  "limits": "Mechanism activation, same W1 clean/observed outcomes and mandatory invariants. Cumulative counters use only each sequence final row. W4 scheduling equality is not claimed. No strength evidence."
+}

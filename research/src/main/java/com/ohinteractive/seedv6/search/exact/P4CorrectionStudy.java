@@ -12,10 +12,11 @@ import com.ohinteractive.seedv6.search.tt.TTable;
 /** CH-R001 bounded correction observations and clean request costs. No strength inference. */
 public final class P4CorrectionStudy {
     public static FlatSearchConfig flags(String profile,int workers) {
-        if(!Set.of("guided","corrected","corrected-q").contains(profile)) throw new IllegalArgumentException("Unknown correction profile: "+profile);
+        if(!Set.of("guided","corrected","corrected-q","corrected-retained").contains(profile)) throw new IllegalArgumentException("Unknown correction profile: "+profile);
         return P4LearningStudy.flags("guided",workers)
                 .with(FlatSearchConfig.Feature.EVAL_CORRECTION,!profile.equals("guided"))
-                .with(FlatSearchConfig.Feature.CORRECTED_QSEARCH,profile.equals("corrected-q"));
+                .with(FlatSearchConfig.Feature.CORRECTED_QSEARCH,profile.equals("corrected-q")||profile.equals("corrected-retained"))
+                .with(FlatSearchConfig.Feature.RETAINED_CORRECTION,profile.equals("corrected-retained"));
     }
 
     static final class Trace implements SelectivityTrace {

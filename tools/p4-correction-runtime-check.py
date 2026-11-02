@@ -48,6 +48,22 @@ def main():
                     if position == repeated and (result['nodes'] != 0 or 'score cp 0' not in (result['finalInfo'] or '')):
                         raise ValueError('Real threefold must adjudicate before searching')
                     report['rows'].append({'workers': workers, 'position': position, 'request': request, 'result': result})
+                if args.profile == 'corrected-retained':
+                    reuse = []
+                    for step in range(3):
+                        if step == 0:
+                            engine.send('ucinewgame')
+                        elif step == 2:
+                            engine.send('setoption name Clear Hash')
+                        engine.send('isready'); engine.until('readyok')
+                        engine.send('position startpos'); engine.send('go depth 6')
+                        result = b.inspect_result(b.chess.Board(), engine.until('bestmove ', 20))
+                        reuse.append(result)
+                        report['rows'].append({'workers': workers, 'request': 'reuse/reset depth 6', 'step': step, 'result': result})
+                    if workers == 1 and m.stable(reuse[0]) != m.stable(reuse[2]):
+                        raise ValueError('Clear Hash did not reproduce fresh W1 state')
+                    report.setdefault('reuseChecks', []).append({'workers': workers, 'freshResetW1Equal': workers == 1,
+                        'retainedRequestDifferent': m.stable(reuse[0]) != m.stable(reuse[1])})
                 engine.send('setoption name Clear Hash'); engine.send('isready'); engine.until('readyok')
                 engine.send('position startpos'); engine.send('go infinite'); time.sleep(.1); engine.send('stop')
                 b.inspect_result(b.chess.Board(), engine.until('bestmove ', 20))

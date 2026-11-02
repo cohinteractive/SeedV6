@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "domains": {
+    "1": {
+      "requestsIncludingWarmup": 243,
+      "warmupRequests": 81,
+      "measuredRequests": 162,
+      "profiles": {
+        "corrected-q": {
+          "requests": 54,
+          "geometricMeanWallRatio": 0.9966185170834557,
+          "medianWallRatio": 1.008451695673945
+        },
+        "corrected-retained": {
+          "requests": 54,
+          "geometricMeanWallRatio": 1.0052746665898353,
+          "medianWallRatio": 1.0165220789841551
+        }
+      },
+      "executionWallSeconds": 40.586454599993885
+    },
+    "4": {
+      "requestsIncludingWarmup": 243,
+      "warmupRequests": 81,
+      "measuredRequests": 162,
+      "profiles": {
+        "corrected-q": {
+          "requests": 54,
+          "geometricMeanWallRatio": 0.9972790382217833,
+          "medianWallRatio": 0.9823233406194103
+        },
+        "corrected-retained": {
+          "requests": 54,
+          "geometricMeanWallRatio": 1.0058214372729661,
+          "medianWallRatio": 1.0117807583636513
+        }
+      },
+      "executionWallSeconds": 26.61348070000531
+    }
+  },
+  "wholeExecutionWallSeconds": 67.1999352999992,
+  "limits": "Short variable ordered/rotated sequence diagnostics, two measured rounds plus one warmup. Wall includes changed search work and snapshot overhead, not isolated speed or strength. No correction observers. Same source/root domain as corresponding observation protocol."
+}

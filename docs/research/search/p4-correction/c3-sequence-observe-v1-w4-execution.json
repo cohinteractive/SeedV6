@@ -1,0 +1,29 @@
+{
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms256m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c3-prototype-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-c3-prototype-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4CorrectionSequenceStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\c3-sequence-observe-v1-w4.jsonl",
+    "4",
+    "observe",
+    "1",
+    "8",
+    "100000",
+    "corrected-q,corrected-retained"
+  ],
+  "protocol": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\c3-sequence-observe-v1-protocol.json",
+  "protocolSha256": "d095f493905e6b1cd4f958b0b65756ca02c320d157866f45e3afd44d095c5b3d",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\c3-sequence-observe-v1-w4.jsonl",
+  "status": "passed",
+  "exitCode": 0,
+  "inputsStable": true,
+  "wallSeconds": 7.917766300000949
+}

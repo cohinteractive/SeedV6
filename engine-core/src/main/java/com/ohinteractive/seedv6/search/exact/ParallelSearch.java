@@ -349,6 +349,7 @@ public final class ParallelSearch implements SingleDepthSearch {
         ensureIdle();
         if(requestActive) throw new IllegalStateException("Parallel Search request active.");
         table.clear();
+        for(var worker : workers) worker.search.clearRetainedCorrection();
     }
 
     private void ensureIdle() {
@@ -486,6 +487,11 @@ public final class ParallelSearch implements SingleDepthSearch {
                             next.depth(), nodes, count, true, completed.principalVariation(), diagnostics, selective);
             next.observer().onSearchFinished(result, System.nanoTime() - started);
             return result;
+        } catch(RuntimeException | Error problem) {
+            // Submitted work is drained above; no worker may retain feedback
+            // after a failed parallel invocation, including successful helpers.
+            for(var worker : workers) worker.search.discardRetainedCorrection();
+            throw problem;
         } finally {
             request = null;
             control = null;
