@@ -67,4 +67,5 @@ depth4-8 bound early cost. If evidence shows wasted qsearch duplication or domin
 null coverage, revise the integration instead of blindly sweeping constants.
 Forced-line extension and qsearch substitutions remain alternatives, not a queued
 checklist. This formulation passed the W1 technical qualifications linked from STATE. No
-competitive result yet; W4 remains unqualified.
+competitive result yet; W4 technical qualification passes, but W4 competitive risk
+remains unmeasured. The first fixed W1 screen is running; selection awaits its full audit.

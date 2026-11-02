@@ -55,7 +55,7 @@ with adverse W4 evidence, and is not selected. Capture verification avoids that
 initial dependency. Failed first adapter import used system Python without chess;
 no engine ran. Use existing `build/research/venv/Scripts/python.exe`. Bootstrap JSON
 CRLF whitespace warnings were corrected in the next commit without changing values.
-No competitive game or discarded outcome has occurred. Two technical supervision/
+No prior competitive game or discarded outcome occurred before the first W1 screen. Two technical supervision/
 harness failures are preserved and charged: input generation immediate Job-drain
 assertion (completed files independently validated, original failure retained), and
 W4-only isolation demanding absent W1 rows (scope guard repaired; fresh v2 passes).
@@ -70,7 +70,10 @@ before admission. Reserve independent capacity; do not spend it on development.
 remaining **64671.4929110s**. Initiated games0/1,120:
 W1 development0/384, W4 risk0/96, independent confirmation0/640; attempts0/1.
 Include both failed technical runs; never add overlapping inner summaries.
-No running experiment or engine; all processes drained after qualification.
+W1 screen p1-screen-v1-w1 is RUNNING:64 games reserved pending, no result read.
+See p1-screen-v1-execution.json for owned process/start/admission and raw/p1-screen-v1-w1
+for live evidence. Reconcile receipt, actual initiated games and charged wall before
+any restart or further experiment. Qualification processes had drained before launch.
 
 Owner granted15 minutes for TC-P1/build89 W4 technical checks only, recorded in
 `p1-w4-window-v1.json`; all completed by20:03:23 UTC on2 November, no games.
@@ -86,8 +89,11 @@ before development games, with no candidate evaluation/outcome filtering. Indepe
 reparse checks legality/history/hash/order, prior keyed receipts and current diagnostic
 root disjointness. Do not inspect selected moves/keys to choose candidates. Original
 selector supervisor failure remains failed despite valid retained files; no rerun.
-Non-key historical receipt review and future-development disjointness remain admission
-checks before any independent claim. No finalist or confirmation attempt selected.
+The six non-key historical receipts now pass exact retained-fixture review:5364
+distinct historical prefix positions have zero overlap with all320 protected roots.
+See confirmation-historical-input-review-v1.json; no protected moves/keys were shown.
+Future-development disjointness remains an admission check before any independent
+claim. No finalist or confirmation attempt selected.
 
 ## Next admissible work and dependencies
 
@@ -96,9 +102,10 @@ checks before any independent claim. No finalist or confirmation attempt selecte
    files compared; only generated version metadata differs; four W1 preflights pass.
 2. `p1-screen-v1-protocol.json` freezes32 paired W1 development openings versus
    exact84, one active game, below-normal ownership, no outcome-driven stops.
-   Ready to launch after protocol commit. A transient35% CPU observation was
-   followed by6% total CPU and about17GiB available RAM; no gaming/runner observed.
-   No game started yet. No competing extended diagnostics during the match.
+   Launched after frozen protocol commit; admission checked against the current
+   ledger, retaining640 games and at least24000s for confirmation. CPU10%,16.63GiB
+   RAM free, no gaming/runner at admission. No competing experimental computation.
+   Do not inspect partial scores or decide on outcomes before full fixed-batch audit.
 3. Assess the complete W1 screen before choosing another justified formulation or
    risk/confirmation work. W4 technical qualification is complete, competitive risk
    remains outstanding and requires an agreed window. No finalist selected.

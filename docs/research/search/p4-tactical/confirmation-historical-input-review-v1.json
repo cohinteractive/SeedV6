@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "utc": "2026-11-02T20:10:28.862710+00:00",
+  "selectionSha256": "220d906cb6856c9758fce8b73f60b65a17ed1c3e754e8fa3470e4070036472c6",
+  "inputSha256": "9b9f82ed54f4c433b0e362ddaf315179f1100fdaba010417bf3e6e749687e06e",
+  "protectedRoots": 320,
+  "reviewedReceipts": [
+    {
+      "receipt": "docs/research/search/p3-cp64-selectivity-2026-10-23/root-witness-v1-selection.json",
+      "receiptSha256": "decde408123d6bb6232bc0948df9f6436b4e1f27fca603a8d8ddc429394c8533",
+      "fixture": "docs\\research\\search\\p3-cp64-selectivity-2026-10-23\\root-witness-v1-corpus.tsv",
+      "fixtureSha256": "a42f89d6ddb0e1389e26a28a15a90abb0bef6f46e8d74837e92cc513b225b549",
+      "rows": 1,
+      "allPrefixKeysChecked": 132,
+      "overlap": 0
+    },
+    {
+      "receipt": "docs/research/search/p3-information-reuse-2026-10-18/lifetime-v1-selection.json",
+      "receiptSha256": "f1e882be415cc9b98f25f68ad33a6ef5f6c00ab7839259a58228c7e3ebf990ce",
+      "fixture": "docs\\research\\search\\p3-information-reuse-2026-10-18\\raw\\lifetime-v1-lines.tsv",
+      "fixtureSha256": "f628ce0e3d72565316d35b3ce957c15d75e5bce2429ca6ae5ae0e8e5e7a88f1c",
+      "rows": 4,
+      "allPrefixKeysChecked": 436,
+      "overlap": 0
+    },
+    {
+      "receipt": "docs/research/search/p3-tt-effectiveness-2026-10-23/lifetime-selection.json",
+      "receiptSha256": "c248bb0e4aa7128cb8ed126099f5d8498fc261e172afc4fe75834801d9c1781b",
+      "fixture": "docs\\research\\search\\p3-tt-effectiveness-2026-10-23\\lifetime-lines.tsv",
+      "fixtureSha256": "1b8e50040a60612303693bea3eb28e69d5231b18cd46e2d427b9cd7e69ee3469",
+      "rows": 4,
+      "allPrefixKeysChecked": 422,
+      "overlap": 0
+    },
+    {
+      "receipt": "docs/research/search/sr006-phase2-2026-10-10/played-corpus.selection.json",
+      "receiptSha256": "21f5cd689fbb85d7d21c310cbbc5cbe8c87fdbfe0b1b346f1b5493b0b77d1887",
+      "fixture": "docs\\research\\search\\sr006-phase2-2026-10-10\\played-corpus.tsv",
+      "fixtureSha256": "9fd14828ebb357114496448d1c2e6dd3df81bb325723143a4b9326174f6170da",
+      "rows": 64,
+      "allPrefixKeysChecked": 4380,
+      "overlap": 0
+    },
+    {
+      "receipt": "docs/research/search/sr029-phase2-2026-10-10/aa-four-openings.selection.json",
+      "receiptSha256": "8313b427d7c68aefc1f520a31514ddb80cb8397d696c9062253a8ff9c554a3c8",
+      "fixture": "docs\\research\\search\\sr029-phase2-2026-10-10\\aa-four-openings.pgn",
+      "fixtureSha256": "ee8d0cfd85deaf3885065244f460bb5171693f7f3064f6a95f15cd8f977ac1d4",
+      "rows": 4,
+      "allPrefixKeysChecked": 59,
+      "overlap": 0
+    },
+    {
+      "receipt": "docs/research/search/tournament-execution-2026-10-17/calibration-openings.selection.json",
+      "receiptSha256": "c99549ca87367a96958713dbd35e52a9d1f944a06324466e593ee2028ea10c17",
+      "fixture": "docs\\research\\search\\tournament-execution-2026-10-17\\calibration-openings.pgn",
+      "fixtureSha256": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e",
+      "rows": 12,
+      "allPrefixKeysChecked": 176,
+      "overlap": 0
+    }
+  ],
+  "distinctHistoricalPrefixKeys": 5364,
+  "overlap": 0,
+  "protectedMovesOrKeysDisplayed": false,
+  "scope": "Six explicitly listed non-key receipts reviewed via exact retained fixtures; all legal prefixes checked, stronger than final-root-only exclusion. No candidate evaluation, outcomes or BOUNDARY2 evidence accessed. Later development disjointness still required before confirmation.",
+  "wallSeconds": 0.33037700000568293,
+  "accounting": "Small read-only input validation during ongoing screen; wall is included in the encompassing match supervisor receipt, not charged twice."
+}
