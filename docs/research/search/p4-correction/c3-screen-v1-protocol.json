@@ -1,0 +1,49 @@
+{
+  "id": "CH-C3-SCREEN-V1",
+  "status": "prospectively frozen before games",
+  "frozenUtc": "2026-11-02T12:52:03.963043+00:00",
+  "question": "Does decayed completed correction retained across Search requests improve the integrated main/qsearch correction configuration against exact84?",
+  "category": "W1 exploratory",
+  "namePrefix": "c3-screen-v1",
+  "workers": [
+    1
+  ],
+  "pairs": 32,
+  "tc": "10+0.1",
+  "seed": 2026110304,
+  "timeoutSeconds": 3600,
+  "estimatedMatchSeconds": 2300,
+  "remainingCategoryGames": 128,
+  "remainingTotalGames": 512,
+  "remainingMatchSeconds": 39211.14982800001,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-build88-c3-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "corrected-retained",
+  "candidateIdentity": {
+    "name": "CH-C3 decayed completed pawn correction across requests with main and qsearch consumers",
+    "source": "d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9",
+    "build": 88,
+    "flags": 1043595263
+  },
+  "controlIdentity": {
+    "name": "HL-G1 retained learning with history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\development-v1-openings.pgn",
+  "openingSha256": "46bc3cc35f181429f6c19b24162b5744af9d1a4df4945b0677358d2e896158a2",
+  "openingSelection": "docs\\research\\search\\p4-correction\\development-v1-openings.selection.json",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\runtime-build88-c3-v1-manifest.json"
+  ],
+  "adapterSha256": "13e7a3a57df5ea0d3e1adff2848c3e79e38126fe1bbec8875ebaeb8ad24bc72b",
+  "resources": "W1 OWNER, CP64 Hash64 (48MiB TT entry payload), Java21+35, Windows Ryzen5500; one game at a time; identical JVM heaps/ActiveProcessorCount4; BOUNDARY2 unchanged",
+  "audit": "Existing independent real-history legality/PV/terminal/accounting audit, stable input hashes, owned Windows Job and complete engine-handle drain. Narrow audited-fallback runner qualification retained; any other warning/failure stops the match.",
+  "stopping": "32 complete color-reversed pairs, fixed64 games. No score-based early stop, extra games or protocol changes. Runtime/safety failures preserve partial evidence and charge actual games/time.",
+  "analysis": "Descriptive WDL, paired-normal95 and bounded Hoeffding95. Exploratory selection/multiple comparisons, no adjusted discovery, equivalence or acceptance claim.",
+  "nextDecision": "Assess retained learning from complete audited screen plus qualified sequential-history/cost evidence. Common development inputs and repeated selection remain exploratory. No automatic confirmation or new parameter sweep; any further adaptation needs a specific credible structural hypothesis. The sole160-pair fresh confirmation remains unspent."
+}

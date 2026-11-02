@@ -1,6 +1,6 @@
 # CH-R001 resume state
 
-**ACTIVE: CH-C3 technically qualified; committed artifact freeze next.** Read [CONTRACT](CONTRACT.md)
+**ACTIVE: CH-C3 build88 frozen;32-pair screen ready for admission.** Read [CONTRACT](CONTRACT.md)
 first. The governing strength objective is not yet demonstrated. Normal production
 HL-G1/build85 policy and the accepted research champion HL-G1/build84 are unchanged.
 
@@ -228,3 +228,12 @@ Direct qualifying finalization verified build87->88 with unchanged user fields a
 all other version bytes; hashc5716852b62716a63cf540cbc6582f5d3d978ad24431da48e672789e9f5557a8.
 This identifies the attributable opt-in retained-feedback implementation in its own
 commit. No finalizer, production/default promotion or extra documentation bump.
+
+C3 source **d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9/build88** is committed. Frozen
+`raw/runtime-build88-c3-v1` matches all2115 prototype JAR entries except generated
+version metadata and all27 non-JAR files;4 artifact preflights passed.
+`build88-c3-qualification.json` records the bridge. `c3-screen-v1-protocol.json`
+prospectively freezes32 common-development W1 pairs against exact84, fixed64 games,
+seed2026110304, estimate2300s and runner cap3600s. Starting completed spend remains
+128 exploratory games/3988.850172s. No C3 match has started at this recording; check
+`raw/c3-screen-v1-w1/run.json` and owned process state before any launch/retry.
