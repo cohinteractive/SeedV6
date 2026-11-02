@@ -1,0 +1,182 @@
+{
+  "purpose": "Owner-authorized bounded HL-G1 experimental production integration; no deployment or strength claim",
+  "sourceCommit": "7fd84cafdc48647f6a93048dee7b3636923befaf",
+  "sourceCleanAtBuild": true,
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 85
+  },
+  "versionSha256": "4345bd8802263ec1b1117712da00c37732ecdd3ee8c0b25fa8376517a6cdb970",
+  "canon": [
+    "P4-R005",
+    "P4-F021"
+  ],
+  "profile": "HL_G1",
+  "flags": 104071167,
+  "workers": "1..16; default1 unchanged",
+  "rollback": {
+    "property": "seedv6.searchProfile=LEGACY",
+    "flags": 3407871,
+    "semantics": "Previous Search policy with current correctness/accounting fixes, not historical build79 bytes"
+  },
+  "researchChampion": {
+    "commit": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "profile": "guided",
+    "flags": 104071167,
+    "frozenRuntimeFilesVerified": 33
+  },
+  "historicalBaseline": {
+    "commit": "753367614b8aa7e32dee337fd76b542737141ac1",
+    "build": 79,
+    "flags": 3407871
+  },
+  "rawEvidence": "docs/research/search/p4-learning/raw/production-build85-v1",
+  "candidate": "candidate-20261102T091613-a28be05c",
+  "artifacts": {
+    "gui": {
+      "image": "dist/windows/candidates/candidate-20261102T091613-a28be05c/SeedV6-GUI",
+      "archive": "dist/windows/candidates/candidate-20261102T091613-a28be05c/SeedV6-GUI-windows-x64.zip",
+      "archiveSha256": "947b3cc3427d8d7ac1efe556573dfa84d5a292107a572a8d1e2fe2045c3049ef",
+      "manifestSha256": "36fba7a7bb5aac82360fdfbebb055dad251d0dfe4fa12501003850c5b3e10e31",
+      "coreJarSha256": "05241386601a7149348a1a6bb0028be7a5fbd7136e11d42acf88f81b9d5fb1e5",
+      "runtime": "21.0.12.1+1-LTS",
+      "platform": "windows",
+      "architecture": "x64",
+      "imageChecks": "headless-resources-jni-passed",
+      "extractedChecks": "headless-resources-jni-passed"
+    },
+    "uci": {
+      "image": "releases/candidates/windows-x64/candidate-20261102T091613-a28be05c/SeedV6-UCI",
+      "archive": "releases/candidates/windows-x64/candidate-20261102T091613-a28be05c/SeedV6-UCI-windows-x64.zip",
+      "archiveSha256": "c171a64b10718e65bb4758e21e988304e0bf25db4f89afefe677d1182c7cfa49",
+      "manifestSha256": "e2068214284e334472aa39459b30db978a3332f8a1f828431215ee066a2dea43",
+      "coreJarSha256": "05241386601a7149348a1a6bb0028be7a5fbd7136e11d42acf88f81b9d5fb1e5",
+      "runtime": "21.0.12.1+1-LTS",
+      "platform": "windows",
+      "architecture": "x64",
+      "imageChecks": "passed",
+      "extractedChecks": "passed",
+      "nativeSearchesPerImageOrExtraction": 63
+    }
+  },
+  "javaDistribution": {
+    "path": "app-uci/build/install/seedv6-uci",
+    "coreJarSha256": "05241386601a7149348a1a6bb0028be7a5fbd7136e11d42acf88f81b9d5fb1e5",
+    "defaultAndLegacySmoke": "PASS; W1/W16 depth/stop/quit; rollback through SEEDV6_UCI_OPTS"
+  },
+  "validation": {
+    "uci-build85-guided": {
+      "status": "PASS",
+      "workers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "goRequests": 49,
+      "sha256": "5f2fe2e0a01e3c72f868bd2352339b76bb36c894d82e104055648b5e0116e688"
+    },
+    "uci-build85-legacy": {
+      "status": "PASS",
+      "workers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "goRequests": 49,
+      "sha256": "b1bb665800bd00b8e716afdd54e3a18b37a96937429ec8d9882f6ddf1b2dce65"
+    },
+    "gui-HL_G1": {
+      "status": "PASS",
+      "workers": [
+        1,
+        4,
+        8,
+        16
+      ],
+      "requests": 44,
+      "sha256": "18c6b450f64f9e623941d907a5674887b3e2b44a2772155808bc0514d570ce91",
+      "mode": "Headless EDT/Play adapter on native packaged runtime and GUI jars"
+    },
+    "gui-LEGACY": {
+      "status": "PASS",
+      "workers": [
+        1,
+        4,
+        8,
+        16
+      ],
+      "requests": 44,
+      "sha256": "aca2c7a219241f6fb1750c5f423be9aec7bdc2e1060714e42b8bb4f9184e559e",
+      "mode": "Headless EDT/Play adapter on native packaged runtime and GUI jars"
+    },
+    "frozen84Bridge": {
+      "status": "PASS",
+      "comparisons": 16,
+      "workers": 1,
+      "profiles": [
+        "guided",
+        "previous production"
+      ],
+      "equal": "Every published iteration depth, score, nodes, PV; whole-request nodes/completion and bestmove",
+      "sha256": "270e42499ea662b1295336ca288ca8a342e29cb5a86d1a881c8d586aeee219e2"
+    },
+    "frozenCoreDifferences": [
+      "com/ohinteractive/seedv6/application-version.properties",
+      "com/ohinteractive/seedv6/search/driver/BaselineEngine$Evaluator.class",
+      "com/ohinteractive/seedv6/search/driver/BaselineEngine$SearchProfile.class",
+      "com/ohinteractive/seedv6/search/driver/BaselineEngine.class"
+    ],
+    "junit": {
+      "tests": 184,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "runs": [
+        "tests-v1/summary.json",
+        "core-search-v2/summary.json"
+      ]
+    },
+    "pythonPackaging": {
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "log": "packaging-tests-v2.txt"
+    }
+  },
+  "limitations": [
+    "W4 superiority and neutrality not established: direct79 score46.09% over32 pairs",
+    "W1 strength evidence remains frozen research domain; promotion adds no strength evidence",
+    "Frozen BOUNDARY2 studies unopened; no clock-policy qualification inference",
+    "Native macOS, interactive visual GUI and live external-client acceptance not performed",
+    "No push, release, active-bot replacement, BotLi/Lichess config change or deployment"
+  ]
+}

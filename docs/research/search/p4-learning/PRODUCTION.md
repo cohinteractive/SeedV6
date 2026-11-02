@@ -119,7 +119,49 @@ Build **84→85** was verified by replacing only the build integer after integra
 validation; major/minor/patch and all other version bytes were preserved. Build85
 is attributable to this shipped default/rollback integration, not research acceptance.
 Clean-source build85 artifact construction and final runtime identity verification
-follow the implementation commit and are recorded in the closeout below.
+completed after the implementation commit, as recorded below.
+
+## Build85 artifact closeout
+
+Implementation commit: **`7fd84cafdc48647f6a93048dee7b3636923befaf`**. The worktree
+was clean during final packaging, and both embedded identities report
+`build=85 source=7fd84cafdc48`. The subsequent closeout changes only this report
+and its compact [artifact/qualification manifest](production-build85-manifest.json);
+no further build increment or runtime change.
+
+- **`.\gradlew.bat packageWindows` passed in1m**, normal command with no research
+  options. Candidate **`candidate-20261102T091613-a28be05c`**, Windows x64,
+  bundled Temurin21.0.12.1+1. GUI and UCI image/ZIP/independently extracted-image
+  verification passed. The UCI gate ran63 searches on each image/extraction,
+  including historical E008 launcher checks; GUI resources/JNI were exercised.
+- GUI archive:
+  `dist/windows/candidates/candidate-20261102T091613-a28be05c/SeedV6-GUI-windows-x64.zip`.
+  UCI archive:
+  `releases/candidates/windows-x64/candidate-20261102T091613-a28be05c/SeedV6-UCI-windows-x64.zip`.
+  Full archive/manifest SHA-256 values are in the linked manifest. Shared core:
+  **`05241386601a7149348a1a6bb0028be7a5fbd7136e11d42acf88f81b9d5fb1e5`**.
+- The final native UCI passed **49 go requests per profile**, HL-G1 and LEGACY,
+  W1-W16, with the same clock/legality/accounting/lifecycle checks described above.
+  The final GUI passed **44 requests per profile**, W1/W4/W8/W16, through its
+  actual Play adapter and bundled runtime. Raw results: `uci-build85-guided/`,
+  `uci-build85-legacy/`, `gui-build85-HL_G1.txt`, `gui-build85-LEGACY.txt`.
+- **16 exact W1 comparisons** against the hash-verified frozen build84 runtime
+  passed: current HL-G1 versus frozen `guided`, and LEGACY versus frozen ordinary
+  production, four roots including real-history positions, repeated requests,
+  Hash8/depth9/nodes75000. Every published iteration's depth, score, nodes and PV,
+  whole-request nodes/completion and bestmove matched. This is a bounded technical
+  bridge, not strength research. `frozen-comparison-v1.json` and its local script
+  preserve the observations and commands. Final core entry comparison again shows
+  only `BaselineEngine` classes and version metadata changed from frozen84.
+- **`.\gradlew.bat :app-uci:installDist` passed in2s**, using the worktree-local
+  Gradle user home. Its core JAR hash matches the native artifacts. The generated
+  `seedv6-uci.bat` passed W1/W16 depth/stop/quit checks for the no-option default
+  and `SEEDV6_UCI_OPTS=-Dseedv6.searchProfile=LEGACY` rollback.
+
+No correctness, concurrency, lifecycle or integration defect remains from these
+checks. Package construction/technical integration are complete; no bot installation,
+release, publication or deployment occurred. The build85 version bytes remain
+SHA-256 `4345bd8802263ec1b1117712da00c37732ecdd3ee8c0b25fa8376517a6cdb970`.
 
 ## Limits and human dependencies
 
