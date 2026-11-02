@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "comparedEntriesAndFiles": 2132,
+  "differences": [
+    [
+      "lib/engine-core.jar",
+      "com/ohinteractive/seedv6/application-version.properties"
+    ]
+  ],
+  "commit": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+  "preflight": {
+    "W1": {
+      "identity": "info string mode=research experimental=true formulation=HL-G1 profile=guided evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER learning=request-worker-private-no-seed effort=history64-bounded2 ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=84 source=b8ea8b2856ee ttMiB=64",
+      "requests": [
+        {
+          "nodes": 20000,
+          "elapsedNanos": 277760800,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 6 score cp 101 nodes 18979 time 270 nps 70195 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+        },
+        {
+          "nodes": 20000,
+          "elapsedNanos": 50378400,
+          "termination": "NODE_LIMIT",
+          "bestmove": "e2e4",
+          "finalInfo": "info depth 6 score cp 101 nodes 18979 time 46 nps 408976 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+        }
+      ],
+      "warmup": "Preflight is a separate process; match processes start cold symmetrically."
+    },
+    "W4": {
+      "identity": "info string mode=research experimental=true formulation=HL-G1 profile=guided evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE learning=request-worker-private-no-seed effort=history64-bounded2 ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=84 source=b8ea8b2856ee ttMiB=64",
+      "requests": [
+        {
+          "nodes": 20000,
+          "elapsedNanos": 239276000,
+          "termination": "NODE_LIMIT",
+          "bestmove": "d2d4",
+          "finalInfo": "info depth 5 score cp 49 nodes 3838 time 189 nps 20212 pv d2d4 d7d5 c2c4 g8f6 c4d5 d8d5"
+        },
+        {
+          "nodes": 20000,
+          "elapsedNanos": 41757500,
+          "termination": "NODE_LIMIT",
+          "bestmove": "d2d4",
+          "finalInfo": "info depth 6 score cp 47 nodes 12257 time 22 nps 543518 pv d2d4 d7d5 g2g3 g7g6 f1g2 f8g7"
+        }
+      ],
+      "warmup": "Preflight is a separate process; match processes start cold symmetrically."
+    }
+  },
+  "whitespace": "Default Git checker flagged CRLF in generated frozen evidence. Evidence bytes preserved. Per-command cr-at-eol-aware check passed; no Git config changed."
+}
