@@ -24,6 +24,11 @@ to49,882. Retention increases exercised learning but does not automatically save
 work: starting-position depth8 rose85,443 to127,464 nodes; some capped requests
 completed one less depth. W4 varied differently. No strength/speed inference.
 
+The32-pair W1 reverse ablation against actual frozen80 passed all operational
+audits but scored19W/20D/25L,45.31%, paired normal95 interval35.61-55.01%.
+This adverse/inconclusive development result does not establish a regression,
+but provides no support for selecting retention alone. It cost1933.56s wall.
+
 ## HL-G1 - retained learning with bounded history-guided effort
 
 Explicit `guided` profile, flags104071167. Adds HISTORY_EFFORT to HL-R1. On already
@@ -62,7 +67,10 @@ against actual frozen80,30W/18D/16L,60.94% score, paired normal95 interval52.15-
 Bounded Hoeffding95 interval36.93-84.95% illustrates remaining uncertainty. Runtime
 audit passed with no missing-score warnings or lifecycle failures.1931.67s total
 wall. Positive exploratory signal; no independent or champion-relative inference.
-Next compare the retention-only reverse ablation under the same development inputs.
+The completed retention-only reverse ablation scored45.31% on the same development
+roots,15.625 points below G1. This common-control exploratory comparison supports
+prioritizing the integrated G1 formulation; it is not an independent isolated-component
+gain or champion comparison. Keep G1 unchanged for W4 risk and fresh W1 confirmation.
 
 The prospective reference audit completed43 first-event stratified samples, all
 with complete independent reduced/nominal TT-off qtrees and legal real-history replay.

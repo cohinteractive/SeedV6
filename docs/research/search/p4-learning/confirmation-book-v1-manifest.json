@@ -1,0 +1,33 @@
+{
+  "retrievedUtc": "2026-11-02T01:31:48.721299+00:00",
+  "sourceCommit": "a804a97e709f40aa75a00f9d19e84915b7a3a45c",
+  "files": {
+    "docs\\research\\search\\p4-learning\\raw\\confirmation-book-v1\\8moves_v3.pgn.zip": {
+      "url": "https://raw.githubusercontent.com/official-stockfish/books/a804a97e709f40aa75a00f9d19e84915b7a3a45c/8moves_v3.pgn.zip",
+      "sha256": "7e1e9dd118b4bb97d8a8b5b8a790c86e21f8509d59a27d2883767d94477be02e",
+      "bytes": 807558
+    },
+    "docs\\research\\search\\p4-learning\\raw\\confirmation-book-v1\\LICENSE": {
+      "url": "https://raw.githubusercontent.com/official-stockfish/books/a804a97e709f40aa75a00f9d19e84915b7a3a45c/LICENSE",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "bytes": 7048
+    },
+    "docs\\research\\search\\p4-learning\\raw\\confirmation-book-v1\\README.md": {
+      "url": "https://raw.githubusercontent.com/official-stockfish/books/a804a97e709f40aa75a00f9d19e84915b7a3a45c/README.md",
+      "sha256": "0b8a839bf8a743ea764048a8986843a33fcd83ea21a23872e5e66bf2c37940a2",
+      "bytes": 2726
+    },
+    "docs\\research\\search\\p4-learning\\raw\\confirmation-book-v1\\books.json": {
+      "url": "https://raw.githubusercontent.com/official-stockfish/books/a804a97e709f40aa75a00f9d19e84915b7a3a45c/books.json",
+      "sha256": "8c61452620d63a81c640c8d9f82770568abad7dbd3e013af973645ca4e5f2cdb",
+      "bytes": 9284
+    },
+    "docs\\research\\search\\p4-learning\\raw\\confirmation-book-v1\\8moves_v3.pgn": {
+      "archive": "8moves_v3.pgn.zip",
+      "member": "8moves_v3.pgn",
+      "sha256": "5835239f88cc2c7511b177c32392a69f3ede21819cf0616f80a7f907cd21d17e",
+      "bytes": 8037438
+    }
+  },
+  "plannedUse": "Candidate-independent prospective confirmation input pool; before selection, exclude all positions in the existing legal16 source plus exposed receipts. No candidate evaluation or result filtering. Parsing/selection deferred until match drains."
+}

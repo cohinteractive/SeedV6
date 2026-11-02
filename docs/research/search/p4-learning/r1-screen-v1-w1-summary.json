@@ -1,0 +1,220 @@
+{
+  "status": "passed",
+  "arguments": {
+    "name": "r1-screen-v1-w1",
+    "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80",
+    "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+    "baseline_policy": "control",
+    "candidate_policy": "retain",
+    "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\development-v1-openings.pgn",
+    "workers": 1,
+    "pairs": 32,
+    "tc": "10+0.1",
+    "protocol": "r1-screen-v1-protocol.json",
+    "warning_policy": "audited-fallback",
+    "seed": 2026110202,
+    "concurrency": 1,
+    "timeout": 4800
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "logicalCpus": 12,
+  "model": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "hardware": "Ryzen 5 5500, 6C/12T, 32 GiB; one active game unless specified",
+  "javaVersion": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+  "commands": {
+    "baseline": [
+      "C:/java/jdk-21/bin/java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=4",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.clockPolicy=BOUNDARY2",
+      "-Dseedv6.research.actor=baseline",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\lib\\*",
+      "com.ohinteractive.seedv6.uci.UciMain"
+    ],
+    "candidate": [
+      "C:/java/jdk-21/bin/java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-Xms256m",
+      "-Xmx512m",
+      "-XX:ActiveProcessorCount=4",
+      "-Djava.awt.headless=true",
+      "-Dseedv6.syzygy.config=",
+      "-Dseedv6.syzygy.path=",
+      "-Dseedv6.clockPolicy=BOUNDARY2",
+      "-Dseedv6.research.actor=candidate",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\lib\\*",
+      "com.ohinteractive.seedv6.integration.P4LearningUciMain",
+      "--network",
+      "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+      "--profile",
+      "retain"
+    ]
+  },
+  "baselinePreflight": {
+    "identity": "info string baseline=construction-v1-cp64 search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=80 source=9fec1d2af379 (uncommitted changes) ttMiB=64",
+    "requests": [
+      {
+        "nodes": 20000,
+        "elapsedNanos": 307908900,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 6 score cp 101 nodes 13067 time 288 nps 45295 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+      },
+      {
+        "nodes": 20000,
+        "elapsedNanos": 44169300,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 6 score cp 101 nodes 13067 time 29 nps 438644 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+      }
+    ],
+    "warmup": "Preflight is a separate process; match processes start cold symmetrically."
+  },
+  "candidatePreflight": {
+    "identity": "info string mode=research experimental=true formulation=HL-R1 profile=retain evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b schema=S6CNU002 heads=8 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=36962303 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER learning=request-worker-private-no-seed effort=legacy ttPolicy=production-hints slotBytes=24 clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF build=84 source=b8ea8b2856ee ttMiB=64",
+    "requests": [
+      {
+        "nodes": 20000,
+        "elapsedNanos": 267724300,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 6 score cp 101 nodes 17703 time 257 nps 68702 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+      },
+      {
+        "nodes": 20000,
+        "elapsedNanos": 48694000,
+        "termination": "NODE_LIMIT",
+        "bestmove": "e2e4",
+        "finalInfo": "info depth 6 score cp 101 nodes 17703 time 42 nps 420605 pv e2e4 d7d5 e4d5 d8d5 b1c3 d5d8"
+      }
+    ],
+    "warmup": "Preflight is a separate process; match processes start cold symmetrically."
+  },
+  "runnerCommand": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\tools\\fastchess.exe",
+    "-engine",
+    "name=baseline",
+    "cmd=C:/java/jdk-21/bin/java.exe",
+    "args=--add-modules=jdk.incubator.vector -Xms256m -Xmx512m -XX:ActiveProcessorCount=4 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.clockPolicy=BOUNDARY2 -Dseedv6.research.actor=baseline -cp C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tt-memory\\raw\\runtime80\\lib\\* com.ohinteractive.seedv6.uci.UciMain",
+    "option.Threads=1",
+    "-engine",
+    "name=candidate",
+    "cmd=C:/java/jdk-21/bin/java.exe",
+    "args=--add-modules=jdk.incubator.vector -Xms256m -Xmx512m -XX:ActiveProcessorCount=4 -Djava.awt.headless=true -Dseedv6.syzygy.config= -Dseedv6.syzygy.path= -Dseedv6.clockPolicy=BOUNDARY2 -Dseedv6.research.actor=candidate -cp C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1\\lib\\* com.ohinteractive.seedv6.integration.P4LearningUciMain --network C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue --profile retain",
+    "option.Threads=1",
+    "-each",
+    "proto=uci",
+    "tc=10+0.1",
+    "timemargin=0",
+    "restart=off",
+    "option.OwnBook=false",
+    "option.Hash=64",
+    "-rounds",
+    "32",
+    "-repeat",
+    "-concurrency",
+    "1",
+    "-srand",
+    "2026110202",
+    "-openings",
+    "file=C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\development-v1-openings.pgn",
+    "format=pgn",
+    "order=sequential",
+    "-pgnout",
+    "file=C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\r1-screen-v1-w1\\games.pgn",
+    "nodes=true",
+    "nps=true",
+    "pv=true",
+    "timeleft=true",
+    "latency=true",
+    "match_line=^info string request ",
+    "-report",
+    "penta=true",
+    "-ratinginterval",
+    "2",
+    "-autosaveinterval",
+    "0",
+    "-log",
+    "file=C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\r1-screen-v1-w1\\uci-trace.log",
+    "level=trace",
+    "append=false",
+    "compress=false",
+    "realtime=false",
+    "engine=true"
+  ],
+  "deferredMissingScoreWarnings": [],
+  "runnerExitCode": 0,
+  "engineHandlesDrained": true,
+  "matchWallSeconds": 1931.1319113000063,
+  "traceAudit": {
+    "status": "passed",
+    "completedRequests": 8640,
+    "qualifiedMissingScoreWarnings": 0,
+    "fallbacks": [],
+    "limits": "Validates the narrowly admitted missing-score warnings; does not replace full PV checks, game audit or process/input qualification."
+  },
+  "inputsStable": true,
+  "wallSeconds": 1933.560442099988,
+  "results": {
+    "wdl": [
+      19,
+      20,
+      25
+    ],
+    "terminations": {
+      "normal": 64
+    },
+    "statistics": {
+      "pairs": 32,
+      "pentanomial": [
+        3,
+        10,
+        13,
+        2,
+        4
+      ],
+      "score": 0.453125,
+      "logisticElo": -32.66801858052781,
+      "pairedHoeffding95Score": [
+        0.21304430217001982,
+        0.6932056978299802
+      ],
+      "pairedHoeffding95Elo": [
+        -226.9921442387215,
+        141.6059336747405
+      ],
+      "pairScoreStandardError": 0.04949021877131135,
+      "pairedNormal95Score": [
+        0.3561259536212217,
+        0.5501240463787783
+      ],
+      "pairedNormal95Elo": [
+        -102.87891779291738,
+        34.94713939302623
+      ],
+      "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+    },
+    "wholeRequestResources": {
+      "baseline": {
+        "requests": 4320,
+        "nodes": 585417803,
+        "elapsedNanos": 961801679400
+      },
+      "candidate": {
+        "requests": 4320,
+        "nodes": 577431588,
+        "elapsedNanos": 959633058200
+      }
+    }
+  },
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\r1-screen-v1-w1",
+  "adapterSha256": "53b5149876cf53fd44f545639fe90fcf1a3cf20e9d022af42db92eed0b54c5e0",
+  "interpretation": "Exploratory fixed-pair screen unless separately prospectively designated; no acceptance."
+}

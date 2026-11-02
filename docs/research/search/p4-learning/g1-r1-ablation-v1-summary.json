@@ -1,0 +1,16 @@
+{
+  "status": "completed exploratory comparison",
+  "comparison": "HL-G1 retained learning plus graded effort versus HL-R1 retention only, each against frozen80 on identical32 development opening pairs",
+  "pairMeanDifference": 0.15625,
+  "pairDifferenceStandardError": 0.06325153000827012,
+  "descriptivePairedNormal95Difference": [
+    0.03227927921673612,
+    0.2802207207832639
+  ],
+  "sharedOpeningPairs": 32,
+  "rawInputs": [
+    "raw/g1-screen-v1-w1/run.json",
+    "raw/r1-screen-v1-w1/run.json"
+  ],
+  "interpretation": "Common-control reverse ablation supports prioritizing G1. Separate timed runs, shared openings, exploratory selection and possible temporal effects limit causal/strength inference; no independent G1-over-R1 or champion-relative claim."
+}

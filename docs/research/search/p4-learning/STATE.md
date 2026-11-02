@@ -4,7 +4,8 @@
 HL-G1 retained learning with bounded history-guided effort are implemented as
 explicit experimental profiles. G1's first32-pair W1 development screen passed:
 30W/18D/16L against80. This promising exploratory signal is not champion-relative
-confirmation. A retention-only reverse ablation is next; no finalist yet.**
+confirmation. Retention-only R1 scored19W/20D/25L against80. Prioritize unchanged
+HL-G1 for W4 risk and, if qualified, fresh direct79 W1 confirmation.**
 Read [CONTRACT](CONTRACT.md), then this state. Owner request and initial file/hash
 checks are in `bootstrap-manifest.json`; external source identities are in
 `external-manifest.json`. Raw evidence is local-only and must be checked before reuse.
@@ -42,12 +43,18 @@ score60.9375%, paired normal95 interval52.15-69.72%, conservative bounded95
 36.93-84.95%. Exploratory reuse/selection and broad uncertainty preclude confirmation.
 Frozen80 is not the champion; no games are pooled with historical campaigns.
 
-Prepared next operation: `r1-screen-v1-protocol.json`,32pairs W1 retain-only versus80,
-same frozen build84 artifact and development inputs. This reverse ablation asks
-whether history-guided effort deserves retention in the integrated finalist; it is
-not an independent discovery test or a requirement that each component win alone.
-The owned runner will preserve/drain all work; read final results before any next
-allocation. No concurrent heavy build/diagnostic execution during games.
+Completed R1 reverse ablation:32pairs/64 normal games versus80,19W/20D/25L,
+45.3125% score, paired normal95 interval35.61-55.01%.8,640 audited requests,
+no missing-score warnings, stable inputs, drained engine handles,1933.56s wall.
+`g1-r1-ablation-v1-summary.json` preserves common-opening descriptive comparison;
+G1's score is15.625 points higher. Separate timed runs/shared development inputs
+and exploratory selection preclude an independent component or champion claim.
+This supports the integrated G1 formulation rather than retention alone.
+
+**Next operation:** `g1-w4-risk-v1-protocol.json`,32pairs W4 G1 versus80.
+Fresh-opening preparation passed after R1 drained,51.96s including supervision.
+Keep G1 source/artifact unchanged. The owned runner must drain before further
+heavy work; running JSON alone is not liveness on resume.
 
 Actual build79/80 runtime JARs and CP64/Java executable match historical manifests.
 Source80's qualified accounting fix remains present. Current optional H1/H2/F3
@@ -115,7 +122,7 @@ Candidate W4 checks verify bounded legal PV/accounting/lifecycle, not equality.
 Clean costs completed:162 requests including54 warmups,45.45s total. G1/control
 wall ratios1.0153 W1/0.9921 W4 and R1/control0.9948/0.9918 show no prohibitive
 observed overhead; no speed claim. G1's first game screen is now positive as above.
-Run R1 reverse ablation, then selected-formulation W4 risk before independent W1
+R1 reverse ablation completed; next selected-formulation W4 risk before independent W1
 confirmation. Do not select a finalist from depth/node diagnostics. Nothing promoted.
 
 Prospective `reference-audit-v1-protocol.json` was frozen before reading game outcomes.
@@ -163,9 +170,9 @@ alone. Prior490/529s eight-pair TTF runs anchor the initial cost plan; current c
 are now measured. Runtime qualification and the first32-pair screen are complete.
 
 Aggregate allowance:128 exploratory pairs (reserve32 W4),160 fresh W1 confirmation
-pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:32/128
-exploratory pairs(64 games),0 confirmation attempts/pairs,1931.67s charged game wall;
-about240s active build/diagnostic execution including artifact preflights and reference
+pairs/one attempt,6h game wall and2h active build/diagnostic execution. Spent:64/128
+exploratory pairs(128 games),0 confirmation attempts/pairs,3865.23s charged game wall;
+about292s active build/diagnostic execution including input preparation, artifact preflights and reference
 audit (about228s through clean costs plus packaging/preflights and6.51s reference work).
 Minor setup/analysis/inspection time is not engine compute; later build/package
 checks and all failed executions must be added before further allocation.
@@ -179,8 +186,15 @@ exploratory variance and a credible effect, not the pilot point estimate alone.
 The named legal16 opening source is locally available. Fresh confirmation inputs
 must exclude exposed inputs without opening either forbidden BOUNDARY2 study;
 the final input/protocol design remains a pre-confirmation dependency.
+[CONFIRMATION-DESIGN](CONFIRMATION-DESIGN.md) records the candidate-independent
+input preparation, review of historical receipt schemas and proposed paired inference.
+Pinned input source downloaded; full parsing/selection passed after R1 drained.
+160 legal distinct roots selected from1,215 eligible held-out roots, excluding56,553
+historical/source keys with zero overlap. Receipt records exact inputs/exclusions;
+the resulting curated subset limits generalization. Six synthetic inference checks
+passed. A final candidate/game protocol remains a separate pre-confirmation gate.
 
 Human actions: none blocking repository execution. After Frontier update, owner
-refresh to P4-F017 is non-blocking here and blocks only mirror-dependent planning.
+refresh to P4-F018 is non-blocking here and blocks only mirror-dependent planning.
 Future GPT/owner reconciliation blocks acceptance/dependent closeout progression;
 no success/acceptance/promotion is claimed. Do not launch a successor.

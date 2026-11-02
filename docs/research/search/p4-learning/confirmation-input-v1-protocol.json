@@ -1,0 +1,15 @@
+{
+  "id": "HL-CONFIRM-INPUT-V1",
+  "frozenUtc": "2026-11-02T01:33:50.507697+00:00",
+  "selectorSha256": "5f02608dd34b7c5fa3b531aa8429176d4bf0c1b2130f1bb47bd4f96768eff306",
+  "inputBookManifest": "confirmation-book-v1-manifest.json",
+  "count": 160,
+  "seed": 2026110204,
+  "partition": 1,
+  "purpose": "Prepare candidate-independent held-out input roots; no confirmation games authorized by this input protocol alone. Finalist and statistical criterion remain separately prospectively frozen.",
+  "exclusions": "Entire pinned legal16 source plus all tracked non-BOUNDARY2 positionKeys receipts. Review non-key metadata separately before confirmation. Frozen BOUNDARY2 studies never opened.",
+  "selection": "16 legal plies from startpos, nonterminal roots, unique final FEN first four fields, partition1, sorted then seeded sample; no outcome/evaluator filtering.",
+  "limits": "Book curation and excluding previously used positions define the qualified opening distribution. No assertion of arbitrary-position or longer-clock generality. If insufficient available unique roots, preserve failure; no hidden seed search.",
+  "expectedCost": "At most120s parsing about75000 PGNs; run only after active match drains, outer600s timeout.",
+  "output": "confirmation-v1-openings.pgn"
+}

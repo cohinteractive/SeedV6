@@ -1,6 +1,6 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F017**
+Internal frontier revision: **P4-F018**
 
 Status: **ACTIVE Phase4 programme - 2 November2026. HL-R001 retained Search learning and history-guided effort allocation is owner-authorized and active, with W1 strength acceptance and mandatory W4 competitive-risk investigation. TTF-R001 remains accepted and closed for its limited foundational purpose, with adverse W4 evidence. TT-R001 remains inconclusive with separate reconciliation pending. No champion advancement or production promotion.**
 
@@ -25,15 +25,19 @@ hash-matching79/80 controls/CP64. Initial source inspection confirms repeated
 Construction-history resets and distinct W4 quiet-history seeding. Explicit HL-R1
 request retention and HL-G1 retained history-guided effort prototypes have passed
 330 selected tests, bounded causal/cost diagnostics and65 UCI checks plus4 stop/reset
-checks; current production/control W1 matches frozen80. No playing-strength result
-is yet established. Build80 is the initial technical control;
+checks; current production/control W1 matches frozen80. At build84, G1's32-pair W1
+screen against80 scored30W/18D/16L(60.94%, paired95 interval52.15-69.72%); the
+retention-only R1 reverse ablation scored19W/20D/25L(45.31%,35.61-55.01%). All
+runtime audits passed. This exploratory evidence supports unchanged G1 for W4
+risk and a prospectively frozen fresh direct79 W1 confirmation; neither independent
+strength success nor acceptance is established. Build80 is the technical control;
 F3/build83 is optional only on a justified integration hypothesis, with its H2
 dependencies and adverse W4 evidence visible. Historical campaigns are unchanged.
 The initial aggregate resource plan and prospective confirmation requirements live
 in HL-R001's contract; no unlimited tuning or larger precision campaign is implied.
 
 The owner confirms **P4-R003/P4-F016** Project mirrors were current at launch.
-The repository pair is now **P4-R003/P4-F017**. Owner refresh of the Frontier mirror
+The repository pair is now **P4-R003/P4-F018**. Owner refresh of the Frontier mirror
 is required before mirror-dependent Project planning and does not block this
 authorized repository work. Historical no-successor statements below describe
 their respective completed decisions, not a veto on this new explicit authority.

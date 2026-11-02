@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "utc": "2026-11-02T01:37:01.627659+00:00",
+  "analysisSha256": "2441cd56a8318d2bdc5e20e36d933cb28f8ef5d0e662916e953745c2f9d816c0",
+  "cases": 6,
+  "coverage": "Synthetic paired null, hand-calculated nondegenerate positive mean/SE with differing conservative result, zero-variance draw/win bounded fallback, invalid size/value rejection. Not real match evidence or an operational identity audit.",
+  "positiveSynthetic": {
+    "score": 0.55,
+    "pairScoreStandardError": 0.014836636618975406,
+    "oneSidedAlpha": 0.025,
+    "normalCriticalValue": 1.9599639845400536,
+    "pairedNormalLower": 0.5209207265751001,
+    "boundedHoeffdingLower": 0.44263264791331564,
+    "primaryLower": 0.5209207265751001,
+    "primaryMethod": "paired normal approximation",
+    "practicalMinimumScore": 0.53,
+    "primaryCriterionPassed": true,
+    "conservativeSensitivityPositive": false
+  }
+}
