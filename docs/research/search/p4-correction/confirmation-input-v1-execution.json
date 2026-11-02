@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "protocol": "confirmation-input-v1-protocol.json",
+  "protocolSha256": "285810dd989e818512e89a4aee026cecd30a0f9805404fc4d65e34f9bc0596e8",
+  "selectorSha256": "d5d2cb5b84d75c8c29e9d87fd3d7338ee4afcc232885bbc20288728e85366a02",
+  "outputSha256": "cec30b809d6d593f389f820d5706570fc17ff9b022804592837acfee697b37e1",
+  "pairs": 160,
+  "availableDistinctPositions": 1055,
+  "wallSeconds": 42.32975429999351,
+  "independentChecks": "Reparsed160 unique legal nonterminal16-ply histories; reconstructed ordered keys match receipt; no overlap with any hash-verified tracked receipt. All60 mixed-phase sequence positions excluded by selector. Six non-key receipt purposes directly reviewed and unchanged from prior HL design: trajectory-only or subsets of covered development sources.",
+  "limits": "No game/evaluator filtering; selected from curated held-out source after exclusions, so no arbitrary-opening/worker/clock generalization. No BOUNDARY2 study opened."
+}

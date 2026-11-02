@@ -286,3 +286,21 @@ C3 remains unchanged. `confirmation-input-v1-protocol.json` prospectively binds
 fresh160-root selection, seed2026110306, entire legal16/prior-receipt exclusions plus
 all actual mixed-phase sequence roots. Full parser execution has not started at this
 recording; inspect intended output/receipt before retry. Confirmation/W4 games remain0.
+
+
+Confirmation input preparation completed in42.33s, zero games. Fixed160 unique legal
+16-ply roots from1055 eligible held-out positions, seed2026110306; source34700 games,
+legal16 exclusion40462 histories,56773 excluded distinct keys, including prior HL
+confirmation and all60 mixed-phase sequence roots. Output SHA256
+cec30b809d6d593f389f820d5706570fc17ff9b022804592837acfee697b37e1.
+Independent reparsing/key/receipt-hash/no-overlap checks passed. The same six non-key
+receipts as prior HL were directly reviewed: post-opening trajectories or subsets
+of covered development sources. None supplies an uncovered independent opening pool.
+No forbidden clock study was opened. See input protocol/selection/execution records.
+Curated-source/family correlation limitations remain; no finite-population narrowing.
+
+`c3-risk-v1-protocol.json` prospectively freezes32 W4 risk pairs against exact84,
+unchanged build88/C3, common development inputs, seed2026110305,64 fixed games,
+estimate2300s/hard3600s. Fits64 W4 games/448 total games/37227.87s remaining. No
+W4 or confirmation game started at this recording; inspect raw run status before
+launch/retry. W4 will be a risk characterization, not an equivalence claim or W1 pool.

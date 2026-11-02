@@ -1,0 +1,49 @@
+{
+  "id": "CH-C3-W4-RISK-V1",
+  "status": "prospectively frozen before games",
+  "frozenUtc": "2026-11-02T13:33:41.027662+00:00",
+  "question": "Characterize W4 competitive and operational risk of unchanged C3 against exact84 guided; no W4 equivalence/superiority or W1 acceptance claim.",
+  "category": "W4 competitive risk",
+  "namePrefix": "c3-risk-v1",
+  "workers": [
+    4
+  ],
+  "pairs": 32,
+  "tc": "10+0.1",
+  "seed": 2026110305,
+  "timeoutSeconds": 3600,
+  "estimatedMatchSeconds": 2300,
+  "remainingCategoryGames": 64,
+  "remainingTotalGames": 448,
+  "remainingMatchSeconds": 37227.87131260001,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\raw\\runtime-build88-c3-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "corrected-retained",
+  "candidateIdentity": {
+    "name": "CH-C3 decayed completed pawn correction across requests with main and qsearch consumers",
+    "source": "d530b28aded2b4ed6a6f3cc1c15d0a8373b1dbb9",
+    "build": 88,
+    "flags": 1043595263
+  },
+  "controlIdentity": {
+    "name": "HL-G1 retained learning with history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\development-v1-openings.pgn",
+  "openingSha256": "46bc3cc35f181429f6c19b24162b5744af9d1a4df4945b0677358d2e896158a2",
+  "openingSelection": "docs\\research\\search\\p4-correction\\development-v1-openings.selection.json",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\runtime-build88-c3-v1-manifest.json"
+  ],
+  "adapterSha256": "13e7a3a57df5ea0d3e1adff2848c3e79e38126fe1bbec8875ebaeb8ad24bc72b",
+  "resources": "W4 ROOT_REUSE, CP64 Hash64 (48MiB TT entry payload), Java21+35, Windows Ryzen5500; one game at a time; identical JVM heaps/ActiveProcessorCount4; BOUNDARY2 unchanged",
+  "audit": "Existing independent real-history legality/PV/terminal/accounting audit, stable input hashes, owned Windows Job and complete engine-handle drain. Narrow audited-fallback runner qualification retained; any other warning/failure stops the match.",
+  "stopping": "32 complete color-reversed W4 pairs, fixed64 games; no score-based early stop, extra games, changes or adaptive extension. Runtime/safety failures preserve partial evidence and charge actual games/wall.",
+  "analysis": "Descriptive WDL and paired-normal95/bounded Hoeffding95 risk intervals, not a confirmatory W4 claim. Inconclusive does not establish neutrality or regression; preserve HL84 prior W4 vs79 uncertainty separately.",
+  "nextDecision": "Audit all32 W4 pairs and investigate any material warning proportionately. W4 superiority/equivalence is not required for the owner-authorized W1-only criterion. Genuine correctness/drain failures block affected progression. Candidate remains frozen for a separate fresh W1 confirmation; no pooling."
+}
