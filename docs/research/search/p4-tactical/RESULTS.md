@@ -1,9 +1,94 @@
 # TC-R001 evidence and current outcome
 
-4 November 2026. **Strength objective unachieved; unchanged TC-P1 selected as finalist
-for remaining qualification.** Independent confirmation remains unspent.
+4 November 2026. **Authorized research execution is complete. TC-P1 failed the
+prospective independent W1 strength criterion; the governing objective is unmet.
+Owner acceptance/reconciliation is pending.** The sole confirmation attempt is spent.
 [CONTRACT](CONTRACT.md) preserves the approved scope and criterion;
-[STATE](STATE.md) is the restart point.
+[STATE](STATE.md) is the terminal restart point. Technical qualification is not a
+successful foundational relabelling. No further experiment or successor is authorized.
+
+## Sole independent confirmation: strength criterion failed
+
+The frozen [protocol](p1-confirmation-v1-protocol.json) and admission evidence were
+committed at ea4a41c2 before any confirmation game. Unchanged TC-P1/build89 (identity
+below) faced exact HL-G1/build84, sourceb8ea8b2856eed3f6c774860ca540375054e4de30,
+guided/flags104071167. Domain: W1 OWNER, CP64/PVS/ADAPTIVE16/Hash64, Windows/Ryzen5500/
+Java21, UCI10+0.1,320 fresh protected opening pairs. No tuning, interim outcomes,
+optional stopping, selective exclusions, development pooling or W4 pooling.
+
+[Independent analysis](p1-confirmation-v1-analysis.json): **640 normal games,
+235W/202D/203L,52.50%**, pentanomial[30,64,110,76,40]. Pair-score sample variance
+0.0816614420062696, SE0.01597473024090211; declared z1.9599639845400536 yields
+**paired-normal95%49.3690-55.6310%** (nominal one-sided alpha0.025). Both gates
+**failed**: score>=53% and normal lower strictly>50%. Conservative bounded
+Hoeffding95%**44.9080-60.0920%** is separate sensitivity, not a substituted gate.
+Required technical and operational qualification passed. These data establish neither
+credible accepted gain nor a universal mechanism rejection. The mean is positive,
+but the interval spans equality: small losses and practically meaningful gains both
+remain compatible with this estimate. Normal approximation and opening-distribution/
+dependence limits remain. Candidate selection used developmental results only; that adaptive selection
+is not extra independent evidence.
+
+The runner audited91046 requests, complete traces, legal histories/PVs/terminal
+handling, resource accounting and frozen inputs, with0 missing-score warnings.
+Independent Python-chess replay checked101286 plies, every terminal, the exact320-root
+set with two opposite-color games per root, and reconstructed statistics matching
+the runner. All640 games were retained by the
+[score-blind operational review](p1-confirmation-v1-operational-review.json) before
+any outcome inspection. No unqualified or excluded confirmation games.
+
+[Execution](p1-confirmation-v1-execution.json) started2026-11-03T12:49:30Z; the sole
+attempt was marked spent12:49:50Z after admission and before any child. Natural
+completion/drain18:22:09Z (4 November07:22:09 NZDT), wall19958.4720559s, ownedCPU
+20009.859375s,10 owned processes, exit0, remaining0. The eighthour PC grant through
+19:38:59Z covered the entire run.9839 PC samples: mean12.31%, p95 19.04%, max56.11%,
+three isolated approximately2s samples>=50%, none>=75%, minfree15.83GiB, no gaming.
+All were retained before scores. Exact causes/per-move impact are unknown; guard
+compliance is not proof of clock equivalence. Frozen scientific inputs, resource
+limits, deadlines, admission guards and blinding were unchanged.
+
+Local raw evidence: raw/p1-confirmation-v1-w1/ (PGNs, run, traces, cost, preflights),
+raw/p1-confirmation-v1-pc-use.jsonl and supervisor log. Game PGN SHA256
+ff9b60f6bb7bf97c866eb2276a90cc51a31c5594ef5abd2877ffe7d81bd46c43;
+protocol SHA256 d9e3da88564cde681664381f509bf47393dafbeadeee7d8289ef437075107786.
+Compact [runner summary](p1-confirmation-v1-w1-summary.json), execution, operational
+review and analysis remain tracked; raw evidence is ignored/local-only. A fresh
+checkout must establish local evidence availability before repeating analysis.
+
+## Final disposition and remaining uncertainty
+
+The campaign reached its legitimate one-attempt boundary with strength unmet. All
+640 independent games and96 W4 risk games are spent; no responsible additional
+in-scope independent claim remains. Unused129 development games and wall allowance
+do not permit confirmation-driven tuning, renewal, replacement or a successor.
+No further computation is scheduled. GPT/owner acceptance/reconciliation is pending.
+
+W4 remains a persistent adverse warning: adaptive48-pair pool **26W/32D/38L,43.75%,
+normal95%34.9359-52.5641%**. Both constituent batches scored43.75%; technical and
+bounded cost checks found no new defect, and do not explain or dismiss the possible
+strength loss. This is neither demonstrated regression nor neutrality. Owner review
+is required before any multiworker adoption, outside this authorization. Earlier
+HL84-versus79 adverse uncertainty and79/80 competitive bridge remain separate.
+
+[Resources](resources.json): **31090.5301999/64800 charged seconds (8h38m10.53s of18h)**,
+33709.4698001s remaining. **991/1120 initiated games**:255 development,96 W4,640
+independent;1/1 claim attempt spent. Interrupted starts, failed admissions,
+preparation/diagnostics and bounded audits are charged once. Initial build/test costs
+73.41s and67.53s were separately reported. The first W1 screen was stopped for external
+CPU saturation and remains clock-unqualified; no WDL from it informed selection.
+Failed zero-game admissions, initial input-selector drain assertion and W4 isolation
+harness error remain preserved, with scoped fixes/validations distinguished below.
+
+Only TC-P1 was implemented in this objective. Source comparison investigated
+TT-supported singular/forced extensions, qsearch/capture ProbCut and relevant
+supporting information. Ordinary production TT score suppression, absent TT vetoes,
+conservative verification isolation, overlap with verified null and W4 scheduling/
+work changes are plausible interaction questions, not demonstrated failure causes.
+Calibration's12 nominal disagreements do not quantify tactical error severity or
+population risk. No evidence justified a specific retuning before selection; after
+confirmation, tuning/replacement is prohibited under this claim. Further investigation
+needs renewed owner authority and a fresh finite protocol, not a retrospective
+criterion change. F3 remains optional/adverse, and both BOUNDARY2 studies stay unopened.
 
 ## Implemented formulation and source evidence
 
@@ -102,11 +187,10 @@ are neither a population error rate nor exhaustive chess truth; fail-low labels 
 not quantify error magnitude. Instrumented/nested costs cannot establish speed.
 [Calibration summary](p1-calibration-v1-summary.json) identifies the exact local evidence.
 
-TC-P1 is retained unchanged for wider development. No parameter tuning or finalist
-selection follows. A fixed64-pair/128-game support sample, split prospectively into
-two32-pair segments, will test whether the positive direction persists before
-spending the sole independent confirmation. Segment outcomes stay unread for
-selection until both complete and pass operational audit.
+At that checkpoint TC-P1 was retained unchanged for wider development, without
+parameter tuning or finalist selection. The next fixed64-pair/128-game support
+sample was split prospectively into two32-pair segments. Segment outcomes remained
+unread for selection until both completed and passed operational audit.
 
 ## Complete fixed128-game support and selected finalist
 
@@ -131,13 +215,13 @@ No gaming or guard violation during either match. Both score-blind reviews retai
 all games. A's transient source/per-move impact is unknown; passing operational guards
 does not prove clock equivalence. All raw samples and failed admission evidence remain.
 
-The unchanged source/configuration is now selected as finalist for W4 risk and, if
+The unchanged source/configuration was then selected as finalist for W4 risk and, if
 required qualification remains adequate, the sole independent W1 confirmation.
 The wider positive evidence, prior V2 and calibrated mechanism justify this choice;
 no parameter tuning or extra W1 sampling is selected merely to seek favorable results.
-No acceptance, promotion or independent claim has occurred.
+No acceptance, promotion or independent claim had occurred at that checkpoint.
 
-## Completed W4 risk and independent-confirmation admission
+## Completed W4 risk and historical independent-confirmation admission
 
 Initial64-game W4 risk:16W/24D/24L,43.75%, normal95%33.67-53.83%. A fixed fresh-root
 32-game follow-up:10W/8D/14L,43.75%. All96 games/13707 requests passed operational,
@@ -159,7 +243,7 @@ rule out a strength loss. All96 W4 games are spent. Escalate this warning before
 multiworker adoption, which is outside this task. W1-only confirmation remains within
 the original authority; W4 superiority/equivalence was not its acceptance gate.
 
-[Independent confirmation](p1-confirmation-v1-protocol.json) is now frozen: unchanged
+[Independent confirmation](p1-confirmation-v1-protocol.json) was then frozen: unchanged
 TC-P1 against exact84, full320 fresh protected pairs/640 games, no interim outcomes,
 no tuning/optional stopping/pooling, one attempt. Original score>=53% and paired-normal
 lower>50% criterion retained; bounded sensitivity separate. The owner's eight-hour PC
@@ -178,7 +262,8 @@ moves/keys exposed for selection. Historical failed selector evidence is preserv
 The claim-admission supervisor passed15 rejection cases and isolated stale/duplicate
 ledger tests, plus native sampling/owned-dummy drain. Historical source/receipts remain
 preserved. No application runtime changes; no application build bump or repeated full
-application tests. Actual independent result remains unknown.
+application tests. The outcome was unknown at that freeze; the completed result
+and terminal disposition are reported above.
 
 ## Repository and authority
 
@@ -193,10 +278,23 @@ the runtime commit; later harness/docs work has no application build impact.
 
 Champion remains exact HL-G1/build84; normal build85 HL-G1 policy is unchanged.
 TT-R001 reconciliation remains separate and both frozen BOUNDARY2 studies unopened.
-Current masters are **P4-R014/P4-F030**. Repository edits do not refresh owner mirrors.
+Current masters are **P4-R015/P4-F031**. Repository edits do not refresh owner mirrors.
 
-Human actions required after this prompt: **None for current execution inside the
-granted eight hours. Blocking before multiworker adoption: owner review of the
-persistent adverse W4 evidence. Blocking before mirror-dependent planning, non-blocking
-for repository work: refresh Phase4 mirrors to P4-R014/P4-F030.** No acceptance,
-promotion or deployment is requested. Routine monitoring stays internal per STATE.
+The successful technical execution does not establish playing-strength success or
+owner acceptance. The initial W4 isolation run passed8 W4 requests before a harness-
+only assertion demanded absent W1 rows; a scoped guard repair and fresh v2 passed.
+The original failure remains failed and charged. The input-selector immediate Job-
+drain assertion likewise remains failed despite independent validation of retained
+inputs. No failed evidence was relabelled. Completed records preserve their bytes.
+All current experiment processes drained. This closeout changes evidence/docs only;
+version remains build89, no further application tests or build bump are warranted.
+
+Human actions required after this prompt:
+
+- **Non-blocking for completed repository execution; blocking for accepted closeout
+  and successor planning:** GPT/owner review and reconcile this unsuccessful handback.
+  No successor is selected or authorized by this report.
+- **Blocking before multiworker adoption (outside this task):** owner review of the
+  unresolved adverse W4 evidence.
+- **Blocking before mirror-dependent planning; non-blocking for completed repository
+  work:** refresh both Phase4 Project Source mirrors to **P4-R015/P4-F031**.

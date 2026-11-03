@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R014**
+Internal revision: **P4-R015**
 
-Status: **ACTIVE - 4 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build89 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 is technically completed and owner-accepted as unsuccessful on 3 November 2026: independent W1 strength criterion failed. TC-R001 tactical-coverage research is separately owner-authorized and active after its prerequisite documentation commit. No promotion or deployment.**
+Status: **ACTIVE - 4 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build89 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 is technically completed and owner-accepted as unsuccessful on 3 November 2026: independent W1 strength criterion failed. TC-R001 authorized execution is complete: the sole independent W1 confirmation failed both strength gates; owner acceptance/reconciliation is pending. W4 retains an unresolved adverse warning. No autonomous continuation, promotion or deployment.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -54,19 +54,26 @@ governed by its [focused contract](../docs/research/search/p4-tactical/CONTRACT.
 and [resume STATE](../docs/research/search/p4-tactical/STATE.md):18 hours charged
 experimental wall, at most1,120 initiated games, exact84 comparator and one reserved
 independent W1 attempt (up to320 fresh pairs; score>=53%, paired-normal95% lower>50%).
-W4 risk and PC coexistence remain mandatory. TC-P1/build89 passes W1/W4 technical
-checks; its first W1 screen was interrupted for external CPU saturation, with63
-initiated games and no strength result. A subsequent controlled64-game W1 screen
-passes operational audit, scoring53.125% with normal95%43.86-62.39%; exploratory,
-not strength-qualified. The complete wider128-game support study scored57.03125%
-(normal95%50.6242-63.4383%), after both segments passed score-blind operational review.
-This is exploratory evidence; unchanged TC-P1 is selected as finalist for remaining
-W4 risk and independent W1 qualification. W4 risk completed96 games at43.75%,
-normal95%34.94-52.56% (adaptive descriptive), an unresolved adverse warning. Technical
-and bounded cost investigation found no new defect; W4 adoption remains unqualified.
-The unchanged W1-only320-pair independent protocol is frozen within the owner
-eight-hour PC window. No acceptance threshold or allowance changes.
-This authority changes neither the champion nor production defaults.
+W4 risk and PC coexistence remained mandatory. TC-P1/build89 passed W1/W4 technical
+checks and was selected unchanged after exploratory W1 evidence. Its sole independent
+confirmation completed320 fresh pairs/640 normal games: **235W/202D/203L,52.50%,
+paired-normal95%49.3690-55.6310%, bounded95%44.9080-60.0920%**. Both strength gates
+failed; the governing strength objective is unmet. Technical/operational qualification
+passed, including91046 request audits, independently replayed legal games/terminals
+and stable inputs, with all owned processes drained. This is not successful
+foundational relabelling. Owner acceptance and GPT/owner reconciliation are pending.
+
+W4 risk completed96 games at43.75%, normal95%34.94-52.56% (adaptive descriptive),
+an unresolved adverse warning. Technical and bounded cost investigation found no new
+defect; W4 adoption/neutrality remains unqualified and needs separate owner review.
+Charged experimental wall31090.5301999s of64800s;991 of1120 games initiated
+(255 development,96 W4,640 independent). The one claim attempt is spent. Remaining
+129 development games/33709.4698001s do not authorize tuning after confirmation,
+a replacement claim or a successor. Autonomous experimentation has stopped at this
+legitimate boundary. All failed, interrupted and inconclusive evidence remains.
+The owner's eighthour PC window covered completion without renewed availability
+questions. STATE and RESULTS preserve exact identities, statistical/clock limitations,
+resource evidence and terminal ownership. Champion and production defaults remain.
 
 ## Strength-first, externally informed research
 
@@ -502,8 +509,9 @@ is technically completed and owner-accepted as unsuccessful on 3 November 2026,
 with its strength objective unmet. Its sole confirmation attempt remains spent.
 This acceptance neither reopens completed campaigns nor authorizes a successor;
 the separately supplied tactical execution request has satisfied its prerequisite
-commit boundary and governs TC-R001. The Frontier records priorities and hypotheses, not
-a predetermined exhaustive queue.
+commit boundary and governed TC-R001. Its authorized execution is now complete with
+the strength criterion failed and acceptance/reconciliation pending. No successor
+follows. The Frontier records priorities and hypotheses, not a predetermined queue.
 For any future CGLHW objective, the owner must supply the **complete current
 authoritative premade CGLHW GPT prompt generator before GPT prepares its execution
 prompt**. Each objective requires a dedicated GPT conversation for its complete
@@ -517,7 +525,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R014/P4-F030** pair before mirror-dependent Project planning; the Frontier
+**P4-R015/P4-F031** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

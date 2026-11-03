@@ -170,3 +170,16 @@ unmet; do not reclassify this as successful foundational work. Preserve a restar
 handback and distinguish turn completion, execution completion, scientific outcome,
 owner acceptance, promotion and deployment. Identify current master revisions and
 owner mirror refreshes; repository-only execution does not await mirror refresh.
+
+## Execution disposition - 4 November2026 (criteria unchanged)
+
+Authorized TC-R001 execution completed at its one-attempt boundary. Unchanged
+TC-P1/build89's full320-pair independent W1 confirmation versus exact84 passed
+technical/operational qualification but scored52.50%, paired-normal95%49.3690-55.6310%:
+both prospective strength gates failed. The governing strength objective is unmet;
+this is not successful foundational work. The sole claim is spent, no automatic
+renewal or successor. Remaining resources do not authorize confirmation-driven
+tuning/replacement. W4's adverse43.75% pooled estimate remains unresolved and requires
+owner review before any multiworker adoption. STATE/RESULTS own the final evidence,
+resources and terminal boundary. Owner acceptance/reconciliation is pending; this
+execution note changes no criterion, resource ceiling, policy, champion or default.

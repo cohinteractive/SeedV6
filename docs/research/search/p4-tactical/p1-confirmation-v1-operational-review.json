@@ -1,0 +1,42 @@
+{
+  "status": "passed operational qualification with recorded transient-load limitation",
+  "reviewedUtc": "2026-11-03T18:24:29.205633+00:00",
+  "scope": "Saved before any independent confirmation WDL/statistic/candidateScore inspection.",
+  "executionReceipt": "p1-confirmation-v1-execution.json",
+  "rawRun": "docs\\research\\search\\p4-tactical\\raw\\p1-confirmation-v1-w1",
+  "normalCompletedGames": 640,
+  "completedRequests": 91046,
+  "qualifiedMissingScoreWarnings": 0,
+  "inputsStable": true,
+  "ownedProcessesRemaining": 0,
+  "pcSamples": 9839,
+  "meanCpuPercent": 12.308245274065056,
+  "p95CpuPercent": 19.038336582196237,
+  "maxCpuPercent": 56.10730593607306,
+  "cpuSamplesAtLeast35": 31,
+  "cpuSamplesAtLeast50": 3,
+  "cpuSamplesAtLeast75": 0,
+  "minimumFreeGiB": 15.829704284667969,
+  "overwatchObserved": false,
+  "highSamples": [
+    {
+      "utc": "2026-11-03T12:54:30.961957+00:00",
+      "totalCpuPercent": 51.23697916666667,
+      "freeMemoryGiB": 17.965919494628906,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T17:48:30.567183+00:00",
+      "totalCpuPercent": 56.10730593607306,
+      "freeMemoryGiB": 16.250835418701172,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T17:56:52.002583+00:00",
+      "totalCpuPercent": 52.66927083333333,
+      "freeMemoryGiB": 17.077713012695312,
+      "overwatch": false
+    }
+  ],
+  "disposition": "Retain all640 games under the frozen operational protocol. All ended normally; full trace/game/history/PV/accounting, stable inputs and owned-drain checks pass with0 qualified warnings. Three isolated high samples51.24%,56.11%,52.67%, each a single~2s sample, none>=75%; low mean/p95 and no memory pressure/gaming. Exact transient causes/per-move impact unknown; passing guards is not proof of clock equivalence. No selective exclusions or replay."
+}

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-03T12:49:30.577631+00:00",
+  "protocol": "p1-confirmation-v1-protocol.json",
+  "protocolSha256": "d9e3da88564cde681664381f509bf47393dafbeadeee7d8289ef437075107786",
+  "window": "docs\\research\\search\\p4-tactical\\p1-confirmation-v1-window-v1.json",
+  "windowSha256": "76b99f19f388fe9ea578f29129714becb7375fb0c872f2a0e602919f137a3438",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical.py",
+    "--protocol",
+    "p1-confirmation-v1-protocol.json",
+    "--workers",
+    "1"
+  ],
+  "reservedGamesPending": 640,
+  "category": "charged controlled-window W1 independent confirmation and audit",
+  "supervisorSha256": "f2d3d425b4e0ab43bbd8285b1f7a614dbde43984558488ecd8bfceb32bf92ede",
+  "confirmationAttemptStartedUtc": "2026-11-03T12:49:50.961120+00:00",
+  "confirmationAttempt": 1,
+  "pid": 39196,
+  "exitCode": 0,
+  "gamesInitiated": 640,
+  "ownedProcessesRemaining": 0,
+  "processDrained": true,
+  "ownedCpuSeconds": 20009.859375,
+  "totalOwnedProcesses": 10,
+  "endedUtc": "2026-11-03T18:22:09.050040+00:00",
+  "wallSeconds": 19958.472055900027
+}

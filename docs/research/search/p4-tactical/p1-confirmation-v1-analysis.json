@@ -1,0 +1,42 @@
+{
+  "id": "TC-P1-CONFIRMATION-V1",
+  "status": "passed complete independent analysis",
+  "utc": "2026-11-03T18:24:33.203746+00:00",
+  "raw": "docs\\research\\search\\p4-tactical\\raw\\p1-confirmation-v1-w1",
+  "inputPgnSha256": "ff9b60f6bb7bf97c866eb2276a90cc51a31c5594ef5abd2877ffe7d81bd46c43",
+  "protocolSha256": "d9e3da88564cde681664381f509bf47393dafbeadeee7d8289ef437075107786",
+  "games": 640,
+  "pairs": 320,
+  "wdl": [
+    235,
+    202,
+    203
+  ],
+  "score": 0.525,
+  "pentanomial": [
+    30,
+    64,
+    110,
+    76,
+    40
+  ],
+  "samplePairVariance": 0.0816614420062696,
+  "pairScoreStandardError": 0.01597473024090211,
+  "pairedNormal95": [
+    0.493690104065089,
+    0.556309895934911
+  ],
+  "pairedHoeffding95": [
+    0.44907981726146184,
+    0.6009201827385382
+  ],
+  "minimumScoreGatePassed": false,
+  "normalLowerGatePassed": false,
+  "technicalOperationalQualificationPassed": true,
+  "governingW1StrengthCriterionPassed": false,
+  "independentlyVerifiedTerminals": 640,
+  "independentlyReplayedPlies": 101286,
+  "method": "Independent legal PGN replay, every terminal reconstructed with python-chess claim semantics, exact frozen320-root set and two opposite-color games per root; pair sample variance and original z formula. WDL/normal/Hoeffding crosschecked against runner. Score-blind operational review saved first. No development/W4 pooling or optional stopping.",
+  "limits": "W1 Windows/Ryzen5500 Java21 CP64 Hash64 PVS/ADAPTIVE16 10+0.1 on the frozen opening distribution. Pair-normal approximation and opening dependence remain assumptions; bounded sensitivity separate. Three brief CPU excursions retained with no exclusions. W4 remains adversely inconclusive43.75% and not qualified for neutrality/adoption. Owner acceptance, champion status and production remain separate.",
+  "wallSeconds": 4.0454116000037175
+}

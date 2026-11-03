@@ -118,3 +118,29 @@ All96 risk games are spent. Escalate before any multiworker adoption; no such ad
 is authorized. Under the original W1-only objective, proceed with unchanged TC-P1's
 full fresh320-pair independent protocol, preserving W4 limitations prominently.
 No additional mechanism, parameter change, criterion change or claim attempt is selected.
+
+## Terminal disposition, 4 November2026
+
+The sole fresh320-pair W1 confirmation completed640 games versus exact84:
+235W/202D/203L,52.50%, paired-normal95%49.3690-55.6310%, bounded44.9080-60.0920%.
+Technical/operational qualification passed, but both prospective strength gates failed.
+TC-P1 is retained experimental evidence; the strength objective remains unmet.
+Owner acceptance/reconciliation is pending. No parameter change, replacement,
+renewed claim, further experiment or successor is selected or authorized.
+
+Only the bounded capture-verification formulation was implemented. External source
+inspection considered TT-supported singular/forced extensions and qsearch/capture
+verification; absent ordinary TT bound/depth support and the optional F3's adverse
+W4 history informed the initial choice. This does not establish that alternatives
+would be better. Missing TT vetoes, conservative probe isolation/learning suppression,
+overlap with verified null, selective-horizon prediction errors and parallel work/
+scheduling interactions remain plausible explanations to distinguish in future
+authorized work. Calibration labels do not establish their practical contribution.
+The persistent W4 adverse estimate is unresolved; clean technical/cost checks cannot
+prove neutrality. No specific causal defect or justified parameter change was found
+before the finalist freeze, and confirmation results cannot now be used to tune it.
+
+The sole attempt is spent. Remaining129 development games and9h21m49.47s wall do
+not renew it. A different integrated hypothesis, supporting TT changes or another
+independent claim would require renewed authority and prospective resources/inputs,
+with the current failed outcome preserved. See RESULTS and terminal STATE.

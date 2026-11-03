@@ -1,13 +1,13 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 11128.012732399977,
-  "remainingWallSeconds": 53671.98726760002,
-  "initiatedGames": 351,
-  "remainingGames": 769,
+  "chargedWallSeconds": 31090.530199900008,
+  "remainingWallSeconds": 33709.46980009999,
+  "initiatedGames": 991,
+  "remainingGames": 129,
   "developmentGames": 255,
   "riskGames": 96,
-  "confirmationGames": 0,
-  "confirmationAttempts": 0,
+  "confirmationGames": 640,
+  "confirmationAttempts": 1,
   "executions": [
     {
       "receipt": "build89-preflight-execution.json",
@@ -263,7 +263,24 @@
       "category": "charged final independent-input/artifact admission verification",
       "status": "passed",
       "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-confirmation-v1-execution.json",
+      "wallSeconds": 19958.472055900027,
+      "category": "charged controlled-window W1 independent confirmation and audit",
+      "status": "passed",
+      "initiatedGames": 640
+    },
+    {
+      "receipt": "p1-confirmation-v1-analysis.json",
+      "wallSeconds": 4.0454116000037175,
+      "category": "charged independent confirmation PGN/terminal/pair analysis",
+      "status": "passed",
+      "initiatedGames": 0
     }
   ],
-  "accounting": "Outer elapsed receipts charged once; interrupted screen63 initiated games including incomplete63, unstarted64 not charged as a game. Post-interruption audit charged separately. Small input reviews inside the screen wall are not charged twice. Original failed receipts/unfinished raw records preserved; no strength result or attempt."
+  "accounting": "Outer elapsed receipts charged once; interrupted screen63 initiated games including incomplete63, unstarted64 not charged as a game. Post-interruption audit charged separately. Small input reviews inside screen wall not charged twice. Original failed receipts/unfinished raw records preserved; interrupted V1 supplied no strength result or confirmation attempt. Final independent confirmation completed640 games, consumed the sole attempt and failed both strength gates after passing technical/operational qualification. Remaining129 development games/wall do not renew the claim. Build/test wall is reported separately under the original contract.",
+  "confirmationAttemptProtocol": "TC-P1-CONFIRMATION-V1",
+  "confirmationAttemptStartedUtc": "2026-11-03T12:49:50.961120+00:00",
+  "confirmationOutcome": "governing W1 criterion failed"
 }

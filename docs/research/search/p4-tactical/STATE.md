@@ -1,10 +1,31 @@
-# TC-R001 resume state
+# TC-R001 terminal resume state
 
-4 November2026 (Pacific/Auckland). **Independent W1 confirmation frozen for immediate
-admission; outcome unknown. W4 has persistent adverse, inconclusive competitive risk.**
-All completed experiments are drained. The confirmation execution receipt owns live
-status after launch. [CONTRACT](CONTRACT.md) retains the original criterion/resources;
-[RESULTS](RESULTS.md) records evidence. No production/champion change or acceptance.
+4 November 2026 (Pacific/Auckland). **Authorized research execution is complete;
+the governing strength criterion FAILED and the strength objective remains unmet.
+Owner acceptance and GPT/owner reconciliation are pending.**
+[CONTRACT](CONTRACT.md) retains the original criterion/resources;
+[RESULTS](RESULTS.md) is the evidence-bearing handback. This is not a successful
+foundational relabelling.
+
+## Terminal boundary and ownership
+
+The sole independent confirmation completed all 640 games and drained naturally at
+2026-11-03T18:22:09Z (4 November07:22:09 NZDT). All owned processes are stopped;
+there is no incomplete technical work or live match. Historical process IDs and
+reservedGamesPending in the completed receipt are not active ownership/reservations.
+Do not restart, extend, overwrite or retry any completed output.
+
+TC-P1 scored **235W/202D/203L,52.50%, paired-normal95%49.3690-55.6310%** against
+exact HL-G1/build84. Both required gates failed: mean>=53% and normal lower>50%.
+Technical/operational qualification passed. The sole attempt and all640 confirmation
+games are spent; unused development games/wall do not renew the claim. Confirmation
+outcomes must not inform tuning or replacement under this authorization. No further
+responsible in-scope strength claim remains; stop autonomous experimentation here.
+Ordinary evidence review remains available. No successor is selected or authorized.
+
+HL-G1/build84 remains research champion; normal HL-G1 policy integrated at build85
+is unchanged. TC-P1/build89 remains opt-in experimental evidence, not adopted.
+No push, release, installation, Lichess deployment or production/default change.
 
 ## Provenance and implementation
 
@@ -86,11 +107,10 @@ completed pairs. Score/PV, nominal accounting and retained histories match the
 internal guided reference. These conditional selective-horizon labels are neither
 population error rates nor exhaustive truth; null-window bounds give no error magnitude.
 
-**Decision:** retain the unchanged TC-P1 source/configuration as finalist for W4 risk
-and, if required qualification remains adequate, the one fresh W1 confirmation.
-Positive support plus prior V2/mechanism/cost evidence justifies this choice. Do not
-spend more adaptive W1 games merely for another favorable estimate or tune parameters
-without a new concrete failure hypothesis. No independent claim or acceptance yet.
+**Development decision, before confirmation:** the wider support, V2 and mechanism/
+cost evidence selected unchanged TC-P1 as finalist. No parameter tuning followed.
+These exploratory observations were never pooled with the independent result and
+do not rescue its failed criterion.
 
 ## Completed W4 risk investigation and limitation
 
@@ -118,56 +138,69 @@ lifecycle defect blocks W1. The repeated W4 warning requires owner review before
 any multiworker adoption (outside this authorization); it is not hidden or accepted
 as neutrality. The governing W1-only independent criterion remains applicable:
 W4 superiority/equivalence was not a gate, and proportionate risk investigation is
-complete within its96-game allowance. Continue unchanged W1 confirmation with this
-limitation prominent; no broad strength or production claim follows automatically.
+complete within its96-game allowance. The unchanged W1 confirmation therefore ran
+with this limitation prominent; its failed outcome establishes no strength claim.
 
 A W4 pre-admission failure occurred before any child/game (last sample36.589%>35%).
 Its20.754s failed receipt is preserved. A20.503s quiet observation passed, followed by
 same-sample admission2 in a fresh output namespace under unchanged guards/caps.
 No game was replayed. Earlier W1 failures and all incomplete evidence remain intact.
 
-## Frozen independent confirmation and active availability
+## Completed sole independent confirmation
 
-Owner grants all already-authorized work an eight-hour PC window, observed
-2026-11-03T11:38:59Z through19:38:59Z (4 November00:38:59-08:38:59 NZDT).
-[owner-availability-8h-v1.json](owner-availability-8h-v1.json) preserves the actual
-reply. **Do not ask again about PC availability within this window.** Scientific
-scope, finite limits, guards and one-attempt restriction remain unchanged.
+Frozen [protocol](p1-confirmation-v1-protocol.json), committed with admission records
+at ea4a41c2, identifies unchanged sourcea7c45dffeaffc362bc7c7026d03a2e6434472be2,
+TC-P1/build89 probcut versus exact84 guided, CP64/PVS/ADAPTIVE16/Hash64/W1 OWNER,
+Windows/Ryzen5500/Java21, UCI10+0.1, seed2026110403, full320 protected pairs/640 games.
+Input/runtime/model/Java hashes were verified before launch and stable afterward.
+No interim outcome inspection, tuning, optional stopping or exploratory/W4 pooling.
 
-[p1-confirmation-v1-protocol.json](p1-confirmation-v1-protocol.json) freezes unchanged
-TC-P1/build89 sourcea7c45dffeaffc362bc7c7026d03a2e6434472be2, exact84 guided opponent,
-CP64/PVS/ADAPTIVE16/Hash64/W1 OWNER/10+0.1, seed2026110403, full protected320 pairs/
-640 games. All input/runtime/Java/model hashes reverified. The derived window receipt
-uses the same19:38:59Z deadline. Expected20000s(~5h33m);24000s runner cap plus bounded
-supervision. Before launch at least24060s must remain in both PC and wall allowances.
-No planned segmentation, interim WDL inspection, tuning, sample reduction, outcome-
-driven stop or additional games. One active game; all original PC guards remain.
+The [execution receipt](p1-confirmation-v1-execution.json) records start12:49:30Z,
+attempt spent12:49:50Z after the PC gate and before any child, and completion18:22:09Z
+on3 November UTC. Outer wall19958.4720559s, ownedCPU20009.859375s,10 owned processes,
+exit0, owned remaining0. All640 normal games and91046 request/trace audits pass,
+with0 missing-score warnings. Natural drain, no interrupted/excluded/replayed games.
 
-After the full sample and score-blind operational review, independently reconstruct
-all paired PGNs. Success requires mean>=0.53 AND normal95% lower strictly>0.50,
-using pair means and z1.9599639845400536 (nominal one-sided alpha.025). Report bounded
-Hoeffding95 sensitivity separately; it is not an added gate. No exploratory pooling.
+The [score-blind operational review](p1-confirmation-v1-operational-review.json)
+retained all games before outcomes:9839 PC samples, meanCPU12.31%, p95 19.04%,
+maximum56.11%, three isolated roughly2s samples>=50%, none>=75%, minfree15.83GiB,
+no gaming. Exact causes/per-move impact remain unknown; passing guards is not proof
+of clock equivalence. Original samples and all earlier failures remain available.
 
-Attempt0 at freeze. Supervisorf2d3d425 persists attempt0->1 after the20s PC gate and
-immediately before any confirmation child, requiring unchanged ledger bytes. Any
-subsequent launch/preflight/runner/audit failure still spends the attempt. A PC-only
-pre-admission failure spends no attempt. Never reset/replenish the counter or start
-a replacement claim. Reconcile actual initiated games after completion/failure;
-reservedGamesPending in the live receipt is not a completed-game count.
+[Independent analysis](p1-confirmation-v1-analysis.json) replayed101286 legal plies,
+verified every terminal and exact frozen320-root opposite-color pairing, independently
+recomputed WDL/variance/normal/Hoeffding and matched the runner. **235W/202D/203L,
+52.50%; pentanomial[30,64,110,76,40]; paired-normal95%49.3690-55.6310%; conservative
+Hoeffding95%44.9080-60.0920%.** Both score>=53% and lower>50% failed. Technical
+qualification passing does not achieve the governing strength objective. The declared
+pair-normal approximation, opening dependence/distribution, selection and limited
+precision remain limitations. Failure does not prove the mechanism has no value.
 
-Supervisor confirmation admission/lifecycle checks pass15 rejection cases, with
-isolated temporary-ledger stale/duplicate-write rejection and actual campaign ledger
-unchanged. Native CPU/memory/owned-dummy drain passes. Historical W1/W4 supervisor
-sources remain in Git; completed protocol/receipt bytes are not rewritten. No engine
-or application source/version changed; first actual640-game path still awaits execution.
+The owner's eight-hour grant, observed2026-11-03T11:38:59Z through19:38:59Z
+(4 November00:38:59-08:38:59 NZDT), covered the full execution. See
+[availability receipt](owner-availability-8h-v1.json). No availability renewal was
+requested. All supervision, priority, resource guards, deadlines and blinding remained.
+Supervisor admission/lifecycle validation passed15 rejection cases plus isolated
+stale/duplicate ledger tests and native sampling/owned-dummy drain. Historical
+supervisor sources and completed receipts/protocols are preserved unchanged.
 
-## Resource/protected-evidence checkpoint
+## Final resources and evidence preservation
 
-Charged **11128.0127324000/64800s** (3h5m28.01s); remaining
-**53671.9872676000s** before confirmation. Initiated351/1120:
-development255/384 (129 left), W4 risk96/96 (spent), confirmation0/640, attempts0/1
-at freeze. A complete confirmation reaches991 total games; unused development is
-not another confirmation allowance. Live ledger/receipt own subsequent claim status.
+[Ledger](resources.json): charged **31090.5301999/64800s (8h38m10.53s of18h)**;
+remaining33709.4698001s (9h21m49.47s). Initiated **991/1120 games**:
+development255/384 (including63 interrupted-batch starts), W4 risk96/96,
+confirmation640/640; **attempts1/1 spent**.129 unused development games and remaining
+wall are ceilings, not a requirement to spend or authority for another claim.
+All failed admissions, diagnostics, preparation and bounded audits are charged once;
+build/test costs are reported separately. No overlapping inner-wall double counting.
+
+The failed input-selector immediate-drain assertion remains failed despite independent
+validation of its completed inputs. The first W4 isolation harness wrongly demanded
+W1 rows after8 W4 requests passed; scoped harness repair and fresh v2 passed, preserving
+the original failure. Initial wrong-interpreter import launched no engine. Interrupted
+V1 and both zero-game PC-admission failures remain failed evidence, not successful runs.
+Raw outputs remain local/ignored under raw/ at manifest-recorded paths; fresh checkouts
+must verify availability before analysis. Compact reports/protocols/inputs remain in Git.
 
 Protected320 roots were frozen before development and remain unchanged. Historical
 fixtures,8094 interrupted-V1 positions,25986 support/V2 positions,933 calibration
@@ -186,21 +219,26 @@ to change monitoring. Preserve every safety/audit/cleanup and blinding requireme
 Report owner-action blockers/material unresolved conditions, actual phase decisions
 and completed results/audits; automatically handled conditions stay in evidence.
 
-This turn resumed clean at1a44db1a/build89; completed support60ba2e59, window1516688d,
-eight-hour grant/readmission77da0d6b, W4 investigation/follow-up freezebe8eb26e.
-Current masters **P4-R014/P4-F030**; last owner-confirmed mirrorsP4-R005/F021.
-No push, release, deployment, production policy/champion change or successor.
+This long execution resumed clean at1a44db1a/build89. Support60ba2e59,
+window1516688d, eight-hour grant77da0d6b, W4 investigationbe8eb26e, and final W4
+disposition/confirmation freezeea4a41c2 are coherent local commits. Final evidence
+closeout is the commit containing this STATE (resolve with Git history). No runtime
+change after a7c45dff; version remains0.0.0/build89, no additional bump. Root
+CODEXLOG_CURRENT.md remains absent and was not created. No finalizer was invoked.
+Current masters **P4-R015/P4-F031**; last owner-confirmed mirrorsP4-R005/F021.
 
-After the sole claim, preserve its actual outcome and qualification limits, update
-RESULTS/STATE/masters/resources, and commit the coherent evidence. If the criterion
-fails or the attempt is interrupted/inconclusive, strength remains unmet; no tuning
-or replacement confirmation. Even success is W1-domain-limited and does not accept
-W4 risk, advance the champion or authorize production/adoption/deployment.
+Further research would require renewed owner authority, protected inputs and a fresh
+finite protocol; unused allowance does not authorize it. TT-supported extensions,
+TT veto availability, conservative probe isolation, selective-horizon error and W4
+work/scheduling interactions remain hypotheses, not established causes or a queued
+successor. Read FORMULATIONS for transfer limits and why no new mechanism was selected.
 
 Human actions required after this prompt:
 
-- **None for current in-scope execution during the granted eight hours.**
-- **Blocking before any multiworker adoption (not authorized here):** owner review
-  of persistent adverse W4 evidence; no neutrality or safety-of-adoption claim.
-- **Blocking before mirror-dependent planning; non-blocking for repository work:**
-  refresh both Phase4 Project Source mirrors to P4-R014/P4-F030.
+- **Non-blocking for completed repository execution; blocking for accepted closeout
+  and successor planning:** GPT/owner review and reconcile the unsuccessful TC-R001
+  handback. Codex completion is not owner acceptance; no successor execution authorized.
+- **Blocking before any multiworker adoption (outside this task):** owner review of
+  persistent adverse W4 evidence; no neutrality or safety-of-adoption claim.
+- **Blocking before mirror-dependent planning; non-blocking for completed repository
+  work:** refresh both Phase4 Project Source mirrors to **P4-R015/P4-F031**.
