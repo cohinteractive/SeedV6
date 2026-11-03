@@ -154,8 +154,82 @@ bytes were preserved. Strict tuple/regular-file and before/after byte checks pas
 resulting version SHA-256 is
 `4e87e34cc8db4604f3b6e7d70127d4ce52a1f9144645cbe2cbf68b8b79136fa0`.
 Final artifacts built from the committed revision and their executed consumer
-checks are pending at this source commit boundary; later evidence belongs below.
+checks were pending at the source commit boundary; the subsequent evidence below
+records their completion without retroactively attributing it to that commit.
 No push, installed-app replacement, bot change, deployment or release is authorized.
+
+## Committed build91 artifacts and consumer verification
+
+Implementation commit: **`4bc550b376295903f9c7d6428a9a3c303c6caa51`**.
+The following command passed from that clean source in 1m30s:
+
+```powershell
+.\gradlew.bat --no-daemon --max-workers=1 packageWindows :app-uci:installDist :installResearchWorkspace -PcandidateId=formulation-build91-v1
+```
+
+Both native images, ZIPs and independent extracted copies passed the established
+package gates. Bundled runtime: Temurin Java21.0.12.1+1, Windows x64. GUI, native
+UCI, Java-only UCI and research workspace contain the identical core JAR,
+SHA-256 `324947d9e08e7077f124e2307c1489d0b8504e8fba8683865bb93113712f54fb`.
+Embedded About and protocol provenance is **0.0.0/build91/source4bc550b37629**,
+with no uncommitted-source marker. The subsequent report-only commit does not
+change these artifact identities or require another build increment.
+
+| Artifact | Repository-relative path |
+| --- | --- |
+| GUI executable | `dist/windows/candidates/formulation-build91-v1/SeedV6-GUI/SeedV6-GUI.exe` |
+| GUI ZIP | `dist/windows/candidates/formulation-build91-v1/SeedV6-GUI-windows-x64.zip` |
+| UCI executable | `releases/candidates/windows-x64/formulation-build91-v1/SeedV6-UCI/SeedV6-UCI.exe` |
+| UCI ZIP | `releases/candidates/windows-x64/formulation-build91-v1/SeedV6-UCI-windows-x64.zip` |
+| Java UCI launcher | `app-uci/build/install/seedv6-uci/bin/seedv6-uci.bat` |
+
+GUI ZIP SHA-256:
+`ce7c7511e6e96c4764a38aff61e8b51e332cfe633bbe02ff1ef9229773b19971`.
+UCI ZIP SHA-256:
+`e4afeaa9a13bb6ed1427ee574e73cad84dfff313af8b6f38758737c0f71aa361`.
+The adjacent `candidate.json` files retain full source/runtime/inventory receipts;
+their SHA-256 values are respectively
+`11c8e999813b24da88daeefaf605a6e22b401a149a892533a4fa6247d8dec0f1` and
+`f5cd07c2d92f01997ecfd3a7b283fbdffd96a8a5fb5b9d856f7b6032da50297b`.
+
+- **Packaged GUI Play:** `HlG1ProductionProbe`, compiled against final GUI JARs
+  and run on the bundled runtime, passed **44 requests per profile**, TC_P1,
+  HL_G1 and LEGACY, W1/W4/W8/W16. Checks cover depth, movetime, stop, real-history
+  repetition/terminals/mates, legal moves/PVs, restoration, reuse and drain.
+- **Native UCI:** existing `verify_cp64_production.py` passed each of the same
+  three profiles, **two sessions/46 search responses per profile, all W1-W16**,
+  including reconstruction, node/time/clock requests, legal PVs, terminals,
+  repetition, stop/reset/Clear Hash/quit/active EOF. These are operational checks,
+  not competitive clock or playing-strength evidence.
+- **Cross-consumer identity:** eight additional native/Java-only handshake sessions
+  (no override, explicit TC_P1, HL_G1 and LEGACY on each launcher) passed. Each
+  recorded W1/Hash64/BOUNDARY2, W4/Hash64/BOUNDARY2, then W16/Hash1/FACTUAL.
+  Native and Java outputs matched; explicit TC_P1 matched no override; IDs changed
+  with runtime settings. W4 IDs matched the packaged GUI binding exactly:
+
+  | Effective profile | Flags | W4 / Hash64 / BOUNDARY2 ID |
+  | --- | ---: | --- |
+  | TC_P1 | 1177812991 | `cfg-5388b4d069c3a16a` |
+  | HL_G1 | 104071167 | `cfg-f941509e3c9ea0f4` |
+  | LEGACY | 3407871 | `cfg-d55ff96f603078d1` |
+
+  All handshake terminators/readiness responses were preserved. A native invalid
+  selector exited nonzero with the existing selector error. Full output and the
+  reproducible check script are retained at `final-identities/` and
+  `verify-identities.py` under the local evidence directory.
+- **Packaged About:** final idle/current-game panels rendered successfully for
+  all three profiles; default and rollback images were inspected. Final build and
+  source metadata are visible; rollback's enabled list excludes ProbCut. The
+  source-version comparison against build90 was repeated with the final core and
+  confirmed the same limited class changes described above.
+
+Evidence locations under `build/formulation-identity/`: `package-build91-v1.log`,
+`gui-build91-{TC_P1,HL_G1,LEGACY}/`, `gui-service-build91-*.log`,
+`uci-build91-*/result.json`, and `final-identities/summary.json`. Failures and
+provisional runs remain at their earlier paths. Final version bytes still match
+the verified build91 hash. No root journal was created; no unrelated source
+changes were present or absorbed. The final report commit contains only this
+qualification update; the resulting working tree is checked separately at handback.
 
 ## Remaining qualification boundary
 
