@@ -1,0 +1,41 @@
+{
+  "status": "passed operational qualification with recorded timing limitation",
+  "reviewedUtc": "2026-11-03T10:54:59.503223+00:00",
+  "scope": "Score-blind admission review before segment B; no WDL, candidateScore or statistics values inspected.",
+  "executionReceipt": "p1-support-v1-a-admission2-execution.json",
+  "rawRun": "docs\\research\\search\\p4-tactical\\raw\\p1-support-v1-a-admission2-w1",
+  "normalCompletedGames": 64,
+  "completedRequests": 9217,
+  "missingScoreWarnings": 0,
+  "inputsStable": true,
+  "ownedProcessesRemaining": 0,
+  "pcSamples": 998,
+  "meanCpuPercent": 18.3044691777493,
+  "p95CpuPercent": 26.965562053281356,
+  "maxCpuPercent": 74.73290598290599,
+  "cpuSamplesAtLeast50": 3,
+  "cpuSamplesAtLeast75": 0,
+  "minimumFreeGiB": 15.895816802978516,
+  "overwatchObserved": false,
+  "highSamples": [
+    {
+      "utc": "2026-11-03T10:26:12.277487+00:00",
+      "totalCpuPercent": 74.73290598290599,
+      "freeMemoryGiB": 17.583572387695312,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:26:14.279811+00:00",
+      "totalCpuPercent": 53.45052083333333,
+      "freeMemoryGiB": 17.187976837158203,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:27:17.474250+00:00",
+      "totalCpuPercent": 50.15994881637875,
+      "freeMemoryGiB": 17.41864013671875,
+      "overwatch": false
+    }
+  ],
+  "disposition": "Retain all64 games for the frozen exploratory128-game study. Short CPU excursions at10:26:12/14 and10:27:17 UTC, returning below25% within6s/4s; no guard threshold violated, no sustained saturation, no memory pressure or gaming. Cause and per-move impact unknown; guard pass does not establish clock equivalence. Do not selectively exclude games or infer an independent strength claim. Segment B remains the unchanged predeclared sample."
+}

@@ -7,22 +7,19 @@ Strength objective unachieved; no finalist or independent claim attempt selected
 
 ## Current controlled-window execution
 
-Owner granted two hours, observed 2026-11-03T10:17:44Z, deadline12:17:44Z
-(3 November23:17:44 to4 November01:17:44 NZDT). Receipt
-[p1-support-v1-window-v1.json](p1-support-v1-window-v1.json) admits only support A
-then B. Segment A admission1 failed before any child or game: CPU36.655% exceeded35%.
-Receipt and raw samples preserved, zero games charged. A separate20s observation
-passed all10 samples (CPU4.11-20.06%, free>=17.4GiB, no Overwatch). Precise transient
-cause remains unknown. Same scientific segment A is now admitted through
-`p1-support-v1-a-admission2-protocol.json`, with a fresh output namespace and
-unchanged frozen guard, inputs and limits. B must follow a
-score-blind operational audit and fit the remaining deadline. No interim outcome
-inspection. The prior awaiting-window statements below describe the frozen plan;
-this receipt satisfies that scheduling dependency for this execution only.
-No games from this batch are charged yet;22.7415561s failed admission/observation
-have been added to resources.json. Reconcile each execution before more
-admission. Preserve unfinished evidence if interrupted. All prior evidence and
-candidate identities are unchanged.
+Owner two-hour window:2026-11-03T10:17:44Z to12:17:44Z
+(3 November23:17:44 to4 November01:17:44 NZDT), recorded in
+[p1-support-v1-window-v1.json](p1-support-v1-window-v1.json).
+A admission1 failed before any engine/game on a36.655% CPU sample; evidence is
+preserved. A20s observation passed; output-only admission2 retained all frozen
+scientific inputs and rules. Segment A then passed all64 games and9217 requests,
+inputs stable,0 warnings, owned processes drained at10:53:33Z. Score-blind review
+retains all games with brief recorded CPU excursions (max74.73%, no75% sample;
+mean18.30%, p95 26.97%). Exact transient cause/per-move impact remains unknown.
+Its WDL/scores remain unread. Segment B is admitted next only through the original
+frozen protocol and same guarded window; no interim tuning or changed sample.
+No match is active at this checkpoint. The next B receipt owns current runtime
+status after launch. Ledger includes A and the failed admission/observation.
 
 ## Provenance and implementation
 
@@ -105,11 +102,12 @@ justified unit: finalist/W4 risk or an evidence-supported alternative.
 
 ## Resources and protected inputs
 
-Charged **4085.4115496/64800s** (1h8m5.41s); remaining **60714.5884504s**.
-Initiated127/1120 games: W1 development127/384 (257 left), W4 risk0/96,
+Charged **6115.7096201/64800s** (1h41m55.71s); remaining **58684.2903799s**.
+Initiated191/1120 games: W1 development191/384 (193 left), W4 risk0/96,
 confirmation0/640; attempts0/1. Includes failures, interrupted games, calibration
 and new input preparation. Reserve640 confirmation games and at least24000s.
-All experimental processes are drained; no experiment is running.
+Completed experiments are drained; consult the current execution section above
+and the latest segment execution receipt for active ownership.
 
 Protected320 confirmation roots remain unused. The original selector drain assertion
 remains failed, while completed inputs independently validate. Six historical non-key
