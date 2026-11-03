@@ -1,0 +1,29 @@
+{
+  "status": "passed operational qualification with recorded timing limitation",
+  "reviewedUtc": "2026-11-03T12:17:11.433923+00:00",
+  "scope": "Score-blind review saved before any W4 WDL/statistic/candidateScore inspection.",
+  "executionReceipt": "p1-w4-risk-v1-admission2-execution.json",
+  "rawRun": "docs\\research\\search\\p4-tactical\\raw\\p1-w4-risk-v1-admission2-w4",
+  "normalCompletedGames": 64,
+  "completedRequests": 8775,
+  "missingScoreWarnings": 0,
+  "inputsStable": true,
+  "ownedProcessesRemaining": 0,
+  "pcSamples": 971,
+  "meanCpuPercent": 23.400062665900684,
+  "p95CpuPercent": 32.230869001297016,
+  "maxCpuPercent": 57.8125,
+  "cpuSamplesAtLeast50": 1,
+  "cpuSamplesAtLeast75": 0,
+  "minimumFreeGiB": 16.284690856933594,
+  "overwatchObserved": false,
+  "highSamples": [
+    {
+      "utc": "2026-11-03T11:44:01.317317+00:00",
+      "totalCpuPercent": 57.8125,
+      "freeMemoryGiB": 16.372425079345703,
+      "overwatch": false
+    }
+  ],
+  "disposition": "Retain all64 W4 games. One57.8125% CPU sample, no>=75% sample, no memory pressure or gaming, guard passed. Exact transient source/per-move impact unknown; guard passing is not clock-equivalence proof. All game/trace/request/process/input checks pass."
+}

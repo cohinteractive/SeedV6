@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "raw": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-w4-cost-followup-v1\\observations.jsonl",
+  "rawSha256": "84054b0ba745f10a6107e3827df0ff9f5f1946eedc3aff536abb877e3dc868f6",
+  "requests": 72,
+  "workers": 4,
+  "warmupRequests": 18,
+  "measuredPairs": 27,
+  "geomeanCandidateToGuidedRatios": {
+    "elapsedNanos": 1.0183383496642513,
+    "processCpuNanos": 0.9988650277327186,
+    "liveThreadAllocatedBytes": 0.9860621901142033
+  },
+  "maxHeapUsed": 249459904,
+  "completedTargetDepthByProfile": {
+    "guided": 8,
+    "probcut": 6
+  },
+  "limits": "Short warmed same-root bounded W4 requests; changed search work and parallel schedules are included, not isolated speed or strength. Process CPU includes JVM activity. No board/PV/accounting assertion failed; all owned processes drained. Does not explain or dismiss the adverse risk point estimate."
+}

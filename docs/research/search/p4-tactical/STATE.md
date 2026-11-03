@@ -45,6 +45,24 @@ window. W4 competitive risk is unmeasured. W1 short costs:72 requests/18 warmups
 isolated speed inference. Artifact bridge compared2117 JAR entries/29 other files;
 only generated version metadata differs, and4 committed-artifact preflights pass.
 
+## W4 risk investigation checkpoint
+
+Initial64-game W4 risk completed/drained2026-11-03T12:16:26Z:16W/24D/24L,
+43.75%, normal95%33.67-53.83%, adverse but inconclusive. All8775 requests and
+operational/input/owned-drain checks passed. Score-blind PC review retained all
+games with one57.8125% sample (mean23.40%, p95 32.23%, no75% sample, minfree16.28GiB).
+8763 actual positions have zero protected overlap. W4 is not neutral/strength-qualified.
+
+Bounded W4 clean-cost follow-up passed72 requests/27 measured pairs, no state/PV
+assertion failure or owned leak; see its summary for changed-work/scheduling ratios.
+The remaining32 W4 games are now prospectively frozen on the first16 canonical
+support roots, new to the first W4 sample, without per-root outcome filtering.
+Candidate/source unchanged; same exact84 control. Follow-up protocol/window own
+next admission under the existing eight-hour grant. No independent attempt has
+started. Evaluate the complete risk evidence before any confirmation; do not erase
+the initial adverse point or claim W4 equivalence. Current resources.json includes
+all initial W4/cost/input costs and319 initiated games; follow-up not charged yet.
+
 ## Latest owner PC availability
 
 Owner extended availability for all authorized work for eight hours, observed

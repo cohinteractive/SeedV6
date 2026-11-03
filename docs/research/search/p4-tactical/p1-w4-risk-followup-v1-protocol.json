@@ -1,0 +1,56 @@
+{
+  "id": "TC-P1-W4-RISK-FOLLOWUP-V1",
+  "status": "prospectively frozen before follow-up games",
+  "frozenUtc": "2026-11-03T12:21:42.811041+00:00",
+  "question": "Does fresh-root W4 evidence corroborate the adverse but inconclusive43.75% initial TC-P1 risk point estimate?",
+  "category": "W4 competitive risk",
+  "namePrefix": "p1-w4-risk-followup-v1",
+  "workers": [
+    4
+  ],
+  "pairs": 16,
+  "tc": "10+0.1",
+  "seed": 2026110402,
+  "timeoutSeconds": 1800,
+  "estimatedMatchSeconds": 1100,
+  "remainingCategoryGames": 32,
+  "remainingTotalGames": 801,
+  "remainingMatchSeconds": 54734.39927360002,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "probcut",
+  "candidateIdentity": {
+    "name": "TC-P1 bounded capture verification over HL-G1",
+    "source": "a7c45dffeaffc362bc7c7026d03a2e6434472be2",
+    "build": 89,
+    "flags": 1177812991
+  },
+  "controlIdentity": {
+    "name": "HL-G1 request-scoped retained learning and history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\p1-w4-risk-followup-v1-openings.pgn",
+  "openingSha256": "3caf5ab489d62807f1ac0365144f6feafe16e318875769aa367956c7564a88d3",
+  "openingQualification": "First16 canonical input records, indices0..15, without per-root outcome inspection or filtering. Entire source already excludes prior W4/TC-V2 starting roots and protected confirmation. Intentional tracked input fixture under existing exception.",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json"
+  ],
+  "adapterSha256": "a01e010361d420b7c2178123e4d0c3c2f8de8867e78811734d75449d8b3407d4",
+  "resources": "One W4 ROOT_REUSE game, symmetric below-normal Xmx512m/ActiveProcessorCount4 and unchanged guards. Existing eight-hour availability; expected16-20min,1800s hard cap plus supervision. No concurrent experiments.",
+  "audit": "Existing owned Windows Job, live/full trace audit, independent PGN legal/history/PV/terminal/full-request accounting, narrow audited-fallback warning policy, hash-stable inputs and complete handle draining. Any other warning/failure stops and preserves evidence.",
+  "stopping": "Fixed16 color-reversed pairs/32 games, the final available W4 risk games. No score-based stopping, further extension or tuning. Operational failure preserves all starts/partial evidence and drains owned processes; no automatic replay.",
+  "analysis": "Report new16-pair follow-up WDL and Hoeffding95 separately. Any full48-pair W4 pooling is explicitly adaptive descriptive evidence with paired-normal95 and bounded sensitivity, never independent confirmation/equivalence. No W1 pooling.",
+  "nextDecision": "Assess complete W4 risk evidence together with bounded technical/cost investigation. Escalate any serious established deterioration or correctness/lifecycle defect before affected progression; inconclusive is not neutrality. No automatic W1 confirmation and no further W4 game capacity after completion.",
+  "reservedConfirmation": "640 games/320 fresh pairs and one claim attempt remain unspent; reserve at least24000 charged seconds prospectively before more development.",
+  "supervisor": "tools/p4-tactical-supervise.py",
+  "supervisorSha256": "42e0a8fd6329e08520aedf249ac6030c216258603be482ed5e79099afdefef1a",
+  "windowRequired": true,
+  "coexistence": "Native system CPU/free-memory samples every2s; Overwatch presence checked every10s.20s pre-admission must stay<=35%CPU and>=12GiB free with no Overwatch. During run stop owned Job for three consecutive>=75%CPU samples, free RAM<8GiB, Overwatch, explicit stop file, deadline or cap. Record every sample locally. These thresholds are operational guards, not proof of clock fairness; assess all interference before interpreting the complete batch.",
+  "precedingBatch": "Initial64-game W4 risk16W/24D/24L,43.75%, normal95%33.67-53.83%, adverse but inconclusive;8775 requests/operational audits pass. Bounded72-request W4 cost follow-up passed. This fixed32-game follow-up was selected before its outcomes to investigate the risk; candidate and acceptance criterion unchanged.",
+  "controlRationale": "Exact84 guided remains the direct incremental W4 control. Prior HL84-vs79 uncertainty and79/80 bridge stay separate. This follow-up spends the remaining32 risk games on new starting roots instead of seeking W1 precision."
+}

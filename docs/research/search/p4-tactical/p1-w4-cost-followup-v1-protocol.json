@@ -1,0 +1,21 @@
+{
+  "id": "TC-P1-W4-COST-FOLLOWUP-V1",
+  "frozenUtc": "2026-11-03T12:19:48.557169+00:00",
+  "question": "Bounded clean request cost investigation of adverse/inconclusive W4 point estimate; unchanged candidate versus internal guided control, not a strength claim.",
+  "runtimeManifest": "runtime-build89-p1-v1-manifest.json",
+  "runtimeManifestSha256": "6d79afb52fac5a87c230ec68951d4a770927cc11ee4cf2177bb58fc3aba18b9a",
+  "corpus": "docs/research/search/p4-tt-memory/h1-diagnostic-roots.tsv",
+  "corpusSha256": "b2815c85298025ea353f9d4b2b5752d1a527978b27f0aa96eb7d5a6e2c1d0464",
+  "workers": 4,
+  "mode": "cost",
+  "rounds": 3,
+  "depth": 8,
+  "nodeBudget": 200000,
+  "timeoutSeconds": 300,
+  "profiles": [
+    "guided",
+    "probcut"
+  ],
+  "availability": "owner-availability-8h-v1.json",
+  "limits": "Serial bounded W4; same frozen helper and engine. Includes changed work and parallel scheduling, process CPU includes JVM activity; not isolated speed or strength. Existing72-request W1 cost is contextual, not a concurrent paired domain comparison."
+}

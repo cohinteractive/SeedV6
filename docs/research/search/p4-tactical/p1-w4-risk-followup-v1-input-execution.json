@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "utc": "2026-11-03T12:21:42.803785+00:00",
+  "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\p1-support-v1-openings.pgn",
+  "sourceSha256": "02abaf57e1cab49a7474061e5fb50b3ee4e3b4746dcd38c52e1fbf2d64c5f902",
+  "selection": "First16 canonical input records, indices0..15, without per-root outcome inspection or filtering. Entire source already excludes prior W4/TC-V2 starting roots and protected confirmation. Intentional tracked input fixture under existing exception.",
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\p1-w4-risk-followup-v1-openings.pgn",
+  "outputSha256": "3caf5ab489d62807f1ac0365144f6feafe16e318875769aa367956c7564a88d3",
+  "pairs": 16,
+  "wallSeconds": 0.044406000000890344
+}

@@ -1,11 +1,11 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 8080.578509499988,
-  "remainingWallSeconds": 56719.42149050001,
-  "initiatedGames": 255,
-  "remainingGames": 865,
+  "chargedWallSeconds": 10065.600726399978,
+  "remainingWallSeconds": 54734.39927360002,
+  "initiatedGames": 319,
+  "remainingGames": 801,
   "developmentGames": 255,
-  "riskGames": 0,
+  "riskGames": 64,
   "confirmationGames": 0,
   "confirmationAttempts": 0,
   "executions": [
@@ -198,6 +198,34 @@
       "receipt": "p1-w4-risk-v1-readmission-observation.json",
       "wallSeconds": 20.503080700000282,
       "category": "charged passive W4 readmission observation; no engine",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-w4-risk-v1-admission2-execution.json",
+      "wallSeconds": 1971.6724298000045,
+      "category": "charged controlled-window W4 competitive risk and audit",
+      "status": "passed",
+      "initiatedGames": 64
+    },
+    {
+      "receipt": "p1-w4-risk-v1-analysis.json",
+      "wallSeconds": 0.7570436999958474,
+      "category": "charged independent W4 PGN/protected-overlap analysis",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-w4-cost-followup-v1-execution.json",
+      "wallSeconds": 12.548337399988668,
+      "category": "charged bounded W4 cost risk investigation",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-w4-risk-followup-v1-input-execution.json",
+      "wallSeconds": 0.044406000000890344,
+      "category": "charged bounded W4 follow-up input preparation",
       "status": "passed",
       "initiatedGames": 0
     }

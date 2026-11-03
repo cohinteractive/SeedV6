@@ -1,0 +1,37 @@
+{
+  "id": "TC-P1-W4-RISK-V1",
+  "status": "passed complete risk analysis",
+  "utc": "2026-11-03T12:17:12.185481+00:00",
+  "inputPgnSha256": "04ccfd9c1bf989c15f4ac8045f599341f5f6261315ca9d291a5638783e4eb852",
+  "raw": "docs\\research\\search\\p4-tactical\\raw\\p1-w4-risk-v1-admission2-w4",
+  "games": 64,
+  "pairs": 32,
+  "wdl": [
+    16,
+    24,
+    24
+  ],
+  "score": 0.4375,
+  "pentanomial": [
+    5,
+    9,
+    9,
+    7,
+    2
+  ],
+  "pairScoreStandardError": 0.05144093073456884,
+  "pairedNormal95": [
+    0.33667762842902554,
+    0.5383223715709744
+  ],
+  "pairedHoeffding95": [
+    0.19741930217001982,
+    0.6775806978299802
+  ],
+  "distinctActualPositions": 8763,
+  "protectedRoots": 320,
+  "protectedOverlap": 0,
+  "method": "Independent legal PGN traversal, paired by exact16-ply root, exactly two opposite-color games per root; crosschecked WDL and score. Score-blind operational review saved first. No W1 pooling.",
+  "inference": "Descriptive W4 incremental risk versus exact84 only; not equivalence/superiority or W1 confirmation. Prior HL84-vs79 adverse/inconclusive evidence and79/80 bridge remain unresolved.",
+  "wallSeconds": 0.7570436999958474
+}
