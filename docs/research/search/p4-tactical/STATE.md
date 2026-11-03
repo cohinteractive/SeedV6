@@ -5,6 +5,19 @@ positive but inconclusive. Wider development batch ready, awaiting a new PC wind
 Strength objective unachieved; no finalist or independent claim attempt selected.
 [CONTRACT](CONTRACT.md) governs scope; [RESULTS](RESULTS.md) consolidates evidence.
 
+## Current controlled-window execution
+
+Owner granted two hours, observed 2026-11-03T10:17:44Z, deadline12:17:44Z
+(3 November23:17:44 to4 November01:17:44 NZDT). Receipt
+[p1-support-v1-window-v1.json](p1-support-v1-window-v1.json) admits only support A
+then B. Segment A is admitted for immediate guarded launch; B must follow a
+score-blind operational audit and fit the remaining deadline. No interim outcome
+inspection. The prior awaiting-window statements below describe the frozen plan;
+this receipt satisfies that scheduling dependency for this execution only.
+No games from this batch are charged yet; reconcile each execution before more
+admission. Preserve unfinished evidence if interrupted. All prior evidence and
+candidate identities are unchanged.
+
 ## Provenance and implementation
 
 - Initial clean main ffb8526e/build88 verified. Root CODEXLOG_CURRENT.md absent;

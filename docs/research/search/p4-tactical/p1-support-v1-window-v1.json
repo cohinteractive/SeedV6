@@ -1,0 +1,13 @@
+{
+  "ownerReply": "PC available now for two hours",
+  "observedUtc": "2026-11-03T10:17:44+00:00",
+  "deadlineUtc": "2026-11-03T12:17:44+00:00",
+  "ownerLocalWindow": "3 November 2026 23:17:44 to 4 November 2026 01:17:44 Pacific/Auckland (NZDT)",
+  "allowedProtocols": [
+    "TC-P1-SUPPORT-V1-A",
+    "TC-P1-SUPPORT-V1-B"
+  ],
+  "scope": "Only the frozen128-game W1 development support batch, A then B, operationally audited between segments without reading scores until both pass. Existing PC guards and caps apply. No W4 matches or independent confirmation.",
+  "studyProtocol": "p1-support-v1-protocol.json",
+  "studyProtocolSha256": "477b267a2764a69c564b47d9a7d0115a4866a51fb055ac4d2f76d93312ecbc30"
+}
