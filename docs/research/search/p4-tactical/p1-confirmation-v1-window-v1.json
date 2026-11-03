@@ -1,0 +1,12 @@
+{
+  "ownerReply": "PC is now going to be available for 8 hours, so you don't need to ask me during that time whether or not you can use the PC. In other words, for the next 8 hours, simply continue work and don't pause work to ask me whether the PC is available because I will be asleep",
+  "observedUtc": "2026-11-03T11:38:59+00:00",
+  "deadlineUtc": "2026-11-03T19:38:59+00:00",
+  "availabilityReceipt": "owner-availability-8h-v1.json",
+  "availabilitySha256": "33feccddceeb9679df9eae6ee56922cf121cd2e52936588352b726e4f1f1bb3b",
+  "allowedProtocols": [
+    "TC-P1-CONFIRMATION-V1"
+  ],
+  "scope": "The sole already-authorized TC-R001 W1 independent confirmation, after completed W4 investigation and prospective freezing; full640 games, no additional attempt or scope. No repeated PC-availability question during this owner grant.",
+  "protocolSha256": "d9e3da88564cde681664381f509bf47393dafbeadeee7d8289ef437075107786"
+}

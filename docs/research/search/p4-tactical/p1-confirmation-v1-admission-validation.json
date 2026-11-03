@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "utc": "2026-11-03T12:45:44.480458+00:00",
+  "pairs": 320,
+  "inputSha256": "9b9f82ed54f4c433b0e362ddaf315179f1100fdaba010417bf3e6e749687e06e",
+  "selectionSha256": "220d906cb6856c9758fce8b73f60b65a17ed1c3e754e8fa3470e4070036472c6",
+  "checks": "All320 unique legal nonterminal16-ply inputs; pinned source/excluded pool/corpus, exact84/build89 runtime files, Java and CP64 rehashed. Prior historical, all development/W4/cost/calibration exposure checks report zero protected overlap. No protected keys/moves displayed or outcome-based reselection. Original failed selector receipt remains failed; no relabelling.",
+  "disjointEvidence": [
+    "confirmation-historical-input-review-v1.json",
+    "p1-screen-v1-interruption-audit.json",
+    "p1-screen-v2-analysis.json",
+    "p1-support-v1-analysis.json",
+    "p1-calibration-protected-input-review.json",
+    "p1-w4-risk-followup-v1-analysis.json"
+  ],
+  "wallSeconds": 0.2676105999853462
+}

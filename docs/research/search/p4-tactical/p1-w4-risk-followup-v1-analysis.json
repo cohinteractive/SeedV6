@@ -1,0 +1,62 @@
+{
+  "status": "passed complete risk follow-up analysis",
+  "utc": "2026-11-03T12:41:48.754894+00:00",
+  "inputPgnSha256": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-w4-risk-v1-admission2-w4\\games.pgn": "04ccfd9c1bf989c15f4ac8045f599341f5f6261315ca9d291a5638783e4eb852",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-w4-risk-followup-v1-w4\\games.pgn": "80bc615bc3d8947763ba616500e76188215ef63e9cd8c14248b51eaf1985b7eb"
+  },
+  "batches": {
+    "p1-w4-risk-v1-admission2": {
+      "games": 64,
+      "wdl": [
+        16,
+        24,
+        24
+      ],
+      "score": 0.4375
+    },
+    "p1-w4-risk-followup-v1": {
+      "games": 32,
+      "wdl": [
+        10,
+        8,
+        14
+      ],
+      "score": 0.4375
+    }
+  },
+  "adaptiveW4Pool": {
+    "pairs": 48,
+    "games": 96,
+    "wdl": [
+      26,
+      32,
+      38
+    ],
+    "score": 0.4375,
+    "pentanomial": [
+      9,
+      13,
+      11,
+      11,
+      4
+    ],
+    "pairScoreStandardError": 0.044970932298241825,
+    "pairedNormal95": [
+      0.349358592344257,
+      0.5256414076557431
+    ],
+    "pairedHoeffding95": [
+      0.24147493107507864,
+      0.6335250689249213
+    ]
+  },
+  "actualW4Positions": 13596,
+  "costDiagnosticPvs": 72,
+  "costDiagnosticPositions": 129,
+  "protectedRoots": 320,
+  "protectedOverlap": 0,
+  "method": "Independent legal PGNs and opposite-color root pairing; standalone follow-up16-pair normal interval withheld by existing n>=30 rule. Adaptive48-pair pooling descriptive only. All cost PVs decoded/replayed legally and checked against protected roots. No W1 pooling.",
+  "riskDisposition": "Both W4 batches have adverse43.75% point estimates; pooled approximate interval crosses equality. This is an unresolved competitive warning, not neutrality or established regression. Existing four-worker causal/isolation/runtime checks and new72-request cost investigation found no legality, state, accounting or lifecycle defect; short wall ratio1.0183/CPU0.9989 does not explain or rule out strength loss. W4 game budget96 is exhausted. Escalate the persistent adverse evidence for owner review before any multiworker adoption (not authorized here). The governing W1-only confirmation may proceed unchanged: W4 superiority/equivalence was not a gate, investigation is complete within its allowance, no technical failure blocks W1, and all W4 limitations must remain prominent in any W1 handback. No broad strength/adoption claim.",
+  "wallSeconds": 1.14487449999433
+}

@@ -67,7 +67,7 @@ depth4-8 bound early cost. If evidence shows wasted qsearch duplication or domin
 null coverage, revise the integration instead of blindly sweeping constants.
 Forced-line extension and qsearch substitutions remain alternatives, not a queued
 checklist. At initial qualification, this formulation passed the W1 checks linked from STATE.
-W4 technical qualification also passed; W4 competitive risk remains unmeasured. The first fixed W1 screen was interrupted for external PC load:63 initiated games,
+W4 technical qualification also passed; W4 competitive risk was unmeasured at that checkpoint. The first fixed W1 screen was interrupted for external PC load:63 initiated games,
 62 completed. Its completed-game operational audit passes, but the batch is clock-
 unqualified and incomplete; no outcomes were used to select or tune a candidate.
 The unchanged formulation then proceeded to a different-input controlled V2 screen.
@@ -107,3 +107,14 @@ against exact84 guided, keeping prior HL-vs79 uncertainty explicit, followed by
 full prospective independent-W1 freezing only if qualification remains adequate.
 All640 independent games and the sole claim attempt remain unspent. No strength
 acceptance, champion change or production adoption follows from development results.
+
+## W4 investigation and unchanged W1 confirmation, 4 November2026
+
+Two W4 risk samples scored43.75% each; adaptive48-pair pool normal95%34.94-52.56%.
+The adverse warning persists, with no demonstrated neutrality or established regression.
+Bounded clean cost wall1.0183/CPU0.9989 and all technical/operational checks found no
+new correctness/lifecycle failure and do not explain or dismiss the strength risk.
+All96 risk games are spent. Escalate before any multiworker adoption; no such adoption
+is authorized. Under the original W1-only objective, proceed with unchanged TC-P1's
+full fresh320-pair independent protocol, preserving W4 limitations prominently.
+No additional mechanism, parameter change, criterion change or claim attempt is selected.

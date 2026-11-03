@@ -137,33 +137,48 @@ The wider positive evidence, prior V2 and calibrated mechanism justify this choi
 no parameter tuning or extra W1 sampling is selected merely to seek favorable results.
 No acceptance, promotion or independent claim has occurred.
 
-## Resources, failures and next experiment
+## Completed W4 risk and independent-confirmation admission
 
-[Ledger](resources.json): **8039.3215715000/64800 charged seconds** (2h13m59.32s),
-remaining56760.6784285000s. Initiated255/1120; development255/384, W4 risk0/96,
-confirmation0/640, attempts0/1. All failed/interrupted/admission and bounded audit
-costs are charged once. Original input-supervisor drain and W4 harness assertions
-remain failed evidence; fresh corrected qualification does not erase them.
+Initial64-game W4 risk:16W/24D/24L,43.75%, normal95%33.67-53.83%. A fixed fresh-root
+32-game follow-up:10W/8D/14L,43.75%. All96 games/13707 requests passed operational,
+input and owned-drain checks; zero missing-score warnings. Score-blind reviews retained
+all games. Initial W4 had one57.81% CPU sample; follow-up maximum41.44%. No guard violation.
+The earlier failed W4 PC admission launched no child/game; its failure and settling
+observation are preserved and charged separately.
 
-Protected320 roots remain unused. The support/V2 PGNs expose25986 distinct positions,
-with zero protected overlap. All17 calibration witnesses including incomplete rows,
-plus root histories, expose933 distinct positions with zero overlap. Historical
-and interrupted-screen checks remain intact. Recheck subsequent W4 exposure before
-a claim; no protected moves/keys were displayed for candidate selection.
+[Adaptive descriptive W4 pool](p1-w4-risk-followup-v1-analysis.json):26W/32D/38L,
+43.75%, normal95%34.9359-52.5641%, bounded24.1475-63.3525%. This persistent adverse
+point estimate is an unresolved warning, not neutrality or established regression.
+No W1 pooling. Prior HL84-vs79 uncertainty/79-80 bridge remains unresolved.
 
-[W4 risk protocol](p1-w4-risk-v1-protocol.json) freezes64 games versus exact84 guided,
-W4 ROOT_REUSE, on all32 unchanged established HL development roots. This meaningful
-nearby control tests incremental TC risk; prior HL84-vs79 uncertainty remains separate.
-It cannot establish W4 strength/equivalence or resolve the79/80 bridge.32 risk games
-remain available for justified follow-up. A new one-hour PC window is required.
+A bounded72-request W4 cost investigation passed27 measured pairs plus18 warmups:
+geometric wall1.01834, processCPU0.99887, allocation0.98606; target depth8 completed
+8 guided versus6 probcut measured requests. Changed work/scheduling limits inference;
+no legality/state/PV/accounting/lifecycle defect was found. It does not explain or
+rule out a strength loss. All96 W4 games are spent. Escalate this warning before any
+multiworker adoption, which is outside this task. W1-only confirmation remains within
+the original authority; W4 superiority/equivalence was not its acceptance gate.
 
-The supervisor now routes W4 to its separate96-game budget while retaining ownership,
-PC guards and confirmation reserves.16 pure rejection cases and actual native sampling/
-owned-dummy drain pass; no new engine game ran. Historical W1 source814effaf is retained
-at40be062f and completed frozen protocols/receipts are unchanged. New supervisor42e0a8fd
-still needs its first actual W4 match execution. All previous W4 engine technical
-qualification remains applicable to the unchanged artifact. Full application tests
-were not repeated for this non-runtime tooling/documentation turn.
+[Independent confirmation](p1-confirmation-v1-protocol.json) is now frozen: unchanged
+TC-P1 against exact84, full320 fresh protected pairs/640 games, no interim outcomes,
+no tuning/optional stopping/pooling, one attempt. Original score>=53% and paired-normal
+lower>50% criterion retained; bounded sensitivity separate. The owner's eight-hour PC
+availability through2026-11-03T19:38:59Z covers this work without another scheduling
+question. Expected20000s;24000s cap, all original guards retained. At least24060s must
+remain before admission. Attempt is spent after the PC gate but before the first child;
+any later launch/preflight/runner/audit failure still spends it. No retry claim.
+
+[Ledger](resources.json) at freeze:11128.0127324/64800s charged,53671.9872676s remaining;
+351 initiated games (development255, risk96, confirmation0), attempts0/1. All failed and
+bounded diagnostic/audit costs included. Live receipt/ledger own later claim status.
+Protected inputs and exact runtime/model/Java hashes reverified;13596 W4 and129 cost-PV
+positions have zero protected overlap, in addition to all earlier checks. No protected
+moves/keys exposed for selection. Historical failed selector evidence is preserved.
+
+The claim-admission supervisor passed15 rejection cases and isolated stale/duplicate
+ledger tests, plus native sampling/owned-dummy drain. Historical source/receipts remain
+preserved. No application runtime changes; no application build bump or repeated full
+application tests. Actual independent result remains unknown.
 
 ## Repository and authority
 
@@ -178,10 +193,10 @@ the runtime commit; later harness/docs work has no application build impact.
 
 Champion remains exact HL-G1/build84; normal build85 HL-G1 policy is unchanged.
 TT-R001 reconciliation remains separate and both frozen BOUNDARY2 studies unopened.
-Current masters are **P4-R013/P4-F029**. Repository edits do not refresh owner mirrors.
+Current masters are **P4-R014/P4-F030**. Repository edits do not refresh owner mirrors.
 
-Human actions required after this prompt: **Blocking for W4 games: provide a new
-one-hour controlled window. Blocking before mirror-dependent planning, non-blocking
-for repository work: refresh both Phase4 mirrors to P4-R013/P4-F029.** No strength
-acceptance or promotion is requested. The owner's reporting correction is preserved
-in STATE; routine monitoring stays in supervision/logs without conversational narration.
+Human actions required after this prompt: **None for current execution inside the
+granted eight hours. Blocking before multiworker adoption: owner review of the
+persistent adverse W4 evidence. Blocking before mirror-dependent planning, non-blocking
+for repository work: refresh Phase4 mirrors to P4-R014/P4-F030.** No acceptance,
+promotion or deployment is requested. Routine monitoring stays internal per STATE.

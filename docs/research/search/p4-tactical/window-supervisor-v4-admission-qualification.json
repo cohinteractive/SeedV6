@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "utc": "2026-11-03T12:43:50.064770+00:00",
+  "sourceSha256": "f2d3d425b4e0ab43bbd8285b1f7a614dbde43984558488ecd8bfceb32bf92ede",
+  "rejectedCases": [
+    "confirmationAttempts",
+    "confirmationGames",
+    "initiatedGames",
+    "remainingWallSeconds",
+    "pairs=319",
+    "pairs=320.0",
+    "workers=[4]",
+    "confirmationAttempt=2",
+    "supervisorSha256=wrong",
+    "insufficient PC deadline",
+    "wrong protocol",
+    "missing owner availability",
+    "stale ledger bytes rejected without overwrite",
+    "second attempt rejected without resetting ledger",
+    "spent attempt blocks admission"
+  ],
+  "validDomains": [
+    "W1 development",
+    "W4 competitive risk",
+    "W1 independent confirmation"
+  ],
+  "attemptLifecycle": "Isolated temporary ledger: zero->one after admission, stale-byte and duplicate attempts rejected, no rollback; actual campaign ledger byte-unchanged. No engine/game launched.",
+  "wallSeconds": 0.028149499994469807
+}

@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-03T12:22:08.505605+00:00",
+  "protocol": "p1-w4-risk-followup-v1-protocol.json",
+  "protocolSha256": "dceb9ffeeabe46ff267c068a6caee49207bc7de7c823fc94a1a8ecf4fa0a33fb",
+  "window": "docs\\research\\search\\p4-tactical\\p1-w4-risk-followup-v1-window-v1.json",
+  "windowSha256": "4714f76eacff4c3f97ad40a301317eddc4a9a46a77f7fa2ead73d9a0115c4147",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical.py",
+    "--protocol",
+    "p1-w4-risk-followup-v1-protocol.json",
+    "--workers",
+    "4"
+  ],
+  "reservedGamesPending": 32,
+  "category": "charged controlled-window W4 competitive risk and audit",
+  "supervisorSha256": "42e0a8fd6329e08520aedf249ac6030c216258603be482ed5e79099afdefef1a",
+  "pid": 13064,
+  "exitCode": 0,
+  "gamesInitiated": 32,
+  "ownedProcessesRemaining": 0,
+  "processDrained": true,
+  "ownedCpuSeconds": 2282.609375,
+  "totalOwnedProcesses": 10,
+  "endedUtc": "2026-11-03T12:39:49.085951+00:00",
+  "wallSeconds": 1060.579907700012
+}

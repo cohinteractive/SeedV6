@@ -1,0 +1,73 @@
+{
+  "id": "TC-P1-CONFIRMATION-V1",
+  "status": "prospectively frozen before the sole independent claim attempt",
+  "frozenUtc": "2026-11-03T12:45:44.482355+00:00",
+  "question": "Does unchanged selected TC-P1/build89 achieve the governing independent W1 score>=53% and paired-normal95% lower>50% against exact HL-G1/build84?",
+  "category": "W1 independent confirmation",
+  "namePrefix": "p1-confirmation-v1",
+  "workers": [
+    1
+  ],
+  "pairs": 320,
+  "tc": "10+0.1",
+  "seed": 2026110403,
+  "timeoutSeconds": 24000,
+  "estimatedMatchSeconds": 20000,
+  "remainingCategoryGames": 640,
+  "remainingTotalGames": 769,
+  "remainingMatchSeconds": 53671.98726760002,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "probcut",
+  "candidateIdentity": {
+    "name": "TC-P1 bounded capture verification over HL-G1",
+    "source": "a7c45dffeaffc362bc7c7026d03a2e6434472be2",
+    "build": 89,
+    "flags": 1177812991
+  },
+  "controlIdentity": {
+    "name": "HL-G1 request-scoped retained learning and history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\confirmation-v1-openings.pgn",
+  "openingSha256": "9b9f82ed54f4c433b0e362ddaf315179f1100fdaba010417bf3e6e749687e06e",
+  "openingQualification": "The full protected320-root selection frozen before TC development, unchanged bytes. Source Stockfish8moves_v3, seed2026110309/partition1, unique legal16-ply nonterminal roots; excluded historical/development corpus and all subsequent exposed game/diagnostic positions checked. No post-outcome reselection or subset.",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json"
+  ],
+  "adapterSha256": "a01e010361d420b7c2178123e4d0c3c2f8de8867e78811734d75449d8b3407d4",
+  "resources": "One uninterrupted fixed640-game serial W1 run, no concurrent experiment. Same symmetric below-normal Xmx512m/ActiveProcessorCount4, CP64/Hash64 and BOUNDARY2. Expected~20000s(5h33m) based on completed control-window W1 batches;24000s(6h40m) runner cap plus bounded supervision. Requires remaining owner window>=24060s at admission; existing eight-hour grant supplies it. All actual wall/initiated games including failures count.",
+  "audit": "Existing owned Windows Job, live/full trace audit, independent PGN legal/history/PV/terminal/full-request accounting, narrow audited-fallback warning policy, hash-stable inputs and complete handle draining. Any other warning/failure stops and preserves evidence.",
+  "stopping": "Complete all320 color-reversed pairs/640 games; no interim WDL/score inspection, tuning, optional stopping for success, sample reduction, or extra games. Stop only for safety, owner needs, operational failure, hard deadline or resource cap. Preserve all starts/partial output and drain owned processes. No planned segmentation/replay/resumption of failed games; a failed/interrupted claim is not renewed.",
+  "analysis": "After all640 games and score-blind operational qualification: independent legal PGN/color/root reconstruction, WDL and pair scores. xi=(g1+g2)/2; m=mean(xi); s=sampleSD(xi); SE=s/sqrt(320); normal95=m+/-1.9599639845400536*SE. Also clipped Hoeffding95=m+/-sqrt(log(40)/(2*320)). No development/W4 pooling. Discuss normal approximation, distribution/dependence, selection, power and PC limitations.",
+  "nextDecision": "Report this sole independent result against the original criterion, with all failed/negative/inconclusive evidence and W4 warning. No tuning/replacement confirmation, automatic promotion, production change or successor. If the criterion fails, strength objective remains unachieved despite technical work.",
+  "reservedConfirmation": "This is the sole640-game reservation; no further independent claim allowance. Adaptive development255/384 and W4 risk96/96 already initiated; total351 before this run. A complete run brings total991/1120.",
+  "supervisor": "tools/p4-tactical-supervise.py",
+  "supervisorSha256": "f2d3d425b4e0ab43bbd8285b1f7a614dbde43984558488ecd8bfceb32bf92ede",
+  "windowRequired": true,
+  "coexistence": "Native system CPU/free-memory samples every2s; Overwatch presence checked every10s.20s pre-admission must stay<=35%CPU and>=12GiB free with no Overwatch. During run stop owned Job for three consecutive>=75%CPU samples, free RAM<8GiB, Overwatch, explicit stop file, deadline or cap. Record every sample locally. These thresholds are operational guards, not proof of clock fairness; assess all interference before interpreting the complete batch.",
+  "precedingBatch": "W1 support57.03125% over64 pairs; adaptive192-game pool55.72917%, all exploratory and excluded from independent inference. W4 initial/follow-up both43.75%, descriptive48-pair normal95%34.94-52.56%; adverse and unresolved, not W4 neutrality.",
+  "confirmationAttempt": 1,
+  "inputSelection": "confirmation-v1-openings.selection.json",
+  "inputSelectionSha256": "220d906cb6856c9758fce8b73f60b65a17ed1c3e754e8fa3470e4070036472c6",
+  "acceptance": {
+    "pairs": 320,
+    "games": 640,
+    "minimumScore": 0.53,
+    "normalLowerBoundStrictlyGreaterThan": 0.5,
+    "z": 1.9599639845400536,
+    "nominalOneSidedAlpha": 0.025,
+    "boundedSensitivity": "Report separately; not an added acceptance gate.",
+    "required": "Complete fixed sample plus technical/operational qualification. Only W1-domain-limited research success; owner acceptance/champion/production/deployment separate."
+  },
+  "claimLifecycle": "Exactly one attempt. Native PC-only admission failure before any child does not spend it. After PC admission and immediately before launching the confirmation child, persist confirmationAttempts0->1 with protocol/time, requiring the resource ledger to be byte-unchanged. Subsequent launch/preflight/runner/audit failure still spends the attempt; never reset it or begin a replacement claim. Completed games are reconciled separately from pending reservation.",
+  "w4RiskDisposition": "Both W4 batches have adverse43.75% point estimates; pooled approximate interval crosses equality. This is an unresolved competitive warning, not neutrality or established regression. Existing four-worker causal/isolation/runtime checks and new72-request cost investigation found no legality, state, accounting or lifecycle defect; short wall ratio1.0183/CPU0.9989 does not explain or rule out strength loss. W4 game budget96 is exhausted. Escalate the persistent adverse evidence for owner review before any multiworker adoption (not authorized here). The governing W1-only confirmation may proceed unchanged: W4 superiority/equivalence was not a gate, investigation is complete within its allowance, no technical failure blocks W1, and all W4 limitations must remain prominent in any W1 handback. No broad strength/adoption claim.",
+  "candidateFrozenSource": "a7c45dffeaffc362bc7c7026d03a2e6434472be2",
+  "candidateRuntimeManifestSha256": "6d79afb52fac5a87c230ec68951d4a770927cc11ee4cf2177bb58fc3aba18b9a",
+  "comparatorRuntimeManifestSha256": "3d08ace9d3905122296d0c71ad07d4ed5750fe555da8edaec7324e1eb968f380"
+}

@@ -1,4 +1,4 @@
-"""Bounded TC development/risk match ownership and PC coexistence; no service."""
+"""Bounded TC match ownership, claim admission and PC coexistence; no service."""
 import argparse
 import ctypes as c
 from ctypes import wintypes as w
@@ -125,24 +125,52 @@ def validate_admission(p, window, ledger, now):
     assert p['id'] in window['allowedProtocols'] and window['ownerReply']
     assert deadline.tzinfo is not None and (deadline - now).total_seconds() >= p['timeoutSeconds'] + 60
     assert p['supervisorSha256'] == digest(__file__)
-    if p['workers'] == [1]:
+    if p['category'] == 'W1 independent confirmation':
+        assert p['workers'] == [1] and p['pairs'] == 320
+        assert p['confirmationAttempt'] == 1
+        assert ledger['confirmationAttempts'] == 0 and ledger['confirmationGames'] == 0
+        budget, limit = 'confirmationGames', 640
+        reserve_games, reserve_wall = 0, 0
+    elif p['workers'] == [1]:
         assert p['category'] == 'W1 development'
         budget, limit = 'developmentGames', 384
+        reserve_games, reserve_wall = 640, 24000
     else:
         assert p['workers'] == [4] and p['category'] == 'W4 competitive risk'
         budget, limit = 'riskGames', 96
+        reserve_games, reserve_wall = 640, 24000
     games = p['pairs'] * 2
     assert type(p['pairs']) is int and p['pairs'] > 0
     assert ledger[budget] + games <= limit
-    assert ledger['initiatedGames'] + games + 640 <= 1120
-    assert ledger['remainingWallSeconds'] >= p['timeoutSeconds'] + 60 + 24000
+    assert ledger['initiatedGames'] + games + reserve_games <= 1120
+    assert ledger['remainingWallSeconds'] >= p['timeoutSeconds'] + 60 + reserve_wall
     return deadline, games, p['workers'][0]
+
+
+def begin_confirmation_claim(p, expected_ledger_bytes):
+    """Spend the sole attempt after PC admission, before any confirmation child.
+
+    A later engine/preflight/runner failure still spends it. A PC-only admission
+    failure before this point does not. Never restore the counter on failure.
+    """
+    path = OUT / 'resources.json'
+    if path.read_bytes() != expected_ledger_bytes:
+        raise RuntimeError('Resource ledger changed during confirmation admission')
+    ledger = json.loads(expected_ledger_bytes.decode('utf-8'))
+    assert p['category'] == 'W1 independent confirmation' and p['confirmationAttempt'] == 1
+    assert ledger['confirmationAttempts'] == 0 and ledger['confirmationGames'] == 0
+    started = utc().isoformat()
+    ledger.update(confirmationAttempts=1, confirmationAttemptProtocol=p['id'],
+                  confirmationAttemptStartedUtc=started)
+    save(path, ledger)
+    return started
 
 
 def run(protocol_path, window_path):
     p = json.loads(protocol_path.read_text(encoding='utf-8'))
     window = json.loads(window_path.read_text(encoding='utf-8'))
-    ledger = json.loads((OUT / 'resources.json').read_text(encoding='utf-8'))
+    ledger_bytes = (OUT / 'resources.json').read_bytes()
+    ledger = json.loads(ledger_bytes.decode('utf-8'))
     deadline, games, workers = validate_admission(p, window, ledger, utc())
     name = p['namePrefix']; receipt = OUT / (name + '-execution.json')
     assert not receipt.exists() and not (OUT / 'raw' / (name + '-w' + str(workers))).exists()
@@ -166,6 +194,12 @@ def run(protocol_path, window_path):
                 time.sleep(2); value = sample()
                 if value['overwatch'] or value['freeMemoryGiB'] < 12 or value['totalCpuPercent'] > 35:
                     raise RuntimeError('PC admission failed before any match game')
+            assert digest(protocol_path) == r['protocolSha256']
+            assert digest(window_path) == r['windowSha256']
+            if p['category'] == 'W1 independent confirmation':
+                r['confirmationAttemptStartedUtc'] = begin_confirmation_claim(p, ledger_bytes)
+                r['confirmationAttempt'] = 1
+                save(receipt, r)
             with (OUT/'raw'/(name+'-supervisor.log')).open('x', encoding='utf-8') as log:
                 process = subprocess.Popen(command, cwd=ROOT, env=screen.b.clean_environment(),
                     stdout=log, stderr=subprocess.STDOUT,

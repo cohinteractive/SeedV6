@@ -1,0 +1,21 @@
+{
+  "status": "passed operational qualification",
+  "reviewedUtc": "2026-11-03T12:40:07.620145+00:00",
+  "completedGames": 32,
+  "completedRequests": 4932,
+  "warnings": 0,
+  "inputsStable": true,
+  "ownedProcessesRemaining": 0,
+  "pcSamples": 523,
+  "meanCpuPercent": 21.43685754873983,
+  "p95CpuPercent": 28.497072218607677,
+  "maxCpuPercent": 41.44437215354587,
+  "cpuSamplesAtLeast50": 0,
+  "cpuSamplesAtLeast75": 0,
+  "minimumFreeGiB": 17.92879867553711,
+  "overwatchObserved": false,
+  "highSamples": [],
+  "scope": "Score-blind review saved before first follow-up outcome inspection.",
+  "rawRun": "docs\\research\\search\\p4-tactical\\raw\\p1-w4-risk-followup-v1-w4",
+  "disposition": "Retain all32 games. Guard and game/trace/input/owned-drain audits pass. Passing guards does not prove clock equivalence; no selective exclusions."
+}

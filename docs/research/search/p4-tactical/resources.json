@@ -1,11 +1,11 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 10065.600726399978,
-  "remainingWallSeconds": 54734.39927360002,
-  "initiatedGames": 319,
-  "remainingGames": 801,
+  "chargedWallSeconds": 11128.012732399977,
+  "remainingWallSeconds": 53671.98726760002,
+  "initiatedGames": 351,
+  "remainingGames": 769,
   "developmentGames": 255,
-  "riskGames": 64,
+  "riskGames": 96,
   "confirmationGames": 0,
   "confirmationAttempts": 0,
   "executions": [
@@ -226,6 +226,41 @@
       "receipt": "p1-w4-risk-followup-v1-input-execution.json",
       "wallSeconds": 0.044406000000890344,
       "category": "charged bounded W4 follow-up input preparation",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-w4-risk-followup-v1-execution.json",
+      "wallSeconds": 1060.579907700012,
+      "category": "charged controlled-window W4 competitive risk and audit",
+      "status": "passed",
+      "initiatedGames": 32
+    },
+    {
+      "receipt": "p1-w4-risk-followup-v1-analysis.json",
+      "wallSeconds": 1.14487449999433,
+      "category": "charged independent W4 follow-up/protected-PV analysis",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "window-supervisor-v4-admission-qualification.json",
+      "wallSeconds": 0.028149499994469807,
+      "category": "charged bounded independent-claim admission/ownership qualification; no engine",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "window-supervisor-v4-native-qualification.json",
+      "wallSeconds": 0.3914637000125367,
+      "category": "charged bounded independent-claim admission/ownership qualification; no engine",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-confirmation-v1-admission-validation.json",
+      "wallSeconds": 0.2676105999853462,
+      "category": "charged final independent-input/artifact admission verification",
       "status": "passed",
       "initiatedGames": 0
     }
