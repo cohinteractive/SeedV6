@@ -1,0 +1,11 @@
+{
+  "ownerReply": "PC available now for one hour",
+  "observedUtc": "2026-11-03T11:38:01+00:00",
+  "deadlineUtc": "2026-11-03T12:38:01+00:00",
+  "ownerLocalWindow": "4 November2026,00:38:01-01:38:01 Pacific/Auckland (NZDT)",
+  "allowedProtocols": [
+    "TC-P1-W4-RISK-V1"
+  ],
+  "scope": "Only the frozen64-game W4 ROOT_REUSE risk comparison versus exact84. Existing guards and caps; score-blind operational review before outcomes; no independent confirmation. Routine monitoring remains in deterministic supervision and logs without progress narration.",
+  "protocolSha256": "38985868cba249c9de1fdd1dcbb9d9a7bb5e1b4b78e1d0bb6817f1ebb7347672"
+}

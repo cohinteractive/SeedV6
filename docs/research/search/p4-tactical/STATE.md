@@ -3,7 +3,7 @@
 4 November 2026 (Pacific/Auckland). **Active: unchanged TC-P1/build89 selected as
 finalist for remaining qualification after positive wider W1 development.**
 Strength acceptance is unachieved; the independent claim attempt remains unspent.
-No experiment is running; all owned processes have drained. [CONTRACT](CONTRACT.md)
+All prior experiments have drained; W4 is admitted as recorded below. [CONTRACT](CONTRACT.md)
 governs scope and [RESULTS](RESULTS.md) consolidates evidence.
 
 ## Provenance and implementation
@@ -44,6 +44,17 @@ window. W4 competitive risk is unmeasured. W1 short costs:72 requests/18 warmups
 27 measured pairs, geometric wall0.96887, CPU0.95372, allocation0.99967; no Elo or
 isolated speed inference. Artifact bridge compared2117 JAR entries/29 other files;
 only generated version metadata differs, and4 committed-artifact preflights pass.
+
+## Current W4 execution admission
+
+Owner granted the next one-hour window, observed2026-11-03T11:38:01Z,
+deadline12:38:01Z (4 November00:38:01-01:38:01 NZDT). Receipt
+[p1-w4-risk-v1-window-v1.json](p1-w4-risk-v1-window-v1.json) admits only the
+frozen64-game W4 risk protocol. It is queued for immediate guarded launch;
+its execution receipt owns live status. The prior awaiting-window requirement
+is satisfied for this execution only. No W4 game is charged yet; reconcile the
+receipt and actual starts before more admission. Independent confirmation remains
+unspent and is not authorized by this PC window. Keep routine monitoring internal.
 
 ## Completed competitive evidence and finalist decision
 
