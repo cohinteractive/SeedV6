@@ -7,7 +7,9 @@ TC-P1 for normal experimental production across W1-W16, accepting the unresolved
 W4 competitive warning. This bounded integration is separate from research execution.
 The rolling baseline is **HL-G1 + ProbCut**, **TC_P1/flags1177812991**, **build90**;
 [PRODUCTION](PRODUCTION.md) records selection, source/build identity, qualification
-and practical HL_G1 rollback. `LEGACY` and frozen `probcut`/`guided` remain available.
+and practical HL_G1 rollback. Source5f093f3a716c/build90 Windows GUI/UCI packages
+and all-worker production checks pass; the compact qualification manifest is linked
+from PRODUCTION. `LEGACY` and frozen `probcut`/`guided` remain available.
 Future authorized research normally starts from the latest owner-adopted production
 formulation unless a specific objective justifies another base; features are reversible.
 

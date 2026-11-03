@@ -6,8 +6,10 @@ from TC-R001's completed, unsuccessful strength-development execution. Starting
 state: clean main1f55124b,0.0.0/build89, mastersP4-R015/P4-F031; no root journal.
 Current canon is P4-R016/P4-F032; focused tactical CONTRACT revision2. No shared
 behavioral governance, frozen experiment, model, clock policy or search parameter
-is changed. The production source commit and final artifact receipts are recorded
-below after qualification; build90 belongs to the committed runtime integration.
+is changed. Production source is **5f093f3a716cc218c48a7ecc54bbfc1eca44f364**, **0.0.0/build90**.
+The subsequent documentation/evidence commit records final artifacts without another
+version change. [Compact qualification manifest](production-build90-qualification.json)
+records hashes, commands/evidence locations and exact scope.
 
 ## Exact selection and reproducibility
 
@@ -92,7 +94,7 @@ deterministic completed-counter witness to W1; all16 actual production routes,
 exact worker configs, private state, budgets and lifecycle remain checked. Frozen
 W4 per-worker mechanism observations retain their original scope.
 
-Final qualification, artifact identities and platform limits follow below.
+Qualification below distinguishes source tests, packaged runtime and native UI execution.
 
 - **148 JUnit tests pass**,0 failures/errors/skips:88 core Search/rules/book,
   26 UCI,5 GUI,1 built-in Arena,28 selected production/research/control regressions.
@@ -108,5 +110,118 @@ Final qualification, artifact identities and platform limits follow below.
   extracted copies and shared core/model identity passed established packaging gates.
   These provisional artifacts are labelled build89/uncommitted source, **not** the
   historical research build89. Final committed build90 artifacts supersede them for use.
-- Final committed-artifact UCI, packaged GUI and interactive qualification remains
-  pending at the source commit boundary; the following evidence commit records it.
+- At the source commit boundary, final packaged checks were pending. They are now
+  complete as recorded below; the source commit is not retroactively claimed to
+  contain later evidence.
+
+
+## Committed build90 artifacts and executed consumer checks
+
+`gradlew.bat --no-daemon --max-workers=1 packageWindows :app-uci:installDist
+:installResearchWorkspace -PcandidateId=tc-p1-build90-v2` passed in1m34s from clean
+source **5f093f3a716c**. Both consumers' images, ZIPs and independently extracted
+copies passed native packaging checks. Bundled runtime is Temurin Java21.0.12.1+1,
+Windows x64; compilation uses the established Java21 toolchain. No global JDK,
+model selection, launcher policy or installed application was replaced.
+
+| Artifact | Repository-relative path |
+| --- | --- |
+| GUI executable | `dist/windows/candidates/tc-p1-build90-v2/SeedV6-GUI/SeedV6-GUI.exe` |
+| GUI ZIP | `dist/windows/candidates/tc-p1-build90-v2/SeedV6-GUI-windows-x64.zip` |
+| UCI executable | `releases/candidates/windows-x64/tc-p1-build90-v2/SeedV6-UCI/SeedV6-UCI.exe` |
+| UCI ZIP | `releases/candidates/windows-x64/tc-p1-build90-v2/SeedV6-UCI-windows-x64.zip` |
+| Java-only UCI launcher | `app-uci/build/install/seedv6-uci/bin/seedv6-uci.bat` |
+
+Launch either native executable directly from its complete image directory, or
+extract its complete ZIP and launch there. Normal launches require no profile
+property. The generated Java-only launcher requires installed Java21. GUI About
+and UCI runtime identity both report **0.0.0/build90/source5f093f3a716c**. The owner's
+older build77/source78b372c3424b screenshot identifies another artifact; it was not
+updated or overwritten by this work.
+
+Shared engine-core SHA256 (GUI, UCI, Java distribution and research workspace):
+`3e047b7ec4f5d261e90d8a875addb0074b11a154cbffccc549002b433b11dfd9`.
+GUI ZIP SHA256: `a7091426debfe3eab769d57f203cce637d560dcd69ec5e113a36507c7e5f65cf`.
+UCI ZIP SHA256: `dc0d95a60600fb3fd6f6a29a48d3c5b57cbeffac2b7a1a66b1496cb221a17735`.
+Both candidate receipts/manifests retain source/build provenance and inventories.
+
+- **Native UCI:** `verify_cp64_production.py` passes for no-property TC_P1, explicit
+  HL_G1 and LEGACY, each all W1-W16/two sessions/46 completed search responses.
+  It covers Hash/worker reconstruction, node caps, movetime, controlled
+  BOUNDARY2/FACTUAL managed-clock requests and profile retention, legal PVs,
+  terminals/mates/repetition, stop, reset/stale-result suppression, Clear Hash,
+  quit and active-search EOF. These are operational clock checks, not competitive
+  timing equivalence. Java-only launchers separately pass all three profiles at
+  W1/W16 depth/stop/quit, using SEEDV6_UCI_OPTS for explicit rollback.
+- **Packaged GUI Play service:** the retained `HlG1ProductionProbe` (now supporting
+  all three profiles without renaming its historical entry point) runs against
+  the actual GUI app JARs on its bundled runtime. **44 requests per profile**,
+  W1/W4/W8/W16, pass depth/movetime/stop, reset/reuse, real twofold/threefold,
+  mate/stalemate/ordinary-score, legal moves/PVs, restoration and shutdown checks.
+  This part is headless EDT/service evidence, not interactive acceptance.
+- **Native Windows GUI:** the new executable was separately launched through
+  Computer Use without a Search override. About displayed version0.0.0/build90,
+  source5f093f3a716c, Windows/x64. Existing user settings (human Black, W4,5000ms)
+  were unchanged. A non-book legal FEN was loaded; after human `e5d4`, the CP64
+  engine replied `f3d4` (Nxd4), displayed completed depth11/PV and TIME_LIMIT,
+  then0/4 active threads. The11-move displayed PV was independently replayed
+  legally. Stop Game and normal window close completed; all candidate processes
+  drained. The packaged Arena view was inspected; its existing paused read-only
+  campaign was not resumed or changed. Actual built-in Arena execution is the
+  separate shallow source regression described above, not an interactive campaign.
+- **Frozen behavior bridge:**48 bounded W1 requests on four positions/real histories
+  at Hash1/64 show exact published depth/score/node/PV, full-request nodes and
+  bestmove parity: packaged default = frozen89 probcut = current explicit probcut;
+  packaged HL_G1 = frozen84 guided = current explicit guided. Current research
+  profiles ignore conflicting production overrides. Invalid production selector
+  exits nonzero rather than falling back. All37 frozen89/33 frozen84 runtime files
+  still match their manifests. Core ZIP entry sets match frozen89; only
+  BaselineEngine.class, BaselineEngine$SearchProfile.class and application-version
+  properties differ. ExactSearch/FlatSearchConfig and all other core entries are
+  byte-identical. No ProbCut parameter or algorithm changed.
+
+The build90-v1 packaging attempt was stopped after commit whitespace validation
+rejected a newly authored report's line endings and the shell had continued. Its
+log is retained. The report was normalized, the source commit completed, and fresh
+v2 artifacts were built from the clean revision. There was one verified89->90 bump;
+no failed attempt is treated as a successful artifact or another build increment.
+
+Reproduction entry points (use fresh evidence output directories):
+
+```powershell
+build/research/venv/Scripts/python.exe -B tools/verify_cp64_production.py --launcher '<UCI executable>' --output '<new directory>'
+# Repeat with --profile HL_G1 and --profile LEGACY into distinct new directories.
+# Compile ConventionalGuiProbe.java and tools/gui-smoke/HlG1ProductionProbe.java
+# against <GUI image>/app/*, then run on <GUI image>/runtime/bin/java.exe.
+```
+
+The retained raw logs include exact Gradle invocations, JUnit XML/summary, GUI
+transcripts, UCI commands/responses and `frozen_bridge.py`; the compact manifest
+hashes the evidence used here. Raw evidence is local-only and not force-added.
+
+## Completion limits and human actions
+
+This bounded Windows production integration and qualification is complete. The
+rolling baseline is **TC_P1/HL-G1 + ProbCut, flags1177812991, build90, source5f093f3a716c**.
+No newly discovered correctness, concurrency or lifecycle defect remains. W4's
+competitive warning, failed TC-R001 strength criterion and all historical clock/
+champion qualifications remain explicit. No claim of broad interactive acceptance,
+native macOS/mobile qualification, training-workflow validation or live external
+client acceptance is made. The automatic GUI package receipt remains headless-only;
+the later bounded native GUI check is separately recorded, not silently substituted.
+
+No installed GUI replacement, bot configuration, active Lichess change, push,
+release or deployment occurred. About formulation visibility and concurrency
+research remain separate owner-directed workstreams. Version bytes after the sole
+bump have SHA256 `24178904b9ae3360bd48abea0f1acc9b909b02cc1fbc319df0cf56dae113df6e`.
+Root CODEXLOG_CURRENT.md is absent and was not created; no finalizer/coordinator ran.
+
+Human actions required after this prompt:
+
+- **Non-blocking for completed integration; blocking before mirror-dependent
+  planning:** owner refresh of `CHESS_SEARCH_CONTRACT.md` to **P4-R016** and
+  `CHESS_SEARCH_RESEARCH_FRONTIER.md` to **P4-F032** in the Phase4 ChatGPT Project
+  Sources. No automatic refresh is claimed; Phase3 mirrors remain unchanged.
+- **Blocking for this completed Windows integration:** None.
+- Native macOS or deployment acceptance, if later requested, requires its own
+  qualification/authority; it is outside this unit and not an integration blocker.

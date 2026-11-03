@@ -1,0 +1,272 @@
+{
+  "status": "PASS",
+  "sourceCommit": "5f093f3a716cc218c48a7ecc54bbfc1eca44f364",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 90
+  },
+  "versionSha256": "24178904b9ae3360bd48abea0f1acc9b909b02cc1fbc319df0cf56dae113df6e",
+  "canon": {
+    "contract": "P4-R016",
+    "frontier": "P4-F032",
+    "tacticalContractRevision": 2
+  },
+  "selection": {
+    "default": "TC_P1",
+    "flags": 1177812991,
+    "formulation": "Exact TC-P1 bounded capture verification over HL-G1",
+    "frozenImplementation": "a7c45dffeaffc362bc7c7026d03a2e6434472be2",
+    "rollback": "HL_G1",
+    "rollbackFlags": 104071167,
+    "legacyFlags": 3407871,
+    "workers": "1..16; OWNER at W1, ROOT_REUSE at W2..16",
+    "managedClock": "BOUNDARY2; FACTUAL explicit fallback",
+    "requestedHashMiB": 64,
+    "defaultWorkers": 1
+  },
+  "artifacts": {
+    "gui": {
+      "candidate": "dist/windows/candidates/tc-p1-build90-v2",
+      "launcher": "dist/windows/candidates/tc-p1-build90-v2/SeedV6-GUI/SeedV6-GUI.exe",
+      "archive": "dist/windows/candidates/tc-p1-build90-v2/SeedV6-GUI-windows-x64.zip",
+      "archiveSha256": "a7091426debfe3eab769d57f203cce637d560dcd69ec5e113a36507c7e5f65cf",
+      "receipt": "dist/windows/candidates/tc-p1-build90-v2/candidate.json",
+      "receiptSha256": "d2725d71cb037a1994c466d6eb96c721ac4d69e2240ff9b4e71dd62f52babc73",
+      "coreJarSha256": "3e047b7ec4f5d261e90d8a875addb0074b11a154cbffccc549002b433b11dfd9",
+      "packageStatus": "VERIFIED_LOCAL_CANDIDATE",
+      "bundledRuntime": "Temurin Java21.0.12.1+1 Windows x64"
+    },
+    "uci": {
+      "candidate": "releases/candidates/windows-x64/tc-p1-build90-v2",
+      "launcher": "releases/candidates/windows-x64/tc-p1-build90-v2/SeedV6-UCI/SeedV6-UCI.exe",
+      "archive": "releases/candidates/windows-x64/tc-p1-build90-v2/SeedV6-UCI-windows-x64.zip",
+      "archiveSha256": "dc0d95a60600fb3fd6f6a29a48d3c5b57cbeffac2b7a1a66b1496cb221a17735",
+      "receipt": "releases/candidates/windows-x64/tc-p1-build90-v2/candidate.json",
+      "receiptSha256": "773b0113cf853f4eca25ea7a29a97eafad882d95e7e811a715f75eedd8652a1c",
+      "coreJarSha256": "3e047b7ec4f5d261e90d8a875addb0074b11a154cbffccc549002b433b11dfd9",
+      "packageStatus": "VERIFIED_LOCAL_CANDIDATE",
+      "bundledRuntime": "Temurin Java21.0.12.1+1 Windows x64"
+    },
+    "javaUci": {
+      "launcher": "app-uci/build/install/seedv6-uci/bin/seedv6-uci.bat",
+      "coreJarSha256": "3e047b7ec4f5d261e90d8a875addb0074b11a154cbffccc549002b433b11dfd9",
+      "runtimeQualification": "Generated batch launcher PASS TC_P1(no option), HL_G1/LEGACY via SEEDV6_UCI_OPTS, each W1/W16 depth3, infinite-stop and quit."
+    }
+  },
+  "tests": {
+    "junit": {
+      "tests": 148,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "coreSearchRulesBook": 88,
+      "uci": 26,
+      "gui": 5,
+      "builtInArena": 1,
+      "selectedResearchControls": 28
+    },
+    "pythonPackaging": {
+      "tests": 22,
+      "passed": 22
+    },
+    "projectBoundaries": "PASS",
+    "builtInArena": "Actual LearningArenaService shallow repeated colour pairs, all three evaluators, W1/W4/W16, disposable test stores; no strength inference",
+    "guiPackaged": {
+      "TC_P1": {
+        "requests": 44,
+        "workers": [
+          1,
+          4,
+          8,
+          16
+        ],
+        "status": "PASS"
+      },
+      "HL_G1": {
+        "requests": 44,
+        "workers": [
+          1,
+          4,
+          8,
+          16
+        ],
+        "status": "PASS"
+      },
+      "LEGACY": {
+        "requests": 44,
+        "workers": [
+          1,
+          4,
+          8,
+          16
+        ],
+        "status": "PASS"
+      }
+    },
+    "uciPackaged": {
+      "TC_P1": {
+        "status": "PASS",
+        "workers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "sessions": 2,
+        "completedSearchResponses": 46,
+        "scope": "Hash/worker/clock reconstruction, node caps, movetime, BOUNDARY2/FACTUAL clocks, legal PV/terminals/repetition, cancellation, reset/stale suppression, quit/EOF"
+      },
+      "HL_G1": {
+        "status": "PASS",
+        "workers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "sessions": 2,
+        "completedSearchResponses": 46,
+        "scope": "Hash/worker/clock reconstruction, node caps, movetime, BOUNDARY2/FACTUAL clocks, legal PV/terminals/repetition, cancellation, reset/stale suppression, quit/EOF"
+      },
+      "LEGACY": {
+        "status": "PASS",
+        "workers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "sessions": 2,
+        "completedSearchResponses": 46,
+        "scope": "Hash/worker/clock reconstruction, node caps, movetime, BOUNDARY2/FACTUAL clocks, legal PV/terminals/repetition, cancellation, reset/stale suppression, quit/EOF"
+      }
+    }
+  },
+  "frozenBridge": {
+    "status": "PASS",
+    "requests": 48,
+    "groups": [
+      [
+        "production",
+        "frozen89",
+        "explicitProbcut"
+      ],
+      [
+        "rollback",
+        "frozen84",
+        "explicitGuided"
+      ]
+    ],
+    "classDifferences": {
+      "frozen89": [
+        "com/ohinteractive/seedv6/search/driver/BaselineEngine$SearchProfile.class",
+        "com/ohinteractive/seedv6/search/driver/BaselineEngine.class",
+        "com/ohinteractive/seedv6/application-version.properties"
+      ]
+    },
+    "coreJarSha256": "3e047b7ec4f5d261e90d8a875addb0074b11a154cbffccc549002b433b11dfd9",
+    "versionProperties": "major=0\nminor=0\npatch=0\nbuild=90\nsourceRevision=5f093f3a716c\nversionUpdated=2026-11-04\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+    "scope": "W1 bounded deterministic bridge, not strength evidence"
+  },
+  "nativeGui": {
+    "status": "PASS bounded interactive Windows smoke",
+    "launcher": "dist/windows/candidates/tc-p1-build90-v2/SeedV6-GUI/SeedV6-GUI.exe",
+    "noSearchProperty": true,
+    "about": {
+      "version": "0.0.0",
+      "build": 90,
+      "sourceRevision": "5f093f3a716c",
+      "versionUpdated": "2026-11-04",
+      "platform": "windows / x64"
+    },
+    "play": {
+      "inheritedSettings": "Human Black; W4; fixed5000ms; CP64. These preferences were not changed.",
+      "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R b KQkq - 0 1",
+      "humanMove": "e5d4",
+      "engineMove": "f3d4",
+      "observedCompletedDepth": 11,
+      "displayedScoreWhite": -1.97,
+      "observedPV": "f3d4 d5e4 d4c6 d7c6 e1g1 a8d8 d2c1 a7a6 e3g5 d8d4 f1e1",
+      "terminalReason": "TIME_LIMIT",
+      "activeWorkersAfterCompletion": "0/4",
+      "gameStopped": "No result; qualification only",
+      "observedPvIndependentlyReplayed": "PASS python-chess, all11 moves legal from actual post-human history"
+    },
+    "arena": "Opened packaged Arena view; existing saved paused campaign was read-only and was not resumed or modified. Actual routing/game execution qualified by BaselineArenaTest, not a new interactive campaign.",
+    "shutdown": "Normal Alt+F4; no remaining candidate GUI/UCI processes/windows"
+  },
+  "failuresPreserved": [
+    {
+      "path": "raw/production-adoption-v1/gradle-tests-v1.txt",
+      "reason": "One new counter reachability assertion was overstrict for small W2 budget; test corrected, full 28-test selected research set passed. No runtime correction."
+    },
+    {
+      "path": "raw/production-adoption-v1/package-build90-v1.txt",
+      "reason": "Commit whitespace validation rejected mixed CRLF in new report. Shell had continued packaging; owned attempt stopped. Report normalized to LF and committed; final v2 packaged clean source. No extra build increment."
+    }
+  ],
+  "limitations": [
+    "TC-R001 independent W1 strength criterion FAILED; sole attempt spent",
+    "W4 adverse competitive warning explicitly accepted for adoption; neither regression nor neutrality proved",
+    "No new competitive strength campaign",
+    "Native macOS/mobile and broad interactive GUI/training/external-client acceptance not performed",
+    "No installation replacement, push, deployment, release, bot change or champion advancement",
+    "Automatic package receipts cover headless GUI only; subsequent native interactive check is separately recorded here"
+  ],
+  "rawEvidence": "docs/research/search/p4-tactical/raw/production-adoption-v1/",
+  "evidenceHashes": {
+    "gradle-tests-v1.txt": "365238a62073a043d31d905ff8419e555ae3f39a93fae283b2712d814c05029e",
+    "gradle-tests-v2.txt": "f76d97e547294a07cd9734a6c48b5b3e8e728b0695f7cc51ead5d1f7e2356e62",
+    "tests-final/summary.json": "793c8973a48b32b18fa4159efc08f2e6ee79a0d8b3ad45c986004c013afdc5f6",
+    "packaging-tests-v1.txt": "628ed2eb2cc5b5ce61aafd2bbe3493ad5462a96d04f6bfb072e5a5a1a8b92f4a",
+    "package-precommit-v1.txt": "b5badb1678f232d3a0e2afbb768f79c8a097fade0f5cc8e0aff3e6294d23d7e2",
+    "package-build90-v2.txt": "8ade3abb92116e403f016225a726802ef4530d0a1bb369ed2de9fc5f30a87c6c",
+    "frozen_bridge.py": "e3bda224bdea93ac5932079ebb6fe06d287a1848c616cf9f0cac996fced11f34",
+    "frozen-bridge-v1/result.json": "772b38ea200c26f5793d7754f0cba66d635c4f3acd5be1d0c63a22e03896b56c",
+    "gui-TC_P1.txt": "6a51cafd04cbe9793e3036c642bcd4e5aa13dbb1f81bcc57482899c1608723d2",
+    "gui-HL_G1.txt": "852757fad3810d1fc865721d703cb82f3ddc90086bc9b531a6711e0a18f34822",
+    "gui-LEGACY.txt": "4f800e9dfa420173d27f85770341e5b72d151733e5b6c42206e73a76792c9ddf",
+    "uci-TC_P1/result.json": "0eb6a050222b7eed10ee0c3cece15aeb68c021fc3a999d4b438e2b9fd81ac501",
+    "uci-HL_G1/result.json": "b4130ad8d9631848a438d74d24c2774ac6c961bbd0a31e561eb51fd8d5fff71e",
+    "uci-LEGACY/result.json": "19ced1dcd62198af4861448e23e9df237b1b9608e7cd1591736da4b4ec4bac15",
+    "java-launcher-smoke.json": "21d202e29a0134c408003c52573a4be16cb78ece78081666b453934119c8c6a9"
+  }
+}
