@@ -1,0 +1,28 @@
+{
+  "status": "failed",
+  "startedUtc": "2026-11-03T10:18:21.393676+00:00",
+  "protocol": "p1-support-v1-a-protocol.json",
+  "protocolSha256": "6be7fe323343451eee0176c90172a282a8b1c8d92edae987b97ec373a5b216e9",
+  "window": "docs\\research\\search\\p4-tactical\\p1-support-v1-window-v1.json",
+  "windowSha256": "05189b676fed655ff04d4b6a751fa553eb637c450c4f3700137e9b973782395c",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "tools/p4-tactical.py",
+    "--protocol",
+    "p1-support-v1-a-protocol.json",
+    "--workers",
+    "1"
+  ],
+  "reservedGamesPending": 64,
+  "category": "charged controlled-window W1 development and audit",
+  "supervisorSha256": "814effaf9021363ded0fe38d0e6aeb4f0dc400048998c5088031d788380a7937",
+  "failure": "RuntimeError('PC admission failed before any match game')",
+  "gamesInitiated": 0,
+  "ownedProcessesRemaining": 0,
+  "processDrained": true,
+  "ownedCpuSeconds": 0.0,
+  "totalOwnedProcesses": 0,
+  "endedUtc": "2026-11-03T10:18:23.634191+00:00",
+  "wallSeconds": 2.2400442000071052
+}

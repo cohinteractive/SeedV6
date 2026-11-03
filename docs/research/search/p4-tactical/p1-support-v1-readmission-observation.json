@@ -1,0 +1,75 @@
+{
+  "status": "observation completed; no engine or game launched",
+  "startedUtc": "2026-11-03T10:18:47.513248+00:00",
+  "endedUtc": "2026-11-03T10:19:07.820153+00:00",
+  "wallSeconds": 20.501511899987236,
+  "samples": [
+    {
+      "utc": "2026-11-03T10:18:47.513248+00:00",
+      "totalCpuPercent": null,
+      "freeMemoryGiB": 17.408851623535156,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:18:49.513638+00:00",
+      "totalCpuPercent": 9.515366430260052,
+      "freeMemoryGiB": 17.419410705566406,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:18:51.514200+00:00",
+      "totalCpuPercent": 6.258148631029991,
+      "freeMemoryGiB": 17.46091079711914,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:18:53.514412+00:00",
+      "totalCpuPercent": 4.109589041095896,
+      "freeMemoryGiB": 17.464435577392578,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:18:55.515067+00:00",
+      "totalCpuPercent": 4.489264801561488,
+      "freeMemoryGiB": 17.476024627685547,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:18:57.665607+00:00",
+      "totalCpuPercent": 5.331599479843952,
+      "freeMemoryGiB": 17.481781005859375,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:18:59.665796+00:00",
+      "totalCpuPercent": 9.431680773881501,
+      "freeMemoryGiB": 17.562007904052734,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:19:01.666052+00:00",
+      "totalCpuPercent": 20.052083333333336,
+      "freeMemoryGiB": 18.102535247802734,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:19:03.666525+00:00",
+      "totalCpuPercent": 9.480519480519478,
+      "freeMemoryGiB": 18.202564239501953,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:19:05.667200+00:00",
+      "totalCpuPercent": 4.515706806282727,
+      "freeMemoryGiB": 18.197532653808594,
+      "overwatch": false
+    },
+    {
+      "utc": "2026-11-03T10:19:07.820153+00:00",
+      "totalCpuPercent": 5.905256327060348,
+      "freeMemoryGiB": 18.2032470703125,
+      "overwatch": false
+    }
+  ],
+  "allAdmissionSamplesPass": true
+}

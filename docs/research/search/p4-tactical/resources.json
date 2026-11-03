@@ -1,7 +1,7 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 4062.669993499934,
-  "remainingWallSeconds": 60737.330006500066,
+  "chargedWallSeconds": 4085.4115495999285,
+  "remainingWallSeconds": 60714.58845040007,
   "initiatedGames": 127,
   "remainingGames": 993,
   "developmentGames": 127,
@@ -129,6 +129,20 @@
       "wallSeconds": 40.14818740001647,
       "category": "charged bounded development input preparation",
       "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-support-v1-a-execution.json",
+      "wallSeconds": 2.2400442000071052,
+      "category": "charged failed PC admission; zero engines or games",
+      "status": "failed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-support-v1-readmission-observation.json",
+      "wallSeconds": 20.501511899987236,
+      "category": "charged bounded readmission load observation; no engine",
+      "status": "observation completed; no engine or game launched",
       "initiatedGames": 0
     }
   ],

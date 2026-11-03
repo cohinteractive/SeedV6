@@ -1,7 +1,7 @@
 # TC-R001 resume state
 
 3 November2026 (Pacific/Auckland). **Active workstream; first valid W1 result is
-positive but inconclusive. Wider development batch ready, awaiting a new PC window.**
+positive but inconclusive. Wider development batch admitted in the new two-hour owner window.**
 Strength objective unachieved; no finalist or independent claim attempt selected.
 [CONTRACT](CONTRACT.md) governs scope; [RESULTS](RESULTS.md) consolidates evidence.
 
@@ -10,11 +10,17 @@ Strength objective unachieved; no finalist or independent claim attempt selected
 Owner granted two hours, observed 2026-11-03T10:17:44Z, deadline12:17:44Z
 (3 November23:17:44 to4 November01:17:44 NZDT). Receipt
 [p1-support-v1-window-v1.json](p1-support-v1-window-v1.json) admits only support A
-then B. Segment A is admitted for immediate guarded launch; B must follow a
+then B. Segment A admission1 failed before any child or game: CPU36.655% exceeded35%.
+Receipt and raw samples preserved, zero games charged. A separate20s observation
+passed all10 samples (CPU4.11-20.06%, free>=17.4GiB, no Overwatch). Precise transient
+cause remains unknown. Same scientific segment A is now admitted through
+`p1-support-v1-a-admission2-protocol.json`, with a fresh output namespace and
+unchanged frozen guard, inputs and limits. B must follow a
 score-blind operational audit and fit the remaining deadline. No interim outcome
 inspection. The prior awaiting-window statements below describe the frozen plan;
 this receipt satisfies that scheduling dependency for this execution only.
-No games from this batch are charged yet; reconcile each execution before more
+No games from this batch are charged yet;22.7415561s failed admission/observation
+have been added to resources.json. Reconcile each execution before more
 admission. Preserve unfinished evidence if interrupted. All prior evidence and
 candidate identities are unchanged.
 
@@ -99,7 +105,7 @@ justified unit: finalist/W4 risk or an evidence-supported alternative.
 
 ## Resources and protected inputs
 
-Charged **4062.6699935/64800s** (1h7m42.67s); remaining **60737.3300065s**.
+Charged **4085.4115496/64800s** (1h8m5.41s); remaining **60714.5884504s**.
 Initiated127/1120 games: W1 development127/384 (257 left), W4 risk0/96,
 confirmation0/640; attempts0/1. Includes failures, interrupted games, calibration
 and new input preparation. Reserve640 confirmation games and at least24000s.
