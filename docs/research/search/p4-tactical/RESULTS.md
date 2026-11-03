@@ -1,7 +1,7 @@
 # TC-R001 evidence and current outcome
 
-3 November 2026. **Strength objective unachieved; active workstream awaiting a
-controlled PC-use window.** No finalist or independent claim attempt selected.
+4 November 2026. **Strength objective unachieved; unchanged TC-P1 selected as finalist
+for remaining qualification.** Independent confirmation remains unspent.
 [CONTRACT](CONTRACT.md) preserves the approved scope and criterion;
 [STATE](STATE.md) is the restart point.
 
@@ -108,34 +108,62 @@ two32-pair segments, will test whether the positive direction persists before
 spending the sole independent confirmation. Segment outcomes stay unread for
 selection until both complete and pass operational audit.
 
+## Complete fixed128-game support and selected finalist
+
+The two prospective32-pair segments completed under the new two-hour owner window.
+A first admission failed before any engine/game on one36.655% CPU sample; its failed
+receipt is preserved. A20s load observation passed, and a fresh output namespace
+retained the scientific protocol. A then B passed, with9217+8254=17471 audited
+requests, zero missing-score warnings, stable inputs and all processes drained.
+No segment scores were inspected until both score-blind operational reviews passed.
+
+[Independent paired analysis](p1-support-v1-analysis.json): **53W/40D/35L over128 games,
+57.03125%, paired-normal95%50.6242-63.4383%, Hoeffding95%40.0550-74.0075%.**
+Pentanomial[2,13,23,17,9]. A scored53.125%, B60.9375%. The fixed support sample is
+exploratory, not an independent claim. Descriptive adaptive pooling with V2 yields
+96 pairs/192 games,55.72917%, normal95%50.4726-60.9857%, bounded41.8681-69.5902%;
+selection and opening-dependence limitations preclude confirmatory interpretation.
+Interrupted clock-unqualified V1 is excluded throughout.
+
+A had three brief CPU samples>=50%, maximum74.73%, mean18.30%, p95 26.97%, minimum
+free15.90GiB; none>=75%. B maximum47.46%, mean17.88%, p95 27.02%, minimumfree15.44GiB.
+No gaming or guard violation during either match. Both score-blind reviews retained
+all games. A's transient source/per-move impact is unknown; passing operational guards
+does not prove clock equivalence. All raw samples and failed admission evidence remain.
+
+The unchanged source/configuration is now selected as finalist for W4 risk and, if
+required qualification remains adequate, the sole independent W1 confirmation.
+The wider positive evidence, prior V2 and calibrated mechanism justify this choice;
+no parameter tuning or extra W1 sampling is selected merely to seek favorable results.
+No acceptance, promotion or independent claim has occurred.
+
 ## Resources, failures and next experiment
 
-[Ledger](resources.json): **4062.6699935/64,800 charged seconds** (1h7m42.67s),
-remaining60737.3300065s. Initiated games127/1120; W1 development127/384,
-W4 risk0/96, confirmation0/640; claim attempts0/1. Failures and the post-stop audit
-are charged once. The original selector-supervisor drain assertion and W4-only
-harness assertion remain failed evidence; independent input validation and fresh
-corrected W4 checks do not erase them. The first system-Python import failed before
-an engine ran. Use the existing research venv.
+[Ledger](resources.json): **8039.3215715000/64800 charged seconds** (2h13m59.32s),
+remaining56760.6784285000s. Initiated255/1120; development255/384, W4 risk0/96,
+confirmation0/640, attempts0/1. All failed/interrupted/admission and bounded audit
+costs are charged once. Original input-supervisor drain and W4 harness assertions
+remain failed evidence; fresh corrected qualification does not erase them.
 
-Protected confirmation320 roots remain unused. Six historical non-key fixtures
-cover5364 distinct prefixes with zero overlap; all8094 real positions exposed by
-the interrupted screen, including game63, also have zero overlap. No protected
-moves/keys were displayed for selection. Recheck later development disjointness.
+Protected320 roots remain unused. The support/V2 PGNs expose25986 distinct positions,
+with zero protected overlap. All17 calibration witnesses including incomplete rows,
+plus root histories, expose933 distinct positions with zero overlap. Historical
+and interrupted-screen checks remain intact. Recheck subsequent W4 exposure before
+a claim; no protected moves/keys were displayed for candidate selection.
 
-[Support protocol](p1-support-v1-protocol.json) freezes the unchanged candidate
-against exact84 on64 new-to-TC starting roots, in two32-pair segments. It needs one
-new controlled two-hour window or two separately granted one-hour windows. The
-completed V2 grant does not admit support matches. Retain all samples/interruption
-records and analyze the full128 games only after both segments pass. All candidate
-and protected-confirmation identities remain unchanged. Full completion leaves129
-development games,96 W4 games and all640 independent games.
+[W4 risk protocol](p1-w4-risk-v1-protocol.json) freezes64 games versus exact84 guided,
+W4 ROOT_REUSE, on all32 unchanged established HL development roots. This meaningful
+nearby control tests incremental TC risk; prior HL84-vs79 uncertainty remains separate.
+It cannot establish W4 strength/equivalence or resolve the79/80 bridge.32 risk games
+remain available for justified follow-up. A new one-hour PC window is required.
 
-The bounded PC guard's native sampling, owned dummy termination and expired-window
-rejection checks pass; V2 now also qualifies its actual match path. It does not prove
-clock equivalence. W4 competitive risk and independent confirmation remain unperformed.
-Further source work and bounded light diagnostics stay authorized; the next meaningful
-selection decision depends on the prepared wider competitive sample.
+The supervisor now routes W4 to its separate96-game budget while retaining ownership,
+PC guards and confirmation reserves.16 pure rejection cases and actual native sampling/
+owned-dummy drain pass; no new engine game ran. Historical W1 source814effaf is retained
+at40be062f and completed frozen protocols/receipts are unchanged. New supervisor42e0a8fd
+still needs its first actual W4 match execution. All previous W4 engine technical
+qualification remains applicable to the unchanged artifact. Full application tests
+were not repeated for this non-runtime tooling/documentation turn.
 
 ## Repository and authority
 
@@ -150,9 +178,10 @@ the runtime commit; later harness/docs work has no application build impact.
 
 Champion remains exact HL-G1/build84; normal build85 HL-G1 policy is unchanged.
 TT-R001 reconciliation remains separate and both frozen BOUNDARY2 studies unopened.
-Current masters are **P4-R012/P4-F028**. Repository edits do not refresh owner mirrors.
+Current masters are **P4-R013/P4-F029**. Repository edits do not refresh owner mirrors.
 
-Human actions required after this prompt: **Blocking for the next clocked batch:
-provide a new controlled two-hour window for support, or separate one-hour segment windows. Blocking before mirror-dependent
-planning, non-blocking for repository execution: refresh both Phase4 Project Source
-mirrors to P4-R012/P4-F028.** No strength acceptance or promotion is requested.
+Human actions required after this prompt: **Blocking for W4 games: provide a new
+one-hour controlled window. Blocking before mirror-dependent planning, non-blocking
+for repository work: refresh both Phase4 mirrors to P4-R013/P4-F029.** No strength
+acceptance or promotion is requested. The owner's reporting correction is preserved
+in STATE; routine monitoring stays in supervision/logs without conversational narration.

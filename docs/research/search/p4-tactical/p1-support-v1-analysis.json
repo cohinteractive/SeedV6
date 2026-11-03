@@ -1,0 +1,86 @@
+{
+  "id": "TC-P1-SUPPORT-V1",
+  "status": "passed complete fixed-sample analysis",
+  "utc": "2026-11-03T11:28:40.282983+00:00",
+  "inputPgnSha256": {
+    "docs\\research\\search\\p4-tactical\\raw\\p1-support-v1-a-admission2-w1\\games.pgn": "4558a1bc6c83db0acfcdac4bfb8cf111bfaf29eab53f045b2d89b9d4dfec4fb0",
+    "docs\\research\\search\\p4-tactical\\raw\\p1-support-v1-b-w1\\games.pgn": "f2556d4659ef69a7f2aa90934a6b03ab7a0f956df4b4e7123db3b4fa3c882f70",
+    "docs\\research\\search\\p4-tactical\\raw\\p1-screen-v2-w1\\games.pgn": "4ba0ad8eda17e2999acdbed6692dfae983094d8ec072f7458129f3e38b7202de"
+  },
+  "support": {
+    "pairs": 64,
+    "games": 128,
+    "wdl": [
+      53,
+      40,
+      35
+    ],
+    "score": 0.5703125,
+    "pentanomial": [
+      2,
+      13,
+      23,
+      17,
+      9
+    ],
+    "pairScoreStandardError": 0.03268944233811559,
+    "pairedNormal95": [
+      0.5062423703425947,
+      0.6343826296574053
+    ],
+    "pairedHoeffding95": [
+      0.40054981053242256,
+      0.7400751894675774
+    ]
+  },
+  "segments": {
+    "p1-support-v1-a-admission2": {
+      "wdl": [
+        24,
+        20,
+        20
+      ],
+      "score": 0.53125
+    },
+    "p1-support-v1-b": {
+      "wdl": [
+        29,
+        20,
+        15
+      ],
+      "score": 0.609375
+    }
+  },
+  "adaptiveExploratoryPoolWithV2": {
+    "pairs": 96,
+    "games": 192,
+    "wdl": [
+      78,
+      58,
+      56
+    ],
+    "score": 0.5572916666666666,
+    "pentanomial": [
+      5,
+      17,
+      37,
+      25,
+      12
+    ],
+    "pairScoreStandardError": 0.026819523184247882,
+    "pairedNormal95": [
+      0.5047263671430038,
+      0.6098569661903295
+    ],
+    "pairedHoeffding95": [
+      0.4186810111472944,
+      0.6959023221860389
+    ]
+  },
+  "actualSupportAndV2Positions": 25986,
+  "protectedConfirmationRoots": 320,
+  "protectedOverlap": 0,
+  "method": "Independent legal PGN traversal, pair by exact16-ply starting position, exactly two opposite-color games per unique root; WDL and scores crosschecked against runner. Neither segment score was inspected until both passed and their score-blind operational reviews were saved. A prior zero-game admission failure remains preserved. All128 games retained.",
+  "inference": "Support64-pair fixed study is exploratory; any96-pair pool is adaptive development evidence. Neither is independent confirmation or acceptance. Normal approximation/opening dependence and recorded A CPU excursions limit interpretation; Hoeffding sensitivity reported separately. InterruptedV1 is excluded.",
+  "wallSeconds": 2.1983533000166062
+}

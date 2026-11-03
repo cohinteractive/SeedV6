@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "utc": "2026-11-03T11:31:19.400264+00:00",
+  "source": "tools/p4-tactical-supervise.py",
+  "sourceSha256": "42e0a8fd6329e08520aedf249ac6030c216258603be482ed5e79099afdefef1a",
+  "validDomains": [
+    "W1 development",
+    "W4 competitive risk"
+  ],
+  "rejectedCases": [
+    "invalid worker domain [2]",
+    "invalid worker domain [1, 4]",
+    "invalid worker domain []",
+    "risk cannot spend development budget",
+    "risk96 cap",
+    "development384 cap",
+    "640 game confirmation reserve",
+    "24000s confirmation reserve",
+    "insufficient controlled window",
+    "unadmitted protocol",
+    "missing owner grant",
+    "changed supervisor identity",
+    "invalid pair count 0",
+    "invalid pair count -1",
+    "invalid pair count True",
+    "invalid pair count 1.5"
+  ],
+  "wallSeconds": 0.01046150000183843,
+  "scope": "Pure admission checks only; no engine or match. Existing native ownership self-check follows separately. Historical W1 supervisor source814effaf is retained unchanged at40be062f; completed protocol/receipt bytes are not updated.",
+  "historicalSourceCommit": "40be062f"
+}

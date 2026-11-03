@@ -1,10 +1,10 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 6115.709620099951,
-  "remainingWallSeconds": 58684.29037990005,
-  "initiatedGames": 191,
-  "remainingGames": 929,
-  "developmentGames": 191,
+  "chargedWallSeconds": 8039.321571499982,
+  "remainingWallSeconds": 56760.67842850002,
+  "initiatedGames": 255,
+  "remainingGames": 865,
+  "developmentGames": 255,
   "riskGames": 0,
   "confirmationGames": 0,
   "confirmationAttempts": 0,
@@ -151,6 +151,41 @@
       "category": "charged controlled-window W1 development and audit",
       "status": "passed",
       "initiatedGames": 64
+    },
+    {
+      "receipt": "p1-support-v1-b-execution.json",
+      "wallSeconds": 1920.728921700007,
+      "category": "charged controlled-window W1 development and audit",
+      "status": "passed",
+      "initiatedGames": 64
+    },
+    {
+      "receipt": "p1-support-v1-analysis.json",
+      "wallSeconds": 2.1983533000166062,
+      "category": "charged independent post-batch PGN/pair/protected-overlap audit and analysis",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-calibration-protected-input-review.json",
+      "wallSeconds": 0.24607880000257865,
+      "category": "charged diagnostic-witness protected-root audit",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "window-supervisor-v3-admission-qualification.json",
+      "wallSeconds": 0.01046150000183843,
+      "category": "charged bounded admission-policy qualification; no engine",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "window-supervisor-v3-native-qualification.json",
+      "wallSeconds": 0.42813610000303015,
+      "category": "charged native sampling/owned dummy qualification; no engine",
+      "status": "passed",
+      "initiatedGames": 0
     }
   ],
   "accounting": "Outer elapsed receipts charged once; interrupted screen63 initiated games including incomplete63, unstarted64 not charged as a game. Post-interruption audit charged separately. Small input reviews inside the screen wall are not charged twice. Original failed receipts/unfinished raw records preserved; no strength result or attempt."

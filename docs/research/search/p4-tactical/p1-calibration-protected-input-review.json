@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "utc": "2026-11-03T11:33:30.918699+00:00",
+  "rawSha256": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-openings-v1\\observations.jsonl": "0ae2471609c657c7830894b328e5944722ce829e3ac13eb282037baa0aa5874e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\p1-calibration-mixed-v1\\observations.jsonl": "2169fa86e2cb665573cdf8a287503bcf402a234a844b187bfe68819052a4ea65"
+  },
+  "diagnosticWitnessesIncludingIncompleteRows": 17,
+  "distinctRootHistoryAndWitnessPositions": 933,
+  "protectedRoots": 320,
+  "overlap": 0,
+  "method": "Independent legal real-history replay and packed-move decoding from inspected Move/Board/Piece constants; all retained complete and incomplete-row witnesses. No protected keys/moves exposed for selection. Original Java helper separately checked exact6-long board restoration.",
+  "wallSeconds": 0.24607880000257865
+}

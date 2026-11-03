@@ -1,25 +1,10 @@
 # TC-R001 resume state
 
-3 November2026 (Pacific/Auckland). **Active workstream; first valid W1 result is
-positive but inconclusive. Wider development batch admitted in the new two-hour owner window.**
-Strength objective unachieved; no finalist or independent claim attempt selected.
-[CONTRACT](CONTRACT.md) governs scope; [RESULTS](RESULTS.md) consolidates evidence.
-
-## Current controlled-window execution
-
-Owner two-hour window:2026-11-03T10:17:44Z to12:17:44Z
-(3 November23:17:44 to4 November01:17:44 NZDT), recorded in
-[p1-support-v1-window-v1.json](p1-support-v1-window-v1.json).
-A admission1 failed before any engine/game on a36.655% CPU sample; evidence is
-preserved. A20s observation passed; output-only admission2 retained all frozen
-scientific inputs and rules. Segment A then passed all64 games and9217 requests,
-inputs stable,0 warnings, owned processes drained at10:53:33Z. Score-blind review
-retains all games with brief recorded CPU excursions (max74.73%, no75% sample;
-mean18.30%, p95 26.97%). Exact transient cause/per-move impact remains unknown.
-Its WDL/scores remain unread. Segment B is admitted next only through the original
-frozen protocol and same guarded window; no interim tuning or changed sample.
-No match is active at this checkpoint. The next B receipt owns current runtime
-status after launch. Ledger includes A and the failed admission/observation.
+4 November 2026 (Pacific/Auckland). **Active: unchanged TC-P1/build89 selected as
+finalist for remaining qualification after positive wider W1 development.**
+Strength acceptance is unachieved; the independent claim attempt remains unspent.
+No experiment is running; all owned processes have drained. [CONTRACT](CONTRACT.md)
+governs scope and [RESULTS](RESULTS.md) consolidates evidence.
 
 ## Provenance and implementation
 
@@ -60,104 +45,119 @@ window. W4 competitive risk is unmeasured. W1 short costs:72 requests/18 warmups
 isolated speed inference. Artifact bridge compared2117 JAR entries/29 other files;
 only generated version metadata differs, and4 committed-artifact preflights pass.
 
-## Competitive evidence and PC coexistence
+## Completed competitive evidence and finalist decision
 
-V1 was stopped score-blind for external VS Code/desktop CPU samples68%,92%,97%.
-63 games initiated,62 completed/31 pairs, game63 interrupted, game64 unstarted.
-All8153 completed-game requests pass limited operational audit; frozen inputs stable.
-The full trace ends with an interrupted request; exact contention onset is unknown.
-V1 remains incomplete and clock-unqualified. No V1 WDL/interval was exposed for
-selection; never pool it, replay it automatically, or relabel raw unfinished records.
-All owned processes drained; unrelated processes were untouched.
+V1 was stopped score-blind for external CPU saturation:63 games initiated,
+62 completed/31 pairs, game63 interrupted, game64 unstarted.8153 completed-game
+request checks pass, but exact interference onset is unknown and the full trace
+ends with an interrupted request. This batch remains incomplete and clock-unqualified;
+no V1 WDL was exposed for selection. Never pool it or silently replay/relabel it.
 
-V2 ran under the explicit one-hour owner window observed10:50:29 NZDT, deadline
-11:50:29, and completed/drained by11:24:05. All64 games ended normally;8810 request/
-trace audits pass, zero missing-score warnings, stable frozen inputs. **25W/18D/21L,
-53.125%, paired-normal95%43.8557-62.3943%, bounded95%29.1169-77.1331%.** This32-pair
-exploratory result is imprecise, not independent confirmation or proven superiority.
-The score-blind operational review preceded outcome inspection.967 PC samples:
-mean16.02%, p95=32.69%, maximum70.57% CPU, two transient samples>=50%, no75% sample,
-minimum13.95GiB free, no Overwatch. Retain the spikes as a timing limitation; no games
-excluded. PC guard passing is not proof of clock equivalence.
+Controlled V2 completed64 normal games/8810 requests:25W/18D/21L,53.125%,
+paired-normal95%43.8557-62.3943%, bounded95%29.1169-77.1331%. Two transient CPU
+samples>=50% (max70.57%) remain timing limitations. No games were excluded.
 
-## Prediction calibration and current decision
+The fixed128-game support study completed under the two-hour owner window observed
+2026-11-03T10:17:44Z, deadline12:17:44Z (NZDT23:17:44 to01:17:44). Original A
+admission failed before any child/game: one36.655% CPU sample exceeded35%. Its2.240s
+receipt and raw samples remain failed evidence. A separate20.502s observation passed;
+a fresh output namespace preserved every scientific input and rule. No game was
+replayed. A admission2 completed/drained10:53:33Z; B completed/drained11:27:26Z.
 
-Research-only P4TacticalCalibration compiles separately against frozen build89;
-its source and3 class hashes are pinned in p1-calibration-v1-protocol.json. No engine
-or production code changed. It reads existing callbacks/counters, discards TC-P1
-predictions, and checks them against the resumed nominal selective HL-G1 traversal.
-Both9-opening/20-mixed runs pass and drain:243 completed invocation pairs,15 aborted
-pairs retained separately,9467 predictions,12 nominal disagreements,1898287 actual
-probe nodes in completed pairs. All five eligible depths4-8 are represented.
-Completed pairs match score/PV, nominal-node accounting and retained learning;
-witnesses reconstruct legal real paths. Null-window labels do not measure error
-magnitude; dependent uncut trajectories are not a population error-rate sample or
-exhaustive chess oracle. See p1-calibration-v1-summary.json and preserved raw rows.
+Both segments passed independent game/history/PV/terminal/accounting/trace checks,
+with stable inputs, zero missing-score warnings and all handles drained. A9217 plus
+B8254 requests =17471. Segment A and B outcomes remained unread until both completed
+and their score-blind operational reviews were saved. All128 games are retained:
+**53W/40D/35L,57.03125%, paired-normal95%50.6242-63.4383%, bounded95%40.0550-74.0075%.**
+A24W/20D/20L (53.125%); B29W/20D/15L (60.9375%). Descriptive adaptive pooling with V2
+is96 pairs/192 games,78W/58D/56L,55.72917%, normal95%50.4726-60.9857%; not independent
+confirmation. The support study itself remains exploratory despite its positive
+normal interval. Opening dependence, selection and normal-approximation limits remain.
 
-**Retain TC-P1 unchanged and obtain wider developmental evidence.** The positive
-32-pair estimate and calibrated mechanism justify a fixed64-pair/128-game support
-batch before risking the sole confirmation. No parameter tuning, finalist selection
-or automatic confirmation follows. After complete support results, choose the next
-justified unit: finalist/W4 risk or an evidence-supported alternative.
+A PC review:998 samples, mean18.30%, p95 26.97%, max74.73%, three samples>=50%, none
+>=75%, minfree15.90GiB. Excursions returned below25% within6s/4s; precise cause and
+per-move impact unknown. B945 samples, mean17.88%, p95 27.02%, max47.46%, minfree15.44GiB.
+No gaming or guard violation during either match. Passing guards does not prove clock
+equivalence. Both reviews retained all games before scores; no retrospective filtering.
 
-## Resources and protected inputs
+Prediction calibration remains243 completed invocation pairs,15 aborted pairs,
+9467 dependent predictions with12 nominal disagreements,1898287 probe nodes in
+completed pairs. Score/PV, nominal accounting and retained histories match the
+internal guided reference. These conditional selective-horizon labels are neither
+population error rates nor exhaustive truth; null-window bounds give no error magnitude.
 
-Charged **6115.7096201/64800s** (1h41m55.71s); remaining **58684.2903799s**.
-Initiated191/1120 games: W1 development191/384 (193 left), W4 risk0/96,
-confirmation0/640; attempts0/1. Includes failures, interrupted games, calibration
-and new input preparation. Reserve640 confirmation games and at least24000s.
-Completed experiments are drained; consult the current execution section above
-and the latest segment execution receipt for active ownership.
+**Decision:** retain the unchanged TC-P1 source/configuration as finalist for W4 risk
+and, if required qualification remains adequate, the one fresh W1 confirmation.
+Positive support plus prior V2/mechanism/cost evidence justifies this choice. Do not
+spend more adaptive W1 games merely for another favorable estimate or tune parameters
+without a new concrete failure hypothesis. No independent claim or acceptance yet.
 
-Protected320 confirmation roots remain unused. The original selector drain assertion
-remains failed, while completed inputs independently validate. Six historical non-key
-fixtures cover5364 distinct prefixes with zero overlap. Interrupted V1 exposes8094
-actual positions and complete V2 exposes8736, both with zero protected overlap.
-Recheck later development and any newly exposed diagnostic witnesses before a claim.
-No protected moves/keys were displayed to select candidates. Both frozen BOUNDARY2
-studies remain unopened; TT-R001 reconciliation remains separate.
+## Resources, provenance and protected inputs
 
-Other failures preserved: initial system-Python chess import before engine launch;
-W4-only isolation's erroneous W1 assertion before a fresh corrected v2 pass. Input
-supervisor and failed W4 run are charged. Bootstrap JSON formatting was corrected in
-its subsequent commit without rewriting history. None is converted into a pass.
+Charged **8039.3215715000/64800s** (2h13m59.32s); remaining **56760.6784285000s**.
+Initiated255/1120 games: W1 development255/384 (129 left), W4 risk0/96,
+confirmation0/640; attempts0/1. Includes all failed/interrupted/admission/qualification
+work and independent post-batch audits. Reserve640 confirmation games and at least
+24000s before further experiments. No current process ownership is outstanding.
+
+Protected320 confirmation roots remain unused. Original selector drain assertion
+stays failed while completed inputs independently validate. Historical fixture checks,
+8094 actual interrupted-V1 positions and25986 distinct support/V2 positions have zero
+protected overlap. All17 retained calibration witnesses (including incomplete rows)
+and their root histories cover933 distinct positions with zero overlap. No protected
+keys/moves were displayed for candidate selection. Recheck future W4 exposure before
+confirmation. Both frozen BOUNDARY2 studies remain unopened; TT-R001 is separate.
+
+Other preserved failures: initial system-Python chess import before engine launch;
+W4-only isolation's erroneous W1 assertion before corrected v2; bootstrap JSON format
+corrected in later history. None is relabelled successful. Use the research venv.
+
+This turn began clean at1a44db1a/build89. Window5f8bc6a4, zero-game readmissiondd741e40,
+score-blind A review40be062f. Completed W1 supervisor source814effaf is preserved at
+40be062f; its protocols/receipts remain byte-unchanged. Subsequent supervisor42e0a8fd
+adds W4 routing and a separate96-game risk gate.16 admission rejection checks and native
+CPU/memory/owned-dummy termination-drain qualification pass. This is research tooling;
+no application version or engine-source change. Actual W4 match path is not yet run.
 
 ## Next admissible work
 
-[p1-support-v1-protocol.json](p1-support-v1-protocol.json) freezes the unchanged
-candidate, exact84 opponent,64 new-to-TC starting roots, and two consecutive32-pair/
-64-game segments A then B. Inputs come from pinned legal16 partition0, seed2026110311,
-excluding both prior TC start sets and protected confirmation.20063 eligible roots;
-no evaluator or outcome filtering. Canonical64-input PGN and two deterministic
-segment PGNs are intentional tracked input fixtures; original selector output and
-receipt remain local, with hashes and LF-normalization provenance.
+[p1-w4-risk-v1-protocol.json](p1-w4-risk-v1-protocol.json) freezes64 games/32 pairs
+of unchanged TC-P1/build89 versus exact HL-G1/build84 at W4 ROOT_REUSE,10+0.1,
+CP64/Hash64, seed2026110401. Reuse all32 established HL development roots in their
+unchanged order; no outcome filtering or independent-input claim. Exact84 isolates
+incremental tactical risk. Historical HL84 vs79 adverse/inconclusive46.09% remains
+unresolved; this comparison cannot establish superiority to79 or resolve79/80.
+Leave32 risk games for justified follow-up rather than spend them automatically.
 
-- Needs **one new controlled two-hour window or two separately granted one-hour
-  windows**. The completed V2 grant does not admit this batch. Expected33-40 minutes
-  per segment,3300s runner cap plus supervision; no experiment overlap.
-- Record actual owner reply, observed start/deadline and allowed protocol IDs
-  TC-P1-SUPPORT-V1-A/B in new window receipts. For one hour admit only the next segment.
-  Use existing venv and tools/p4-tactical-supervise.py with the segment's protocol
-  and window receipt. Preserve all starts/partial output if interrupted.
-- Operationally audit A before B without inspecting scores. Automatically generated
-  segment statistics remain unread for decisions until both fixed segments pass.
-  If insufficient window remains, wait for another grant; do not start B anyway.
-- Analyze the complete64-pair support batch only after both pass. Any pooling with
-  earlier V2 is explicitly adaptive exploratory96-pair evidence. Never pool V1 or
-  confirmation. A failure does not authorize replay or a smaller completed-sample label.
-- Full support consumes128 more games, leaving129 development games,96 W4 games and
-  all640 independent games. New W4/confirmation windows are separate later gates.
+- Ask for a **new one-hour controlled PC window**: expected33-40min,3300s cap plus
+  supervision. The fulfilled support window admits no W4 game or independent claim.
+- Record the actual grant, observed start/deadline and allowed ID TC-P1-W4-RISK-V1.
+  Run existing venv with tools/p4-tactical-supervise.py and the frozen risk protocol.
+  Keep one active game, below-normal priority and the unchanged CPU/memory/gaming guards.
+- Review all operational evidence before scores. Then analyze the fixed32-pair W4
+  result separately; investigate serious operational or competitive deterioration.
+  Inconclusive is not neutrality. No W1/W4 pooling and no automatic confirmation.
+- If required qualification remains adequate, freeze the complete fresh W1 confirmation
+  protocol and any prospective pair-boundary segment schedule before the first game.
+  All640 reserved games/320 pairs and the sole claim attempt remain available.
 
-Current repository build89; application source/version unchanged since a7c45dff.
-New helper is diagnostic-only, so no application build bump. Source/artifact/source-
-hashed qualification remains distinguishable. Champion84 and normal build85 HL-G1
-policy unchanged; no push, release, deployment, promotion or successor. Current
-masters **P4-R012/P4-F028**; last confirmed mirrors P4-R005/F021.
+## Owner reporting correction and human dependencies
+
+Owner explicitly corrected excessive progress narration during this execution.
+For long-running experiments, keep routine monitoring in deterministic supervision
+and existing logs. Use blocking/event-driven waits; do not inspect or narrate per-game
+counts, ordinary CPU/memory samples or normal continuation. Do not restart active
+matches to change monitoring. Report unresolved owner-action blockers/material safety
+conditions, actual phase decisions, and completed results/audits. Automatically handled
+conditions belong in durable evidence. Preserve score blinding and all operational
+checks; silence never authorizes stopping supervision. No shared-policy change is made.
+
+Current build89; production HL-G1 policy and champion84 unchanged. No push, promotion,
+release, deployment or successor. Current masters **P4-R013/P4-F029**; last confirmed
+owner mirrors P4-R005/F021. Repository-only execution uses the masters.
 
 Human actions required after this prompt:
 
-- **Blocking for support matches:** provide a new controlled two-hour window, or
-  one hour for the next64-game segment and another later. Answer the scheduling
-  question when presented; the old V2 grant is already fulfilled.
-- **Blocking before mirror-dependent planning; non-blocking for repository execution:**
-  refresh both Phase4 Project Source mirrors to P4-R012/P4-F028.
+- **Blocking for W4 risk games:** provide a new one-hour controlled PC window.
+- **Blocking before mirror-dependent planning; non-blocking for repository work:**
+  refresh both Phase4 Project Source mirrors to P4-R013/P4-F029.

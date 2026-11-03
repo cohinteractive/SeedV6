@@ -66,12 +66,11 @@ futility scale, not copied cross-engine parameters. At most three candidates and
 depth4-8 bound early cost. If evidence shows wasted qsearch duplication or dominant
 null coverage, revise the integration instead of blindly sweeping constants.
 Forced-line extension and qsearch substitutions remain alternatives, not a queued
-checklist. This formulation passed the W1 technical qualifications linked from STATE. No
-competitive result yet; W4 technical qualification passes, but W4 competitive risk
-remains unmeasured. The first fixed W1 screen was interrupted for external PC load:63 initiated games,
+checklist. At initial qualification, this formulation passed the W1 checks linked from STATE.
+W4 technical qualification also passed; W4 competitive risk remains unmeasured. The first fixed W1 screen was interrupted for external PC load:63 initiated games,
 62 completed. Its completed-game operational audit passes, but the batch is clock-
 unqualified and incomplete; no outcomes were used to select or tune a candidate.
-The unchanged formulation has a different-input V2 protocol awaiting a controlled window.
+The unchanged formulation then proceeded to a different-input controlled V2 screen.
 
 
 ## Complete V2 evidence and next decision
@@ -89,8 +88,22 @@ with12 null-window disagreements at depths4/5. These are conditional horizon lab
 not general error rates, error magnitudes or legality defects. No clear structural
 failure or parameter adjustment is established. The current parameters are retained.
 
-The next selected unit is a fixed64-pair wider development sample, in two frozen
+Following V2, the next selected unit was a fixed64-pair wider development sample, in two frozen
 32-pair segments with no interim outcome-driven choice. It preserves129 further
 development games after completion and all W4/confirmation reservations. This will
 inform whether the unchanged integrated candidate merits the sole independent claim
 or a justified alternative is preferable; neither confirmation nor success is automatic.
+
+## Complete support decision, 4 November2026
+
+The fixed64-pair support study passed operational audit and scored57.03125%
+(53W/40D/35L), normal95%50.6242-63.4383%, bounded95%40.0550-74.0075%. No segment
+outcomes were inspected before both passed; brief A CPU excursions were retained
+as limitations before score inspection. This remains exploratory evidence.
+
+Retain unchanged TC-P1/build89 as finalist for remaining qualification. No new
+mechanism or parameter is selected. Next is a fixed32-pair W4 risk comparison
+against exact84 guided, keeping prior HL-vs79 uncertainty explicit, followed by
+full prospective independent-W1 freezing only if qualification remains adequate.
+All640 independent games and the sole claim attempt remain unspent. No strength
+acceptance, champion change or production adoption follows from development results.

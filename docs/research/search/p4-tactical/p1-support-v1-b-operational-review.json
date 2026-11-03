@@ -1,0 +1,22 @@
+{
+  "status": "passed operational qualification",
+  "reviewedUtc": "2026-11-03T11:27:46.376048+00:00",
+  "scope": "Score-blind review before aggregate outcome analysis. No WDL, candidateScore or statistics values inspected.",
+  "executionReceipt": "p1-support-v1-b-execution.json",
+  "rawRun": "docs\\research\\search\\p4-tactical\\raw\\p1-support-v1-b-w1",
+  "normalCompletedGames": 64,
+  "completedRequests": 8254,
+  "missingScoreWarnings": 0,
+  "inputsStable": true,
+  "ownedProcessesRemaining": 0,
+  "pcSamples": 945,
+  "meanCpuPercent": 17.88183525297689,
+  "p95CpuPercent": 27.018229166666664,
+  "maxCpuPercent": 47.4609375,
+  "cpuSamplesAtLeast50": 0,
+  "cpuSamplesAtLeast75": 0,
+  "minimumFreeGiB": 15.44235610961914,
+  "overwatchObserved": false,
+  "highSamples": [],
+  "disposition": "Retain all64 games; guard passed with no sample>=50%, no memory pressure or gaming. Both fixed segments now complete and operationally reviewed before first outcome inspection. A timing excursions remain explicit limitations; passing the guard does not prove clock equivalence."
+}

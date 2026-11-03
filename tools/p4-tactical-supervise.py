@@ -1,4 +1,4 @@
-"""Bounded TC W1 match ownership and PC coexistence; no background service."""
+"""Bounded TC development/risk match ownership and PC coexistence; no service."""
 import argparse
 import ctypes as c
 from ctypes import wintypes as w
@@ -120,25 +120,38 @@ def self_check(name):
     print(json.dumps(result))
 
 
-def run(protocol_path, window_path):
-    p = json.loads(protocol_path.read_text()); window = json.loads(window_path.read_text())
+def validate_admission(p, window, ledger, now):
     deadline = dt.datetime.fromisoformat(window['deadlineUtc'])
     assert p['id'] in window['allowedProtocols'] and window['ownerReply']
-    assert deadline.tzinfo is not None and (deadline - utc()).total_seconds() >= p['timeoutSeconds'] + 60
-    assert p['workers'] == [1] and p['supervisorSha256'] == digest(__file__)
-    ledger = json.loads((OUT / 'resources.json').read_text())
+    assert deadline.tzinfo is not None and (deadline - now).total_seconds() >= p['timeoutSeconds'] + 60
+    assert p['supervisorSha256'] == digest(__file__)
+    if p['workers'] == [1]:
+        assert p['category'] == 'W1 development'
+        budget, limit = 'developmentGames', 384
+    else:
+        assert p['workers'] == [4] and p['category'] == 'W4 competitive risk'
+        budget, limit = 'riskGames', 96
     games = p['pairs'] * 2
-    assert ledger['developmentGames'] + games <= 384
+    assert type(p['pairs']) is int and p['pairs'] > 0
+    assert ledger[budget] + games <= limit
     assert ledger['initiatedGames'] + games + 640 <= 1120
     assert ledger['remainingWallSeconds'] >= p['timeoutSeconds'] + 60 + 24000
+    return deadline, games, p['workers'][0]
+
+
+def run(protocol_path, window_path):
+    p = json.loads(protocol_path.read_text(encoding='utf-8'))
+    window = json.loads(window_path.read_text(encoding='utf-8'))
+    ledger = json.loads((OUT / 'resources.json').read_text(encoding='utf-8'))
+    deadline, games, workers = validate_admission(p, window, ledger, utc())
     name = p['namePrefix']; receipt = OUT / (name + '-execution.json')
-    assert not receipt.exists() and not (OUT / 'raw' / (name + '-w1')).exists()
+    assert not receipt.exists() and not (OUT / 'raw' / (name + '-w' + str(workers))).exists()
     command = [str(ROOT/'build/research/venv/Scripts/python.exe'), '-B',
-               'tools/p4-tactical.py', '--protocol', protocol_path.name, '--workers', '1']
+               'tools/p4-tactical.py', '--protocol', protocol_path.name, '--workers', str(workers)]
     r = {'status':'running', 'startedUtc':utc().isoformat(), 'protocol':protocol_path.name,
          'protocolSha256':digest(protocol_path), 'window':str(window_path),
          'windowSha256':digest(window_path), 'command':command, 'reservedGamesPending':games,
-         'category':'charged controlled-window W1 development and audit', 'supervisorSha256':digest(__file__)}
+         'category':'charged controlled-window ' + p['category'] + ' and audit', 'supervisorSha256':digest(__file__)}
     start = time.monotonic(); job = owned.OwnedJob(); process = None; save(receipt, r)
     stop_file = OUT / 'raw' / (name + '.stop')
     try:
@@ -175,7 +188,7 @@ def run(protocol_path, window_path):
                 while job.accounting().activeProcesses and time.monotonic() < until: time.sleep(.05)
                 if code != 0 or job.accounting().activeProcesses:
                     raise RuntimeError('Match failed or descendants did not naturally drain')
-                result = json.loads((OUT/'raw'/(name+'-w1')/'run.json').read_text())
+                result = json.loads((OUT/'raw'/(name+'-w'+str(workers))/'run.json').read_text(encoding='utf-8'))
                 assert result['status']=='passed' and result['engineHandlesDrained']
                 r.update(status='passed', gamesInitiated=games)
     except BaseException as error:
