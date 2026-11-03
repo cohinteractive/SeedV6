@@ -15,6 +15,7 @@
 /dist/windows/
 /dist/mac/
 /releases/candidates/
+/releases/current/
 # Only the approved production payload and its identity manifest are versioned.
 # Local JDK settings, legacy model inputs and other build assets remain ignored.
 /build-assets/*

@@ -92,8 +92,8 @@ JDK and Python 3.9+, discovered as described in the [packaging guide](unified-ar
 .\gradlew.bat :app-gui:packageWindows
 ```
 
-Run `SeedV6-GUI.exe` inside the newly printed candidate directory under
-`dist/windows/candidates/`. It includes its Java runtime. For an immediate source
+Run `dist/windows/current/SeedV6-GUI/SeedV6-GUI.exe`. Normal builds replace this
+complete distribution, including its Java runtime. For an immediate source
 build/run using the installed Java 21 toolchain:
 
 ```powershell

@@ -225,7 +225,8 @@ reactivating it; no successor strength objective is claimed achieved.
 
 Unified Windows and macOS packaging builds both GUI and UCI with `packageWindows`
 and `packageMac`, or independent `:app-gui:` / `:app-uci:` module tasks. These are
-local integrity-checked candidates, not official releases. With Python 3.9+,
+local integrity-checked distributions, not official releases. Ordinary builds replace
+the previous successful output for that application. With Python 3.9+,
 Git and a complete installed Java 21 JDK (21.0.6 or newer), a fresh clone needs no
 model transfer or local configuration file:
 
@@ -233,6 +234,16 @@ model transfer or local configuration file:
 ./gradlew packageWindows  # Windows Git Bash; PowerShell: .\gradlew.bat packageWindows
 ./gradlew packageMac      # Native macOS arm64 host
 ```
+
+On Windows the stable executables are
+`dist/windows/current/SeedV6-GUI/SeedV6-GUI.exe` and
+`releases/current/windows-x64/SeedV6-UCI/SeedV6-UCI.exe`.
+Build either independently with `:app-gui:packageWindows` or
+`:app-uci:packageWindows`. Close that application's current executable before
+rebuilding. The complete image, ZIP and identity receipt stay together; no
+historical release copy is generated. For a deliberately frozen research package,
+pass `-PcandidateId=<unique-comparison-id>`; it uses the existing candidate tree
+and refuses to overwrite it. Normal builds never replace frozen candidates.
 
 Packaging discovers installed native JDK tools independently of Gradle's daemon
 and Java compiler toolchain. Neither JDKs nor models are downloaded by packaging.

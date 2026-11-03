@@ -1,5 +1,38 @@
 import org.gradle.process.ExecOperations
 import javax.inject.Inject
+import java.nio.channels.FileChannel
+import java.nio.channels.FileLock
+import java.nio.file.StandardOpenOption
+import org.gradle.api.services.BuildService
+import org.gradle.api.services.BuildServiceParameters
+
+// Held from preflight through build completion, including compilation and compare.
+// A second Gradle process must not replace the shared context or compiler outputs.
+abstract class NativePackagingLock implements BuildService<NativePackagingLock.Parameters>, AutoCloseable {
+    interface Parameters extends BuildServiceParameters {
+        RegularFileProperty getLockFile()
+    }
+    private FileChannel channel
+    private FileLock lock
+    synchronized void acquire() {
+        if (lock != null) return
+        def file = parameters.lockFile.get().asFile
+        file.parentFile.mkdirs()
+        channel = FileChannel.open(file.toPath(), StandardOpenOption.CREATE, StandardOpenOption.WRITE)
+        lock = channel.tryLock()
+        if (lock == null) {
+            channel.close()
+            channel = null
+            throw new GradleException('Another native packaging build is active. Wait for it to finish and retry.')
+        }
+    }
+    synchronized void close() {
+        if (lock != null) lock.release()
+        if (channel != null) channel.close()
+        lock = null
+        channel = null
+    }
+}
 
 // One convention, two application owners. Python uses only its standard library;
 // native assembly remains JDK jpackage/jlink. No root runtime configuration.
@@ -8,6 +41,8 @@ abstract class NativePackaging extends DefaultTask {
     @Input abstract Property<String> getPlatformName()
     @Input abstract Property<String> getApplicationId()
     @Input abstract Property<String> getCandidateId()
+    @Input abstract Property<Boolean> getKeepStaging()
+    @Internal abstract Property<NativePackagingLock> getPackagingLock()
     @Input abstract Property<String> getPythonCommand()
     @Input abstract Property<String> getModelPath()
     @Internal abstract DirectoryProperty getRepositoryDirectory()
@@ -20,6 +55,7 @@ abstract class NativePackaging extends DefaultTask {
     @Inject abstract ExecOperations getExecOperations()
 
     @TaskAction void executePackaging() {
+        packagingLock.get().acquire()
         def command = [pythonCommand.get(), '-B',
             new File(repositoryDirectory.get().asFile, 'tools/native_packaging.py').absolutePath,
             action.get(), '--platform', platformName.get(), '--context', contextFile.get().asFile.absolutePath]
@@ -29,6 +65,7 @@ abstract class NativePackaging extends DefaultTask {
                         '--candidate', candidateId.get()]
         } else if (action.get() == 'package') {
             command += ['--application', applicationId.get(), '--compiler-jdk', compilerHome.get().asFile.absolutePath]
+            if (keepStaging.get()) command += ['--keep-staging']
             runtimeJars.files.sort { it.name }.each { command += ['--jar', it.absolutePath] }
         }
         execOperations.exec {
@@ -40,6 +77,9 @@ abstract class NativePackaging extends DefaultTask {
 
 def python = providers.gradleProperty('packagingPython').orElse(
         System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows') ? 'python' : 'python3')
+def packagingLockService = gradle.sharedServices.registerIfAbsent('nativePackagingLock', NativePackagingLock) {
+    parameters.lockFile = rootProject.layout.buildDirectory.file('packaging/native-packaging.lock')
+}
 def model = providers.gradleProperty('productionModel').orElse(
         providers.environmentVariable('SEEDV6_PRODUCTION_MODEL')).orElse(
         rootProject.file('build-assets/production/bre-pair2-g32.brn-pair2').absolutePath)
@@ -65,7 +105,10 @@ localPackaging.load(new StringReader(providers.fileContents(
         t.jdkInstallationPaths = providers.gradleProperty('org.gradle.java.installations.paths').orElse('')
         t.pythonCommand = python
         t.modelPath = model
-        t.candidateId = providers.gradleProperty('candidateId').orElse('auto')
+        t.candidateId = providers.gradleProperty('candidateId').orElse('current')
+        t.keepStaging = providers.gradleProperty('keepPackagingStaging').map { it.toBoolean() }.orElse(false)
+        t.packagingLock = packagingLockService
+        t.usesService(packagingLockService)
         t.applicationId = ''
         t.contextFile = context
         // Always perform a fresh native build/verification; never reuse a success marker.
@@ -93,7 +136,7 @@ localPackaging.load(new StringReader(providers.fileContents(
                     applicationId = app
                     compilerHome = javaToolchains.compilerFor(java.toolchain).map { it.metadata.installationPath }
                     group = 'distribution'
-                    description = "Builds and headlessly verifies the independent ${platform} ${app} candidate and ZIP."
+                    description = "Replaces the current ${platform} ${app} image and ZIP; candidateId explicitly freezes a separate build."
                     dependsOn preflight, tasks.named('jar')
                     runtimeJars.from(tasks.named('jar'), configurations.runtimeClasspath)
                 }
@@ -104,7 +147,7 @@ localPackaging.load(new StringReader(providers.fileContents(
         common(it)
         action = 'compare'
         group = 'distribution'
-        description = "Builds BOTH native ${platform} candidates and verifies their common engine identity."
+        description = "Builds BOTH current ${platform} distributions and verifies their common engine identity."
         dependsOn ":app-gui:package${suffix}", ":app-uci:package${suffix}"
     }
 }

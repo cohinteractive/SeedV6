@@ -106,8 +106,10 @@ On an Apple Silicon Mac with a supported Java 21 packaging JDK:
 ./gradlew :app-uci:packageMac
 ```
 
-The reported `releases/candidates/macos-arm64/<candidate>/SeedV6-UCI/` image
-contains two executables. `SeedV6-UCI` retains the Gen32 production default;
+The reported `releases/current/macos-arm64/SeedV6-UCI/` image is replaced by
+each successful normal build. Use `-PcandidateId=<unique-id>` for a separate
+non-overwriting image under `releases/candidates/macos-arm64/<unique-id>/`.
+It contains two executables. `SeedV6-UCI` uses the current production default;
 `SeedV6-NNUE-CP64` runs this pinned checkpoint-64 / E008 candidate without extra
 arguments. Keep the complete image together. The NNUE launcher uses only its
 bundled runtime and explicitly resolves `jdk.incubator.vector`; no system Java,

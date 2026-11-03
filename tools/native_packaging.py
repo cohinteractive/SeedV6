@@ -1,10 +1,11 @@
-"""Unified local candidates: Gradle inputs, JDK native tools, fail-closed verification.
+"""Reusable local distributions and explicitly frozen candidates, verified before publication.
 
 Reuses the GUI jpackage/Info.plist/icon workflow and immutable UE SR-024
 87b8b5b50acf3d2fe19793bfb0e8b24a45be114b console/jlink/RENAME_EXCL techniques.
 No release counter, publication, download, source-engine copy or model registry.
 """
 import argparse
+from contextlib import contextmanager
 import ctypes
 import datetime
 import hashlib
@@ -120,9 +121,180 @@ def verify_model(model):
 
 
 def destination(target, application, candidate):
+    if candidate == 'current':
+        return (ROOT / 'dist' / ('windows' if target == 'windows' else 'mac') / 'current'
+                if application == 'gui' else ROOT / 'releases/current' /
+                ('windows-x64' if target == 'windows' else 'macos-arm64'))
     base = ROOT / ('dist/windows/candidates' if target == 'windows' else 'dist/mac/candidates') if application == 'gui' else (
         ROOT / 'releases/candidates' / ('windows-x64' if target == 'windows' else 'macos-arm64'))
     return base / candidate
+
+
+def safe_tree(path):
+    """Never traverse links/junctions when replacing or cleaning generated output."""
+    require(not path.is_symlink(), 'Refusing linked output: ' + str(path))
+    for item in [path, *path.rglob('*')]:
+        info = item.lstat()
+        internal_file_link = (os.name != 'nt' and item.is_symlink() and item.is_file()
+                              and item.resolve().is_relative_to(path.resolve()))
+        require(internal_file_link or (not (getattr(info, 'st_file_attributes', 0) & 1024) and not item.is_symlink()),
+                'Refusing linked output entry: ' + str(item))
+
+
+@contextmanager
+def output_lock(output):
+    """OS lock, automatically released on process exit; never unlink a lock inode."""
+    lock_path = output.parent / ('.' + output.name + '.packaging.lock')
+    with lock_path.open('a+b') as stream:
+        if stream.tell() == 0:
+            stream.write(b'0'); stream.flush()
+        stream.seek(0)
+        try:
+            if os.name == 'nt':
+                import msvcrt
+                msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as error:
+            raise RuntimeError('Another build owns ' + str(output) + '; wait and retry.') from error
+        try:
+            yield
+        finally:
+            if os.name == 'nt':
+                stream.seek(0); msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                fcntl.flock(stream, fcntl.LOCK_UN)
+
+
+def no_active_process(path):
+    if os.name != 'nt':
+        return
+    # Also catches orphaned jpackage/java children after a hard interruption.
+    env = environment()
+    env['SEEDV6_INSPECT_PATH'] = str(path.resolve())
+    env['SEEDV6_INSPECT_PID'] = str(os.getpid())
+    command = r"""$ErrorActionPreference='Stop'
+$target=$env:SEEDV6_INSPECT_PATH.Replace('/','\')
+Get-CimInstance Win32_Process | Where-Object {
+    $_.ProcessId -ne $PID -and $_.ProcessId -ne [int]$env:SEEDV6_INSPECT_PID -and
+    (($_.ExecutablePath -and $_.ExecutablePath.Replace('/','\').IndexOf($target,[StringComparison]::OrdinalIgnoreCase) -ge 0) -or
+     ($_.CommandLine -and $_.CommandLine.Replace('/','\').IndexOf($target,[StringComparison]::OrdinalIgnoreCase) -ge 0))
+} | ForEach-Object { "$($_.Name) PID $($_.ProcessId)" }
+"""
+    active = run(['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', command], env=env)
+    require(not active, 'Close processes using ' + str(path) + ' and retry: ' + active)
+
+
+@contextmanager
+def idle_tree(path):
+    """Reject running/locked files and hold off new readers while examining a tree."""
+    if not path.exists():
+        yield
+        return
+    safe_tree(path)
+    no_active_process(path)
+    handles = []
+    if os.name == 'nt':
+        kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+        create = kernel.CreateFileW
+        create.argtypes = [ctypes.c_wchar_p, ctypes.c_uint32, ctypes.c_uint32, ctypes.c_void_p,
+                           ctypes.c_uint32, ctypes.c_uint32, ctypes.c_void_p]
+        create.restype = ctypes.c_void_p
+        kernel.CloseHandle.argtypes = [ctypes.c_void_p]
+    try:
+        if os.name == 'nt':
+            for file in sorted(path.rglob('*')):
+                if not file.is_file():
+                    continue
+                # DELETE access catches mapped executables; omit WRITE because
+                # jpackage deliberately marks some launchers read-only.
+                handle = create(str(file), 0x80010000, 4, None, 3, 0, None)
+                if handle == ctypes.c_void_p(-1).value:
+                    raise RuntimeError('Output is locked or not writable: ' + str(file)
+                                       + '; close the engine/GUI or file viewer and retry. Windows error '
+                                       + str(ctypes.get_last_error()))
+                handles.append(handle)
+        yield
+    finally:
+        for handle in handles:
+            kernel.CloseHandle(handle)
+
+
+def remove_idle_tree(path):
+    if path.exists():
+        with idle_tree(path):
+            pass
+        def readonly_retry(function, name, error):
+            item = Path(name)
+            if not item.stat().st_mode & stat.S_IWRITE:
+                item.chmod(item.stat().st_mode | stat.S_IWRITE)
+                function(name)
+            else:
+                raise error[1]
+        shutil.rmtree(path, onerror=readonly_retry)
+
+
+def verify_published(output):
+    safe_tree(output)
+    receipt = json.loads((output / 'candidate.json').read_text())
+    require(receipt['status'] == 'VERIFIED_LOCAL_CANDIDATE', 'Unverified previous output: ' + str(output))
+    require({item.name for item in output.iterdir()} == {'candidate.json', receipt['image'], receipt['archive']},
+            'Unexpected files in previous output; preserve/move user work before retrying: ' + str(output))
+    image = contained(output / receipt['image'], output)
+    archive = contained(output / receipt['archive'], output)
+    require(sha(archive) == receipt['archiveSha256'] and
+            sha(image / 'build-manifest.json') == receipt['manifestSha256'], 'Previous output was modified: ' + str(output))
+    verify_integrity(image, archive)
+
+
+def recover_previous(output):
+    previous = output.parent / ('.previous-' + output.name)
+    if previous.exists():
+        verify_published(previous)
+        if not output.exists():
+            with idle_tree(previous):
+                pass
+            rename_exclusive(previous, output)
+            print('Restored previous successful distribution: ' + str(output), flush=True)
+        else:
+            verify_published(output)
+            remove_idle_tree(previous)
+
+
+def publish(deliverables, output, mutable):
+    if not mutable:
+        rename_exclusive(deliverables, output)
+        return
+    previous = output.parent / ('.previous-' + output.name)
+    require(not previous.exists(), 'Unrecovered previous distribution: ' + str(previous))
+    if output.exists():
+        verify_published(output)
+    with idle_tree(output):
+        pass
+    if output.exists():
+        try:
+            rename_exclusive(output, previous)
+        except OSError as error:
+            raise RuntimeError('Cannot retire current output; close its GUI/engine/file viewers and retry: ' + str(output)) from error
+    try:
+        # After retirement the canonical path cannot launch new old readers. Check
+        # again for a consumer racing the first check and hold handles until publish.
+        with idle_tree(previous):
+            rename_exclusive(deliverables, output)
+    except BaseException as publication_error:
+        if previous.exists():
+            try:
+                rename_exclusive(previous, output)
+            except Exception as restore_error:
+                raise RuntimeError('Publication failed (' + str(publication_error)
+                                   + '); the previous complete distribution remains at ' + str(previous)
+                                   + '. Close its processes/file viewers and retry for recovery. Restore error: '
+                                   + str(restore_error)) from publication_error
+        raise
+    # Published output is complete. If cleanup is locked, keep the backup and fail
+    # clearly; the next invocation validates both before retrying cleanup.
+    remove_idle_tree(previous)
 
 
 def prepare(a):
@@ -382,11 +554,36 @@ def package(a):
     require(len({j.name for j in jars}) == len(jars), 'Duplicate runtime JAR names.')
     require(all(j.is_file() for j in jars), 'Missing runtime artifact.')
     output = destination(a.platform, a.application, context['candidate'])
+    require(output.resolve() == output.absolute(), 'Linked output parent: ' + str(output))
     output.parent.mkdir(parents=True, exist_ok=True)
-    require(not os.path.lexists(output), 'Occupied candidate destination: ' + str(output))
-    stage = output.parent / ('.staging-' + context['candidate'] + '-' + uuid.uuid4().hex)
+    with output_lock(output):
+        package_locked(a, context, jars, output)
+
+
+def package_locked(a, context, jars, output):
+    mutable = context['candidate'] == 'current'
+    if mutable:
+        recover_previous(output)
+        # Fail before expensive assembly when a current executable is in use.
+        with idle_tree(output):
+            pass
+    else:
+        require(not os.path.lexists(output), 'Occupied candidate destination: ' + str(output))
+    stage = output.parent / ('.staging-' + output.name)
+    diagnostic = output.parent / ('.last-attempt-' + output.name + '.json')
+    if stage.exists():
+        safe_tree(stage)
+        attempt = json.loads((stage / 'attempt.json').read_text())
+        require(attempt.get('owner') == 'seedv6-native-packaging' and attempt.get('output') == str(output),
+                'Unowned staging directory; inspect before removing: ' + str(stage))
+        require(not attempt.get('retained'), 'Diagnostic staging retained by request; move/remove after inspection: ' + str(stage))
+        # The per-output lock proves no packager owns it; process and file checks
+        # additionally protect native children surviving a hard parent interruption.
+        remove_idle_tree(stage)
     stage.mkdir()
-    write_json(stage / 'attempt.json', {'status': 'UNVERIFIED', 'candidate': context['candidate']})
+    attempt = {'owner': 'seedv6-native-packaging', 'output': str(output), 'status': 'UNVERIFIED',
+               'candidate': context['candidate'], 'retained': getattr(a, 'keep_staging', False)}
+    write_json(stage / 'attempt.json', attempt)
     try:
         image, identity = build_image(context, a.application, stage, jars)
         app, _, _ = layouts(image, a.application, a.platform)
@@ -395,14 +592,15 @@ def package(a):
         native = verify_runtime(context, a.application, image, stage)
         engine = {'model': identity, 'coreJarSha256': sha(app / 'engine-core.jar'),
                   'coreContent': core_content(app / 'engine-core.jar'),
-                  'productionSearch': {'profile': 'HL_G1', 'flags': CP64_PRODUCTION_FLAGS,
+                  'productionSearch': {'profile': dict(field.split('=', 1) for field in identity['baseline.identity'].split()
+                                                       if '=' in field)['searchProfile'], 'flags': CP64_PRODUCTION_FLAGS,
                      'evaluator': 'Conventional NNUE CP64', 'schema': 'S6CNU002', 'materialHeads': 8,
                      'configuration': identity['baseline.identity']},
                   'coreInputs': {n: v for n, v in context['source']['files'].items()
                                   if n.startswith('engine-core/src/main/') or n in (
                                       'VERSION_STATE.txt', 'engine-core/build.gradle', 'gradle/java-conventions.gradle',
                                       'gradle/application-version.gradle', 'gradle/syzygy.gradle')}}
-        manifest = {'format': 1, 'kind': 'local-candidate', 'officialRelease': False,
+        manifest = {'format': 1, 'kind': 'local-current' if mutable else 'local-candidate', 'officialRelease': False,
                     'candidate': context['candidate'], 'application': a.application,
                     'platform': a.platform, 'architecture': context['architecture'],
                     'version': context['version'], 'source': context['source'],
@@ -428,19 +626,31 @@ def package(a):
                   'manifestSha256': sha(image / 'build-manifest.json'), 'coreJarSha256': engine['coreJarSha256'],
                   'modelSha256': identity['model.sha256'], 'imageChecks': native, 'extractedChecks': extracted_check,
                   'interactiveGuiAcceptance': 'outstanding' if a.application == 'gui' else 'not applicable'}
-        # Only the deliverables enter the final directory. Diagnostics/extractions stay
-        # in unpublished staging; an atomic exclusive rename promotes the whole set.
+        # Only verified deliverables enter the final directory, as one complete tree.
         deliverables = stage / 'candidate'; deliverables.mkdir()
         shutil.move(str(image), deliverables / image.name)
         shutil.move(str(archive), deliverables / archive.name)
         write_json(deliverables / 'candidate.json', result)
-        write_json(stage / 'attempt.json', {'status': 'VERIFIED_STAGING', 'intendedOutput': str(output)})
-        rename_exclusive(deliverables, output)
+        attempt['status'] = 'VERIFIED_STAGING'
+        write_json(stage / 'attempt.json', attempt)
+        publish(deliverables, output, mutable)
+        attempt['status'] = 'PUBLISHED'
         print(json.dumps({'candidate': str(output), 'archive': str(output / archive.name),
                           'coreJarSha256': engine['coreJarSha256'], 'status': result['status']}))
-    except Exception as error:
-        write_json(stage / 'attempt.json', {'status': 'FAILED_UNVERIFIED', 'error': str(error)})
+    except BaseException as error:
+        attempt.update(status='FAILED', error=str(error), errorType=type(error).__name__)
         raise
+    finally:
+        write_json(stage / 'attempt.json', attempt)
+        write_json(diagnostic, attempt)
+        if not attempt['retained']:
+            try:
+                remove_idle_tree(stage)
+            except Exception as cleanup_error:
+                # Retain only while genuinely in use; next build retries under lock.
+                print('Staging cleanup deferred: ' + str(cleanup_error), file=sys.stderr)
+                if attempt['status'] == 'PUBLISHED':
+                    raise
 
 
 def compare(a):
@@ -465,7 +675,8 @@ def main():
     parser.add_argument('--context', required=True)
     parser.add_argument('--jdk', default=''); parser.add_argument('--gradle-jdk', default='')
     parser.add_argument('--jdk-installation-paths', default='')
-    parser.add_argument('--model'); parser.add_argument('--candidate', default='auto')
+    parser.add_argument('--model'); parser.add_argument('--candidate', default='current')
+    parser.add_argument('--keep-staging', action='store_true', help='Retain staging for explicit diagnosis; next build requires its removal.')
     parser.add_argument('--compiler-jdk')
     parser.add_argument('--application', choices=APPS); parser.add_argument('--jar', action='append', default=[])
     args = parser.parse_args()

@@ -1,5 +1,11 @@
 # WU7 unified native application packaging
 
+4 November 2026 maintenance: ordinary packaging now replaces stable current
+distributions. Explicit named candidates remain immutable. The current Search
+selection is owned by the repository Search masters, not the historical WU7
+descriptions below. See [Windows cleanup and validation](WINDOWS-BUILD-MAINTENANCE-2026-11-04.md)
+for the bounded cleanup inventory and executed checks.
+
 Current consolidation, 23 October 2026: normal GUI/UCI use Construction V1 +
 Conventional NNUE CP64. Windows native image/ZIP checks and interactive GUI evidence
 are recorded in the [baseline qualification](../research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026).
@@ -46,7 +52,20 @@ On native macOS arm64:
 
 For one application, use `:app-gui:packageWindows`, `:app-uci:packageWindows`,
 `:app-gui:packageMac` or `:app-uci:packageMac`. Root tasks build both independently
-and compare their complete engine/model identity. These remain local candidates.
+and compare their complete engine/model identity. These remain local development
+outputs, with no release, deployment or external installation replacement.
+
+Normal builds reuse the same paths. To freeze an independent research comparison,
+use an explicit identity, for example:
+
+```powershell
+.\gradlew.bat packageWindows -PcandidateId=my-frozen-comparison-v1
+```
+
+The existing `candidates/ID` layout is used only for explicit candidates and
+rejects an occupied ID. `-PcandidateId=auto` deliberately requests a new unique
+candidate. Neither option is the ordinary default. Historical research launchers
+must continue to use their frozen paths and identities, never mutable `current`.
 
 ### Installed JDK selection
 
@@ -150,7 +169,14 @@ path is a build input. Pushing to a public remote would expose those bytes, but
 this work does not push or publish. The earlier private-input restrictions below
 describe historical WU7 runs and are superseded by the current portable setup.
 
-## Candidate layout and production composition
+## Current and explicit candidate layout
+
+| Application | Windows current output | macOS current output |
+| --- | --- | --- |
+| GUI | `dist/windows/current/` | `dist/mac/current/` |
+| UCI | `releases/current/windows-x64/` | `releases/current/macos-arm64/` |
+
+Explicit `-PcandidateId=ID` outputs retain the established layout:
 
 | Application | Windows candidate parent | macOS candidate parent |
 | --- | --- | --- |
@@ -218,12 +244,38 @@ without external package-manager dylib dependencies. The GUI reuses the existing
 iconset and Info.plist technique, with displayed 0.0.0 and CFBundleVersion 35.
 No new packaging framework or dependency upgrade is introduced.
 
-Every build works in a unique ignored `.staging-*` directory. JARs and model are
-copied, validated, packaged, inspected, exercised, archived, independently extracted
-and checked before the entire deliverable directory is promoted by an exclusive
-native rename. Failures retain `FAILED_UNVERIFIED` diagnostics and no final
-candidate. Existing destinations, including races at promotion, are protected.
-Earlier candidates/releases are never cleaned by these tasks or by Gradle clean.
+Each application builds in an owned `.staging-<output-name>` sibling, behind an OS
+file lock. JARs/model are copied, packaged, exercised, archived, independently
+extracted and verified before the completed deliverable tree is published. Normal
+builds create no second historical distribution. The ZIP remains part of the one
+current output for portable packaging compatibility.
+
+A Gradle build-service file lock spans preflight, compilation, native packaging
+and coordinated verification, including configuration-cache replay. Competing
+Gradle packaging invocations fail with a retry message; separate Python output
+locks protect publication/staging. GUI and UCI have different outputs and staging,
+so building either alone preserves the other. Incremental compilation is retained.
+
+Compilation/assembly failures leave the previous output alone. Before replacement,
+the previous receipt/image/archive are checked and Windows process/file locks are
+tested. A running executable or open file fails with a close-and-retry message.
+The old tree is renamed to `.previous-<output-name>`, checked again for a racing
+consumer, then the complete new tree is renamed into place. Publication failure
+restores the old tree. Windows cannot atomically exchange nonempty directories:
+there is a brief absent-path interval, but no partially assembled current tree.
+After a hard interruption the previous tree remains usable at its backup path;
+the next packaging invocation restores it if current is absent, or verifies current
+before removing the backup. Unknown/modified outputs fail closed for inspection.
+
+Success removes staging and the old backup, including generated read-only files.
+Failure saves a small `.last-attempt-<output-name>.json` alongside the output parent
+and cleans staging when idle. A hard-killed packager releases its OS lock; a later
+build only removes staging with the matching ownership marker, after checking for
+surviving native processes and open files. In-use staging is preserved with an
+actionable message. `-PkeepPackagingStaging=true` explicitly retains diagnostics
+and blocks automatic reuse until that staging is inspected and moved/removed.
+Existing historical candidates, unowned staging and research evidence are never
+automatically cleaned. Global Gradle/JDK settings and incremental caches are untouched.
 
 `build-manifest.json` records full Git revision/status and working source hashes,
 canonical version, shared core JAR hash, accepted cumulative SR-024 configuration,

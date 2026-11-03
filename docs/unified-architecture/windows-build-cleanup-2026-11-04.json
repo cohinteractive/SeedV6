@@ -1,0 +1,4132 @@
+{
+  "date": "2026-11-04",
+  "repository": "C:\\projects\\seed\\java\\seedv6-unified",
+  "scope": [
+    "dist\\windows\\candidates",
+    "releases\\candidates\\portable-java21",
+    "releases\\candidates\\windows-x64"
+  ],
+  "classes": {
+    "A": "required runnable distribution",
+    "B": "obsolete ordinary package",
+    "C": "inactive successful staging",
+    "D": "ambiguous; preserved"
+  },
+  "initialBytes": 31039258995,
+  "plannedReclaimedBytes": 24856644843,
+  "inspectionLimits": "Local repository/configuration/process/shortcut inspection; external macOS BotLi configuration cannot be inspected. No external path claimed unused.",
+  "directories": [
+    {
+      "path": "dist/windows/candidates/.staging-adaptive16-build70-20261023-37540ba3dc914175b531e980d3bcc14a",
+      "name": ".staging-adaptive16-build70-20261023-37540ba3dc914175b531e980d3bcc14a",
+      "bytes": 223539983,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\adaptive16-build70-20261023",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-baseline-20261022-build61-ea50addd2f444d7bbe3bf3ed3f657108",
+      "name": ".staging-baseline-20261022-build61-ea50addd2f444d7bbe3bf3ed3f657108",
+      "bytes": 218176713,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\baseline-20261022-build61",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-baseline-20261022-precommit-7550abeff9094d66bef443585dc98c24",
+      "name": ".staging-baseline-20261022-precommit-7550abeff9094d66bef443585dc98c24",
+      "bytes": 218176974,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\baseline-20261022-precommit",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261016T231443-0adaa26c-d8220b3f2ffb497f89c238f9d08d6213",
+      "name": ".staging-candidate-20261016T231443-0adaa26c-d8220b3f2ffb497f89c238f9d08d6213",
+      "bytes": 216584940,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261016T231443-0adaa26c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261016T231550-d382f23c-304805406331406cad4d0dd7c5a6c361",
+      "name": ".staging-candidate-20261016T231550-d382f23c-304805406331406cad4d0dd7c5a6c361",
+      "bytes": 216584940,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261016T231550-d382f23c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261016T233839-885ce531-7304fbe082b94ce3acf39fd610490f1f",
+      "name": ".staging-candidate-20261016T233839-885ce531-7304fbe082b94ce3acf39fd610490f1f",
+      "bytes": 216584250,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261016T233839-885ce531",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261017T195607-a939b2c8-0e3e6e0eb7ba4f1bb7085f0d98400757",
+      "name": ".staging-candidate-20261017T195607-a939b2c8-0e3e6e0eb7ba4f1bb7085f0d98400757",
+      "bytes": 216661301,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261017T195607-a939b2c8",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261017T211043-e3b257ae-40ee74bb4c9143fda80f7711e2342356",
+      "name": ".staging-candidate-20261017T211043-e3b257ae-40ee74bb4c9143fda80f7711e2342356",
+      "bytes": 216743597,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261017T211043-e3b257ae",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261018T212645-2ba67853-5d3b27e39091493a80dc2c6078b1f941",
+      "name": ".staging-candidate-20261018T212645-2ba67853-5d3b27e39091493a80dc2c6078b1f941",
+      "bytes": 216780903,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261018T212645-2ba67853",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261019T200637-1626b61a-e07db682118543a190bb7c96a62d331f",
+      "name": ".staging-candidate-20261019T200637-1626b61a-e07db682118543a190bb7c96a62d331f",
+      "bytes": 216830410,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261019T200637-1626b61a",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261019T203215-2fb357aa-148e4da9931d4e17a4434e6d463132cd",
+      "name": ".staging-candidate-20261019T203215-2fb357aa-148e4da9931d4e17a4434e6d463132cd",
+      "bytes": 217761863,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261019T203215-2fb357aa",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261019T203608-db024976-5409c48abcf74ad59a5332d84e4871e1",
+      "name": ".staging-candidate-20261019T203608-db024976-5409c48abcf74ad59a5332d84e4871e1",
+      "bytes": 217758907,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261019T203608-db024976",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261019T204350-231613ec-83eea212bf714914ac73b83b931abadf",
+      "name": ".staging-candidate-20261019T204350-231613ec-83eea212bf714914ac73b83b931abadf",
+      "bytes": 217758907,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261019T204350-231613ec",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261019T235638-60091dfe-82e31eb225b84fa1b7c20e30b6745ced",
+      "name": ".staging-candidate-20261019T235638-60091dfe-82e31eb225b84fa1b7c20e30b6745ced",
+      "bytes": 217845334,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261019T235638-60091dfe",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261020T021103-a7b79907-d3c5a72fe86e43db937d4dee92263c02",
+      "name": ".staging-candidate-20261020T021103-a7b79907-d3c5a72fe86e43db937d4dee92263c02",
+      "bytes": 217848701,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261020T021103-a7b79907",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261020T092058-f107540e-082e09ba569c49edb0168ec4d5b2ec53",
+      "name": ".staging-candidate-20261020T092058-f107540e-082e09ba569c49edb0168ec4d5b2ec53",
+      "bytes": 217908823,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261020T092058-f107540e",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261020T190708-cc0a192f-bba1597ee0574a7796fafaccf9af31ff",
+      "name": ".staging-candidate-20261020T190708-cc0a192f-bba1597ee0574a7796fafaccf9af31ff",
+      "bytes": 217971054,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261020T190708-cc0a192f",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261020T193415-78093c22-fa36898024d540a6afa5d8dda696e788",
+      "name": ".staging-candidate-20261020T193415-78093c22-fa36898024d540a6afa5d8dda696e788",
+      "bytes": 217980370,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261020T193415-78093c22",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T013302-0f255e57-4f4e179a283942ef9043e62018c069e0",
+      "name": ".staging-candidate-20261021T013302-0f255e57-4f4e179a283942ef9043e62018c069e0",
+      "bytes": 218055983,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T013302-0f255e57",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T020228-39ffaf90-437514e841ae43d292047db0b12533ed",
+      "name": ".staging-candidate-20261021T020228-39ffaf90-437514e841ae43d292047db0b12533ed",
+      "bytes": 218056532,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T020228-39ffaf90",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T051743-83f14ec3-2a2878446ec54f2eb4b0367de939930c",
+      "name": ".staging-candidate-20261021T051743-83f14ec3-2a2878446ec54f2eb4b0367de939930c",
+      "bytes": 218112288,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T051743-83f14ec3",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T053955-d227467c-15ec8aa91bc949fa9fa2a28c4a630f11",
+      "name": ".staging-candidate-20261021T053955-d227467c-15ec8aa91bc949fa9fa2a28c4a630f11",
+      "bytes": 218113374,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T053955-d227467c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T095502-65efe5a1-b08b587ef16b4c399583643166f155f3",
+      "name": ".staging-candidate-20261021T095502-65efe5a1-b08b587ef16b4c399583643166f155f3",
+      "bytes": 218123646,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T095502-65efe5a1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T100536-322d6ae6-c2492ffbafb940e8a082fd1edf5b77bb",
+      "name": ".staging-candidate-20261021T100536-322d6ae6-c2492ffbafb940e8a082fd1edf5b77bb",
+      "bytes": 218124730,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T100536-322d6ae6",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T111458-afa96ee7-ce91fbe898b549b3a2136c7afa223526",
+      "name": ".staging-candidate-20261021T111458-afa96ee7-ce91fbe898b549b3a2136c7afa223526",
+      "bytes": 218134726,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T111458-afa96ee7",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T181052-7c877773-9c3f39ec7c2c489a80fd9d56efd52310",
+      "name": ".staging-candidate-20261021T181052-7c877773-9c3f39ec7c2c489a80fd9d56efd52310",
+      "bytes": 218138537,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T181052-7c877773",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T192119-a567d46b-a4921fabff014b52841392b8582d0ee2",
+      "name": ".staging-candidate-20261021T192119-a567d46b-a4921fabff014b52841392b8582d0ee2",
+      "bytes": 218160962,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T192119-a567d46b",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T201446-fb360a98-2d1d712bfe54456eabf4681fcb4aa3c3",
+      "name": ".staging-candidate-20261021T201446-fb360a98-2d1d712bfe54456eabf4681fcb4aa3c3",
+      "bytes": 218162550,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T201446-fb360a98",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261021T223248-4d9b2058-11c9e6f9b47d4a5b91a0177a33a0cfdf",
+      "name": ".staging-candidate-20261021T223248-4d9b2058-11c9e6f9b47d4a5b91a0177a33a0cfdf",
+      "bytes": 218175318,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261021T223248-4d9b2058",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261022T003859-43d996d1-bea528ea4edf4a82a25f83701a055e57",
+      "name": ".staging-candidate-20261022T003859-43d996d1-bea528ea4edf4a82a25f83701a055e57",
+      "bytes": 218176735,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261022T003859-43d996d1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261022T044205-155841fd-3735aa7b79904a1c95a8bdb91b6ec4b4",
+      "name": ".staging-candidate-20261022T044205-155841fd-3735aa7b79904a1c95a8bdb91b6ec4b4",
+      "bytes": 218199756,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261022T044205-155841fd",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261022T201753-a4709f77-7f4b7341cf4f4652955b254279e79d05",
+      "name": ".staging-candidate-20261022T201753-a4709f77-7f4b7341cf4f4652955b254279e79d05",
+      "bytes": 218248964,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261022T201753-a4709f77",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261022T205714-985d9850-de0cbde419254051ad99a841eba01cda",
+      "name": ".staging-candidate-20261022T205714-985d9850-de0cbde419254051ad99a841eba01cda",
+      "bytes": 223495676,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261022T205714-985d9850",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261022T221732-bc1cbce0-8beeb3b50d88451c9a7ddf2dcc2d18e1",
+      "name": ".staging-candidate-20261022T221732-bc1cbce0-8beeb3b50d88451c9a7ddf2dcc2d18e1",
+      "bytes": 223518472,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261022T221732-bc1cbce0",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261022T222358-7513297c-5b4d1a86f12d43758ef68ea3d7fde429",
+      "name": ".staging-candidate-20261022T222358-7513297c-5b4d1a86f12d43758ef68ea3d7fde429",
+      "bytes": 223516425,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261022T222358-7513297c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261022T222712-22584dcd-7c71276724904c14b5941cffe5f67f5f",
+      "name": ".staging-candidate-20261022T222712-22584dcd-7c71276724904c14b5941cffe5f67f5f",
+      "bytes": 223516461,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261022T222712-22584dcd",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261023T003420-389d695a-24f85d99b5e94eaf867c22a6fc781cd9",
+      "name": ".staging-candidate-20261023T003420-389d695a-24f85d99b5e94eaf867c22a6fc781cd9",
+      "bytes": 223519711,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261023T003420-389d695a",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261023T011345-2502dab6-6ec5ddb2c888459c93d20ee8d81a849d",
+      "name": ".staging-candidate-20261023T011345-2502dab6-6ec5ddb2c888459c93d20ee8d81a849d",
+      "bytes": 223519713,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261023T011345-2502dab6",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261023T194312-e5ac7c75-2e576b53d5cb4032b5b8b0bf78c68c90",
+      "name": ".staging-candidate-20261023T194312-e5ac7c75-2e576b53d5cb4032b5b8b0bf78c68c90",
+      "bytes": 223586186,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261023T194312-e5ac7c75",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261023T195311-29a5200e-a681db2de01245e5a6e9e81e7cf92817",
+      "name": ".staging-candidate-20261023T195311-29a5200e-a681db2de01245e5a6e9e81e7cf92817",
+      "bytes": 223586182,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261023T195311-29a5200e",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261023T195552-c00e3315-904cc2a208a24762985bade8b3d1d1a2",
+      "name": ".staging-candidate-20261023T195552-c00e3315-904cc2a208a24762985bade8b3d1d1a2",
+      "bytes": 223586388,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261023T195552-c00e3315",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261025T185156-0e86556d-184a7ebb87e74edba3e9b3f2b019ea3b",
+      "name": ".staging-candidate-20261025T185156-0e86556d-184a7ebb87e74edba3e9b3f2b019ea3b",
+      "bytes": 223637919,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261025T185156-0e86556d",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261102T090707-79b214e1-80f0c4b7618242f39d72f5556005f682",
+      "name": ".staging-candidate-20261102T090707-79b214e1-80f0c4b7618242f39d72f5556005f682",
+      "bytes": 223796013,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261102T090707-79b214e1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-candidate-20261102T091613-a28be05c-4163c9939fa24893bfdbe43574bc9bf6",
+      "name": ".staging-candidate-20261102T091613-a28be05c-4163c9939fa24893bfdbe43574bc9bf6",
+      "bytes": 223792829,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\candidate-20261102T091613-a28be05c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-formulation-build91-v1-fd01ab2c143344be8c0d13bd1c947dec",
+      "name": ".staging-formulation-build91-v1-fd01ab2c143344be8c0d13bd1c947dec",
+      "bytes": 223855785,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\formulation-build91-v1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-formulation-precommit-v1-17ef45c4660b490a899344c62ba8869b",
+      "name": ".staging-formulation-precommit-v1-17ef45c4660b490a899344c62ba8869b",
+      "bytes": 499964917,
+      "files": 813,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 90,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "a8d4681f2ec3fb28fcfd33092223359db6360743",
+        "core": "91f9ad66a329ad5a270ed773b33e9d0959e139170c185b7cb21e8b497444ffbb",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "attempt": {
+        "error": "Source changed during packaging.",
+        "status": "FAILED_UNVERIFIED"
+      },
+      "classification": "D",
+      "reason": "Failed/interrupted historical staging contains unpublished binaries/diagnostics; preserved as ambiguous evidence.",
+      "decision": "retain",
+      "treeSha256": "9888d3e32892a989c2982eb868fb623c224c7d2e26c67d7dec4008637cd73284",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "9888d3e32892a989c2982eb868fb623c224c7d2e26c67d7dec4008637cd73284"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-formulation-precommit-v2-2250b365f7a444f7969c1287b96919a2",
+      "name": ".staging-formulation-precommit-v2-2250b365f7a444f7969c1287b96919a2",
+      "bytes": 223856784,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\formulation-precommit-v2",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-nnue-gui-build66-872ae9237004417ca36dffd9c5a5af1f",
+      "name": ".staging-nnue-gui-build66-872ae9237004417ca36dffd9c5a5af1f",
+      "bytes": 223492560,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\nnue-gui-build66",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-nnue-gui-validation-01-fc444deecf2441fb8224d09f59e859d6",
+      "name": ".staging-nnue-gui-validation-01-fc444deecf2441fb8224d09f59e859d6",
+      "bytes": 223493652,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\nnue-gui-validation-01",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-portable-env-gui-dd1e2780ec6143f38c35ee8b9332d372",
+      "name": ".staging-portable-env-gui-dd1e2780ec6143f38c35ee8b9332d372",
+      "bytes": 216584904,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\portable-env-gui",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-tc-p1-adoption-precommit-v1-db9ab35d86604405a25f9039828588d1",
+      "name": ".staging-tc-p1-adoption-precommit-v1-db9ab35d86604405a25f9039828588d1",
+      "bytes": 223837861,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\tc-p1-adoption-precommit-v1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-tc-p1-build90-v1-12d5dac8f4474bae8aa9759d80187273",
+      "name": ".staging-tc-p1-build90-v1-12d5dac8f4474bae8aa9759d80187273",
+      "bytes": 498877377,
+      "files": 812,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 90,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "1f55124ba4b5ad698257ee79b69f00da79eba2e0",
+        "core": "ebb72b816c7ed44f21842a0efa8716b2536bea80eaf6e3b0d4e0e806037b44a1",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "attempt": {
+        "candidate": "tc-p1-build90-v1",
+        "status": "UNVERIFIED"
+      },
+      "classification": "D",
+      "reason": "Failed/interrupted historical staging contains unpublished binaries/diagnostics; preserved as ambiguous evidence.",
+      "decision": "retain",
+      "treeSha256": "6997e828e0efe11db7abc2324f8e5291f48aaa24ae5f6ad1025192cf5208d1a2",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "6997e828e0efe11db7abc2324f8e5291f48aaa24ae5f6ad1025192cf5208d1a2"
+    },
+    {
+      "path": "dist/windows/candidates/.staging-tc-p1-build90-v2-2e127a805cef4736897199530e49cba3",
+      "name": ".staging-tc-p1-build90-v2-2e127a805cef4736897199530e49cba3",
+      "bytes": 223836137,
+      "files": 416,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\tc-p1-build90-v2",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/adaptive16-build70-20261023",
+      "name": "adaptive16-build70-20261023",
+      "bytes": 275717719,
+      "files": 398,
+      "references": [
+        "docs/research/search/P3_CONSTRUCTION_2026-10-20.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 70,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "f71fe9a91ae6633bea1a5f2ee40515385f3ecd30",
+        "core": "75b8f0c621aea46166e91e429e251700077536bf946767e64d493ebafd9b04df",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/adaptive16-adoption/artifacts.json"
+      ],
+      "classification": "D",
+      "reason": "Historical adaptive-clock adoption identity; exact comparison use not fully resolved.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "fd553593e5fe1dac8576c4639cc0698c81226ee409446ddf4f2ceaf5d3ba90d2",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "fd553593e5fe1dac8576c4639cc0698c81226ee409446ddf4f2ceaf5d3ba90d2"
+    },
+    {
+      "path": "dist/windows/candidates/baseline-20261022-build61",
+      "name": "baseline-20261022-build61",
+      "bytes": 270341413,
+      "files": 398,
+      "references": [
+        "docs/engine-baseline-2026-10-22.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 61,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "b4367ea221f3502c92546581fb52d80a9e833261",
+        "core": "90fd5a076c85fd6094629d24111dc05ea72d728d061ee07b080d753db9739caa",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/baseline-stabilization/20261022/final-verification.json"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "25ecc2323f508c42837f3c9c337adbe456cec25e7fc119d2ded2ea5749e0c8fb",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/baseline-20261022-precommit",
+      "name": "baseline-20261022-precommit",
+      "bytes": 270341718,
+      "files": 398,
+      "references": [
+        "docs/engine-baseline-2026-10-22.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 60,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "e23745d0f4b6df810a7ca2070ed6966d067d905c",
+        "core": "2bf183298e24f54b493e097c5328ba844ee280c1ab9cb80aac829bdd6543b9bd",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/baseline-stabilization/20261022/gui-resources.json"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "2f5fe058c737f5a75cbb5ea426f6b94efa783efef935ae5cf636bb6942ea9929",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261016T231443-0adaa26c",
+      "name": "candidate-20261016T231443-0adaa26c",
+      "bytes": 268710292,
+      "files": 398,
+      "references": [
+        "docs/unified-architecture/WU7-PACKAGING.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "11060c8df2e5fc4dcc7356f52e9ea4a6e18439f2",
+        "core": "d5ca36f380744ecac09f05774b5d9aae460b401c459d7ae6f9d8ca64df9fb4df",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/migration/portable-build/check_selection.py"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "63bc8a122dcf9421e9647cb669bd1f03fe255db1e5e37487618cb4e658ffe94f",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261016T231550-d382f23c",
+      "name": "candidate-20261016T231550-d382f23c",
+      "bytes": 268710289,
+      "files": 398,
+      "references": [
+        "docs/unified-architecture/WU7-PACKAGING.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "11060c8df2e5fc4dcc7356f52e9ea4a6e18439f2",
+        "core": "d5ca36f380744ecac09f05774b5d9aae460b401c459d7ae6f9d8ca64df9fb4df",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "45ff23e5754fa248e6f0040dca513a50ac07db51e74075c1918bcfb5dbd37159",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261016T233839-885ce531",
+      "name": "candidate-20261016T233839-885ce531",
+      "bytes": 268709403,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "18ddd6ece499ab4304a65aeed774992b60196bac",
+        "core": "1ccdc762088786e3d06e4a6df648819a1a14b725bdcd9e5468456cab0179d297",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "79f47a5c3469aed695ee1cf81431e77187b584b29f978d237cd3d7dc4dce2c16",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261017T195607-a939b2c8",
+      "name": "candidate-20261017T195607-a939b2c8",
+      "bytes": 268790473,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5f992ded72598cf5f178c12596e86d506f2c85c6",
+        "core": "4b6a474ef4a0689553fd98651757602934aae5cdf094b5fa7bed88bb4fda4d09",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "0dba9d82576f0bcf77e60a718e34ee8bd4b292d3cbcf29b942fab96bb1c797a4",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261017T211043-e3b257ae",
+      "name": "candidate-20261017T211043-e3b257ae",
+      "bytes": 268871120,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5f992ded72598cf5f178c12596e86d506f2c85c6",
+        "core": "4b6a474ef4a0689553fd98651757602934aae5cdf094b5fa7bed88bb4fda4d09",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "e6abf57b7deaca4faa0c3e6e32827d5ee7a814b5e7b154e08d9b3830efa5b71e",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261018T212645-2ba67853",
+      "name": "candidate-20261018T212645-2ba67853",
+      "bytes": 268915856,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "6b8d27566d80dd6c864cb531ea3530f70bf8a076",
+        "core": "4a9f2c200023e0d9e578105d69ba20bc7e93f380e1261c547a8ef123a96236b6",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "97006a6c192304704ef71571f0a38ea72700fc8563955046d993fecc7293de1a",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261019T200637-1626b61a",
+      "name": "candidate-20261019T200637-1626b61a",
+      "bytes": 268969990,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 39,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "57961d773ee38a7aa18da1e64ac9788ad184ec0e",
+        "core": "bed02f92c4c341cdd7885fd164344f2112405114d93e71a0b9e6ecf3b2dea9be",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "10f9608c67a398dea338585a90975409adad780567197f6454357922df3bfff0",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261019T203215-2fb357aa",
+      "name": "candidate-20261019T203215-2fb357aa",
+      "bytes": 269900777,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 40,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "57961d773ee38a7aa18da1e64ac9788ad184ec0e",
+        "core": "f344f61a7d3f202943f412f5ee0386c2b0aeaf36562f14ebe9a2209a493245cb",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "4b72fde7310402bdcb1d5c6145f4d572ceef7e81a3183d322f4435e4b89381c9",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261019T203608-db024976",
+      "name": "candidate-20261019T203608-db024976",
+      "bytes": 269897395,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 40,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "38e5626a6bfb76690a539d0ce0e04e70bd57f9d1",
+        "core": "45a2dfd7618c989c84827b0affeaae9967e596c613648c70f0329b299ee3f829",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/activation/packaged-gui/result.json"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "3c8962506ae7dd90270899e22db48b19ca70a92171c576b96e54bdd45895a284",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261019T204350-231613ec",
+      "name": "candidate-20261019T204350-231613ec",
+      "bytes": 269897395,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 40,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "38e5626a6bfb76690a539d0ce0e04e70bd57f9d1",
+        "core": "45a2dfd7618c989c84827b0affeaae9967e596c613648c70f0329b299ee3f829",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "2e033ec5950d6266fedf8095e500c3b76a39ad6a8494b547e2e1aa50406a6009",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261019T235638-60091dfe",
+      "name": "candidate-20261019T235638-60091dfe",
+      "bytes": 269981386,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 41,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "fecb1e8f7c769272a6f728d2beb7252c84763d47",
+        "core": "f43bb1d0e170f24ab5a73cda4921292126b756579a89f10f049ab064ce02c782",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "b27482df44799d81bf4e1b0f5bd14cb3727a2c552bec2abf2838392142ccd798",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261020T021103-a7b79907",
+      "name": "candidate-20261020T021103-a7b79907",
+      "bytes": 269984697,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 42,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "2334760b32b1a91f56e9beb972cd1a1fed13e3df",
+        "core": "d7850df04178c434fabdf722c328d3ac3008487eaf8306548fc67813c399751b",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "a086f9275b67acb65f861a79d40240d8f9a319fb2bda3e2f85b9c6241127319f",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261020T092058-f107540e",
+      "name": "candidate-20261020T092058-f107540e",
+      "bytes": 270045819,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 46,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "87008af9464c67d9979310783f60dd1076197bdc",
+        "core": "bfeebf2006ab7ea9c7b7a5f07c02b132019576d593000db8e6b4703cbc4e267c",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "10232a33ab92259996fc638b2abcdc5e3557c40dee9b53ed4029d82ff2af178a",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261020T190708-cc0a192f",
+      "name": "candidate-20261020T190708-cc0a192f",
+      "bytes": 270110499,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 50,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "d7d7599eb348a8b94408c7c06020d7d02c420920",
+        "core": "6f7d9910cc20bec5743e4932b00687b79fa7dde287e735a20560ca905a033069",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "983c849f91b198d5c25d876788bf71dbe78c0d6ccae7384bdfaeca58dd6de575",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261020T193415-78093c22",
+      "name": "candidate-20261020T193415-78093c22",
+      "bytes": 270120025,
+      "files": 398,
+      "references": [
+        "docs/research/brn-successor-cglhw/wave4-seek-remediation.json",
+        "docs/research/brn-successor-cglhw/WAVE4.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 51,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "fc69aeb68e24aeb3374f7d7265414813f6d968c9",
+        "core": "0bca490847ba2c7c5d2f3893e16ee61c78fa00ed35d1169c1b26b4359c1f5a44",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/brn-successor-cglhw/wave4-seek-remediation.json"
+      ],
+      "classification": "D",
+      "reason": "BRN wave4 remediation/owner-readiness evidence; frozen research disposition is outside this cleanup.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "739e31cd966844d1953e6780f64981ce3c47b50683d4f16f056125ea72fa6a67",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "739e31cd966844d1953e6780f64981ce3c47b50683d4f16f056125ea72fa6a67"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T013302-0f255e57",
+      "name": "candidate-20261021T013302-0f255e57",
+      "bytes": 270203318,
+      "files": 398,
+      "references": [
+        "docs/research/brn-successor-cglhw/STATE.md",
+        "docs/research/brn-successor-cglhw/wave5-owner-readiness.json",
+        "docs/research/brn-successor-cglhw/WAVE5.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 55,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "bd65091a3ac4f1789fe0f0b52279389622503c07",
+        "core": "083668e3ad647eeb8a4179a7626f636fff4daf7b5083cb4aca6b4f98a6b1769b",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/brn-successor-cglhw/wave5-owner-readiness.json",
+        "docs/research/brn-successor-cglhw/raw/wave5/package-gui-probe-01.py",
+        "docs/research/brn-successor-cglhw/raw/wave5/native-relocation-02/verification.json",
+        "docs/research/brn-successor-cglhw/raw/wave5/native-relocation-01/verification.json",
+        "docs/research/brn-successor-cglhw/raw/wave5/record-readiness-01.py"
+      ],
+      "classification": "A",
+      "reason": "Suspended BRN wave5 native research probes and recorded owner-readiness runtime.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "1d88f00e3d2c25523e137520aaf1b0656e6e7395d53f1df18712aef5da5616c1",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "1d88f00e3d2c25523e137520aaf1b0656e6e7395d53f1df18712aef5da5616c1"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T020228-39ffaf90",
+      "name": "candidate-20261021T020228-39ffaf90",
+      "bytes": 270204052,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 55,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "b43b761c54fd3c3986d5c95385cd2581110d27e8",
+        "core": "44a0f8ece48ec9111db9b29d3c3a13df2adf7d1b52cf0981699bed2ada2ddf3a",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "694397728b97d914aeff900de2daf13120441555848f1efb5200b3fbe43af7b6",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T051743-83f14ec3",
+      "name": "candidate-20261021T051743-83f14ec3",
+      "bytes": 270263070,
+      "files": 398,
+      "references": [
+        "docs/research/brn-successor-cglhw/STATE.md",
+        "docs/research/brn-successor-cglhw/WAVE6.md",
+        "docs/research/brn-successor-cglhw/wave6-owner-readiness.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 56,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "4faba8d5a79d92db35288073b69c7fa9d528aed3",
+        "core": "067117a1ab8fa49c7755705b273cb9e600eeda3b85710e344f3db63c18d52b4b",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/research/w6-packaged-native.py",
+        "build/research/w6-close-readiness.py",
+        "docs/research/brn-successor-cglhw/wave6-owner-readiness.json",
+        "docs/research/brn-successor-cglhw/raw/wave6/packaged-native-02/execution.json",
+        "docs/research/brn-successor-cglhw/raw/wave6/native-relocation-01/verification.json"
+      ],
+      "classification": "A",
+      "reason": "BRN wave6 packaged-native launcher and retained research scripts use this exact path.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "c6db08a876b6a83e720cbdc3b22798c467661d0861d1450149ef3b1910eb15ff",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "c6db08a876b6a83e720cbdc3b22798c467661d0861d1450149ef3b1910eb15ff"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T053955-d227467c",
+      "name": "candidate-20261021T053955-d227467c",
+      "bytes": 270264509,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 56,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "c91504b52c39b91fcf2f7407a9f89cd2141a3e69",
+        "core": "d309d1174f72706333fc2c9dcb97a9c95ab9e6b027aceb2d08ad38d7361c8973",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "cc2e7fe46e50d4dd575335d17b39a246e71535a739f2dd052c24a8dcce37995f",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T095502-65efe5a1",
+      "name": "candidate-20261021T095502-65efe5a1",
+      "bytes": 270277630,
+      "files": 398,
+      "references": [
+        "docs/research/brn-successor-cglhw/WAVE7.md",
+        "docs/research/brn-successor-cglhw/wave7-owner-readiness.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 57,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "89422ed27c826127a4549720587c6a4ef91938b2",
+        "core": "b4f1132c163b5cf28cafaa6a29a14fc23d1586ebbccf9ea584c07c6e903f39ca",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/brn-successor-cglhw/wave7-owner-readiness.json",
+        "docs/research/brn-successor-cglhw/raw/wave7/native-compile-01.execution.json",
+        "docs/research/brn-successor-cglhw/raw/wave7/native-relocation-01/verification.json",
+        "docs/research/brn-successor-cglhw/raw/wave7/native-gui-request-01.json",
+        "docs/research/brn-successor-cglhw/raw/wave7/native-compile-request-01.json",
+        "docs/research/brn-successor-cglhw/raw/wave7/native-gui-01.execution.json"
+      ],
+      "classification": "A",
+      "reason": "BRN wave7 frozen native request and owner-readiness artifact.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "03625cfa1720d96ee1185272795bcc5c2468ee169cd69b31b5f891d09c64feb7",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "03625cfa1720d96ee1185272795bcc5c2468ee169cd69b31b5f891d09c64feb7"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T100536-322d6ae6",
+      "name": "candidate-20261021T100536-322d6ae6",
+      "bytes": 270279078,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 57,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "0270c53586152ac56e28432a8ac933f42d636da4",
+        "core": "71ccbdb742c15c57186a1e98246ebbc5cd5478aa0506d6a85be224e9dab5b05f",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "94f19c336a8ce9a0b58bb6a18f6a44c3dc9751694029bb0d34b82aac45bdc392",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T111458-afa96ee7",
+      "name": "candidate-20261021T111458-afa96ee7",
+      "bytes": 270290559,
+      "files": 398,
+      "references": [
+        "docs/research/brn-successor-cglhw/WAVE8.md",
+        "docs/research/brn-successor-cglhw/wave8-packaging.json",
+        "docs/research/brn-successor-cglhw/wave8-owner-readiness.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 58,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "b4453ad646a462732538a30083cbf25e3ce97bc8",
+        "core": "0d9c34544ba07298a80b1755c8f7c09aced8125e7e857340ea274c38c1b76f44",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/brn-successor-cglhw/wave8-packaging.json",
+        "docs/research/brn-successor-cglhw/wave8-owner-readiness.json",
+        "docs/research/brn-successor-cglhw/raw/wave8/owner-preparation-request-01.json",
+        "docs/research/brn-successor-cglhw/raw/wave8/native-gui-request-01.json",
+        "docs/research/brn-successor-cglhw/raw/wave8/native-compile-request-01.json",
+        "docs/research/brn-successor-cglhw/raw/wave8/isolated-prepare-01-request.json",
+        "docs/research/brn-successor-cglhw/raw/wave8/isolated-compile-01-request.json"
+      ],
+      "classification": "A",
+      "reason": "BRN wave8 frozen native request and owner-readiness artifact.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "8b63749cc91505134a65218da3be649617054530b9f406154749d3b63456339f",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "8b63749cc91505134a65218da3be649617054530b9f406154749d3b63456339f"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T181052-7c877773",
+      "name": "candidate-20261021T181052-7c877773",
+      "bytes": 270295646,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 58,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "08a9d322031c24932b5c09cf4cae977a7ec21d3f",
+        "core": "817e3ad12a8dc8ba9ab02bfffcdfb5e153bfb037f81b8b6e092f8071471c42b6",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "bf57a90d7771a61ac675f016eba4121ad1fd284f4fa304a51414c6c3ea3cd31e",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T192119-a567d46b",
+      "name": "candidate-20261021T192119-a567d46b",
+      "bytes": 270320501,
+      "files": 398,
+      "references": [
+        "docs/research/brn-successor-cglhw/WAVE9.md",
+        "docs/research/brn-successor-cglhw/wave9-owner-readiness.json",
+        "docs/research/brn-successor-cglhw/wave9-native-package-validation.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 59,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "e804482157d6e9064077dbbeb0c4c9a7d9ca06ce",
+        "core": "56a348b598e8e35564a461a1f1288bfe09c1c3dc6be599da526450b55ad8da4a",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/brn-successor-cglhw/wave9-owner-readiness.json",
+        "docs/research/brn-successor-cglhw/wave9-native-package-validation.json",
+        "docs/research/brn-successor-cglhw/raw/wave9/trained-audit-01-request.json",
+        "docs/research/brn-successor-cglhw/raw/wave9/source-probe-01-request.json",
+        "docs/research/brn-successor-cglhw/raw/wave9/source-compile-01-request.json",
+        "docs/research/brn-successor-cglhw/raw/wave9/report-format-originals-01/wave9-owner-readiness.json",
+        "docs/research/brn-successor-cglhw/raw/wave9/owner-preparation-01-request.json",
+        "docs/research/brn-successor-cglhw/raw/wave9/owner-audit-01-request.json",
+        "docs/research/brn-successor-cglhw/raw/wave9/native-gui-01-request.json",
+        "docs/research/brn-successor-cglhw/raw/wave9/native-compile-01-request.json"
+      ],
+      "classification": "A",
+      "reason": "BRN wave9 frozen native/trained/source audits and suspended workstream dependencies.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "e44e1d37afb7f42f3dd7a7c17fa9320b7c623d6fbae65bcec2a7ef98815e7857",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "e44e1d37afb7f42f3dd7a7c17fa9320b7c623d6fbae65bcec2a7ef98815e7857"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T201446-fb360a98",
+      "name": "candidate-20261021T201446-fb360a98",
+      "bytes": 270322618,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 59,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "267340005d76a81d701ca449b3df0417ff7f0c17",
+        "core": "1dc590b34f9be39f36c4ce6396421f8ab1540b74c7a297fff8a2354f4c734209",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "cd64b694f2d781261871aa2ec2ab56e012ad2e4e459422e6dd9622156d31468b",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261021T223248-4d9b2058",
+      "name": "candidate-20261021T223248-4d9b2058",
+      "bytes": 270339505,
+      "files": 398,
+      "references": [
+        "docs/research/brn-successor-cglhw/wave9-build60-package-verification.json",
+        "docs/research/brn-successor-cglhw/WAVE9-ASSESSMENT.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 60,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "57dde44ba45f627de6c887c6c1f9985d6b39571f",
+        "core": "bf82b1c1bcf4fd3f3d99cc5acb0cc4f1826ed6c3019c1e03b07e07fda41fc714",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/brn-successor-cglhw/wave9-build60-package-verification.json"
+      ],
+      "classification": "D",
+      "reason": "BRN wave9 build60 assessment runtime; suspended research dependency not safely retired.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "1a161c09b8e4e80985cfd20bf5851ac6acbccfb14f6face8965b18f344c7bf56",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "1a161c09b8e4e80985cfd20bf5851ac6acbccfb14f6face8965b18f344c7bf56"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261022T003859-43d996d1",
+      "name": "candidate-20261022T003859-43d996d1",
+      "bytes": 270341437,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 61,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "ea4428b8ddc4781eecf6f4e8033872949c433542",
+        "core": "a6314b15bd3f16e922f895893bfa41e6be0d19246879d2ff137004db33191f57",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "39bebbc23e124b946023a2ce2d1d8bb4bbdc7e0ad473b324f8ab7d48f49f968d",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261022T044205-155841fd",
+      "name": "candidate-20261022T044205-155841fd",
+      "bytes": 270363884,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 61,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "499685abc4a84fe31c5f0bac6a4230604a5f893a",
+        "core": "ddba8ab7c9a2a79123f47149b4993ff30eec3ec4ae351cbb21c764ef374f3c36",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "a71d1d89672ec7b7baf890d0445ea3514b143a03381d485d5a778e530ecbc205",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261022T201753-a4709f77",
+      "name": "candidate-20261022T201753-a4709f77",
+      "bytes": 270420311,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 65,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5409ebd345fd445ae0fb953de4b3d17b7581d90b",
+        "core": "c1e876c0a5a21994a40381a2e7580cd5a60effd1798f57ea50b582f4b58d4df7",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "5762ee4da19070e7dfcde04f2e532277570264cad285c24b79f2a98fd141aedb",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261022T205714-985d9850",
+      "name": "candidate-20261022T205714-985d9850",
+      "bytes": 275667566,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 66,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "f75920dbce35f536564d25d575d31340d3a7072b",
+        "core": "b47857edaf644dc88c88307cfbc1fb34a5fd085b5694167c6d46a54934f08876",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "fca3f7e06f670cb54d75658253619a0e9228b3420204089144c389cc128bb516",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261022T221732-bc1cbce0",
+      "name": "candidate-20261022T221732-bc1cbce0",
+      "bytes": 275690073,
+      "files": 398,
+      "references": [
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/validation.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 66,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "f75920dbce35f536564d25d575d31340d3a7072b",
+        "core": "4bdb4cda136b6a012dbbccc00e7606646fd1d758d80f2de22b7d21cc1074e4c8",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/validation.json"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "8f43df6203fb1304ecf1d54a4c8b51ea578953ab4b55db83abeee583b32670cd",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261022T222358-7513297c",
+      "name": "candidate-20261022T222358-7513297c",
+      "bytes": 275687569,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 67,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "30ad8368c10c06d93b412d02994f3fc43a6925ed",
+        "core": "da0b713d1967830494a82c8d4055c64379dd3a47162d142c4f09ba31b31e4500",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "1e7060271442144cc0e96021f48b5091b2a33b83350ba6cf027d4174afc64915",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261022T222712-22584dcd",
+      "name": "candidate-20261022T222712-22584dcd",
+      "bytes": 275687607,
+      "files": 398,
+      "references": [
+        "docs/research/search/P3_CONSTRUCTION_2026-10-20.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 68,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "b144a2bba7ba8f0e815845c1daa96f2bfc992ad0",
+        "core": "5cbd1d70ef67877857ed4cf33f97b306e73518102be6c070a7cdaac760e357ae",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/baseline-consolidation/prepare69.py"
+      ],
+      "classification": "A",
+      "reason": "Retained prepare69.py consumes build68 candidate inputs for historical comparison.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "58b4c03a5fae2ce4619af728e9e784b8e2ed5fcbd5d81f522bd3f3239a96b690",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "58b4c03a5fae2ce4619af728e9e784b8e2ed5fcbd5d81f522bd3f3239a96b690"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261023T003420-389d695a",
+      "name": "candidate-20261023T003420-389d695a",
+      "bytes": 275691248,
+      "files": 398,
+      "references": [
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/validation.json",
+        "docs/research/search/P3_CONSTRUCTION_2026-10-20.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 69,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d",
+        "core": "a7dd735ddc875cfad7a6a6ebd2d24d6fe9bccc313253334dba119d2b5803fc91",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/baseline-consolidation/final_evidence69.py",
+        "build/baseline-consolidation/native_gui69.py",
+        "build/adaptive16-adoption/core-byte-audit.json",
+        "build/adaptive16-adoption/check_profiles.py",
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/validation.json",
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/raw/runtime-class-audit69.json"
+      ],
+      "classification": "A",
+      "reason": "Frozen build69 runtime class audit and adaptive16 comparison scripts consume this artifact.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "a1bd278141b4f996a2b449823afcf22c4fc2091646a38ab49e752e250e6e836e",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "a1bd278141b4f996a2b449823afcf22c4fc2091646a38ab49e752e250e6e836e"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261023T011345-2502dab6",
+      "name": "candidate-20261023T011345-2502dab6",
+      "bytes": 275691246,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 69,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "43b690fe272d49334578377eaa059a754c671470",
+        "core": "3878b61b44508284a539f38297f5e4866ac5e5628c2f2a7febb1160dcb8b042e",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "bef090c8387bf8d7c6cc169cec17fc5366ed29e29634966d46f63093ace22c97",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261023T194312-e5ac7c75",
+      "name": "candidate-20261023T194312-e5ac7c75",
+      "bytes": 275774958,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 74,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "d9a91cbe8b52caf6f3031e17d2ea5561c1064fa0",
+        "core": "959b829e928e8d714cbca02a2218dd678ce9559fa2a9b54693e871b4c8a74da5",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "d8d8cddae30baf6e307de816082cbdd75e219a324288ce06542cc60936f63d6c",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261023T195311-29a5200e",
+      "name": "candidate-20261023T195311-29a5200e",
+      "bytes": 275774953,
+      "files": 398,
+      "references": [
+        "docs/nnue-native-packaging-fix.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 74,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "d9a91cbe8b52caf6f3031e17d2ea5561c1064fa0",
+        "core": "959b829e928e8d714cbca02a2218dd678ce9559fa2a9b54693e871b4c8a74da5",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/packaging/identity-repair-20261024/before-runtime.json"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "54ced7bc137c472e85876b53dd423de1fdee307571ed73abfafb29b54762f6ff",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261023T195552-c00e3315",
+      "name": "candidate-20261023T195552-c00e3315",
+      "bytes": 275775204,
+      "files": 398,
+      "references": [
+        "docs/research/search/p3-sr034-2026-10-24/verify_baseline_v2.py",
+        "docs/research/search/p3-sr034-2026-10-24/verify_baseline_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/trajectory-v1-binding.json",
+        "docs/research/search/p3-sr034-2026-10-24/run_trajectory_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/run_root_effort_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/root-effort-v1-binding.json",
+        "docs/research/search/p3-sr034-2026-10-24/prepare_spending_development_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/prepare_clock_development_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/baseline-native-v2-summary.json",
+        "docs/research/search/p3-sr034-2026-10-24/baseline-native-v1-summary.json",
+        "docs/nnue-native-packaging-fix.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 74,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "d9a91cbe8b52caf6f3031e17d2ea5561c1064fa0",
+        "core": "facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/packaging/identity-repair-20261024/native-all-workers.json",
+        "build/packaging/identity-repair-20261024/candidate-summary.json",
+        "docs/research/search/p3-sr034-2026-10-24/verify_baseline_v2.py",
+        "docs/research/search/p3-sr034-2026-10-24/verify_baseline_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/trajectory-v1-binding.json",
+        "docs/research/search/p3-sr034-2026-10-24/run_trajectory_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/run_root_effort_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/root-effort-v1-binding.json",
+        "docs/research/search/p3-sr034-2026-10-24/raw/baseline-native-v2.json",
+        "docs/research/search/p3-sr034-2026-10-24/raw/baseline-native-v1.json",
+        "docs/research/search/p3-sr034-2026-10-24/prepare_spending_development_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/prepare_clock_development_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/baseline-native-v2-summary.json",
+        "docs/research/search/p3-sr034-2026-10-24/baseline-native-v1-summary.json"
+      ],
+      "classification": "A",
+      "reason": "SR034 frozen clock/root-effort/trajectory harnesses bind this exact native baseline.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "61c6aec369d720dc6a46b0d0580491cb743747101bc4da56015a2cbc0c559bb8",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "61c6aec369d720dc6a46b0d0580491cb743747101bc4da56015a2cbc0c559bb8"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261025T185156-0e86556d",
+      "name": "candidate-20261025T185156-0e86556d",
+      "bytes": 275839650,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 77,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "78b372c3424b8a669bedd33729f5343675b2254e",
+        "core": "b8542a96ad53e376d8b5fbbfc3752fc7aa5227433868f919370db9a8a703e19e",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "D",
+      "reason": "Build77 artifact seen in owner GUI screenshot in TC-P1 production record; external/current shortcut use uninspectable.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "595811fbc51d630694b15cc90ab9d97ad20a9a1f0b5b32102fe1304e52ddc948",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "595811fbc51d630694b15cc90ab9d97ad20a9a1f0b5b32102fe1304e52ddc948"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261102T090707-79b214e1",
+      "name": "candidate-20261102T090707-79b214e1",
+      "bytes": 276041619,
+      "files": 398,
+      "references": [
+        "docs/research/search/p4-learning/PRODUCTION.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 84,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "d4eb9d6f36df41d29652613e9f86eb3212a807ca",
+        "core": "e53ff82adb653dffaca382b8e0e4ff24a405b7a355c4eaeac8ccd2147d2c1338",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/search/p4-learning/raw/production-build85-v1/core-byte-comparison.json"
+      ],
+      "classification": "A",
+      "reason": "Preversion HL-G1 production core-byte comparison explicitly consumes these bytes; not the frozen build84 champion.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "a0c33c152b6fd004bda1318151e60729021252790ab72a9491f98757f2abeaf6",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "a0c33c152b6fd004bda1318151e60729021252790ab72a9491f98757f2abeaf6"
+    },
+    {
+      "path": "dist/windows/candidates/candidate-20261102T091613-a28be05c",
+      "name": "candidate-20261102T091613-a28be05c",
+      "bytes": 276038040,
+      "files": 398,
+      "references": [
+        "docs/research/search/p4-learning/PRODUCTION.md",
+        "docs/research/search/p4-learning/production-build85-manifest.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 85,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "7fd84cafdc48647f6a93048dee7b3636923befaf",
+        "core": "05241386601a7149348a1a6bb0028be7a5fbd7136e11d42acf88f81b9d5fb1e5",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/search/p4-learning/production-build85-manifest.json"
+      ],
+      "classification": "A",
+      "reason": "Final build85 HL-G1 production integration identity and rollback/qualification record.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "ae1469ce7e1808258b03f25e642722f03725824924ea8021f332e2aa75d078fa",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "ae1469ce7e1808258b03f25e642722f03725824924ea8021f332e2aa75d078fa"
+    },
+    {
+      "path": "dist/windows/candidates/formulation-build91-v1",
+      "name": "formulation-build91-v1",
+      "bytes": 276110866,
+      "files": 398,
+      "references": [
+        "docs/engine-formulation-identity.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 91,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "4bc550b376295903f9c7d6428a9a3c303c6caa51",
+        "core": "324947d9e08e7077f124e2307c1489d0b8504e8fba8683865bb93113712f54fb",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/formulation-identity/verify-identities.py",
+        "build/formulation-identity/final-identities/summary.json"
+      ],
+      "classification": "A",
+      "reason": "Latest committed GUI/UCI build91 and final identity verification scripts; protect current external/shortcut consumers.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "7219c51c74ca5096b39b567e04625304397d41a0be0a7ce445d0d1f1f7c2ad4a",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "7219c51c74ca5096b39b567e04625304397d41a0be0a7ce445d0d1f1f7c2ad4a"
+    },
+    {
+      "path": "dist/windows/candidates/formulation-precommit-v2",
+      "name": "formulation-precommit-v2",
+      "bytes": 276112032,
+      "files": 398,
+      "references": [
+        "docs/engine-formulation-identity.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 90,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "a8d4681f2ec3fb28fcfd33092223359db6360743",
+        "core": "91f9ad66a329ad5a270ed773b33e9d0959e139170c185b7cb21e8b497444ffbb",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded provisional ordinary identity packaging; final committed build91 retained.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "cb414236f96b9b55ad0bbd00b7946a27058bb569dfebfd24fcd89fa7ef7ebc33",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/nnue-gui-build66",
+      "name": "nnue-gui-build66",
+      "bytes": 275665253,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 66,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "f75920dbce35f536564d25d575d31340d3a7072b",
+        "core": "1aed8d9e0076915228e696ff3e2f866162c7805ae0df4e1493c92440363e0b71",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/nnue-gui/native-runtime66.py"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "20ff317b1249f68f7b09723db00418451ab55afb242fec2f8bbd779b3610e6fe",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/nnue-gui-validation-01",
+      "name": "nnue-gui-validation-01",
+      "bytes": 275666523,
+      "files": 398,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 65,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5409ebd345fd445ae0fb953de4b3d17b7581d90b",
+        "core": "1bb43f2a63cfda95553907de828624659686e37fe9ae139cc6fe66521875f26b",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/nnue-gui/native-runtime.py"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "5513805cf682cf47be855390ad059ea9d7655a862fc20e70a6a165c27484ceb3",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/portable-env-gui",
+      "name": "portable-env-gui",
+      "bytes": 268710237,
+      "files": 398,
+      "references": [
+        "docs/unified-architecture/WU7-PACKAGING.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "11060c8df2e5fc4dcc7356f52e9ea4a6e18439f2",
+        "core": "d5ca36f380744ecac09f05774b5d9aae460b401c459d7ae6f9d8ca64df9fb4df",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/migration/portable-build/check_selection.py"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "2d6b304c1cfb7bc1bd4cb2fef27e4ab5bb8c00d0647a21edb9b0b6f8a089b5bf",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/tc-p1-adoption-precommit-v1",
+      "name": "tc-p1-adoption-precommit-v1",
+      "bytes": 276093222,
+      "files": 398,
+      "references": [
+        "docs/research/search/p4-tactical/PRODUCTION.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 89,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "1f55124ba4b5ad698257ee79b69f00da79eba2e0",
+        "core": "ee633e9d93b6c02b2e6bc430016d6cb4ea0daeb813c9429c7076a12fd4e425db",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "3af05888e3e5d7e082a3a9ada9c697eff368a618de0880b925e019cb79a31fad",
+      "outcome": "deleted"
+    },
+    {
+      "path": "dist/windows/candidates/tc-p1-build90-v2",
+      "name": "tc-p1-build90-v2",
+      "bytes": 276091093,
+      "files": 398,
+      "references": [
+        "docs/research/search/p4-tactical/PRODUCTION.md",
+        "docs/research/search/p4-tactical/production-build90-qualification.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 90,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5f093f3a716cc218c48a7ecc54bbfc1eca44f364",
+        "core": "3e047b7ec4f5d261e90d8a875addb0074b11a154cbffccc549002b433b11dfd9",
+        "manifest": "SeedV6-GUI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/formulation-identity/verify-identities.py",
+        "docs/research/search/p4-tactical/raw/production-adoption-v1/frozen_bridge.py",
+        "docs/research/search/p4-tactical/raw/production-adoption-v1/frozen-bridge-v1/result.json",
+        "docs/research/search/p4-tactical/production-build90-qualification.json"
+      ],
+      "classification": "A",
+      "reason": "Exact adopted build90 production distributions, recorded ZIP/core hashes and frozen bridge/identity scripts.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "0f878b19f02c4e41db0ee37263ab11e95a7cea37a9e350e66281eaa3c3f04359",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "0f878b19f02c4e41db0ee37263ab11e95a7cea37a9e350e66281eaa3c3f04359"
+    },
+    {
+      "path": "releases/candidates/portable-java21/seedv6-nnue-cp64-e008-rc1-build65-4fa0f9f984ad",
+      "name": "seedv6-nnue-cp64-e008-rc1-build65-4fa0f9f984ad",
+      "bytes": 7225611,
+      "files": 11,
+      "references": [
+        "docs/nnue-botli-release-validation.md",
+        "docs/nnue-botli-release-validation.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "major": 0,
+          "minor": 0,
+          "patch": 0,
+          "build": 65
+        },
+        "revision": "4fa0f9f984ad3822ba5260e1a431374cdc1ac262",
+        "core": null,
+        "manifest": "seedv6-nnue-cp64-e008-rc1\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/nnue-botli-release-validation.json"
+      ],
+      "classification": "D",
+      "reason": "Explicit portable E008 BotLi delivery with recorded hashes; external consumer availability cannot be inspected.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "76adb80312565ea4c6dc5a5c58861c80940564ac1794037e1eca3e692dcb0339",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "76adb80312565ea4c6dc5a5c58861c80940564ac1794037e1eca3e692dcb0339"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-adaptive16-build70-20261023-9224856841784495911fa3bee8d97955",
+      "name": ".staging-adaptive16-build70-20261023-9224856841784495911fa3bee8d97955",
+      "bytes": 83848559,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\adaptive16-build70-20261023",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261016T231443-0adaa26c-4d5d8527cb1144d394e9ecd2c7a9ab39",
+      "name": ".staging-candidate-20261016T231443-0adaa26c-4d5d8527cb1144d394e9ecd2c7a9ab39",
+      "bytes": 49774559,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261016T231443-0adaa26c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261016T231550-d382f23c-d7bcac89a93f44398cd2ed72f9cb1e83",
+      "name": ".staging-candidate-20261016T231550-d382f23c-d7bcac89a93f44398cd2ed72f9cb1e83",
+      "bytes": 49774684,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261016T231550-d382f23c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261016T233839-885ce531-058052d59ed6496e97b420784bf0aa93",
+      "name": ".staging-candidate-20261016T233839-885ce531-058052d59ed6496e97b420784bf0aa93",
+      "bytes": 49773682,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261016T233839-885ce531",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261017T195607-a939b2c8-b79b310a7d494132bfb0d82c9fb2f433",
+      "name": ".staging-candidate-20261017T195607-a939b2c8-b79b310a7d494132bfb0d82c9fb2f433",
+      "bytes": 49800727,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261017T195607-a939b2c8",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261017T211043-e3b257ae-0571ed91d82348d5817471042ae437c5",
+      "name": ".staging-candidate-20261017T211043-e3b257ae-0571ed91d82348d5817471042ae437c5",
+      "bytes": 49803770,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261017T211043-e3b257ae",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261018T212645-2ba67853-85e17a08b1464b32b72dd69b06b9661a",
+      "name": ".staging-candidate-20261018T212645-2ba67853-85e17a08b1464b32b72dd69b06b9661a",
+      "bytes": 49842289,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261018T212645-2ba67853",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261019T200637-1626b61a-3337e2cfbc764397a504f05ab06570cd",
+      "name": ".staging-candidate-20261019T200637-1626b61a-3337e2cfbc764397a504f05ab06570cd",
+      "bytes": 49891859,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261019T200637-1626b61a",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261019T204350-231613ec-2fe987c8524d4c07b5ea8050a049b198",
+      "name": ".staging-candidate-20261019T204350-231613ec-2fe987c8524d4c07b5ea8050a049b198",
+      "bytes": 50818507,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261019T204350-231613ec",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261019T235638-60091dfe-804e27dbcc004326be0dec47cf86c909",
+      "name": ".staging-candidate-20261019T235638-60091dfe-804e27dbcc004326be0dec47cf86c909",
+      "bytes": 50842249,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261019T235638-60091dfe",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261020T021103-a7b79907-834ea4c019cc4127a706abcfa4bae26b",
+      "name": ".staging-candidate-20261020T021103-a7b79907-834ea4c019cc4127a706abcfa4bae26b",
+      "bytes": 50842201,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261020T021103-a7b79907",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261020T092058-f107540e-794eb8fb092a4cf0a3eec05787f1b469",
+      "name": ".staging-candidate-20261020T092058-f107540e-794eb8fb092a4cf0a3eec05787f1b469",
+      "bytes": 50876184,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261020T092058-f107540e",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261020T190708-cc0a192f-0770f79571cb46db9db64e0f41d47b57",
+      "name": ".staging-candidate-20261020T190708-cc0a192f-0770f79571cb46db9db64e0f41d47b57",
+      "bytes": 50906562,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261020T190708-cc0a192f",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261021T020228-39ffaf90-83598c0abd704acea6768269a1c60dba",
+      "name": ".staging-candidate-20261021T020228-39ffaf90-83598c0abd704acea6768269a1c60dba",
+      "bytes": 50948500,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261021T020228-39ffaf90",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261021T053955-d227467c-88114993b76f40f0b213c38d8c9ef4f4",
+      "name": ".staging-candidate-20261021T053955-d227467c-88114993b76f40f0b213c38d8c9ef4f4",
+      "bytes": 50971478,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261021T053955-d227467c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261021T100536-322d6ae6-20f1793af6194a5cbeef6b7472718666",
+      "name": ".staging-candidate-20261021T100536-322d6ae6-20f1793af6194a5cbeef6b7472718666",
+      "bytes": 50980931,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261021T100536-322d6ae6",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261021T181052-7c877773-a101240078a245a8ae06df1b90638a50",
+      "name": ".staging-candidate-20261021T181052-7c877773-a101240078a245a8ae06df1b90638a50",
+      "bytes": 50989586,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261021T181052-7c877773",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261021T201446-fb360a98-978f92f1f58e4f29a16b6dc3e6e3f2e4",
+      "name": ".staging-candidate-20261021T201446-fb360a98-978f92f1f58e4f29a16b6dc3e6e3f2e4",
+      "bytes": 51007581,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261021T201446-fb360a98",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261022T003859-43d996d1-81de7d3a44744d3e98419cb83e771c86",
+      "name": ".staging-candidate-20261022T003859-43d996d1-81de7d3a44744d3e98419cb83e771c86",
+      "bytes": 51022343,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261022T003859-43d996d1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261022T044205-155841fd-11358a8aa1884784a85cc5e5031e8594",
+      "name": ".staging-candidate-20261022T044205-155841fd-11358a8aa1884784a85cc5e5031e8594",
+      "bytes": 51019160,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261022T044205-155841fd",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261022T201753-a4709f77-dbeadff24edf4f1d967f9e037d0aa6b1",
+      "name": ".staging-candidate-20261022T201753-a4709f77-dbeadff24edf4f1d967f9e037d0aa6b1",
+      "bytes": 60143679,
+      "files": 121,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261022T201753-a4709f77",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261022T205714-985d9850-5c1c010d5616455196c42376d2bc64ab",
+      "name": ".staging-candidate-20261022T205714-985d9850-5c1c010d5616455196c42376d2bc64ab",
+      "bytes": 60149648,
+      "files": 121,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261022T205714-985d9850",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261022T221732-bc1cbce0-6dd6303de925452ea5f9235e707d6588",
+      "name": ".staging-candidate-20261022T221732-bc1cbce0-6dd6303de925452ea5f9235e707d6588",
+      "bytes": 83828513,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261022T221732-bc1cbce0",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261022T222358-7513297c-169d435cb007485ab7a0c1bce6e1ed06",
+      "name": ".staging-candidate-20261022T222358-7513297c-169d435cb007485ab7a0c1bce6e1ed06",
+      "bytes": 83826501,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261022T222358-7513297c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261022T222712-22584dcd-5f335e9fdb994500b0db620175811f68",
+      "name": ".staging-candidate-20261022T222712-22584dcd-5f335e9fdb994500b0db620175811f68",
+      "bytes": 83826273,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261022T222712-22584dcd",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261023T003420-389d695a-8a29d5153c2f4d928898e32796fd0bc7",
+      "name": ".staging-candidate-20261023T003420-389d695a-8a29d5153c2f4d928898e32796fd0bc7",
+      "bytes": 83828583,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261023T003420-389d695a",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261023T011345-2502dab6-b0b0b8d4a8454e088e0870c294ee0168",
+      "name": ".staging-candidate-20261023T011345-2502dab6-b0b0b8d4a8454e088e0870c294ee0168",
+      "bytes": 83828150,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261023T011345-2502dab6",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261023T194312-e5ac7c75-a670ef4113614f649576aedbd93af8b6",
+      "name": ".staging-candidate-20261023T194312-e5ac7c75-a670ef4113614f649576aedbd93af8b6",
+      "bytes": 58533366,
+      "files": 118,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "error": "Wrong baseline search/evaluator identity",
+        "status": "FAILED_UNVERIFIED"
+      },
+      "classification": "D",
+      "reason": "Failed/interrupted historical staging contains unpublished binaries/diagnostics; preserved as ambiguous evidence.",
+      "decision": "retain",
+      "treeSha256": "46b2e28f2373e02e2871c3d730f238cdfc564155798005fc0069ea8161f1ea21",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "46b2e28f2373e02e2871c3d730f238cdfc564155798005fc0069ea8161f1ea21"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261023T195311-29a5200e-a765f92889e242258875d99fde9d23a6",
+      "name": ".staging-candidate-20261023T195311-29a5200e-a765f92889e242258875d99fde9d23a6",
+      "bytes": 58533366,
+      "files": 118,
+      "references": [
+        "docs/nnue-native-packaging-fix.md"
+      ],
+      "reparse": [],
+      "attempt": {
+        "error": "Wrong baseline search/evaluator identity",
+        "status": "FAILED_UNVERIFIED"
+      },
+      "localReferences": [
+        "build/packaging/identity-repair-20261024/before-runtime.json"
+      ],
+      "classification": "D",
+      "reason": "Failed/interrupted historical staging contains unpublished binaries/diagnostics; preserved as ambiguous evidence.",
+      "decision": "retain",
+      "treeSha256": "46b2e28f2373e02e2871c3d730f238cdfc564155798005fc0069ea8161f1ea21",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "46b2e28f2373e02e2871c3d730f238cdfc564155798005fc0069ea8161f1ea21"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261023T195552-c00e3315-6dcc6589107e4a8aa7cb6a4c8c766907",
+      "name": ".staging-candidate-20261023T195552-c00e3315-6dcc6589107e4a8aa7cb6a4c8c766907",
+      "bytes": 83930532,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261023T195552-c00e3315",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261025T185156-0e86556d-17cf623cc708434ca139a73363a49a4e",
+      "name": ".staging-candidate-20261025T185156-0e86556d-17cf623cc708434ca139a73363a49a4e",
+      "bytes": 84037057,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261025T185156-0e86556d",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261102T090707-79b214e1-92909bdc5d434960bbca5f76570ea359",
+      "name": ".staging-candidate-20261102T090707-79b214e1-92909bdc5d434960bbca5f76570ea359",
+      "bytes": 84296898,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261102T090707-79b214e1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-candidate-20261102T091613-a28be05c-afc411af871744c9940f7c3fa6ba44a1",
+      "name": ".staging-candidate-20261102T091613-a28be05c-afc411af871744c9940f7c3fa6ba44a1",
+      "bytes": 84293416,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\candidate-20261102T091613-a28be05c",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-formulation-build91-v1-5af93b1c30a442cbb09cac939a75c22b",
+      "name": ".staging-formulation-build91-v1-5af93b1c30a442cbb09cac939a75c22b",
+      "bytes": 84456926,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\formulation-build91-v1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-formulation-precommit-v2-96c91d7a05074be084b14f35ccca225e",
+      "name": ".staging-formulation-precommit-v2-96c91d7a05074be084b14f35ccca225e",
+      "bytes": 84458311,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\formulation-precommit-v2",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-portable-explicit-uci-ee385becddef476d843bdd93c8005930",
+      "name": ".staging-portable-explicit-uci-ee385becddef476d843bdd93c8005930",
+      "bytes": 49774387,
+      "files": 111,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\portable-explicit-uci",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-tc-p1-adoption-precommit-v1-bbcfc2dc67604e99b113540c43c9a731",
+      "name": ".staging-tc-p1-adoption-precommit-v1-bbcfc2dc67604e99b113540c43c9a731",
+      "bytes": 84391421,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\tc-p1-adoption-precommit-v1",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/.staging-tc-p1-build90-v2-2560c887ad5844879b8bf59c6bc1fdc3",
+      "name": ".staging-tc-p1-build90-v2-2560c887ad5844879b8bf59c6bc1fdc3",
+      "bytes": 84389331,
+      "files": 137,
+      "references": [],
+      "reparse": [],
+      "attempt": {
+        "intendedOutput": "C:\\projects\\seed\\java\\seedv6-unified\\releases\\candidates\\windows-x64\\tc-p1-build90-v2",
+        "status": "VERIFIED_STAGING"
+      },
+      "classification": "C",
+      "reason": "Inactive successful packaging scratch: input copies, extracted verification image, jpackage temp and probes; final distribution separately classified.",
+      "decision": "delete",
+      "integrity": "extracted image/input jars/model match recorded generated inventory",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/adaptive16-build70-20261023",
+      "name": "adaptive16-build70-20261023",
+      "bytes": 75898011,
+      "files": 113,
+      "references": [
+        "docs/research/search/P3_CONSTRUCTION_2026-10-20.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 70,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "f71fe9a91ae6633bea1a5f2ee40515385f3ecd30",
+        "core": "75b8f0c621aea46166e91e429e251700077536bf946767e64d493ebafd9b04df",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/adaptive16-adoption/artifacts.json"
+      ],
+      "classification": "D",
+      "reason": "Historical adaptive-clock adoption identity; exact comparison use not fully resolved.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "62192393e32a95df5a76cc546f99975208eae3c3d7e0f00bf61734d5ae7fdbb9",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "62192393e32a95df5a76cc546f99975208eae3c3d7e0f00bf61734d5ae7fdbb9"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261016T231443-0adaa26c",
+      "name": "candidate-20261016T231443-0adaa26c",
+      "bytes": 64307423,
+      "files": 105,
+      "references": [
+        "docs/unified-architecture/WU7-PACKAGING.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "11060c8df2e5fc4dcc7356f52e9ea4a6e18439f2",
+        "core": "d5ca36f380744ecac09f05774b5d9aae460b401c459d7ae6f9d8ca64df9fb4df",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/migration/portable-build/check_selection.py"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "a0a0f66339dd0615b3eabd2f135a81dc9f52b1358f7c65738dc421f28e316dcc",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261016T231550-d382f23c",
+      "name": "candidate-20261016T231550-d382f23c",
+      "bytes": 64307965,
+      "files": 105,
+      "references": [
+        "docs/unified-architecture/WU7-PACKAGING.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "11060c8df2e5fc4dcc7356f52e9ea4a6e18439f2",
+        "core": "d5ca36f380744ecac09f05774b5d9aae460b401c459d7ae6f9d8ca64df9fb4df",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "aaaf5f405111967466f15471c9a1a429c0def30df41d5d4c4d84d55526520541",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261016T233839-885ce531",
+      "name": "candidate-20261016T233839-885ce531",
+      "bytes": 64306198,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "18ddd6ece499ab4304a65aeed774992b60196bac",
+        "core": "1ccdc762088786e3d06e4a6df648819a1a14b725bdcd9e5468456cab0179d297",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "a2c3b458f6c35a2a4fd0587a78d726918da9b8ca6eb7b20cde71326ae911abf8",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261017T195607-a939b2c8",
+      "name": "candidate-20261017T195607-a939b2c8",
+      "bytes": 64339870,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5f992ded72598cf5f178c12596e86d506f2c85c6",
+        "core": "4b6a474ef4a0689553fd98651757602934aae5cdf094b5fa7bed88bb4fda4d09",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "a797e66327273fc44342b18f9bcd1aa8355804edb09090e8bf8d1060c4277476",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261017T211043-e3b257ae",
+      "name": "candidate-20261017T211043-e3b257ae",
+      "bytes": 64343284,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5f992ded72598cf5f178c12596e86d506f2c85c6",
+        "core": "4b6a474ef4a0689553fd98651757602934aae5cdf094b5fa7bed88bb4fda4d09",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "9ef02c6ffe59d7324e590aa4618ed0b6d5d8ba4733a8b1a277f46514f2204cfa",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261018T212645-2ba67853",
+      "name": "candidate-20261018T212645-2ba67853",
+      "bytes": 64391232,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "6b8d27566d80dd6c864cb531ea3530f70bf8a076",
+        "core": "4a9f2c200023e0d9e578105d69ba20bc7e93f380e1261c547a8ef123a96236b6",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "69b851737768d0f1a3d97199dff989bd12894a61c8a87ad19bbccf8a6b7a15d7",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261019T200637-1626b61a",
+      "name": "candidate-20261019T200637-1626b61a",
+      "bytes": 64445732,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 39,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "57961d773ee38a7aa18da1e64ac9788ad184ec0e",
+        "core": "bed02f92c4c341cdd7885fd164344f2112405114d93e71a0b9e6ecf3b2dea9be",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "583a1ed1c26601528a1737c040aded7311ef563268e549ced4157d1aa04a7c5b",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261019T204350-231613ec",
+      "name": "candidate-20261019T204350-231613ec",
+      "bytes": 65370841,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 40,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "38e5626a6bfb76690a539d0ce0e04e70bd57f9d1",
+        "core": "45a2dfd7618c989c84827b0affeaae9967e596c613648c70f0329b299ee3f829",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "1b54664081e61659c1b01d1b0d6f18a4ee1e619335ba8c2efe789e4979ce0d40",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261019T235638-60091dfe",
+      "name": "candidate-20261019T235638-60091dfe",
+      "bytes": 65394446,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 41,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "fecb1e8f7c769272a6f728d2beb7252c84763d47",
+        "core": "f43bb1d0e170f24ab5a73cda4921292126b756579a89f10f049ab064ce02c782",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "12cda452fbedfd9165727cc02be97546d29e26144c2062357b423ae013a31d27",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261020T021103-a7b79907",
+      "name": "candidate-20261020T021103-a7b79907",
+      "bytes": 65394197,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 42,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "2334760b32b1a91f56e9beb972cd1a1fed13e3df",
+        "core": "d7850df04178c434fabdf722c328d3ac3008487eaf8306548fc67813c399751b",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "89eb63b6e06e43a8cb8cd59e410cc01598c14c8582e971e312788e69692f81cb",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261020T092058-f107540e",
+      "name": "candidate-20261020T092058-f107540e",
+      "bytes": 65430222,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 46,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "87008af9464c67d9979310783f60dd1076197bdc",
+        "core": "bfeebf2006ab7ea9c7b7a5f07c02b132019576d593000db8e6b4703cbc4e267c",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "f83e5c352b51cb94d5c5b331a680aaf4b2e2f313f1c460f998cf5a82d41d538d",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261020T190708-cc0a192f",
+      "name": "candidate-20261020T190708-cc0a192f",
+      "bytes": 65464032,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 50,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "d7d7599eb348a8b94408c7c06020d7d02c420920",
+        "core": "6f7d9910cc20bec5743e4932b00687b79fa7dde287e735a20560ca905a033069",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "a7428caa5d0a762e5c7b95852d5d15204e8e3fed2cd72732a6a37a8eb9b3aa69",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261021T020228-39ffaf90",
+      "name": "candidate-20261021T020228-39ffaf90",
+      "bytes": 65515058,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 55,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "b43b761c54fd3c3986d5c95385cd2581110d27e8",
+        "core": "44a0f8ece48ec9111db9b29d3c3a13df2adf7d1b52cf0981699bed2ada2ddf3a",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "d6e3f764f4498689173c7e3322eb46daf45a73a636f127a026def568f2a997f8",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261021T053955-d227467c",
+      "name": "candidate-20261021T053955-d227467c",
+      "bytes": 65542167,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 56,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "c91504b52c39b91fcf2f7407a9f89cd2141a3e69",
+        "core": "d309d1174f72706333fc2c9dcb97a9c95ab9e6b027aceb2d08ad38d7361c8973",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "82346e7b322e4b47c42e6f1bce0fa765dcaabbc4922fe872b5832c506fc3193e",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261021T100536-322d6ae6",
+      "name": "candidate-20261021T100536-322d6ae6",
+      "bytes": 65554576,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 57,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "0270c53586152ac56e28432a8ac933f42d636da4",
+        "core": "71ccbdb742c15c57186a1e98246ebbc5cd5478aa0506d6a85be224e9dab5b05f",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "bf43067b0c1fddb6d176e6c964b0fcee2e37d0fedf55bea14f91a96c957556e0",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261021T181052-7c877773",
+      "name": "candidate-20261021T181052-7c877773",
+      "bytes": 65566442,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 58,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "08a9d322031c24932b5c09cf4cae977a7ec21d3f",
+        "core": "817e3ad12a8dc8ba9ab02bfffcdfb5e153bfb037f81b8b6e092f8071471c42b6",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "215c4caf6a860eea87c9c38fb532f3179a155616962107ca82f7b206c3683122",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261021T201446-fb360a98",
+      "name": "candidate-20261021T201446-fb360a98",
+      "bytes": 65586760,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 59,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "267340005d76a81d701ca449b3df0417ff7f0c17",
+        "core": "1dc590b34f9be39f36c4ce6396421f8ab1540b74c7a297fff8a2354f4c734209",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "ceb3f36b0fa2c5f88db0729b2a00ac615bfb6dd41b963de2e6c97c5c26224ecd",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261022T003859-43d996d1",
+      "name": "candidate-20261022T003859-43d996d1",
+      "bytes": 65607560,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 61,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "ea4428b8ddc4781eecf6f4e8033872949c433542",
+        "core": "a6314b15bd3f16e922f895893bfa41e6be0d19246879d2ff137004db33191f57",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "328d90286800cd411a4c9d7b798b08793c0922668a5dc31ede17717d0ef7566c",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261022T044205-155841fd",
+      "name": "candidate-20261022T044205-155841fd",
+      "bytes": 65602650,
+      "files": 105,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 61,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "499685abc4a84fe31c5f0bac6a4230604a5f893a",
+        "core": "ddba8ab7c9a2a79123f47149b4993ff30eec3ec4ae351cbb21c764ef374f3c36",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "e52c879fbf792ab409c8e3f41c6c82295e440d455a8d7ed5baf0ea26a2ecd1bc",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261022T201753-a4709f77",
+      "name": "candidate-20261022T201753-a4709f77",
+      "bytes": 75872261,
+      "files": 113,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 65,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5409ebd345fd445ae0fb953de4b3d17b7581d90b",
+        "core": "c1e876c0a5a21994a40381a2e7580cd5a60effd1798f57ea50b582f4b58d4df7",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "a3e94c52ae210e7389f72013e243c64f8a1af108fafa9304cce6b58ec7c8b5e2",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261022T205714-985d9850",
+      "name": "candidate-20261022T205714-985d9850",
+      "bytes": 75878234,
+      "files": 113,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 66,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "f75920dbce35f536564d25d575d31340d3a7072b",
+        "core": "b47857edaf644dc88c88307cfbc1fb34a5fd085b5694167c6d46a54934f08876",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "d165a8c8f242535595147bbd813fb89b45333e38a67f0b8c24764180782181b4",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261022T221732-bc1cbce0",
+      "name": "candidate-20261022T221732-bc1cbce0",
+      "bytes": 75872459,
+      "files": 113,
+      "references": [
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/validation.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 66,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "f75920dbce35f536564d25d575d31340d3a7072b",
+        "core": "4bdb4cda136b6a012dbbccc00e7606646fd1d758d80f2de22b7d21cc1074e4c8",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/validation.json"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "f48d2f6c3116f6e3b78b0edc89fb0938d586bbffe6f0d17a42ad3507e78455da",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261022T222358-7513297c",
+      "name": "candidate-20261022T222358-7513297c",
+      "bytes": 75869225,
+      "files": 113,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 67,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "30ad8368c10c06d93b412d02994f3fc43a6925ed",
+        "core": "da0b713d1967830494a82c8d4055c64379dd3a47162d142c4f09ba31b31e4500",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "c88fdaec6ece69ff1b30c16f06904a4f645be5e578d6ade852b45f0755893d2e",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261022T222712-22584dcd",
+      "name": "candidate-20261022T222712-22584dcd",
+      "bytes": 75869048,
+      "files": 113,
+      "references": [
+        "docs/research/search/P3_CONSTRUCTION_2026-10-20.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 68,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "b144a2bba7ba8f0e815845c1daa96f2bfc992ad0",
+        "core": "5cbd1d70ef67877857ed4cf33f97b306e73518102be6c070a7cdaac760e357ae",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/baseline-consolidation/prepare69.py"
+      ],
+      "classification": "A",
+      "reason": "Retained prepare69.py consumes build68 candidate inputs for historical comparison.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "2bd0b2881bd807ac2275a838126e8ce09087f26af095cacfe863f618c3e82428",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "2bd0b2881bd807ac2275a838126e8ce09087f26af095cacfe863f618c3e82428"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261023T003420-389d695a",
+      "name": "candidate-20261023T003420-389d695a",
+      "bytes": 75871888,
+      "files": 113,
+      "references": [
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/validation.json",
+        "docs/research/search/P3_CONSTRUCTION_2026-10-20.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 69,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "18f3c4f12a01417a48fb4c044ff3bde2c5b44b2d",
+        "core": "a7dd735ddc875cfad7a6a6ebd2d24d6fe9bccc313253334dba119d2b5803fc91",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/baseline-consolidation/final_evidence69.py",
+        "build/baseline-consolidation/native_gui69.py",
+        "build/adaptive16-adoption/core-byte-audit.json",
+        "build/adaptive16-adoption/check_profiles.py",
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/validation.json",
+        "docs/research/search/p3-construction-2026-10-20/baseline-cp64/raw/runtime-class-audit69.json"
+      ],
+      "classification": "A",
+      "reason": "Frozen build69 runtime class audit and adaptive16 comparison scripts consume this artifact.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "32ee421cd583259060fec870d25be3c618bccf45385626c738e7e436e8c39e9b",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "32ee421cd583259060fec870d25be3c618bccf45385626c738e7e436e8c39e9b"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261023T011345-2502dab6",
+      "name": "candidate-20261023T011345-2502dab6",
+      "bytes": 75870671,
+      "files": 113,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 69,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "43b690fe272d49334578377eaa059a754c671470",
+        "core": "3878b61b44508284a539f38297f5e4866ac5e5628c2f2a7febb1160dcb8b042e",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "111e6b8d578e651f55fac17acbd0234cef23e91a2d4dc23a013631303c6e5bfd",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261023T195552-c00e3315",
+      "name": "candidate-20261023T195552-c00e3315",
+      "bytes": 75956841,
+      "files": 113,
+      "references": [
+        "docs/research/search/p3-sr034-2026-10-24/verify_baseline_v2.py",
+        "docs/research/search/p3-sr034-2026-10-24/verify_baseline_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/trajectory-v1-binding.json",
+        "docs/research/search/p3-sr034-2026-10-24/run_trajectory_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/run_root_effort_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/root-effort-v1-binding.json",
+        "docs/research/search/p3-sr034-2026-10-24/prepare_spending_development_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/prepare_clock_development_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/baseline-native-v2-summary.json",
+        "docs/research/search/p3-sr034-2026-10-24/baseline-native-v1-summary.json",
+        "docs/nnue-native-packaging-fix.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 74,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "d9a91cbe8b52caf6f3031e17d2ea5561c1064fa0",
+        "core": "facac0db65c7f97a120083174ea4de20ef210daf3252a79a3fd5eb2cac99e6f7",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/packaging/identity-repair-20261024/native-all-workers.json",
+        "build/packaging/identity-repair-20261024/candidate-summary.json",
+        "docs/research/search/p3-sr034-2026-10-24/verify_baseline_v2.py",
+        "docs/research/search/p3-sr034-2026-10-24/verify_baseline_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/trajectory-v1-binding.json",
+        "docs/research/search/p3-sr034-2026-10-24/run_trajectory_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/run_root_effort_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/root-effort-v1-binding.json",
+        "docs/research/search/p3-sr034-2026-10-24/raw/baseline-native-v2.json",
+        "docs/research/search/p3-sr034-2026-10-24/raw/baseline-native-v1.json",
+        "docs/research/search/p3-sr034-2026-10-24/prepare_spending_development_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/prepare_clock_development_v1.py",
+        "docs/research/search/p3-sr034-2026-10-24/baseline-native-v2-summary.json",
+        "docs/research/search/p3-sr034-2026-10-24/baseline-native-v1-summary.json"
+      ],
+      "classification": "A",
+      "reason": "SR034 frozen clock/root-effort/trajectory harnesses bind this exact native baseline.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "b97546beb7417e552c59cb53ea9635880389d338c635f55d9648edee94cd03fb",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "b97546beb7417e552c59cb53ea9635880389d338c635f55d9648edee94cd03fb"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261025T185156-0e86556d",
+      "name": "candidate-20261025T185156-0e86556d",
+      "bytes": 76028286,
+      "files": 113,
+      "references": [],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 77,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "78b372c3424b8a669bedd33729f5343675b2254e",
+        "core": "b8542a96ad53e376d8b5fbbfc3752fc7aa5227433868f919370db9a8a703e19e",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "D",
+      "reason": "Build77 artifact seen in owner GUI screenshot in TC-P1 production record; external/current shortcut use uninspectable.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "d30ad4c7e5f26c3e42d27c01483a87631d6842d19ef0907e9d1fb3d6fb07dda2",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "d30ad4c7e5f26c3e42d27c01483a87631d6842d19ef0907e9d1fb3d6fb07dda2"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261102T090707-79b214e1",
+      "name": "candidate-20261102T090707-79b214e1",
+      "bytes": 76231537,
+      "files": 113,
+      "references": [
+        "docs/research/search/p4-learning/PRODUCTION.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 84,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "d4eb9d6f36df41d29652613e9f86eb3212a807ca",
+        "core": "e53ff82adb653dffaca382b8e0e4ff24a405b7a355c4eaeac8ccd2147d2c1338",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/search/p4-learning/raw/production-build85-v1/core-byte-comparison.json"
+      ],
+      "classification": "A",
+      "reason": "Preversion HL-G1 production core-byte comparison explicitly consumes these bytes; not the frozen build84 champion.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "45d801094e3ce3ef38303369cb22dfa25641ae06624701cbd70cc4220102608e",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "45d801094e3ce3ef38303369cb22dfa25641ae06624701cbd70cc4220102608e"
+    },
+    {
+      "path": "releases/candidates/windows-x64/candidate-20261102T091613-a28be05c",
+      "name": "candidate-20261102T091613-a28be05c",
+      "bytes": 76227488,
+      "files": 113,
+      "references": [
+        "docs/research/search/p4-learning/PRODUCTION.md",
+        "docs/research/search/p4-learning/production-build85-manifest.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 85,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "7fd84cafdc48647f6a93048dee7b3636923befaf",
+        "core": "05241386601a7149348a1a6bb0028be7a5fbd7136e11d42acf88f81b9d5fb1e5",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "docs/research/search/p4-learning/production-build85-manifest.json"
+      ],
+      "classification": "A",
+      "reason": "Final build85 HL-G1 production integration identity and rollback/qualification record.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "691cb806d54addb9f4ffdd2549829ffb92226b0b00877eb3408e22df40541f11",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "691cb806d54addb9f4ffdd2549829ffb92226b0b00877eb3408e22df40541f11"
+    },
+    {
+      "path": "releases/candidates/windows-x64/formulation-build91-v1",
+      "name": "formulation-build91-v1",
+      "bytes": 76307024,
+      "files": 113,
+      "references": [
+        "docs/engine-formulation-identity.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 91,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "4bc550b376295903f9c7d6428a9a3c303c6caa51",
+        "core": "324947d9e08e7077f124e2307c1489d0b8504e8fba8683865bb93113712f54fb",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/formulation-identity/verify-identities.py",
+        "build/formulation-identity/final-identities/summary.json"
+      ],
+      "classification": "A",
+      "reason": "Latest committed GUI/UCI build91 and final identity verification scripts; protect current external/shortcut consumers.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "be1800bec74a4659a1dbf770de65f2f60c22c15eec5f17963e604bea22e4afa4",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "be1800bec74a4659a1dbf770de65f2f60c22c15eec5f17963e604bea22e4afa4"
+    },
+    {
+      "path": "releases/candidates/windows-x64/formulation-precommit-v2",
+      "name": "formulation-precommit-v2",
+      "bytes": 76309069,
+      "files": 113,
+      "references": [
+        "docs/engine-formulation-identity.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 90,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "a8d4681f2ec3fb28fcfd33092223359db6360743",
+        "core": "91f9ad66a329ad5a270ed773b33e9d0959e139170c185b7cb21e8b497444ffbb",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded provisional ordinary identity packaging; final committed build91 retained.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "7e110b2ef014be3fec81ad6d42bfd500361ddf6895aa89ae98a04916b6aa6dad",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/portable-explicit-uci",
+      "name": "portable-explicit-uci",
+      "bytes": 64307330,
+      "files": 105,
+      "references": [
+        "docs/unified-architecture/WU7-PACKAGING.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 35,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "11060c8df2e5fc4dcc7356f52e9ea4a6e18439f2",
+        "core": "d5ca36f380744ecac09f05774b5d9aae460b401c459d7ae6f9d8ca64df9fb4df",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/migration/portable-build/check_selection.py"
+      ],
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "398101fd1c821a890488f2eeaad6e1860f8a363a5a87084fd22875a319b08da4",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/tc-p1-adoption-precommit-v1",
+      "name": "tc-p1-adoption-precommit-v1",
+      "bytes": 76284484,
+      "files": 113,
+      "references": [
+        "docs/research/search/p4-tactical/PRODUCTION.md"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 89,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "1f55124ba4b5ad698257ee79b69f00da79eba2e0",
+        "core": "ee633e9d93b6c02b2e6bc430016d6cb4ea0daeb813c9429c7076a12fd4e425db",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "classification": "B",
+      "reason": "Superseded ordinary package; no frozen comparison, research launcher or current runtime dependency found in inspected repository/configuration references.",
+      "decision": "delete",
+      "integrity": "verified existing manifest/image/archive",
+      "receiptSha256": "c75b5ffc3db70bea01b85f526e50141545246f433b081156a43e871539441cb9",
+      "outcome": "deleted"
+    },
+    {
+      "path": "releases/candidates/windows-x64/tc-p1-build90-v2",
+      "name": "tc-p1-build90-v2",
+      "bytes": 76281738,
+      "files": 113,
+      "references": [
+        "docs/research/search/p4-tactical/PRODUCTION.md",
+        "docs/research/search/p4-tactical/production-build90-qualification.json"
+      ],
+      "reparse": [],
+      "identity": {
+        "version": {
+          "build": 90,
+          "major": 0,
+          "minor": 0,
+          "patch": 0
+        },
+        "revision": "5f093f3a716cc218c48a7ecc54bbfc1eca44f364",
+        "core": "3e047b7ec4f5d261e90d8a875addb0074b11a154cbffccc549002b433b11dfd9",
+        "manifest": "SeedV6-UCI\\build-manifest.json"
+      },
+      "localReferences": [
+        "build/formulation-identity/verify-identities.py",
+        "docs/research/search/p4-tactical/raw/production-adoption-v1/frozen_bridge.py",
+        "docs/research/search/p4-tactical/raw/production-adoption-v1/frozen-bridge-v1/result.json",
+        "docs/research/search/p4-tactical/production-build90-qualification.json"
+      ],
+      "classification": "A",
+      "reason": "Exact adopted build90 production distributions, recorded ZIP/core hashes and frozen bridge/identity scripts.",
+      "decision": "retain",
+      "integrity": "verified existing manifest/image/archive",
+      "treeSha256": "e24b8e91efcaf415b5d7306eeb7d7be1bfebd2e567354d8ec966eb2bb78332bb",
+      "outcome": "retained-unchanged",
+      "afterTreeSha256": "e24b8e91efcaf415b5d7306eeb7d7be1bfebd2e567354d8ec966eb2bb78332bb"
+    }
+  ],
+  "outcome": "cleanup-complete",
+  "reclaimedBytes": 24856644843,
+  "verification": {
+    "retainedDirectoriesUnchanged": 30,
+    "frozenManifestsVerified": 22,
+    "frozenFileEntriesVerified": 652,
+    "noNewHistoricalDirectories": true,
+    "versionDecision": "no_bump: non-runtime packaging tooling and documentation",
+    "versionSha256": "4e87e34cc8db4604f3b6e7d70127d4ce52a1f9144645cbe2cbf68b8b79136fa0",
+    "versionBytesUnchanged": true,
+    "reclaimedSizeMeaning": "Sum of deleted file lengths; approximate disk space, not filesystem allocation/free-space measurement."
+  }
+}

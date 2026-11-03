@@ -6,6 +6,8 @@ import json
 import os
 from pathlib import Path
 import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -189,9 +191,167 @@ class PackagingSafety(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, 'jpackage exit 23'):
                 p.package(args)
         self.assertFalse(final.exists())
-        attempts = list(final.parent.glob('.staging-*/attempt.json'))
+        self.assertFalse(list(final.parent.glob('.staging-*')))
+        attempts = list(final.parent.glob('.last-attempt-*.json'))
         self.assertEqual(1, len(attempts))
-        self.assertEqual('FAILED_UNVERIFIED', json.loads(attempts[0].read_text())['status'])
+        self.assertEqual('FAILED', json.loads(attempts[0].read_text())['status'])
+
+    def published_fixture(self, name='current'):
+        output = self.work / name; output.mkdir()
+        image = output / 'image'; image.mkdir()
+        (image / 'payload').write_text(name)
+        p.write_json(image / 'build-manifest.json', {'files': p.file_inventory(image)})
+        archive = output / 'image.zip'; p.make_zip(image, archive)
+        p.write_json(output / 'candidate.json', {'status': 'VERIFIED_LOCAL_CANDIDATE',
+            'image': image.name, 'archive': archive.name, 'archiveSha256': p.sha(archive),
+            'manifestSha256': p.sha(image / 'build-manifest.json')})
+        return output
+
+    def test_current_paths_are_stable_separate_and_outside_candidates(self):
+        self.assertEqual(p.ROOT / 'dist/windows/current', p.destination('windows', 'gui', 'current'))
+        self.assertEqual(p.ROOT / 'releases/current/windows-x64', p.destination('windows', 'uci', 'current'))
+        self.assertEqual(p.ROOT / 'dist/windows/candidates/frozen-identity',
+                         p.destination('windows', 'gui', 'frozen-identity'))
+
+    def test_success_replaces_complete_distribution_and_removes_backup(self):
+        old = self.published_fixture()
+        new = self.published_fixture('new')
+        p.publish(new, old, True)
+        p.verify_published(old)
+        self.assertEqual('new', (old / 'image/payload').read_text())
+        self.assertFalse(new.exists())
+        self.assertFalse((self.work / '.previous-current').exists())
+
+    def test_publication_failure_restores_exact_previous_distribution(self):
+        old = self.published_fixture(); before = p.file_inventory(old)
+        new = self.published_fixture('new')
+        rename = p.rename_exclusive
+        def fail_new(source, target):
+            if source == new:
+                raise OSError('injected publication failure')
+            rename(source, target)
+        with patch.object(p, 'rename_exclusive', side_effect=fail_new):
+            with self.assertRaisesRegex(OSError, 'injected'):
+                p.publish(new, old, True)
+        self.assertEqual(before, p.file_inventory(old))
+        self.assertTrue(new.exists())
+
+    def test_interruption_after_retirement_restores_previous_before_build(self):
+        old = self.published_fixture(); before = p.file_inventory(old)
+        p.rename_exclusive(old, self.work / '.previous-current')
+        p.recover_previous(old)
+        self.assertEqual(before, p.file_inventory(old))
+
+    def test_failed_restore_names_preserved_backup_and_next_build_recovers(self):
+        old = self.published_fixture(); before = p.file_inventory(old)
+        new = self.published_fixture('new'); previous = self.work / '.previous-current'
+        rename = p.rename_exclusive
+        def fail_publication_and_restore(source, target):
+            if source in (new, previous):
+                raise OSError('injected unavailable destination')
+            rename(source, target)
+        with patch.object(p, 'rename_exclusive', side_effect=fail_publication_and_restore):
+            with self.assertRaisesRegex(RuntimeError, 'previous complete distribution remains'):
+                p.publish(new, old, True)
+        self.assertFalse(old.exists())
+        self.assertEqual(before, p.file_inventory(previous))
+        p.recover_previous(old)
+        self.assertEqual(before, p.file_inventory(old))
+
+    def test_interruption_after_publication_cleans_verified_previous(self):
+        old = self.published_fixture()
+        p.rename_exclusive(old, self.work / '.previous-current')
+        new = self.published_fixture('new'); p.rename_exclusive(new, old)
+        p.recover_previous(old)
+        p.verify_published(old)
+        self.assertFalse((self.work / '.previous-current').exists())
+
+    def test_modified_output_and_backup_are_preserved_for_inspection(self):
+        old = self.published_fixture()
+        new = self.published_fixture('new')
+        (old / 'image/payload').write_text('user edit')
+        with self.assertRaisesRegex(RuntimeError, 'inventory'):
+            p.publish(new, old, True)
+        self.assertEqual('user edit', (old / 'image/payload').read_text())
+        self.assertTrue(new.exists())
+
+    def test_unrelated_files_beside_current_image_are_not_discarded(self):
+        old = self.published_fixture(); new = self.published_fixture('new')
+        note = old / 'user-notes.txt'; note.write_text('keep this work')
+        with self.assertRaisesRegex(RuntimeError, 'Unexpected files'):
+            p.publish(new, old, True)
+        self.assertEqual('keep this work', note.read_text())
+        self.assertTrue(new.exists())
+
+    def test_frozen_output_cannot_be_replaced(self):
+        old = self.published_fixture('frozen'); before = p.file_inventory(old)
+        new = self.published_fixture('new')
+        with self.assertRaises((OSError, RuntimeError)):
+            p.publish(new, old, False)
+        self.assertEqual(before, p.file_inventory(old))
+
+    @unittest.skipUnless(os.name == 'nt', 'Windows handle sharing check')
+    def test_actual_locked_file_leaves_previous_distribution_unchanged(self):
+        old = self.published_fixture(); before = p.file_inventory(old)
+        new = self.published_fixture('new')
+        with (old / 'image/payload').open('rb'):
+            with self.assertRaisesRegex(RuntimeError, 'locked'):
+                p.publish(new, old, True)
+        self.assertEqual(before, p.file_inventory(old))
+        self.assertTrue(new.exists())
+
+    def test_output_lock_excludes_another_python_process_and_releases(self):
+        output = self.work / 'current'
+        command = [sys.executable, '-B', '-c',
+                   'import native_packaging as p; from pathlib import Path; import sys\n'
+                   'with p.output_lock(Path(sys.argv[1])): print("acquired")', str(output)]
+        with p.output_lock(output):
+            result = subprocess.run(command, cwd=Path(p.__file__).parent, capture_output=True, text=True)
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn('Another build owns', result.stderr)
+        result = subprocess.run(command, cwd=Path(p.__file__).parent, capture_output=True, text=True)
+        self.assertEqual(0, result.returncode, result.stderr)
+
+    def test_failed_packaging_preserves_current_and_cleans_staging(self):
+        old = self.published_fixture(); before = p.file_inventory(old)
+        args = argparse.Namespace(application='uci', platform='windows', keep_staging=False)
+        with patch.object(p, 'build_image', side_effect=RuntimeError('compile/package failure')):
+            with self.assertRaisesRegex(RuntimeError, 'compile/package failure'):
+                p.package_locked(args, {'candidate': 'current'}, [], old)
+        self.assertEqual(before, p.file_inventory(old))
+        self.assertFalse((self.work / '.staging-current').exists())
+        self.assertIn('compile/package failure', (self.work / '.last-attempt-current.json').read_text())
+
+    def test_abandoned_owned_staging_is_removed_but_unowned_is_preserved(self):
+        old = self.published_fixture(); stage = self.work / '.staging-current'; stage.mkdir()
+        (stage / 'large-incomplete-output').write_bytes(b'partial')
+        p.write_json(stage / 'attempt.json', {'owner': 'someone-else', 'output': str(old)})
+        args = argparse.Namespace(application='uci', platform='windows', keep_staging=False)
+        with self.assertRaisesRegex(RuntimeError, 'Unowned'):
+            p.package_locked(args, {'candidate': 'current'}, [], old)
+        self.assertTrue((stage / 'large-incomplete-output').exists())
+        p.write_json(stage / 'attempt.json', {'owner': 'seedv6-native-packaging', 'output': str(old)})
+        with patch.object(p, 'build_image', side_effect=RuntimeError('new build failure')):
+            with self.assertRaisesRegex(RuntimeError, 'new build failure'):
+                p.package_locked(args, {'candidate': 'current'}, [], old)
+        self.assertFalse(stage.exists())
+
+    def test_explicit_diagnostic_retention_blocks_automatic_discard(self):
+        old = self.published_fixture()
+        args = argparse.Namespace(application='uci', platform='windows', keep_staging=True)
+        with patch.object(p, 'build_image', side_effect=RuntimeError('diagnose this')):
+            with self.assertRaisesRegex(RuntimeError, 'diagnose this'):
+                p.package_locked(args, {'candidate': 'current'}, [], old)
+        self.assertTrue((self.work / '.staging-current/attempt.json').exists())
+        with self.assertRaisesRegex(RuntimeError, 'retained by request'):
+            p.package_locked(args, {'candidate': 'current'}, [], old)
+
+    def test_generated_readonly_launcher_is_cleaned(self):
+        stage = self.work / 'staging'; stage.mkdir()
+        file = stage / 'launcher.exe'; file.write_bytes(b'fixture')
+        file.chmod(0o444)
+        p.remove_idle_tree(stage)
+        self.assertFalse(stage.exists())
 
     def test_mac_launcher_and_native_command_configuration(self):
         text = p.launcher_text()
