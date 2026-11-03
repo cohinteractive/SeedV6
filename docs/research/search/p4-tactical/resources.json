@@ -1,7 +1,7 @@
 {
   "objective": "TC-R001",
-  "chargedWallSeconds": 8039.321571499982,
-  "remainingWallSeconds": 56760.67842850002,
+  "chargedWallSeconds": 8080.578509499988,
+  "remainingWallSeconds": 56719.42149050001,
   "initiatedGames": 255,
   "remainingGames": 865,
   "developmentGames": 255,
@@ -184,6 +184,20 @@
       "receipt": "window-supervisor-v3-native-qualification.json",
       "wallSeconds": 0.42813610000303015,
       "category": "charged native sampling/owned dummy qualification; no engine",
+      "status": "passed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-w4-risk-v1-execution.json",
+      "wallSeconds": 20.75385730000562,
+      "category": "charged failed W4 PC admission; zero engines or games",
+      "status": "failed",
+      "initiatedGames": 0
+    },
+    {
+      "receipt": "p1-w4-risk-v1-readmission-observation.json",
+      "wallSeconds": 20.503080700000282,
+      "category": "charged passive W4 readmission observation; no engine",
       "status": "passed",
       "initiatedGames": 0
     }

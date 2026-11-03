@@ -1,0 +1,65 @@
+{
+  "id": "TC-P1-W4-RISK-V1",
+  "status": "prospectively frozen before games; requires a new controlled window",
+  "frozenUtc": "2026-11-03T11:33:30.947780+00:00",
+  "question": "Does unchanged TC-P1 introduce material incremental W4 ROOT_REUSE competitive or operational risk against exact HL-G1/build84?",
+  "category": "W4 competitive risk",
+  "namePrefix": "p1-w4-risk-v1-admission2",
+  "workers": [
+    4
+  ],
+  "pairs": 32,
+  "tc": "10+0.1",
+  "seed": 2026110401,
+  "timeoutSeconds": 3300,
+  "estimatedMatchSeconds": 2200,
+  "remainingCategoryGames": 96,
+  "remainingTotalGames": 865,
+  "remainingMatchSeconds": 56760.67842850002,
+  "warningPolicy": "audited-fallback",
+  "baseline": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\raw\\runtime-build84-v1",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\raw\\runtime-build89-p1-v1",
+  "baselineProfile": "guided",
+  "candidateProfile": "probcut",
+  "candidateIdentity": {
+    "name": "TC-P1 bounded capture verification over HL-G1",
+    "source": "a7c45dffeaffc362bc7c7026d03a2e6434472be2",
+    "build": 89,
+    "flags": 1177812991
+  },
+  "controlIdentity": {
+    "name": "HL-G1 request-scoped retained learning and history-guided reductions",
+    "source": "b8ea8b2856eed3f6c774860ca540375054e4de30",
+    "build": 84,
+    "flags": 104071167
+  },
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\development-v1-openings.pgn",
+  "openingSha256": "3a57e5e7062ac0acadefccde3a02a002d531698c3c52724ac81c4d52b2ebf954",
+  "openingQualification": "All32 established HL development roots in unchanged order, reused from TC V2 and prior HL W4 context. No outcome filtering, no claim of independence. Protected confirmation remains disjoint. Runtime seed/color reversal frozen separately.",
+  "runtimeManifests": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-learning\\runtime-build84-v1-manifest.json",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-tactical\\runtime-build89-p1-v1-manifest.json"
+  ],
+  "adapterSha256": "a01e010361d420b7c2178123e4d0c3c2f8de8867e78811734d75449d8b3407d4",
+  "resources": "One W4 ROOT_REUSE game at a time, symmetric below-normal JVM Xmx512m/ActiveProcessorCount4, existing CPU/memory/gaming guards unchanged. New60-minute owner window; expected33-40min,3300s cap plus bounded supervision. No concurrent experiments.",
+  "audit": "Existing owned Windows Job, live/full trace audit, independent PGN legal/history/PV/terminal/full-request accounting, narrow audited-fallback warning policy, hash-stable inputs and complete handle draining. Any other warning/failure stops and preserves evidence.",
+  "stopping": "Fixed32 color-reversed pairs/64 games. No score-based stop, extension or tuning. Operational/PC failure stops owned job, drains all children and preserves all starts/partial evidence; no automatic replay.",
+  "analysis": "Only after all32 pairs pass score-blind operational review: descriptive WDL, pair scores, paired-normal95 and Hoeffding95. W4 risk evidence only, never pooled with W1 or interpreted as equivalence/superiority confirmation.",
+  "nextDecision": "Investigate serious competitive or operational deterioration before independent W1 admission; distinguish selective disagreement and sampling uncertainty from genuine defects. If qualification remains adequate, freeze the full fresh W1 confirmation protocol for selected unchanged TC-P1. No automatic confirmation from this window.",
+  "reservedConfirmation": "640 games/320 fresh pairs and one claim attempt remain unspent; reserve at least24000 charged seconds prospectively before more development.",
+  "supervisor": "tools/p4-tactical-supervise.py",
+  "supervisorSha256": "42e0a8fd6329e08520aedf249ac6030c216258603be482ed5e79099afdefef1a",
+  "windowRequired": true,
+  "coexistence": "Native system CPU/free-memory samples every2s; Overwatch presence checked every10s.20s pre-admission must stay<=35%CPU and>=12GiB free with no Overwatch. During run stop owned Job for three consecutive>=75%CPU samples, free RAM<8GiB, Overwatch, explicit stop file, deadline or cap. Record every sample locally. These thresholds are operational guards, not proof of clock fairness; assess all interference before interpreting the complete batch.",
+  "precedingBatch": "Complete fixed128-game support:53W/40D/35L,57.03125%, paired-normal95%50.6242-63.4383%; exploratory. Descriptive adaptive96-pair pool55.7292%. Candidate unchanged and selected as finalist for remaining qualification; independent attempt unspent.",
+  "controlRationale": "Exact84 guided is the nearest accepted integrated control and isolates the added tactical verification under the same W4 domain. Prior HL84 vs79 adverse/inconclusive46.09% remains unresolved historical context; this test cannot establish W4 superiority to79 or resolve the79/80 bridge. Reserve remaining32 risk games for justified material follow-up instead of spending them automatically.",
+  "executionAdmission": {
+    "attempt": 2,
+    "utc": "2026-11-03T11:43:34.155576+00:00",
+    "originalProtocol": "p1-w4-risk-v1-protocol.json",
+    "originalSha256": "38985868cba249c9de1fdd1dcbb9d9a7bb5e1b4b78e1d0bb6817f1ebb7347672",
+    "failedReceipt": "p1-w4-risk-v1-execution.json",
+    "investigation": "Admission1 had zero owned children/games, final preflight CPU36.589% exceeded35%. Subsequent20.503s passive observation passed10 consecutive samples<=25%, max13.729%, free>=16.92GiB, no gaming. Exact prior load cause unknown. Original guard runs independently again.",
+    "scope": "Output namespace only; no game replay or scientific sample/configuration/guard/cap change. New owner eight-hour availability supplies the execution deadline."
+  }
+}

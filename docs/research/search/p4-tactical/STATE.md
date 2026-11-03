@@ -45,6 +45,21 @@ window. W4 competitive risk is unmeasured. W1 short costs:72 requests/18 warmups
 isolated speed inference. Artifact bridge compared2117 JAR entries/29 other files;
 only generated version metadata differs, and4 committed-artifact preflights pass.
 
+## Latest owner PC availability
+
+Owner extended availability for all authorized work for eight hours, observed
+2026-11-03T11:38:59Z through19:38:59Z (4 November00:38:59-08:38:59 NZDT).
+[owner-availability-8h-v1.json](owner-availability-8h-v1.json) preserves the grant.
+Do not ask again about PC availability within it. Scientific/finite-resource gates
+remain unchanged; derive protocol-specific receipts from this grant. The owner is
+asleep; keep routine monitoring internal. No extra research scope is authorized.
+
+W4 admission1 failed before any child/game when the last preflight sample36.589%
+exceeded35%; all evidence is preserved,20.754s charged, zero W4 games. A20.503s quiet observation passed (max13.73% CPU, free>=16.92GiB).
+Same-sample admission2 is now queued using a fresh output namespace and derived
+window-v2 receipt. Original guards/caps are unchanged; no game replay. Prior one-hour window remains
+historical evidence; the newer grant supersedes its scheduling limit only.
+
 ## Current W4 execution admission
 
 Owner granted the next one-hour window, observed2026-11-03T11:38:01Z,
@@ -105,7 +120,7 @@ without a new concrete failure hypothesis. No independent claim or acceptance ye
 
 ## Resources, provenance and protected inputs
 
-Charged **8039.3215715000/64800s** (2h13m59.32s); remaining **56760.6784285000s**.
+Charged **8080.5785095000/64800s** (2h14m40.58s); remaining **56719.4214905000s**.
 Initiated255/1120 games: W1 development255/384 (129 left), W4 risk0/96,
 confirmation0/640; attempts0/1. Includes all failed/interrupted/admission/qualification
 work and independent post-batch audits. Reserve640 confirmation games and at least
@@ -169,6 +184,7 @@ owner mirrors P4-R005/F021. Repository-only execution uses the masters.
 
 Human actions required after this prompt:
 
-- **Blocking for W4 risk games:** provide a new one-hour controlled PC window.
+- **PC availability already granted:** no scheduling question before2026-11-03T19:38:59Z;
+  qualification and experiment-specific limits still apply.
 - **Blocking before mirror-dependent planning; non-blocking for repository work:**
   refresh both Phase4 Project Source mirrors to P4-R013/P4-F029.

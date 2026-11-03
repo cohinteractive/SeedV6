@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "startedUtc": "2026-11-03T11:41:06.130290+00:00",
+  "endedUtc": "2026-11-03T11:41:26.633360+00:00",
+  "wallSeconds": 20.503080700000282,
+  "samples": 11,
+  "maxCpuPercent": 13.729016786570746,
+  "minimumFreeGiB": 16.925933837890625,
+  "overwatchObserved": false,
+  "quietSamplesAtEnd": 10,
+  "raw": "docs\\research\\search\\p4-tactical\\raw\\p1-w4-risk-v1-readmission-pc-use.jsonl",
+  "method": "Bounded180s passive native load observation; wait for10 consecutive2s samples<=25% CPU,>=12GiB and no gaming before considering readmission. This adds conservative settling time; the frozen supervisor still independently requires its original20s/35% admission and unchanged runtime guards. No engine or game launched; exact cause of earlier transient unknown."
+}
