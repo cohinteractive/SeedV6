@@ -23,6 +23,9 @@ final class BaselineUciConfiguration {
             public String name() { return "SeedV6 Construction V1 NNUE CP64 " + ApplicationVersion.load().displayVersion(); }
             public String identity(int workers) { return identity(workers, 64); }
             public String identity(int workers, int hashMiB) { return binding.identity(workers, hashMiB); }
+            public com.ohinteractive.seedv6.search.driver.EngineFormulation formulation(int workers, int hashMiB) {
+                return binding.formulation(workers, hashMiB);
+            }
         };
     }
     private BaselineUciConfiguration() {}

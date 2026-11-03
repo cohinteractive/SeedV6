@@ -98,6 +98,9 @@ public final class UciEngine implements AutoCloseable {
             uciOutput.line("info string clockPolicy=" + configuration.clockPolicy().identity());
         if (!identity.isEmpty()) uciOutput.line("info string " + identity
                 + (configuration.standalone() ? " ttMiB=" + hashMiB : ""));
+        var formulation = configuration.formulation(rootWorkers, hashMiB);
+        if (formulation != null) uciOutput.line("info string formulation snapshot: "
+                + formulation.summary().replace("\n", " | "));
     }
 
     private void go(String[] tokens) {

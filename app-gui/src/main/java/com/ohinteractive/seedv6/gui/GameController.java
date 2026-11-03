@@ -242,6 +242,11 @@ final class GameController implements BoardPanel.InputListener, SearchGateway.Li
     }
 
     boolean gameStarted() { requireEdt(); return started; }
+    String formulationText(boolean details) {
+        requireEdt();
+        return AboutEnginePanel.play(search.participants(), started, evaluatorChanging,
+                mode, humanSide, search.workerCount(), details);
+    }
     boolean settingsEditable() { requireEdt(); return (!started || session.status().terminal()) && !search.isBusy(); }
     boolean canStartGame() {
         requireEdt();

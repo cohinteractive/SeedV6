@@ -24,9 +24,10 @@ public final class BaselineEngine {
     /** CP64 production policy only; explicit ConstructionSearch controls bypass this selector. */
     public enum SearchProfile {
         TC_P1, HL_G1, LEGACY;
+        public static final SearchProfile PRODUCTION_DEFAULT = TC_P1;
         public static final String PROPERTY = "seedv6.searchProfile";
         public static SearchProfile configured() {
-            try { return valueOf(System.getProperty(PROPERTY, "TC_P1").trim().toUpperCase(Locale.ROOT)); }
+            try { return valueOf(System.getProperty(PROPERTY, PRODUCTION_DEFAULT.name()).trim().toUpperCase(Locale.ROOT)); }
             catch (IllegalArgumentException invalid) {
                 throw new IllegalArgumentException("seedv6.searchProfile must be TC_P1, HL_G1 or LEGACY", invalid);
             }
@@ -125,9 +126,8 @@ public final class BaselineEngine {
     public SearchEvaluation evaluation() { return evaluation; }
     public ConventionalNnueEngine conventional() { return conventional; }
     public Evaluator evaluator() { return evaluator; }
-    public String identity(int workers, int hashMiB) {
-        var version = ApplicationVersion.load();
-        String model = switch (evaluator) {
+    private String evaluatorIdentity() {
+        return switch (evaluator) {
             case HCE -> "evaluator=HCE";
             case BREP2_32 -> "evaluator=BREP2_32 checkpoint=" + ProductionModel.CHECKPOINT
                     + " networkSha256=" + ProductionModel.SHA256 + " mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1";
@@ -136,11 +136,28 @@ public final class BaselineEngine {
                     + " payload=" + conventional.model().payloadSha256() + " head=" + conventional.model().headBackend()
                     + " scoreMapping=" + ConventionalNnueEngine.SCORE_MAPPING;
         };
+    }
+    public EngineFormulation formulation(int workers, int hashMiB) {
+        String label = switch (evaluator) {
+            case HCE -> "HCE (handcrafted)";
+            case BREP2_32 -> "BREP2-32 · checkpoint " + ProductionModel.CHECKPOINT
+                    + " · SHA-256 " + ProductionModel.SHA256.substring(0, 12);
+            case CONVENTIONAL_CP64 -> "Conventional NNUE CP64 · " + conventional.model().schema()
+                    + " · " + conventional.model().outputBuckets() + " heads · SHA-256 "
+                    + ConventionalNnueEngine.SHA256.substring(0, 12);
+        };
+        return new EngineFormulation(selectedConfiguration(workers, hashMiB), label, evaluatorIdentity(), clockPolicy);
+    }
+    public static String productionFormulation() {
+        return EngineFormulation.searchName(configuration(1, 64, SearchProfile.PRODUCTION_DEFAULT));
+    }
+    public String identity(int workers, int hashMiB) {
+        var version = ApplicationVersion.load();
         var configuration = selectedConfiguration(workers, hashMiB);
         return "baseline=construction-v1-" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? "cp64" : evaluator.name())
                 + " searchProfile=" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? searchProfile : "CONSTRUCTION_V1")
                 + " search=construction-v1 flags=" + configuration.mechanisms().flags()
-                + " configuration=" + configuration.identity() + " " + model
+                + " configuration=" + configuration.identity() + " " + evaluatorIdentity()
                 + " clockPolicy=" + clockPolicy.identity()
                 + " score=side-to-move-cp build=" + version.build() + " source=" + version.sourceRevision();
     }

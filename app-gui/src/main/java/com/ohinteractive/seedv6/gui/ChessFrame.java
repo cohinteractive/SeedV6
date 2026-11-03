@@ -544,7 +544,8 @@ final class ChessFrame extends JFrame implements GameController.View {
     }
 
     private void showAbout() {
-        JOptionPane.showMessageDialog(this, ApplicationVersion.load().aboutText(), "About SeedV6",
+        JOptionPane.showMessageDialog(this, new AboutEnginePanel(ApplicationVersion.load(),
+                controller.formulationText(false), controller.formulationText(true)), "About SeedV6",
                 JOptionPane.INFORMATION_MESSAGE,
                 new ScaledImageIcon(new ImageIcon(ApplicationIcons.windowImages().getLast()), 64, 64));
     }

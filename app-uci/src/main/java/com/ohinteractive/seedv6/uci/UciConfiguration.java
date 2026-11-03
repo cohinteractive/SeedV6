@@ -9,6 +9,7 @@ public interface UciConfiguration {
     SearchLifecycleService service(int workers, int hashMiB);
     String identity(int workers);
     default String identity(int workers, int hashMiB) { return identity(workers); }
+    default com.ohinteractive.seedv6.search.driver.EngineFormulation formulation(int workers, int hashMiB) { return null; }
     default String name() { return "SeedV6"; }
     default boolean standalone() { return false; }
     default boolean acceptsWorkers(int workers) { return true; }
