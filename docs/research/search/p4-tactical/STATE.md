@@ -2,12 +2,32 @@
 
 4 November 2026 (Pacific/Auckland). **Authorized research execution is complete;
 the governing strength criterion FAILED and the strength objective remains unmet.
-Owner acceptance and GPT/owner reconciliation are pending.**
+The owner has reviewed this outcome; separate adoption is recorded below.**
 [CONTRACT](CONTRACT.md) retains the original criterion/resources;
 [RESULTS](RESULTS.md) is the evidence-bearing handback. This is not a successful
 foundational relabelling.
 
-## Terminal boundary and ownership
+## Separate owner adoption - 4 November 2026
+
+The owner reviewed the unsuccessful TC-R001 outcome and explicitly authorized exact
+TC-P1 for normal experimental production across W1-W16, accepting the unresolved
+W4 competitive warning. This bounded integration is separate from research execution.
+The rolling baseline is **HL-G1 + ProbCut**, **TC_P1/flags1177812991**, **build90**;
+[PRODUCTION](PRODUCTION.md) records selection, source/build identity, qualification
+and practical HL_G1 rollback. `LEGACY` and frozen `probcut`/`guided` remain available.
+Future authorized research normally starts from the latest owner-adopted production
+formulation unless a specific objective justifies another base; features are reversible.
+
+The original640-game W1 criterion failed (52.50%, normal95%49.37-55.63% against
+required>=53% and lower>50%); the sole attempt remains spent. Historical results,
+protocols, resources and conclusions remain valid and unchanged. No confirmation
+allowance is renewed. W4 remains43.75%, normal95%34.94-52.56%, an adverse warning,
+neither proven regression nor neutrality. Adoption does not advance the HL-G1/build84
+research champion or change immutable P4-BASELINE-001/build79. No successor campaign,
+push, deployment, active-bot change or release follows. Masters: **P4-R016/P4-F032**.
+
+
+## Research closeout boundary and ownership (before adoption)
 
 The sole independent confirmation completed all 640 games and drained naturally at
 2026-11-03T18:22:09Z (4 November07:22:09 NZDT). All owned processes are stopped;
@@ -210,7 +230,7 @@ checked legally. No protected keys/moves displayed for selection. Original input
 drain assertion remains failed; independent validation never relabelled that failure.
 Both frozen BOUNDARY2 studies remain unopened; TT-R001 reconciliation stays separate.
 
-## Monitoring, provenance and handback requirements
+## Historical research monitoring, provenance and handback
 
 Owner corrected excessive routine narration. Keep monitoring in deterministic process
 supervision and existing logs, use event-driven/blocking waits, and do not narrate game
@@ -225,7 +245,8 @@ disposition/confirmation freezeea4a41c2 are coherent local commits. Final eviden
 closeout is the commit containing this STATE (resolve with Git history). No runtime
 change after a7c45dff; version remains0.0.0/build89, no additional bump. Root
 CODEXLOG_CURRENT.md remains absent and was not created. No finalizer was invoked.
-Current masters **P4-R015/P4-F031**; last owner-confirmed mirrorsP4-R005/F021.
+Research closeout masters **P4-R015/P4-F031**; current adoption masters
+**P4-R016/P4-F032**; last owner-confirmed mirrorsP4-R005/F021.
 
 Further research would require renewed owner authority, protected inputs and a fresh
 finite protocol; unused allowance does not authorize it. TT-supported extensions,
@@ -233,12 +254,11 @@ TT veto availability, conservative probe isolation, selective-horizon error and 
 work/scheduling interactions remain hypotheses, not established causes or a queued
 successor. Read FORMULATIONS for transfer limits and why no new mechanism was selected.
 
-Human actions required after this prompt:
+Current human actions:
 
-- **Non-blocking for completed repository execution; blocking for accepted closeout
-  and successor planning:** GPT/owner review and reconcile the unsuccessful TC-R001
-  handback. Codex completion is not owner acceptance; no successor execution authorized.
-- **Blocking before any multiworker adoption (outside this task):** owner review of
-  persistent adverse W4 evidence; no neutrality or safety-of-adoption claim.
-- **Blocking before mirror-dependent planning; non-blocking for completed repository
-  work:** refresh both Phase4 Project Source mirrors to **P4-R015/P4-F031**.
+- **Non-blocking for this production integration; blocking before mirror-dependent
+  planning:** refresh both Phase 4 Project Source mirrors to **P4-R016/P4-F032**.
+- Native macOS and broader interactive/client acceptance remain limited to the scope
+  explicitly documented in PRODUCTION; no installation or deployment was performed.
+The earlier request to review W4 before adoption is satisfied by the present owner
+instruction. No repeat approval or new strength campaign is required for adoption.

@@ -19,7 +19,7 @@ class BaselineProfileTest {
             var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
                     ClockPolicy.BOUNDARY2, BaselineEngine.SearchProfile.HL_G1);
             for (int workers = 1; workers <= 16; workers++) {
-                assertTrue(promoted.identity(workers, 1).contains("searchProfile=HL_G1"));
+                assertTrue(promoted.identity(workers, 1).contains("searchProfile=TC_P1"));
                 assertTrue(explicit.identity(workers, 1).contains("flags=104071167"));
                 assertTrue(rollback.identity(workers, 1).contains("searchProfile=LEGACY"));
                 assertTrue(rollback.withClockPolicy(ClockPolicy.FACTUAL).identity(workers, 1).contains("flags=3407871"));
@@ -32,7 +32,7 @@ class BaselineProfileTest {
                 try (var driver = new SearchDriver(clock)) {
                     Object aspiration = field(clock, "owner");
                     Object kernel = field(field(aspiration, "owner"), "exact");
-                    assertEquals(binding == rollback ? 3407871 : 104071167,
+                    assertEquals(binding == rollback ? 3407871 : binding == promoted ? 1177812991 : 104071167,
                             ((FlatSearchConfig) field(kernel, "construction")).flags());
                     assertTrue(driver.search(new SearchRequest(Board.startingPosition(), 4)).targetDepthCompleted());
                     assertEquals(0, driver.activeSearchThreads());

@@ -57,7 +57,14 @@ initialization leaves production and shared engine ownership unchanged.
 Normal competitive search uses `BaselineEngine`: flattened PVS, ADAPTIVE16 and
 Conventional NNUE CP64 by default (checkpoint64, S6CNU002, eight material heads,
 BT4_Q_LOGIT400_V1 score mapping). The verified CP64 payload selects the original 18
-Construction controls plus NOMINAL_FUTILITY and VERIFIED_NULL, **flags3407871**.
+Construction controls plus NOMINAL_FUTILITY, VERIFIED_NULL, REQUEST_LEARNING,
+HISTORY_EFFORT and TACTICAL_VERIFICATION: **TC_P1/flags1177812991**, exact HL-G1 +
+bounded capture ProbCut, owner-adopted at build90. `HL_G1` explicitly retains the
+previous flags104071167 policy and `LEGACY` retains flags3407871. The shared
+`seedv6.searchProfile` selector fails on invalid values and is snapshotted by each
+binding across clock/hash/worker reconstruction. Frozen research profiles remain
+independent; [production qualification](research/search/p4-tactical/PRODUCTION.md)
+records source/artifact identity and limitations.
 Competitive HCE, frozen BREP2-32 and unrelated conventional payloads retain
 original 18/flags262143. Requested default Hash is 64 MiB; explicit workers 1-16 are
 supported, with default 1 and Max bounded by available processors and 16.
@@ -192,7 +199,7 @@ oracle/test/comparison consumers and therefore belong in verification.
 ## Documentation and developer commands
 
 The [guide](guide.md) retains operation, training and packaging details.
-`source/` holds both active Phase 3 Search masters; `docs/search-phase1/` holds
+`source/` holds both active Phase 4 Search masters; `docs/search-phase1/` holds
 frozen R045/F052 and `docs/search-phase2/` holds frozen P2-R049/P2-F053, all
 byte-preserved historical records. `docs/research/search/` holds search
 reports and their CSV/GZIP/ZIP evidence; `docs/research/brn/` holds BRN reports.
@@ -211,7 +218,7 @@ installations retain their original command conventions; they are not rewritten.
 
 The search contract/frontier identify manually refreshed ChatGPT Project Source
 mirrors. Their active repository master locations are `source/`; the owner must
-refresh both mirrors and confirm synchronization before dependent GPT-led Phase 3
+refresh both mirrors and confirm synchronization before dependent GPT-led Phase 4
 research planning session. Initialization does not modify the external mirrors.
 
 ## Inference/training boundary

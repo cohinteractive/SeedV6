@@ -1,5 +1,25 @@
 # Tactical formulations and transfer evidence
 
+## Separate owner adoption - 4 November 2026
+
+The owner reviewed the unsuccessful TC-R001 outcome and explicitly authorized exact
+TC-P1 for normal experimental production across W1-W16, accepting the unresolved
+W4 competitive warning. This bounded integration is separate from research execution.
+The rolling baseline is **HL-G1 + ProbCut**, **TC_P1/flags1177812991**, **build90**;
+[PRODUCTION](PRODUCTION.md) records selection, source/build identity, qualification
+and practical HL_G1 rollback. `LEGACY` and frozen `probcut`/`guided` remain available.
+Future authorized research normally starts from the latest owner-adopted production
+formulation unless a specific objective justifies another base; features are reversible.
+
+The original640-game W1 criterion failed (52.50%, normal95%49.37-55.63% against
+required>=53% and lower>50%); the sole attempt remains spent. Historical results,
+protocols, resources and conclusions remain valid and unchanged. No confirmation
+allowance is renewed. W4 remains43.75%, normal95%34.94-52.56%, an adverse warning,
+neither proven regression nor neutrality. Adoption does not advance the HL-G1/build84
+research champion or change immutable P4-BASELINE-001/build79. No successor campaign,
+push, deployment, active-bot change or release follows. Masters: **P4-R016/P4-F032**.
+
+
 ## Inspected external behavior and development evidence
 
 Source revisions and locally rehashed files are pinned in

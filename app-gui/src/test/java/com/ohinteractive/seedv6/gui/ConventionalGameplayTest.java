@@ -56,7 +56,7 @@ class ConventionalGameplayTest {
             assertEquals(8, binding.conventional().model().outputBuckets());
             assertEquals(1, adapter.workerCount()); assertEquals(4, binding.effectiveWorkers(4));
             assertNotSame(field(adapter, "service"), field(adapter, "blackService"));
-            assertTrue(binding.identity(1).contains("flags=104071167"));
+            assertTrue(binding.identity(1).contains("flags=1177812991"));
             assertTrue(binding.identity(1).contains("clockPolicy=boundary2-d6-v1"));
             assertTrue(adapter.participants().black().identity(1).contains("clockPolicy=boundary2-d6-v1"));
             assertTrue(adapter.participants().black().identity(1).contains("flags=262143"));
@@ -93,7 +93,7 @@ class ConventionalGameplayTest {
             for (int workers : new int[]{4, 16}) {
                 edt(() -> { adapter.replaceWorkerCount(workers); return null; });
                 assertEquals(workers, adapter.evaluator().effectiveWorkers(adapter.workerCount()));
-                assertTrue(adapter.evaluator().identity(workers).contains("flags=104071167"));
+                assertTrue(adapter.evaluator().identity(workers).contains("flags=1177812991"));
                 assertNull(search(adapter, Board.startingPosition(), new SearchLimits(100, -1, 150, false), false).failure());
                 assertNull(search(adapter, Board.startingPosition(), new SearchLimits(4, -1, -1, false), false).failure());
             }

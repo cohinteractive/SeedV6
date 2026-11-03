@@ -6,29 +6,32 @@ fixed-work comparisons. Its unique resume entry point preserves older completed
 and suspended programmes separately; it does not authorize production promotion.
 
 SeedV6 is a Java 21 chess engine with UCI, desktop Play, and Network Training.
-The experimental production default is **HL-G1 + Conventional NNUE CP64**
-(S6CNU002, eight material heads), integrated as **build85**. GUI Play, ordinary
-Arena and standalone UCI share `engine-core`'s `BaselineEngine`: Construction V1
-flattened PVS/ADAPTIVE16, original18 controls, NOMINAL_FUTILITY, VERIFIED_NULL,
-REQUEST_LEARNING and HISTORY_EFFORT (**flags104071167**). HL-G1 retains learning
-within each request and uses bounded history-guided reductions. It applies to
-all supported workers **1-16**, with unchanged default1, bounded Max, OWNER at W1
-and cooperative ROOT_REUSE at W2-16.
+The rolling experimental production default is **HL-G1 + bounded capture ProbCut
+(TC-P1) + Conventional NNUE CP64**, integrated as **build90**. Normal GUI Play,
+built-in Arena and standalone UCI share `engine-core`'s `BaselineEngine`:
+Construction V1 PVS/ADAPTIVE16, HL-G1 retained request learning and exact TC-P1
+verification (**flags1177812991**, profile **TC_P1**). Eligible depth4-8 null-window
+nodes probe up to three non-losing legal tacticals with qsearch/reduced verification
+at beta+150. All supported workers **1-16** use this default, with unchanged default1,
+bounded Max, OWNER at W1 and ROOT_REUSE at W2-16. No Search property is required.
 
-The owner accepts the remaining W4 competitive uncertainty for experimental
-production. HL-G1/build84 remains the W1-qualified research champion; W4
-superiority or neutrality is unestablished. P4-BASELINE-001/build79 remains
-immutable. Use **`-Dseedv6.searchProfile=LEGACY`** to restore previous flags3407871
-with current correctness fixes; normal launches require no property. Explicit
-research profiles remain independent. See the [promotion, validation and rollback record](docs/research/search/p4-learning/PRODUCTION.md).
-These are local builds; no Lichess deployment is implied.
+The owner explicitly accepts the unresolved W4 competitive warning. TC-R001's
+640-game independent W1 criterion failed; adoption does not claim confirmed
+superiority or advance **HL-G1/build84**, the research champion. Historical
+**P4-BASELINE-001/build79** remains immutable. Future authorized research normally
+starts from the latest owner-adopted production formulation; adopted features are
+reversible. Use **`-Dseedv6.searchProfile=HL_G1`** for the previous flags104071167
+production policy. **`LEGACY`** retains flags3407871; invalid selectors fail.
+Frozen research `probcut`, `guided` and historical controls remain independent.
+See the [production, qualification and rollback record](docs/research/search/p4-tactical/PRODUCTION.md).
+These are local candidates; no installed GUI or active bot is replaced.
 
 Normal managed-clock configurations use **BOUNDARY2**, with explicit **FACTUAL**
 fallback. Its independent studies remain clock-unqualified with scores unopened;
 adoption reflects informed owner acceptance of unconfirmed strength and unresolved
 timing risk. The [Phase 3 closeout](docs/search-phase3/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026)
 records the final selection and qualifications, including historical build77 integration evidence and the separate
-[build85 production validation](docs/research/search/p4-learning/PRODUCTION.md).
+[current production validation](docs/research/search/p4-tactical/PRODUCTION.md).
 
 **Arena** compares named model lineages on identical frozen records and targets,
 with paired games before training and after each campaign round. Start from a fresh
@@ -143,11 +146,12 @@ The diagnostic command dispatcher is now `:app:developerTools`:
 # Frozen replay: use -PtoolArgs="frozen-wdl ..." with the explicit input paths.
 ```
 
-Search Phase 4 is active under [Contract P4-R005](source/CHESS_SEARCH_CONTRACT.md)
-and [Frontier P4-F021](source/CHESS_SEARCH_RESEARCH_FRONTIER.md). HL-R001 is accepted
-and closed; its W1-qualified HL-G1 formulation is the owner-authorized experimental
-production default across W1-W16. No research objective or successor is active;
-research qualification, production selection and deployment remain distinct.
+Search Phase 4 is active under [Contract P4-R016](source/CHESS_SEARCH_CONTRACT.md)
+and [Frontier P4-F032](source/CHESS_SEARCH_RESEARCH_FRONTIER.md). TC-R001 completed
+its research execution unsuccessfully against its declared strength criterion;
+exact TC-P1 is separately owner-adopted for experimental production. No successor
+research is active. Champion, historical baseline, rolling production and deployment
+are separate identities and decisions.
 
 Search Phase 3 is **CLOSED and archived**. Its final
 [Contract P3-R035](docs/search-phase3/CHESS_SEARCH_CONTRACT.md) and
@@ -170,7 +174,7 @@ are historical opportunities rather than unfinished closure obligations.
 measurements do not establish current performance or strength.
 
 The existing Phase 3 ChatGPT Project retains its owner-confirmed P3-R035/P3-F035
-mirrors; no further Phase 3 refresh is required. Refresh P4-R005/P4-F021 in the **separate Phase 4 Project**
+mirrors; no further Phase 3 refresh is required. Refresh P4-R016/P4-F032 in the **separate Phase 4 Project**
 and confirm both identities before mirror-dependent planning. Repository updates
 do not synchronize either Project. Future CGLHW prompt preparation requires the
 owner's complete current authoritative premade GPT prompt generator, with one

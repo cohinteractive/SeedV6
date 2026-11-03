@@ -16,7 +16,7 @@ def main():
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--install', type=Path)
     source.add_argument('--launcher', type=Path, help='Native packaged UCI launcher')
-    parser.add_argument('--profile', choices=('HL_G1', 'LEGACY'), default='HL_G1')
+    parser.add_argument('--profile', choices=('TC_P1', 'HL_G1', 'LEGACY'), default='TC_P1')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     output = args.output.resolve(); output.mkdir(parents=True, exist_ok=False)
@@ -26,9 +26,9 @@ def main():
     env = {k: v for k, v in os.environ.items() if k not in
            ('JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS', 'JAVA_OPTS', 'SEEDV6_UCI_OPTS', 'CLASSPATH')}
     allowed = (VECTOR_WARNING, REJECTED)
-    if args.profile == 'LEGACY':
-        env['JAVA_TOOL_OPTIONS'] = '-Dseedv6.searchProfile=LEGACY'
-        allowed += ('Picked up JAVA_TOOL_OPTIONS: -Dseedv6.searchProfile=LEGACY',)
+    if args.profile != 'TC_P1':
+        env['JAVA_TOOL_OPTIONS'] = '-Dseedv6.searchProfile=' + args.profile
+        allowed += ('Picked up JAVA_TOOL_OPTIONS: -Dseedv6.searchProfile=' + args.profile, )
     report = dict(status='FAIL', profile=args.profile, sessions=[], workers=[],
                   jars={p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in jars.glob('*.jar')})
 
@@ -39,8 +39,8 @@ def main():
 
     def identify(engine, workers, hash_mib):
         engine.send('uci'); lines = engine.until('uciok'); identity = '\n'.join(lines)
-        flags = 104071167 if args.profile == 'HL_G1' else 3407871
-        features = 'NOMINAL_FUTILITY,VERIFIED_NULL' + (',REQUEST_LEARNING,HISTORY_EFFORT' if args.profile == 'HL_G1' else '') + ']'
+        flags = {'TC_P1': 1177812991, 'HL_G1': 104071167, 'LEGACY': 3407871}[args.profile]
+        features = 'NOMINAL_FUTILITY,VERIFIED_NULL' + (',REQUEST_LEARNING,HISTORY_EFFORT' if args.profile != 'LEGACY' else '') + (',TACTICAL_VERIFICATION' if args.profile == 'TC_P1' else '') + ']'
         for value in (f'flags={flags} ', f'searchProfile={args.profile} ', features, SHA, 'schema=S6CNU002 heads=8',
                       'scoreMapping=BT4_Q_LOGIT400_V1', f'workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16',
                       'option name Threads type spin default 1 min 1 max 16',

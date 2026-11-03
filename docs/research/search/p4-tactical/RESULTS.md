@@ -2,10 +2,30 @@
 
 4 November 2026. **Authorized research execution is complete. TC-P1 failed the
 prospective independent W1 strength criterion; the governing objective is unmet.
-Owner acceptance/reconciliation is pending.** The sole confirmation attempt is spent.
+The owner has reviewed this outcome; separate adoption is recorded below.** The sole confirmation attempt is spent.
 [CONTRACT](CONTRACT.md) preserves the approved scope and criterion;
 [STATE](STATE.md) is the terminal restart point. Technical qualification is not a
 successful foundational relabelling. No further experiment or successor is authorized.
+
+## Separate owner adoption - 4 November 2026
+
+The owner reviewed the unsuccessful TC-R001 outcome and explicitly authorized exact
+TC-P1 for normal experimental production across W1-W16, accepting the unresolved
+W4 competitive warning. This bounded integration is separate from research execution.
+The rolling baseline is **HL-G1 + ProbCut**, **TC_P1/flags1177812991**, **build90**;
+[PRODUCTION](PRODUCTION.md) records selection, source/build identity, qualification
+and practical HL_G1 rollback. `LEGACY` and frozen `probcut`/`guided` remain available.
+Future authorized research normally starts from the latest owner-adopted production
+formulation unless a specific objective justifies another base; features are reversible.
+
+The original640-game W1 criterion failed (52.50%, normal95%49.37-55.63% against
+required>=53% and lower>50%); the sole attempt remains spent. Historical results,
+protocols, resources and conclusions remain valid and unchanged. No confirmation
+allowance is renewed. W4 remains43.75%, normal95%34.94-52.56%, an adverse warning,
+neither proven regression nor neutrality. Adoption does not advance the HL-G1/build84
+research champion or change immutable P4-BASELINE-001/build79. No successor campaign,
+push, deployment, active-bot change or release follows. Masters: **P4-R016/P4-F032**.
+
 
 ## Sole independent confirmation: strength criterion failed
 
@@ -61,7 +81,8 @@ The campaign reached its legitimate one-attempt boundary with strength unmet. Al
 640 independent games and96 W4 risk games are spent; no responsible additional
 in-scope independent claim remains. Unused129 development games and wall allowance
 do not permit confirmation-driven tuning, renewal, replacement or a successor.
-No further computation is scheduled. GPT/owner acceptance/reconciliation is pending.
+No further research computation is scheduled. At research closeout, GPT/owner
+review was pending; the separate owner adoption above records the current decision.
 
 W4 remains a persistent adverse warning: adaptive48-pair pool **26W/32D/38L,43.75%,
 normal95%34.9359-52.5641%**. Both constituent batches scored43.75%; technical and
@@ -265,7 +286,7 @@ preserved. No application runtime changes; no application build bump or repeated
 application tests. The outcome was unknown at that freeze; the completed result
 and terminal disposition are reported above.
 
-## Repository and authority
+## Research closeout repository and authority (before adoption)
 
 The mandatory CH-R001 synchronization is standalone documentation commit
 `8e95d23d40afab5567998054fbc6e94006064051`, P4-R008/F024, with no build change.
@@ -278,7 +299,8 @@ the runtime commit; later harness/docs work has no application build impact.
 
 Champion remains exact HL-G1/build84; normal build85 HL-G1 policy is unchanged.
 TT-R001 reconciliation remains separate and both frozen BOUNDARY2 studies unopened.
-Current masters are **P4-R015/P4-F031**. Repository edits do not refresh owner mirrors.
+Research closeout masters were **P4-R015/P4-F031**; current adoption masters are
+**P4-R016/P4-F032**. Repository edits do not refresh owner mirrors.
 
 The successful technical execution does not establish playing-strength success or
 owner acceptance. The initial W4 isolation run passed8 W4 requests before a harness-
@@ -289,12 +311,11 @@ inputs. No failed evidence was relabelled. Completed records preserve their byte
 All current experiment processes drained. This closeout changes evidence/docs only;
 version remains build89, no further application tests or build bump are warranted.
 
-Human actions required after this prompt:
+Current human actions:
 
-- **Non-blocking for completed repository execution; blocking for accepted closeout
-  and successor planning:** GPT/owner review and reconcile this unsuccessful handback.
-  No successor is selected or authorized by this report.
-- **Blocking before multiworker adoption (outside this task):** owner review of the
-  unresolved adverse W4 evidence.
-- **Blocking before mirror-dependent planning; non-blocking for completed repository
-  work:** refresh both Phase4 Project Source mirrors to **P4-R015/P4-F031**.
+- **Non-blocking for this production integration; blocking before mirror-dependent
+  planning:** refresh both Phase 4 Project Source mirrors to **P4-R016/P4-F032**.
+- Native macOS and broader interactive/client acceptance remain limited to the scope
+  explicitly documented in PRODUCTION; no installation or deployment was performed.
+The earlier request to review W4 before adoption is satisfied by the present owner
+instruction. No repeat approval or new strength campaign is required for adoption.

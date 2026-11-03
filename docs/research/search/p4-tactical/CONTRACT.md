@@ -1,13 +1,32 @@
 # TC-R001 — Tactical coverage through selective verification and extensions
 
-Revision 1, 3 November 2026 (Pacific/Auckland). Owner-authorized strength-development
+Revision 2, 4 November 2026 (Pacific/Auckland). Owner-authorized strength-development
 CGLHW under the two [Phase 4](../../../../source/CHESS_SEARCH_CONTRACT.md)
 [masters](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). This focused contract
 does not create another canon. [STATE](STATE.md) is the unambiguous resume point.
 The full launch request is preserved at ignored `raw/owner-request.txt`, hashed in
 [bootstrap manifest](bootstrap-manifest.json). Its authority survives session changes.
 
-## Objective, scope and ownership
+## Separate owner adoption - 4 November 2026
+
+The owner reviewed the unsuccessful TC-R001 outcome and explicitly authorized exact
+TC-P1 for normal experimental production across W1-W16, accepting the unresolved
+W4 competitive warning. This bounded integration is separate from research execution.
+The rolling baseline is **HL-G1 + ProbCut**, **TC_P1/flags1177812991**, **build90**;
+[PRODUCTION](PRODUCTION.md) records selection, source/build identity, qualification
+and practical HL_G1 rollback. `LEGACY` and frozen `probcut`/`guided` remain available.
+Future authorized research normally starts from the latest owner-adopted production
+formulation unless a specific objective justifies another base; features are reversible.
+
+The original640-game W1 criterion failed (52.50%, normal95%49.37-55.63% against
+required>=53% and lower>50%); the sole attempt remains spent. Historical results,
+protocols, resources and conclusions remain valid and unchanged. No confirmation
+allowance is renewed. W4 remains43.75%, normal95%34.94-52.56%, an adverse warning,
+neither proven regression nor neutrality. Adoption does not advance the HL-G1/build84
+research champion or change immutable P4-BASELINE-001/build79. No successor campaign,
+push, deployment, active-bot change or release follows. Masters: **P4-R016/P4-F032**.
+
+## Original research objective, scope and ownership (unchanged)
 
 Develop a reproducibly stronger integrated SeedV6 Search configuration through
 tactical coverage, selective verification and effort allocation. Practical strength
@@ -171,7 +190,7 @@ handback and distinguish turn completion, execution completion, scientific outco
 owner acceptance, promotion and deployment. Identify current master revisions and
 owner mirror refreshes; repository-only execution does not await mirror refresh.
 
-## Execution disposition - 4 November2026 (criteria unchanged)
+## Research execution disposition before adoption - 4 November2026 (criteria unchanged)
 
 Authorized TC-R001 execution completed at its one-attempt boundary. Unchanged
 TC-P1/build89's full320-pair independent W1 confirmation versus exact84 passed
@@ -180,6 +199,8 @@ both prospective strength gates failed. The governing strength objective is unme
 this is not successful foundational work. The sole claim is spent, no automatic
 renewal or successor. Remaining resources do not authorize confirmation-driven
 tuning/replacement. W4's adverse43.75% pooled estimate remains unresolved and requires
-owner review before any multiworker adoption. STATE/RESULTS own the final evidence,
-resources and terminal boundary. Owner acceptance/reconciliation is pending; this
-execution note changes no criterion, resource ceiling, policy, champion or default.
+owner review before any multiworker adoption; the subsequent owner decision above
+satisfies that review and accepts the risk. STATE/RESULTS own the final evidence,
+resources and terminal boundary. This research execution note changes no criterion
+or resource ceiling. The separately authorized adoption changes only production
+selection, not research success or champion identity.

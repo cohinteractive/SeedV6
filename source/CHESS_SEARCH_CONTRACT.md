@@ -1,8 +1,8 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R015**
+Internal revision: **P4-R016**
 
-Status: **ACTIVE - 4 November 2026. HL-G1 remains the normal experimental production policy across W1-W16, integrated as build85; current repository build89 adds opt-in research only. HL-R001 remains accepted and closed; HL-G1/build84 remains the W1-qualified research champion. TTF-R001 remains accepted for its limited foundational purpose; TT-R001 remains inconclusive with separate reconciliation pending. CH-R001 is technically completed and owner-accepted as unsuccessful on 3 November 2026: independent W1 strength criterion failed. TC-R001 authorized execution is complete: the sole independent W1 confirmation failed both strength gates; owner acceptance/reconciliation is pending. W4 retains an unresolved adverse warning. No autonomous continuation, promotion or deployment.**
+Status: **ACTIVE - 4 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. No champion advancement, successor research, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
@@ -35,6 +35,7 @@ separated under the established `research`/test ownership boundaries; production
 must not depend on research or acquire a competing engine implementation.
 Exclude unrelated GUI/application work, independent evaluator training or
 architecture programmes, broad unrelated rewrites and external deployment.
+The following closeout narrative records history before the separate adoption below.
 The preceding P4-R008 revision synchronized the 3 November 2026 owner-accepted
 unsuccessful closeout of the CH-R001 strength-development
 CGLHW. Its [focused contract](../docs/research/search/p4-correction/CONTRACT.md)
@@ -61,11 +62,13 @@ paired-normal95%49.3690-55.6310%, bounded95%44.9080-60.0920%**. Both strength ga
 failed; the governing strength objective is unmet. Technical/operational qualification
 passed, including91046 request audits, independently replayed legal games/terminals
 and stable inputs, with all owned processes drained. This is not successful
-foundational relabelling. Owner acceptance and GPT/owner reconciliation are pending.
+foundational relabelling. Owner review was pending at that research closeout;
+the separate current adoption decision below preserves this unsuccessful outcome.
 
 W4 risk completed96 games at43.75%, normal95%34.94-52.56% (adaptive descriptive),
 an unresolved adverse warning. Technical and bounded cost investigation found no new
-defect; W4 adoption/neutrality remains unqualified and needs separate owner review.
+defect; W4 competitive neutrality remains unqualified. The subsequent owner
+adoption below explicitly accepts this warning, without changing the evidence.
 Charged experimental wall31090.5301999s of64800s;991 of1120 games initiated
 (255 development,96 W4,640 independent). The one claim attempt is spent. Remaining
 129 development games/33709.4698001s do not authorize tuning after confirmation,
@@ -73,7 +76,8 @@ a replacement claim or a successor. Autonomous experimentation has stopped at th
 legitimate boundary. All failed, interrupted and inconclusive evidence remains.
 The owner's eighthour PC window covered completion without renewed availability
 questions. STATE and RESULTS preserve exact identities, statistical/clock limitations,
-resource evidence and terminal ownership. Champion and production defaults remain.
+resource evidence and terminal ownership. Champion is unchanged; the later
+production-default decision is recorded separately below.
 
 ## Strength-first, externally informed research
 
@@ -147,6 +151,24 @@ an illustrative comparison structure, not a mandatory factorial experiment.
 Use focused integration evidence and controlled strength tests where informative;
 investigate and proportionately adapt surrounding mechanisms when compatibility
 is necessary to establish the foundation's effectiveness.
+
+### Rolling experimental production baseline
+
+The latest explicitly owner-adopted integrated Search formulation is the rolling
+production baseline for normal GUI Play, built-in Arena and UCI. Future authorized
+Search research normally begins there, unless its specific objective justifies
+another starting point. Historical baseline, research champion and rolling production
+baseline are distinct identities; adoption never rewrites historical research criteria,
+results or confirmation allowances and does not advance the champion.
+
+An exact, reproducible, technically qualified and operationally safe capability may
+be owner-adopted for credible present integration or future enabling value without
+statistically confirmed standalone superiority. Material competitive uncertainty
+must remain explicit and owner-accepted. Mandatory correctness, state, worker,
+accounting, lifecycle and proportionate consumer/build qualification still apply.
+Older controls, reverse ablations and feature substitutions remain appropriate where
+scientifically justified; adopted features remain reversible. This clarifies the
+existing incremental-adoption philosophy, not shared GPT/Codex behavioral governance.
 
 ## Correctness and deliberate approximation
 
@@ -404,7 +426,40 @@ meaning of the result. Inspect the relevant experiment before describing unfamil
 labels such as GATE or WIDE; never invent their definitions. The Frontier's completed
 TT-memory example applies this convention without changing historical evidence.
 
-## Experimental production selection - 2 November 2026
+## Rolling production selection - 4 November 2026
+
+The owner explicitly adopts **TC-P1 - bounded capture verification over HL-G1**
+for normal experimental production across **W1-W16**, accepting the unresolved
+adverse W4 competitive warning. The rolling formulation is **HL-G1 + ProbCut**,
+production selector **TC_P1**, **flags1177812991**, **0.0.0/build90**. Only production
+selection changes: the qualified implementation at
+`a7c45dffeaffc362bc7c7026d03a2e6434472be2` is preserved without parameter tuning.
+Eligible depth4-8 null-window nodes consider at most three non-losing legal
+tacticals, with qsearch and reduced legal verification at beta+150. Probe isolation,
+real history, selective-beta return and full-request accounting are unchanged.
+
+Shared `BaselineEngine` supplies GUI Play, Arena and UCI. CP64, PVS/ADAPTIVE16,
+requested Hash64, BOUNDARY2, default W1, limits1-16, OWNER at W1 and ROOT_REUSE at
+W2-W16 remain. Normal launch needs no property. Explicit
+`-Dseedv6.searchProfile=HL_G1` restores previous flags104071167;
+`LEGACY` retains its established flags3407871 meaning. `TC_P1` explicitly selects
+the adopted default. Invalid selectors fail, bindings snapshot their selection,
+and worker/hash/clock reconstruction preserves it. Frozen `probcut`, `guided`,
+other research profiles and independent exact controls retain their meanings.
+
+TC-R001 completed its authorized execution. Its640-game independent W1 result
+235W/202D/203L,52.50%, paired-normal95%49.37-55.63% failed both original gates
+(score>=53%, lower>50%). Its sole confirmation is spent; no allowance is renewed.
+The96-game W4 result26W/32D/38L,43.75%, normal95%34.94-52.56% remains an adverse
+competitive warning, neither established regression nor neutrality. Owner review
+and adoption do not relabel the unsuccessful strength objective as successful.
+HL-G1/build84 remains champion and P4-BASELINE-001/build79 remains immutable.
+The [production integration record](../docs/research/search/p4-tactical/PRODUCTION.md)
+identifies exact production source/configuration/artifacts, qualifications, rollback
+and platform limits. No push, deployment, bot replacement, release, concurrency
+redesign or About-dialog enhancement is authorized by this integration.
+
+## Experimental production selection - 2 November 2026 (historical)
 
 The owner explicitly promotes **HL-G1 - request-scoped retained Search learning
 with bounded history-guided reductions** to the normal experimental production
@@ -510,7 +565,8 @@ with its strength objective unmet. Its sole confirmation attempt remains spent.
 This acceptance neither reopens completed campaigns nor authorizes a successor;
 the separately supplied tactical execution request has satisfied its prerequisite
 commit boundary and governed TC-R001. Its authorized execution is now complete with
-the strength criterion failed and acceptance/reconciliation pending. No successor
+the strength criterion failed. The subsequent owner review and separate production
+adoption are recorded above; no confirmation is renewed. No successor
 follows. The Frontier records priorities and hypotheses, not a predetermined queue.
 For any future CGLHW objective, the owner must supply the **complete current
 authoritative premade CGLHW GPT prompt generator before GPT prepares its execution
@@ -525,7 +581,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R015/P4-F031** pair before mirror-dependent Project planning; the Frontier
+**P4-R016/P4-F032** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

@@ -13,18 +13,18 @@ import static com.ohinteractive.seedv6.search.exact.Policy4ProductionTest.field;
 
 @Timeout(180)
 class Cp64ProductionTest {
-    @Test void guidedCompositionMatchesProductionAndWorkerStateIsPrivate() throws Exception {
+    @Test void probcutCompositionMatchesProductionAndWorkerStateIsPrivate() throws Exception {
         var engine = BaselineEngine.load();
         for (int workers = 1; workers <= 16; workers++) {
             for (int hash : new int[]{1, 64}) {
-                var frozen = new ConstructionSearch(P4LearningStudy.flags("guided", workers), workers, hash, AspirationSearch.Policy.ADAPTIVE16);
+                var frozen = new ConstructionSearch(P4TacticalStudy.flags("probcut", workers), workers, hash, AspirationSearch.Policy.ADAPTIVE16);
                 assertEquals(Cp64SelectivityLab.configuration("nominal-verified-null", workers, hash), BaselineEngine.legacyConfiguration(workers, hash));
                 assertEquals(frozen, BaselineEngine.configuration(engine.evaluation(), workers, hash));
-                assertEquals(104071167, frozen.mechanisms().flags());
+                assertEquals(1177812991, frozen.mechanisms().flags());
                 assertEquals(262143, Cp64SelectivityLab.configuration("baseline", workers, hash).mechanisms().flags());
             }
             try (var production = engine.create(workers, 1); var candidate =
-                    new ConstructionSearch(P4LearningStudy.flags("guided", workers), workers, 1, AspirationSearch.Policy.ADAPTIVE16).create(engine.evaluation())) {
+                    new ConstructionSearch(P4TacticalStudy.flags("probcut", workers), workers, 1, AspirationSearch.Policy.ADAPTIVE16).create(engine.evaluation())) {
                 var actual = kernels(production); var reference = kernels(candidate);
                 var table = field(actual[0], "table");
                 assertNotSame(table, field(reference[0], "table"));
@@ -40,7 +40,7 @@ class Cp64ProductionTest {
         for (int processors : new int[]{1, 2, 8, 16, 32}) {
             int max = new SearchThreads(SearchThreads.MAX).resolve(processors);
             assertEquals(Math.min(processors, 16), max);
-            assertEquals(104071167, BaselineEngine.configuration(max, 64).mechanisms().flags());
+            assertEquals(1177812991, BaselineEngine.configuration(max, 64).mechanisms().flags());
             assertEquals(16, new SearchThreads(16).resolve(processors));
         }
     }
@@ -64,18 +64,44 @@ class Cp64ProductionTest {
         }
     }
 
+    @Test void adoptedAndHlG1RollbackTraversalsMatchFrozenResearchWithRealHistory() throws Exception {
+        var roots = P3HistoryStudy.roots(Path.of("../docs/research/search/p3-construction-2026-10-20/diagnostic-corpus.tsv"));
+        for (var profile : List.of(BaselineEngine.SearchProfile.TC_P1, BaselineEngine.SearchProfile.HL_G1)) {
+            var engine = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
+                    com.ohinteractive.seedv6.search.manage.ClockPolicy.BOUNDARY2, profile);
+            var flags = P4TacticalStudy.flags(profile == BaselineEngine.SearchProfile.TC_P1 ? "probcut" : "guided", 1);
+            for (int hash : new int[]{1, 64}) try (var production = new SearchDriver(engine.create(1, hash));
+                    var frozen = new SearchDriver(new ConstructionSearch(flags, 1, hash,
+                            AspirationSearch.Policy.ADAPTIVE16).create(engine.evaluation()))) {
+                for (var root : roots.subList(0, 4)) {
+                    for (int repeat = 0; repeat < 2; repeat++) {
+                        var saved = root.board().clone();
+                        var actual = request(production, root.board(), root.history(), 8, 100000);
+                        ConstructionTtStudy.same(request(frozen, root.board(), root.history(), 8, 100000), actual);
+                        Phase2Oracle.legalPv(root.board(), actual.lastCompletedResult().principalVariation());
+                        assertArrayEquals(saved, root.board());
+                        assertEquals(0, production.activeSearchThreads());
+                    }
+                    production.newGame(); frozen.newGame();
+                }
+            }
+        }
+    }
+
     @Test void productionAtEveryWorkerCountAccountsDrainsRestartsAndExercisesNull() throws Exception {
         var engine = BaselineEngine.load(); var board = Board.startingPosition(); var saved = board.clone();
         for (int workers = 1; workers <= 16; workers++) {
             var search = engine.create(workers, 1);
             try (var driver = new SearchDriver(search)) {
                 long budget = Set.of(1, 2, 4, 8, 16).contains(workers) ? 100000 : 10000;
-                long[] completedAttempts = {0};
+                long[] completedAttempts = {0, 0};
                 var observer = new SearchObserver() {
                     @Override public void onIterationCompleted(IterationSnapshot snapshot) {
                         try {
-                            for (var kernel : kernels(search))
+                            for (var kernel : kernels(search)) {
                                 completedAttempts[0] += kernel.constructionCounters().get("nullAttempts");
+                                completedAttempts[1] += kernel.constructionCounters().get("tacticalVerifications");
+                            }
                         } catch (Exception failure) { throw new AssertionError(failure); }
                     }
                 };
@@ -87,12 +113,17 @@ class Cp64ProductionTest {
                 assertNotNull(outcome.lastCompletedResult());
                 Phase2Oracle.legalPv(board, outcome.lastCompletedResult().principalVariation());
                 for (var kernel : kernels(search)) {
-                    for (String flag : List.of("nullProbeActive", "nullVerification", "constructionNullProbe", "constructionNullVerify"))
+                    for (String flag : List.of("nullProbeActive", "nullVerification", "constructionNullProbe", "constructionNullVerify", "tacticalProbeActive"))
                         assertEquals(false, field(kernel, flag));
                     assertNull(field(kernel, "history"));
                 }
                 // Cancellation clears invocation counters; observe completed iterations before that reset.
                 if (budget == 100000) assertTrue(completedAttempts[0] > 0, "Actual verified-null work at W" + workers);
+                // ROOT_REUSE scheduling can spend this small request budget before an eligible
+                // iteration completes; reset aborted counters cannot prove absence of probe work.
+                // W1 is a deterministic reachability witness; all workers' exact flags/private
+                // kernels are checked above, with frozen W4 probe evidence retained separately.
+                if (workers == 1) assertTrue(completedAttempts[1] > 0, "Actual production ProbCut work");
                 driver.newGame();
                 assertTrue(driver.search(new SearchRequest(board, 3)).targetDepthCompleted());
                 assertEquals(0, driver.activeSearchThreads());

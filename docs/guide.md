@@ -175,10 +175,11 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 ## Search Architecture
 
-The experimental production default is HL-G1 + Conventional NNUE CP64 (build85).
+The experimental production default is HL-G1 + bounded capture ProbCut (TC-P1) + Conventional NNUE CP64 (build90).
 `BaselineEngine` shares it between Play, ordinary Arena and standalone UCI:
 flattened PVS/ADAPTIVE16, original18 Construction controls, NOMINAL_FUTILITY,
-VERIFIED_NULL, REQUEST_LEARNING and HISTORY_EFFORT (**flags104071167**). W1-W16
+VERIFIED_NULL, REQUEST_LEARNING, HISTORY_EFFORT and TACTICAL_VERIFICATION
+(**flags1177812991**, profile TC_P1). W1-W16
 are supported with unchanged default1 and ROOT_REUSE at W2-W16. Play and UCI
 own asynchronous jobs through `SearchLifecycleService`; historical training
 profiles retain their existing drivers.
@@ -188,8 +189,9 @@ ordering, evaluator and retained-learning state. Learning survives iterations an
 retries within one request and is cleared at its boundary. HCE and BREP2-32 retain
 flags262143. BOUNDARY2 remains the managed-clock default with explicit FACTUAL
 fallback. To restore previous CP64 Search policy, set the JVM option
-`-Dseedv6.searchProfile=LEGACY`; explicit Search configurations retain precedence.
-See [promotion/rollback and validation](research/search/p4-learning/PRODUCTION.md)
+`-Dseedv6.searchProfile=HL_G1` (flags104071167). `LEGACY` retains flags3407871;
+invalid selectors fail. Explicit Search configurations retain precedence.
+See [promotion/rollback and validation](research/search/p4-tactical/PRODUCTION.md)
 for native/Java launch examples and known W4 uncertainty. Frozen historical
 [Phase3 baseline](search-phase3/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026)
 and research identities remain unchanged; production adoption does not deploy a bot.
@@ -198,10 +200,12 @@ See [architecture and source classification](architecture.md). The older alpha-b
 
 ## Search Research
 
-Phase4 is active under [Contract P4-R005](../source/CHESS_SEARCH_CONTRACT.md)
-and [Frontier P4-F021](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). HL-R001 is
+Phase4 is active under [Contract P4-R016](../source/CHESS_SEARCH_CONTRACT.md)
+and [Frontier P4-F032](../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). HL-R001 is
 accepted and closed; HL-G1/build84 remains the W1-qualified research champion,
-with its formulation promoted to experimental production as build85.
+while TC-P1 is the separately owner-adopted rolling production formulation at
+build90. TC-R001 failed its original independent W1 criterion; its sole attempt is
+spent. W4 competitive uncertainty was explicitly accepted for adoption.
 No research objective or successor is active.
 The charter permits deliberate Search approximations and TT experiments within
 later authorized objectives while preserving genuine correctness, architecture,

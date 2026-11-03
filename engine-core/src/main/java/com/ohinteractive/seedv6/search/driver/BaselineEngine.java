@@ -23,12 +23,12 @@ public final class BaselineEngine {
     public enum Evaluator { HCE, BREP2_32, CONVENTIONAL_CP64 }
     /** CP64 production policy only; explicit ConstructionSearch controls bypass this selector. */
     public enum SearchProfile {
-        HL_G1, LEGACY;
+        TC_P1, HL_G1, LEGACY;
         public static final String PROPERTY = "seedv6.searchProfile";
         public static SearchProfile configured() {
-            try { return valueOf(System.getProperty(PROPERTY, "HL_G1").trim().toUpperCase(Locale.ROOT)); }
+            try { return valueOf(System.getProperty(PROPERTY, "TC_P1").trim().toUpperCase(Locale.ROOT)); }
             catch (IllegalArgumentException invalid) {
-                throw new IllegalArgumentException("seedv6.searchProfile must be HL_G1 or LEGACY", invalid);
+                throw new IllegalArgumentException("seedv6.searchProfile must be TC_P1, HL_G1 or LEGACY", invalid);
             }
         }
     }
@@ -73,8 +73,10 @@ public final class BaselineEngine {
         Objects.requireNonNull(profile);
         var legacy = legacyConfiguration(workers, hashMiB);
         return new ConstructionSearch(legacy.mechanisms()
-                .with(FlatSearchConfig.Feature.REQUEST_LEARNING, profile == SearchProfile.HL_G1)
-                .with(FlatSearchConfig.Feature.HISTORY_EFFORT, profile == SearchProfile.HL_G1),
+                .with(FlatSearchConfig.Feature.REQUEST_LEARNING, profile != SearchProfile.LEGACY)
+                .with(FlatSearchConfig.Feature.HISTORY_EFFORT, profile != SearchProfile.LEGACY)
+                // Exact TC-P1/build89 formulation; HL_G1 and LEGACY retain their prior meanings.
+                .with(FlatSearchConfig.Feature.TACTICAL_VERIFICATION, profile == SearchProfile.TC_P1),
                 workers, hashMiB, legacy.aspiration());
     }
     /** Pre-HL production policy, independent of defaults/properties. Retains current correctness fixes. */

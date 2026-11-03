@@ -13,7 +13,9 @@ import static com.ohinteractive.seedv6.gui.ConventionalGuiProbe.*;
 /** Headless EDT/Play lifecycle probe compiled separately against actual GUI distribution jars. */
 public final class HlG1ProductionProbe {
     public static void main(String[] args) throws Exception {
-        long flags = BaselineEngine.SearchProfile.configured() == BaselineEngine.SearchProfile.LEGACY ? 3407871 : 104071167;
+        long flags = switch (BaselineEngine.SearchProfile.configured()) {
+            case TC_P1 -> 1177812991; case HL_G1 -> 104071167; case LEGACY -> 3407871;
+        };
         var adapter = edt(() -> new EngineSearchAdapter(1));
         int requests = 0;
         try {

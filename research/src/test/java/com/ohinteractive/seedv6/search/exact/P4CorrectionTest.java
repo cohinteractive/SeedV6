@@ -80,7 +80,7 @@ class P4CorrectionTest {
         }
     }
     @Test void defaultsAndIndependentControlsStayUnchanged() {
-        assertEquals(104071167L,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(1177812991L,BaselineEngine.configuration(1,64).mechanisms().flags());
         assertEquals(104071167L,P4CorrectionStudy.flags("guided",1).flags());
         assertEquals(238288895L,P4CorrectionStudy.flags("corrected",1).flags());
         assertEquals(506724351L,P4CorrectionStudy.flags("corrected-q",1).flags());
