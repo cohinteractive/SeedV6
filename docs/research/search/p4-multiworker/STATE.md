@@ -1,68 +1,81 @@
 # MW-R001 resume state
 
-5 November 2026 (Pacific/Auckland). **ACTIVE. MW-C4 is selected and its sole
-independent W4 confirmation is in progress. Strength objective not yet established.**
+5 November 2026 (Pacific/Auckland). **RESEARCH OBJECTIVE ACHIEVED in the frozen
+primary W4 domain. Codex technical/research execution complete; GPT/owner
+reconciliation and acceptance pending. No production or champion change.**
 Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md), [budget.json](budget.json),
-then current Phase 4 masters before fresh work.
+then authoritative Phase4 masters **P4-R026/P4-F044**.
 
-## Immediate continuation checkpoint
+## Outcome and exact continuation boundary
 
-The frozen c4-confirm-w4-v1 attempt was admitted under clean protocol commit
-76f327ac. Supervisor started2026-11-04T14:18:23.528552Z; independent batch deadline
-2026-11-04T17:48:23.123793Z, inside original18:18:03Z owner boundary. The admission
-receipt identifies child PID28528; use the actual receipt/resource-state and native
-Job ownership, not this historical PID alone, to determine current process state.
-The ledger records attemptsStarted=1. First-pair fsynced journal is authoritative
-if a crash precedes atomic ledger reconciliation. Never duplicate, resume, replay,
-change or extend this attempt. No interim score inspection or compilation/tests.
+MW-C4 EAGER_MEMORY completed the sole independent160-pair/320-game confirmation:
+150W/95D/75L,61.71875%; paired-normal95%57.5083-65.9292%, exceeding the unchanged
+score>=53% and lower>50% gate. Pair-bootstrap95%57.50-65.9375%; bounded Hoeffding
+95%50.9820-72.4555%. All320 games ended normally, no scoreless fallback warnings,
+all independent legality/history/PV/accounting audits passed, inputs remained
+stable and native Job drained to zero. No exploration was pooled and no interim
+scores were inspected. See c4-confirm-w4-v1-analysis.json, frozen protocol and
+execution receipt, plus RESULTS' technical/operational evidence review.
 
-Wait for the owned supervisor's completion. Only a complete160-pair audited sample,
-stable inputs and clean native Job drain permit the frozen analyzer:
-`build/research/venv/Scripts/python.exe -B tools/p4-multiworker-results.py --receipt docs/research/search/p4-multiworker/c4-confirm-w4-v1-execution.json --output docs/research/search/p4-multiworker/c4-confirm-w4-v1-analysis.json`.
-Do not overwrite an existing analysis. If interrupted, preserve and charge all
-partial evidence; the claim is spent and cannot pass or be replayed. Reconcile
-budget/drain before selecting any subsequent work. No new launch command belongs
-at this live checkpoint.
+This establishes the governing integrated research outcome for W4, CP64, requested
+Hash64, PVS/ADAPTIVE16, BOUNDARY2,10+0.1, Windows Ryzen5500/Java21 and the frozen
+held-out opening distribution/cold-JVM-per-pair domain. It is not W1/W2/W8/W16,
+longer-clock, warmed-persistent-client, cross-platform or champion-relative strength.
+C4's adverse/inconclusive fixed-work screen remains valid. Separate development
+C3/C5 comparisons do not isolate each component's strength contribution.
 
-All four C4/C5 frozen screens completed and drained before selection. C4 fixed
-45.8333%/24 games; timed64.0625%/64 games, paired-normal95%55.2792-72.8458%.
-C5 fixed58.3333%; timed53.90625%, normal46.2501-61.5624%. All audits passed.
-These are exploratory comparisons to exact TC-P1, not independent confirmation or
-causal C4-versus-C5 comparisons. Confirmation uses160 fresh pairs at10+0.1;
-feasibility-v2 records9843.94s projected wall,12600s allowance and limited power
-for small gains. The360-game played-position audit found zero overlaps with any
-protected reserve root. All frozen runtime/model/platform/window hashes were
-explicitly reverified immediately before launch.
+Confirmed artifact: runtime-memory-binding-build94-v1, clean source9d380c30,
+core3ba1daad/build94; C4flags1182007295 EAGER_ROOT versus exact TC-P1flags1177812991
+ROOT_REUSE at W4. The frozen manifest binds every runtime artifact. Current main
+build95 adds the separately qualified opt-in C6 independent iterative core, but
+C6 runtime/UCI/strength remains unqualified and is not in the confirmed artifact.
+Normal production still selects TC-P1. Build79/80/84/90/91 identities are unchanged.
 
-The separate independent iterative core c59a9488 passed69 Java tests and compiled
-its research probe. Build94->95 was verified token-only; default TC-P1 is unchanged.
-C6 runtime/UCI/strength qualification remains pending. C4 uses unchanged clean
-9d380c30/build94 frozen artifact, not the new independent core. Confirmation tooling
-passed15 Python tests, including native partial-claim initiation/drain and no-launch
-no-claim handling. See independent-tests-v2-summary.json.
+Final completion-verification-v1.json rechecks all69 frozen input hashes,965 raw
+evidence hashes, retained qualification XML and exact unchanged build95 version
+bytes. The final source/receipt/analysis commit records this verified boundary.
 
-Pre-confirmation reconciled totals:1,337,751,430 fixed nodes/102 games,
-1580.1959s fixed wall;258 timed games/8143.8631s. All complete, none failed or
-interrupted. The live attempt reserves320 additional timed games; read budget.json
-and the final receipt for actual cumulative totals, never reuse these pre-run
-figures as current consumption. Existing Java language servers are not owned research.
-No blocking human action; full Goal ACTIVE. MastersP4-R025/F043. The record below
-preserves historical checkpoints, not competing current launch instructions.
+No further autonomous computation is required to satisfy this achieved objective.
+The spare budget and retained C6 alternative are not a new CGLHW or another
+confirmation entitlement. Do not replay this attempt, consume the remaining reserve,
+launch a successor, promote production/champion or deploy. For owner review, begin
+with this state, RESULTS, the independent analysis and runtime manifest; verify local
+raw availability before any reanalysis. A fresh checkout lacks ignored raw evidence.
+Formal closeout needs separate GPT/owner reconciliation. Any proposed adoption needs
+separate owner acceptance and risk-proportionate consumer/build/platform qualification.
 
-## Current one-time overnight window
+## Reconciled resources and clean operational checkpoint
 
-Owner authorization received4 November23:18:03 NZDT; hard deadline5 November
-07:18:03 NZDT (**2026-11-04T18:18:03Z**). The start is the first observed machine
-clock second,2026-11-04T10:18:03Z. It never restarts across turns/commits/resumption.
-[Window authority](window-20261104-v1.json) is the single operational reference.
-Timed/high-load research is authorized within this window, subject to admission,
-independent deadline supervision, cumulative budgets and60s drain headroom. Afterward
-only admissible Mode A work; no recurring or future-night authority. The client
-confirmed an ACTIVE Goal for the entire MW-R001 objective, not an intermediate unit.
-Do not end execution just because a work unit, test, experiment or commit finishes.
-Continue the highest-value safe authorized investigation; preserve any genuine blocker.
+Cumulative fixed work:1,337,751,430 admitted nodes,102 initiated/completed games,
+1580.1959073s fixed wall. Timed:578 initiated/completed games,18419.1467517s charged
+match wall (5h6m59.15s). No failed/interrupted campaign games. Remaining maxima:
+98,662,248,570 fixed nodes;5898 fixed games;2422 timed games;240780.8532483s timed
+wall (66h53m0.85s). The sole independent attempt is spent on160 pairs; unplayed
+reserve entries and unused protected allocations do not authorize a replacement.
 
-## Historical overnight checkpoints (latest resume instructions above)
+Confirmation ran2026-11-04T14:18:23.528552Z to17:09:38.832226Z,10275.2836456s,
+inside its17:48:23.123793Z independent deadline and the original18:18:03Z owner
+boundary. Native Job verified0 surviving owned processes (645 lifetime members).
+Subsequent process inspection found only the two pre-existing VSCode Java language
+services, no research Java/Python/Fastchess. Ledger pending=[]; no background match,
+scheduled task or future unattended execution remains. Minimum free memory19.798GiB,
+peak owned committed0.806GiB, mean total CPU28.93%, max68.68%. No thermal/input-latency
+claim. Confirmation's12,479,215,643 observed timed nodes are not charged again as
+fixed-work nodes; timed wall/games are charged in full.
+
+The immutable window authority retains its original grant-time Goal/status fields;
+those are historical, not permission to restart the clock or reactivate completed
+research. The client Goal is to be marked complete only after this verified outcome
+and durable finalization; acceptance remains distinct. Ending before the window
+expires follows achieved research criteria, not an intermediate milestone.
+
+Human actions: None blocking the achieved research result. GPT/owner reconciliation
+is blocking formal acceptance/closeout; separate approval and qualification are
+blocking any proposed adoption or deployment. Refresh both Phase4 Project mirrors
+toP4-R026/P4-F044 before mirror-dependent planning (non-blocking for completed repo
+research). No immediate response or renewed computation permission is requested.
+
+## Historical overnight checkpoints (superseded operational instructions)
 
 Opening selection completed:64 development pairs from the established legal16 pool;
 480 fresh protected reserve pairs from the pinned held-out book partition. Six

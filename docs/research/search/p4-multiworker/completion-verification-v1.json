@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "verifiedUtc": "2026-11-04T17:17:33.141423+00:00",
+  "researchObjective": "achieved in frozen primary W4 domain; GPT/owner acceptance separate",
+  "protocolSha256": "783654ce714b501fd0037a361170c2807151bff68a0f4fc45aaeb8f489e30f27",
+  "analysisSha256": "f067e6e96162ae227a2e91960e603dec43d778c9e16e00dbf7c5cb59141a1245",
+  "receiptSha256": "63c2c08f1353c55d5db8994a79552380c662e5a9d8114257086b85922ce82a92",
+  "frozenInputHashesVerified": 69,
+  "rawEvidenceHashesVerified": 965,
+  "technicalEvidence": "Retained XML hashes and zero failure/error/skip fields verified for C3, integrated memory, independent coordinator and corrected baseline suites; no tests rerun during confirmation.",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 95
+  },
+  "versionDisposition": "no bump for final evidence/documentation; bytes identical to verified build95 HEAD",
+  "versionSha256": "0200eeb5da182990b0186167dbd13308331fef352536d2fc31aaa69ffdaca8cc",
+  "consumed": {
+    "timedWallSeconds": 18419.146751700027,
+    "timedInitiated": 578,
+    "timedCompleted": 578,
+    "timedFailed": 0,
+    "timedInterrupted": 0,
+    "fixedWallSeconds": 1580.1959072998725,
+    "fixedInitiated": 102,
+    "fixedCompleted": 102,
+    "fixedFailed": 0,
+    "fixedInterrupted": 0,
+    "fixedNodes": 1337751430
+  },
+  "remaining": {
+    "timedWallSeconds": 240780.85324829997,
+    "timedGames": 2422,
+    "fixedGames": 5898,
+    "fixedNodes": 98662248570
+  },
+  "confirmationAttemptSpent": 1,
+  "pendingAdmissions": [],
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 31503.15625,
+    "totalOwnedProcesses": 645
+  },
+  "processSnapshot": "docs/research/search/p4-multiworker/raw/closeout-processes-v1.json",
+  "processSnapshotSha256": "827da4de660009abb9d65b91c6f067dc8d5f8e787267c74d3edfebad0bf33bcd",
+  "processObservation": "Only two pre-existing VSCode Java services; no research Java/Python/Fastchess. Existing unrelated services preserved.",
+  "hardWindowDeadlineUtc": "2026-11-04T18:18:03Z",
+  "futureExecution": "None scheduled or required for achieved objective.",
+  "notQualified": [
+    "Other worker-count practical strength",
+    "Longer clocks or warmed persistent clients",
+    "GUI/mobile/macOS production adoption",
+    "C6 runtime/competitive qualification",
+    "Thermal/input-latency measurement"
+  ]
+}

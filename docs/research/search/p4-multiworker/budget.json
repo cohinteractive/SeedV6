@@ -17,9 +17,9 @@
     "firstInitiatedObservedUtc": "2026-11-04T14:18:25.255915+00:00"
   },
   "consumed": {
-    "timedWallSeconds": 8143.863106100005,
-    "timedInitiated": 258,
-    "timedCompleted": 258,
+    "timedWallSeconds": 18419.146751700027,
+    "timedInitiated": 578,
+    "timedCompleted": 578,
     "timedFailed": 0,
     "timedInterrupted": 0,
     "fixedWallSeconds": 1580.1959072998725,
@@ -29,14 +29,7 @@
     "fixedInterrupted": 0,
     "fixedNodes": 1337751430
   },
-  "pending": [
-    {
-      "id": "c4-confirm-w4-v1",
-      "maximumNodes": 0,
-      "maximumGames": 320,
-      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\c4-confirm-w4-v1-execution.json"
-    }
-  ],
+  "pending": [],
   "receipts": [
     "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-no-launch-reconciliation.json",
@@ -83,7 +76,8 @@
     "docs\\research\\search\\p4-multiworker\\c4-fixed-screen-w4-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\c5-fixed-screen-w4-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\c4-timed-screen-w4-v1-execution.json",
-    "docs\\research\\search\\p4-multiworker\\c5-timed-screen-w4-v1-execution.json"
+    "docs\\research\\search\\p4-multiworker\\c5-timed-screen-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c4-confirm-w4-v1-execution.json"
   ],
   "timedWindows": [
     "docs\\research\\search\\p4-multiworker\\window-20261104-v1.json"

@@ -1,0 +1,109 @@
+{
+  "status": "complete independent confirmation analysis",
+  "id": "c4-confirm-w4-v1",
+  "kind": "timed",
+  "workers": 4,
+  "candidate": "EAGER_MEMORY",
+  "baseline": "ROOT_REUSE",
+  "runtime": "docs/research/search/p4-multiworker/raw/runtime-memory-binding-build94-v1",
+  "games": 320,
+  "wdl": [
+    150,
+    95,
+    75
+  ],
+  "statistics": {
+    "pairs": 160,
+    "pentanomial": [
+      6,
+      24,
+      51,
+      47,
+      32
+    ],
+    "score": 0.6171875,
+    "logisticElo": 82.97240450477112,
+    "pairedHoeffding95Score": [
+      0.5098201479133156,
+      0.7245548520866844
+    ],
+    "pairedHoeffding95Elo": [
+      6.8246152824543636,
+      168.01445704924217
+    ],
+    "pairScoreStandardError": 0.02148225314707834,
+    "pairedNormal95Score": [
+      0.5750830575249543,
+      0.6592919424750457
+    ],
+    "pairedNormal95Elo": [
+      52.570610102689606,
+      114.6781454324371
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 22229,
+      "nodes": 5156944215,
+      "elapsedNanos": 4868673569500
+    },
+    "candidate": {
+      "requests": 22267,
+      "nodes": 7322271428,
+      "elapsedNanos": 4930303086600
+    }
+  },
+  "descriptiveGameOrderScores": {
+    "first": 0.61875,
+    "second": 0.615625
+  },
+  "descriptiveCandidateColorScores": {
+    "White": 0.609375,
+    "Black": 0.625
+  },
+  "orderInterpretation": "Post-hoc descriptive strata; game order/color/opening dependence is not a causal warmup test. No exclusions or score-driven extension.",
+  "terminations": {
+    "normal": 320
+  },
+  "meanGamePlies": 155.05,
+  "qualifiedFallbackWarnings": 0,
+  "chargedNodes": 0,
+  "wallSeconds": 10275.283645600022,
+  "peakOwnedCommittedGiB": 0.8057823181152344,
+  "environment": {
+    "samples": 5074,
+    "meanTotalCpuPercent": 28.925416793824574,
+    "maximumTotalCpuPercent": 68.68489583333333,
+    "minimumFreeMemoryGiB": 19.79781723022461
+  },
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 31503.15625,
+    "totalOwnedProcesses": 645
+  },
+  "protocol": "docs\\research\\search\\p4-multiworker\\c4-confirm-w4-v1-protocol.json",
+  "protocolSha256": "783654ce714b501fd0037a361170c2807151bff68a0f4fc45aaeb8f489e30f27",
+  "execution": "docs\\research\\search\\p4-multiworker\\c4-confirm-w4-v1-execution.json",
+  "executionSha256": "63c2c08f1353c55d5db8994a79552380c662e5a9d8114257086b85922ce82a92",
+  "analyzerSha256": "a589ba1308a73bc9300f1c6b896aca74c762dc9853a89fe18e26b8c1ba3bd686",
+  "rawDirectory": "docs\\research\\search\\p4-multiworker\\raw\\c4-confirm-w4-v1",
+  "interpretation": "One complete independent fixed sample, separate from candidate-selection exploration. The statistical gate is reported without inferring technical acceptance, champion advancement, production adoption or transfer beyond the frozen W4 domain.",
+  "confirmation": {
+    "primaryStatisticalGate": "passed",
+    "gate": {
+      "minimumScore": 0.53,
+      "lowerBoundExclusive": 0.5,
+      "confidence": 0.95,
+      "method": "paired-normal",
+      "z": 1.9599639845400536,
+      "zeroVariance": "inconclusive"
+    },
+    "pairedBootstrapPercentile95": [
+      0.575,
+      0.659375
+    ],
+    "sensitivity": "Fixed-seed opening-pair percentile bootstrap; no game-level independence. Normal, bounded and bootstrap assumptions differ; none removes opening-population dependence or supports another clock/platform. Technical/operational qualification and owner acceptance remain separate; no adoption is inferred."
+  }
+}

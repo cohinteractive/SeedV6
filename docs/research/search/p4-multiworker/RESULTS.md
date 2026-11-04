@@ -358,3 +358,63 @@ history-sensitive SearchKey semantics; no cross-worker learned-table copying,
 aged score retention, position-only score fallback or changed clock policy enters
 C4. Its heuristic estimates cannot be presented as exact controls. W4 timed strength
 is still pending the complete independent sample, regardless of this technical review.
+
+## Sole independent W4 result and research disposition
+
+The frozen c4-confirm-w4-v1 attempt completed all160 fresh opening pairs/320 games
+on5 November NZDT, before either independent batch or owner deadline. MW-C4 scored
+150W/95D/75L:61.71875%, paired-normal95%57.5083-65.9292%. The original minimum53%
+and strict lower>50% gate passed. Pair pentanomial[6,24,51,47,32], SE0.02148225315.
+Prespecified sensitivity also remains above equality: fixed-seed10,000-resample
+pair bootstrap57.50-65.9375%; bounded Hoeffding50.9820-72.4555%. The descriptive
+logistic score transform is+82.97 Elo (normal52.57-114.68), not an external rating.
+
+No development data were pooled, no score-dependent stopping/filtering occurred,
+and all320 games ended normally. Independent rules/history/PV/request-accounting
+audits passed; zero qualified scoreless fallbacks; all frozen inputs stable. Native
+Job drained every descendant. The independent analyzer and protocol hashes remain
+unchanged. Analysis and receipt identify the exact raw PGNs, traces and evidence
+hashes; local raw output is preserved and ignored. The claim attempt is spent.
+
+Domain: W4 exact TC-P1 control, CP64/Hash64/PVS/ADAPTIVE16/BOUNDARY2,10+0.1,
+Windows Ryzen5500/Java21, originally seeded held-out legal16-ply book roots,
+alternating first White, new JVM pair with no Search warmup, restart off within
+pair,300-fullmove cap. Source9d380c30/core3ba1daad/build94 frozen runtime, C4flags
+1182007295 EAGER_ROOT versus control1177812991 ROOT_REUSE. This is a direct integrated
+configuration comparison, not an isolated eager-scheduling or H1 mechanism claim.
+The separately compiled/tested build95 independent iteration is not in this result.
+
+Descriptive first/second game scores61.875/61.5625%, White/Black60.9375/62.5%,
+mean155.05 plies. These are post-hoc strata, not extra tests or causal warmup proof.
+Opening-pair normal/bootstrap/bounded assumptions differ; related book families
+and selection population constrain transfer. Independent selection prevents pooling
+exploration into this claim, not universal generalization. W1/W2/W8/W16 practical
+strength, longer clocks, warmed persistent clients and other platforms remain
+unproven. The fixed-work adverse point estimate is not erased by timed success.
+
+The preceding technical/integration/operational review plus this independent
+practical result satisfy MW-R001's governing research criterion in its declared
+W4 domain. Codex research execution completes successfully; GPT/owner reconciliation,
+formal acceptance, champion advancement, production adoption and deployment remain
+separate. No further optional candidate is needed to establish this achieved outcome.
+Retain C6's tested implementation as an unqualified runtime alternative, without
+spending more budget simply to fill the owner window. No successor is launched.
+
+Confirmation charged10275.2836456s; all-campaign timed18419.1467517s/578 games,
+fixed1,337,751,430 admissions/102 games/1580.1959073s. All complete, zero failed or
+interrupted games. Remaining allowances and exact safe review boundary are in STATE;
+unused reserve does not renew the sole claim. Confirmation minimum free memory
+19.7978GiB, peak owned committed0.8058GiB, mean/max CPU28.9254/68.6849%; no resource
+interruption or material recorded contention. No direct thermal/input-latency test.
+
+No extra compilation/tests were run during confirmation. Existing coherent units
+passed33(C2),39(C3),12(memory) and69(independent/lifecycle) Java test executions
+with overlapping regressions; corrected90-test baseline selection was already
+qualified before this overnight root.15 final confirmation-tool tests included
+native first-claim/partial drain and no-launch/no-claim fixtures. Initial failed
+invocations remain evidence. No native GUI/mobile/macOS production qualification
+or external deployment was attempted, and no build increment accompanies this
+results/documentation unit. Current main build95 keeps ordinary TC-P1 unchanged.
+
+Final integrity verification rechecked69 frozen inputs and965 raw evidence files,
+retained qualification XML and unchanged build95 bytes. See completion-verification-v1.json.
