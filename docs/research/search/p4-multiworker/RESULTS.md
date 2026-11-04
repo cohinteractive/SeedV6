@@ -184,3 +184,22 @@ reset/reuse, callbacks, W2-W16 lifecycle and a direct history-effort consumer wi
 No correction/proof/path state transfer, changed clock policy or normal production
 routing. Runtime artifact/diagnostic/competitive qualification is still outstanding;
 this is a supporting-condition experiment, not independent iterative Lazy SMP.
+
+## MW-C2 runtime and supporting-condition disposition
+
+Clean f6783f81/build93 runtime passed4 UCI requests (140218 admissions), plus174
+bounded W4 diagnostic requests/17.4M admissions across ROOT_REUSE, C1 and C2.
+All accounting, legal PV, board restoration and helper/native drain assertions
+passed. C2 delivered990 completed learning snapshots; the focused test already
+established recipient history-effort consumption and non-aliasing.
+
+C2 opening mean completed depth5.56 matched C1; mixed5.75 was below C1 5.975.
+ROOT_REUSE remained6.56/7.00. C2 mean distinct admitted board keys17.2k/16.9k
+were below C1 21.7k/20.8k and control57.9k/46.2k. Board-key identity omits history,
+window/depth domains; overlap and aborted-worker admissions are not counts of
+useless work. Observation perturbs scheduling and its wall is not speed evidence.
+These results do not support the proposed recovery of C1's useful coverage and
+are consistent with excessive convergence after copying. No C2 competitive games
+or strength verdict. Deprioritize its expansion and select finite-window eager
+root splitting to target the observed first-root barrier with separate root jobs.
+All raw/negative evidence is retained in c2-coverage-w4-v1-summary.json and receipts.

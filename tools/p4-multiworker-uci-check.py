@@ -9,10 +9,13 @@ spec=importlib.util.spec_from_file_location('mw_uci_match',Path(__file__).with_n
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 
 
-def main(runtime, output):
+def main(runtime, output, architectures=('ROOT_REUSE','WHOLE_ROOT_RACE')):
+    if not architectures or len(set(architectures))!=len(architectures) or any(
+            a not in ('ROOT_REUSE','WHOLE_ROOT_RACE','WHOLE_ROOT_SHARING') for a in architectures):
+        raise ValueError('Unknown/duplicate qualification architecture')
     nodes=0; requests=0
     with Path(output).open('x',encoding='utf-8') as stream:
-        for architecture in ('ROOT_REUSE','WHOLE_ROOT_RACE'):
+        for architecture in architectures:
             engine=m.b.Uci(m.command(runtime,architecture,'qualification'),Path(output).parent/(architecture+'-uci.txt'))
             try:
                 identity=m.configure(engine,4,architecture)
@@ -33,7 +36,7 @@ def main(runtime, output):
             finally:engine.close()
             if engine.process.returncode!=0:raise ValueError('Nonzero UCI exit')
         m.emit(stream,dict(type='summary',status='passed',nodes=nodes,requests=requests,activeHelpersAfterClose=0,
-            scope='Both JVMs exited normally after UCI quit; no surviving in-process helper is possible. Parent Job verifies descendants.'))
+            scope='All selected JVMs exited normally after UCI quit; no surviving in-process helper is possible. Parent Job verifies descendants.'))
 
 
-if __name__=='__main__':main(sys.argv[1],sys.argv[2])
+if __name__=='__main__':main(sys.argv[1],sys.argv[2],tuple(sys.argv[3].split(',')) if len(sys.argv)>3 else ('ROOT_REUSE','WHOLE_ROOT_RACE'))

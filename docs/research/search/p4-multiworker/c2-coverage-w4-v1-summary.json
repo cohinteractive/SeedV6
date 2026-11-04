@@ -1,0 +1,126 @@
+{
+  "status": "passed bounded diagnostic",
+  "build": 93,
+  "source": "f6783f81a58e",
+  "runs": [
+    {
+      "id": "c2-coverage-opening-w4-root_reuse-v1",
+      "requests": 18,
+      "nodes": 1800000,
+      "meanCompletedDepth": 6.555555555555555,
+      "meanUniqueBoardKeys": 57919.77777777778,
+      "crossWorkerExcessMemberships": 222235,
+      "sumWorkerUniqueBoardKeys": 1264791,
+      "completedLearningTransfers": 0,
+      "abortedWorkerNodes": 195739,
+      "peakOwnedCommittedGiB": 0.5743942260742188,
+      "wallSeconds": 4.347291600017343,
+      "rawSha256": "c98371a898556dac954d9777ae0a8cab0354b3f3c452343849406d6a38e26656"
+    },
+    {
+      "id": "c2-coverage-opening-w4-whole_root_race-v1",
+      "requests": 18,
+      "nodes": 1800000,
+      "meanCompletedDepth": 5.555555555555555,
+      "meanUniqueBoardKeys": 21650.38888888889,
+      "crossWorkerExcessMemberships": 691733,
+      "sumWorkerUniqueBoardKeys": 1081440,
+      "completedLearningTransfers": 0,
+      "abortedWorkerNodes": 1412322,
+      "peakOwnedCommittedGiB": 0.49942779541015625,
+      "wallSeconds": 3.5397347999969497,
+      "rawSha256": "b9869c5fc698f214fc1cc999beccc11c635e21bb7915bf106fb4617e22717402"
+    },
+    {
+      "id": "c2-coverage-opening-w4-whole_root_sharing-v1",
+      "requests": 18,
+      "nodes": 1800000,
+      "meanCompletedDepth": 5.555555555555555,
+      "meanUniqueBoardKeys": 17197.944444444445,
+      "crossWorkerExcessMemberships": 745418,
+      "sumWorkerUniqueBoardKeys": 1054981,
+      "completedLearningTransfers": 300,
+      "abortedWorkerNodes": 1341863,
+      "peakOwnedCommittedGiB": 0.50531005859375,
+      "wallSeconds": 3.484162899956573,
+      "rawSha256": "d07ccf127c255728e73e9c7e6e9acfb1a5952c461f63baf5650a07c3dbd4d7f7"
+    },
+    {
+      "id": "c2-coverage-mixed-w4-root_reuse-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "meanCompletedDepth": 7,
+      "meanUniqueBoardKeys": 46219.1,
+      "crossWorkerExcessMemberships": 422225,
+      "sumWorkerUniqueBoardKeys": 2270989,
+      "completedLearningTransfers": 0,
+      "abortedWorkerNodes": 468651,
+      "peakOwnedCommittedGiB": 0.5218849182128906,
+      "wallSeconds": 8.280872699979227,
+      "rawSha256": "1916b2f55ccc27494e997771c4a7aafbeb42b77e2476c5f9a8682eea00238e89"
+    },
+    {
+      "id": "c2-coverage-mixed-w4-whole_root_race-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "meanCompletedDepth": 5.975,
+      "meanUniqueBoardKeys": 20849.275,
+      "crossWorkerExcessMemberships": 1308323,
+      "sumWorkerUniqueBoardKeys": 2142294,
+      "completedLearningTransfers": 0,
+      "abortedWorkerNodes": 3052703,
+      "peakOwnedCommittedGiB": 0.4786491394042969,
+      "wallSeconds": 6.121025800006464,
+      "rawSha256": "586d85b8ba283b99d142788ef6676906c18e03265150c3d77fbfff185f3d55de"
+    },
+    {
+      "id": "c2-coverage-mixed-w4-whole_root_sharing-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "meanCompletedDepth": 5.75,
+      "meanUniqueBoardKeys": 16864.1,
+      "crossWorkerExcessMemberships": 1401889,
+      "sumWorkerUniqueBoardKeys": 2076453,
+      "completedLearningTransfers": 690,
+      "abortedWorkerNodes": 2876224,
+      "peakOwnedCommittedGiB": 0.4993743896484375,
+      "wallSeconds": 5.928341799997725,
+      "rawSha256": "c944a90e989a3f5c6a28a6e19e9d325a31c005eab54cc4fa8a81bc23bd07eb04"
+    }
+  ],
+  "comparisons": [
+    {
+      "corpus": "opening",
+      "control": "root_reuse",
+      "requests": 18,
+      "c2Deeper": 0,
+      "c2Shallower": 16,
+      "bestMoveDisagreements": 3
+    },
+    {
+      "corpus": "opening",
+      "control": "whole_root_race",
+      "requests": 18,
+      "c2Deeper": 1,
+      "c2Shallower": 1,
+      "bestMoveDisagreements": 1
+    },
+    {
+      "corpus": "mixed",
+      "control": "root_reuse",
+      "requests": 40,
+      "c2Deeper": 0,
+      "c2Shallower": 36,
+      "bestMoveDisagreements": 14
+    },
+    {
+      "corpus": "mixed",
+      "control": "whole_root_race",
+      "requests": 40,
+      "c2Deeper": 0,
+      "c2Shallower": 9,
+      "bestMoveDisagreements": 6
+    }
+  ],
+  "scope": "Observed completed-learning transfers, exact callback reconciliation, legal PV/state/drain assertions and board-key overlap. Keys omit history/depth/window identity and overlap is not useless work. HashSet observation changes timing/scheduling; no NPS or playing-strength inference. Aborted worker work can still have produced useful TT hints."
+}

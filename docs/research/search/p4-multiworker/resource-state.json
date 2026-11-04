@@ -1,13 +1,12 @@
 {
   "status": "continue_research",
-  "receipt": "docs\\research\\search\\p4-multiworker\\c1-timed-screen-w4-v1-execution.json",
+  "receipt": "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-whole_root_sharing-v1-execution.json",
+  "blocker": null,
   "ownedProcessesRemaining": 0,
-  "temporaryResourceBlocker": false,
-  "pendingHumanAction": null,
-  "alternativeWork": [
-    "Review runner failures and pursue low-impact architecture design"
-  ],
-  "clientBoundary": "Agent handles input; repository state does not preserve client liveness.",
+  "alternativeWork": [],
+  "resumeProtocolTemplate": "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-whole_root_sharing-v1-protocol.json",
+  "resumeRequiresNewRunId": true,
   "resumeState": "docs/research/search/p4-multiworker/STATE.md",
-  "resumeRequiresNewRunId": true
+  "pendingHumanAction": null,
+  "clientBoundary": "Repository code records disposition only. Agent must ask via available client input tool when needed. No interactive pause, future execution, or client liveness is created here."
 }

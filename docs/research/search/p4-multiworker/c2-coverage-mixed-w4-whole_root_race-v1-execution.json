@@ -1,0 +1,76 @@
+{
+  "id": "c2-coverage-mixed-w4-whole_root_race-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-whole_root_race-v1-protocol.json",
+  "protocolSha256": "891552b224910842cd645a30f63c2e94974470698ee64e22f101da9abec2351c",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms128m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\runtime-sharing-build93-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4MultiworkerStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c2-coverage-mixed-w4-whole_root_race-v1\\observations.jsonl",
+    "4",
+    "2",
+    "12",
+    "100000",
+    "WHOLE_ROOT_RACE",
+    "board-keys"
+  ],
+  "startedUtc": "2026-11-04T11:33:21.956879+00:00",
+  "maximumNodes": 4000000,
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c2-coverage-mixed-w4-whole_root_race-v1\\observations.jsonl",
+  "priority": "below-normal",
+  "games": 0,
+  "preflightEnvironment": {
+    "utc": "2026-11-04T11:33:22.568134+00:00",
+    "totalCpuPercent": 8.045977011494255,
+    "freeMemoryGiB": 20.795299530029297,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 41.37931034482759,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 30652,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 21.734375,
+    "totalOwnedProcesses": 2
+  },
+  "wallSeconds": 6.121025800006464,
+  "endedUtc": "2026-11-04T11:33:28.091431+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.4786491394042969,
+  "temporaryResourceBlocker": null,
+  "chargedNodes": 4000000,
+  "nodeCharge": "verified callback admissions",
+  "summary": {
+    "status": "passed",
+    "type": "summary",
+    "nodes": 4000000,
+    "activeHelpersAfterClose": 0,
+    "requests": 40
+  },
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c2-coverage-mixed-w4-whole_root_race-v1\\console.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c2-coverage-mixed-w4-whole_root_race-v1\\environment.jsonl": "254d218cba7f42b22969636c419a7f1cdf2a1307610c9e5f38fbe695f17524fd",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c2-coverage-mixed-w4-whole_root_race-v1\\observations.jsonl": "586d85b8ba283b99d142788ef6676906c18e03265150c3d77fbfff185f3d55de"
+  },
+  "inputsStable": true
+}

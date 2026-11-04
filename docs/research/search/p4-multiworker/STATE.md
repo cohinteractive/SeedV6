@@ -62,15 +62,29 @@ raw pairing/audit and native timeout/drain. Shared-core impact requires build92-
 token-only bytes verified. Normal production remains TC-P1/ROOT_REUSE. No runtime
 or competitive C2 qualification yet. See c2-tests-v1-summary.json.
 
-Exact next step: commit this verified unit, export a fresh clean-source build93
-research runtime and manifest, then freeze bounded C1/C2/ROOT_REUSE diagnostics on
-existing development roots (including optional board-key overlap). Qualify C2 UCI
-identity/PV/stop/accounting and alternating-first-color paired pilot before a new
-competitive screen. Do not replay used run IDs or modify frozen evidence. Choose
-further work from those results, including finite-window eager root scheduling or
-request-level independent iteration when justified. The original deadline remains
-18:18:03Z; continue while useful authorized research remains. No owner action blocks
-this work, and no intermediate commit/screen completes the full active Goal.
+Implementation f6783f81/build93 has a clean frozen runtime. C2 UCI qualification
+passed4 requests/140218 nodes; six coverage protocols passed174 requests/17.4M
+nodes, complete callback/PV/state/drain checks and990 completed learning transfers.
+C2 did not recover completed depth: opening5.56 equals C1; mixed5.75 vs C1 5.975,
+both below ROOT_REUSE6.56/7.00. Mean unique board keys fell to17.2k/16.9k versus
+C1 21.7k/20.8k and ROOT_REUSE57.9k/46.2k at100k admissions. This measures overlap,
+not wasted work or strength. C2 is deprioritized for further competition; its
+playing strength remains unmeasured. See c2-coverage-w4-v1-summary.json.
+
+Current totals:335,628,984 fixed nodes,405.9597s fixed wall,26 fixed games;
+66 timed games/2042.5878s timed wall. No pending admission or owned match/engine
+process. Protected confirmation unchanged. Tools now verify explicit formulation
+and learning identity; reverse-first-color paired runtime pilot remains outstanding.
+
+Selected next investigation: MW-C3 finite-aspiration-window eager root splitting.
+Keep the original owner-first path for full windows; within finite windows start
+preferred-root full search and alternative scouts concurrently. Preserve all scout
+fail-high retries, completed result provenance, full drain, private history, global
+admissions and unchanged BOUNDARY2. Implement/qualify a coherent opt-in core unit,
+then compare useful work and playing strength when warranted. Independent iterative
+SMP remains a distinct alternative. The immutable deadline stays18:18:03Z. Continue
+safe authorized research; no owner action blocks it and no intermediate commit
+completes the full active Goal.
 
 ## Previous continuation checkpoint and next work unit
 

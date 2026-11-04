@@ -1,0 +1,66 @@
+{
+  "id": "uci-sharing-build93-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\uci-sharing-build93-v1-protocol.json",
+  "protocolSha256": "374ef63759aec90d69a577c2cb6cfdc51ab539e2ccd7ff41577ca3f0eddaa4f7",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-multiworker-uci-check.py",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\runtime-sharing-build93-v1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-sharing-build93-v1\\observations.jsonl",
+    "WHOLE_ROOT_SHARING"
+  ],
+  "startedUtc": "2026-11-04T11:32:58.742134+00:00",
+  "maximumNodes": 240000,
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-sharing-build93-v1\\observations.jsonl",
+  "priority": "below-normal",
+  "games": 0,
+  "preflightEnvironment": {
+    "utc": "2026-11-04T11:32:59.366724+00:00",
+    "totalCpuPercent": 5.203619909502266,
+    "freeMemoryGiB": 20.750892639160156,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 38.5369532428356,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 37572,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 2.578125,
+    "totalOwnedProcesses": 4
+  },
+  "wallSeconds": 1.6724262000061572,
+  "endedUtc": "2026-11-04T11:33:00.428018+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.3576469421386719,
+  "temporaryResourceBlocker": null,
+  "chargedNodes": 140218,
+  "nodeCharge": "verified callback admissions",
+  "summary": {
+    "type": "summary",
+    "status": "passed",
+    "nodes": 140218,
+    "requests": 4,
+    "activeHelpersAfterClose": 0,
+    "scope": "All selected JVMs exited normally after UCI quit; no surviving in-process helper is possible. Parent Job verifies descendants."
+  },
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-sharing-build93-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-sharing-build93-v1\\environment.jsonl": "2ae3565fab24981703e5127a15d1d3fa32078655d84b04159c2c40f2b7345853",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-sharing-build93-v1\\observations.jsonl": "2ead5a2ce3f4cf73a9fb4fff9dd35a4d054c43431bdd146c04c5389bc25a5a85",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-sharing-build93-v1\\WHOLE_ROOT_SHARING-uci.txt": "af6d801ea7dd77fe1ef95f9096eb4a0ee2eb84c6dc246b6fd341179b38870dae"
+  },
+  "inputsStable": true
+}

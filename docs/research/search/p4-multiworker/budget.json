@@ -20,12 +20,12 @@
     "timedCompleted": 66,
     "timedFailed": 0,
     "timedInterrupted": 0,
-    "fixedWallSeconds": 372.58585930004483,
+    "fixedWallSeconds": 405.95971510000527,
     "fixedInitiated": 26,
     "fixedCompleted": 26,
     "fixedFailed": 0,
     "fixedInterrupted": 0,
-    "fixedNodes": 318088766
+    "fixedNodes": 335628984
   },
   "pending": [],
   "receipts": [
@@ -45,7 +45,14 @@
     "docs\\research\\search\\p4-multiworker\\c1-fixed-pilot-w4-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\c1-timed-pilot-w4-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\c1-fixed-screen-w4-v1-execution.json",
-    "docs\\research\\search\\p4-multiworker\\c1-timed-screen-w4-v1-execution.json"
+    "docs\\research\\search\\p4-multiworker\\c1-timed-screen-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\uci-sharing-build93-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c2-coverage-opening-w4-root_reuse-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c2-coverage-opening-w4-whole_root_race-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c2-coverage-opening-w4-whole_root_sharing-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-root_reuse-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-whole_root_race-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-whole_root_sharing-v1-execution.json"
   ],
   "timedWindows": [
     "docs\\research\\search\\p4-multiworker\\window-20261104-v1.json"
