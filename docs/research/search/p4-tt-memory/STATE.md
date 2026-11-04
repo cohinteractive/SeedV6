@@ -1,4 +1,47 @@
-# TT memory workstream ? resume here
+# TT-R001 terminal state
+
+Internal state revision: **2** - 5 November 2026 (Pacific/Auckland).
+
+**GPT-RECONCILED, OWNER-ACCEPTED AND FORMALLY CLOSED - INCONCLUSIVE.**
+GPT reconciles the documented campaign as a valid completed research investigation.
+The owner accepts its bounded inconclusive disposition on 5 November 2026.
+Technical execution, result reconciliation and formal closeout are complete;
+**the original practical-strength objective was not demonstrated**.
+
+H1/build81 and H2/build82 passed their reported technical qualifications; their
+W1/W4 development was inconclusive. H1's fresh W1 attempt2 against corrected80
+completed 160 pairs / 320 normal games: 133W/80D/107L, 54.0625%. The prospective
+99.375% paired-normal interval 47.343-60.782% crosses equality; the adjusted
+strength gate failed and conditional direct79 did not execute. No equivalence,
+absence of useful TT memory, successful H1/H2 foundation or promotion follows.
+
+The [original disposition](disposition-v1-summary.json), [adjusted analysis](h1-confirm-w1-v2-control80-analysis.json),
+[H1](H1.md), [H2](H2.md) and historical checkpoint below retain exact identities,
+resource accounting, adverse findings and statistical limitations. All 11 evidence
+files bound by the disposition were locally available and SHA-256 verified for
+this closeout, including the retained attempt2 raw evidence; no new games or
+reanalysis changing results occurred. Attempt1 remains interrupted/failed and
+excluded. Nominal 0.025 plus 0.0125 (0.0375 total, including the unused conditional
+portion) stays spent/reserved and cannot be recycled.
+
+No experiment, next run, autonomous continuation or successor is selected.
+Future related research requires a separately authorized objective. MW-R001's
+later accepted MW-C4 W4 result concerns another integrated formulation; it does
+not retroactively qualify H1/H2. TTF-R001's limited foundational acceptance stays
+unchanged. HL-G1/build84 remains the W1-qualified research champion; build79 is
+the immutable baseline and build80 the accounting-corrected control. TT-R001
+contributes no champion advancement, production promotion or deployment.
+
+Current masters after this documentation closeout: **P4-R028/P4-F046**.
+Human actions required for TT-R001 closeout: **None**. Owner mirror refresh to the
+final current master pair is non-blocking for repository closeout and required
+before mirror-dependent planning. Repository execution does not refresh mirrors.
+
+## Historical technical checkpoint - 30 October 2026
+
+The following checkpoint, including its then-current build/champion/mirror and
+pending-reconciliation wording, is retained as history. Its operational suggestions
+do not authorize execution and its acceptance boundary is superseded above.
 
 Status: **CODEX RESEARCH EXECUTION COMPLETE - INCONCLUSIVE**,30 October2026.
 Objective [TT-R001](CONTRACT.md) remains subordinate to Search P4-R001. Current

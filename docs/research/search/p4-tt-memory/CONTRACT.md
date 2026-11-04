@@ -1,5 +1,34 @@
 # Useful TT score memory for selective PVS
 
+Internal revision: **TT-R001 revision 2** - 5 November 2026 (Pacific/Auckland).
+
+## Accepted inconclusive closeout
+
+GPT technical/result reconciliation is complete: the documented campaign is a
+valid completed research investigation with an **INCONCLUSIVE strength outcome**.
+The owner accepts that bounded disposition on 5 November 2026 and authorizes
+formal closeout. **TT-R001 is accepted and closed; its original practical-strength
+objective was not demonstrated.** Technical qualification of H1/build81 and
+H2/build82 is not successful strength development or foundational qualification.
+
+H1's fresh independent W1 attempt2 against corrected build80 completed 160 pairs /
+320 games, 133W/80D/107L, 54.0625%; the prospective 99.375% interval
+47.343-60.782% crosses equality. The adjusted criterion failed, so conditional
+direct build79 anchoring did not execute. W1/W4 development remains inconclusive.
+Both attempts' spent/reserved statistical allowance, including unused conditional
+allowance, and all failed/interrupted/negative evidence remain preserved. No
+extension, replay, pooling, additional games or autonomous work is authorized.
+
+This acceptance establishes neither equivalence nor absence of a useful TT
+mechanism. Later MW-C4 integrated W4 success is distinct evidence and cannot make
+H1/H2 retrospectively successful. TTF-R001's separate limited foundational
+acceptance remains unchanged. No champion advancement or production promotion
+arises from TT-R001. Future related research requires a separately authorized
+objective. [Terminal STATE](STATE.md) records reconciliation and the retained
+[disposition manifest](disposition-v1-summary.json) remains historical evidence.
+
+## Original execution authority (historical)
+
 Objective contract TT-R001, authorized 30 October 2026 (Pacific/Auckland).
 Subordinate to [Search Contract P4-R001](../../../../source/CHESS_SEARCH_CONTRACT.md).
 The owner's CGLHW execution request authorizes this objective and autonomous

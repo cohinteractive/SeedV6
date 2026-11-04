@@ -1,12 +1,32 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R027**
+Internal revision: **P4-R028**
 
-Status: **ACTIVE Phase4 programme - 5 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. MW-R001 is GPT-reconciled, owner-accepted on 5 November 2026 and formally closed as successful W4 strength development. No champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
+Status: **ACTIVE Phase4 programme - 5 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. MW-R001 is GPT-reconciled, owner-accepted on 5 November 2026 and formally closed as successful W4 strength development. No champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and accepted inconclusive TT-R001 closeout remain distinct.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
+
+## TT-R001 accepted inconclusive closeout - 5 November 2026
+
+GPT technical/result reconciliation is complete. The owner accepts TT-R001 as a
+valid completed research investigation with an **INCONCLUSIVE strength outcome**
+and formally closes it. The original practical-strength objective was not
+demonstrated. [Terminal STATE](../docs/research/search/p4-tt-memory/STATE.md) and
+[focused CONTRACT revision 2](../docs/research/search/p4-tt-memory/CONTRACT.md)
+record the decision; frozen results and disposition evidence remain unchanged.
+
+H1/build81 and H2/build82 passed reported technical checks; W1/W4 development
+was inconclusive. H1's fresh W1 attempt2 against corrected80 completed 160 pairs /
+320 games, 133W/80D/107L, 54.0625%, adjusted 99.375% interval 47.343-60.782%.
+The adjusted strength gate failed; conditional direct79 anchoring did not execute.
+Attempts and statistical allowance remain spent; interrupted/failed evidence is
+preserved. No confirmed gain, equivalence, absence of useful TT memory or successful
+H1/H2 foundational qualification follows. MW-C4's later integrated W4 success is
+distinct evidence; TTF-R001's separate limited acceptance remains intact.
+No TT-R001 champion advancement, production promotion or autonomous work follows.
+Future related work requires a separately authorized objective; no successor is active.
 
 ## MW-R001 accepted successful closeout - 5 November 2026
 
@@ -46,9 +66,9 @@ control; HL-G1/build84 remains the owner-accepted W1 research champion. TC-P1/bu
 remains the adopted rolling production formulation, still selected normally in
 build95. MW-C4/build94 remains a separately confirmed experimental W4 formulation.
 Accepted build91 application work and all other research dispositions, including
-pending TT-R001 reconciliation, remain unchanged. No champion advancement,
+the separately recorded TT-R001 closeout, remain distinct. No champion advancement,
 production promotion, installation, push, release or deployment follows.
-Project mirrors require P4-R027/P4-F045 before mirror-dependent planning;
+Project mirrors require P4-R028/P4-F046 before mirror-dependent planning;
 repository closeout neither refreshes them nor depends on that separate action.
 
 ## Founding authority and scope
