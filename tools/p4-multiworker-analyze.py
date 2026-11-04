@@ -13,6 +13,9 @@ def analyze(receipt_path):
     source = Path(receipt['output'])
     assert hashlib.sha256(source.read_bytes()).hexdigest() == receipt['files'][str(source)]
     rows = [json.loads(line) for line in source.read_text().splitlines()]
+    # The original frozen probe predates the explicit selector and is ROOT_REUSE.
+    if rows[0].get('architecture', 'ROOT_REUSE') != 'ROOT_REUSE':
+        raise ValueError('Serial first-root analysis requires ROOT_REUSE; whole-root invocation work is different')
     requests = [row for row in rows if row['type'] == 'request']
     attempts = [a for row in requests for a in row['attempts']]
     for row in requests:

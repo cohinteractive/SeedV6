@@ -5,9 +5,40 @@ original scheduling probe are qualified. Strength objective unmet; no competitiv
 candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md),
 [budget.json](budget.json), then current Phase 4 masters before fresh work.
 
+## Continuation checkpoint and next work unit
+
+Both requested units are completed and validated. Autonomous continuation also
+qualified hint provenance/reverse delivery and MW-C1 whole-root diagnostics.
+Commits:79d74fb1 resource/probe;0f0dc938 hints;ca614576 shared-core opt-in/build92;
+58a8eef1 runtime comparison. A final documentation/analyzer safeguard commit follows.
+This is an active multi-session checkpoint, not research acceptance or closeout.
+No PC resource blocker or pending owner response exists at this checkpoint.
+
+Next work unit: qualify an economical **fixed-node paired competitive path** for
+MW-C1 versus exact TC-P1, then choose a small prospective exploratory sample. Reuse
+the existing independent python-chess PGN/rule/accounting audit and native Job
+ownership where suitable; do not relabel the historical TC runner's build84 control.
+Existing Fastchess help (raw/fastchess-help-v1.txt) advertises nodes and maxmoves;
+fixed-work clock interaction, exact request admission accounting, initiated-game
+checkpointing, conservative interruption and declared ply-cap treatment require
+qualification before a competitive launch. The current supervisor intentionally
+admits only diagnostics: no games may be disguised as diagnostic requests.
+
+Before development games, reserve fresh confirmation roots from the existing pinned
+8moves_v3 book/held-out partition, excluding all exposed historical selections,
+legal16 development pool and actual MW diagnostic roots without opening BOUNDARY2
+studies. Existing tools/p4-tactical-openings.py is a reusable exclusion reference,
+not permission to overwrite TC evidence or relabel its independent claim. Select
+actual confirmation size/clock later from variance/throughput; no timed window exists.
+
+[Final verification](continuation-verification-v1.json) reconciles all10 successful
+receipts/raw hashes,31.2M nodes, budget and build92. Native process scan found no
+MW Java/Python/Fastchess process. The baseline analyzer now rejects whole-root
+invocation work rather than misinterpreting it as serialized first-root work.
+
 ## Authority, identities and provenance
 
-- Masters currently P4-R019/P4-F036. Project Source mirrors were not refreshed.
+- Masters currently P4-R020/P4-F037. Project Source mirrors were not refreshed.
 - Bootstrap c2ad1e3b and checkpoint10e974cf followed clean acc997b2; this continuation
   began clean main at10e974cf. Inherited training/build changes remain unrelated.
 - Original build91 baseline VERSION_STATE.txt SHA256
@@ -115,7 +146,7 @@ there is no supported blocking request tool in this Default session. Never claim
 checkpoint preserves client liveness. If the client ends the turn, explicitly retain
 pending user action and this resume reference. No repeated availability polling.
 
-**Consumed:**31,200,000 fixed diagnostic nodes,60.5393685 fixed wall seconds;0 games,
+**Consumed:**31,200,000 fixed diagnostic nodes,60.5394885 fixed wall seconds;0 games,
 0 timed wall. **Remaining:**99,968,800,000 nodes,6000 fixed games,3000 timed games,
 72 timed hours. Protected independent allowance960 timed games/initial24h intact.
 No confirmation protocol selected or attempt spent. budget.json has no pending

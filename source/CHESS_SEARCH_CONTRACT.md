@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R019**
+Internal revision: **P4-R020**
 
 Status: **ACTIVE - 4 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. The separate owner request authorizes MW-R001 multiworker strength research below; no champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
 
@@ -617,7 +617,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-current Contract/Frontier pair before mirror-dependent Project planning; the Frontier
+Contract/Frontier pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

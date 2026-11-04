@@ -1,0 +1,29 @@
+{
+  "utc": "2026-11-04T10:01:44.333234+00:00",
+  "head": "58a8eef1c81fb3618ab04ab1b164d6e21b952f3a",
+  "build": 92,
+  "versionSha256": "5d12c60aa2ea358f10603a7f53e1f2046af4a0e4a15c6f94a5592b4e1714586c",
+  "fixedNodes": 31200000,
+  "fixedWallSeconds": 60.53948850004235,
+  "games": 0,
+  "timedWall": 0,
+  "pending": [],
+  "receiptHashes": {
+    "docs\\research\\search\\p4-multiworker\\baseline-mixed-w2-v3-execution.json": "669f9d253a107f73ce01d81cbdc0820c8a83bbab75ce93ce921193b8f8bd1f7e",
+    "docs\\research\\search\\p4-multiworker\\baseline-mixed-w4-v3-execution.json": "0815d66e379ee6ba2f935c5e95bfadc5b78c4fcad4c539b3702cd7cdfb5919a9",
+    "docs\\research\\search\\p4-multiworker\\baseline-opening-w2-v3-execution.json": "534e2c9738047c33612bf55d96d8059851c2fb4be64efa1d5e65f07a992f5b65",
+    "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v3-execution.json": "423e53ed002ccd324b358727159aa3534c5b1775f6ee40676ff8908ca75329a3",
+    "docs\\research\\search\\p4-multiworker\\hints-mixed-w4-all-v1-execution.json": "484c71b933142b289cfa5d48c2c500b285a824224369c59ebc5466fd6e0911e6",
+    "docs\\research\\search\\p4-multiworker\\hints-mixed-w4-private_delivery-v1-execution.json": "a72bf86128def24116bb0f1e597a23fc4544a8feaaa56d2a22d94ba1235865a0",
+    "docs\\research\\search\\p4-multiworker\\architecture-mixed-w4-root_reuse-v1-execution.json": "cf3f03eeaa17f8f0b61882741861a18e1bf58a581bff1da09f5f192a39ed15db",
+    "docs\\research\\search\\p4-multiworker\\architecture-mixed-w4-whole_root_race-v1-execution.json": "3abd043e84cc04793f17133b658005277f4e90a1664abade0f9a1f026cfed0bb",
+    "docs\\research\\search\\p4-multiworker\\architecture-opening-w4-root_reuse-v1-execution.json": "dc5540f7d931f673bddbce35f0616b7a2b18b53b3f6dcdaf86b9db7fdb9bc5c8",
+    "docs\\research\\search\\p4-multiworker\\architecture-opening-w4-whole_root_race-v1-execution.json": "0274e06b9a8a7c252f66a41dd57b57d46508da74053bbba55b7aa62b40f6f237"
+  },
+  "rawHashesVerified": true,
+  "analyzerChecks": "Original frozen baseline reproduces unchanged; WHOLE_ROOT_RACE serial interpretation rejected.",
+  "scope": "No full application/platform/GUI qualification, no competitive strength result, no confirmation started, no promotion/push/install. Raw evidence is ignored local-only.",
+  "ownedProcessScan": "Native Win32_Process scan after all runs found no Java/Python/Fastchess command line for MW-R001; inherited unrelated processes preserved.",
+  "masterPair": "P4-R020/P4-F037",
+  "nextBoundary": "Active safe checkpoint; fixed-node competitive path/opening reserve remains unqualified. No pending user action; later timed matches need a dated authorized window."
+}
