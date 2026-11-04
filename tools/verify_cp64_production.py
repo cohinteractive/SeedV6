@@ -16,7 +16,7 @@ def main():
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--install', type=Path)
     source.add_argument('--launcher', type=Path, help='Native packaged UCI launcher')
-    parser.add_argument('--profile', choices=('TC_P1', 'HL_G1', 'LEGACY'), default='TC_P1')
+    parser.add_argument('--profile', choices=('MW_C4_W4', 'TC_P1', 'HL_G1', 'LEGACY'), default='MW_C4_W4')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     output = args.output.resolve(); output.mkdir(parents=True, exist_ok=False)
@@ -26,7 +26,7 @@ def main():
     env = {k: v for k, v in os.environ.items() if k not in
            ('JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS', 'JAVA_OPTS', 'SEEDV6_UCI_OPTS', 'CLASSPATH')}
     allowed = (VECTOR_WARNING, REJECTED)
-    if args.profile != 'TC_P1':
+    if args.profile != 'MW_C4_W4':
         env['JAVA_TOOL_OPTIONS'] = '-Dseedv6.searchProfile=' + args.profile
         allowed += ('Picked up JAVA_TOOL_OPTIONS: -Dseedv6.searchProfile=' + args.profile, )
     report = dict(status='FAIL', profile=args.profile, sessions=[], workers=[],
@@ -39,8 +39,14 @@ def main():
 
     def identify(engine, workers, hash_mib):
         engine.send('uci'); lines = engine.until('uciok'); identity = '\n'.join(lines)
-        flags = {'TC_P1': 1177812991, 'HL_G1': 104071167, 'LEGACY': 3407871}[args.profile]
-        features = 'NOMINAL_FUTILITY,VERIFIED_NULL' + (',REQUEST_LEARNING,HISTORY_EFFORT' if args.profile != 'LEGACY' else '') + (',TACTICAL_VERIFICATION' if args.profile == 'TC_P1' else '') + ']'
+        c4 = args.profile == 'MW_C4_W4' and workers == 4
+        flags = {'MW_C4_W4': 1182007295 if c4 else 1177812991,
+                 'TC_P1': 1177812991, 'HL_G1': 104071167, 'LEGACY': 3407871}[args.profile]
+        features = ('NOMINAL_FUTILITY,VERIFIED_NULL' + (',HEURISTIC_TT_MEMORY' if c4 else '')
+                    + (',REQUEST_LEARNING,HISTORY_EFFORT' if args.profile != 'LEGACY' else '')
+                    + (',TACTICAL_VERIFICATION' if args.profile in ('TC_P1', 'MW_C4_W4') else '') + ']')
+        parallel = 'OWNER' if workers == 1 else 'EAGER_ROOT' if c4 else 'ROOT_REUSE'
+        check('parallel=' + parallel in identity, 'Wrong scheduling identity')
         for value in (f'flags={flags} ', f'searchProfile={args.profile} ', features, SHA, 'schema=S6CNU002 heads=8',
                       'scoreMapping=BT4_Q_LOGIT400_V1', f'workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16',
                       'option name Threads type spin default 1 min 1 max 16',
@@ -87,6 +93,8 @@ def main():
         for name, value in (('Threads', 0), ('Threads', 17), ('Hash', 0), ('Hash', 1025)):
             engine.send(f'setoption name {name} value {value}\nisready'); engine.until('readyok')
             identify(engine, 16, 64)
+        engine.send('setoption name Threads value 4\nsetoption name Hash value 1\nisready')
+        engine.until('readyok'); identify(engine, 4, 1)
         for fen, score in [('7k/6Q1/5K2/8/8/8/8/8 b - - 100 1', 'mate 0'),
                            ('7k/5Q2/6K1/8/8/8/8/8 b - - 100 1', 'cp 0'),
                            ('7k/5Q2/6K1/8/8/8/8/8 w - - 0 1', 'mate 1')]:

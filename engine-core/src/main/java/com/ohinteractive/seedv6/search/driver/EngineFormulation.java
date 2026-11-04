@@ -26,11 +26,13 @@ public record EngineFormulation(ConstructionSearch search, String evaluator, Str
     public static String searchName(ConstructionSearch search) {
         var actual = search.mechanisms();
         for (var profile : BaselineEngine.SearchProfile.values()) {
-            if (actual.equals(BaselineEngine.configuration(search.workers(), search.hashMiB(), profile).mechanisms()))
+            var expected = BaselineEngine.configuration(search.workers(), search.hashMiB(), profile);
+            if (actual.equals(expected.mechanisms()) && search.rootScheduling() == expected.rootScheduling())
                 return switch (profile) {
                     case TC_P1 -> "TC-P1 — HL-G1 + bounded capture ProbCut";
                     case HL_G1 -> "HL-G1 — retained Search learning and history-guided reductions";
                     case LEGACY -> "LEGACY — pre-HL Search configuration";
+                    case MW_C4_W4 -> "MW-C4 — eager root scheduling + guarded TT memory over TC-P1";
                 };
         }
         if (actual.equals(FlatSearchConfig.candidate())) return "Construction V1";
@@ -95,6 +97,7 @@ public record EngineFormulation(ConstructionSearch search, String evaluator, Str
     public String runtimeSummary() {
         return "flags=" + search.mechanisms().flags() + " · W" + search.workers() + " · Hash " + search.hashMiB()
                 + " MiB · aspiration " + (search.aspiration() == null ? "OFF" : search.aspiration())
+                + " · parallel " + search.parallelIdentity()
                 + " · clock " + (clockPolicy == null ? "NONE" : clockPolicy.name()) + " · " + configurationId();
     }
 

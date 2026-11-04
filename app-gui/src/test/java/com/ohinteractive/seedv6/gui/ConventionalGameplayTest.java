@@ -93,7 +93,7 @@ class ConventionalGameplayTest {
             for (int workers : new int[]{4, 16}) {
                 edt(() -> { adapter.replaceWorkerCount(workers); return null; });
                 assertEquals(workers, adapter.evaluator().effectiveWorkers(adapter.workerCount()));
-                assertTrue(adapter.evaluator().identity(workers).contains("flags=1177812991"));
+                assertTrue(adapter.evaluator().identity(workers).contains("flags=" + (workers == 4 ? 1182007295 : 1177812991)));
                 assertNull(search(adapter, Board.startingPosition(), new SearchLimits(100, -1, 150, false), false).failure());
                 assertNull(search(adapter, Board.startingPosition(), new SearchLimits(4, -1, -1, false), false).failure());
             }

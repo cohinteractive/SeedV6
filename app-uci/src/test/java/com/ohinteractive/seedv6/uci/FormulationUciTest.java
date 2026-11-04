@@ -32,7 +32,10 @@ class FormulationUciTest {
                 assertTrue(text.contains(core.configurationId()));
                 var changed = configuration.withClockPolicy(ClockPolicy.FACTUAL).formulation(4, 1);
                 assertTrue(text.contains(changed.configurationId()));
-                assertEquals(core.searchName(), changed.searchName());
+                if (profile == BaselineEngine.SearchProfile.MW_C4_W4) {
+                    assertTrue(changed.searchName().startsWith("MW-C4"));
+                    assertTrue(text.contains("parallel=EAGER_ROOT"));
+                } else assertEquals(core.searchName(), changed.searchName());
                 assertTrue(text.contains("flags=" + core.search().mechanisms().flags()));
                 assertTrue(text.contains("option name Threads type spin default 1 min 1 max 16"));
                 assertTrue(text.contains("option name Hash type spin default 64 min 1 max 1024"));

@@ -12,10 +12,11 @@ UCI_MODULES = ('java.base', 'jdk.incubator.vector')
 NNUE_LAUNCHER = 'SeedV6-NNUE-CP64'
 NNUE_MAIN = 'com.ohinteractive.seedv6.uci.NnueCandidateUciMain'
 VECTOR_WARNING = 'WARNING: Using incubator modules: jdk.incubator.vector'
-# Owner-authorized P4-R016/P4-F032 TC-P1 CP64 production configuration. These are verifier
+# Owner-authorized W4 MW-C4 / otherwise TC-P1 production configuration. These are verifier
 # expectations, independent of the candidate's output and embedded model manifest.
 # HCE, BREP2-32, unrelated conventional payloads and historical E008 are separate.
-CP64_PRODUCTION_FLAGS = 1177812991
+CP64_TC_P1_FLAGS = 1177812991
+CP64_MW_C4_FLAGS = 1182007295
 
 
 def check(ok, message):
@@ -27,11 +28,13 @@ def verify_baseline_identity(identity, workers, hash_mib):
     configuration = ('flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,'
                      'CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,'
                      'CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,'
-                     'HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION];futility=100d;reverse=200d;'
+                     'HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,'
+                     + ('HEURISTIC_TT_MEMORY,' if workers == 4 else '')
+                     + 'REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION];futility=100d;reverse=200d;'
                      f'extensionCap=1;workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16;'
-                     f'parallel={"OWNER" if workers == 1 else "ROOT_REUSE"}')
+                     f'parallel={"OWNER" if workers == 1 else "EAGER_ROOT" if workers == 4 else "ROOT_REUSE"}')
     expected = {'baseline': 'construction-v1-cp64', 'search': 'construction-v1',
-                'searchProfile': 'TC_P1', 'flags': str(CP64_PRODUCTION_FLAGS), 'configuration': configuration,
+                'searchProfile': 'MW_C4_W4', 'flags': str(CP64_MW_C4_FLAGS if workers == 4 else CP64_TC_P1_FLAGS), 'configuration': configuration,
                 'evaluator': 'CONVENTIONAL_NNUE', 'checkpoint': '64', 'schema': 'S6CNU002', 'heads': '8',
                 'networkSha256': '8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b',
                 'payload': '5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6',

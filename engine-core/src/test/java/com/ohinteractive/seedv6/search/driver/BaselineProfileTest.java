@@ -8,6 +8,46 @@ import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BaselineProfileTest {
+    @Test void workerScopedAdoptionAndRollbackReconstructBothSchedulingAndFlags() throws Exception {
+        String property = BaselineEngine.SearchProfile.PROPERTY;
+        String previous = System.getProperty(property);
+        try {
+            System.clearProperty(property);
+            var normal = BaselineEngine.load();
+            var rollback = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
+                    ClockPolicy.BOUNDARY2, BaselineEngine.SearchProfile.TC_P1);
+            System.setProperty(property, "LEGACY");
+            for (var binding : new BaselineEngine[]{normal, rollback}) {
+                for (int workers : new int[]{4, 1, 2, 3, 4, 5, 8, 16, 4}) {
+                    boolean c4 = binding == normal && workers == 4;
+                    for (int hash : new int[]{1, 64}) {
+                        var rebound = binding.withClockPolicy(hash == 1 ? ClockPolicy.FACTUAL : ClockPolicy.BOUNDARY2);
+                        var config = rebound.formulation(workers, hash);
+                        assertEquals(c4 ? 1182007295L : 1177812991L, config.search().mechanisms().flags());
+                        assertEquals(workers == 1 ? "OWNER" : c4 ? "EAGER_ROOT" : "ROOT_REUSE", config.search().parallelIdentity());
+                        assertTrue(config.searchName().startsWith(c4 ? "MW-C4" : "TC-P1"));
+                        var search = rebound.create(workers, hash);
+                        try (var driver = new SearchDriver(search)) {
+                            Object aspiration = hash == 64 ? field(search, "owner") : search;
+                            Object owner = field(aspiration, "owner");
+                            if (workers > 1) {
+                                assertEquals("ParallelSearch", owner.getClass().getSimpleName());
+                                assertEquals(c4, field(owner, "eagerFiniteRoots"));
+                                assertEquals("ROOT_REUSE", field(owner, "policy").toString());
+                            }
+                            var kernel = workers == 1 ? field(owner, "exact") : owner;
+                            assertEquals(config.search().mechanisms(), field(kernel, "construction"));
+                            assertTrue(driver.search(new SearchRequest(Board.startingPosition(), 3)).targetDepthCompleted());
+                            assertEquals(0, driver.activeSearchThreads());
+                        }
+                    }
+                }
+            }
+        } finally {
+            if (previous == null) System.clearProperty(property); else System.setProperty(property, previous);
+        }
+    }
+
     @Test void rollbackPropertyIsSnapshottedAndExplicitSelectionWins() throws Exception {
         String property = BaselineEngine.SearchProfile.PROPERTY;
         String previous = System.getProperty(property);
@@ -19,7 +59,7 @@ class BaselineProfileTest {
             var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
                     ClockPolicy.BOUNDARY2, BaselineEngine.SearchProfile.HL_G1);
             for (int workers = 1; workers <= 16; workers++) {
-                assertTrue(promoted.identity(workers, 1).contains("searchProfile=TC_P1"));
+                assertTrue(promoted.identity(workers, 1).contains("searchProfile=MW_C4_W4"));
                 assertTrue(explicit.identity(workers, 1).contains("flags=104071167"));
                 assertTrue(rollback.identity(workers, 1).contains("searchProfile=LEGACY"));
                 assertTrue(rollback.withClockPolicy(ClockPolicy.FACTUAL).identity(workers, 1).contains("flags=3407871"));

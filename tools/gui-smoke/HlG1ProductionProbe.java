@@ -13,14 +13,16 @@ import static com.ohinteractive.seedv6.gui.ConventionalGuiProbe.*;
 /** Headless EDT/Play lifecycle probe compiled separately against actual GUI distribution jars. */
 public final class HlG1ProductionProbe {
     public static void main(String[] args) throws Exception {
-        long flags = switch (BaselineEngine.SearchProfile.configured()) {
-            case TC_P1 -> 1177812991; case HL_G1 -> 104071167; case LEGACY -> 3407871;
-        };
+        var profile = BaselineEngine.SearchProfile.configured();
         var adapter = edt(() -> new EngineSearchAdapter(1));
         int requests = 0;
         try {
             require(bind(adapter, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayParticipants.Selection.BEST) == null, "CP64 binding");
-            for (int workers : new int[]{1, 4, 8, 16}) {
+            for (int workers : new int[]{1, 4, 8, 16, 4, 1}) {
+                long flags = switch (profile) {
+                    case MW_C4_W4 -> workers == 4 ? 1182007295 : 1177812991;
+                    case TC_P1 -> 1177812991; case HL_G1 -> 104071167; case LEGACY -> 3407871;
+                };
                 edt(() -> { adapter.replaceWorkerCount(workers); return null; });
                 require(adapter.workerCount() == workers, "worker setting");
                 require(adapter.evaluator().identity(workers).contains("flags=" + flags + " "), "effective profile");
@@ -61,7 +63,7 @@ public final class HlG1ProductionProbe {
             }
         } finally { edt(adapter::beginShutdown).run(); }
         for (String name : List.of("service", "blackService")) require(service(adapter, name).isTerminated(), "shutdown drain");
-        System.out.println("PASS GUI Play flags=" + flags + " requests=" + requests + " workers=1,4,8,16 depth/movetime/stop/history/mate/PV/restore/reuse/drain");
+        System.out.println("PASS GUI Play profile=" + profile + " requests=" + requests + " workers=1,4,8,16,4,1 depth/movetime/stop/history/mate/PV/restore/reuse/drain");
     }
     private static SearchLifecycleService service(EngineSearchAdapter adapter, String name) throws Exception {
         var f = EngineSearchAdapter.class.getDeclaredField(name); f.setAccessible(true); return (SearchLifecycleService) f.get(adapter);

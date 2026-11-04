@@ -8,6 +8,21 @@ import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EngineFormulationTest {
+    @Test void c4NameAndFingerprintRequireSchedulingAsWellAsFlags() {
+        var adopted = BaselineEngine.configuration(4, 64, BaselineEngine.SearchProfile.MW_C4_W4);
+        var rootMemory = new ConstructionSearch(adopted.mechanisms(), 4, 64, adopted.aspiration());
+        assertTrue(EngineFormulation.searchName(adopted).startsWith("MW-C4"));
+        assertEquals("Custom flat PVS configuration", EngineFormulation.searchName(rootMemory));
+        var a = new EngineFormulation(adopted, "CP64", "test", ClockPolicy.BOUNDARY2);
+        var b = new EngineFormulation(rootMemory, "CP64", "test", ClockPolicy.BOUNDARY2);
+        assertNotEquals(a.configurationId(), b.configurationId());
+        assertTrue(a.runtimeSummary().contains("parallel EAGER_ROOT"));
+        assertFalse(adopted.mechanisms().has(Feature.AGED_HEURISTIC_TT_MEMORY));
+        assertFalse(adopted.mechanisms().has(Feature.TT_INFORMATION));
+        assertThrows(IllegalArgumentException.class, () -> new ConstructionSearch(adopted.mechanisms(),
+                1, 64, adopted.aspiration(), ConstructionSearch.RootScheduling.EAGER_ROOT));
+    }
+
     @Test void defaultAndExplicitProfilesDescribeTheirActualFlags() throws Exception {
         String previous = System.getProperty(BaselineEngine.SearchProfile.PROPERTY);
         try {
@@ -15,11 +30,12 @@ class EngineFormulationTest {
             var normal = BaselineEngine.load().formulation(1, 64);
             assertEquals(1177812991L, normal.search().mechanisms().flags());
             assertEquals("TC-P1 — HL-G1 + bounded capture ProbCut", normal.searchName());
-            assertEquals(BaselineEngine.productionFormulation(), normal.searchName());
+            assertTrue(BaselineEngine.productionFormulation().contains("W4: MW-C4"));
+            assertTrue(BaselineEngine.productionFormulation().contains(normal.searchName()));
             for (var profile : BaselineEngine.SearchProfile.values()) {
                 var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
                         ClockPolicy.BOUNDARY2, profile).formulation(1, 64);
-                assertEquals(profile == BaselineEngine.SearchProfile.TC_P1,
+                assertEquals(profile == BaselineEngine.SearchProfile.TC_P1 || profile == BaselineEngine.SearchProfile.MW_C4_W4,
                         explicit.principalMechanisms().contains("ProbCut"));
                 assertEquals(profile != BaselineEngine.SearchProfile.LEGACY,
                         explicit.principalMechanisms().contains("retained Search learning"));

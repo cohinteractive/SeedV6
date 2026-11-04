@@ -35,10 +35,11 @@ class BaselineEngineTest {
     @Test void frozenCompositionAndAllCompetitiveEvaluatorsUseSameSettings() throws Exception {
         for (var choice : BaselineEngine.Evaluator.values()) {
             var engine = BaselineEngine.load(choice);
-            long flags = choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 1177812991 : 262143;
+            long flags = choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 1182007295 : 262143;
             assertEquals(flags, BaselineEngine.configuration(engine.evaluation(), 4, 8).mechanisms().flags());
             assertTrue(engine.identity(4, 8).contains("flags=" + flags));
-            assertTrue(engine.identity(4, 8).contains("aspiration=ADAPTIVE16;parallel=ROOT_REUSE"));
+            assertTrue(engine.identity(4, 8).contains("aspiration=ADAPTIVE16;parallel="
+                    + (choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? "EAGER_ROOT" : "ROOT_REUSE")));
             assertTrue(engine.identity(4, 8).contains("workers=4;hashMiB=8"));
             if (choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64)
                 assertTrue(engine.identity(4, 8).contains("scoreMapping=BT4_Q_LOGIT400_V1"));
@@ -109,7 +110,7 @@ class BaselineEngineTest {
                 assertEquals(AspirationSearch.Policy.ADAPTIVE16, field(aspiration, "policy"));
                 var owner = field(aspiration, "owner");
                 var kernel = workers == 1 ? field(owner, "exact") : owner;
-                assertEquals(1177812991L, ((FlatSearchConfig)
+                assertEquals(workers == 4 ? 1182007295L : 1177812991L, ((FlatSearchConfig)
                         field(kernel, "construction")).flags());
                 if (workers > 1) assertEquals(workers, ((Object[]) field(owner, "workers")).length);
                 var completed = driver.search(new SearchRequest(board, 3));

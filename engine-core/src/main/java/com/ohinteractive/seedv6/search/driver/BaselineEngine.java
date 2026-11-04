@@ -23,13 +23,13 @@ public final class BaselineEngine {
     public enum Evaluator { HCE, BREP2_32, CONVENTIONAL_CP64 }
     /** CP64 production policy only; explicit ConstructionSearch controls bypass this selector. */
     public enum SearchProfile {
-        TC_P1, HL_G1, LEGACY;
-        public static final SearchProfile PRODUCTION_DEFAULT = TC_P1;
+        TC_P1, HL_G1, LEGACY, MW_C4_W4;
+        public static final SearchProfile PRODUCTION_DEFAULT = MW_C4_W4;
         public static final String PROPERTY = "seedv6.searchProfile";
         public static SearchProfile configured() {
             try { return valueOf(System.getProperty(PROPERTY, PRODUCTION_DEFAULT.name()).trim().toUpperCase(Locale.ROOT)); }
             catch (IllegalArgumentException invalid) {
-                throw new IllegalArgumentException("seedv6.searchProfile must be TC_P1, HL_G1 or LEGACY", invalid);
+                throw new IllegalArgumentException("seedv6.searchProfile must be MW_C4_W4, TC_P1, HL_G1 or LEGACY", invalid);
             }
         }
     }
@@ -73,12 +73,18 @@ public final class BaselineEngine {
     public static ConstructionSearch configuration(int workers, int hashMiB, SearchProfile profile) {
         Objects.requireNonNull(profile);
         var legacy = legacyConfiguration(workers, hashMiB);
+        // The adopted policy resolves afresh for each resource reconstruction. Only W4
+        // selects confirmed C4; explicit TC_P1 remains the exact ROOT_REUSE rollback.
+        boolean memory = profile == SearchProfile.MW_C4_W4 && workers == 4;
         return new ConstructionSearch(legacy.mechanisms()
                 .with(FlatSearchConfig.Feature.REQUEST_LEARNING, profile != SearchProfile.LEGACY)
                 .with(FlatSearchConfig.Feature.HISTORY_EFFORT, profile != SearchProfile.LEGACY)
                 // Exact TC-P1/build89 formulation; HL_G1 and LEGACY retain their prior meanings.
-                .with(FlatSearchConfig.Feature.TACTICAL_VERIFICATION, profile == SearchProfile.TC_P1),
-                workers, hashMiB, legacy.aspiration());
+                .with(FlatSearchConfig.Feature.TACTICAL_VERIFICATION,
+                        profile == SearchProfile.TC_P1 || profile == SearchProfile.MW_C4_W4)
+                .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, memory),
+                workers, hashMiB, legacy.aspiration(), memory
+                        ? ConstructionSearch.RootScheduling.EAGER_ROOT : ConstructionSearch.RootScheduling.STANDARD);
     }
     /** Pre-HL production policy, independent of defaults/properties. Retains current correctness fixes. */
     public static ConstructionSearch legacyConfiguration(int workers, int hashMiB) {
@@ -149,7 +155,8 @@ public final class BaselineEngine {
         return new EngineFormulation(selectedConfiguration(workers, hashMiB), label, evaluatorIdentity(), clockPolicy);
     }
     public static String productionFormulation() {
-        return EngineFormulation.searchName(configuration(1, 64, SearchProfile.PRODUCTION_DEFAULT));
+        return "W4: " + EngineFormulation.searchName(configuration(4, 64, SearchProfile.PRODUCTION_DEFAULT))
+                + "\nW1-W3 / W5-W16: " + EngineFormulation.searchName(configuration(1, 64, SearchProfile.PRODUCTION_DEFAULT));
     }
     public String identity(int workers, int hashMiB) {
         var version = ApplicationVersion.load();
