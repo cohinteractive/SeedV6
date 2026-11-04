@@ -1,0 +1,17 @@
+{
+  "id": "MW-WINDOW-20261104-01",
+  "status": "authorized",
+  "receivedUtc": "2026-11-04T10:18:03Z",
+  "hardDeadlineUtc": "2026-11-04T18:18:03Z",
+  "localStart": "2026-11-04T23:18:03+13:00",
+  "localDeadline": "2026-11-05T07:18:03+13:00",
+  "maximumSeconds": 28800,
+  "source": "Owner explicit overnight instruction in this conversation; first observed machine-clock second used conservatively.",
+  "mode": "B; fixed-work also permitted; no recurring authorization",
+  "deadlineDoesNotRestart": true,
+  "drainHeadroomSeconds": 60,
+  "afterDeadline": "No new timed/high-load work; only separately admissible daytime Mode A. Goal stays active.",
+  "goalClientStatus": "Confirmed active for full MW-R001 objective",
+  "initialHead": "ac645a49",
+  "ownedProcesses": []
+}

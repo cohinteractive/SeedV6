@@ -1,0 +1,66 @@
+{
+  "id": "uci-qualification-build92-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\uci-qualification-build92-v1-protocol.json",
+  "protocolSha256": "e32992257f72219f73d09460e595bd28baa59c7e4c7b988d2c798432c441ccae",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-multiworker-uci-check.py",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\runtime-uci-build92-v1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-qualification-build92-v1\\observations.jsonl"
+  ],
+  "startedUtc": "2026-11-04T10:32:13.337933+00:00",
+  "maximumNodes": 480000,
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-qualification-build92-v1\\observations.jsonl",
+  "priority": "below-normal",
+  "games": 0,
+  "preflightEnvironment": {
+    "utc": "2026-11-04T10:32:14.027850+00:00",
+    "totalCpuPercent": 12.621359223300976,
+    "freeMemoryGiB": 16.316932678222656,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "vivaldi.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 45.95469255663431,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 9964,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 5.296875,
+    "totalOwnedProcesses": 5
+  },
+  "wallSeconds": 2.7025446000043303,
+  "endedUtc": "2026-11-04T10:32:16.055242+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.35820770263671875,
+  "temporaryResourceBlocker": null,
+  "chargedNodes": 280413,
+  "nodeCharge": "verified callback admissions",
+  "summary": {
+    "type": "summary",
+    "status": "passed",
+    "nodes": 280413,
+    "requests": 8,
+    "activeHelpersAfterClose": 0,
+    "scope": "Both JVMs exited normally after UCI quit; no surviving in-process helper is possible. Parent Job verifies descendants."
+  },
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-qualification-build92-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-qualification-build92-v1\\environment.jsonl": "f1bc36010baa8705950b6a56c339c800d2b826a8bea7e4c28d7c08fa58ef437d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-qualification-build92-v1\\observations.jsonl": "36851e105e1df41d38a60bac6e835c7e9482914e3e97e13a87394d60e95b0a32",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-qualification-build92-v1\\ROOT_REUSE-uci.txt": "42614d0901cd8fa4c53d7b2c54df2e056845c96eee2d04a825f6346c88b5f64b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-qualification-build92-v1\\WHOLE_ROOT_RACE-uci.txt": "c4dde0240d547fc2685040b72e9b607be3786b33ac3aeca43d626ed5cec3f605"
+  },
+  "inputsStable": true
+}

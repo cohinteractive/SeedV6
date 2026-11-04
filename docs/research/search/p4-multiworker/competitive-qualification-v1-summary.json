@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "tests": {
+    "initialSupervisor": 13,
+    "followupNativeDrain": 4
+  },
+  "uciRequests": 8,
+  "uciNodes": 280413,
+  "fixedPilot": {
+    "games": 2,
+    "nodes": 27065896,
+    "score": 0.5
+  },
+  "timedPilot": {
+    "games": 2,
+    "wallSeconds": 80.16843010002049,
+    "score": 0.75
+  },
+  "interpretation": "Operational pilots only. All4 games normal chess outcomes, no fallback warning, independent PV/history/trace-PGN accounting passed. Not strength evidence.",
+  "drain": "Fixed pilot supervisor force-drained one unidentified remaining process. Follow-up timed pilot identifies an owned conhost.exe and observes natural exit within0.051s; all engines reported normal exit and Job drained to zero.",
+  "testsRaw": [
+    "raw/match-supervision-tests-v1.log",
+    "raw/match-supervision-tests-v2.log"
+  ],
+  "runtime": "runtime-uci-build92-v1-manifest.json",
+  "nodeBudget": "Original31.2M plus280413 UCI admissions plus27065896 fixed pilot. Timed observed nodes recorded separately; timed match wall charged.",
+  "fixturePolicy": "New development/confirmation-reserve PGNs are frozen inputs covered by existing *-openings.pgn exception; no raw output force-added.",
+  "limitations": "No independent confirmation, application release/platform acceptance, champion advancement or production promotion; normal TC-P1 unchanged."
+}

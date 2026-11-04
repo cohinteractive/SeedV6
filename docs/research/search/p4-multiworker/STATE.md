@@ -5,7 +5,52 @@ original scheduling probe are qualified. Strength objective unmet; no competitiv
 candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md),
 [budget.json](budget.json), then current Phase 4 masters before fresh work.
 
-## Continuation checkpoint and next work unit
+## Current one-time overnight window
+
+Owner authorization received4 November23:18:03 NZDT; hard deadline5 November
+07:18:03 NZDT (**2026-11-04T18:18:03Z**). The start is the first observed machine
+clock second,2026-11-04T10:18:03Z. It never restarts across turns/commits/resumption.
+[Window authority](window-20261104-v1.json) is the single operational reference.
+Timed/high-load research is authorized within this window, subject to admission,
+independent deadline supervision, cumulative budgets and60s drain headroom. Afterward
+only admissible Mode A work; no recurring or future-night authority. The client
+confirmed an ACTIVE Goal for the entire MW-R001 objective, not an intermediate unit.
+Do not end execution just because a work unit, test, experiment or commit finishes.
+Continue the highest-value safe authorized investigation; preserve any genuine blocker.
+
+## Overnight progress
+
+Opening selection completed:64 development pairs from the established legal16 pool;
+480 fresh protected reserve pairs from the pinned held-out book partition. Six
+non-key legacy receipts were resolved via input fixtures:5364 additional positions,
+zero reserve overlaps. Reserve is unplayed and confirmation remains unfrozen/unspent.
+See confirmation-reserve-v1-audit.json and both frozen opening selection manifests.
+
+Research-only P4MultiworkerUciMain compiles in the established root researchLauncher
+composition. Frozen runtime-uci-build92-v1 preserves build92 core and explicitly
+hashed new binding. Bounded UCI qualification passed8 requests (280,413 admissions),
+identity, stop/reset/reuse, independent legal PV and normal JVM exits/native drain.
+Thirteen supervisor tests passed, including native partial-pair timeout/drain and
+confirmation reserve/deadline protection. No application build bump for these tools.
+
+Competitive runner pilots completed: fixed2 games at100k nodes (27,065,896 nodes,
+50% C1 score); timed2 games10+0.1 (80.1684301s charged wall,75% C1 score). These are
+operational pilots, not strength evidence and never pooled into selected screens.
+All4 games ended normally; independent legal PV/history/rules and trace-PGN counts
+passed with no scoreless warnings. A short-lived owned conhost explained the initial
+remaining-process count; natural exit within0.051s and final Job zero were verified.
+See competitive-qualification-v1-summary.json and immutable execution receipts.
+
+Next frozen screens: c1-fixed-screen-w4-v1 (12 pairs,100k nodes,900s hard limit),
+then c1-timed-screen-w4-v1 (32 pairs,10+0.1,3600s hard limit). Both have full prospective
+protocols, development opening indices1..N, no interim score-driven stop/extension,
+explicit draw cap, complete accounting and strict/qualified-warning audits. Run each
+with tools/p4-multiworker-match.py --protocol <focused protocol path> when no pending
+admission exists. Do not rerun used IDs. Inspect receipt/progress and budget after
+completion, update findings and continue the next justified architecture/ablation.
+Do not stop at these screens or this commit. The full Goal remains active.
+
+## Previous continuation checkpoint and next work unit
 
 Both requested units are completed and validated. Autonomous continuation also
 qualified hint provenance/reverse delivery and MW-C1 whole-root diagnostics.
@@ -29,7 +74,7 @@ Before development games, reserve fresh confirmation roots from the existing pin
 legal16 development pool and actual MW diagnostic roots without opening BOUNDARY2
 studies. Existing tools/p4-tactical-openings.py is a reusable exclusion reference,
 not permission to overwrite TC evidence or relabel its independent claim. Select
-actual confirmation size/clock later from variance/throughput; no timed window exists.
+actual confirmation size/clock later from variance/throughput; the current window above is now authorized.
 
 [Final verification](continuation-verification-v1.json) reconciles all10 successful
 receipts/raw hashes,31.2M nodes, budget and build92. Native process scan found no
@@ -38,7 +83,7 @@ invocation work rather than misinterpreting it as serialized first-root work.
 
 ## Authority, identities and provenance
 
-- Masters currently P4-R020/P4-F037. Project Source mirrors were not refreshed.
+- Masters currently P4-R021/P4-F038. Project Source mirrors were not refreshed.
 - Bootstrap c2ad1e3b and checkpoint10e974cf followed clean acc997b2; this continuation
   began clean main at10e974cf. Inherited training/build changes remain unrelated.
 - Original build91 baseline VERSION_STATE.txt SHA256
@@ -127,7 +172,7 @@ audit, explicit ply-cap treatment and protected fresh confirmation opening reser
 ## Operating behavior and budgets
 
 Mode A is already authorized: one restrained fixed-work process, at most4 active
-Search workers, below-normal priority. No dated timed window exists. No scheduled
+Search workers, below-normal priority. The one-time dated Mode B window above is now available. No scheduled
 execution or unattended future continuation. Small W8/W16 correctness tests are
 technical qualification, not competitive oversubscription permission.
 
@@ -136,7 +181,8 @@ CPU headroom/worker count and foreground risk, not merely an application name or
 an unexplained6GiB threshold. Single512MiB-heap probe envelope1.25GiB plus2GiB personal
 reserve. Measured peaks support this envelope; do not generalize to larger jobs.
 Foreground gameplay, memory/CPU pressure, STOP or deadline stops and drains work.
-No measured input-latency/thermal claim. See focused CONTRACT revision2.
+No measured input-latency/thermal claim. See focused CONTRACT revision3 for the
+explicit owner-window thresholds and the measured two-engine match envelope.
 
 If blocked: continue useful light work. If none remains, retain receipt, reconciled
 budget, drain proof and exact next unused protocol; ask the owner about the specific
@@ -146,7 +192,7 @@ there is no supported blocking request tool in this Default session. Never claim
 checkpoint preserves client liveness. If the client ends the turn, explicitly retain
 pending user action and this resume reference. No repeated availability polling.
 
-**Consumed:**31,200,000 fixed diagnostic nodes,60.5394885 fixed wall seconds;0 games,
+**Prior-checkpoint consumption (live totals in budget.json):**31,200,000 fixed diagnostic nodes,60.5394885 fixed wall seconds;0 games,
 0 timed wall. **Remaining:**99,968,800,000 nodes,6000 fixed games,3000 timed games,
 72 timed hours. Protected independent allowance960 timed games/initial24h intact.
 No confirmation protocol selected or attempt spent. budget.json has no pending
@@ -178,6 +224,6 @@ Fresh-session sequence:
    build worker; no experiment concurrent with compilation/tests. Record new results
    and clean owned-process drain before handoff. Owner STOP file blocks admission.
 
-No current blocking human action. A later timed batch requires an explicitly dated
-idle window; mirrors require refresh only before mirror-dependent planning.
+No current blocking human action. Timed work must fit the current window; later
+windows require new owner authority. Mirrors require refresh only before mirror-dependent planning.
 MW-R001 has not ended, and technical qualification is not strength success.

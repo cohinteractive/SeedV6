@@ -1,0 +1,80 @@
+{
+  "id": "c1-timed-pilot-w4-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\c1-timed-pilot-w4-v1-protocol.json",
+  "protocolSha256": "c5afdd8cd90fd5ab19405bc3372c24285f19c057c4bbd027337aaa8fb4629349",
+  "maximumNodes": 0,
+  "maximumGames": 2,
+  "deadlineUtc": "2026-11-04T10:43:07.660562+00:00",
+  "mode": "B",
+  "kind": "timed",
+  "startedUtc": "2026-11-04T10:38:07.693872+00:00",
+  "preflightEnvironment": {
+    "utc": "2026-11-04T10:38:08.378919+00:00",
+    "totalCpuPercent": 13.24110671936759,
+    "freeMemoryGiB": 16.380996704101562,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "vivaldi.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 4,
+    "estimatedPeakGiB": 2,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 46.57444005270092,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 16188,
+  "activeOwnedBeforeDrain": 1,
+  "membersBeforeDrain": [
+    {
+      "pid": 3996,
+      "image": "C:\\Windows\\System32\\conhost.exe"
+    }
+  ],
+  "settleOwnedSeconds": 0.05049450002843514,
+  "membersAfterSettle": [],
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 266.5625,
+    "totalOwnedProcesses": 9
+  },
+  "error": null,
+  "wallSeconds": 80.16843010002049,
+  "endedUtc": "2026-11-04T10:39:27.878972+00:00",
+  "peakOwnedCommittedGiB": 0.7703208923339844,
+  "initiatedGames": 2,
+  "completedGames": 2,
+  "gameCounting": "Both paired games conservatively initiated before each Fastchess creation; unfinished/unverified pairs retained, not rescored",
+  "observedNodes": 101949184,
+  "chargedNodes": 0,
+  "pairs": [
+    {
+      "pair": 0,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    }
+  ],
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\baseline-preflight.txt": "9554a5afb9cfe438e0ecdec58e9ae6faff43e1ad71239d5793de69d1d744ccb0",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\candidate-preflight.txt": "1f7e8c0b5e7f363dd31667981fe94f2b5ed83fdc444ec6599990ff1f03a90871",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\environment.jsonl": "72ff205def808dd15ca5ccf92e513d9106823ca08094b3bafb0c5d0271da7c47",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\progress.jsonl": "36d63e3f7635e69143dafe0bd8ef2eb9cb69aca8fd509d24a9ba440ed2c3d8e1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\pair-000\\config.json": "c024d3e3fc0f7c7617790abac1d85e9d6d56f72637749fa29cb5f441b7a1a103",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\pair-000\\games.pgn": "12c38ec8c7734f89809f6aa1085032d97f554e78d2b2a7f0b28275239c045e58",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\pair-000\\opening.pgn": "c837c200a630c2cb99e61ec59ee981febee367dcfdabe2a49206e0a757107190",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\pair-000\\runner.txt": "ce5d419d4946e409e928c1a0f9e2ef6e90c97eef22577d213c7039978e3d87fb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\pair-000\\uci-trace.log": "f97589c5ed02c7953fb1bbf0d273a1bf9dd43c96c0325f7dce10f3b59c65ee1e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-timed-pilot-w4-v1\\pair-000\\verified.json": "f58b7be23b1e1eaf11865039831dc3f9cc585594fbf1c290dec2c1e38e962edf"
+  },
+  "inputsStable": true
+}

@@ -15,17 +15,17 @@
     "protocol": null
   },
   "consumed": {
-    "timedWallSeconds": 0,
-    "timedInitiated": 0,
-    "timedCompleted": 0,
+    "timedWallSeconds": 80.16843010002049,
+    "timedInitiated": 2,
+    "timedCompleted": 2,
     "timedFailed": 0,
     "timedInterrupted": 0,
-    "fixedWallSeconds": 60.53948850004235,
-    "fixedInitiated": 0,
-    "fixedCompleted": 0,
+    "fixedWallSeconds": 92.74614260008093,
+    "fixedInitiated": 2,
+    "fixedCompleted": 2,
     "fixedFailed": 0,
     "fixedInterrupted": 0,
-    "fixedNodes": 31200000
+    "fixedNodes": 58546309
   },
   "pending": [],
   "receipts": [
@@ -40,8 +40,13 @@
     "docs\\research\\search\\p4-multiworker\\architecture-opening-w4-root_reuse-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\architecture-opening-w4-whole_root_race-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\architecture-mixed-w4-root_reuse-v1-execution.json",
-    "docs\\research\\search\\p4-multiworker\\architecture-mixed-w4-whole_root_race-v1-execution.json"
+    "docs\\research\\search\\p4-multiworker\\architecture-mixed-w4-whole_root_race-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\uci-qualification-build92-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c1-fixed-pilot-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c1-timed-pilot-w4-v1-execution.json"
   ],
-  "timedWindows": [],
+  "timedWindows": [
+    "docs\\research\\search\\p4-multiworker\\window-20261104-v1.json"
+  ],
   "ownedProcesses": []
 }

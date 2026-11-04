@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "additionalPositionKeysChecked": 5364,
+  "overlaps": 0,
+  "inputs": {
+    "docs/research/search/sr006-phase2-2026-10-10/played-corpus.tsv": "9fd14828ebb357114496448d1c2e6dd3df81bb325723143a4b9326174f6170da",
+    "docs/research/search/p3-information-reuse-2026-10-18/raw/lifetime-v1-lines.tsv": "f628ce0e3d72565316d35b3ce957c15d75e5bce2429ca6ae5ae0e8e5e7a88f1c",
+    "docs/research/search/p3-tt-effectiveness-2026-10-23/lifetime-lines.tsv": "1b8e50040a60612303693bea3eb28e69d5231b18cd46e2d427b9cd7e69ee3469",
+    "docs/research/search/sr029-phase2-2026-10-10/aa-four-openings.pgn": "ee8d0cfd85deaf3885065244f460bb5171693f7f3064f6a95f15cd8f977ac1d4",
+    "docs/research/search/tournament-execution-2026-10-17/calibration-openings.pgn": "a1f805384152a853193789458707baf2707b30f959841e37ef79affb6943184e"
+  },
+  "scope": "All six non-key receipts resolved through input fixtures. root-witness is a row of played-corpus. Every prefix checked for TSV lifetime/played inputs and opening PGNs. No historical match PGN or BOUNDARY2 file opened, and no outcome selection. Reserve remains unplayed; actual independent protocol unfrozen."
+}

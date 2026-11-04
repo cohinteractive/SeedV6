@@ -54,7 +54,7 @@ class PcUse(support.PcUse):
         return sample
 
 
-def resource_decision(sample, workers, resources, *, running=False):
+def resource_decision(sample, workers, resources, *, running=False, idle=False):
     """One bounded observation, never a wait/retry policy. Estimates are explicit."""
     peak, reserve = resources['estimatedPeakGiB'], resources['personalReserveGiB']
     if not .75 <= peak <= 2 or not 2 <= reserve <= 8:
@@ -73,9 +73,9 @@ def resource_decision(sample, workers, resources, *, running=False):
         reasons.append('insufficient verified logical processors')
     if cpu is None:
         reasons.append('CPU interval unavailable')
-    elif not running and logical > 0 and cpu + 100 * workers / logical > 70:
-        reasons.append('existing CPU load plus requested workers exceeds 70% planning envelope')
-    elif running and cpu >= 95:
+    elif not running and logical > 0 and cpu + 100 * workers / logical > (90 if idle else 70):
+        reasons.append('existing CPU load plus requested workers exceeds planning envelope')
+    elif running and cpu >= (99 if idle else 95):
         reasons.append('critical total CPU contention')
     return {'admissible': not reasons, 'reasons': reasons, 'requiredAvailableGiB': needed,
             'estimatedPeakGiB': peak, 'personalReserveGiB': reserve,

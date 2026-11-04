@@ -1,0 +1,8 @@
+{
+  "utc": "2026-11-04T10:35:26.310647+00:00",
+  "tests": 13,
+  "failures": 0,
+  "raw": "raw/match-supervision-tests-v1.log",
+  "sha256": "bf768ecf7290000acd4398f0e9ef9a18b836992ee2f116ac1dac964aa023d7d4",
+  "scope": "Nine existing resource tests plus four competitive admission/deadline/native partial-pair drain tests. Synthetic ledgers only; no campaign games/nodes. 8-request UCI runtime qualification is separately charged in its execution receipt."
+}

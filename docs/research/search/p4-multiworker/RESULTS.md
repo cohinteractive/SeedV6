@@ -136,3 +136,24 @@ raw hashes and limits. All callback totals/PVs/boards/drains passed. No games ye
 Next is a small fixed-node paired-game qualification/screen, not a larger diagnostic
 sample. Protect fresh confirmation roots first. True independent iterative Lazy SMP
 remains separate; a same-depth race result does not settle it.
+
+## Overnight competitive path qualification
+
+One-time window2026-11-04T10:18:03Z..18:18:03Z is authorized; full MW-R001 Goal is
+client-confirmed active. No budget reset. New research-only UCI binding uses the
+shared production lifecycle and opt-in MW-C1 factory.13 supervision tests plus4
+follow-up native deadline/drain tests passed;8 bounded UCI requests passed identity,
+node/stop/reset/PV and normal process-exit checks. CPU/memory/foreground supervision,
+kill-on-close ownership and absolute plus monotonic deadlines protect every batch.
+
+Protected480 fresh opening pairs are frozen unplayed inputs, not a confirmation
+sample/protocol. All exposed selection keys/legal16 roots and MW diagnostics were
+excluded;5364 additional legacy input positions had zero overlaps.64 development
+pairs are separate. No BOUNDARY2 source was opened.
+
+Fixed pilot:2 games,1 win/1 loss for C1,27,065,896 admitted nodes. Timed pilot:2 games,
+1 win/1 draw,80.1684301s charged match wall. Both are operational qualification only;
+all normal chess outcomes, independent PV/history/rules and request-count audits,
+no warnings, and final owned-process zero. Natural console-host exit qualification
+is described separately in competitive-qualification-v1-summary.json. These pilots
+will not be pooled into the frozen12-pair fixed and32-pair timed exploratory screens.

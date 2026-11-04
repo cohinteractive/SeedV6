@@ -1,6 +1,6 @@
 # MW-R001 - Integrated multiworker Search strength
 
-Revision 2, 4 November 2026 (Pacific/Auckland). Owner-authorized CGLHW under
+Revision 3, 4 November 2026 (Pacific/Auckland). Owner-authorized CGLHW under
 the [Phase 4 Contract](../../../../source/CHESS_SEARCH_CONTRACT.md) and
 [Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). Launch authority
 is the owner's explicit multiworker execution request in this session, confirming
@@ -129,6 +129,32 @@ every admitted batch by its actual deadline, leave drain headroom, supervise and
 drain all owned descendants. Apparent idleness is not permission. No future timed
 scheduling, recurring execution or unsupervised future-session continuation.
 Missing Mode B authority does not block useful Mode A/source/engineering work.
+
+### Authorized one-time overnight execution
+
+The owner grants window MW-WINDOW-20261104-01 from2026-11-04T10:18:03Z to
+2026-11-04T18:18:03Z (4 November23:18:03 to5 November07:18:03 NZDT), recorded in
+[window authority](window-20261104-v1.json). The start/deadline never restart.
+Within it, controlled CPU-intensive fixed-work and timed competition are authorized
+without routine owner questions. Continue the full active research Goal through
+ordinary work-unit boundaries. No confirmation attempt is authorized merely by time
+availability: the existing finalist, freshness, protocol, statistical and feasibility
+requirements still apply. Preserve all cumulative limits and confirmation protection.
+
+Competitive supervision uses a Windows kill-on-close Job and process-independent
+wall/monotonic batch deadline, ending at least60s before the fixed window boundary.
+One game at a time, at most4 active Search workers initially; two bounded512MiB JVMs
+plan2GiB combined peak and2GiB personal reserve. The verified idle-mode guard allows
+projected total CPU<=90%, stops at>=99% immediately or>=95% for three observations,
+and retains memory, foreground-game and owner STOP safeguards. Daytime thresholds
+remain unchanged. This is controlled calibration for the explicit idle window, not
+permission to infer future windows or disregard genuine unsafe conditions.
+
+At deadline stop timed/high-load admission, drain and reconcile partial evidence.
+Then continue only admissible Mode A work. Window expiry never completes MW-R001.
+Temporary shortages first select smaller work or useful low-impact investigation;
+do not wake the owner for routine decisions. The client confirmed the full Goal is
+active; repository state does not claim to control its future lifecycle.
 
 ### Temporary resource blockers - owner continuation clarification
 

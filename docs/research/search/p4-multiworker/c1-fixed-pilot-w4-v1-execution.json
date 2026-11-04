@@ -1,0 +1,72 @@
+{
+  "id": "c1-fixed-pilot-w4-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\c1-fixed-pilot-w4-v1-protocol.json",
+  "protocolSha256": "6a1202338fe60cfa64c6be1939b482c36e0c20b0e02ab97cc6bc0d0e9a40c603",
+  "maximumNodes": 120000000,
+  "maximumGames": 2,
+  "deadlineUtc": "2026-11-04T10:38:30.091793+00:00",
+  "mode": "B",
+  "kind": "fixed",
+  "startedUtc": "2026-11-04T10:33:30.124210+00:00",
+  "preflightEnvironment": {
+    "utc": "2026-11-04T10:33:30.829156+00:00",
+    "totalCpuPercent": 21.183206106870234,
+    "freeMemoryGiB": 16.0338134765625,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "vivaldi.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 4,
+    "estimatedPeakGiB": 2,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 54.51653944020357,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 34192,
+  "activeOwnedBeforeDrain": 1,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 92.03125,
+    "totalOwnedProcesses": 9
+  },
+  "error": null,
+  "wallSeconds": 29.504109500034247,
+  "endedUtc": "2026-11-04T10:33:59.645155+00:00",
+  "peakOwnedCommittedGiB": 0.7691383361816406,
+  "initiatedGames": 2,
+  "completedGames": 2,
+  "gameCounting": "Both paired games conservatively initiated before each Fastchess creation; unfinished/unverified pairs retained, not rescored",
+  "observedNodes": 27065896,
+  "chargedNodes": 27065896,
+  "pairs": [
+    {
+      "pair": 0,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    }
+  ],
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\baseline-preflight.txt": "9554a5afb9cfe438e0ecdec58e9ae6faff43e1ad71239d5793de69d1d744ccb0",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\candidate-preflight.txt": "1f7e8c0b5e7f363dd31667981fe94f2b5ed83fdc444ec6599990ff1f03a90871",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\environment.jsonl": "07f023255410d50f8d6ab535d65897c193cd6a091ff2c6d79602790fbebadd44",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\progress.jsonl": "612a66377292549b6a52d7645ceeb648338fcbfe4479e0d2eed5c142aa02c07f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\pair-000\\config.json": "f513f7ec8e4bc2b31ccf7054e8d5ca9bdbd31ffc795cf2d75bd69faef51ef8a9",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\pair-000\\games.pgn": "ec1c580cf8e6689aaabb5a16d020bb1b3784c983d3de82b6bfdddd23579f0400",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\pair-000\\opening.pgn": "c837c200a630c2cb99e61ec59ee981febee367dcfdabe2a49206e0a757107190",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\pair-000\\runner.txt": "ed57508e0b189bd611387e946a64f63ce6e61ebc979d13bd75b6b9358aa80939",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\pair-000\\uci-trace.log": "503579e83054fc47d0a4a99eda7fb5b245568baea108a79a26aebd6b955807b5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c1-fixed-pilot-w4-v1\\pair-000\\verified.json": "8e09eac77eb3f4c5b96c49bb234f14e9cc6ce0c54e89d5aed680bb5596d62b70"
+  },
+  "inputsStable": true
+}

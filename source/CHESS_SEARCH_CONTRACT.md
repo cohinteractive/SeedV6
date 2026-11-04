@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R020**
+Internal revision: **P4-R021**
 
 Status: **ACTIVE - 4 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. The separate owner request authorizes MW-R001 multiworker strength research below; no champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
 
@@ -34,6 +34,13 @@ interaction where supported. Repository checkpoints do not keep a turn alive; no
 repeated availability polling or automatic future execution is authorized. Resource
 admission considers workload memory/CPU and foreground risk rather than an application
 name alone. The focused contract records the qualified operational implementation.
+
+A subsequent explicit owner instruction grants the one-time overnight window
+2026-11-04T10:18:03Z through2026-11-04T18:18:03Z (4-5 November NZDT), durably
+recorded in MW-R001's window authority/STATE. Fixed-work and controlled timed
+research are authorized within that boundary with independent supervision and
+clean drain; no restart, recurrence or automatic confirmation follows. Continue
+ordinary work-unit boundaries while useful safe authorized research remains.
 
 This new request supplies successor authority without reopening any prior objective,
 spent confirmation or frozen BOUNDARY2 study. Exact TC-P1 remains rolling production,
