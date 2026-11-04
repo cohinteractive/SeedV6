@@ -16,7 +16,7 @@ import com.ohinteractive.seedv6.search.tt.TranspositionScores;
 public final class AspirationSearch implements SingleDepthSearch {
     public enum Policy { ONE16, WIDE64, WIDEN16, ADAPTIVE16, ALPHA16, PARITY16 }
     @FunctionalInterface
-    interface WindowSearch { SearchResult search(SearchRequest request, int alpha, int beta); }
+    public interface WindowSearch { SearchResult search(SearchRequest request, int alpha, int beta); }
     @FunctionalInterface
     public interface AttemptObserver {
         void completed(int depth, int alpha, int beta, SearchResult result, long nanos);
@@ -36,6 +36,11 @@ public final class AspirationSearch implements SingleDepthSearch {
     public AspirationSearch(ParallelSearch exact, Policy policy) { this(exact,policy,null); }
     public AspirationSearch(ParallelSearch exact, Policy policy, AttemptObserver observer) {
         this(exact,exact::searchWindow,policy,observer);
+    }
+    /** Explicit research composition for an independently owned window facility.
+     * Its lifecycle must keep one coherent request generation across all retries. */
+    public static AspirationSearch researchWindows(SingleDepthSearch owner, WindowSearch window, Policy policy) {
+        return new AspirationSearch(owner, window, policy, null);
     }
     AspirationSearch(SingleDepthSearch owner, WindowSearch window, Policy policy, AttemptObserver observer) {
         this.owner = Objects.requireNonNull(owner);

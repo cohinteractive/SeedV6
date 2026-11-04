@@ -275,3 +275,14 @@ The second separates general memory benefit from eager integration. Whole-root
 memory remains unselected for games because its depth deficit persists. H1/H2/F3
 historical protocols, conclusions and spent claims are unchanged. No core/runtime
 application change or build increment for these research-only bindings.
+
+## Independent iterative implementation qualification
+
+MW-C6's opt-in request owner passed69 Java tests, including actual helper depth
+advance while owner is held, owner-only forced-move clock allocation, final helper
+tail drain, exact rules/PVs, W2/W4/W8/W16 admissions and failure/reuse, interruption,
+managed replacement and stale suppression. Ordinary lifecycle/driver/aspiration
+and production identity regression selections passed. The initial probe syntax
+error and corrected validation are retained in independent-tests-v2-summary.json.
+Build95 records shared-core impact; no normal production selector changed. The
+independent diagnostic runner compiles, but runtime/strength evidence is pending.

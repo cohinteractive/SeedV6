@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "tests": 69,
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.SearchDriverTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.driver.SearchDriverTest.xml",
+      "sha256": "8c6cdd1108671d421dbba528c4a16d70bcf7b63591bd8ab9cacc9e75454891cb"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4IndependentSearchTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.P4IndependentSearchTest.xml",
+      "sha256": "531e1154e144ecbaeaa2552aa63b50ffd4613e0be45318dd50ced0e7d82f5942"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest.xml",
+      "sha256": "26216d2c3d239601aafe93947e9c72fdeedb3d424f31ae395ab7cec46eb944f2"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.AspirationSearchTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\app-TEST-com.ohinteractive.seedv6.search.driver.AspirationSearchTest.xml",
+      "sha256": "61cb1eeeff0fb882610f37042f78c5270250311a3e19c7a170e6eb3e9c31fcfe"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\app-TEST-com.ohinteractive.seedv6.search.driver.SearchDriverTTableTest.xml",
+      "sha256": "ef43700732602e05cf6ae34271057a9abdf7a8a78ecc1771938e4cd08f0187a9"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineEngineTest.xml",
+      "sha256": "d232db56606be58a5d11ab251175df118c8357c17ff25b99f362fd3efcd79fb8"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineProfileTest.xml",
+      "sha256": "9309615e0a9824f69810eb6a0bc12d889cc5d3b38823b0c526f4d1ff78187341"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.EngineFormulationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.EngineFormulationTest.xml",
+      "sha256": "318cf18e846c462a858c5675da87d2b85bc0066b4c6ea82fa102be6c0a664d50"
+    }
+  ],
+  "buildAtTests": 94,
+  "sourceBase": "9d380c30",
+  "sourceHashes": {
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\driver\\IterativeSearch.java": "8d58015d77c1c73cf1513e68d6bfe867e227c8d7a4c7e81d7ea296e6ed73d769",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\IndependentSearch.java": "e2b12ccde5588a10b1502b0a8bb74ff410d974aec7ad9ec4ec7b79ec8be3e029",
+    "research\\src\\test\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4IndependentSearchTest.java": "24ebdb11152e5eece3afa2a2075c6ba35a6bd84855c6e2f9843b80d365ad0417"
+  },
+  "scope": "Independent per-worker depth witness, owner-only forced-move clock decision, real-rule/oracle/PV integrity, global callbacks W2/W4/W8/W16, bounded stop/failure/reuse, helper tail join, managed replacement/newGame/stale suppression and service/driver/aspiration/default identity regressions. Live iteration diagnostics unavailable; final drained diagnostics cover all workers.",
+  "retainedFailure": "raw/independent-tests-v1/gradle.log: extra closing parenthesis in research probe; no tests ran. Corrected before v2.",
+  "runtimeQualification": "New independent diagnostic/UCI/competition still pending; these tests do not qualify playing strength.",
+  "tools": {
+    "tests": 15,
+    "status": "passed",
+    "log": "docs\\research\\search\\p4-multiworker\\raw\\independent-tests-v2\\tools.log",
+    "sha256": "580456703fa7a99057012498e87c61a0a19b745b4f45f060eb9c104b2dfc1a59",
+    "scope": "Seven prospective confirmation checks plus eight match tests, including native first-game claim consumption/partial drain, zero-start resource block/no claim charge, reserve/deadline, reversed decisive scoring. Synthetic fixtures only, no campaign games."
+  }
+}

@@ -7,30 +7,30 @@ candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESUL
 
 ## Immediate continuation checkpoint
 
-Implementation3ba1daad/build94; research probe/evidence44d2430f. MastersP4-R024/F042.
-C3 screens completed: fixed35.4167% (24 games), timed55.46875% (64 games),
-paired-normal95%44.5267-66.4108%. Promising/inconclusive, not a strength qualification.
-The nine-cell score probe at clean44d2430f passed360 requests/36M admissions with
-actual cross-worker guarded cutoffs and clean drains. Eager+shared-score depth7.025
-versus6.8 hints-only and6.875 own-score delivery; ROOT_REUSE shared7.2 versus7.1;
-whole-root shared6.225 versus5.9. This is instrumented information-use evidence,
-not speed/strength. See memory-mixed-w4-v1-summary.json and all retained cells.
+All four C4/C5 frozen screens completed and drained. C4 fixed45.8333%/24 games;
+timed64.0625%/64 games, paired-normal95%55.2792-72.8458%. C5 fixed58.3333%;
+timed53.90625%, normal46.2501-61.5624%. All games/audits/inputs/drains passed.
+These are exploratory comparisons to exact TC-P1, not independent confirmation or
+a causal C4-versus-C5 comparison. C4 is selected for prospective confirmation
+planning:160 fresh pairs at10+0.1, measured9843.94s projected wall,12600s deadline
+allowance including >25% margin; latest launch14:47:03Z under unchanged18:18:03Z
+window. Full protocol not yet frozen/initiated. confirmation-feasibility-v2.json
+records limited power for small gains and all gate assumptions. Additional360-game
+played-position audit found zero overlaps with any protected reserve root.
 
-Selected clean competitive bindings: MW-C4 EAGER_MEMORY (EAGER_ROOT plus existing
-HEURISTIC_TT_MEMORY), MW-C5 ROOT_MEMORY (ROOT_REUSE plus same mechanism), both
-flags1182007295, ADAPTIVE16/BOUNDARY2/CP64/Hash64/request-private learning unchanged.
-At W1 both use the same OWNER algorithm. No aged/raw/correction additions.12 Java
-integration/safeguard tests passed; bindings compile and6 supervisor tests passed.
-Next: freeze a clean research runtime, qualify both UCI selectors, then freeze
-small fixed/timed screens against exact W4 TC-P1. C4/C5 are research candidates,
-not historical H1 or accepted production. Whole-root memory is not selected for
-competition because it still has substantial equal-work depth loss.
+The separate independent iterative core unit passed69 Java tests and compiled its
+research probe. Build94->95 verified token-only; default TC-P1 remains unchanged.
+Independent runtime/UCI/strength qualification remains pending; do not imply that
+C1 same-depth racing or these tests establish independent Lazy SMP strength. C4
+continues to use unchanged clean9d380c30/build94 frozen artifact, not this new core.
 
-Budget:691,221,293 fixed nodes/54 fixed games;130 timed games/4151.9442s.
-No pending admissions or owned match/engine processes. Production/build94 unchanged
-by these research-only selectors. No confirmation candidate/protocol selected and
-no reserve spent. Full Goal active; fixed overnight deadline18:18:03Z unchanged.
-Human actions required: None.
+Confirmation admission/analysis implementation passed15 Python tests, including
+native partial-claim initiation/drain and no-launch/no-claim handling. Final review
+and prospective protocol/commit are next. No reserve spent, pending admission or
+owned research engine/match remains. Java processes observed are pre-existing
+VS Code language servers, not owned research. Resource ledger:1,337,751,430 fixed
+nodes/102 games,1580.1959s fixed wall;258 timed games/8143.8631s. All complete; no
+failed/interrupted campaign games. Human actions required: None. Full Goal active.
 
 ## Current one-time overnight window
 

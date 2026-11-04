@@ -109,7 +109,7 @@ public final class ConstructionTtStudy {
             throw new AssertionError("Observation changed request: "+a+" / "+b);
     }
 
-    static Map<String,Object> request(SearchDriver driver, P3HistoryStudy.Root root, int depth, long budget) {
+    static Map<String,Object> request(IterativeSearch driver, P3HistoryStudy.Root root, int depth, long budget) {
         var os=(com.sun.management.OperatingSystemMXBean)ManagementFactory.getOperatingSystemMXBean();
         var mx=(com.sun.management.ThreadMXBean)ManagementFactory.getThreadMXBean();
         mx.setThreadAllocatedMemoryEnabled(true);

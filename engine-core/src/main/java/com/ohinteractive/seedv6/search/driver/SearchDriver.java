@@ -18,7 +18,7 @@ import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
  * generation spans all iterations.
  * Worker-confined; separate consumers own separate drivers/evaluator stacks.
  */
-public final class SearchDriver implements AutoCloseable {
+public final class SearchDriver implements IterativeSearch {
     private final SingleDepthSearch exact;
     private final RootTablebase tablebase;
     private SearchResult lastCompletedResult;

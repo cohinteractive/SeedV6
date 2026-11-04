@@ -322,3 +322,29 @@ use ordinary production TTable locking, with no diagnostic provenance monitor.
 Flags1182007295 add only existing current-generation HEURISTIC_TT_MEMORY. Runtime
 identity reports actual EAGER_ROOT or ROOT_REUSE scheduling separately from the
 MW-C4/MW-C5 formulation and explicit TT policy; W1 uses the same OWNER algorithm.
+
+## Independent iterative owner seam (MW-C6 implementation)
+
+IndependentSearch now provides separate adjacent iterative/ADAPTIVE16 loops with
+worker-private mutable boards, evaluators and request learning, one shared TT
+generation and global admission control. Helpers never cancel peers after a window
+or claim owner clock allocation. OWNER alone selects completed score/PV/depth and
+applies unchanged BOUNDARY2; its end locally stops helpers and joins every future
+before final callback totals, diagnostics, return/failure/reset. No external code
+or constants were copied. There is no cross-depth vote or speculative result reuse.
+
+The small IterativeSearch interface lets the existing lifecycle service inject this
+explicit research owner; ordinary constructors still use unchanged SearchDriver.
+The shared aspiration window seam preserves full verification/recovery. Live owner
+iteration reports carry a global admission snapshot and explicitly disabled worker
+diagnostics; final diagnostics include every drained worker. Helper completed
+results and actual depths remain separately inspectable for arbitration research.
+
+69 Java tests passed: independent-depth and owner-only clock witnesses, helper-tail
+join, exact oracle/rules/PV, W2-W16 callback caps/failure/stop/reuse, interruption,
+managed replacement/newGame/stale publication, plus existing lifecycle/driver/
+aspiration/default identity regressions. See independent-tests-v2-summary.json.
+The initial research probe parenthesis compile error is retained. Shared runtime
+impact warrants build94->95; normal TC-P1 selection is unchanged. No new UCI
+selector, diagnostic runtime or competitive C6 qualification yet. C4's frozen
+build94 runtime remains the separate selected strength candidate.

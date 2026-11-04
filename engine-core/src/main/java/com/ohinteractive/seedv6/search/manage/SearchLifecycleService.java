@@ -24,6 +24,7 @@ import com.ohinteractive.seedv6.search.diagnostics.SearchDiagnosticsSnapshot;
 import com.ohinteractive.seedv6.search.driver.ProductionSearch;
 import com.ohinteractive.seedv6.search.driver.ExactSearchAdapter;
 import com.ohinteractive.seedv6.search.driver.SearchDriver;
+import com.ohinteractive.seedv6.search.driver.IterativeSearch;
 import com.ohinteractive.seedv6.search.driver.SearchDriverOutcome;
 import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
 import com.ohinteractive.seedv6.search.tablebase.SyzygyNative;
@@ -109,12 +110,23 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     SearchLifecycleService(TimeSource timeSource, Supplier<? extends SingleDepthSearch> searchFactory,
             RootTablebase tablebase, Book book, RandomGenerator random) {
+        this(timeSource, new SearchDriver(Objects.requireNonNull(searchFactory, "searchFactory").get(), tablebase),
+                book, random);
+    }
+
+    /** Opt-in request-level research; ordinary single-depth/production factories
+     * retain SearchDriver, book/tablebase and publication semantics. */
+    public static SearchLifecycleService iterativeResearch(TimeSource timeSource,
+            Supplier<? extends IterativeSearch> searchFactory) {
+        return new SearchLifecycleService(timeSource,
+                Objects.requireNonNull(searchFactory, "searchFactory").get(), Book.EMPTY, new SplittableRandom());
+    }
+
+    private SearchLifecycleService(TimeSource timeSource, IterativeSearch search, Book book, RandomGenerator random) {
         this.book = Objects.requireNonNull(book, "book");
         this.random = Objects.requireNonNull(random, "random");
         this.timeSource = Objects.requireNonNull(timeSource, "timeSource");
-        search = new SearchDriver(
-            Objects.requireNonNull(searchFactory, "searchFactory").get(), tablebase
-        );
+        this.search = Objects.requireNonNull(search, "search");
         worker = new Thread(this::workerLoop, "seedv6-search-worker");
         worker.start();
     }
@@ -267,7 +279,7 @@ public final class SearchLifecycleService implements AutoCloseable {
 
     private final Object lock = new Object();
     private final TimeSource timeSource;
-    private final SearchDriver search;
+    private final IterativeSearch search;
     private final Book book;
     private final RandomGenerator random; // Only the lifecycle worker consumes it.
     private boolean bookEnabled = true;
