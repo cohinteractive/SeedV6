@@ -1,0 +1,40 @@
+{
+  "status": "passed complete operational review",
+  "id": "c1-timed-screen-w4-v1",
+  "games": 64,
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 4279,
+      "nodes": 1791926653,
+      "elapsedNanos": 961877509500
+    },
+    "candidate": {
+      "requests": 4269,
+      "nodes": 1773090158,
+      "elapsedNanos": 954430590900
+    }
+  },
+  "terminations": {
+    "normal": 64
+  },
+  "qualifiedFallbackWarnings": 0,
+  "chargedWallSeconds": 2014.4675875999965,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 6873.203125,
+    "totalOwnedProcesses": 132
+  },
+  "environment": {
+    "samples": 991,
+    "meanTotalCpuPercent": 35.60075587379474,
+    "maximumTotalCpuPercent": 78.25520833333334,
+    "minimumFreeMemoryGiB": 14.7568359375,
+    "peakOwnedCommittedGiB": 0.8172721862792969
+  },
+  "execution": "docs\\research\\search\\p4-iteration-confidence\\c1-timed-screen-w4-v1-execution.json",
+  "executionSha256": "8e6c9812174927a5dae5b9ef074291be5fa57ce74d57fc7df5b7aab3d9e7001f",
+  "protocolSha256": "288c16ce4b473d6c09e9388e3d04e7d108c060497f03a4fc8412f5e3aa4c45e1",
+  "analyzerSha256": "6929f391320cf2c421c6d582426da10985bc9ec70ea3a208b88312a39ebe3943",
+  "strengthInterpretation": "Pilot never informs selection or pools with screen."
+}

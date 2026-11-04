@@ -1,0 +1,10 @@
+{
+  "status": "authorized",
+  "receivedUtc": "2026-11-04T21:56:47+00:00",
+  "hardDeadlineUtc": "2026-11-04T23:11:47+00:00",
+  "durationMinutes": 75,
+  "ownerWording": "Authorize 75 minutes starting now",
+  "scope": "Prepared IC-C1 versus exact build96 W4 timed operational pilot4 games; then fixed64-game exploratory screen only after score-blind pilot technical/operational review passes. No confirmation or additional match authorized by this window.",
+  "timingProvenance": "First UTC machine-clock observation after receipt; exact client message timestamp not supplied.30-second runtime drain headroom applies.",
+  "sourceCommit": "06ca08f9a9a0215718a019d98d356a017053eb5a"
+}

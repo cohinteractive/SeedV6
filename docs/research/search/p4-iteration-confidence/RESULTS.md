@@ -1,7 +1,8 @@
 # IC-R001 evidence and work selection
 
 5 November 2026. [STATE](STATE.md) is the resume point; [CONTRACT](CONTRACT.md)
-defines authority and success. No playing-strength evidence exists for IC-R001 yet.
+defines authority and success. The first timed exploratory result is adverse;
+IC-C1 is not selected for confirmation. Governing strength success remains unresolved.
 
 ## Bootstrap challenge: current implementation facts
 
@@ -33,17 +34,17 @@ MW-C6 is tested but runtime/strength-unqualified. No frozen clock study was open
 
 ## Dynamic selection
 
-1. **Selected now:** exact-C4 fixed-node observation of completed/provisional
-   iteration trajectories and aspiration recovery. This resolves the missing
-   mechanism evidence cheaply and uses existing seams.
-2. **Conditional:** bounded history of score innovations / failure direction for
-   aspiration, if observations show volatile recovery or forgotten instability.
-   Keep completion/mate/cancellation honest and BOUNDARY2 unchanged.
-3. **Alternative:** challenger-aware root ordering/verification, only after a
-   provenance-bearing root-job observation is justified; current effort alone is
-   insufficient evidence of inadequate challenge.
-4. **Deferred:** independent worker iterations/arbitration; larger accounting and
-   lifetime dependency already identified in MW-R001. Not rejected on strength.
+1. **Selected now:** root-job provenance observation to explain the mismatch between
+   C1's reduced failed-pass work and adverse timed result. Separate within-pass
+   scout/full-retry work, honest bounds and completion rather than assume a cause.
+2. **Completed:** exact-C4 diagnostics, IC-C1 implementation/qualification and the
+   fixed64-game exploratory screen. C1 is rejected for confirmation; do not repeat
+   or enlarge that completed sample.
+3. **Deferred after weak/mixed replay evidence:** cumulative failed-pass effort
+   ordering and directional aspiration carryover. No parameter tuning is selected.
+4. **Conditional:** challenger-aware ordering/verification after provenance-bearing
+   measurement. Independent worker iterations remain a larger accounting/lifetime
+   alternative, not a mechanism already rejected on strength.
 
 Do not implement a fixed feature queue. Reorder from results; do not select a
 candidate by depth/NPS alone. Timed exploratory evidence is the next strength
@@ -130,6 +131,39 @@ node-only samples or width tuning cannot answer the current strength question.
 Challenger-aware instrumentation and independent iterations remain conditional
 alternatives. No second candidate or independent confirmation is selected.
 
+### Supporting allocation analysis (before screen results)
+
+`c1-allocation-support-v1.json` summarizes the existing four runs, without new
+Search execution. Mean initial finite widths were102.10/99.22 for the baseline
+and115.70/114.67 for C1. The final winner's share of resolved split-pass admissions
+was27.01%/26.23% versus26.22%/25.77%. Alternative admissions increased, but this
+excludes earlier failed passes and does not measure useful work or adequate challenge.
+
+`root-effort-replay-v1.json`, reproduced by
+`tools/p4-iteration-confidence-effort.py`, compares ranking alternatives by the final
+resolved pass with ranking them by all completed passes of that same iteration.
+The favorite remains first; tied effort preserves the final pass's input order.
+Incomplete iterations are excluded. All four input hashes and admission sums passed.
+
+In the two baseline runs,135 resolved split iterations had earlier failed passes;
+including their work changes the top alternative46 times and the top-three set87
+times. Against the *next completed selective favorite*, the hypothetical cumulative
+ranking moves that favorite earlier10 times and later8 times (116 unchanged).
+C1 gives16 earlier/8 later/118 unchanged. This is retrospective, correlated evidence;
+the next favorite is not ground truth, and a changed search order changes the trajectory.
+**Decision:** simple accumulation of failed-pass effort is not presently supported
+strongly enough to select another implementation or spend timed games. Preserve this
+weak/mixed finding; provenance-bearing challenger observations remain conditional.
+
+`window-direction-replay-v1.json` separately replays C1's width recurrence on both
+baseline trajectories and retains the sign of the score innovation behind the
+carried width. In the83/90 windows that would widen,38/49 initial passes failed.
+The retained direction matches50/87 failures; the latest nonzero movement matches
+27/64, with23 zero-movement cases separate. These correlated observations provide
+weak/mixed directional evidence. **Decision:** defer asymmetric carryover rather
+than turn this into directional parameter tuning. No new candidate or experiment
+was created by either replay, and no screen score was accessed for these decisions.
+
 ## Technical and operational qualification
 
 `technical-validation-v2.json`:41 Java tests passed (31 research,10 core), zero
@@ -163,7 +197,7 @@ Frozen raw experimental evidence was not overwritten. Full application/platform,
 browser/UI, deployed-client and timed-strength validation were not run or claimed.
 No production source/default changed.
 
-## Feasibility and next boundary
+## Bootstrap feasibility and earlier authorization boundary
 
 `feasibility-v1.json` models maximum240-pair confirmation. Prior MW pair SD is an
 illustrative assumption only: roughly40% gate power at true53% score,81% at55%;
@@ -188,3 +222,48 @@ Expenditure: **37.5157479000045s /86,400s**,32,320,289 admissions, **0/800 timed
 **0/1 independent attempt**. All five experimental runs passed; no pending admission
 or owned process. Strength is **UNRESOLVED**. This is an authorization handback,
 not success, programme closure, acceptance or production adoption.
+
+## Completed owner-authorized timed exploration
+
+The owner authorized75 minutes starting at first observed2026-11-04T21:56:47Z;
+end23:11:47Z. The exact4+64-game scope is recorded in `owner-idle-window-v1.json`.
+Pilot passed4 normal games/535 requests and native drain,129.7151052 charged seconds.
+Its technical/operational review preceded screen admission without using pilot WDL.
+The pilot is permanently excluded from selection and strength statistics.
+
+The unchanged screen completed32 pairs/64 games in2014.4675876 charged seconds.
+All8,548 requests passed independent legality/PV/history/terminal/accounting audits;
+inputs remained stable and all132 owned processes drained. No fallback warnings,
+failed/interrupted games or operational exclusions. Mean total CPU35.6008%, peak
+78.2552%; minimum free memory14.7568GiB, peak owned commitment0.8173GiB. The pinned
+analysis tool and three tests preceded score access; operational review passed first.
+
+**IC-C1:14 wins,25 draws,25 losses;41.40625%.** Pair pentanomial[2,10,17,3,0];
+paired-normal95%[34.9507%,47.8618%], Hoeffding95%[17.3982%,65.4143%]. Both intervals
+assume independent opening pairs; selected/repeated opening families and hardware
+correlation can limit that assumption. Normal approximation uses only32 pairs and
+is not exact. This is an adverse exploratory result, not independent confirmation,
+universal inferiority, equivalence or a newly qualified baseline. No live score
+stopping, tuning or sample expansion occurred.
+
+Candidate first/second-game scores43.75%/39.0625%; White/Black45.3125%/37.5%.
+These are descriptive, not extra hypothesis tests or reasons to exclude games.
+Total candidate/control admissions1,773,090,158/1,791,926,653 and measured request
+elapsed954.4306/961.8775s do not identify a causal speed or clock-policy effect:
+requests and positions diverged. The common BOUNDARY2 policy was unchanged.
+
+**Decision:** reject IC-C1 for independent confirmation. Reduced aspiration retry
+work did not translate into favorable timed play. Do not rescue it by more games
+or blind width tuning. Investigate the credible structural interaction: wider
+windows can change concurrent scout/full retries, root ordering and shared-TT
+trajectories *within* successful passes, which current effort data cannot separate.
+A research-only root-job observation is selected before another candidate.
+
+Evidence: `c1-timed-{pilot,screen}-w4-v1-execution.json`, corresponding operational
+reviews, `c1-timed-screen-w4-v1-analysis.json`, `screen-analysis-definition-v1.json`;
+raw local traces/PGNs at `raw/c1-timed-{pilot,screen}-w4-v1/`, all hashed in receipts.
+Total ledger2181.6984407000127s (36m21.70s),68/800 games,0/1 confirmation attempt.
+84,218.30155929999s and732 games remain, including480 reserved confirmation games.
+No pending reservation or owned process remains. The75-minute permission's4+64
+scope is fulfilled and grants no additional timed games. The governing objective
+remains unresolved; this negative formulation does not close the workstream.

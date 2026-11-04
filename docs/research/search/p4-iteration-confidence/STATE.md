@@ -1,9 +1,8 @@
 # IC-R001 resume state
 
-5 November 2026 (Pacific/Auckland). **ACTIVE; awaiting owner idle-window authority
-for timed exploration. Governing strength objective UNRESOLVED.** Bootstrap and the
-first implementation/diagnostic unit are complete. No acceptance, formal closure,
-champion advance, production promotion or deployment is claimed.
+5 November 2026 (Pacific/Auckland). **ACTIVE; IC-C1 rejected for confirmation after
+an adverse exploratory screen. Governing strength objective UNRESOLVED.** No owner
+acceptance, closure, champion advance, production promotion or deployment.
 
 Start here, then [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md), `budget.json` and
 named protocols. Current Phase4 masters **P4-R030/P4-F048**. Owner-confirmed launch
@@ -11,100 +10,82 @@ mirrors were P4-R029/P4-F047; mirrors are owner-maintained.
 
 ## Authority and identities
 
-- Initial clean main HEAD `4af0e298b759e222fe53de4fe6ff14bc0b46f612`, build97.
-  Search/core matched accepted96 `44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0`.
-  Later packaging/UCI naming changes were reconciled without replacing the control.
-- `baseline-manifest.json` verifies original96 artifacts/CP64/Java21; local exact
-  snapshot `raw/baseline-build96-v1/app/`. Production is MW-C4/EAGER_ROOT/1182007295
-  atW4, TC-P1/1177812991 elsewhere. Closed campaigns/champion/baseline79 preserved.
-- Candidate **IC-C1 Volatility carryover** retains half the previous resolved
-  initial aspiration half-width as an ADAPTIVE16 floor, capped512. Same MW-C4,
-  PVS, CP64/Hash64/W4/BOUNDARY2; research-only, no production change. RESULTS
-  describes the mechanism, dependencies and actual evidence.
-- `runtime-c1-uci-v1-manifest.json` pins source/class/JAR hashes. Snapshot
-  `raw/runtime-c1-uci-v1/{classes,lib}` loads original96 core/UCI for both CONTROL
-  and VOLATILITY_CARRYOVER with identical research binding/runtime. OutsideW4 both
-  delegate exact production routing. Candidate is an overlay, not a new app build.
-- VERSION_STATE.txt strictly validated regular/single-link UTF-8 JSON0.0.0/97.
-  Research-only tools/tests/docs: **no_bump**, all version bytes preserved.
-  CODEXLOG_CURRENT.md absent; no journal created. Shared governance/CEC unchanged.
+- Initial clean HEAD4af0e298, build97, Search identical to accepted build96 source
+  `44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0`. This execution began clean at06ca08f9,
+  which contains the bootstrap, candidate, fixed-work evidence and frozen protocols.
+- Exact control is MW-C4/EAGER_ROOT/1182007295 atW4, CP64/Hash64/PVS/ADAPTIVE16/
+  BOUNDARY2,10+0.1, Windows Ryzen5 5500/Java21. TC-P1 routing elsewhere is preserved.
+  `baseline-manifest.json` and `runtime-c1-uci-v1-manifest.json` pin original96 core
+  and UCI JARs, shared evaluator/runtime and the isolated research binding.
+- **IC-C1 Volatility carryover:** ADAPTIVE16 adds half the previous resolved initial
+  width as a floor, capped512. Center, recovery, mate verification, publication,
+  hard stops and BOUNDARY2 remain unchanged. No production-default change.
+- VERSION_STATE.txt is strict regular/single-link JSON0.0.0/97; research-only work
+  is **no_bump** and all bytes remain unchanged. Root CODEXLOG_CURRENT.md absent.
+  No shared behavioral-governance or CEC maintenance is authorized or performed.
 
-## Evidence and limitations
+## Completed evidence and decisions
 
-Source challenge found no comparable challenger score vector; completion already
-protected; shared TT correlates workers; effort excludes earlier failed passes and
-is not useful-work measurement. Stable move is not confidence. Pinned external
-source/history/reversions studied; no external code/constants or frozen clock-study
-scores imported/opened.
+Bootstrap challenged root-score comparability, completion provenance, correlated
+workers and effort semantics. Pinned external source/history/reversions were studied.
+Four diagnostics passed160 requests/32M admissions. C1 repeatedly reduced failed-pass
+work; depth/effort changes did not establish decision quality or strength. Prior
+41 Java/6 supervisor tests and12-request UCI qualification passed.
 
-Four diagnostics passed160 requests/32M admissions: baseline bound-pass fractions
-15.86%/21.13%, C1 9.24%/10.09%; mean depths7.825/7.725 versus7.875/7.900. SMP
-variability is material; no speed/decision-quality/strength claim. Latest41 Java
-and6 supervisor tests passed. UCI qualification passed12 requests/320,289 admissions,
-node/stop/reset/reuse/PV, W1/W2 fallback identities and native drain. All source,
-protocols, summaries, receipts and raw evidence retained. No managed-clock game,
-full GUI/platform/deployment qualification or independent confirmation yet.
+Owner authorized75 minutes starting at first observed21:56:47Z; hard end23:11:47Z
+(12:11:47pm NZDT). `owner-idle-window-v1.json` preserves exact wording and scope:
+prepared4-game operational pilot then unchanged64-game screen only. **That scope
+is now fully spent; remaining clock time does not authorize additional timed games.**
 
-Setup failures/corrections are recorded in RESULTS. No failed experimental launch,
-lost evidence or unaccounted experiment remains.
+Pilot passed4 normal games/535 audited requests, stable inputs and native drain.
+Its score was not used for selection and is permanently excluded from statistics.
+Screen passed64 normal games/8,548 audited requests, no fallback warnings, stable
+inputs and all132 owned processes drained. Mean total CPU35.60%, maximum78.26%,
+minimum free memory14.76GiB, peak owned commitment0.817GiB. The analysis implementation
+was pinned and three analysis tests passed before viewing any screen scores.
 
-## Resource/process state
+IC-C1: **14W/25D/25L,41.40625%**,32 opening pairs. Paired-normal95%34.9507-47.8618%;
+Hoeffding95%17.3982-65.4143%. This is adverse selected exploratory evidence, not
+independent confirmation or universal inferiority. **Do not advance C1, replay this
+screen, enlarge its sample, or spend the sole confirmation attempt on it.**
 
-Fresh `budget.json`:37.5157479000045/86,400 charged seconds;86,362.48425209999s
-remaining.0 initiated/completed/failed/interrupted timed games of800.0/1 independent
-attempt spent; max240 pairs/480 games. Planning reserve480 games/21,600s is inside
-that total. No pending reservation, active experiment or owned process. No idle
-window exists. Compilation/docs/correctness tests excluded; all five launched
-experiments include admission-through-drain wall.
+Read-only replays found weak/mixed support for cumulative failed-pass effort and
+asymmetric directional carryover; both are deferred. Raw evidence, failed/negative
+conclusions, manifests and frozen source/runtime identities remain preserved.
 
-## Next action and exact resume
+## Resources and current work
 
-The useful next evidence is timed competition, not additional node-only tuning.
-Unchanged candidate has two prepared fixed protocols:
+`budget.json`:2181.6984407000127/86,400 charged seconds (36m21.70s),68/800 initiated
+and completed timed games,0 failed/interrupted.32,320,289 fixed admissions.
+Remaining84,218.30155929999s and732 games, including480-game/21,600s confirmation
+planning reserve;252 development games available.0/1 independent attempt spent.
+No pending reservation, active experiment or owned process remains from the screen.
+Compilation, correctness tests and read-only analysis are not charged experiments.
 
-1. `c1-timed-pilot-w4-v1-protocol.json`:2 pairs/4 operational games, max300s.
-2. After score-blind pilot technical/operational audit passes,
-   `c1-timed-screen-w4-v1-protocol.json`:32 pairs/64 exploratory games, max3600s.
+**Selected next unit:** diagnose C1's adverse result using bounded root-job
+provenance observations. Wider aspiration can reduce failed passes while changing
+scout/full-retry work, ordering and TT trajectories inside each pass. Current root
+effort cannot separate those mechanisms. Establish a research-only observation copy
+of exact96 ParallelSearch, verify only observation/identity changes, qualify its
+accounting/lifecycle, then compare C4/C1 under small reciprocal fixed-node runs.
+No second strength candidate is selected; do not infer a fix before measurement.
 
-Both10+0.1/W4/CP64/Hash64/BOUNDARY2/exact-C4, alternating first colors, cold pair
-JVMs, fixed samples; no live score stopping, selective deletion or automatic replay.
-Pilot never enters selection statistics.34 development pairs are frozen in
-`development-v1-openings.pgn` and its selection manifest; not confirmation inputs.
+Daytime authority permits bounded below-normal fixed-work investigations with native
+Job ownership, resource checks and full charging. No more timed games are currently
+authorized. A later candidate/screen must be concretely prepared before requesting
+its own idle window. Confirmation still requires fresh held-out inputs, frozen
+candidate/control, sample, method, failure/stopping rules and meaningful power.
 
-**Blocking human action:** owner authorizes a specific75-minute idle window, or
-another concrete window that fits a responsibly adapted prospective batch. This
-is the execution request's timed-experiment gate. Unused budget, old MW permission,
-a later invocation or silence do not grant authority.
+Raw/runtime paths under `raw/` are ignored local evidence, absent from a fresh checkout.
+Check availability/hashes before analysis or reconstruct and qualify a new identity;
+never silently replace old snapshots. Python chess1.11.2 is in ignored
+`build/research/ic-python`; set PYTHONPATH there for existing supervisor/UCI tools.
+Do not edit an admitted protocol, receipt or its inputs. No auto replay/prefix scoring.
 
-After explicit authority, record actual received time, hard UTC end, status and
-owner wording in new `owner-idle-window-v1.json`; register its exact relative path
-in `budget.json.authorizedIdleWindows`. Do not create a fictitious permission file.
-Recheck frozen inputs/raw availability/resources/pending state. Execute sequentially:
+## Human dependencies
 
-```powershell
-$env:PYTHONPATH = (Resolve-Path build/research/ic-python).Path
-python -B tools/p4-iteration-confidence.py --protocol docs/research/search/p4-iteration-confidence/c1-timed-pilot-w4-v1-protocol.json
-# Review operational audits without pilot WDL as a selection gate.
-python -B tools/p4-iteration-confidence.py --protocol docs/research/search/p4-iteration-confidence/c1-timed-screen-w4-v1-protocol.json
-```
-
-Local Python dependency is chess1.11.2 in ignored build/research/ic-python. Supervisor
-enforces wall/games/reserve/window, CPU/memory/STOP, frozen inputs and owned Job drain.
-It deliberately rejects independent confirmation: freeze its own candidate/control,
-fresh held-out audit, sample/method/stopping/failure rules and power assessment first.
-Do not overwrite admitted protocols/receipts; use new IDs for justified revisions.
-Select further integrated work from actual exploratory evidence.
-
-Raw/runtime files are ignored and local, not Git deliverables. A fresh checkout
-must check availability and restore exact hashed artifacts or explicitly reconstruct
-and qualify a new identified runtime; hashes alone do not imply availability.
-Current source hashes and normal Git history identify this research implementation.
-No external installation/push is required.
-
-## Other human actions and disposition
-
-Owner refresh of Project Source mirrors toP4-R030/P4-F048 is non-blocking for
-repository work, required before mirror-dependent GPT coordination. Final acceptance,
-champion/promotion and deployment remain distinct. Do not close IC-R001 or launch
-a successor. Changes are attributable from the initially clean tree; final commit
-and Git inspection are reported in handback and available in normal Git history.
+No owner decision blocks the selected bounded diagnostic unit. Further timed work
+requires a new specific idle window after its protocol is prepared. Owner refresh
+of Project Source mirrors toP4-R030/P4-F048 is non-blocking for repository work,
+required before mirror-dependent GPT coordination. Acceptance, champion/promotion,
+installation/deployment/push/release remain separate owner gates.

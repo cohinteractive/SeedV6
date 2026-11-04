@@ -1,0 +1,42 @@
+{
+  "status": "descriptive pre-screen-result replay; no new Search run",
+  "runs": [
+    {
+      "run": "baseline-mixed-w4-v1",
+      "input": "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-mixed-w4-v1\\observations.jsonl",
+      "sha256": "9fa2917981378bff92455609907b69a57e79e2f8d5ed093312156ed5d3bcb9cb",
+      "counts": {
+        "wouldWiden": 83,
+        "upper": 23,
+        "sameRetainedDirection": 21,
+        "oppositeLatestDirection": 15,
+        "lower": 15,
+        "oppositeRetainedDirection": 17,
+        "latestMovementZero": 9,
+        "resolved-selective": 38,
+        "incomplete": 7,
+        "sameLatestDirection": 14
+      }
+    },
+    {
+      "run": "baseline-mixed-w4-v2",
+      "input": "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-mixed-w4-v2\\observations.jsonl",
+      "sha256": "0841935cfabe968dcd35f690ca7b09569f391aeecc4309e48c6ac6177aec6cee",
+      "counts": {
+        "wouldWiden": 90,
+        "upper": 24,
+        "sameRetainedDirection": 29,
+        "oppositeLatestDirection": 22,
+        "lower": 25,
+        "oppositeRetainedDirection": 20,
+        "latestMovementZero": 14,
+        "resolved-selective": 33,
+        "incomplete": 8,
+        "sameLatestDirection": 13
+      }
+    }
+  ],
+  "method": "Group attempts by depth in each existing request. For initial half-width<1000, replay effective=max(actualWidth,previousResolvedEffective//2); otherwise reset effective=16. Retain the sign of the score innovation that generated the carried width until actualWidth>=carryFloor, when sign becomes the latest completed score difference (zero with fewer than two completions). Update width/sign only after resolution. At floor>actualWidth classify the original first-pass failure and compare its direction with retained and latest score movement; incomplete first passes remain counted but do not supply failure direction.",
+  "limitations": "Observed baseline trajectories only; no changed Search simulation. Selected repeated roots, selective bounds and correlated SMP. Latest movement zero is a separate subset. Counts do not calibrate confidence or demonstrate a directional strength benefit.",
+  "decision": "Retained direction matches50/87 observed widened-window failures versus37 opposite; latest nonzero movement matches27/64 versus37 opposite. Too weak/mixed to select asymmetric carryover or tune windows from these data."
+}

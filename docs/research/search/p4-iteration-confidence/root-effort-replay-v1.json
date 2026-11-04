@@ -1,0 +1,71 @@
+{
+  "status": "descriptive replay of existing fixed-work evidence; no experiment",
+  "analyzerSha256": "ecab24e545e81b1a5c8db9ee352735fc280b4df59a29521dfcbd9abe3d53f2f9",
+  "runs": [
+    {
+      "run": "baseline-mixed-w4-v1",
+      "sourceSha256": "9fa2917981378bff92455609907b69a57e79e2f8d5ed093312156ed5d3bcb9cb",
+      "counts": {
+        "resolvedSplitIterations": 233,
+        "withEarlierBoundPasses": 65,
+        "earlierBoundAdmissions": 732513,
+        "changedTopAlternative": 22,
+        "changedTopThreeSet": 40,
+        "changedAlternativeOrder": 57,
+        "nextCompletedFavoriteChanges": 70,
+        "nextFavoriteRankSame": 61,
+        "nextFavoriteRankLater": 4,
+        "nextFavoriteRankEarlier": 5
+      }
+    },
+    {
+      "run": "c1-mixed-w4-v1",
+      "sourceSha256": "4a2c4432de18767a69a9a9858cfbf6b204ec99c846f9182f22a4ab318ba6652f",
+      "counts": {
+        "resolvedSplitIterations": 235,
+        "withEarlierBoundPasses": 53,
+        "earlierBoundAdmissions": 534152,
+        "changedTopAlternative": 23,
+        "changedTopThreeSet": 32,
+        "changedAlternativeOrder": 46,
+        "nextCompletedFavoriteChanges": 68,
+        "nextFavoriteRankSame": 53,
+        "nextFavoriteRankLater": 8,
+        "nextFavoriteRankEarlier": 7
+      }
+    },
+    {
+      "run": "c1-mixed-w4-v2",
+      "sourceSha256": "c098b2dc8934ae863dbfaf0acf726b8538627fe932551befc1c98ea8e4381388",
+      "counts": {
+        "resolvedSplitIterations": 236,
+        "withEarlierBoundPasses": 50,
+        "earlierBoundAdmissions": 402705,
+        "changedTopAlternative": 18,
+        "changedTopThreeSet": 27,
+        "changedAlternativeOrder": 42,
+        "nextCompletedFavoriteChanges": 74,
+        "nextFavoriteRankEarlier": 9,
+        "nextFavoriteRankSame": 65
+      }
+    },
+    {
+      "run": "baseline-mixed-w4-v2",
+      "sourceSha256": "0841935cfabe968dcd35f690ca7b09569f391aeecc4309e48c6ac6177aec6cee",
+      "counts": {
+        "resolvedSplitIterations": 229,
+        "withEarlierBoundPasses": 70,
+        "earlierBoundAdmissions": 737363,
+        "changedTopAlternative": 24,
+        "changedTopThreeSet": 47,
+        "changedAlternativeOrder": 62,
+        "nextCompletedFavoriteChanges": 64,
+        "nextFavoriteRankSame": 55,
+        "nextFavoriteRankEarlier": 5,
+        "nextFavoriteRankLater": 4
+      }
+    }
+  ],
+  "semantics": "Descriptive replay of final-pass versus all-pass root effort; no Search run.\n\nRanks are hypothetical and cannot predict a changed concurrent Search trajectory.\nThe resolved favorite stays first; ties preserve the final pass's input order.",
+  "limitations": "Next-completed favorite is a retrospective selective observation, not truth. Incomplete iterations are excluded; shared TT, order and worker correlation remain. A changed ranking neither proves inadequate challenge nor predicts strength."
+}

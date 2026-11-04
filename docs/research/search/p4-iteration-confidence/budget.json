@@ -8,12 +8,12 @@
     "confirmationAttempts": 1
   },
   "consumed": {
-    "chargedWallSeconds": 37.5157479000045,
+    "chargedWallSeconds": 2181.6984407000127,
     "fixedWallSeconds": 37.5157479000045,
-    "timedWallSeconds": 0,
+    "timedWallSeconds": 2144.182692800008,
     "fixedNodes": 32320289,
-    "initiatedTimedGames": 0,
-    "completedTimedGames": 0,
+    "initiatedTimedGames": 68,
+    "completedTimedGames": 68,
     "failedTimedGames": 0,
     "interruptedTimedGames": 0,
     "confirmationAttempts": 0
@@ -26,9 +26,13 @@
     "docs\\research\\search\\p4-iteration-confidence\\c1-mixed-w4-v1-execution.json",
     "docs\\research\\search\\p4-iteration-confidence\\c1-mixed-w4-v2-execution.json",
     "docs\\research\\search\\p4-iteration-confidence\\baseline-mixed-w4-v2-execution.json",
-    "docs\\research\\search\\p4-iteration-confidence\\c1-uci-qualification-v1-execution.json"
+    "docs\\research\\search\\p4-iteration-confidence\\c1-uci-qualification-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\c1-timed-pilot-w4-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\c1-timed-screen-w4-v1-execution.json"
   ],
-  "authorizedIdleWindows": [],
+  "authorizedIdleWindows": [
+    "docs/research/search/p4-iteration-confidence/owner-idle-window-v1.json"
+  ],
   "planningReserve": {
     "confirmationGames": 480,
     "confirmationWallSeconds": 21600,

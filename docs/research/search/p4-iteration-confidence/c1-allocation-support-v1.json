@@ -1,0 +1,46 @@
+{
+  "status": "descriptive supporting analysis of existing fixed-work data; no new experiment",
+  "runs": [
+    {
+      "run": "baseline-mixed-w4-v1",
+      "sourceSha256": "9fa2917981378bff92455609907b69a57e79e2f8d5ed093312156ed5d3bcb9cb",
+      "resolvedSplitPasses": 233,
+      "meanInitialHalfWidth": 102.10223642172524,
+      "finalWinnerNodeShare": 0.27013183889325404,
+      "finalAlternativeAdmissions": 3366368,
+      "rootMoveEntries": 6171,
+      "completedSplitMoveChanges": 70
+    },
+    {
+      "run": "c1-mixed-w4-v1",
+      "sourceSha256": "4a2c4432de18767a69a9a9858cfbf6b204ec99c846f9182f22a4ab318ba6652f",
+      "resolvedSplitPasses": 235,
+      "meanInitialHalfWidth": 115.70476190476191,
+      "finalWinnerNodeShare": 0.26220706615191,
+      "finalAlternativeAdmissions": 3674560,
+      "rootMoveEntries": 6189,
+      "completedSplitMoveChanges": 68
+    },
+    {
+      "run": "c1-mixed-w4-v2",
+      "sourceSha256": "c098b2dc8934ae863dbfaf0acf726b8538627fe932551befc1c98ea8e4381388",
+      "resolvedSplitPasses": 236,
+      "meanInitialHalfWidth": 114.67088607594937,
+      "finalWinnerNodeShare": 0.2577299128447772,
+      "finalAlternativeAdmissions": 3788885,
+      "rootMoveEntries": 6248,
+      "completedSplitMoveChanges": 74
+    },
+    {
+      "run": "baseline-mixed-w4-v2",
+      "sourceSha256": "0841935cfabe968dcd35f690ca7b09569f391aeecc4309e48c6ac6177aec6cee",
+      "resolvedSplitPasses": 229,
+      "meanInitialHalfWidth": 99.22330097087378,
+      "finalWinnerNodeShare": 0.26228557290315735,
+      "finalAlternativeAdmissions": 2960763,
+      "rootMoveEntries": 6091,
+      "completedSplitMoveChanges": 64
+    }
+  ],
+  "semantics": "Final winning root share uses all restricted-job admissions in resolved split passes, including within-pass retries. Other roots are alternative admissions, not evidence of adequate challenge. No comparable alternative scores exist; shared TT/order and SMP correlation remain. Width changes can alter challenger work and predictions, so failed-pass reduction is not a strength surrogate."
+}

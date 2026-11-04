@@ -1,0 +1,14 @@
+{
+  "status": "analysis implementation pinned while fixed screen runs; no screen scores accessed",
+  "observedUtc": "2026-11-04T22:02:31.670564+00:00",
+  "tool": "tools/p4-iteration-confidence-results.py",
+  "analyzerSha256": "6929f391320cf2c421c6d582426da10985bc9ec70ea3a208b88312a39ebe3943",
+  "statisticsSource": "tools/search-baseline.py",
+  "statisticsSourceSha256": "f67b5c8ad6a88b5d94667b2ee8f12d1b454a0340592f781b70c139f491602678",
+  "method": "Existing paired-normal two-sided95% with n>=30/nonzero sample variance; bounded Hoeffding95 sensitivity. Candidate score reported descriptively; no exploration acceptance or independent claim. Pilot operational-only and permanently excluded.",
+  "tests": {
+    "executed": 3,
+    "failures": 0,
+    "scope": "live-receipt refusal, pair-level variance, small/degenerate interval suppression"
+  }
+}

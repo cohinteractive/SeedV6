@@ -1,0 +1,73 @@
+{
+  "id": "c1-timed-pilot-w4-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-iteration-confidence\\c1-timed-pilot-w4-v1-protocol.json",
+  "protocolSha256": "477c4f3d3ae6558c38bb70339406a49f48591b5b0841f9636f11328717ce32d8",
+  "command": [
+    "C:\\Program Files\\Python313\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-iteration-confidence-uci.py",
+    "--worker",
+    "--protocol",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\c1-timed-pilot-w4-v1-protocol.json",
+    "--directory",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1"
+  ],
+  "startedUtc": "2026-11-04T21:57:24.160860+00:00",
+  "games": 4,
+  "priority": "below-normal",
+  "preflight": {
+    "utc": "2026-11-04T21:57:24.892164+00:00",
+    "totalCpuPercent": 19.021739130434778,
+    "freeMemoryGiB": 15.679725646972656,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "msedge.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 4,
+    "estimatedPeakGiB": 2,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 52.35507246376811,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 44244,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 434.078125,
+    "totalOwnedProcesses": 12
+  },
+  "wallSeconds": 129.71510520001175,
+  "endedUtc": "2026-11-04T21:59:33.890058+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.7488250732421875,
+  "chargedWallSeconds": 129.71510520001175,
+  "initiatedGames": 4,
+  "completedGames": 4,
+  "observedNodes": 163167842,
+  "gameCounting": "Conservatively charge both games before pair creation; failed/partial pairs preserved",
+  "inputsStable": true,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\baseline-preflight.txt": "08c850627281dbe37c42b67723499f183e4a9d1f0563860949fb6e52e4940314",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\candidate-preflight.txt": "19607a57bc212713bf52af7af24f28da503ebaca59fa202b61c53108ac77ccb7",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\environment.jsonl": "144e26301c8ff16644a46aedb48ea6fa7a2d2bdea00dd3d04ed724e7ba4d58c4",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\progress.jsonl": "4c575ad2c1a98a443a57d921937f50ba8b4ed0ee2800d3cd023c5206da3046b6",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-000\\config.json": "85e7eb6d7c4adffc3a6201961db3930d37cbe7a0647468e2745b0e16fbec84ad",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-000\\games.pgn": "02c9c90fed6b32bbbc46ecdfbec17f30a3f2c6bdba2380fc0131ce9799d80a69",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-000\\opening.pgn": "28e01f4a40ddd5a7c978fbe3ab27f6aa154b7e08e435e7758ab51442ae8483c0",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-000\\runner.txt": "a9c9dec6f6850880fb78ff70a258f55455d03db01741d8881f9aa41e21c58827",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-000\\uci-trace.log": "cea1cfb6fe186f6fd0912a5bb55dfa03a3380526be6c070ca42d9645c05f72de",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-000\\verified.json": "c77937c77eb6a8b5c69fe44079707c2b670c5db9972e14041530c9741ae20c1a",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-001\\config.json": "961b153376e2829ea678bcb331f0e2a52a4df7cd4d39b86b08df89f7ab32f360",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-001\\games.pgn": "f7a00e6dda61a1e02ab916976ea50084af3bc66cfcf07e6a892ac016af335b98",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-001\\opening.pgn": "eb4e01db4d9b4ccc82dd70d756d275d7f999ff569263b1cb0eee5ae5c5293b87",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-001\\runner.txt": "f853ec7b0b30cd7c6f204e12733ac7a935f5f7aadec8922f8436cc67fa1f86d3",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-001\\uci-trace.log": "5257ba4ac5e18964fc44d6d1932ef1a7b1b00701e1b39a8c50631e4f7f5b1595",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-timed-pilot-w4-v1\\pair-001\\verified.json": "abde5491f7a3fc378b63dca3a8754ab21b4d175d68c175645e5559882eb0d097"
+  }
+}
