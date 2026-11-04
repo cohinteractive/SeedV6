@@ -1,0 +1,9 @@
+{
+  "tests": 2,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "raw": "docs\\research\\search\\p4-multiworker\\raw\\hint-tests-v1.xml",
+  "sha256": "6be0851a804234c10001cf89f0e444d4a6f344313dc8a1537173acf7721f4b6e",
+  "source": "research/src/test/java/com/ohinteractive/seedv6/search/exact/P4MultiworkerHintTest.java"
+}

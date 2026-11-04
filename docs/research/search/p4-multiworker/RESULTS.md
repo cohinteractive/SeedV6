@@ -96,3 +96,24 @@ behavior and subsequent fixed-node-runner dependency are in STATE. Do not infer
 automatic continuation from this checkpoint. The governing strength objective is
 **unmet**, not failed by an unrun experiment and not relabeled foundational success.
 No owner acceptance, champion advancement, production adoption or deployment claimed.
+
+## W4 hint provenance and reverse delivery ablation
+
+The additional research-only probe and2 focused tests passed. Normal delivery
+observed67,109 cross-worker returns among224,905 available hints in40 requests;
+38 requests used this delivery channel. PRIVATE_DELIVERY retained shared storage
+and replacement but withheld62,227 cross-worker returns in its40 requests. The
+40 matched root/round outcomes differed on best move14 times, score/depth22 times.
+[Summary and evidence hashes](hints-mixed-w4-v1-summary.json) retain full counts.
+
+This establishes actual cross-worker delivery, not legal ordering consumption or
+benefit. Additional synchronization makes provenance coherent and perturbs Search;
+SMP variation prevents assigning all outcome differences to hint utility. No speed,
+competitive or strength conclusion. Both arms preserved all verified callbacks,
+PV/board integrity and drain;8M nodes/15.4307137 fixed seconds,0 games/timed wall.
+
+Next selected alternative: fully drained same-depth whole-root race with exact
+TC-P1 kernel/learning/shared TT, compared against ROOT_REUSE. The observed first-root
+allocation cost motivates this cheap comparison; visible hint exchange motivates
+retaining cooperation. It is not true independent iterative Lazy SMP and a negative
+result would not dispose of that separate design. No external code is incorporated.

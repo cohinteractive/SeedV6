@@ -7,7 +7,7 @@ candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESUL
 
 ## Authority, identities and provenance
 
-- Masters currently P4-R017/P4-F034. Project Source mirrors were not refreshed.
+- Masters currently P4-R018/P4-F035. Project Source mirrors were not refreshed.
 - Bootstrap c2ad1e3b and checkpoint10e974cf followed clean acc997b2; this continuation
   began clean main at10e974cf. Inherited training/build changes remain unrelated.
 - Build91 remains unchanged: VERSION_STATE.txt SHA256
@@ -54,6 +54,19 @@ constraint for independent asynchronous helpers. No external code incorporated.
   It consumed zero Search work. Prepared v2 was superseded without launch; all v3
   protocols/receipts/raw files are frozen and must not be overwritten/reused.
 
+## Additional autonomous information-flow unit
+
+Following the two requested units (commit79d74fb1), the new research-only
+P4MultiworkerHintStudy passed2 focused tests and80 W4 mixed-root requests (8M nodes).
+Normal delivery returned67,109 hints last stored by another worker, in38/40 requests.
+PRIVATE_DELIVERY suppressed62,227 such returns in its separate40 requests;14/40
+matched root/round best moves differed. These differences are not uniquely causal
+or strength evidence: SMP scheduling varies and the provenance monitor changes it.
+Delivery is observed; post-legality ordering consumption is not counted. This
+reverse ablation retains shared storage/replacement and is not a private TT.
+See [summary](hints-mixed-w4-v1-summary.json) and [runtime](runtime-hints-v1-manifest.json).
+No production source changed in this unit. All native/helper drains passed.
+
 ## Operating behavior and budgets
 
 Mode A is already authorized: one restrained fixed-work process, at most4 active
@@ -76,8 +89,8 @@ there is no supported blocking request tool in this Default session. Never claim
 checkpoint preserves client liveness. If the client ends the turn, explicitly retain
 pending user action and this resume reference. No repeated availability polling.
 
-**Consumed:**11,600,000 fixed diagnostic nodes,26.1777875 fixed wall seconds;0 games,
-0 timed wall. **Remaining:**99,988,400,000 nodes,6000 fixed games,3000 timed games,
+**Consumed:**19,600,000 fixed diagnostic nodes,41.6085012 fixed wall seconds;0 games,
+0 timed wall. **Remaining:**99,980,400,000 nodes,6000 fixed games,3000 timed games,
 72 timed hours. Protected independent allowance960 timed games/initial24h intact.
 No confirmation protocol selected or attempt spent. budget.json has no pending
 reservation or live owned processes. Receipts, not historic PIDs, establish ownership.
@@ -86,8 +99,8 @@ reservation or live owned processes. Receipts, not historic PIDs, establish owne
 
 | Question | Selected discriminating work | Status |
 | --- | --- | --- |
-| Can better scheduling reduce first-root waiting without harming useful Search? | Develop a controlled overlap/root or independent-worker alternative after identifying information dependence. Retain exact TC-P1 comparator and honest drain/accounting. | First-root admissions now measured; neither ROOT_REUSE nor Lazy SMP presumed optimal. |
-| Do workers actually benefit from each other's completed TT hints? | Research-only provenance observation and reverse ablation of cross-worker hint delivery at W4, matching flags/evaluator/resources. Observe availability separately from delivery and changed decisions. | Next selected small diagnostic; production counters omit hints, so zero ordinary TT counters are not evidence of no sharing. |
+| Can better scheduling reduce first-root waiting without harming useful Search? | Selected: fully drained same-depth whole-root race using the exact TC-P1 kernel, private request learning and shared hints. Retain ROOT_REUSE control, explicit alternative identity and honest drain/accounting. | First-root admissions now measured; neither ROOT_REUSE nor Lazy SMP presumed optimal. |
+| Do workers actually benefit from each other's completed TT hints? | Provenance/delivery and reverse ablation completed at W4. Direct post-legality consumption remains unmeasured. | 67,109 cross-worker deliveries observed; cooperation is not absent. No utility/strength conclusion. |
 | What does independent iterative SMP require? | Explicit final accounting after drain and honest result depth/PV selection; current SearchDriver outcome is built before endRequest. | Source constraint remains; no naive asynchronous wrapper. |
 | Can shared learning or arbitration support a stronger combination? | Use information-flow and scheduling evidence to select integration; retain prior TT adverse evidence and request-private histories as comparator. | Open, not prescribed. |
 
@@ -96,7 +109,7 @@ Fresh-session sequence:
    hashes. Check raw availability; fresh checkout lacks ignored evidence. Missing
    artifacts need a new identified export, not silent recreation of frozen files.
 2. Do not repeat completed v3 baseline or90 tests without a concrete change/reason.
-   Read their summaries. Continue selected information-flow diagnostic under Mode A;
+   Read their summaries. Continue selected whole-root race implementation under Mode A;
    any new source/runtime needs a fresh manifest/protocol/run ID before admission.
 3. Verify resources once at admission; use tools/p4-multiworker.py. Its current
    scope deliberately rejects competitive/timed protocols. If temporarily blocked,

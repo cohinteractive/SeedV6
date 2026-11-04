@@ -1,12 +1,12 @@
 {
   "status": "continue_research",
-  "receipt": "docs\\research\\search\\p4-multiworker\\baseline-mixed-w2-v3-execution.json",
+  "receipt": "docs\\research\\search\\p4-multiworker\\hints-mixed-w4-private_delivery-v1-execution.json",
   "blocker": null,
   "ownedProcessesRemaining": 0,
   "alternativeWork": [
-    "Analyze scheduling evidence and design next information-flow diagnostic"
+    "Analyze hint provenance and choose a controlled architecture alternative"
   ],
-  "resumeProtocolTemplate": "docs\\research\\search\\p4-multiworker\\baseline-mixed-w2-v3-protocol.json",
+  "resumeProtocolTemplate": "docs\\research\\search\\p4-multiworker\\hints-mixed-w4-private_delivery-v1-protocol.json",
   "resumeRequiresNewRunId": true,
   "resumeState": "docs/research/search/p4-multiworker/STATE.md",
   "pendingHumanAction": null,

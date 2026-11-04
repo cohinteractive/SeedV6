@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "runs": [
+    {
+      "id": "hints-mixed-w4-all-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "counts": {
+        "probes": 614464,
+        "available": 224905,
+        "stores": 485941,
+        "acceptedStores": 480404,
+        "sameWorker": 157796,
+        "otherWorker": 67109,
+        "deliveredOther": 67109
+      },
+      "producerConsumer": [
+        [
+          117689,
+          7264,
+          4936,
+          6687
+        ],
+        [
+          9150,
+          15322,
+          4265,
+          5077
+        ],
+        [
+          4697,
+          4940,
+          13133,
+          4437
+        ],
+        [
+          6044,
+          4584,
+          5028,
+          11652
+        ]
+      ],
+      "requestsWithCrossWorkerAvailability": 38,
+      "peakOwnedCommittedGiB": 0.4577751159667969,
+      "wallSeconds": 7.603542800003197,
+      "meanCompletedDepth": 7.075,
+      "outputSha256": "f43209d982f1feec26da5fd8ea6a5cb6521047dbce3a3003e2570ea2825f6a74"
+    },
+    {
+      "id": "hints-mixed-w4-private_delivery-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "counts": {
+        "probes": 638184,
+        "available": 220547,
+        "stores": 508886,
+        "acceptedStores": 502140,
+        "sameWorker": 158320,
+        "otherWorker": 62227,
+        "deliveredOther": 0
+      },
+      "producerConsumer": [
+        [
+          108189,
+          5691,
+          6985,
+          4786
+        ],
+        [
+          7602,
+          18357,
+          4068,
+          3157
+        ],
+        [
+          7520,
+          3217,
+          14577,
+          4750
+        ],
+        [
+          5742,
+          4181,
+          4528,
+          17197
+        ]
+      ],
+      "requestsWithCrossWorkerAvailability": 38,
+      "peakOwnedCommittedGiB": 0.3442039489746094,
+      "wallSeconds": 7.8271709000109695,
+      "meanCompletedDepth": 6.975,
+      "outputSha256": "dc93635ba6f6ba28514912c5c072238a43d7d765fac6e6beb1e32addbd36129f"
+    }
+  ],
+  "pairedRootRoundComparisons": 40,
+  "bestMoveDisagreements": 14,
+  "scoreOrDepthDisagreements": 22,
+  "interpretation": "Cross-worker completed-hint delivery is observed (not just storage); source legal-validation/order path exists but actual post-legality consumption is not counted. Reverse ablation changes the input channel; decision differences cannot be uniquely assigned to hint utility because scheduling variation also changes SMP. No performance/strength claim; extra provenance monitor changes scheduling. Shared TT replacement is identical in both arms; private delivery is not private storage.",
+  "selection": "Test a controlled fully drained same-depth whole-root race versus ROOT_REUSE, retaining exact TC-P1 kernel/learning/hint sharing. Substantial cross-worker hint availability argues against assuming cooperation is absent. This cheap alternative is not true independent iterative Lazy SMP and cannot dispose of that competing hypothesis."
+}

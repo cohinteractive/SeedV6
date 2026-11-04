@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R017**
+Internal revision: **P4-R018**
 
 Status: **ACTIVE - 4 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. The separate owner request authorizes MW-R001 multiworker strength research below; no champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
 
@@ -27,13 +27,21 @@ restrained daytime fixed-work research is authorized. Timed matches require an
 explicit owner PC-idle window of at most8h; none is granted at launch. User PC use
 has priority; no future scheduling or unattended continuation is authorized.
 
+The owner's continuation clarifies temporary PC pressure: proceed with admissible
+Mode A work; otherwise do useful low-impact work, then checkpoint/drain and ask for
+the specific required condition when no work remains. Prefer client user-input
+interaction where supported. Repository checkpoints do not keep a turn alive; no
+repeated availability polling or automatic future execution is authorized. Resource
+admission considers workload memory/CPU and foreground risk rather than an application
+name alone. The focused contract records the qualified operational implementation.
+
 This new request supplies successor authority without reopening any prior objective,
 spent confirmation or frozen BOUNDARY2 study. Exact TC-P1 remains rolling production,
 HL-G1/build84 remains the W1 champion, build79 and corrected80 stay distinct.
 Accepted build91 formulation-identity functionality remains closed and unchanged.
 No production/default promotion, champion advancement, push, release, installation,
 bot replacement or deployment follows. Technical progress alone cannot satisfy
-MW-R001's strength criterion. Repository masters now P4-R017/P4-F033; refresh
+MW-R001's strength criterion. Repository masters now P4-R018/P4-F035; refresh
 Project mirrors before mirror-dependent planning, not before authorized repo work.
 
 ## Founding authority and scope
@@ -609,7 +617,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R017/P4-F033** pair before mirror-dependent Project planning; the Frontier
+**P4-R018/P4-F035** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the
