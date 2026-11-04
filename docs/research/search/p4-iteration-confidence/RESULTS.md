@@ -267,3 +267,104 @@ Total ledger2181.6984407000127s (36m21.70s),68/800 games,0/1 confirmation attemp
 No pending reservation or owned process remains. The75-minute permission's4+64
 scope is fulfilled and grants no additional timed games. The governing objective
 remains unresolved; this negative formulation does not close the workstream.
+
+## Root-job diagnosis and selected IC-C2 hypothesis
+
+`P4ObservedRootSearch` is a mechanical, research-owned copy of exact96
+`ParallelSearch`, reproduced and checked by `p4-iteration-confidence-observer-source.py`.
+Only class identity and bounded per-job primitive observations differ. Each unique
+job's worker owns its two initial/retry slots; records are read after joins and
+never feed Search policy. Original production source remains unchanged. The public
+`researchWindows` seam supplies the same observation wrapper to both formulations.
+The first compile used an incompatible concrete-owner constructor; it was corrected
+before any experiment. Ten targeted Java tests then passed, including exact-score,
+eager concurrency, draw history, stop/accounting, immutable snapshots and reset.
+
+Four reciprocal observations (C4,C1,C1,C4), each40 requests/8M admissions, passed
+all accounting/PV/restoration/drain checks. Runtime/source identities are frozen in
+`runtime-root-observation-v1-manifest.json`; C1's class bytes match its earlier runtime.
+`root-job-diagnosis-v1.json` preserves whole-root/scout/initial-full/full-retry counts,
+original bound windows, worker and completion semantics. The independent accounting
+analysis validated every retry's antecedent and every admission partition.
+
+| Run | Bound-pass work | Full root-retry work | Incomplete-pass work | Mean depth |
+| --- | ---: | ---: | ---: | ---: |
+| C4 v1 |18.2930%|19.1615%|23.6453%|7.850|
+| C1 v1 |9.2442%|20.3795%|30.9687%|7.850|
+| C1 v2 |9.7713%|23.0646%|28.8778%|7.825|
+| C4 v2 |17.6873%|19.4516%|26.9483%|7.750|
+
+Categories overlap: aspiration outcome and root-job type classify the same work.
+C1 has552/544 full retries despite fewer scouts7731/7723, versus C4's507/508
+retries from8717/8713 scouts. This supports a within-pass cost interaction; it does
+not prove the timed-loss cause, independent useful work, or clean speed. Instrumentation
+and shared-TT/order/SMP trajectories remain important limitations.
+
+**Selected IC-C2 - Upper-window volatility carryover:** preserve baseline ADAPTIVE16
+initial alpha and recovery doubling width. Retain C1's half-previous-resolved-initial
+upper width only for initial beta, still capped512. Thus the initial scout threshold
+is not lowered by remembered volatility. Unfailed endpoints, mate verification,
+resolved-only publication, request resets, depth, shared TT and BOUNDARY2 remain.
+This is an asymmetric *cost* hypothesis, not a prediction of score direction (the
+prior directional replay was weak). No constants are tuned and no production default
+changes. It is a new isolated formulation, not a redefinition or rescue of frozen C1.
+
+Before any timed proposal: qualify C2 and compare it with C4 in a second fixed
+reciprocal root-job batch. Seek whether it avoids C1's extra root-retry work while
+retaining some failed-pass reduction. Diagnostics cannot establish strength. Preserve
+negative findings; do not select a timed run solely for deeper Search or fewer retries.
+
+## IC-C2 qualification and next timed boundary
+
+Seventeen targeted Java tests passed (C1:6, observer:4, C2:7), including C2's
+unchanged lower endpoint and baseline-sized fail-low recovery after retained upper
+volatility. Compilation and project dependency boundaries passed. Four C2 reciprocal
+fixed runs passed160 requests/32M admissions, legal PV/restoration/accounting and
+native drain; `c2-fixed-analysis-v1.json` contains the validated partitions.
+
+| Run | Bound-pass work | Full root-retry work | Incomplete-pass work | Mean depth |
+| --- | ---: | ---: | ---: | ---: |
+| C4 control v1 |15.6399%|20.1795%|29.0940%|7.775|
+| C2 v1 |17.2791%|18.7587%|26.2616%|7.800|
+| C2 v2 |16.7844%|17.7113%|24.7132%|7.900|
+| C4 control v2 |17.3180%|18.3740%|26.9035%|7.800|
+
+C2 does not retain a clear reduction in failed-pass work. Its full-retry and
+incomplete-work fractions do not repeat C1's observed increase; control variability
+and overlapping values limit the inference. These are hypothesis-directed diagnostics,
+not evidence of strength. **Decision:** retain the unchanged C2 formulation for one
+bounded exploratory timed screen to test whether preserving the lower-bound cost
+structure matters in practical play. No width constants were fitted, no C1 games
+are replayed as C1, and no negative evidence is discarded.
+
+`runtime-c2-v1-manifest.json` pins exact96 core/UCI, CP64, source/classes and research
+JAR SHA256 `52443c7a56957d19613b6ea716a5f2c3b7a25cd0001500640a254032f97a094b`.
+UCI uses original ParallelSearch, not the observation copy. The C2 qualification
+passed12 requests/320,269 admissions, caps/stop/PV/reset/reconstruction, W1/W2
+production fallback and normal JVM/native drain. No timed C2 game has run.
+
+Prepared `c2-timed-{pilot,screen}-w4-v1-protocol.json`:4 operational games followed
+only after score-blind qualification by64 fixed exploratory games,10+0.1/W4/exact-C4.
+Same frozen DEVELOPMENT openings are reused deliberately; they are not fresh
+held-out confirmation. No C1/C2 score pooling and no pilot pooling. The paired-normal
+and Hoeffding method, exact analyzer, inputs, stopping/failure rules and sample are
+pinned prospectively. This adaptive second formulation can introduce selection bias.
+The sole independent attempt remains entirely unspent and unselected.
+
+Observed68-game C1 throughput was35m44s. C2 hard limits5/60 minutes plus drain fit a
+new75-minute window. After that proposed68 games,184 development games remain while
+protecting480 confirmation games. Both new admissions were checked and correctly
+refused before process creation because no new owner authority exists.
+
+Current total:2247.7328160000616 charged seconds (37m27.73s),96,640,558 fixed admissions,
+68 completed/initiated timed games, zero failed/interrupted games,0/1 confirmation
+attempt.84,152.26718399994s and732 games remain. All16 experiments completed and drained;
+no pending reservation or owned process. Full application/UI/platform/deployment and
+independent strength validation were not run. No production defaults or version bytes
+changed. New diagnostics and C2 preparation are research-only, no_bump.
+
+**Blocking next human action:** authorize a new concrete75-minute idle window for
+prepared C2 pilot4 plus screen64. Prior75-minute scope covered C1 only and is spent;
+remaining clock time is not additional authorization. Mirrors P4-R030/P4-F048 still
+need owner refresh before dependent GPT coordination. Governing strength objective
+is unresolved; no acceptance, closure, champion/promotion or deployment is claimed.

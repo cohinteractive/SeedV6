@@ -1,0 +1,64 @@
+{
+  "id": "c2-uci-qualification-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-iteration-confidence\\c2-uci-qualification-v1-protocol.json",
+  "protocolSha256": "460c14815567d1f26666864c3e021289b8192d0d96c92e274b524a24a433171a",
+  "command": [
+    "C:\\Program Files\\Python313\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-iteration-confidence-c2-uci.py",
+    "--runtime",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1",
+    "--output",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\c2-uci-qualification-v1\\observations.jsonl"
+  ],
+  "startedUtc": "2026-11-04T22:45:38.446573+00:00",
+  "games": 0,
+  "priority": "below-normal",
+  "preflight": {
+    "utc": "2026-11-04T22:45:39.092572+00:00",
+    "totalCpuPercent": 5.0847457627118615,
+    "freeMemoryGiB": 18.12917709350586,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "Code.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.5,
+    "estimatedPeakGiB": 1.5,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 38.4180790960452,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 29508,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 5.609375,
+    "totalOwnedProcesses": 4
+  },
+  "wallSeconds": 2.7085511999903247,
+  "endedUtc": "2026-11-04T22:45:41.170411+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.5018844604492188,
+  "chargedWallSeconds": 2.7085511999903247,
+  "observedNodes": 320269,
+  "summary": {
+    "type": "summary",
+    "status": "passed",
+    "requests": 12,
+    "nodes": 320269,
+    "activeHelpersAfterClose": 0
+  },
+  "inputsStable": true,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c2-uci-qualification-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c2-uci-qualification-v1\\CONTROL-uci.txt": "d0291b15fe1f78b83bd53b49f3960213ca279a5ebe88cafbf7abad74717bd66f",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c2-uci-qualification-v1\\environment.jsonl": "f5fb018bf938430abd68567f5f0766869c71e197dbfe7be12dcb24d2affce712",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c2-uci-qualification-v1\\observations.jsonl": "ca3f5962094e9a9d2b9939f65d0be88940d8461c541daec4463cd56b2539f80d",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c2-uci-qualification-v1\\UPPER_CARRYOVER-uci.txt": "0b7124392407489d5912ba03500b7ac312059409a21b53733c31495ba558f4de"
+  }
+}

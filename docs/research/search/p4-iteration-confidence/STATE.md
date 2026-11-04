@@ -1,7 +1,7 @@
 # IC-R001 resume state
 
-5 November 2026 (Pacific/Auckland). **ACTIVE; IC-C1 rejected for confirmation after
-an adverse exploratory screen. Governing strength objective UNRESOLVED.** No owner
+5 November 2026 (Pacific/Auckland). **ACTIVE; IC-C1 rejected; IC-C2 qualified for exploration,
+BLOCKED on a new owner idle window. Governing strength objective UNRESOLVED.** No owner
 acceptance, closure, champion advance, production promotion or deployment.
 
 Start here, then [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md), `budget.json` and
@@ -53,28 +53,60 @@ Read-only replays found weak/mixed support for cumulative failed-pass effort and
 asymmetric directional carryover; both are deferred. Raw evidence, failed/negative
 conclusions, manifests and frozen source/runtime identities remain preserved.
 
-## Resources and current work
+## Current candidate, resources and exact next action
 
-`budget.json`:2181.6984407000127/86,400 charged seconds (36m21.70s),68/800 initiated
-and completed timed games,0 failed/interrupted.32,320,289 fixed admissions.
-Remaining84,218.30155929999s and732 games, including480-game/21,600s confirmation
-planning reserve;252 development games available.0/1 independent attempt spent.
-No pending reservation, active experiment or owned process remains from the screen.
-Compilation, correctness tests and read-only analysis are not charged experiments.
+**IC-C2 Upper-window volatility carryover** is the next isolated formulation.
+Root-job diagnosis found that C1's lower failed-pass work coincided with more
+within-pass full retries and incomplete work. C2 preserves baseline initial alpha
+and recovery width while carrying volatility only into initial beta. This tests
+asymmetric cost, not score-direction confidence. C1 remains frozen and rejected.
 
-**Selected next unit:** diagnose C1's adverse result using bounded root-job
-provenance observations. Wider aspiration can reduce failed passes while changing
-scout/full-retry work, ordering and TT trajectories inside each pass. Current root
-effort cannot separate those mechanisms. Establish a research-only observation copy
-of exact96 ParallelSearch, verify only observation/identity changes, qualify its
-accounting/lifecycle, then compare C4/C1 under small reciprocal fixed-node runs.
-No second strength candidate is selected; do not infer a fix before measurement.
+The research-only observation copy is mechanically checked against exact96 source,
+with job-private records read after drain. It is absent from timed UCI composition.
+Two reciprocal diagnostic batches passed320 requests/64M admissions. C2 does not
+clearly reduce failed-pass work versus C4; its root-retry/incomplete costs avoid the
+C1 pattern. This supports a bounded timed test, not a strength or causal-speed claim.
+RESULTS preserves all counts, variability and weak/negative alternatives.
 
-Daytime authority permits bounded below-normal fixed-work investigations with native
-Job ownership, resource checks and full charging. No more timed games are currently
-authorized. A later candidate/screen must be concretely prepared before requesting
-its own idle window. Confirmation still requires fresh held-out inputs, frozen
-candidate/control, sample, method, failure/stopping rules and meaningful power.
+Latest17 Java tests passed; C2 UCI qualification passed12 requests/320,269 nodes,
+node/stop/PV/reset/accounting, W1/W2 fallback and native drain. Exact source/class/
+runtime/evaluator hashes are in `runtime-c2-v1-manifest.json`; local frozen runtime
+is `raw/runtime-c2-v1/`. Core96 and UCI96 remain the same pinned control. C2 has no
+timed result and is not selected for independent confirmation.
+
+`budget.json`:2247.7328160000616/86,400 charged seconds (37m27.73s),68/800 initiated
+and completed timed games,0 failed/interrupted.96,640,558 fixed admissions.
+Remaining84,152.26718399994s and732 games, including480-game/21,600s confirmation
+planning reserve;252 development games currently available.0/1 independent attempt.
+All16 experiments completed; no pending reservation, active experiment or owned
+process. Compilation/correctness tests/read-only analysis are not charged experiments.
+
+**Blocking next action:** new75-minute owner idle window for prepared C2 pilot4
+then screen64. Protocols `c2-timed-pilot-w4-v1-protocol.json` and
+`c2-timed-screen-w4-v1-protocol.json` pin exact inputs/methods and hard5/60-minute
+limits. The same frozen DEVELOPMENT openings are reused; no independent/fresh claim,
+no C1/C2 pooling, no pilot pooling, no score-based stopping or automatic replay.
+After68 proposed games184 development games remain with480 confirmation games reserved.
+
+After explicit authority, record actual received UTC, hard end and exact owner
+wording in NEW `owner-idle-window-v2.json`; register that path in the ledger. Do not
+rewrite v1 or fabricate permission. Recheck frozen hashes/local availability and
+pending/ownership/resources. Execute sequentially:
+
+```powershell
+$env:PYTHONPATH = (Resolve-Path build/research/ic-python).Path
+python -B tools/p4-iteration-confidence.py --protocol docs/research/search/p4-iteration-confidence/c2-timed-pilot-w4-v1-protocol.json
+# Review the completed pilot operationally without selection WDL.
+python -B tools/p4-iteration-confidence-results.py --receipt docs/research/search/p4-iteration-confidence/c2-timed-pilot-w4-v1-execution.json --output docs/research/search/p4-iteration-confidence/c2-timed-pilot-w4-v1-operational.json --operational-only
+# Only after that review passes:
+python -B tools/p4-iteration-confidence.py --protocol docs/research/search/p4-iteration-confidence/c2-timed-screen-w4-v1-protocol.json
+```
+
+Review full screen operational validity before analysis. The results tool rejects
+live/incomplete samples; failed or interrupted games remain charged and preserved.
+No further candidate, retuning or independent attempt is selected. Confirmation
+still requires a separate freeze, fresh held-out inputs, sample/method/failure/
+stopping rules and meaningful power. Production remains unchanged.
 
 Raw/runtime paths under `raw/` are ignored local evidence, absent from a fresh checkout.
 Check availability/hashes before analysis or reconstruct and qualify a new identity;
@@ -84,8 +116,8 @@ Do not edit an admitted protocol, receipt or its inputs. No auto replay/prefix s
 
 ## Human dependencies
 
-No owner decision blocks the selected bounded diagnostic unit. Further timed work
-requires a new specific idle window after its protocol is prepared. Owner refresh
-of Project Source mirrors toP4-R030/P4-F048 is non-blocking for repository work,
-required before mirror-dependent GPT coordination. Acceptance, champion/promotion,
-installation/deployment/push/release remain separate owner gates.
+A new specific idle window blocks C2 timed execution. The previous window's4+64
+scope is fulfilled; silence, a later invocation and unused budget do not authorize
+more timed games. Owner refresh of Project Source mirrors toP4-R030/P4-F048 is
+non-blocking for repository work, required before mirror-dependent GPT coordination.
+Acceptance, champion/promotion, installation/deployment/push/release remain separate.

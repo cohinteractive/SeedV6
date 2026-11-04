@@ -1,0 +1,123 @@
+{
+  "status": "validated observational accounting; no strength or causal speed claim",
+  "analyzerSha256": "c6992b17b65b80343dfed55edb43112faa85f4bfe56d00f8165bef73174df17d",
+  "runs": [
+    {
+      "run": "root-c2-control-v1",
+      "input": "docs\\research\\search\\p4-iteration-confidence\\raw\\root-c2-control-v1\\observations.jsonl",
+      "sha256": "487d7632bb7da9b910c3dd10c8ea4c3b08bd6ead8d8a7910f106960dc7dee2be",
+      "requests": 40,
+      "meanCompletedDepth": 7.775,
+      "jobs": {
+        "initialFull": 387,
+        "scout": 8651,
+        "fullRetry": 502
+      },
+      "nodes": {
+        "all": 8000000,
+        "resolved-selective": 4421286,
+        "wholeRoot": 37780,
+        "upper": 614824,
+        "initialFull": 1797202,
+        "scout": 4550657,
+        "fullRetry": 1614361,
+        "lower": 636369,
+        "incomplete": 2327521,
+        "abortedscout": 386254,
+        "abortedinitialFull": 148272,
+        "abortedfullRetry": 208776
+      },
+      "fullRetryFraction": 0.201795125,
+      "boundPassFraction": 0.156399125,
+      "incompletePassFraction": 0.290940125
+    },
+    {
+      "run": "root-c2-v1",
+      "input": "docs\\research\\search\\p4-iteration-confidence\\raw\\root-c2-v1\\observations.jsonl",
+      "sha256": "ba5e5fa4bd390082e08515947e43167adb007153f619f5bc70efd643c447915e",
+      "requests": 40,
+      "meanCompletedDepth": 7.8,
+      "jobs": {
+        "initialFull": 377,
+        "scout": 8553,
+        "fullRetry": 506
+      },
+      "nodes": {
+        "all": 8000000,
+        "resolved-selective": 4516745,
+        "wholeRoot": 37780,
+        "upper": 634505,
+        "initialFull": 1799586,
+        "scout": 4661941,
+        "fullRetry": 1500693,
+        "incomplete": 2100928,
+        "abortedinitialFull": 251818,
+        "abortedscout": 359702,
+        "lower": 747822,
+        "abortedfullRetry": 133485
+      },
+      "fullRetryFraction": 0.187586625,
+      "boundPassFraction": 0.172790875,
+      "incompletePassFraction": 0.262616
+    },
+    {
+      "run": "root-c2-v2",
+      "input": "docs\\research\\search\\p4-iteration-confidence\\raw\\root-c2-v2\\observations.jsonl",
+      "sha256": "422daee247938c3b77700026998939f4dc1191ba55923d416efed8e2975f20b6",
+      "requests": 40,
+      "meanCompletedDepth": 7.9,
+      "jobs": {
+        "initialFull": 378,
+        "scout": 8548,
+        "fullRetry": 492
+      },
+      "nodes": {
+        "all": 8000000,
+        "resolved-selective": 4680189,
+        "wholeRoot": 37780,
+        "upper": 648560,
+        "initialFull": 1828981,
+        "scout": 4716338,
+        "fullRetry": 1416901,
+        "incomplete": 1977057,
+        "abortedscout": 498434,
+        "lower": 694194,
+        "abortedinitialFull": 244075,
+        "abortedfullRetry": 80564
+      },
+      "fullRetryFraction": 0.177112625,
+      "boundPassFraction": 0.16784425,
+      "incompletePassFraction": 0.247132125
+    },
+    {
+      "run": "root-c2-control-v2",
+      "input": "docs\\research\\search\\p4-iteration-confidence\\raw\\root-c2-control-v2\\observations.jsonl",
+      "sha256": "92763d1277501eaa61e462e3c24d2a43d5c94387cd8166b0066c3645b9af2947",
+      "requests": 40,
+      "meanCompletedDepth": 7.8,
+      "jobs": {
+        "initialFull": 386,
+        "scout": 8652,
+        "fullRetry": 494
+      },
+      "nodes": {
+        "all": 8000000,
+        "resolved-selective": 4462276,
+        "wholeRoot": 37780,
+        "upper": 550394,
+        "initialFull": 1864415,
+        "scout": 4627884,
+        "fullRetry": 1469921,
+        "lower": 835048,
+        "incomplete": 2152282,
+        "abortedinitialFull": 347828,
+        "abortedscout": 349045,
+        "abortedfullRetry": 154486
+      },
+      "fullRetryFraction": 0.183740125,
+      "boundPassFraction": 0.17318025,
+      "incompletePassFraction": 0.26903525
+    }
+  ],
+  "limitations": "Instrumentation may perturb concurrent scheduling. Admissions, not useful work. Selective root bounds retain original windows and worker provenance; no independent confidence. Root-job categories partition all split-pass admissions; wholeRoot covers shallow/non-split passes. Aborted categories are subsets, and aspiration classifications overlap the job categories."
+}

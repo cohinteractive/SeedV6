@@ -1,0 +1,63 @@
+{
+  "identity": "IC-C2 Upper-window volatility carryover research overlay; not an app build",
+  "coreSource": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "coreBuild": 96,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\lib\\app-uci.jar": "d2205f09ff015cbfaa7eaa8d337716ec40bb1d7f51b23dba91f66ac472200111",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\lib\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\lib\\research.jar": "52443c7a56957d19613b6ea716a5f2c3b7a25cd0001500640a254032f97a094b",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\source\\p4-iteration-confidence-c2-uci.py": "d6dfba766aede1570db8456ae959a566a2f809c0f8d15dc545e7840d09979cff",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\source\\P4ObservedRootSearch.java": "b2200ce2a10ca9fd1829537a83a505fc5d4c7bdf1400a5c9f1601eb0e6c451aa",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\source\\P4UpperWindowSearch.java": "912e2b038d1998315046c924beacf46fc35f53be9edd520165a617d8e575a012",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\source\\P4UpperWindowStudy.java": "43123e7cc23e2b739c0cf9ab98860bcbb7d843947e2d0b6a6906949526c97ab2",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\source\\P4UpperWindowUciMain.java": "f4b2ea7ee5aef348ec64658e38a16e6f9a17802c08f77a2caaef04db54e9169c",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P4UpperWindowUciMain$1.class": "976e35191253bbbf50f47e32382177c789de5fcae7a6723846c738746dfd6011",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c2-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P4UpperWindowUciMain.class": "ef034178c59ff3e62eadc464fdda2cbd19328ddf494b209c3a2b2abddda06f99"
+  },
+  "sourceInputs": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4UpperWindowSearch.java": "912e2b038d1998315046c924beacf46fc35f53be9edd520165a617d8e575a012",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4UpperWindowStudy.java": "43123e7cc23e2b739c0cf9ab98860bcbb7d843947e2d0b6a6906949526c97ab2",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4ObservedRootSearch.java": "b2200ce2a10ca9fd1829537a83a505fc5d4c7bdf1400a5c9f1601eb0e6c451aa",
+    "src\\researchLauncher\\java\\com\\ohinteractive\\seedv6\\integration\\P4UpperWindowUciMain.java": "f4b2ea7ee5aef348ec64658e38a16e6f9a17802c08f77a2caaef04db54e9169c",
+    "tools\\p4-iteration-confidence-c2-uci.py": "d6dfba766aede1570db8456ae959a566a2f809c0f8d15dc545e7840d09979cff"
+  },
+  "configuration": "CP64/W4/Hash64/EAGER_ROOT/PVS/BOUNDARY2; baseline ADAPTIVE16, candidate UPPER_CARRYOVER. Original core/UCI96 common; research observer only in fixed-work runner, absent from UCI composition.",
+  "tests": {
+    "com.ohinteractive.seedv6.search.exact.P4IterationConfidenceTest": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.P4ObservedRootTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.exact.P4UpperWindowTest": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "qualification": {
+    "receipt": "c2-uci-qualification-v1-execution.json",
+    "sha256": "74487441df8d49d8936664382ce84b7931759792bfdaa8cf38d2f83bf435415d",
+    "summary": {
+      "type": "summary",
+      "status": "passed",
+      "requests": 12,
+      "nodes": 320269,
+      "activeHelpersAfterClose": 0
+    },
+    "drained": true,
+    "limitations": "No C2 timed games, GUI, deployment or independent confirmation. Observation copy is not selected by UCI."
+  }
+}
