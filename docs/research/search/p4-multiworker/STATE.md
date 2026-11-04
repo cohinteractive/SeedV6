@@ -53,6 +53,21 @@ workstream from accepted build91 and closed historical Search campaigns.
   probe/current TC-P1 classes and source hash. It is build91 plus research-only code,
   not a new Search formulation or a runtime-qualified artifact. No build bump.
 
+## Git and artifact provenance
+
+Bootstrap commit **c2ad1e3b** contains the focused authority/source map, research probe,
+supervision and masters P4-R017/P4-F033. It follows clean acc997b2 without absorbing
+unrelated changes. Build91 bytes are unchanged (research tooling/docs only). No push,
+application installation, production source/default or accepted About modification.
+The frozen artifact still identifies its actual pre-commit acc997b2 source base plus
+explicit probe source hash; the new commit does not retrospectively relabel its JARs.
+Raw evidence stays ignored/local and was hash/ignore checked before staging.
+
+The default staged whitespace check flagged Windows CRLF in newly written JSON;
+validation with explicit cr-at-eol passed. Frozen protocol/receipt bytes are preserved,
+not reformatted to make a cosmetic check pass. Final verification/provenance is
+recorded in the subsequent documentation-only commit; no history rewrite.
+
 ## Working frontier
 
 | Question | Next discriminating work | Status |

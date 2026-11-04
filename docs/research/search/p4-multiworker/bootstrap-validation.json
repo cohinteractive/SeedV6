@@ -64,7 +64,8 @@
     "allRawIgnored": true,
     "externalDownloadsHashVerified": 29,
     "markdownLocalLinks": "pass",
-    "gitDiffCheck": "pass",
+    "gitDiffCheck": "Tracked master diff passed. Initial default staged check flagged CRLF terminators in new Windows-written JSON; subsequent git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol show --check HEAD passed. Preserve frozen protocol/receipt byte identity; no whitespace content defect found.",
     "ownedProcessCheck": "Only the two inherited VSCode Java processes remain; no campaign Java/Python/match process. Native Job receipts prove dummy/refusal drain."
-  }
+  },
+  "gitCheckpoint": "c2ad1e3b: attributable bootstrap/probe/supervision/master changes committed. No production source, version or raw evidence staged. Follow-up documentation records final verification and continuation provenance."
 }
