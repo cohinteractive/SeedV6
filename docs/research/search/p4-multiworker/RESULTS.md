@@ -1,9 +1,36 @@
 # MW-R001 findings and results
 
-4 November 2026. Bootstrap/source challenge and original scheduling-probe
-qualification complete. Active research; no empirical strength result or finalist.
-[CONTRACT](CONTRACT.md) owns the unchanged success conditions;
-[STATE](STATE.md) owns operational resumption.
+5 November 2026 (Pacific/Auckland). **SUCCESSFUL W4 STRENGTH DEVELOPMENT;
+OWNER-ACCEPTED AND FORMALLY CLOSED.** Codex technical/research execution is complete.
+The owner confirms GPT reconciliation of the supplied CONTRACT, RESULTS and STATE
+on the documented evidence, explicitly accepts the successful outcome, and
+authorizes documentation-only closeout. The research Goal remains complete.
+[CONTRACT](CONTRACT.md) preserves the original success conditions and acceptance
+boundary; [STATE](STATE.md) records the terminal disposition and evidence locations.
+
+The accepted MW-C4 result is 150W/95D/75L in 160 fresh pairs / 320 games:
+61.71875%, paired-normal 95% 57.5083-65.9292%, paired-bootstrap 95%
+57.50-65.9375%, bounded 95% 50.9820-72.4555%. Both prospective gates passed:
+score >=53% and paired-normal lower bound >50%. See the [independent analysis](c4-confirm-w4-v1-analysis.json).
+
+Confirmed MW-C4 EAGER_MEMORY: frozen build94, source 9d380c30, core 3ba1daad,
+flags1182007295, versus exact TC-P1/ROOT_REUSE flags1177812991. The qualifying
+domain is W4, CP64, Hash64, PVS/ADAPTIVE16, BOUNDARY2, 10+0.1, Windows
+Ryzen5500/Java21, with the recorded held-out opening and cold-JVM protocol.
+This establishes integrated improvement; individual scheduling and TT-sharing
+strength contributions are not isolated. W1/W2/W8/W16 competitive strength,
+longer clocks, warmed persistent clients and other platforms remain unqualified.
+Adverse fixed-work and other negative/inconclusive evidence remains valid.
+
+The sole confirmation allowance is spent. No active experiment, autonomous
+continuation or successor remains. HL-G1/build84 remains research champion;
+normal build95 production still selects TC-P1. No promotion or deployment follows.
+Future adoption, deployment or broader scaling research requires separate authority.
+
+The sections below preserve the historical experiment sequence and the status
+known at each checkpoint, including earlier pending work and acceptance wording.
+This accepted closeout supersedes those operational instructions without changing
+any protocol, result, acceptance criterion, resource accounting or evidence hash.
 
 ## Source-observed initial challenge
 

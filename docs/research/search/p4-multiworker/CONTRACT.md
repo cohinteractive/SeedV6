@@ -1,13 +1,45 @@
 # MW-R001 - Integrated multiworker Search strength
 
-Revision 3, 4 November 2026 (Pacific/Auckland). Owner-authorized CGLHW under
-the [Phase 4 Contract](../../../../source/CHESS_SEARCH_CONTRACT.md) and
-[Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). Launch authority
-is the owner's explicit multiworker execution request in this session, confirming
-P4-R016/P4-F032. This focused contract supplies continuity, not a competing canon.
-[STATE](STATE.md) is the unique resume point; [RESULTS](RESULTS.md) separates
-observations, hypotheses and outcomes. No fresh-session conversational memory is
-needed to continue within these boundaries.
+Revision 4, 5 November 2026 (Pacific/Auckland). **ACCEPTED AND CLOSED.**
+Subordinate to the [Phase 4 Contract](../../../../source/CHESS_SEARCH_CONTRACT.md)
+and [Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), now
+P4-R027/P4-F045. The original launch authority confirmed P4-R016/P4-F032.
+[STATE](STATE.md) is the terminal continuity record; [RESULTS](RESULTS.md)
+preserves the evidence and historical experiment sequence.
+
+## Owner-accepted successful closeout - 5 November 2026
+
+The owner confirms that GPT reconciled the supplied CONTRACT, RESULTS and STATE
+and assessed the governing W4 strength criterion as satisfied on the documented
+evidence. The owner explicitly accepts MW-R001 as a successfully completed W4
+strength-development objective and authorizes this documentation-only formal
+closeout. Codex technical/research execution, GPT reconciliation and owner
+acceptance are complete. The original research Goal remains complete.
+
+MW-C4 EAGER_MEMORY combines eager root scheduling with guarded current-generation
+heuristic TT scores. Its sole independent 160-pair/320-game confirmation against
+exact TC-P1 scored 150W/95D/75L, 61.71875%, paired-normal 95% 57.5083-65.9292%:
+both original gates (score >=53%, lower bound >50%) passed. The confirmed artifact
+is frozen build94, source 9d380c30, core 3ba1daad, flags1182007295; the comparator
+is TC-P1/ROOT_REUSE, flags1177812991. Qualification is W4, CP64, Hash64,
+PVS/ADAPTIVE16, BOUNDARY2, 10+0.1, Windows Ryzen5500/Java21 and the recorded
+held-out opening/cold-JVM protocol. See the [independent analysis](c4-confirm-w4-v1-analysis.json).
+
+Acceptance establishes integrated improvement in that domain, not the individual
+strength contributions of scheduling and TT sharing. Negative/inconclusive and
+adverse fixed-work evidence remains valid. Other worker-count competitive strength,
+longer clocks, warmed persistent clients and other platforms remain unqualified.
+The sole confirmation is spent. No active experiment, autonomous continuation or
+successor is authorized or needed. Remaining resources do not renew execution.
+
+HL-G1/build84 remains the W1-qualified research champion; TC-P1/build90 remains
+the adopted rolling production formulation, still selected normally in build95.
+MW-C4/build94 remains a separately confirmed experimental W4 formulation.
+Build79/80 and accepted build91 application work retain their distinct identities.
+No champion advance, production change or deployment follows. Future adoption,
+deployment or broader scaling research requires separate authority and applicable
+qualification. The original execution terms below are retained as historical
+contract evidence; they do not reactivate this closed workstream.
 
 ## Objective and authority
 
