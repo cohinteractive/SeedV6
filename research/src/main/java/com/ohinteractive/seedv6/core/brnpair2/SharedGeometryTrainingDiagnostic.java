@@ -41,6 +41,7 @@ public final class SharedGeometryTrainingDiagnostic {
         Path path=Path.of(config.get(key).getAsString());if(!PairCoverageDiagnostic.sha(path).equals(config.get(key+"_sha256").getAsString()))throw new IllegalArgumentException("Data identity: "+key);return PairCoverageDiagnostic.Data.read(path,rows);
     }
     public static void main(String[] args)throws Exception {
+        TrainingRunGuard.check(args[0]);
         PairObjectiveDiagnostic.permission();Path configPath=Path.of(args[0]);var config=JsonParser.parseString(Files.readString(configPath)).getAsJsonObject();String mode=config.get("mode").getAsString();boolean context=context(mode);
         if(config.get("train_positions").getAsInt()!=1048576||config.get("epochs").getAsInt()!=1||config.get("batch").getAsInt()!=128||config.get("width").getAsInt()!=8||config.get("weight_bound").getAsDouble()!=.99||config.get("rate").getAsDouble()!=.01)throw new IllegalArgumentException("Fixed shared recipe");
         long seed=config.get("seed").getAsLong();if(seed!=71&&seed!=97)throw new IllegalArgumentException("Seed");double rate=.01;

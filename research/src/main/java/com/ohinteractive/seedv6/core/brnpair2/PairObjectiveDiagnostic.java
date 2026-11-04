@@ -94,6 +94,7 @@ public final class PairObjectiveDiagnostic {
         }
     }
     public static void main(String[] args)throws Exception {
+        TrainingRunGuard.check(args[0]);
         if(args.length!=1)throw new IllegalArgumentException("Immutable run config JSON");
         permission();var config=JsonParser.parseString(Files.readString(Path.of(args[0]))).getAsJsonObject();
         String mode=config.get("mode").getAsString();if(!Set.of("legacy","aligned").contains(mode))throw new IllegalArgumentException("Mode");

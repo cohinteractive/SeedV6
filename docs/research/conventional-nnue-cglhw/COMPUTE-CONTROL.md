@@ -74,6 +74,158 @@ This does not suspend GPU resources as a hold mechanism or traverse unrelated PI
 
 ## Checkpoints and recovery
 
+### Explicit completed-run finalization (4 November 2026)
+
+The owner-authorized training-infrastructure maintenance adds a **prospective,
+opt-in** lifecycle to new training outputs. It is separate from research acceptance,
+Search, and application build-version management. It does not reopen the closed
+[historical cleanup](STORAGE-CLEANUP-20261104.md), adopt existing directories, or
+change frozen protocols. An existing requirement to retain a particular checkpoint
+still binds: retain it explicitly, or resolve the actual conflict before finalizing.
+In particular, do not apply this to historical R057's no-checkpoint-deletion
+protocol, suspended successor work, R010 data, production assets or user stores.
+
+For a separately authorized **new** run, include
+`"training_finalization": "explicit-v1"` in its immutable configuration, using a
+new output directory with an existing parent. Run and resume through the usual
+`nnue-control.cmd train CONFIG`. The runner creates `training-run.json` (unique
+run ID, exact root/config identity and lifecycle state), `training-config.json`
+(original config bytes) and `training-run.lock`. Ordinary configs without this
+field keep their existing behavior. No automatic cleanup occurs.
+
+The per-run lease covers training and known managed `resume`/`initial_state`
+sources. Interrupted work stays resumable with the same config and pinned trainer.
+Completion requires every requested superbatch, valid receipts, weights/AdamW
+geometry, immutable recipes and successful segment execution. Failed/partial
+attempt directories remain evidence. Completion alone neither selects a model nor
+authorizes deleting checkpoints. Rerunning a completed/finalizing/finalized output
+gets a terminal-state diagnostic before the controller's checkpoint-resume scan.
+
+Inspect `training-run.json` for the ID and state; inspect the existing receipts,
+metrics and conclusions to settle selection. Use `evaluate_checkpoint.py` through
+the existing compute supervisor to produce independent exports **before cleanup**.
+Place/copy each required evaluation directory inside the run, for example
+`RUN/exports/final/`, preserving `network.cnnue`, its `.cnnue.json` metadata,
+`parity.json`, `validation.json`, manifest and associated evidence. Finalization
+validates the envelope, dimensions, embedded SHA-256, source receipt/payload hash,
+exact quantized payload correspondence, passing parity and payload-bound validation
+metrics. It does not run new training or infer playing strength. Keep the final
+endpoint even when a different earlier model was selected or the result was weak.
+
+Create a compact selection JSON outside the run (or inside it before preview).
+Paths below are exact run-relative files using `/`, not globs or directories:
+
+```json
+{
+  "run_id": "ID_FROM_training-run.json",
+  "dependencies_resolved": true,
+  "restart_retired": true,
+  "reason": "Selection and retention review, with the relevant conclusion/reference",
+  "models": [{
+    "path": "exports/final/network.cnnue",
+    "source": "segments/000064-0123456789ab/run/seed-cnnue-v1-64/quantised.bin",
+    "role": "final"
+  }],
+  "retain": [],
+  "evidence": ["exports/final/parity.json", "exports/final/validation.json"]
+}
+```
+
+The two `true` values are an explicit operator decision, **not defaults**: first
+review frozen comparisons, downstream configs/continuations, active consumers and
+applicable retention obligations. Copy/preserve relevant conclusions and provenance;
+list additional required binary files in `retain`. Other selected/comparison models
+use additional `models` entries with role `selected` or `comparison`. To preserve a
+full NNUE restart point, list all five checkpoint binaries in `retain`; source
+receipts/configurations are always kept. Do not retire a run if any dependency is
+unresolved. Historical text mentioning a generation alone is not a live consumer.
+There is no global dependency scanner: external/frozen programs must be quiescent,
+and their required models must be included in this review. Old binaries cannot
+participate in the new lease protocol. Do not bypass it with direct trainers.
+
+```powershell
+.\nnue-control.cmd preview-training RUN --selection SELECTION.json
+.\nnue-control.cmd finalize-training RUN --selection SELECTION.json --plan-sha256 HASH_FROM_PREVIEW
+```
+
+The shared entrypoint, also used by BRN, is:
+
+```powershell
+python -B tools/training_lifecycle.py preview RUN --selection SELECTION.json
+python -B tools/training_lifecycle.py finalize RUN --selection SELECTION.json --plan-sha256 HASH_FROM_PREVIEW
+```
+
+Preview is read-only: it reports exact run identity, target paths/hashes/sizes,
+total logical recoverable bytes, retained files and selected outputs. Finalize
+recomputes the preview and refuses changed inputs. It removes only the recorded
+allowlist: successful-segment initializer tensor copies and unretained checkpoint
+`raw.bin`, `quantised.bin`, and optimizer weights/momentum/velocity. It never
+recursively removes directories. All configs, receipts, logs, metrics, datasets,
+unknown files and failed-attempt evidence remain. Selected neural BRN `.state`
+files retain the optimizer bytes required by their existing inference readers.
+
+**Consequences:** deleted intermediate weights/optimizer states are not restorable
+by this tool. Exact checkpoint-level replay, hashes and resume from those points
+are lost. Preserved runtime exports retain their model identities; GPU retraining
+was never promised bitwise identical. Start future training in a new run from a
+deliberately retained compatible state. The global compute-control
+`latest_checkpoint` is historical progress, not a promise that retired restart
+bytes remain; the finalization report identifies the preserved models.
+
+### Refusal, interruption and filesystem limits
+
+Missing/corrupt/ambiguous required outputs, incomplete intervals, suspended or
+interrupted state, changed config/receipts, unresolved retention review, duplicate
+progress, links/junctions/reparse points, hard links, special files, unsafe relative
+paths, or an occupied run lease refuse cleanup. Malformed metadata is not fresh
+permission. Preserve it for diagnosis. Historical pruned outputs have no enrollment
+record and cannot be finalized/adopted by editing their old configs.
+
+`training-finalization-plan.json` pins the selection and exact before-state;
+`training-finalization.json` records confirmed deletions, logical byte counts,
+the single in-flight target and any error. These files are compact run evidence,
+not replacements for training receipts. Keep them. If a file is locked, release
+the actual consumer, then repeat preview and finalize with the **same** hash.
+After interruption, `preview RUN` reads the saved plan without requiring selection
+again. Repeat `finalize RUN --plan-sha256 HASH` to finish remaining work. A missing
+in-flight file is reported separately as `reconciled_absent`, never as a newly
+verified deletion; already acknowledged targets must stay absent. Changed retained
+outputs, new files, reappearing targets or damaged metadata stop recovery for
+inspection. Do not delete manifests, fabricate receipts or recreate discarded state.
+An interrupted `.training-*.tmp` metadata publication needs manual provenance
+inspection; the tool will not silently discard it. Repeated successful finalization
+checks the retained evidence and performs no additional deletion.
+
+The implementation checks ancestors without resolving away links, uses a per-run
+OS lease, revalidates the inventory before cleanup and after it, rechecks file
+identities between deletions, and hashes the actual opened target. Windows pins
+ancestors against renaming and uses a handle opened without write/delete sharing
+for deletion. POSIX uses directory-relative `O_NOFOLLOW` opens/unlink and advisory
+locking. Use a private local filesystem and cooperative training tools; this is
+not an adversarial filesystem sandbox or protection against privileged out-of-band
+rewrites, power-loss/storage failure, or network filesystems with broken locking.
+Reported bytes are logical file lengths, not a claim about volume free-space delta.
+
+Validation on Windows: temporary-fixture tests exercise NNUE, Pair-2, ONE and four
+neural epoch layouts, actual locked files, concurrent processes, hard links and
+junctions, changed inputs, partial cleanup/reconciliation, idempotence and exact
+byte counts. Java tests check the live cross-language lease and native serialized
+models against the independent Python readers; existing optimizer/segment-resume
+and owner-control tests also run. The 4 November maintenance validation passed
+23 lifecycle tests, 19 focused Java tests and 14 existing compute-control tests.
+The final Java run used the worktree-local Gradle home, offline dependencies and
+one worker/active processor. No historical data is used destructively and no
+GPU training/tournament is needed. Native POSIX/macOS execution is not validated
+on this Windows host; run the fixture suite there before operational use. The
+existing training supervisors remain Windows-specific.
+
+```powershell
+python -B -m unittest discover -s tools -p test_training_lifecycle.py -v
+python -B -m unittest discover -s tools/conventional-nnue -p test_compute_control.py -v
+# Through the existing supervisor, with worktree-local Gradle home/resource limits:
+# :research:test --tests '*TrainingFinalizationTest' and the relevant resume tests
+```
+
 `train CONFIG` freezes the exact requested bytes and trainer hash in a new output
 directory. It runs one superbatch per child, saving each complete boundary. All
 segments preserve batch size, data/probe hashes, seed, constant LR/WDL and absolute

@@ -86,6 +86,65 @@ game is replayed from its opening. Prediction audit is saved once; no fitting oc
 
 ## Interrupted training
 
+### Prospective completed-run finalization (4 November 2026)
+
+Training-infrastructure maintenance adds explicit finalization for **newly enrolled
+runs only**. It grants no research resumption, rewrites no historical protocol,
+and does not repeat the closed storage cleanup. Existing R057 retention rules,
+paused R010, suspended successor work, frozen comparison assets and failed evidence
+remain protected. Resolve any prospective retention conflict before enrolling or
+retiring a run; do not edit old configs to bypass frozen bindings.
+
+The shared [lifecycle instructions and selection format](../conventional-nnue-cglhw/COMPUTE-CONTROL.md#explicit-completed-run-finalization-4-november-2026)
+define preview, finalization, recovery and filesystem limits. In a separately
+authorized new config, add `"training_finalization": "explicit-v1"` and choose
+a new output with an existing parent. Keep using the existing supervised runners:
+
+Opt-in BRN runs require a newly built research runtime containing the guarded
+entrypoint; the launcher rejects older/ambiguous classpaths. Never overwrite a
+frozen runtime. Enrolled ONE launch bindings/logs/execution receipts live inside
+that run as `launch-*`; their runtime hashes must agree across resumes. Legacy
+un-enrolled stages retain their existing external launcher-record layout.
+
+| Runner | Supported class/layout | Completion and retained model |
+| --- | --- | --- |
+| `run_objective.py PLAN` | `PairObjectiveDiagnostic` | Every requested epoch receipt and terminal metrics; retain final/selected `.brn-pair2` exports. Unretained `.state`/exports may be removed. |
+| `run_objective.py PLAN` | `SharedGeometryTrainingDiagnostic`, `TiedGeometryTrainingDiagnostic` | Fixed one-epoch/eight-segment layout; retain selected/final `epoch-1.state`. |
+| `run_objective.py PLAN` | `MixedTiedTrainingDiagnostic`, `ContextGatedTrainingDiagnostic` | Fixed two-epoch/sixteen-segment layout; retain final `epoch-2.state` and other selected/comparison endpoints. |
+| `run_one_stage.py PLAN` | `OneTraining` command | Full configured `samples * epochs` exposure, terminal result, latest-state hash and complete prior-receipt chain; retain the final/selected `segments/.../model.state`. |
+
+For BRN, each `models` selection entry needs `path` and `role`; no NNUE `source`
+field is needed. Include `result.json` and the relevant decision/conclusion records
+in `evidence`. Model readers verify format/geometry, finite parameters, CRC and
+optimizer bounds where defined; selected state hashes must match their receipts.
+All JSON/metrics, configuration/provenance, logs and partial attempts remain. Only
+receipt-bound, unretained epoch/segment binaries are disposable. Neural state is
+also the inference format, so its optimizer fields cannot be stripped safely.
+
+```powershell
+python -B tools/training_lifecycle.py preview RUN --selection SELECTION.json
+python -B tools/training_lifecycle.py finalize RUN --selection SELECTION.json --plan-sha256 HASH_FROM_PREVIEW
+```
+
+ONE's successful return at a segment limit is **interrupted/resumable**, not
+completed. The unchanged config/plan resumes it; a result published just before
+supervisor interruption can be reverified without replaying training when its
+successful execution receipt also survives. Missing/corrupt execution evidence
+requires diagnosis, not a fabricated success marker. The Java
+entrypoints require the live runner token and OS lease for enrolled runs, so a
+direct invocation cannot resume a finalized output. Failed/orphan segment bytes
+stay preserved even if a later resume completes the run. Completed receipt branches
+that disagree are refused. Legacy configs retain their existing resume rules and
+need their originally bound runner/runtime; never rewrite binding hashes to accept
+new scripts. There is no automatic cleanup at any successful process boundary.
+
+Older relational diagnostic families (including `TiedGeometryContinuationDiagnostic`),
+GUI/managed-store training, BRN successor pipelines, and legacy/frozen/pruned runs
+are not supported by finalization. Their different schemas, ownership or lifecycle
+have not been qualified; opt-in requests for unsupported classes fail closed. The
+supported adapters do not change model mathematics, optimizer/checkpoint formats,
+training schedules, production evaluators or Search.
+
 Read the latest execution/epoch receipts,config.sha256 and binding.json. Check all
 complete checkpoint hashes. Original run config is immutable. Resume the same
 plan only with its matching runner/runtime; completed arms/epochs are verified

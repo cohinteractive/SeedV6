@@ -18,6 +18,7 @@ public final class OneTraining {
         return Map.of("development_mse",dev/8192,"development_unary_only_mse",ablated/8192,"fixed_training_panel_mse",train/8192,"panel_rows",8192);
     }
     public static void main(String[] args)throws Exception{
+        TrainingRunGuard.check(args[0]);
         PairObjectiveDiagnostic.permission();Path configPath=Path.of(args[0]);String configHash=PairCoverageDiagnostic.sha(configPath);var config=JsonParser.parseString(Files.readString(configPath)).getAsJsonObject();
         int width=config.get("width").getAsInt(),rank=config.get("rank").getAsInt(),samples=config.get("samples").getAsInt(),epochs=config.get("epochs").getAsInt(),checkpointRows=config.get("checkpoint_rows").getAsInt();
         long seed=config.get("seed").getAsLong(),dataSeed=config.get("data_seed").getAsLong();long target=(long)samples*epochs;

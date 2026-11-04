@@ -20,6 +20,8 @@ import uuid
 import windows_job as windows
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'tools'))
+import training_lifecycle as lifecycle
 MODES = ('NORMAL', 'COMPUTE_HOLD', 'FULL_PAUSE')
 FILES = ('quantised.bin', 'raw.bin', 'optimiser_state/weights.bin',
          'optimiser_state/momentum.bin', 'optimiser_state/velocity.bin')
@@ -293,6 +295,17 @@ def initial_resume_compatible(request, previous):
 
 
 def train(control, args):
+    # Lifecycle enrollment does not grant compute permission.
+    if not control.status()['expensive_allowed']:
+        raise RuntimeError('Training denied by owner compute control')
+    with lifecycle.training(Path(args.config), 'nnue') as run:
+        code = train_segments(control, args)
+        if code == 0 and run:
+            run.complete()
+        return code
+
+
+def train_segments(control, args):
     source = Path(args.config).resolve(); requested_bytes = source.read_bytes()
     request = json.loads(requested_bytes); output = Path(request['output']).resolve()
     if request['batches_per_superbatch'] > 1024:
@@ -303,11 +316,11 @@ def train(control, args):
     with Supervisor(control, args.name or 'Bullet training', 'Rerun the same train CONFIG; completed segments are verified and skipped', args.grace_seconds) as supervisor:
         supervisor.describe_training(source, output)
         plan = output / 'requested-config.json'
-        if output.exists():
+        if (output.exists() and not (output / lifecycle.OWNER).exists()) or plan.exists():
             if not plan.exists() or plan.read_bytes() != requested_bytes:
                 raise ValueError('Output already exists without this exact immutable training plan')
         else:
-            output.mkdir(parents=True)
+            output.mkdir(parents=True, exist_ok=True)
             with plan.open('xb') as stream:
                 stream.write(requested_bytes); stream.flush(); os.fsync(stream.fileno())
             atomic(output / 'segmentation.json', dict(schema=1, created=utc(), bullet=PIN,
@@ -371,6 +384,11 @@ def main():
     sub.add_parser('status')
     check = sub.add_parser('check'); check.add_argument('--lightweight', action='store_true')
     verify = sub.add_parser('verify'); verify.add_argument('checkpoint')
+    for name in ('preview-training', 'finalize-training'):
+        command = sub.add_parser(name, help='Explicit completed-run retention; no automatic cleanup')
+        command.add_argument('run', type=Path)
+        command.add_argument('--selection', type=Path)
+        command.add_argument('--plan-sha256')
     for name in ('run', 'train'):
         command = sub.add_parser(name); command.add_argument('--name'); command.add_argument('--grace-seconds', type=int, default=30)
         if name == 'run':
@@ -393,6 +411,8 @@ def main():
             allowed = result['lightweight_allowed'] if args.lightweight else result['expensive_allowed']
             print(json.dumps(result, indent=2)); return 0 if allowed else 75
     elif args.action == 'verify': result, _ = verify_checkpoint(args.checkpoint)
+    elif args.action in ('preview-training', 'finalize-training'):
+        result = lifecycle.operate(args.run, args.action.split('-')[0], args.selection, args.plan_sha256)
     elif args.action == 'train': return train(control, args)
     else:
         command = args.command[1:] if args.command[:1] == ['--'] else args.command
