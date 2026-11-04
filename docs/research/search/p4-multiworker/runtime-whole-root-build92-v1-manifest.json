@@ -1,0 +1,23 @@
+{
+  "source": "ca614576a6f61b244bd1d1c7acddecf4b1dc6ae9",
+  "tree": "clean at export",
+  "build": 92,
+  "versionResources": {
+    "com/ohinteractive/seedv6/application-version.properties": "major=0\nminor=0\npatch=0\nbuild=92\nsourceRevision=ca614576a6f6\nversionUpdated=2026-11-04\nplatform=Portable Java 21 (runtime platform reported separately)\n"
+  },
+  "sources": {
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ParallelSearch.java": "be365886351b1b712c4fb19c7891c1fdb541106e7579f698e9479a2a80c5e987",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4MultiworkerStudy.java": "ac4e59e5bcffdb8ddbdb3b497c722933e903abf418acee2149858e2ea3e0033d"
+  },
+  "files": {
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-whole-root-build92-v1\\lib\\engine-core.jar": "16caee8087e8927e8cf4d43c305c62b990a97c967cef1336a31e08ff58924754",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-whole-root-build92-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-whole-root-build92-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-whole-root-build92-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-whole-root-build92-v1\\lib\\research.jar": "918e58981f544a401eff7c8bee746e9d6813696d79e0e2d6d982753457b967fa",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-whole-root-build92-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-whole-root-build92-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "identity": "MW-C1 WHOLE_ROOT_RACE vs TC-P1 ROOT_REUSE; same1177812991 kernel flags, CP64/Hash64/ADAPTIVE16/BOUNDARY2. No production selector change; no independent iterative Lazy SMP claim.",
+  "qualification": "26 focused tests passed; new runtime diagnostics pending"
+}

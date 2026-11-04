@@ -7,7 +7,7 @@ candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESUL
 
 ## Authority, identities and provenance
 
-- Masters currently P4-R018/P4-F035. Project Source mirrors were not refreshed.
+- Masters currently P4-R019/P4-F036. Project Source mirrors were not refreshed.
 - Bootstrap c2ad1e3b and checkpoint10e974cf followed clean acc997b2; this continuation
   began clean main at10e974cf. Inherited training/build changes remain unrelated.
 - Original build91 baseline VERSION_STATE.txt SHA256
@@ -84,9 +84,14 @@ non-construction historical policies retain their window restrictions.
 
 Shared runtime impact requires build91->92, token-only verified under direct version
 rules. This identifies code, not a qualified runtime or new production adoption.
-No application/platform qualification or competitive evidence claimed. Next export
-and freeze a fresh build92 research artifact, then compare bounded ROOT_REUSE and
-WHOLE_ROOT_RACE diagnostics before choosing whether a competitive screen is justified.
+Implementation commit ca614576; the clean-source build92 research artifact is now
+[frozen](runtime-whole-root-build92-v1-manifest.json). Four W4 opening/mixed protocols
+passed116 requests/11.6M nodes, accounting/PV/board/helper/native-drain checks. MW-C1
+mean completed depths5.50/5.85 vs ROOT_REUSE6.56/7.00 at100k total admissions: a
+negative coverage indication, not playing-strength evidence. No application/platform
+or competitive qualification. See [comparison](architecture-w4-v1-summary.json).
+Next qualify economical fixed-node paired games with independent rule/accounting
+audit, explicit ply-cap treatment and protected fresh confirmation opening reserve.
 
 ## Operating behavior and budgets
 
@@ -110,8 +115,8 @@ there is no supported blocking request tool in this Default session. Never claim
 checkpoint preserves client liveness. If the client ends the turn, explicitly retain
 pending user action and this resume reference. No repeated availability polling.
 
-**Consumed:**19,600,000 fixed diagnostic nodes,41.6085012 fixed wall seconds;0 games,
-0 timed wall. **Remaining:**99,980,400,000 nodes,6000 fixed games,3000 timed games,
+**Consumed:**31,200,000 fixed diagnostic nodes,60.5393685 fixed wall seconds;0 games,
+0 timed wall. **Remaining:**99,968,800,000 nodes,6000 fixed games,3000 timed games,
 72 timed hours. Protected independent allowance960 timed games/initial24h intact.
 No confirmation protocol selected or attempt spent. budget.json has no pending
 reservation or live owned processes. Receipts, not historic PIDs, establish ownership.
@@ -130,7 +135,7 @@ Fresh-session sequence:
    hashes. Check raw availability; fresh checkout lacks ignored evidence. Missing
    artifacts need a new identified export, not silent recreation of frozen files.
 2. Do not repeat completed v3 baseline or90 tests without a concrete change/reason.
-   Read their summaries. Freeze/export the implemented whole-root race and run bounded diagnostics under Mode A;
+   Read their summaries. Continue fixed-node paired-runner qualification and opening partition under Mode A;
    any new source/runtime needs a fresh manifest/protocol/run ID before admission.
 3. Verify resources once at admission; use tools/p4-multiworker.py. Its current
    scope deliberately rejects competitive/timed protocols. If temporarily blocked,

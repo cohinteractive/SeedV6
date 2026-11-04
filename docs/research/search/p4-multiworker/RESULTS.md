@@ -117,3 +117,22 @@ TC-P1 kernel/learning/shared TT, compared against ROOT_REUSE. The observed first
 allocation cost motivates this cheap comparison; visible hint exchange motivates
 retaining cooperation. It is not true independent iterative Lazy SMP and a negative
 result would not dispose of that separate design. No external code is incorporated.
+
+## MW-C1/build92 whole-root race diagnostic
+
+The opt-in shared-core factory is committed as ca614576; production still selects
+TC-P1 ROOT_REUSE. Initial aspiration guard failure is retained; scoped construction
+race support and exact-window tests then passed26 checks. The clean-source research
+artifact is separately frozen; no application consumer/release qualification claimed.
+
+Four W4 protocols passed116 requests/11.6M nodes. At100k total admissions, mean
+completed depths were5.50 opening/5.85 mixed for the race versus6.56/7.00 for
+ROOT_REUSE. This is a negative work-coverage signal consistent with overlap, not a
+strength verdict; overlap itself is not measured and selective Search depth differs
+across architectures. Timing includes startup/instrumentation and is not qualification
+of scaling. [Detailed comparison](architecture-w4-v1-summary.json) identifies outcomes,
+raw hashes and limits. All callback totals/PVs/boards/drains passed. No games yet.
+
+Next is a small fixed-node paired-game qualification/screen, not a larger diagnostic
+sample. Protect fresh confirmation roots first. True independent iterative Lazy SMP
+remains separate; a same-depth race result does not settle it.

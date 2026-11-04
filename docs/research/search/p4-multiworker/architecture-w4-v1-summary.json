@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "candidate": "MW-C1/build92",
+  "runs": [
+    {
+      "id": "architecture-opening-w4-root_reuse-v1",
+      "requests": 18,
+      "nodes": 1800000,
+      "meanCompletedDepth": 6.555555555555555,
+      "workerNodeShares": [
+        0.5087611111111111,
+        0.17234222222222223,
+        0.16424666666666668,
+        0.15465
+      ],
+      "incompleteAttemptNodes": 701085,
+      "peakOwnedCommittedGiB": 0.3684730529785156,
+      "fixedWallSeconds": 3.984317100024782,
+      "outputSha256": "8960cd6bbc0b4abc7e0e3e7e0ee6316559cc61f85fda749f5170f81c3e65f9f4"
+    },
+    {
+      "id": "architecture-opening-w4-whole_root_race-v1",
+      "requests": 18,
+      "nodes": 1800000,
+      "meanCompletedDepth": 5.5,
+      "workerNodeShares": [
+        0.2464427777777778,
+        0.2560927777777778,
+        0.2558011111111111,
+        0.24166333333333334
+      ],
+      "incompleteAttemptNodes": 554934,
+      "peakOwnedCommittedGiB": 0.53173828125,
+      "fixedWallSeconds": 2.960121200012509,
+      "outputSha256": "1ec81fd971edeb38e5e198af75be34b14b1d2b824830b6671db7a509bb77b0b2"
+    },
+    {
+      "id": "architecture-mixed-w4-root_reuse-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "meanCompletedDepth": 7,
+      "workerNodeShares": [
+        0.52750375,
+        0.15938475,
+        0.1585745,
+        0.154537
+      ],
+      "incompleteAttemptNodes": 1333724,
+      "peakOwnedCommittedGiB": 0.6450386047363281,
+      "fixedWallSeconds": 6.681190900038928,
+      "outputSha256": "aed1bf9da74b37f41ec7d1c4240b7c862790dc953c6bc3b299f07f3491fbe6fd"
+    },
+    {
+      "id": "architecture-mixed-w4-whole_root_race-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "meanCompletedDepth": 5.85,
+      "workerNodeShares": [
+        0.257382,
+        0.2461395,
+        0.24863725,
+        0.24784125
+      ],
+      "incompleteAttemptNodes": 1023724,
+      "peakOwnedCommittedGiB": 0.4804115295410156,
+      "fixedWallSeconds": 5.305358099984005,
+      "outputSha256": "b66589f0f688d708042757962078e02a86133973d3d795a3ce91a5298c2e6c2e"
+    }
+  ],
+  "comparisons": [
+    {
+      "corpus": "opening",
+      "requests": 18,
+      "bestMoveDisagreements": 4,
+      "raceDeeper": 0,
+      "raceShallower": 16
+    },
+    {
+      "corpus": "mixed",
+      "requests": 40,
+      "bestMoveDisagreements": 11,
+      "raceDeeper": 0,
+      "raceShallower": 36
+    }
+  ],
+  "interpretation": "Technically qualified bounded diagnostic. MW-C1 completes roughly one nominal ply less at equal total nodes, consistent with duplicated whole-root work; unique-position overlap not measured. Startup/instrumented wall differs and is not a strength/scaling conclusion. First owner job field in race is whole invocation, not serial work. No competitive result or Lazy SMP conclusion.",
+  "next": "Qualify a small fixed-node paired game path and an economical exploratory screen. Do not enlarge this diagnostic to manufacture significance or presume completed depth establishes strength. Protect independent opening reserve before development games."
+}

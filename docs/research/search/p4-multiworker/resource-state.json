@@ -1,12 +1,12 @@
 {
   "status": "continue_research",
-  "receipt": "docs\\research\\search\\p4-multiworker\\hints-mixed-w4-private_delivery-v1-execution.json",
+  "receipt": "docs\\research\\search\\p4-multiworker\\architecture-mixed-w4-whole_root_race-v1-execution.json",
   "blocker": null,
   "ownedProcessesRemaining": 0,
   "alternativeWork": [
-    "Analyze hint provenance and choose a controlled architecture alternative"
+    "Analyze architecture outcomes and fixed-node qualification dependencies"
   ],
-  "resumeProtocolTemplate": "docs\\research\\search\\p4-multiworker\\hints-mixed-w4-private_delivery-v1-protocol.json",
+  "resumeProtocolTemplate": "docs\\research\\search\\p4-multiworker\\architecture-mixed-w4-whole_root_race-v1-protocol.json",
   "resumeRequiresNewRunId": true,
   "resumeState": "docs/research/search/p4-multiworker/STATE.md",
   "pendingHumanAction": null,

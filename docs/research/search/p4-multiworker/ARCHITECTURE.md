@@ -128,12 +128,12 @@ they are not authorized to strip notices or silently transplant external express
 
 ## Evidence-ranked next selection
 
-1. Run the prepared bounded TC-P1 W4/W2 scheduling/admission probe after PC pressure
-   clears. It can quantify serialized first-job work and per-worker imbalance; it
+1. Baseline scheduling probe is qualified (see STATE/results). It quantifies
+   first-job admissions and per-worker imbalance; it
    cannot establish exact idle/tail duration, contention cost, unique useful coverage
    or information consumption. Initialized job counts include scout retries.
-2. Compare an exact-TC-P1 fully drained whole-root formulation against root splitting
-   as an economical diagnostic, if the measured question warrants it. Label a
+2. MW-C1/build92 implements the controlled fully drained whole-root comparison.
+   Its diagnostic completed about one ply less at equal admissions. Label a
    same-depth race honestly; it is not independent iterative Lazy SMP. Retain the
    stronger competing request-level Lazy SMP design even if this cheap test loses.
 3. Design true independent-worker coordination with completed-result provenance,
