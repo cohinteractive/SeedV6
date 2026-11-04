@@ -1,5 +1,14 @@
 # BRN neural relational CGLHW - resume entry point
 
+**Storage maintenance, 4 November 2026:** the owner authorized removal of identified
+disposable intermediate binaries from completed training. [The cleanup
+inventory](../conventional-nnue-cglhw/STORAGE-CLEANUP-20261104.md) records exact scope,
+retained endpoints and validation. Selected/final comparison models, metrics,
+configurations, receipts, failed/partial attempts, R010 paused work and suspended
+successor evidence remain. Historical intermediate-binary availability statements below
+are superseded only for the listed deletions; conclusions, frozen protocols and the
+research-decision pause are unchanged.
+
 Workstream: `seedv6-brn-relational-20261029`.
 Status: **PAUSED — AWAITING HUMAN RESEARCH DECISION**.
 The authorized bounded R057 ONE investigation is COMPLETE. The broader programme

@@ -1,5 +1,15 @@
 # Conventional NNUE state
 
+**Storage maintenance, 4 November 2026:** the owner authorized removal of identified
+disposable intermediate binaries from completed training. [The cleanup
+inventory](STORAGE-CLEANUP-20261104.md) records current availability and limits. All
+exported comparison networks, the selected/final handoff checkpoints, reports, metrics,
+configurations, receipts and failed/partial evidence remain. Historical statements below
+that every intermediate binary remains describe earlier availability. Completed old
+training output directories are intentionally no longer full replay/resume chains; do
+not rerun them or fabricate missing state. This changes storage availability only, not
+research findings or authorization.
+
 Subsequent owner decision, 23 October 2026: full Construction V1 + this frozen
 CP64 network is now the selected production and Search Phase 3 baseline. The
 [existing Construction record](../search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026)
