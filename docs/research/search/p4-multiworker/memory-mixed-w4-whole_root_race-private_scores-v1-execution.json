@@ -1,0 +1,76 @@
+{
+  "id": "memory-mixed-w4-whole_root_race-private_scores-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-private_scores-v1-protocol.json",
+  "protocolSha256": "efe625cf21a9f167bb1fd8df3170e4d4ada314ac1c9c83252dbaa75c92507c62",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms128m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\runtime-memory-build94-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4MultiworkerMemoryStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-whole_root_race-private_scores-v1\\observations.jsonl",
+    "4",
+    "2",
+    "12",
+    "100000",
+    "WHOLE_ROOT_RACE",
+    "PRIVATE_SCORES"
+  ],
+  "startedUtc": "2026-11-04T12:38:15.651140+00:00",
+  "maximumNodes": 4000000,
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-whole_root_race-private_scores-v1\\observations.jsonl",
+  "priority": "below-normal",
+  "games": 0,
+  "preflightEnvironment": {
+    "utc": "2026-11-04T12:38:16.255841+00:00",
+    "totalCpuPercent": 3.7234042553191515,
+    "freeMemoryGiB": 20.90601348876953,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 37.05673758865249,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 24092,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 16.1875,
+    "totalOwnedProcesses": 2
+  },
+  "wallSeconds": 4.109348699974362,
+  "endedUtc": "2026-11-04T12:38:19.774114+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.3625030517578125,
+  "temporaryResourceBlocker": null,
+  "chargedNodes": 4000000,
+  "nodeCharge": "verified callback admissions",
+  "summary": {
+    "activeHelpersAfterClose": 0,
+    "requests": 40,
+    "status": "passed",
+    "type": "summary",
+    "nodes": 4000000
+  },
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-whole_root_race-private_scores-v1\\console.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-whole_root_race-private_scores-v1\\environment.jsonl": "d2ba6864db2b72a27ad5a125466b085314bc55c443f6e73d0f80b74a74bbbb8f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-whole_root_race-private_scores-v1\\observations.jsonl": "71092774f2287c2b1df820396ddd94bd95304d5eec4090dea0f9bca242050161"
+  },
+  "inputsStable": true
+}

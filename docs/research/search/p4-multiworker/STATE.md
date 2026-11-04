@@ -7,19 +7,29 @@ candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESUL
 
 ## Immediate continuation checkpoint
 
-Implementation3ba1daad/build94, mastersP4-R023/P4-F040. Both C3 frozen screens
-completed and native Jobs drained: fixed24 games35.4167%; timed64 games55.46875%,
-paired-normal95%44.5267-66.4108%. Retain C3 as promising/imprecise timed exploration;
-no superiority, neutrality or confirmation claim. Current budget655,221,293 fixed
-nodes/54 fixed games;130 timed games/4151.9442s. No pending match admission.
+Implementation3ba1daad/build94; research probe/evidence44d2430f. MastersP4-R024/F042.
+C3 screens completed: fixed35.4167% (24 games), timed55.46875% (64 games),
+paired-normal95%44.5267-66.4108%. Promising/inconclusive, not a strength qualification.
+The nine-cell score probe at clean44d2430f passed360 requests/36M admissions with
+actual cross-worker guarded cutoffs and clean drains. Eager+shared-score depth7.025
+versus6.8 hints-only and6.875 own-score delivery; ROOT_REUSE shared7.2 versus7.1;
+whole-root shared6.225 versus5.9. This is instrumented information-use evidence,
+not speed/strength. See memory-mixed-w4-v1-summary.json and all retained cells.
 
-P4MultiworkerMemoryStudy/Test and existing H1/TC-P1 safeguards passed12 focused
-Java tests. Six supervisor tests passed, including the new decisive reversed-color
-fixture. See memory-tests-v1-summary.json and retained XML/logs. Next: freeze a
-clean new research runtime and execute all nine preselected schedule/delivery
-diagnostic cells before selecting any memory integration for competition. This
-research-only unit leaves build94 bytes and production routing unchanged. The
-full Goal remains active; no candidate confirmed, no reserve spent, deadline18:18:03Z.
+Selected clean competitive bindings: MW-C4 EAGER_MEMORY (EAGER_ROOT plus existing
+HEURISTIC_TT_MEMORY), MW-C5 ROOT_MEMORY (ROOT_REUSE plus same mechanism), both
+flags1182007295, ADAPTIVE16/BOUNDARY2/CP64/Hash64/request-private learning unchanged.
+At W1 both use the same OWNER algorithm. No aged/raw/correction additions.12 Java
+integration/safeguard tests passed; bindings compile and6 supervisor tests passed.
+Next: freeze a clean research runtime, qualify both UCI selectors, then freeze
+small fixed/timed screens against exact W4 TC-P1. C4/C5 are research candidates,
+not historical H1 or accepted production. Whole-root memory is not selected for
+competition because it still has substantial equal-work depth loss.
+
+Budget:691,221,293 fixed nodes/54 fixed games;130 timed games/4151.9442s.
+No pending admissions or owned match/engine processes. Production/build94 unchanged
+by these research-only selectors. No confirmation candidate/protocol selected and
+no reserve spent. Full Goal active; fixed overnight deadline18:18:03Z unchanged.
 Human actions required: None.
 
 ## Current one-time overnight window

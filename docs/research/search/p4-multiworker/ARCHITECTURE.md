@@ -313,3 +313,12 @@ cutoffs. A future separately identified legal-move-only position hint domain cou
 be investigated if evidence warrants it, while retaining history-rich score keys
 and exact controls; it is not implemented or presumed beneficial. No position-only
 score fallback or rule-history weakening is authorized by this observation.
+
+The complete nine-cell result supports selecting eager/shared-score integration
+(MW-C4) with root/shared-score comparison (MW-C5), retaining exact TC-P1 control.
+Whole-root score sharing changes actual consumption strongly but recovers only
+part of its depth deficit; no competitive expansion selected. Both new bindings
+use ordinary production TTable locking, with no diagnostic provenance monitor.
+Flags1182007295 add only existing current-generation HEURISTIC_TT_MEMORY. Runtime
+identity reports actual EAGER_ROOT or ROOT_REUSE scheduling separately from the
+MW-C4/MW-C5 formulation and explicit TT policy; W1 uses the same OWNER algorithm.

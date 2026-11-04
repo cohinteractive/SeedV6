@@ -253,3 +253,25 @@ existing H1/TC-P1 safeguards, snapshot ownership after replacement, score-only
 withholding, W2-W16 callbacks/drain/reuse and reached TC-P1 tactical isolation.
 Six supervisor tests passed, adding decisive reversed-color scoring. New runtime
 and nine-cell diagnostic remain next; no production source/build change in this unit.
+
+## Integrated guarded score-sharing dependency
+
+All nine preselected cells passed360 W4 requests/36M admissions, legal PV/state,
+complete callback accounting and helper/native drain. Current-generation score
+memory produced actual other-worker guarded cutoffs:18,261 ROOT_REUSE,25,021 eager,
+169,871 whole-root. Own-score delivery withheld other-worker estimates and recorded
+zero cross-worker cutoffs while retaining shared hints/storage. Producer snapshots
+remain distinct from independently retained hint writers and later replacements.
+
+Mean completed depths (hints/shared/own-score) were ROOT_REUSE7.10/7.20/7.20,
+eager6.80/7.025/6.875, whole-root5.90/6.225/5.875. Eager shared was deeper on9/40
+and shallower on0/40 than hints-only; compared with own-score it was deeper7 and
+shallower1. Observation synchronization and SMP variation preclude a clean causal
+speed or strength claim. The mechanism supplies a plausible integrated benefit.
+
+Select MW-C4 EAGER_MEMORY and MW-C5 ROOT_MEMORY for clean competitive qualification
+against exact TC-P1. Both add only existing HEURISTIC_TT_MEMORY (flags1182007295).
+The second separates general memory benefit from eager integration. Whole-root
+memory remains unselected for games because its depth deficit persists. H1/H2/F3
+historical protocols, conclusions and spent claims are unchanged. No core/runtime
+application change or build increment for these research-only bindings.

@@ -1,0 +1,76 @@
+{
+  "id": "memory-mixed-w4-root_reuse-private_scores-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-root_reuse-private_scores-v1-protocol.json",
+  "protocolSha256": "cd5776b51db0e1af0a762bf74baee0cfd0fdec44bbb20a615b391bef026f92ce",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms128m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\runtime-memory-build94-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4MultiworkerMemoryStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-root_reuse-private_scores-v1\\observations.jsonl",
+    "4",
+    "2",
+    "12",
+    "100000",
+    "ROOT_REUSE",
+    "PRIVATE_SCORES"
+  ],
+  "startedUtc": "2026-11-04T12:37:41.141793+00:00",
+  "maximumNodes": 4000000,
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-root_reuse-private_scores-v1\\observations.jsonl",
+  "priority": "below-normal",
+  "games": 0,
+  "preflightEnvironment": {
+    "utc": "2026-11-04T12:37:41.750357+00:00",
+    "totalCpuPercent": 3.472222222222221,
+    "freeMemoryGiB": 20.898914337158203,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 36.80555555555556,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 4148,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 16.796875,
+    "totalOwnedProcesses": 2
+  },
+  "wallSeconds": 6.060854200040922,
+  "endedUtc": "2026-11-04T12:37:47.216403+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.5577354431152344,
+  "temporaryResourceBlocker": null,
+  "chargedNodes": 4000000,
+  "nodeCharge": "verified callback admissions",
+  "summary": {
+    "type": "summary",
+    "status": "passed",
+    "requests": 40,
+    "activeHelpersAfterClose": 0,
+    "nodes": 4000000
+  },
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-root_reuse-private_scores-v1\\console.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-root_reuse-private_scores-v1\\environment.jsonl": "0ccf35dd1592c9d07ebf7b0b2a94939b69f1f04b1421ed8d051cee3954dfea48",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\memory-mixed-w4-root_reuse-private_scores-v1\\observations.jsonl": "840f2856fbc3913166b194f8b55cb8310a33f46a16ba235ec5b8a0a47e3ffef6"
+  },
+  "inputsStable": true
+}

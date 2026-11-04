@@ -67,13 +67,16 @@ def configure(engine, workers, architecture):
     identities = [x for x in lines if 'networkSha256=' in x]
     if not identities: raise ValueError('Missing runtime identity')
     identity = identities[-1]
-    for token in ['flags=1177812991', 'checkpoint=64', 'schema=S6CNU002', 'heads=8',
+    memory=architecture in ('EAGER_MEMORY','ROOT_MEMORY')
+    actual={'EAGER_MEMORY':'EAGER_ROOT','ROOT_MEMORY':'ROOT_REUSE'}.get(architecture,architecture)
+    for token in ['flags='+str(1182007295 if memory else 1177812991), 'checkpoint=64', 'schema=S6CNU002', 'heads=8',
                   'networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b',
                   'scoreMapping=BT4_Q_LOGIT400_V1', 'clockPolicy=boundary2-d6-v1',
                   f'workers={workers};hashMiB=64;aspiration=ADAPTIVE16',
-                  'formulation='+{'ROOT_REUSE':'TC-P1','WHOLE_ROOT_RACE':'MW-C1','WHOLE_ROOT_SHARING':'MW-C2','EAGER_ROOT':'MW-C3'}[architecture],
+                  'formulation='+{'ROOT_REUSE':'TC-P1','WHOLE_ROOT_RACE':'MW-C1','WHOLE_ROOT_SHARING':'MW-C2','EAGER_ROOT':'MW-C3','EAGER_MEMORY':'MW-C4','ROOT_MEMORY':'MW-C5'}[architecture],
                   'learning='+('completed-winner-private-copies' if workers>1 and architecture=='WHOLE_ROOT_SHARING' else 'request-worker-private'),
-                  'architecture='+('OWNER' if workers == 1 else architecture)]:
+                  'ttPolicy='+('current-generation-heuristic' if memory else 'production-hints'),
+                  'architecture='+('OWNER' if workers == 1 else actual)]:
         if token not in identity: raise ValueError('Missing identity '+token+': '+identity)
     return identity
 

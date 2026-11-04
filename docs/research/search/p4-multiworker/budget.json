@@ -20,12 +20,12 @@
     "timedCompleted": 130,
     "timedFailed": 0,
     "timedInterrupted": 0,
-    "fixedWallSeconds": 777.6214753999957,
+    "fixedWallSeconds": 828.4865696998895,
     "fixedInitiated": 54,
     "fixedCompleted": 54,
     "fixedFailed": 0,
     "fixedInterrupted": 0,
-    "fixedNodes": 655221293
+    "fixedNodes": 691221293
   },
   "pending": [],
   "receipts": [
@@ -60,7 +60,16 @@
     "docs\\research\\search\\p4-multiworker\\c3-coverage-mixed-w4-eager_root-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\c3-alternate-fixed-pilot-w4-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\c3-fixed-screen-w4-v1-execution.json",
-    "docs\\research\\search\\p4-multiworker\\c3-timed-screen-w4-v1-execution.json"
+    "docs\\research\\search\\p4-multiworker\\c3-timed-screen-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-root_reuse-hints_only-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-root_reuse-shared_scores-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-root_reuse-private_scores-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-eager_root-hints_only-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-eager_root-shared_scores-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-eager_root-private_scores-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-hints_only-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-shared_scores-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-private_scores-v1-execution.json"
   ],
   "timedWindows": [
     "docs\\research\\search\\p4-multiworker\\window-20261104-v1.json"

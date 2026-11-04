@@ -1,13 +1,14 @@
 {
   "status": "continue_research",
-  "receipt": "docs\\research\\search\\p4-multiworker\\c3-timed-screen-w4-v1-execution.json",
+  "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-private_scores-v1-execution.json",
+  "blocker": null,
   "ownedProcessesRemaining": 0,
-  "temporaryResourceBlocker": false,
-  "pendingHumanAction": null,
   "alternativeWork": [
-    "Review runner failures and pursue low-impact architecture design"
+    "Investigate provenance and select integrated comparisons"
   ],
-  "clientBoundary": "Agent handles input; repository state does not preserve client liveness.",
+  "resumeProtocolTemplate": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-private_scores-v1-protocol.json",
+  "resumeRequiresNewRunId": true,
   "resumeState": "docs/research/search/p4-multiworker/STATE.md",
-  "resumeRequiresNewRunId": true
+  "pendingHumanAction": null,
+  "clientBoundary": "Repository code records disposition only. Agent must ask via available client input tool when needed. No interactive pause, future execution, or client liveness is created here."
 }

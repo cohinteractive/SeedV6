@@ -1,0 +1,724 @@
+{
+  "status": "passed",
+  "nodes": 36000000,
+  "requests": 360,
+  "runs": [
+    {
+      "id": "memory-mixed-w4-root_reuse-hints_only-v1",
+      "schedule": "root_reuse",
+      "delivery": "hints_only",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 7.1,
+      "crossWorkerGuardedCutoffs": 0,
+      "requestsWithCrossWorkerCutoffs": 0,
+      "totals": {
+        "stores": 0,
+        "acceptedStores": 0,
+        "probes": 0,
+        "hits": 0,
+        "suppressedOtherWorkerScores": 0,
+        "guardedHeuristicCutoffs": 0
+      },
+      "availableProducerConsumer": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.338836669921875,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-root_reuse-hints_only-v1-execution.json",
+      "receiptSha256": "e8f604a11075702766a843ef6de7142114eaf1d17694bd28b9a8b89bcac620f6",
+      "evidenceSha256": "75f74e98a008be07a7efa09704b97371a391b88c5727df85238ec615680d8c6e"
+    },
+    {
+      "id": "memory-mixed-w4-root_reuse-shared_scores-v1",
+      "schedule": "root_reuse",
+      "delivery": "shared_scores",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 7.2,
+      "crossWorkerGuardedCutoffs": 18261,
+      "requestsWithCrossWorkerCutoffs": 38,
+      "totals": {
+        "stores": 432946,
+        "acceptedStores": 430406,
+        "probes": 632231,
+        "hits": 200183,
+        "suppressedOtherWorkerScores": 0,
+        "guardedHeuristicCutoffs": 71972
+      },
+      "availableProducerConsumer": [
+        [
+          108387,
+          6246,
+          4830,
+          5353
+        ],
+        [
+          6280,
+          10267,
+          5253,
+          3994
+        ],
+        [
+          6041,
+          3899,
+          8449,
+          4444
+        ],
+        [
+          5790,
+          4924,
+          4172,
+          11854
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          41393,
+          1743,
+          1391,
+          1612
+        ],
+        [
+          2006,
+          4104,
+          1484,
+          1148
+        ],
+        [
+          1486,
+          1252,
+          3032,
+          1249
+        ],
+        [
+          1938,
+          1652,
+          1300,
+          5182
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.34999847412109375,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-root_reuse-shared_scores-v1-execution.json",
+      "receiptSha256": "df085e6e448efe591f2510f6a4ef5bd591fed99589adc1756af814c480262c1f",
+      "evidenceSha256": "6aaf507581b2a29b8e5677b4248aab5869d62a5cc54f9bcdaac70a83e8105e15"
+    },
+    {
+      "id": "memory-mixed-w4-root_reuse-private_scores-v1",
+      "schedule": "root_reuse",
+      "delivery": "private_scores",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 7.2,
+      "crossWorkerGuardedCutoffs": 0,
+      "requestsWithCrossWorkerCutoffs": 0,
+      "totals": {
+        "stores": 443983,
+        "acceptedStores": 441496,
+        "probes": 621019,
+        "hits": 204713,
+        "suppressedOtherWorkerScores": 74670,
+        "guardedHeuristicCutoffs": 49445
+      },
+      "availableProducerConsumer": [
+        [
+          94920,
+          7344,
+          6470,
+          7642
+        ],
+        [
+          8360,
+          12934,
+          4695,
+          4805
+        ],
+        [
+          7253,
+          5433,
+          12105,
+          4721
+        ],
+        [
+          6350,
+          5754,
+          5843,
+          10084
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          35564,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5609,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4713,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          3559
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.5577354431152344,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-root_reuse-private_scores-v1-execution.json",
+      "receiptSha256": "941c70a79daa9f0e65511b443ae8399fa3543531293c408613ecbdd9caf19ba5",
+      "evidenceSha256": "840f2856fbc3913166b194f8b55cb8310a33f46a16ba235ec5b8a0a47e3ffef6"
+    },
+    {
+      "id": "memory-mixed-w4-eager_root-hints_only-v1",
+      "schedule": "eager_root",
+      "delivery": "hints_only",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 6.8,
+      "crossWorkerGuardedCutoffs": 0,
+      "requestsWithCrossWorkerCutoffs": 0,
+      "totals": {
+        "stores": 0,
+        "acceptedStores": 0,
+        "probes": 0,
+        "hits": 0,
+        "suppressedOtherWorkerScores": 0,
+        "guardedHeuristicCutoffs": 0
+      },
+      "availableProducerConsumer": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.4770698547363281,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-eager_root-hints_only-v1-execution.json",
+      "receiptSha256": "2aefabee15869a83629235d192111c643baf7ff5ac776bf716c6f37b2e47f09e",
+      "evidenceSha256": "45df7b420b2c91b1d9e11457ba6fc9d3aa4347faef7023ded1a7793cdbdc2bcb"
+    },
+    {
+      "id": "memory-mixed-w4-eager_root-shared_scores-v1",
+      "schedule": "eager_root",
+      "delivery": "shared_scores",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 7.025,
+      "crossWorkerGuardedCutoffs": 25021,
+      "requestsWithCrossWorkerCutoffs": 38,
+      "totals": {
+        "stores": 449787,
+        "acceptedStores": 447290,
+        "probes": 647902,
+        "hits": 211375,
+        "suppressedOtherWorkerScores": 0,
+        "guardedHeuristicCutoffs": 75874
+      },
+      "availableProducerConsumer": [
+        [
+          57416,
+          7499,
+          5974,
+          5297
+        ],
+        [
+          7579,
+          27138,
+          8014,
+          6544
+        ],
+        [
+          5776,
+          7839,
+          23240,
+          6872
+        ],
+        [
+          5386,
+          7565,
+          6578,
+          22658
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          22716,
+          2379,
+          1638,
+          1396
+        ],
+        [
+          2488,
+          10629,
+          2741,
+          2131
+        ],
+        [
+          1828,
+          2393,
+          8657,
+          2111
+        ],
+        [
+          1732,
+          2334,
+          1850,
+          8851
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.45722198486328125,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-eager_root-shared_scores-v1-execution.json",
+      "receiptSha256": "9b94aeefffd5693570dac92784726b59ec46508ac5b7227f0af2012d25158d2f",
+      "evidenceSha256": "22cc7bee16e186341e19b11c34d43bf2e3a591ee1cb05a9ecb03a9fe7731322c"
+    },
+    {
+      "id": "memory-mixed-w4-eager_root-private_scores-v1",
+      "schedule": "eager_root",
+      "delivery": "private_scores",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 6.875,
+      "crossWorkerGuardedCutoffs": 0,
+      "requestsWithCrossWorkerCutoffs": 0,
+      "totals": {
+        "stores": 482199,
+        "acceptedStores": 479883,
+        "probes": 658109,
+        "hits": 238159,
+        "suppressedOtherWorkerScores": 95634,
+        "guardedHeuristicCutoffs": 57456
+      },
+      "availableProducerConsumer": [
+        [
+          62937,
+          8339,
+          7501,
+          5395
+        ],
+        [
+          10735,
+          31446,
+          9026,
+          7880
+        ],
+        [
+          5581,
+          9689,
+          25936,
+          9305
+        ],
+        [
+          5463,
+          8883,
+          7837,
+          22206
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          24006,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          13534,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          11268,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          8648
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.4652519226074219,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-eager_root-private_scores-v1-execution.json",
+      "receiptSha256": "d9c2aa166d9d0b1a380fadd73c82d9702dd39972a1fe513accab82fb23f9f306",
+      "evidenceSha256": "7659d3ffca2021c060aa45d7653cc26ad88df1ea16de3f58873bde6432ae0d57"
+    },
+    {
+      "id": "memory-mixed-w4-whole_root_race-hints_only-v1",
+      "schedule": "whole_root_race",
+      "delivery": "hints_only",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 5.9,
+      "crossWorkerGuardedCutoffs": 0,
+      "requestsWithCrossWorkerCutoffs": 0,
+      "totals": {
+        "stores": 0,
+        "acceptedStores": 0,
+        "probes": 0,
+        "hits": 0,
+        "suppressedOtherWorkerScores": 0,
+        "guardedHeuristicCutoffs": 0
+      },
+      "availableProducerConsumer": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.4716377258300781,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-hints_only-v1-execution.json",
+      "receiptSha256": "f1d239506cd9d8b9f640bb9e43e509dc56aa2c0ab79acfb604d904674f5f0e00",
+      "evidenceSha256": "061c676895dd37e9dcc676172dd85c1af3d77251c1739a38bf7bc6cb70a27039"
+    },
+    {
+      "id": "memory-mixed-w4-whole_root_race-shared_scores-v1",
+      "schedule": "whole_root_race",
+      "delivery": "shared_scores",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 6.225,
+      "crossWorkerGuardedCutoffs": 169871,
+      "requestsWithCrossWorkerCutoffs": 40,
+      "totals": {
+        "stores": 420088,
+        "acceptedStores": 416169,
+        "probes": 743762,
+        "hits": 356228,
+        "suppressedOtherWorkerScores": 0,
+        "guardedHeuristicCutoffs": 199843
+      },
+      "availableProducerConsumer": [
+        [
+          20626,
+          23281,
+          23104,
+          22997
+        ],
+        [
+          22549,
+          17432,
+          22090,
+          21072
+        ],
+        [
+          23211,
+          23207,
+          19023,
+          24145
+        ],
+        [
+          23529,
+          24415,
+          25116,
+          20431
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          8477,
+          13913,
+          13958,
+          13776
+        ],
+        [
+          14205,
+          6429,
+          13401,
+          12666
+        ],
+        [
+          14143,
+          13998,
+          7324,
+          14577
+        ],
+        [
+          14566,
+          15118,
+          15550,
+          7742
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.4629859924316406,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-shared_scores-v1-execution.json",
+      "receiptSha256": "78fec8a42d55f64bf932f3004473cf256db539538941f03d281d8635f8a70095",
+      "evidenceSha256": "479e0c7227fe9090ff40d91102a7e721ba33f247544b3bd487b45f46d0291848"
+    },
+    {
+      "id": "memory-mixed-w4-whole_root_race-private_scores-v1",
+      "schedule": "whole_root_race",
+      "delivery": "private_scores",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 5.875,
+      "crossWorkerGuardedCutoffs": 0,
+      "requestsWithCrossWorkerCutoffs": 0,
+      "totals": {
+        "stores": 600991,
+        "acceptedStores": 598121,
+        "probes": 758211,
+        "hits": 473698,
+        "suppressedOtherWorkerScores": 427369,
+        "guardedHeuristicCutoffs": 15800
+      },
+      "availableProducerConsumer": [
+        [
+          13003,
+          38491,
+          39571,
+          37040
+        ],
+        [
+          37775,
+          8529,
+          34616,
+          32764
+        ],
+        [
+          36926,
+          38935,
+          11491,
+          31128
+        ],
+        [
+          33639,
+          32541,
+          33943,
+          13306
+        ]
+      ],
+      "consumedProducerConsumer": [
+        [
+          4797,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2905,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3735,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          4363
+        ]
+      ],
+      "peakOwnedCommittedGiB": 0.3625030517578125,
+      "receipt": "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-private_scores-v1-execution.json",
+      "receiptSha256": "a97dde9716d0a63ca765a6285922fedb68686c4a879bcb8ba3fd20de8da1ad16",
+      "evidenceSha256": "71092774f2287c2b1df820396ddd94bd95304d5eec4090dea0f9bca242050161"
+    }
+  ],
+  "comparisons": [
+    {
+      "schedule": "root_reuse",
+      "reference": "hints_only",
+      "sharedDeeper": 5,
+      "sharedShallower": 1,
+      "depthDifferenceMean": 0.1,
+      "movesChanged": 13
+    },
+    {
+      "schedule": "root_reuse",
+      "reference": "private_scores",
+      "sharedDeeper": 4,
+      "sharedShallower": 4,
+      "depthDifferenceMean": 0,
+      "movesChanged": 12
+    },
+    {
+      "schedule": "eager_root",
+      "reference": "hints_only",
+      "sharedDeeper": 9,
+      "sharedShallower": 0,
+      "depthDifferenceMean": 0.225,
+      "movesChanged": 8
+    },
+    {
+      "schedule": "eager_root",
+      "reference": "private_scores",
+      "sharedDeeper": 7,
+      "sharedShallower": 1,
+      "depthDifferenceMean": 0.15,
+      "movesChanged": 11
+    },
+    {
+      "schedule": "whole_root_race",
+      "reference": "hints_only",
+      "sharedDeeper": 13,
+      "sharedShallower": 0,
+      "depthDifferenceMean": 0.325,
+      "movesChanged": 9
+    },
+    {
+      "schedule": "whole_root_race",
+      "reference": "private_scores",
+      "sharedDeeper": 14,
+      "sharedShallower": 0,
+      "depthDifferenceMean": 0.35,
+      "movesChanged": 9
+    }
+  ],
+  "interpretation": "All nine prospective diagnostic cells complete. Callback/state/legal PV/drain checks passed. Direct guarded heuristic-cutoff callbacks establish consumption of delivered producer snapshots; score labels remain selective, never proof. Provenance locking changes timing; no speed, causality or playing-strength claim. H1/H2/F3 history and spent gates unchanged."
+}

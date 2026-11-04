@@ -1,0 +1,16 @@
+{
+  "status": "compiled; runtime qualification pending",
+  "build": 94,
+  "coreUnchanged": true,
+  "profiles": {
+    "MW_C4": "EAGER_MEMORY: EAGER_ROOT + HEURISTIC_TT_MEMORY",
+    "MW_C5": "ROOT_MEMORY: ROOT_REUSE + HEURISTIC_TT_MEMORY"
+  },
+  "flags": 1182007295,
+  "validation": "12 focused Java tests and complete nine-cell runtime dependency probe; researchLauncherClasses compiled;6 supervisor tests passed. New UCI binding runtime next.",
+  "sourceHashes": {
+    "src/researchLauncher/java/com/ohinteractive/seedv6/integration/P4MultiworkerUciMain.java": "a1858c546f570cfb9fa68434dc3304057faf4bd492d0b877506bf5e360e65ac5",
+    "tools/p4-multiworker-match.py": "0f9481728662e54768b14ba82306ca0888c33dbbe73b1fa522c23c6ba76208ba",
+    "tools/p4-multiworker-uci-check.py": "3b8686f800dc03c2be5326cff7d805adfda4d449e51f863ffd08675e8928657a"
+  }
+}
