@@ -336,3 +336,25 @@ helpers;38/40 requests had both owner/helper directions. ROOT_REUSE recorded
 are actual guarded consumption facts under an intrusive observer, not marginal
 strength, saved-work or clean timing estimates. No live confirmation outcomes
 were inspected and no new Search work was charged for this decomposition.
+
+## C4 technical and operational evidence review before independent scoring
+
+This review uses completed source/test/runtime evidence only; it does not inspect
+live confirmation outcomes or change its protocol. C4's competition artifact is
+build94/core3ba1daad with the research binding9d380c30. New build95 independent
+iteration is a separate retained alternative, not a prerequisite or substitution.
+
+| Requirement | Obtained evidence | Practical limit |
+| --- | --- | --- |
+| Genuine rules, state and result provenance | C3 exact-control/latch/full-window fallback/zero-budget/real-threefold tests; retained exact/rule tests; independent competitive legality/history/PV audit. Only completed root results raise alpha; original scout fail-highs receive full retries; all helpers join before publication. | Selective H1/TC-P1 estimates are researched heuristic scores, not exact minimax proofs. |
+| Coherent score sharing and private state | Existing TT coherence/domain tests; integrated memory tests at W2/W4/W8/W16; actual TC-P1 tactical verifier reached with heuristic score access isolated. Eager/root/whole-root diagnostic matrix verifies admissions, legal PV, board restoration and drain. | Provenance monitor changes scheduling. Clean competition uses ordinary TTable stripe locks; lock wait time is not separately measured. |
+| Actual cooperation and useful allocation | Eager first-root overlap latch and worker admission distribution;25,021 guarded cross-worker score cutoffs in40 eager/shared diagnostic requests, including6048 helper-to-owner. Own-score withholding provides a reverse delivery ablation. | Availability/consumption and depth differences do not isolate marginal playing-strength benefit. Shared storage/replacement is retained in the own-score ablation. |
+| Cost and incomplete work | C3 opening/mixed aborted-worker admissions220770/602680 out of1.8M/4M, versus control204990/422080. Board overlap, helper-start delay, owner share, completed depth, process memory and CPU are retained in summaries/receipts. | These are admissions in incomplete worker results, not all useless work; TT/hints may remain useful. No saved-node or pure lock-contention estimate. |
+| Cancellation, request reuse and accounting | Global callback caps, verified-null reentry contract, failure/stop/reset/drain tests; clean C4/C5 UCI8-request qualification; independent native Job ownership/deadline/failure tests and completed screen audits. | Small W8/W16 tests establish technical behavior only. No competitive scaling claim on this6-core PC. |
+| Consumer identity, clocks and reversibility | Explicit research selectors/flags, CP64/Hash64 and PVS/ADAPTIVE16/BOUNDARY2 identities; normal TC-P1 selection regression; clean frozen runtime and manifest. Removing the research selector returns to the separately identified control. | W1 uses the same OWNER memory kernel and has supporting safety evidence, not demonstrated strength. Full GUI/mobile/platform integration and production artifact qualification require separate adoption authority. |
+
+The current-generation memory mechanism retains request-private histories and
+history-sensitive SearchKey semantics; no cross-worker learned-table copying,
+aged score retention, position-only score fallback or changed clock policy enters
+C4. Its heuristic estimates cannot be presented as exact controls. W4 timed strength
+is still pending the complete independent sample, regardless of this technical review.

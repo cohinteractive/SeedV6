@@ -1,57 +1,53 @@
 # MW-R001 resume state
 
-5 November 2026 (Pacific/Auckland). **ACTIVE. Temporary-resource handling and the
-original scheduling probe are qualified. Strength objective unmet; no competitive
-candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md),
-[budget.json](budget.json), then current Phase 4 masters before fresh work.
+5 November 2026 (Pacific/Auckland). **ACTIVE. MW-C4 is selected and its sole
+independent W4 confirmation is in progress. Strength objective not yet established.**
+Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md), [budget.json](budget.json),
+then current Phase 4 masters before fresh work.
 
 ## Immediate continuation checkpoint
 
-All four C4/C5 frozen screens completed and drained. C4 fixed45.8333%/24 games;
-timed64.0625%/64 games, paired-normal95%55.2792-72.8458%. C5 fixed58.3333%;
-timed53.90625%, normal46.2501-61.5624%. All games/audits/inputs/drains passed.
+The frozen c4-confirm-w4-v1 attempt was admitted under clean protocol commit
+76f327ac. Supervisor started2026-11-04T14:18:23.528552Z; independent batch deadline
+2026-11-04T17:48:23.123793Z, inside original18:18:03Z owner boundary. The admission
+receipt identifies child PID28528; use the actual receipt/resource-state and native
+Job ownership, not this historical PID alone, to determine current process state.
+The ledger records attemptsStarted=1. First-pair fsynced journal is authoritative
+if a crash precedes atomic ledger reconciliation. Never duplicate, resume, replay,
+change or extend this attempt. No interim score inspection or compilation/tests.
+
+Wait for the owned supervisor's completion. Only a complete160-pair audited sample,
+stable inputs and clean native Job drain permit the frozen analyzer:
+`build/research/venv/Scripts/python.exe -B tools/p4-multiworker-results.py --receipt docs/research/search/p4-multiworker/c4-confirm-w4-v1-execution.json --output docs/research/search/p4-multiworker/c4-confirm-w4-v1-analysis.json`.
+Do not overwrite an existing analysis. If interrupted, preserve and charge all
+partial evidence; the claim is spent and cannot pass or be replayed. Reconcile
+budget/drain before selecting any subsequent work. No new launch command belongs
+at this live checkpoint.
+
+All four C4/C5 frozen screens completed and drained before selection. C4 fixed
+45.8333%/24 games; timed64.0625%/64 games, paired-normal95%55.2792-72.8458%.
+C5 fixed58.3333%; timed53.90625%, normal46.2501-61.5624%. All audits passed.
 These are exploratory comparisons to exact TC-P1, not independent confirmation or
-a causal C4-versus-C5 comparison. C4 is selected for prospective confirmation
-planning:160 fresh pairs at10+0.1, measured9843.94s projected wall,12600s deadline
-allowance including >25% margin; latest launch14:47:03Z under unchanged18:18:03Z
-window. The c4-confirm-w4-v1 protocol is now frozen; not yet initiated. confirmation-feasibility-v2.json
-records limited power for small gains and all gate assumptions. Additional360-game
-played-position audit found zero overlaps with any protected reserve root.
+causal C4-versus-C5 comparisons. Confirmation uses160 fresh pairs at10+0.1;
+feasibility-v2 records9843.94s projected wall,12600s allowance and limited power
+for small gains. The360-game played-position audit found zero overlaps with any
+protected reserve root. All frozen runtime/model/platform/window hashes were
+explicitly reverified immediately before launch.
 
-The separate independent iterative core unit c59a9488 passed69 Java tests and compiled its
-research probe. Build94->95 verified token-only; default TC-P1 remains unchanged.
-Independent runtime/UCI/strength qualification remains pending; do not imply that
-C1 same-depth racing or these tests establish independent Lazy SMP strength. C4
-continues to use unchanged clean9d380c30/build94 frozen artifact, not this new core.
+The separate independent iterative core c59a9488 passed69 Java tests and compiled
+its research probe. Build94->95 was verified token-only; default TC-P1 is unchanged.
+C6 runtime/UCI/strength qualification remains pending. C4 uses unchanged clean
+9d380c30/build94 frozen artifact, not the new independent core. Confirmation tooling
+passed15 Python tests, including native partial-claim initiation/drain and no-launch
+no-claim handling. See independent-tests-v2-summary.json.
 
-Confirmation admission/analysis implementation passed15 Python tests, including
-native partial-claim initiation/drain and no-launch/no-claim handling. Final preflight/commit is complete when the next verified research commit lands;
-then launch the frozen c4-confirm-w4-v1 protocol exactly once. No reserve spent, pending admission or
-owned research engine/match remains. Java processes observed are pre-existing
-VS Code language servers, not owned research. Resource ledger:1,337,751,430 fixed
-nodes/102 games,1580.1959s fixed wall;258 timed games/8143.8631s. All complete; no
-failed/interrupted campaign games. Human actions required: None. Full Goal active. Masters advance toP4-R025/F043.
-
-Safe next command (only if no receipt/pending admission):
-`build/research/venv/Scripts/python.exe -B tools/p4-multiworker-match.py --protocol docs/research/search/p4-multiworker/c4-confirm-w4-v1-protocol.json`.
-After admission, use immutable receipt and resource-state; never duplicate/replay.
-Do not inspect interim scores or compile/test during confirmation. Analyze only
-a complete audited sample, using the protocol-frozen analyzer. If interrupted,
-preserve evidence and charge/consume the claim; no automatic resume is authorized.
-
-## Live independent confirmation
-
-The frozen c4-confirm-w4-v1 attempt is now admitted under clean protocol commit
-76f327ac. Supervisor started 2026-11-04T14:18:23.528552+00:00; independent batch deadline 2026-11-04T17:48:23.123793+00:00,
-inside original18:18:03Z owner boundary. Owned supervisor child PID28528; native
-Job owns all descendants and enforces UTC/monotonic deadline and resource/STOP
-guards. Read the execution receipt/resource-state for actual live status.
-The ledger records attemptsStarted=1; first-pair journal is authoritative
-if a crash precedes its atomic ledger update. Never duplicate, resume, replay or
-change this attempt. Do not inspect interim scores or run compilation/tests.
-Use the frozen analyzer only after all160 pairs pass and the native Job drains.
-All frozen runtime-manifest and original screen artifact/model/platform/window
-hashes were explicitly reverified unchanged immediately before launch.
+Pre-confirmation reconciled totals:1,337,751,430 fixed nodes/102 games,
+1580.1959s fixed wall;258 timed games/8143.8631s. All complete, none failed or
+interrupted. The live attempt reserves320 additional timed games; read budget.json
+and the final receipt for actual cumulative totals, never reuse these pre-run
+figures as current consumption. Existing Java language servers are not owned research.
+No blocking human action; full Goal ACTIVE. MastersP4-R025/F043. The record below
+preserves historical checkpoints, not competing current launch instructions.
 
 ## Current one-time overnight window
 
