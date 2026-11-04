@@ -14,6 +14,22 @@ import static org.junit.jupiter.api.Assertions.*;
 /** MW-R001 bounded correctness tests, not competitive or scaling evidence. */
 @Timeout(60)
 class P4MultiworkerTest {
+    @Test void boardKeyObservationCountsAdmissionsWithoutCallingOverlapWastedWork() {
+        var observed=new P4MultiworkerStudy.Admissions((board,ply)->0).observeBoardKeys();
+        var root=Board.startingPosition(); var child=root.clone(); child[Board.KEY]=123;
+        observed.initialize(root); assertTrue(observed.boardKeys.isEmpty());
+        observed.child(root,child,0,-1); observed.reenter(1); observed.child(root,child,0,0);
+        assertEquals(3,observed.nodes); assertEquals(1,observed.qnodes); assertEquals(1,observed.reentries);
+        assertEquals(java.util.Set.of(123L),observed.boardKeys);
+        var coverage=P4MultiworkerStudy.boardKeyCoverage(java.util.List.of(
+                java.util.Set.of(1L,2L),java.util.Set.of(2L,3L),java.util.Set.of(2L)));
+        assertEquals(3,coverage.get("uniqueBoardKeys"));
+        assertEquals(5L,coverage.get("sumWorkerUniqueBoardKeys"));
+        assertEquals(2L,coverage.get("crossWorkerExcessMemberships"));
+        assertEquals(1,((int[][])coverage.get("pairwiseSharedBoardKeys"))[0][1]);
+        observed.reset(); assertEquals(0,observed.nodes); assertTrue(observed.boardKeys.isEmpty());
+    }
+
     @Test void exactTcP1LimitsRestoreAndReuseAcrossWorkerDomains() throws Exception {
         var model = ConventionalNnueEngine.load();
         var board = Board.startingPosition(); var saved = board.clone();

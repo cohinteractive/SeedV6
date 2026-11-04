@@ -1,6 +1,6 @@
 {
   "status": "continue_research",
-  "receipt": "docs\\research\\search\\p4-multiworker\\c1-timed-pilot-w4-v1-execution.json",
+  "receipt": "docs\\research\\search\\p4-multiworker\\c1-timed-screen-w4-v1-execution.json",
   "ownedProcessesRemaining": 0,
   "temporaryResourceBlocker": false,
   "pendingHumanAction": null,

@@ -51,6 +51,36 @@ class MatchTest(unittest.TestCase):
         sample['demandingForeground']=True
         self.assertFalse(m.mw.resource_decision(sample,4,self.p['resources'],idle=True)['admissible'])
 
+    def test_reversed_pair_preserves_real_history_legality_and_exact_color_binding(self):
+        directory=self.out/'fixture';directory.mkdir()
+        (directory/'opening.pgn').write_text(str(m.b.chess.pgn.Game())+'\n')
+        games=[];trace=[]
+        moves=['g1f3','g8f6','f3g1','f6g8']*2
+        for white in ('candidate','baseline'):
+            game=m.b.chess.pgn.Game();game.headers.update(White=white,
+                Black='baseline' if white=='candidate' else 'candidate',Result='1/2-1/2',Termination='normal')
+            node=game;played=[]
+            for ply,move in enumerate(moves):
+                actor=game.headers['White' if ply%2==0 else 'Black']
+                prefix=f'[Engine] fixture {actor} '
+                trace.extend([prefix+'<--- position startpos'+(' moves '+' '.join(played) if played else ''),
+                              prefix+'<--- go nodes 100',
+                              prefix+'---> info depth 1 score cp 0 time 0 nodes 1 pv '+move,
+                              prefix+'---> info string request nodes=1 elapsedNanos=1 termination=COMPLETED',
+                              prefix+'---> bestmove '+move])
+                node=node.add_main_variation(m.b.chess.Move.from_uci(move))
+                node.comment='info string request nodes=1 elapsedNanos=1 termination=COMPLETED'
+                played.append(move)
+            games.append(str(game))
+        (directory/'games.pgn').write_text('\n\n'.join(games)+'\n')
+        (directory/'uci-trace.log').write_text('\n'.join(trace)+'\n')
+        result=m.audit_pair(directory,self.p,reverse=True)
+        self.assertEqual(result['nodes'],16);self.assertEqual(result['results']['wdl'],[0,2,0])
+        self.assertEqual(result['firstGameWhite'],'candidate')
+        with self.assertRaises(ValueError):m.audit_pair(directory,self.p,reverse=False)
+        (directory/'games.pgn').write_text(games[0]+'\n\n'+games[0]+'\n')
+        with self.assertRaises(ValueError):m.audit_pair(directory,self.p,reverse=True)
+
     def test_native_deadline_drains_and_conservatively_accounts_partial_pair(self):
         path=self.root/'protocol.json';path.write_text(json.dumps(self.p));m.mw.save(self.out/'budget.json',self.ledger)
         original=subprocess.Popen

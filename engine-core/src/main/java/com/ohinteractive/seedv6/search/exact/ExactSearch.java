@@ -507,6 +507,19 @@ public final class ExactSearch {
         if(iterationReuse != null) iterationReuse.copyCompletedFrom(source.iterationReuse);
     }
 
+    /** MW-R001 coordinator-only transfer after a resolved root winner and full drain.
+     * Each recipient keeps private arrays. Labels remain heuristic learning, never
+     * scores, proofs, board/history stacks or partially searched root results. */
+    void copyCompletedLearningFrom(ExactSearch source) {
+        if(active || source.active || !requestActive || !source.requestActive)
+            throw new IllegalStateException("Quiescent active requests required for learning transfer");
+        if(construction == null || !construction.equals(source.construction))
+            throw new IllegalArgumentException("Matching construction required for learning transfer");
+        if(!requestLearning()) return;
+        constructionState.copyLearningFrom(source.constructionState);
+        if(source != this) System.arraycopy(source.quietHistory,0,quietHistory,0,quietHistory.length);
+    }
+
     void prepareRootIteration(IterationReuse completed) {
         if(active || iterationReuse == null) throw new IllegalStateException("Invalid root reuse preparation");
         rootJobReuse=true; rootJobHistory=false;

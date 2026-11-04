@@ -1,0 +1,55 @@
+{
+  "status": "verified post-hoc descriptive analysis of existing frozen diagnostic",
+  "newExperimentalNodes": 0,
+  "runs": [
+    {
+      "id": "architecture-opening-w4-root_reuse-v1",
+      "requests": 18,
+      "passes": 181,
+      "nodes": 1800000,
+      "boundPasses": 45,
+      "boundPassNodes": 156167,
+      "incompletePasses": 18,
+      "incompletePassNodes": 701085,
+      "qnodes": 1479682,
+      "sourceSha256": "8960cd6bbc0b4abc7e0e3e7e0ee6316559cc61f85fda749f5170f81c3e65f9f4"
+    },
+    {
+      "id": "architecture-opening-w4-whole_root_race-v1",
+      "requests": 18,
+      "passes": 163,
+      "nodes": 1800000,
+      "boundPasses": 46,
+      "boundPassNodes": 244852,
+      "incompletePasses": 18,
+      "incompletePassNodes": 554934,
+      "qnodes": 1468099,
+      "sourceSha256": "1ec81fd971edeb38e5e198af75be34b14b1d2b824830b6671db7a509bb77b0b2"
+    },
+    {
+      "id": "architecture-mixed-w4-root_reuse-v1",
+      "requests": 40,
+      "passes": 482,
+      "nodes": 4000000,
+      "boundPasses": 162,
+      "boundPassNodes": 671501,
+      "incompletePasses": 40,
+      "incompletePassNodes": 1333724,
+      "qnodes": 3170965,
+      "sourceSha256": "aed1bf9da74b37f41ec7d1c4240b7c862790dc953c6bc3b299f07f3491fbe6fd"
+    },
+    {
+      "id": "architecture-mixed-w4-whole_root_race-v1",
+      "requests": 40,
+      "passes": 420,
+      "nodes": 4000000,
+      "boundPasses": 146,
+      "boundPassNodes": 704418,
+      "incompletePasses": 40,
+      "incompletePassNodes": 1023724,
+      "qnodes": 3168263,
+      "sourceSha256": "b66589f0f688d708042757962078e02a86133973d3d795a3ce91a5298c2e6c2e"
+    }
+  ],
+  "interpretation": "Bound-pass counts and node shares measure aspiration recovery exposure, not its causal strength cost. Remaining completed-pass work includes losing helpers and cannot be inferred useful or unique from this trace. No historical outcome changed."
+}

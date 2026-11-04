@@ -1,6 +1,6 @@
 # MW-R001 resume state
 
-4 November 2026 (Pacific/Auckland). **ACTIVE. Temporary-resource handling and the
+5 November 2026 (Pacific/Auckland). **ACTIVE. Temporary-resource handling and the
 original scheduling probe are qualified. Strength objective unmet; no competitive
 candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md),
 [budget.json](budget.json), then current Phase 4 masters before fresh work.
@@ -41,14 +41,36 @@ passed with no scoreless warnings. A short-lived owned conhost explained the ini
 remaining-process count; natural exit within0.051s and final Job zero were verified.
 See competitive-qualification-v1-summary.json and immutable execution receipts.
 
-Next frozen screens: c1-fixed-screen-w4-v1 (12 pairs,100k nodes,900s hard limit),
-then c1-timed-screen-w4-v1 (32 pairs,10+0.1,3600s hard limit). Both have full prospective
-protocols, development opening indices1..N, no interim score-driven stop/extension,
-explicit draw cap, complete accounting and strict/qualified-warning audits. Run each
-with tools/p4-multiworker-match.py --protocol <focused protocol path> when no pending
-admission exists. Do not rerun used IDs. Inspect receipt/progress and budget after
-completion, update findings and continue the next justified architecture/ablation.
-Do not stop at these screens or this commit. The full Goal remains active.
+The12-pair fixed-node screen completed24 games: C1 2W/9D/13L,27.0833%,
+259,542,457 admissions,279.8397s wall. The32-pair timed screen completed64 games:
+15W/17D/32L,36.71875%, paired-normal95%26.8833-46.5542%, bounded12.7107-60.7268%.
+All independent audits passed, inputs stable, native Job zero. C1 does not advance
+to confirmation; no sample expansion is selected. Pilots are separate. See both
+*-screen-w4-v1-analysis.json records and immutable execution/protocol/raw evidence.
+The timed screen charged1962.4193s; mean total CPU33.47%, max73.52%, minimum free
+memory19.68GiB. No thermal or input-latency qualification is inferred.
+
+Cumulative ledger:318,088,766 fixed nodes,372.5859s fixed wall,26 fixed games;
+66 timed games/2042.5878s timed wall. All games complete, no failed/interrupted games,
+no pending admission/owned match processes. Independent960 games/24h reserve intact.
+
+MW-C2 WHOLE_ROOT_SHARING now adds quiescent completed-winner ordering plus private
+learning copies;33 focused Java tests passed, including actual effort consumption,
+exact controls, accounting and lifecycle W2-W16. Optional board-key coverage and
+research UCI selector compile. Five supervisor tests passed, including reverse-color
+raw pairing/audit and native timeout/drain. Shared-core impact requires build92->93;
+token-only bytes verified. Normal production remains TC-P1/ROOT_REUSE. No runtime
+or competitive C2 qualification yet. See c2-tests-v1-summary.json.
+
+Exact next step: commit this verified unit, export a fresh clean-source build93
+research runtime and manifest, then freeze bounded C1/C2/ROOT_REUSE diagnostics on
+existing development roots (including optional board-key overlap). Qualify C2 UCI
+identity/PV/stop/accounting and alternating-first-color paired pilot before a new
+competitive screen. Do not replay used run IDs or modify frozen evidence. Choose
+further work from those results, including finite-window eager root scheduling or
+request-level independent iteration when justified. The original deadline remains
+18:18:03Z; continue while useful authorized research remains. No owner action blocks
+this work, and no intermediate commit/screen completes the full active Goal.
 
 ## Previous continuation checkpoint and next work unit
 
@@ -227,3 +249,12 @@ Fresh-session sequence:
 No current blocking human action. Timed work must fit the current window; later
 windows require new owner authority. Mirrors require refresh only before mirror-dependent planning.
 MW-R001 has not ended, and technical qualification is not strength success.
+
+Current timed protocol limitation: fresh JVMs for each pair, baseline White first,
+restart=off inside the pair, no Search warmup before game1. Cold-start effects are
+part of this frozen exploratory domain. Do not change it mid-run or exclude game1.
+Before later competitive protocols, qualify alternating first-game colors (Fastchess
+-reverse is available) with explicit raw PGN color/order checks and the existing
+prefix/color binding auditor. Record cold versus second-game descriptive results;
+no claim that these are warmed persistent-production conditions. This is a future
+qualification task, not a failure of the current declared paired protocol.

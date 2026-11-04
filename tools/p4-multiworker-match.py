@@ -104,9 +104,16 @@ def audit_requests(path, p):
     return totals
 
 
-def audit_pair(directory, p):
+def audit_pair(directory, p, reverse=False):
     warnings = trace.audit(directory/'uci-trace.log')
-    result = b.analyze(directory/'games.pgn', directory/'opening.pgn', 1, require_accounting=True)
+    with (directory/'games.pgn').open(encoding='utf-8') as stream:
+        headers=[b.chess.pgn.read_headers(stream),b.chess.pgn.read_headers(stream)]
+    expected=['candidate','baseline'] if reverse else ['baseline','candidate']
+    if [h.get('White') if h else None for h in headers]!=expected:
+        raise ValueError('Unexpected frozen first-game color/order')
+    # Bind both raw games by exact opening/color after independently checking order.
+    result = b.analyze(directory/'games.pgn', directory/'opening.pgn', 1,
+                       require_accounting=True, unordered=reverse)
     requests = audit_requests(directory/'uci-trace.log', p)
     for side in requests:
         for k in ('nodes','requests'):
@@ -118,7 +125,7 @@ def audit_pair(directory, p):
         if not ('adjudication' in termination and game['headers']['Result']=='1/2-1/2'
                 and game['plies'] >= 2*p['maxMoves']-1):
             raise ValueError('Unqualified game termination '+str(game))
-    return dict(results=result, traceAudit=warnings, requests=requests,
+    return dict(results=result, firstGameWhite=expected[0], traceAudit=warnings, requests=requests,
                 nodes=sum(x['nodes'] for x in requests.values()))
 
 
@@ -141,6 +148,7 @@ def worker(protocol, directory):
             finally: engine.close()
         emit(progress, dict(type='identity', identities=identities))
         for pair, opening in enumerate(p['openingIndices']):
+            reverse=p.get('firstColorPolicy','baseline-first')=='alternate' and pair%2==1
             sub = directory/f'pair-{pair:03d}'; sub.mkdir()
             (sub/'opening.pgn').write_text(str(games[opening])+'\n', encoding='utf-8')
             cmd = [str(ROOT/'build/research/tools/fastchess.exe')]
@@ -157,6 +165,7 @@ def worker(protocol, directory):
                     '-log','file='+str(sub/'uci-trace.log'),'level=trace','append=false',
                     'compress=false','realtime=false','engine=true']
             if p['warningPolicy']=='strict': cmd.append('-strict')
+            if reverse: cmd.append('-reverse')
             # Conservatively initiate both paired games BEFORE runner creation. A failed
             # pair keeps both charges; no hidden/replayed partial game or duplicate score.
             emit(progress, dict(type='pair-start', pair=pair, openingIndex=opening,
@@ -166,7 +175,7 @@ def worker(protocol, directory):
                     stderr=subprocess.STDOUT, creationflags=0x4000 | subprocess.CREATE_NO_WINDOW)
                 code = process.wait()  # Parent Job enforces independent deadline/resource stop.
             if code != 0: raise RuntimeError('Fastchess exit '+str(code))
-            result = audit_pair(sub, p)
+            result = audit_pair(sub, p, reverse)
             mw.save(sub/'verified.json', result)
             emit(progress, dict(type='pair-complete', pair=pair, **result))
         emit(progress, dict(type='summary', status='passed', pairs=len(p['openingIndices'])))
@@ -174,6 +183,8 @@ def worker(protocol, directory):
 
 def admission(p, ledger, now):
     if p['kind'] not in ('fixed','timed') or p['workers'] not in (1,2,4): raise ValueError('Match domain')
+    if p.get('firstColorPolicy','baseline-first') not in ('baseline-first','alternate'):
+        raise ValueError('First-game color policy')
     if p['kind']=='fixed' and (type(p['nodesPerMove']) is not int or not 1 <= p['nodesPerMove'] <= 1_000_000):
         raise ValueError('Fixed-work admission limit')
     if p['category'] != 'exploration': raise ValueError('Independent confirmation needs its own prospective admission')

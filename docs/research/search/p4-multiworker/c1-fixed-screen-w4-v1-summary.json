@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "candidate": "MW-C1/build92 WHOLE_ROOT_RACE",
+  "control": "exact TC-P1/build92 ROOT_REUSE",
+  "domain": "W4 CP64 Hash64 100000 admitted nodes per move; opening indices1..12; max300 full moves; one game at a time",
+  "protocol": "c1-fixed-screen-w4-v1-protocol.json",
+  "execution": "c1-fixed-screen-w4-v1-execution.json",
+  "games": 24,
+  "wdl": [
+    2,
+    9,
+    13
+  ],
+  "statistics": {
+    "pairs": 12,
+    "pentanomial": [
+      3,
+      5,
+      4,
+      0,
+      0
+    ],
+    "score": 0.2708333333333333,
+    "logisticElo": -172.04987681737555,
+    "pairedHoeffding95Score": [
+      0,
+      0.662883471183176
+    ],
+    "pairedHoeffding95Elo": [
+      "-infinity",
+      117.46285745850147
+    ],
+    "pairScoreStandardError": 0.057227064127795935,
+    "pairedNormal95Score": null,
+    "pairedNormal95Elo": null,
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 1328,
+      "nodes": 129929284,
+      "elapsedNanos": 158011022776
+    },
+    "candidate": {
+      "requests": 1321,
+      "nodes": 129613173,
+      "elapsedNanos": 87337290799
+    }
+  },
+  "chargedNodes": 259542457,
+  "fixedWallSeconds": 279.8397166999639,
+  "peakOwnedCommittedGiB": 0.773834228515625,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 958.109375,
+    "totalOwnedProcesses": 53
+  },
+  "interpretation": "Adverse 27.08% small exploratory fixed-work result, consistent with prior depth deficit. No timed-strength conclusion, no confirmation or champion inference. No normal interval reported below30 pairs under the declared analyzer. All pairs retained; pilots excluded. Timed screen remains the separately frozen next comparison.",
+  "rawDirectory": "raw/c1-fixed-screen-w4-v1",
+  "executionSha256": "7e4d31bce6d26a3eb91be9cd4f7a3da5418da1bc59c58c1abc5ec4fed5de9883"
+}

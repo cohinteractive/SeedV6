@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "tests": 33,
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c2-tests-v1\\research-TEST-com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest.xml",
+      "sha256": "744e932dd6e565a9809ad869980f6095fe84aec5ffbd19dfccc23d363de31e4d"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4WholeRootTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c2-tests-v1\\research-TEST-com.ohinteractive.seedv6.search.exact.P4WholeRootTest.xml",
+      "sha256": "54d2f8ba1783de7df01a3895c233b3bea937014bc3c22294fb1617766ac937c7"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4WholeRootSharingTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c2-tests-v1\\research-TEST-com.ohinteractive.seedv6.search.exact.P4WholeRootSharingTest.xml",
+      "sha256": "ea7c1ef37a5853cfbd2c2dbe7db6465472c8390147b67f5955d8374b76bab00e"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4MultiworkerTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c2-tests-v1\\research-TEST-com.ohinteractive.seedv6.search.exact.P4MultiworkerTest.xml",
+      "sha256": "9a38394604cf8361cbf401c34522d9f4a90ed9cc05a5b5c807a2380ff97b7ef5"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c2-tests-v1\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineEngineTest.xml",
+      "sha256": "089db8ca52dcba3feb8f422eda177de3a35665ea0cd3bf0a37ae8b2c213ff027"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c2-tests-v1\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineProfileTest.xml",
+      "sha256": "543eafeddd432d816deff401fdf2600cd7cf937803fb942c5f5c9ecf6c18282f"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.EngineFormulationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c2-tests-v1\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.EngineFormulationTest.xml",
+      "sha256": "d0b232965c6bb8c594f7f039dbcd7ef50bb6f1408f9f625804109585ca738478"
+    }
+  ],
+  "sourceBase": "bfd11801",
+  "buildAtTests": 92,
+  "scope": "C1/C2 independent exact bounds and terminal rules, private copied learning and actual effort consumer witness, callback accounting and stop/failure/drain/reuse W2/W4/W8/W16, normal production W1-W16 and identities; optional board-key observation accounting. researchLauncherClasses compiled. Runtime artifact and competitive C2 qualification pending.",
+  "tools": "Five supervisor tests passed including reversed raw game order with independent chess/PV/accounting audit, duplicate/color rejection and native partial-pair timeout/drain. Raw match-supervision-tests-v3.log. No synthetic test games/nodes charged to experiments.",
+  "sourceHashes": {
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearch.java": "c3b2b994847058254d59acf7175dbad8d294b49cefba5c058deb0c24adfa01e1",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ParallelSearch.java": "9ae805b75f7ae128e2bad2e60bbf0fefcf44dbaad2b05df047e45511538f5542",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\FlatSearchState.java": "a4cad72d8d99480e322b7036a5c8388d191a6007d049317c76d8de88124f9c67",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4MultiworkerStudy.java": "d5a04e3d13d0dda3b23f09c721704610acbfed9fbc4334a176cbea34773f9caf",
+    "src\\researchLauncher\\java\\com\\ohinteractive\\seedv6\\integration\\P4MultiworkerUciMain.java": "471a274f1b78868779d022bbaad069ccfc704d48021be79fe67597387432c049"
+  }
+}

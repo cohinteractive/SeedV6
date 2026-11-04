@@ -202,6 +202,26 @@ public final class ParallelSearch implements SingleDepthSearch {
                 evaluators, Objects.requireNonNull(config, "config"));
     }
 
+    /** MW-C2: the same drained whole-root race with completed winner ordering and
+     * request learning copied into private peers after a resolved iteration. No
+     * transfer from bounds, incomplete results or evaluation-correction state. */
+    public static ParallelSearch constructionWholeRootSharingResearch(int threads, SearchEvaluation evaluation,
+            TTable table, FlatSearchConfig config) {
+        return constructionWholeRootSharingResearch(threads,evaluation,table,config,null);
+    }
+
+    static ParallelSearch constructionWholeRootSharingResearch(int threads, SearchEvaluation evaluation,
+            TTable table, FlatSearchConfig config, java.util.function.IntFunction<ExactEvaluator> evaluators) {
+        Objects.requireNonNull(config,"config");
+        if(threads < 2 || config.has(FlatSearchConfig.Feature.EVAL_CORRECTION))
+            throw new IllegalArgumentException("Sharing race requires multiple workers and no correction history");
+        return new ParallelSearch(threads,evaluation,table,ConcurrencyPolicy.COOPERATIVE,evaluators,config);
+    }
+
+    private long completedLearningTransfers;
+    /** Delivered private snapshots, not evidence of subsequent use or strength. */
+    public long completedLearningTransfers() { ensureIdle(); return completedLearningTransfers; }
+
     private ParallelSearch(int threads,SearchEvaluation definition,TTable table,ConcurrencyPolicy policy,
             java.util.function.IntFunction<ExactEvaluator> evaluatorFactory,FlatSearchConfig construction) {
         this.construction=construction;
@@ -393,7 +413,8 @@ public final class ParallelSearch implements SingleDepthSearch {
         if(alpha < -ExactSearch.INFINITY || beta > ExactSearch.INFINITY || alpha>=beta)
             throw new IllegalArgumentException("Invalid root window");
         if((alpha!=-ExactSearch.INFINITY || beta!=ExactSearch.INFINITY) && policy!=ConcurrencyPolicy.ROOT_REUSE
-                && !(construction!=null && (policy==ConcurrencyPolicy.ROOT_SPLIT || policy==ConcurrencyPolicy.PRIVATE)))
+                && !(construction!=null && (policy==ConcurrencyPolicy.ROOT_SPLIT || policy==ConcurrencyPolicy.PRIVATE
+                    || policy==ConcurrencyPolicy.COOPERATIVE)))
             throw new IllegalStateException("Narrow parallel research requires a qualified construction or ROOT_REUSE");
         if(next.depth() > maxSupportedDepth()) throw new IllegalArgumentException("Unsupported depth.");
         boolean standalone = !requestActive;
@@ -405,6 +426,7 @@ public final class ParallelSearch implements SingleDepthSearch {
         abort.set(false);
         winner.set(null);
         failure.set(null);
+        completedLearningTransfers=0;
         for(var worker : workers) {
             worker.nodes = worker.evaluations = worker.qnodes = worker.abortedNodes = 0;
             worker.maximumPly = worker.maximumQply = 0;
@@ -490,11 +512,17 @@ public final class ParallelSearch implements SingleDepthSearch {
                 long[] line=completed.principalVariation();
                 rootOrdering.complete(next.depth(),line,line.length);
             }
-            if(completed != null && policy.transfer()) {
+            if(completed != null && policy.transfer() && (construction==null || resolved)) {
                 Worker source = null;
                 for(var worker : workers) if(worker.completed == completed) source = worker;
                 if(source == null) throw new IllegalStateException("No completed winner owner");
-                for(var worker : workers) worker.search.copyCompletedOrderingFrom(source.search);
+                for(var worker : workers) {
+                    worker.search.copyCompletedOrderingFrom(source.search);
+                    if(construction!=null && worker!=source) {
+                        worker.search.copyCompletedLearningFrom(source.search);
+                        if(construction.has(FlatSearchConfig.Feature.REQUEST_LEARNING)) completedLearningTransfers++;
+                    }
+                }
             }
             var result = completed == null
                     ? new SearchResult(0, false, Value.INVALID, next.depth(), nodes, count, false,

@@ -157,3 +157,30 @@ all normal chess outcomes, independent PV/history/rules and request-count audits
 no warnings, and final owned-process zero. Natural console-host exit qualification
 is described separately in competitive-qualification-v1-summary.json. These pilots
 will not be pooled into the frozen12-pair fixed and32-pair timed exploratory screens.
+
+## MW-C1 W4 competitive exploration and next supporting test
+
+The frozen12-pair100k-node screen completed2W/9D/13L (27.0833%);32-pair10+0.1
+screen completed15W/17D/32L (36.71875%, paired-normal95%26.8833-46.5542%, bounded
+12.7107-60.7268%). All88 screen games completed normally with independent history,
+legal PV, rule/result, telemetry and trace audits. Both native Jobs drained to zero.
+See c1-fixed-screen-w4-v1-analysis.json and c1-timed-screen-w4-v1-analysis.json;
+pilots are excluded. These are adverse exploratory results, not independent claims
+or proof that every whole-root/Lazy SMP formulation fails. Unchanged C1 will not
+advance to confirmation. No historical studies or confirmation attempt were reopened.
+
+The declared timed domain starts fresh JVMs per pair and baseline White in game1.
+First/second-game and color strata are descriptive and confounded, not a causal
+warmup claim. Later first-color alternation is now audited in five supervisor tests;
+actual engine pilot qualification remains next. No changes/exclusions to C1's frozen
+sample. Total cumulative consumption is in budget.json (66 timed/26 fixed games,
+2042.5878s timed wall,318,088,766 fixed nodes); all protected confirmation resources
+remain untouched. Full strength objective remains unmet.
+
+MW-C2/build93 targets source-observed loss of private learning when C1 cancels peers.
+It copies only resolved completed winner ordering/learning after drain into distinct
+private arrays.33 Java tests passed with legal exact controls, bound-only exclusion,
+reset/reuse, callbacks, W2-W16 lifecycle and a direct history-effort consumer witness.
+No correction/proof/path state transfer, changed clock policy or normal production
+routing. Runtime artifact/diagnostic/competitive qualification is still outstanding;
+this is a supporting-condition experiment, not independent iterative Lazy SMP.

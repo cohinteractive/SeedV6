@@ -37,6 +37,17 @@ final class FlatSearchState {
     void reset() {
         reset(false);
     }
+    /** Quiescent MW-R001 transfer of learned heuristics only. The caller owns a
+     * completed resolved root result; path/proof/event scratch is never copied. */
+    void copyLearningFrom(FlatSearchState source) {
+        if(!config.equals(source.config) || correction != null || source.correction != null)
+            throw new IllegalArgumentException("Incompatible completed learning transfer");
+        if(source == this) return;
+        if(captures != null) System.arraycopy(source.captures,0,captures,0,captures.length);
+        if(continuation != null) System.arraycopy(source.continuation,0,continuation,0,continuation.length);
+        if(killers != null) System.arraycopy(source.killers,0,killers,0,killers.length);
+        if(counters != null) System.arraycopy(source.counters,0,counters,0,counters.length);
+    }
     /** Retain only learned tables; path, evaluation, extension and event scratch
      * always belongs to the next invocation. Called only by the idle private owner. */
     void reset(boolean retainLearning) {
