@@ -1,6 +1,6 @@
 # MW-C4 W4 rolling production adoption - 5 November 2026
 
-Revision 1. Owner-authorized production integration, separate from the accepted
+Revision 1, final qualification complete. Owner-authorized production integration, separate from the accepted
 MW-R001 research closeout and the TT-R001 accepted inconclusive closeout.
 Starting state: clean main `09d415c1`, build95, P4-R027/P4-F045. TT-R001 closeout
 is separately committed at `e2192625` (P4-R028/P4-F046). No root journal exists.
@@ -91,13 +91,86 @@ Compilation uses Java21; native packaging uses Temurin21.0.12.1+1 Windows x64.
 
 Raw logs, JUnit XML, summaries, historical hash checks and version baseline are at
 `raw/production-adoption-v1/`, ignored/local-only. Frozen evidence is untouched.
-The following source commit carries the sole build95->96 token change. Clean
-committed build96 packaging and further packaged consumer checks are pending at
-this commit boundary; their exact identities/results will be recorded here and
-in the compact qualification manifest after execution. Source qualification does
-not claim those later results in advance.
+The source commit **44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0** carries the sole
+build95->96 change. (The full authoritative commit is also in the manifest.) Clean
+committed build96 qualification below supersedes the pending artifact boundary
+recorded in that source commit. No second build increment follows this evidence.
+
+## Committed build96 artifacts and executed consumers
+
+[Compact qualification manifest](production-build96-qualification.json) pins full
+source, configuration, runtime, artifact/evidence hashes and the changed-file list.
+`packageWindows :app-uci:installDist :installResearchWorkspace
+-PcandidateId=mw-c4-build96-v1` passed from the clean source in1m28s. Native images,
+ZIP integrity and independently extracted copies passed established gates. The
+GUI/UCI JAR entries match the qualified precommit packages except application
+version/source metadata and the desktop build timestamp; all executable class
+bytes match. An initial overstrict comparison rejected the expected desktop
+build timestamp; inspection confirmed that sole additional metadata difference.
+
+| Artifact | Repository-relative path |
+| --- | --- |
+| Native GUI | `dist/windows/candidates/mw-c4-build96-v1/SeedV6-GUI/SeedV6-GUI.exe` |
+| GUI ZIP | `dist/windows/candidates/mw-c4-build96-v1/SeedV6-GUI-windows-x64.zip` |
+| Native UCI | `releases/candidates/windows-x64/mw-c4-build96-v1/SeedV6-UCI/SeedV6-UCI.exe` |
+| UCI ZIP | `releases/candidates/windows-x64/mw-c4-build96-v1/SeedV6-UCI-windows-x64.zip` |
+| Java UCI | `app-uci/build/install/seedv6-uci/bin/seedv6-uci.bat` |
+
+- **Native UCI:**184 search responses,46 per profile (normal MW_C4_W4, exact TC_P1,
+  HL_G1, LEGACY), two sessions/profile. All W1-W16, Hash1/64, worker/hash/clock
+  reconstruction, BOUNDARY2/FACTUAL, node caps, movetime, stop, Clear Hash,
+  repetition/mate/stalemate, legal PVs, stale-result suppression, reuse, active quit
+  and EOF passed. Terminal/history cases explicitly ran at W4 after leaving and
+  re-entering it. Invalid selector exited nonzero before uciok.
+- **Packaged GUI Play:**264 requests,66 per profile, on the actual GUI JARs and
+  bundled Java21 runtime, headless EDT/services. Worker sequence1,4,8,16,4,1,
+  depth/movetime/stop, twofold/threefold, mate/stalemate, ordinary score domains,
+  legal PVs, board restoration, reset/reuse and shutdown drain passed.
+- **Packaged built-in Arena:**four four-ply depth4 games, one bounded color pair
+  each for normal W4 MW-C4 and explicit W4 TC_P1. Actual telemetry identifies the
+  expected flags/scheduling/resources; completion, persisted resume and close
+  passed in new local fixture stores. This is technical execution, not a tournament
+  or competitive evidence. Source Arena checks also covered other evaluator routes.
+- **Generated Java UCI launcher:**12 depth3 requests across default, explicit
+  MW_C4_W4 and TC_P1 via SEEDV6_UCI_OPTS; W4->W1->W4->W16 reconstruction, legal
+  moves, build96/source identity and active-search quit passed.
+- **About identity:**actual packaged idle/active components were rendered offscreen
+  and visually inspected. Version96/source44fc2bf2fe54, worker-dependent production
+  defaults, active MW-C4, flags and EAGER_ROOT are visible. This is not interactive
+  desktop acceptance. W4 CP64/Hash64/BOUNDARY2/vector-256 configuration fingerprint
+  is `cfg-965d2f2609b383f7`; the full reproducible text is retained in the manifest's
+  referenced active.txt and UCI identities.
+- **Confirmed mechanism bridge:**all11 ExactSearch/ParallelSearch/FlatSearchConfig/
+  TTable class entries match the frozen build94 core byte-for-byte. Shared core
+  JAR SHA is identical in native GUI, native UCI, Java UCI and research workspace.
+  The C6 source remains separate and unselected; no C6 runtime/strength claim follows.
+
+No failing validation remains. Source JUnit results were not represented as a new
+219-test rerun after the metadata-only commit. No full unrelated training suite,
+macOS/mobile execution, interactive Windows play or external persistent-client
+acceptance was performed. Bounded persistent service correctness is not warmed
+persistent-client competitive qualification. Longer clocks, worker-count strength
+transfer and historical BOUNDARY2 clock studies remain unqualified/unopened.
+
+## Final authority and handback
+
+Production source integration and bounded Windows qualification are complete.
+Final masters **P4-R029/P4-F047** reflect W4 adoption and TT-R001's separately
+accepted inconclusive closeout. MW-R001 remains accepted and closed; no new
+research objective is created. The raw evidence paths above must be checked for
+availability in a fresh checkout. The version-byte SHA-256 is
+`a63ad996f079321df2f279f1447bfdda5da71c89e80c9fbd59be84a94ab4b942`.
 
 No installation, running-bot replacement, push, release or deployment is authorized
 or performed. macOS, interactive desktop acceptance and external live clients are
 not established by headless checks. Project Source mirrors remain owner-maintained;
-the coordinated final canon update and its revision pair follow artifact qualification.
+the final pair requiring refresh is P4-R029/P4-F047.
+
+Human actions required after this prompt:
+
+- Blocking for completed repository adoption and TT-R001 closeout: **None**.
+- Owner refresh of Phase4 Project Sources to **P4-R029/P4-F047**: non-blocking for
+  this completed work, blocking only before mirror-dependent planning.
+- Deployment, if desired: separate owner authorization and installed-client/
+  platform qualification; non-blocking for source integration. No installed or
+  running bot was changed. There is no autonomous follow-on research command.

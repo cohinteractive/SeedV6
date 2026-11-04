@@ -1,0 +1,298 @@
+{
+  "status": "PASS - bounded Windows production integration",
+  "date": "2026-11-05 Pacific/Auckland",
+  "sourceRevision": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "build": 96,
+  "versionSha256": "a63ad996f079321df2f279f1447bfdda5da71c89e80c9fbd59be84a94ab4b942",
+  "startingSource": "09d415c1",
+  "ttCloseoutCommit": "e2192625",
+  "masterRevisions": [
+    "P4-R029",
+    "P4-F047"
+  ],
+  "profile": "MW_C4_W4",
+  "routing": {
+    "W4": {
+      "formulation": "MW-C4 EAGER_MEMORY",
+      "flags": 1182007295,
+      "parallel": "EAGER_ROOT"
+    },
+    "W1-W3,W5-W16": {
+      "formulation": "TC-P1",
+      "flags": 1177812991,
+      "parallel": "OWNER at W1; ROOT_REUSE otherwise"
+    }
+  },
+  "rollback": "-Dseedv6.searchProfile=TC_P1; exact TC-P1 including W4",
+  "coreJarSha256": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+  "artifacts": {
+    "GUI": {
+      "files": {
+        "dist\\windows\\candidates\\mw-c4-build96-v1\\SeedV6-GUI\\SeedV6-GUI.exe": "f013ab1497e58145b1e245be93554bc3c03edc2191b4b6e1227eb2b2e3f39375",
+        "dist\\windows\\candidates\\mw-c4-build96-v1\\SeedV6-GUI\\app\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+        "dist\\windows\\candidates\\mw-c4-build96-v1\\SeedV6-GUI-windows-x64.zip": "62652ce1e6315d6c44d33f80f69ce30e1caf0ed4493b5d130c01654bc75c0ab2",
+        "dist\\windows\\candidates\\mw-c4-build96-v1\\SeedV6-GUI\\build-manifest.json": "add416f417f8ae91339ef95de795f78abfbfb753b1563da4cccdf7c1de373e08",
+        "dist\\windows\\candidates\\mw-c4-build96-v1\\candidate.json": "ec20cabdeac4092af2c6821b88723f2c0d0cc2b73eecbe4e3522ae6c3e770eb4"
+      },
+      "jdk": "\"21.0.12.1+1-LTS\"",
+      "compilerJdk": "\"21+35-2513\"",
+      "verification": "headless-resources-jni-passed"
+    },
+    "UCI": {
+      "files": {
+        "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\SeedV6-UCI.exe": "bdbc9928255cf6a96ae6f3604007089121b4573198d11b628d51d62d572702af",
+        "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\app\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+        "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI-windows-x64.zip": "01daacdb0776270f06bce0f34979cd17f2f3a4f8be1d4bcebb40526d6f0a51b1",
+        "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\build-manifest.json": "8699a1fa601a063eabb05e69da00c12860c01e630524d058b69bea2bd82e0857",
+        "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\candidate.json": "15c616288e8392b027af1cf2aa482722a7d153a028ad0be279a196d3018ac1db"
+      },
+      "jdk": "\"21.0.12.1+1-LTS\"",
+      "compilerJdk": "\"21+35-2513\"",
+      "verification": "passed"
+    }
+  },
+  "precommitToCommittedEntryChanges": {
+    "GUI": {
+      "app-gui.jar": [],
+      "desktop-package.jar": [
+        "com/ohinteractive/seedv6/desktop-build.properties"
+      ],
+      "engine-core.jar": [
+        "com/ohinteractive/seedv6/application-version.properties"
+      ],
+      "engine-training.jar": [],
+      "error_prone_annotations-2.27.0.jar": [],
+      "flatlaf-3.7.jar": [],
+      "gson-2.11.0.jar": [],
+      "jna-5.17.0.jar": [],
+      "jna-platform-5.17.0.jar": [],
+      "sqlite-jdbc-3.53.4.0.jar": [],
+      "zstd-jni-1.5.7-20.jar": []
+    },
+    "UCI": {
+      "app-uci.jar": [],
+      "engine-core.jar": [
+        "com/ohinteractive/seedv6/application-version.properties"
+      ]
+    }
+  },
+  "junit": {
+    "productionIntegration": {
+      "engine-core": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "app-uci": {
+        "tests": 27,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "app-gui": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "engine-training": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "research": {
+        "tests": 20,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "controlsAndLifecycle": {
+      "engine-core": {
+        "tests": 43,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "research": {
+        "tests": 74,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "app": {
+        "tests": 27,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "total": 219,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "packagingPythonTests": {
+    "passed": 38,
+    "initialFailure": "Verifier import after constant rename; corrected; failed log retained."
+  },
+  "nativeUci": {
+    "MW_C4_W4": {
+      "sessions": 2,
+      "searchResponses": 46,
+      "w4Hash64Identity": "baseline=construction-v1-cp64 searchProfile=MW_C4_W4 search=construction-v1 flags=1182007295 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=EAGER_ROOT evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=96 source=44fc2bf2fe54 ttMiB=64"
+    },
+    "TC_P1": {
+      "sessions": 2,
+      "searchResponses": 46,
+      "w4Hash64Identity": "baseline=construction-v1-cp64 searchProfile=TC_P1 search=construction-v1 flags=1177812991 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=96 source=44fc2bf2fe54 ttMiB=64"
+    },
+    "HL_G1": {
+      "sessions": 2,
+      "searchResponses": 46,
+      "w4Hash64Identity": "baseline=construction-v1-cp64 searchProfile=HL_G1 search=construction-v1 flags=104071167 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,REQUEST_LEARNING,HISTORY_EFFORT];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=96 source=44fc2bf2fe54 ttMiB=64"
+    },
+    "LEGACY": {
+      "sessions": 2,
+      "searchResponses": 46,
+      "w4Hash64Identity": "baseline=construction-v1-cp64 searchProfile=LEGACY search=construction-v1 flags=3407871 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=ROOT_REUSE evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 clockPolicy=boundary2-d6-v1 score=side-to-move-cp build=96 source=44fc2bf2fe54 ttMiB=64"
+    }
+  },
+  "packagedGui": {
+    "profiles": [
+      "MW_C4_W4",
+      "TC_P1",
+      "HL_G1",
+      "LEGACY"
+    ],
+    "requestsPerProfile": 66,
+    "workerSequence": [
+      1,
+      4,
+      8,
+      16,
+      4,
+      1
+    ],
+    "mode": "headless packaged Play EDT/services; depth/movetime/stop/history/mate/legal PV/restoration/reset/reuse/drain/shutdown"
+  },
+  "packagedArena": {
+    "games": 4,
+    "workers": 4,
+    "depth": 4,
+    "plyCap": 4,
+    "profiles": [
+      "MW_C4_W4",
+      "TC_P1"
+    ],
+    "purpose": "construction/telemetry/completion/resume/close; no strength inference"
+  },
+  "javaLauncher": [
+    {
+      "profile": "default",
+      "requests": 4,
+      "status": "PASS"
+    },
+    {
+      "profile": "MW_C4_W4",
+      "requests": 4,
+      "status": "PASS"
+    },
+    {
+      "profile": "TC_P1",
+      "requests": 4,
+      "status": "PASS"
+    }
+  ],
+  "frozenCoreClassBridge": {
+    "matchedClasses": [
+      "com/ohinteractive/seedv6/search/exact/ExactSearch$Aborted.class",
+      "com/ohinteractive/seedv6/search/exact/ExactSearch.class",
+      "com/ohinteractive/seedv6/search/exact/FlatSearchConfig$Feature.class",
+      "com/ohinteractive/seedv6/search/exact/FlatSearchConfig.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker$1.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch$WorkerWork.class",
+      "com/ohinteractive/seedv6/search/exact/ParallelSearch.class",
+      "com/ohinteractive/seedv6/search/tt/TTable$StripeLock.class",
+      "com/ohinteractive/seedv6/search/tt/TTable$TEntry.class",
+      "com/ohinteractive/seedv6/search/tt/TTable.class"
+    ],
+    "count": 11
+  },
+  "invalidSelector": {
+    "exitCode": 1,
+    "rejected": true
+  },
+  "configurationIdentityText": "raw/production-adoption-v1/packaged-about/active.txt",
+  "reusedStrengthEvidence": "c4-confirm-w4-v1-analysis.json; frozen build94 research9d380c30/core3ba1daad;160 pairs/320 games;61.71875%,paired-normal95 57.5083-65.9292%",
+  "limits": [
+    "W4 strength only in recorded CP64/Hash64/PVS/ADAPTIVE16/BOUNDARY2/10+0.1 Windows Ryzen5500 Java21 fresh-opening cold-JVM domain",
+    "No new strength tournament/confirmation",
+    "No macOS/mobile or interactive desktop execution in this adoption; offscreen packaged About render inspected",
+    "No warmed persistent-client or longer-clock competitive qualification",
+    "No installation,Lichess change,push,release,deployment,champion advancement or successor research",
+    "Raw evidence local-only and ignored;fresh checkout lacks it;Project mirrors owner-maintained"
+  ],
+  "evidenceSha256": {
+    "raw/production-adoption-v1/tests-v1.log": "be7f5d0d3058e13b8d87fc14a2d77e4bad0e2d17db812e4b44de49d5c20bf126",
+    "raw/production-adoption-v1/tests-v1-summary.json": "c75465d2ba9cfe4f12095f168df8aee88d6b40e5ed6c555a53dc95be623c0ffa",
+    "raw/production-adoption-v1/tests-controls-v1.log": "4f3d381607b80be25f2ee28408c6f92cf7c9aa5f546cf4384ac970ad486a9cc3",
+    "raw/production-adoption-v1/tests-controls-v1-summary.json": "12e5c410c3f9545d320811dbb9331be664adcc6eacbef4e7e26949eca37ea234",
+    "raw/production-adoption-v1/packaging-tests-v1.log": "da01e229ee37c89a1a139954d2451d1fe16a5b79e959ab333526c5005a424cf9",
+    "raw/production-adoption-v1/packaging-tests-v2.log": "c37d568c521858584fcb0bb7c2d5af60242c4fe5741cf1941dd8417f295c190b",
+    "raw/production-adoption-v1/package-precommit-v1.log": "74bf7762e8f1f5e2c8d65b72eaa10f15d68dff03e922ad2568872c667b3bcd9f",
+    "raw/production-adoption-v1/package-build96-v1.log": "e1c5d4cf183c8a1fac893dcffc4b3e25fe290f52fed0482c334690f8955d0ab2",
+    "raw/production-adoption-v1/historical-input-checks.json": "11c4dd3279162c81f110451b86acd8da26123213fad2344a2b48173775121917",
+    "raw/production-adoption-v1/packaged-checks-summary.json": "7ca28fe2424c489364db7af0d635f03d48c7f305e58bb5b4b2c47fdc364fb166",
+    "raw/production-adoption-v1/qualify_packages.py": "a7829cd730b0b44a76d510636850955a513f479660f9017948eb3ca2ba110a7b",
+    "raw/production-adoption-v1/PackagedArenaProbe.java": "b7742ff943aeda0cd387abf8309bded39f74d03752a4d2359d1452ab24526dcd",
+    "raw/production-adoption-v1/packaged-arena.log": "2970140a190e0a0449dab1526d34aef7ccb5af5b4fe1cda57d63c42ffbac60fb",
+    "raw/production-adoption-v1/packaged-about/active.txt": "24f834c832dc1a889ca1465cbd3c8a79c54de2cd093f74c74e532de995075d91",
+    "raw/production-adoption-v1/packaged-about/active.png": "1105dff45b8f6214943e60894f59011df4635db38d4c2de582868a84cf625007",
+    "raw/production-adoption-v1/invalid-selector.log": "5b44bac89db50583a881ad46209fd8d43ee7017f714bde6ec91dee50a9851fef",
+    "raw/production-adoption-v1/java_launcher_smoke.py": "1867cfad9aef657e836d2ed86f3560492c5d45f6b81c92a2724a375a0fc2fc73",
+    "raw/production-adoption-v1/java-launcher-summary.json": "13c85c32dcfc739b3d0817bfe7ca3384a27e1ee2f485041b874c962968c9b854",
+    "raw/production-adoption-v1/host.json": "8a201158cdbd6f1cce4bf9ee3bb28190747ea085fdbc0f96508cca5c8a73b5c4",
+    "raw/production-adoption-v1/uci-MW_C4_W4/result.json": "60deb42d41f25ad4e4d5fcda42593db3d4a4c49e46dc2bfab38e68e07e08d646",
+    "raw/production-adoption-v1/gui-MW_C4_W4.log": "f28b55b869b9c9052c11bb89eaa50b745bd7dac21996e068f0ff62e170721cd4",
+    "raw/production-adoption-v1/uci-TC_P1/result.json": "3030b144ffc07b5e67fd458b87e6eccffaf1d74c547641b937b94c61688173d0",
+    "raw/production-adoption-v1/gui-TC_P1.log": "0f6d64bdcba42693befac8a8a442fe51c4a0fb91956fb2476bdf612792b46019",
+    "raw/production-adoption-v1/uci-HL_G1/result.json": "e1029559b5b9cab35262227ba12afb1a7a2a446a70e2c1a4436a22be75704b92",
+    "raw/production-adoption-v1/gui-HL_G1.log": "5ee148fede1c2af95684643f37d50a8a4c918ae7e37b25af2451a289c759e9fb",
+    "raw/production-adoption-v1/uci-LEGACY/result.json": "90ce80ea8285a83bfc43b2f01587bc2e99e3566c64d6eda09fca739b55583e3d",
+    "raw/production-adoption-v1/gui-LEGACY.log": "b7b197831f46cf77c43f63b319357fe78fce5581b4a76122101519d6c7108c0b"
+  },
+  "changedFiles": [
+    "README.md",
+    "VERSION_STATE.txt",
+    "app-gui/src/test/java/com/ohinteractive/seedv6/gui/ConventionalGameplayTest.java",
+    "app-uci/src/test/java/com/ohinteractive/seedv6/uci/ConstructionUciTest.java",
+    "app-uci/src/test/java/com/ohinteractive/seedv6/uci/FormulationUciTest.java",
+    "docs/research/search/p4-multiworker/CONTRACT.md",
+    "docs/research/search/p4-multiworker/PRODUCTION.md",
+    "docs/research/search/p4-multiworker/RESULTS.md",
+    "docs/research/search/p4-multiworker/STATE.md",
+    "docs/research/search/p4-multiworker/production-build96-qualification.json",
+    "docs/research/search/p4-tt-memory/CONTRACT.md",
+    "docs/research/search/p4-tt-memory/STATE.md",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/BaselineEngine.java",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/EngineFormulation.java",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ConstructionSearch.java",
+    "engine-core/src/test/java/com/ohinteractive/seedv6/search/driver/BaselineEngineTest.java",
+    "engine-core/src/test/java/com/ohinteractive/seedv6/search/driver/BaselineProfileTest.java",
+    "engine-core/src/test/java/com/ohinteractive/seedv6/search/driver/EngineFormulationTest.java",
+    "engine-core/src/test/java/com/ohinteractive/seedv6/search/manage/Boundary2ProductionTest.java",
+    "engine-training/src/test/java/com/ohinteractive/seedv6/training/service/BaselineArenaTest.java",
+    "research/src/test/java/com/ohinteractive/seedv6/search/exact/Cp64ProductionTest.java",
+    "source/CHESS_SEARCH_CONTRACT.md",
+    "source/CHESS_SEARCH_RESEARCH_FRONTIER.md",
+    "tools/gui-smoke/HlG1ProductionProbe.java",
+    "tools/native_package_checks.py",
+    "tools/native_packaging.py",
+    "tools/test_native_packaging.py",
+    "tools/verify_cp64_production.py"
+  ]
+}

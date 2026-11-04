@@ -1,11 +1,23 @@
 # MW-R001 - Integrated multiworker Search strength
 
-Revision 4, 5 November 2026 (Pacific/Auckland). **ACCEPTED AND CLOSED.**
+Revision 5, 5 November 2026 (Pacific/Auckland). **ACCEPTED AND CLOSED.**
 Subordinate to the [Phase 4 Contract](../../../../source/CHESS_SEARCH_CONTRACT.md)
 and [Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md), now
-P4-R027/P4-F045. The original launch authority confirmed P4-R016/P4-F032.
+P4-R029/P4-F047. The original launch authority confirmed P4-R016/P4-F032.
 [STATE](STATE.md) is the terminal continuity record; [RESULTS](RESULTS.md)
 preserves the evidence and historical experiment sequence.
+
+## Subsequent separate production adoption - 5 November 2026
+
+The owner separately authorizes W4-only MW-C4 rolling production integration,
+recorded in [PRODUCTION](PRODUCTION.md): build96/source44fc2bf2, profile MW_C4_W4,
+EAGER_ROOT/flags1182007295 at W4 and exact TC-P1/flags1177812991 elsewhere.
+Explicit TC_P1 remains rollback at W4. This is not renewed MW-R001 execution or
+champion advancement. Frozen build94 and the accepted successful research outcome
+are unchanged; build95/TC-P1 selection statements below describe research closeout.
+TT-R001 is separately reconciled and closed as inconclusive; earlier pending wording
+below is historical. No new research, installed-bot replacement or deployment occurs.
+Current masters are **P4-R029/P4-F047**; mirrors remain owner-maintained.
 
 ## Owner-accepted successful closeout - 5 November 2026
 

@@ -32,6 +32,18 @@ known at each checkpoint, including earlier pending work and acceptance wording.
 This accepted closeout supersedes those operational instructions without changing
 any protocol, result, acceptance criterion, resource accounting or evidence hash.
 
+## Subsequent separate production adoption - 5 November 2026
+
+The owner separately authorizes W4-only MW-C4 rolling production integration,
+recorded in [PRODUCTION](PRODUCTION.md): build96/source44fc2bf2, profile MW_C4_W4,
+EAGER_ROOT/flags1182007295 at W4 and exact TC-P1/flags1177812991 elsewhere.
+Explicit TC_P1 remains rollback at W4. This is not renewed MW-R001 execution or
+champion advancement. Frozen build94 and the accepted successful research outcome
+are unchanged; build95/TC-P1 selection statements below describe research closeout.
+TT-R001 is separately reconciled and closed as inconclusive; earlier pending wording
+below is historical. No new research, installed-bot replacement or deployment occurs.
+Current masters are **P4-R029/P4-F047**; mirrors remain owner-maintained.
+
 ## Source-observed initial challenge
 
 - ParallelSearch ROOT_REUSE first searches one ordered root move on worker0 before

@@ -6,24 +6,24 @@ fixed-work comparisons. Its unique resume entry point preserves older completed
 and suspended programmes separately; it does not authorize production promotion.
 
 SeedV6 is a Java 21 chess engine with UCI, desktop Play, and Network Training.
-The rolling experimental production default is **HL-G1 + bounded capture ProbCut
-(TC-P1) + Conventional NNUE CP64**, integrated as **build90**. Normal GUI Play,
-built-in Arena and standalone UCI share `engine-core`'s `BaselineEngine`:
-Construction V1 PVS/ADAPTIVE16, HL-G1 retained request learning and exact TC-P1
-verification (**flags1177812991**, profile **TC_P1**). Eligible depth4-8 null-window
-nodes probe up to three non-losing legal tacticals with qsearch/reduced verification
-at beta+150. All supported workers **1-16** use this default, with unchanged default1,
-bounded Max, OWNER at W1 and ROOT_REUSE at W2-16. No Search property is required.
+The rolling production default is **MW-C4 EAGER_MEMORY at W4**, and **TC-P1 at
+W1-W3 and W5-W16**, with Conventional NNUE CP64, integrated as **build96**.
+GUI Play, built-in Arena and UCI share engine-core's `BaselineEngine`. Normal
+profile **MW_C4_W4** needs no property: W4 selects eager root scheduling and guarded
+current-generation TT scores over TC-P1 (**flags1182007295**, EAGER_ROOT); all
+other supported worker counts retain **flags1177812991**, OWNER at W1 and
+ROOT_REUSE otherwise. PVS/ADAPTIVE16, CP64, default W1 and bounded Max are unchanged.
 
-The owner explicitly accepts the unresolved W4 competitive warning. TC-R001's
-640-game independent W1 criterion failed; adoption does not claim confirmed
-superiority or advance **HL-G1/build84**, the research champion. Historical
-**P4-BASELINE-001/build79** remains immutable. Future authorized research normally
-starts from the latest owner-adopted production formulation; adopted features are
-reversible. Use **`-Dseedv6.searchProfile=HL_G1`** for the previous flags104071167
-production policy. **`LEGACY`** retains flags3407871; invalid selectors fail.
-Frozen research `probcut`, `guided` and historical controls remain independent.
-See the [production, qualification and rollback record](docs/research/search/p4-tactical/PRODUCTION.md).
+MW-R001's independent W4 result passed its original strength criterion in the
+documented 10+0.1 Windows/Java21 cold-JVM domain. Other worker-count strength,
+longer clocks, warmed persistent clients and other platforms remain unqualified.
+**HL-G1/build84** remains the W1 research champion; **P4-BASELINE-001/build79**
+remains immutable. Original TC-P1/build90 and frozen MW-C4/build94 retain their identities.
+
+Use **`-Dseedv6.searchProfile=TC_P1`** for exact previous TC-P1, including at W4.
+**HL_G1** remains flags104071167 and **LEGACY** flags3407871; invalid selectors fail.
+Frozen research profiles and independent controls retain their meanings.
+See the [production qualification, artifacts and rollback record](docs/research/search/p4-multiworker/PRODUCTION.md).
 These are local candidates; no installed GUI or active bot is replaced.
 
 Normal managed-clock configurations use **BOUNDARY2**, with explicit **FACTUAL**
@@ -31,7 +31,7 @@ fallback. Its independent studies remain clock-unqualified with scores unopened;
 adoption reflects informed owner acceptance of unconfirmed strength and unresolved
 timing risk. The [Phase 3 closeout](docs/search-phase3/CHESS_SEARCH_CONTRACT.md#formal-phase-3-closeout---29-october-2026)
 records the final selection and qualifications, including historical build77 integration evidence and the separate
-[current production validation](docs/research/search/p4-tactical/PRODUCTION.md).
+[current production validation](docs/research/search/p4-multiworker/PRODUCTION.md).
 
 **Arena** compares named model lineages on identical frozen records and targets,
 with paired games before training and after each campaign round. Start from a fresh
@@ -146,12 +146,13 @@ The diagnostic command dispatcher is now `:app:developerTools`:
 # Frozen replay: use -PtoolArgs="frozen-wdl ..." with the explicit input paths.
 ```
 
-Search Phase 4 is active under [Contract P4-R016](source/CHESS_SEARCH_CONTRACT.md)
-and [Frontier P4-F032](source/CHESS_SEARCH_RESEARCH_FRONTIER.md). TC-R001 completed
-its research execution unsuccessfully against its declared strength criterion;
-exact TC-P1 is separately owner-adopted for experimental production. No successor
-research is active. Champion, historical baseline, rolling production and deployment
-are separate identities and decisions.
+Search Phase 4 is active under [Contract P4-R029](source/CHESS_SEARCH_CONTRACT.md)
+and [Frontier P4-F047](source/CHESS_SEARCH_RESEARCH_FRONTIER.md). MW-R001 is accepted
+and closed successfully in W4; TT-R001 is reconciled, accepted and closed as
+inconclusive, with its original strength objective not demonstrated. TC-R001's
+failed strength criterion and TTF-R001's limited acceptance remain unchanged.
+No successor research is active. Champion, historical baseline, rolling production
+and actual deployment are separate identities and decisions.
 
 Search Phase 3 is **CLOSED and archived**. Its final
 [Contract P3-R035](docs/search-phase3/CHESS_SEARCH_CONTRACT.md) and

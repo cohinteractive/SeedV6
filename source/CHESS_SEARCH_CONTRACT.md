@@ -1,12 +1,40 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R028**
+Internal revision: **P4-R029**
 
-Status: **ACTIVE Phase4 programme - 5 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. MW-R001 is GPT-reconciled, owner-accepted on 5 November 2026 and formally closed as successful W4 strength development. No champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and accepted inconclusive TT-R001 closeout remain distinct.**
+Status: **ACTIVE Phase 4 - 5 November 2026. Owner-adopted build96 rolling production selects confirmed MW-C4 only at W4 and exact TC-P1 at all other supported worker counts. MW-R001 remains accepted and closed successfully in its documented W4 domain. TT-R001 is GPT-reconciled, owner-accepted and formally closed with its original strength objective not demonstrated and an INCONCLUSIVE outcome. Historical baseline79 and W1 champion HL-G1/build84 are unchanged. No active successor research, deployment or release.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
+
+## Rolling production selection - 5 November 2026
+
+The owner separately adopts **MW-C4 EAGER_MEMORY for normal W4 CP64 Search**.
+Shared engine-core profile **MW_C4_W4** selects flags1182007295 / **EAGER_ROOT**
+at W4, and exact **TC-P1 flags1177812991** at W1-W3 and W5-W16 (OWNER at W1,
+ROOT_REUSE otherwise). No experimental property is needed; default W1 is unchanged.
+Explicit **`-Dseedv6.searchProfile=TC_P1`** restores exact TC-P1 even at W4.
+HL_G1, LEGACY, historical/research profiles, non-CP64 routes and exact controls
+retain their meanings. Worker/hash/clock reconstruction resolves both flags and
+scheduling from the snapshotted profile. C6 is not selected.
+
+Production source **44fc2bf2**, **build96**, advances the rolling baseline only.
+[Production qualification and artifact record](../docs/research/search/p4-multiworker/PRODUCTION.md)
+records Windows Java21 GUI Play, built-in Arena, UCI, lifecycle/resource/identity
+checks, exact artifact hashes and rollback. It reuses MW-R001's independent W4
+strength evidence; no new strength campaign, confirmation or BOUNDARY2 study ran.
+CP64, PVS/ADAPTIVE16, requested Hash64 and BOUNDARY2 remain unchanged.
+
+Immutable baseline79, corrected control80, W1 champion HL-G1/build84, original
+TC-P1/build90, accepted About/build91, frozen MW-C4/build94 and build95 keep their
+historical identities. Broader worker-count optimization is deferred. No strength
+transfer to other workers, longer clocks, warmed persistent clients or other
+platforms is established; macOS and external live-client deployment remain separate.
+Repository integration does not update an installed GUI or running Lichess bot.
+No installation, push, release, deployment, champion advance or successor objective
+is authorized. Project Source mirrors require owner refresh to **P4-R029/P4-F047**
+before dependent planning; repository execution does not refresh them.
 
 ## TT-R001 accepted inconclusive closeout - 5 November 2026
 
@@ -62,13 +90,13 @@ further execution or renewed confirmation. Future adoption, deployment or broade
 scaling research requires separate authority and applicable qualification.
 
 P4-BASELINE-001/build79 remains immutable; build80 remains the corrected technical
-control; HL-G1/build84 remains the owner-accepted W1 research champion. TC-P1/build90
-remains the adopted rolling production formulation, still selected normally in
-build95. MW-C4/build94 remains a separately confirmed experimental W4 formulation.
-Accepted build91 application work and all other research dispositions, including
-the separately recorded TT-R001 closeout, remain distinct. No champion advancement,
-production promotion, installation, push, release or deployment follows.
-Project mirrors require P4-R028/P4-F046 before mirror-dependent planning;
+control; HL-G1/build84 remains the owner-accepted W1 research champion. At research
+closeout, build95 still selected TC-P1/build90 normally and MW-C4/build94 remained
+experimental. The separately authorized build96 adoption above advances only W4
+production; it does not rewrite this successful research closeout. Accepted build91
+application work and the separately recorded TT-R001 closeout remain distinct.
+No champion advancement, installation, push, release or deployment follows.
+Project mirrors require P4-R029/P4-F047 before mirror-dependent planning;
 repository closeout neither refreshes them nor depends on that separate action.
 
 ## Founding authority and scope
@@ -489,7 +517,7 @@ meaning of the result. Inspect the relevant experiment before describing unfamil
 labels such as GATE or WIDE; never invent their definitions. The Frontier's completed
 TT-memory example applies this convention without changing historical evidence.
 
-## Rolling production selection - 4 November 2026
+## Rolling production selection - 4 November 2026 (historical)
 
 The owner explicitly adopts **TC-P1 - bounded capture verification over HL-G1**
 for normal experimental production across **W1-W16**, accepting the unresolved

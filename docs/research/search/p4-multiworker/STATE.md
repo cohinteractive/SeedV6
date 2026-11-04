@@ -9,7 +9,19 @@ The original research Goal is complete; no further MW-R001 execution is authoriz
 or needed. No active experiment, autonomous continuation or successor exists.
 
 Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md), [budget.json](budget.json),
-then authoritative Phase 4 masters **P4-R027/P4-F045**.
+then authoritative Phase 4 masters **P4-R029/P4-F047**.
+
+## Subsequent separate production adoption - 5 November 2026
+
+The owner separately authorizes W4-only MW-C4 rolling production integration,
+recorded in [PRODUCTION](PRODUCTION.md): build96/source44fc2bf2, profile MW_C4_W4,
+EAGER_ROOT/flags1182007295 at W4 and exact TC-P1/flags1177812991 elsewhere.
+Explicit TC_P1 remains rollback at W4. This is not renewed MW-R001 execution or
+champion advancement. Frozen build94 and the accepted successful research outcome
+are unchanged; build95/TC-P1 selection statements below describe research closeout.
+TT-R001 is separately reconciled and closed as inconclusive; earlier pending wording
+below is historical. No new research, installed-bot replacement or deployment occurs.
+Current masters are **P4-R029/P4-F047**; mirrors remain owner-maintained.
 
 ## Accepted outcome, identities and qualification limits
 
@@ -81,7 +93,7 @@ advance, production selector change or deployment is part of this acceptance.
 Other dispositions, including separate pending TT-R001 reconciliation, remain intact.
 
 Human actions required for this closeout: None blocking. Refresh both Phase 4
-Project Source mirrors to **P4-R027/P4-F045** before mirror-dependent planning;
+Project Source mirrors to **P4-R029/P4-F047** before mirror-dependent planning;
 this is non-blocking for completed repository closeout. No mirror was changed here.
 
 ## Historical overnight checkpoints (superseded operational instructions)
