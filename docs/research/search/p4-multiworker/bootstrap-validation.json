@@ -1,0 +1,70 @@
+{
+  "observedUtc": "2026-11-04T06:31:59.900768+00:00",
+  "compilation": "research:installResearch passed",
+  "baselineTests": {
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "evidence": [
+      {
+        "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.P4LearningTest.xml",
+        "sha256": "4c00918551418fa78bcf826421b6f96697be7a1468f3cf8284e7ae23a5fe1699",
+        "name": "com.ohinteractive.seedv6.search.exact.P4LearningTest",
+        "tests": "7",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-11-04T06:20:58",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "0.676"
+      },
+      {
+        "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.P4TacticalTest.xml",
+        "sha256": "9cd131360887d4f9e4dc326e5f6588906009104e61d3a7c4d25c3309a7014f8c",
+        "name": "com.ohinteractive.seedv6.search.exact.P4TacticalTest",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-11-04T06:20:58",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "14.064"
+      },
+      {
+        "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.VerifiedNullAccountingTest.xml",
+        "sha256": "94c9e9128e84c1af474bc7bb037f15472e24f9c49b9a01faf4c3eaf8afc5688a",
+        "name": "com.ohinteractive.seedv6.search.exact.VerifiedNullAccountingTest",
+        "tests": "5",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-11-04T06:21:12",
+        "hostname": "DESKTOP-TQLS4KP",
+        "time": "1.433"
+      }
+    ]
+  },
+  "failedBroaderSelection": ":engine-core:test --tests *Parallel* --tests *SearchControl*: no tests matched; not passed, not an engine defect. No production code changed. Corrected selection deferred under PC-use boundary.",
+  "supervisorTests": {
+    "command": "build/research/venv/Scripts/python.exe -B -m unittest discover -s tools -p test_p4_multiworker.py -v",
+    "tests": 4,
+    "failures": 0,
+    "elapsedSeconds": 0.24,
+    "sourceSha256": "47c5e97afb7ae20c54096c400e4fea32274c5795fca12b95efd1bc4b6ddbc7dc",
+    "runnerSha256": "7cfe7710483f7bacd769724c23e9e37ed9d60171382c28a6559fc9ea45974cde"
+  },
+  "nativeSupervision": "supervision-v1-summary.json",
+  "probeRuntime": "NOT EXECUTED: pre-launch guard refused; no safety/strength qualification inferred",
+  "sourceScope": "No engine-core/app-uci/app-gui source changes; research probe and Python supervision only",
+  "initialPythonFailures": "System Python lacks chess; two imports failed before any admission. Existing build/research/venv used; no package installation/global environment change.",
+  "versionDecision": "no_bump: research-only instrumentation/supervision/docs, no attributable built/shipped application impact; VERSION_STATE bytes unchanged",
+  "localEvidenceReview": {
+    "ignoredFiles": 41,
+    "allRawIgnored": true,
+    "externalDownloadsHashVerified": 29,
+    "markdownLocalLinks": "pass",
+    "gitDiffCheck": "pass",
+    "ownedProcessCheck": "Only the two inherited VSCode Java processes remain; no campaign Java/Python/match process. Native Job receipts prove dummy/refusal drain."
+  }
+}

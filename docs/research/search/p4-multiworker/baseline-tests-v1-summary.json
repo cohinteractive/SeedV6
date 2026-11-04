@@ -1,0 +1,28 @@
+{
+  "research": [
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4LearningTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4TacticalTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.VerifiedNullAccountingTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "core": "NOT EXECUTED: no tests matched *Parallel* or *SearchControl* in engine-core; filter mistake, not passing validation",
+  "gradle": "Build failed in 44s after research tests and installResearch succeeded; corrected selection pending",
+  "pythonAttempt": "System Python lacks chess; two import failures before admission, no process/node/game launched. Use existing research venv."
+}

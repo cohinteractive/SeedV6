@@ -1,0 +1,37 @@
+{
+  "schema": "mw-r001-budget-v1",
+  "ceilings": {
+    "timedWallSeconds": 259200,
+    "timedGames": 3000,
+    "fixedGames": 6000,
+    "fixedNodes": 100000000000
+  },
+  "confirmation": {
+    "attemptsMaximum": 1,
+    "attemptsStarted": 0,
+    "pairsMaximum": 480,
+    "protectedTimedGames": 960,
+    "protectedTimedWallSeconds": 86400,
+    "protocol": null
+  },
+  "consumed": {
+    "timedWallSeconds": 0,
+    "timedInitiated": 0,
+    "timedCompleted": 0,
+    "timedFailed": 0,
+    "timedInterrupted": 0,
+    "fixedWallSeconds": 0.0,
+    "fixedInitiated": 0,
+    "fixedCompleted": 0,
+    "fixedFailed": 0,
+    "fixedInterrupted": 0,
+    "fixedNodes": 0
+  },
+  "pending": [],
+  "receipts": [
+    "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-no-launch-reconciliation.json"
+  ],
+  "timedWindows": [],
+  "ownedProcesses": []
+}

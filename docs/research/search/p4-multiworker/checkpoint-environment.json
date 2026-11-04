@@ -1,0 +1,11 @@
+{
+  "utc": "2026-11-04T06:34:36.982793+00:00",
+  "sample": {
+    "utc": "2026-11-04T06:34:36.982736+00:00",
+    "totalCpuPercent": null,
+    "freeMemoryGiB": 4.423797607421875,
+    "overwatch": true
+  },
+  "ownedProcesses": 0,
+  "scope": "Read-only final PC snapshot. No timed-window permission inferred; no experiment launched."
+}

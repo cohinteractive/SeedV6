@@ -1,0 +1,41 @@
+{
+  "objective": "MW-R001",
+  "observedUtc": "2026-11-04T06:22:40.583135+00:00",
+  "initialHead": "acc997b2433032b26aff060e1c90053d4d0df467",
+  "initialTree": "clean",
+  "mastersAtLaunch": [
+    "P4-R016",
+    "P4-F032"
+  ],
+  "versionHex": "7b0a2020226d616a6f72223a20302c0a2020226d696e6f72223a20302c0a2020227061746368223a20302c0a2020226275696c64223a2039310a7d0a",
+  "versionSha256": "4e87e34cc8db4604f3b6e7d70127d4ce52a1f9144645cbe2cbf68b8b79136fa0",
+  "journalExists": false,
+  "modelSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "javaSha256": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+  "initialHardware": {
+    "cpu": "AMD Ryzen 5 5500",
+    "physicalCores": 6,
+    "logicalProcessors": 12,
+    "visibleMemoryKiB": 33339348,
+    "freeMemoryKiB": 17327216,
+    "os": "Windows 11 Pro 10.0.26300",
+    "java": "OpenJDK 21+35-2513"
+  },
+  "searchDiffSinceBuild91": "",
+  "limitations": "Hardware instantaneous observation, no thermal sensor/foreground responsiveness measurement; owned descendant guard required. No timed window. Initial UTC PowerShell -AsUTC syntax unavailable; actual first successful UTC observation 2026-11-04T06:13:55Z; no journal capability active.",
+  "masterInputHashes": {
+    "source\\CHESS_SEARCH_CONTRACT.md": "827dac6982e44d6882cc9c66604ffd86a00b36e248124866df1c4e142e6c8ec2",
+    "source\\CHESS_SEARCH_RESEARCH_FRONTIER.md": "716b96e35cd3e3bf5c5146b17268ec3de27a3eff7698eaea2061625bfc8e9a34"
+  },
+  "searchSourceHashes": {
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ParallelSearch.java": "12ecfb046f7356edcad121214e6d344f039795a0d70b86979092590958d88335",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ExactSearch.java": "1f02df53471fb5ccaf238a0c2581cc5b33bab869be210c63cc4777802eaec132",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\ConstructionSearch.java": "c7e7d30cf91f3f362486852493820ff9200a5a23db732960a9e1fd7c77306995",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\FlatSearchConfig.java": "6e4b43d63414f162df5e05c0b3024d405bfcfbb9ccc8c404b3ab55e6edf9b270",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\driver\\BaselineEngine.java": "d34a73b7d7aba2c0b2bd988136428cfb62ac09b885505d50061625912064ea56",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\driver\\SearchDriver.java": "60029b06ae07106b20112a6bca700b42434cbf2f375349d63a7fc0d4e1fb56ee",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\driver\\AspirationSearch.java": "a60f73309a7256da14c77edf50873d917b609e4979eccd379701468ea808e1ed",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\common\\SearchControl.java": "0edac796cb22248f5502e4c5ff39fbf9480afb4417146e27861b2bc8038189a4",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\tt\\TTable.java": "c28e3eccc67a01328b1cbae1cecb1a5d7aabead3f980483d1b84c7ef8831399b"
+  }
+}

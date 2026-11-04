@@ -1,0 +1,19 @@
+{
+  "id": "baseline-opening-w4-v1-no-launch-reconciliation",
+  "utc": "2026-11-04T06:26:02.033952+00:00",
+  "originalReceipt": "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-execution.json",
+  "originalReceiptSha256": "2d3241ad1ea1034c7de14dbba27f9e03ca596c4c96a74543c6770811af2cb525",
+  "finding": "Admission guard refused before Popen: no processId, zero owned process lifetime/CPU, no observation file. Original negative receipt retained unchanged. Correct full-reservation fallback for verified pre-launch refusals.",
+  "adjustment": {
+    "fixedNodes": -1800000,
+    "fixedWallSeconds": -0.2491505999932997
+  },
+  "actualExperimentNodes": 0,
+  "actualExperimentalWallSeconds": 0,
+  "initiatedGames": 0,
+  "initialSupervisorSource": {
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\supervisor-initial-v1.py",
+    "sha256": "e206e442e85600b07be043ea7903437a07bece85d570aae870cea00c56796d4c",
+    "provenance": "Recovered by reversing the two known subsequent edits; exact bytes verified against the original pre-admission protocol SHA256. Not newly executed."
+  }
+}

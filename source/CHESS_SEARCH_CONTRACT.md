@@ -1,12 +1,40 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R016**
+Internal revision: **P4-R017**
 
-Status: **ACTIVE - 4 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. No champion advancement, successor research, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
+Status: **ACTIVE - 4 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. The separate owner request authorizes MW-R001 multiworker strength research below; no champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
+
+## MW-R001 multiworker strength workstream - 4 November 2026
+
+A new explicit owner request establishes **MW-R001 - integrated multiworker Search
+strength**, subordinate to these masters. Its [focused CONTRACT](../docs/research/search/p4-multiworker/CONTRACT.md)
+preserves the W4 strength objective, exact TC-P1 comparator, mandatory safety,
+cooperation and operational requirements, and independent timed gate (score>=53%,
+paired-normal95% lower>50%). [STATE](../docs/research/search/p4-multiworker/STATE.md)
+is its durable resume point; [RESULTS](../docs/research/search/p4-multiworker/RESULTS.md)
+and the architecture map distinguish source findings, hypotheses and measurements.
+
+The owner authorizes competing ROOT_REUSE, independent Lazy SMP and justified
+hybrid/information-sharing approaches, not a predetermined architecture. Cumulative
+ceilings:72h timed match wall/3000 initiated timed games,6000 fixed-work games and
+100 billion aggregate admitted fixed-work Search nodes; one protected independent
+W4 attempt, at most480 fresh pairs/960 games inside those ceilings. Controlled
+restrained daytime fixed-work research is authorized. Timed matches require an
+explicit owner PC-idle window of at most8h; none is granted at launch. User PC use
+has priority; no future scheduling or unattended continuation is authorized.
+
+This new request supplies successor authority without reopening any prior objective,
+spent confirmation or frozen BOUNDARY2 study. Exact TC-P1 remains rolling production,
+HL-G1/build84 remains the W1 champion, build79 and corrected80 stay distinct.
+Accepted build91 formulation-identity functionality remains closed and unchanged.
+No production/default promotion, champion advancement, push, release, installation,
+bot replacement or deployment follows. Technical progress alone cannot satisfy
+MW-R001's strength criterion. Repository masters now P4-R017/P4-F033; refresh
+Project mirrors before mirror-dependent planning, not before authorized repo work.
 
 ## Founding authority and scope
 
@@ -566,8 +594,8 @@ This acceptance neither reopens completed campaigns nor authorizes a successor;
 the separately supplied tactical execution request has satisfied its prerequisite
 commit boundary and governed TC-R001. Its authorized execution is now complete with
 the strength criterion failed. The subsequent owner review and separate production
-adoption are recorded above; no confirmation is renewed. No successor
-follows. The Frontier records priorities and hypotheses, not a predetermined queue.
+adoption are recorded above; no confirmation is renewed. That adoption authorized
+no successor; the separately requested MW-R001 is authorized above. The Frontier records priorities and hypotheses, not a predetermined queue.
 For any future CGLHW objective, the owner must supply the **complete current
 authoritative premade CGLHW GPT prompt generator before GPT prepares its execution
 prompt**. Each objective requires a dedicated GPT conversation for its complete
@@ -581,7 +609,7 @@ Repository masters are authoritative; Project Sources are owner-maintained mirro
 The owner has confirmed the final **P3-R035/P3-F035** mirrors: retain them in the
 existing Phase 3 ChatGPT Project; no further Phase 3 refresh is required.
 The separate Phase 4 ChatGPT Project mirrors require owner refresh to the current
-**P4-R016/P4-F032** pair before mirror-dependent Project planning; the Frontier
+**P4-R017/P4-F033** pair before mirror-dependent Project planning; the Frontier
 records the last confirmed mirror state. This does not block authorized repository
 work. Repository edits synchronize neither Project. On later canon changes,
 increment each affected internal revision once (P4-Rnnn/P4-Fnnn), identify the

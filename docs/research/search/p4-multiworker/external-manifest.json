@@ -1,0 +1,207 @@
+[
+  {
+    "engine": "stockfish",
+    "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/thread.cpp",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-thread.cpp",
+    "sha256": "26d04132676189a6b9ce59afb574c116a672ce8bb273f1b008af8522e7760006"
+  },
+  {
+    "engine": "stockfish",
+    "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/thread.h",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-thread.h",
+    "sha256": "d39544eea0dc30fa6edd541f5f87ed06af554ba0364161ab04a78b4b9757a897"
+  },
+  {
+    "engine": "stockfish",
+    "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/search.cpp",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-search.cpp",
+    "sha256": "a934524dd2f386ec38cdf95b7b2e41cecdc85c9b17e12c0668621e6ae16be28a"
+  },
+  {
+    "engine": "stockfish",
+    "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/search.h",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-search.h",
+    "sha256": "06a9339666e75c43a92185c33a111307bca143cf57c85e64f368ca34a87c8071"
+  },
+  {
+    "engine": "stockfish",
+    "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/history.h",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-history.h",
+    "sha256": "f6e957d6e717348f58aa308f88aefddb5975e6a6c1d23e936ecf3548cbb48c39"
+  },
+  {
+    "engine": "stockfish",
+    "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/tt.cpp",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-tt.cpp",
+    "sha256": "56435808c1ed7557e69afb85fc0fa0116fcb574bfa528d53cc0f07d20a926702"
+  },
+  {
+    "engine": "stockfish",
+    "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/tt.h",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-tt.h",
+    "sha256": "0e8deb3207a9fc3adfe5f6df806bf7dd70cc818f89c3284484979aac20b15033"
+  },
+  {
+    "engine": "stockfish",
+    "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+    "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/Copying.txt",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-Copying.txt",
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+  },
+  {
+    "engine": "ethereal",
+    "revision": "96cde8d2f82a3ab0536bf33572405fda96f6e236",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/thread.c",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-src-thread.c",
+    "sha256": "48da01c15e5ba3adbbfc7bb4d85f26951c7ec1075090d10f5d35519595b3c776"
+  },
+  {
+    "engine": "ethereal",
+    "revision": "96cde8d2f82a3ab0536bf33572405fda96f6e236",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/thread.h",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-src-thread.h",
+    "sha256": "97f6cc84e3d00612aeb77af9dccb88539540df03a4319631edd6b4946378f4ff"
+  },
+  {
+    "engine": "ethereal",
+    "revision": "96cde8d2f82a3ab0536bf33572405fda96f6e236",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/search.c",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-src-search.c",
+    "sha256": "4d2ede2539b3eed669dba3d72244bf1e9b8de5ba64edeca831f6b179a5b16b92"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/tt.c",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/tt.h",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "engine": "ethereal",
+    "revision": "96cde8d2f82a3ab0536bf33572405fda96f6e236",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/LICENSE",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-LICENSE",
+    "sha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/rootsearch/parallel/MTDParallelSearch_BaseImpl.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-rootsearch-parallel-MTDParallelSearch_BaseImpl.java",
+    "sha256": "bf13538100befbdf1a5458141c5247f57acd36d6bf5c8bb57db588c517d01021"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/rootsearch/parallel/MTDParallelSearch_ThreadsImpl.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-rootsearch-parallel-MTDParallelSearch_ThreadsImpl.java",
+    "sha256": "197452183fd298ba55559fa1a35abb3bf7355c5f743c6ee7785c5d3227bc78c4"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/rootsearch/parallel/SearchersInfo.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-rootsearch-parallel-SearchersInfo.java",
+    "sha256": "217deefb148f2e984075b7729097cdb48a19ad733983e6152ccb34f4a473f450"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/env/SharedData.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-env-SharedData.java",
+    "sha256": "46949c11b7d170ec2bec87b29cd63c62303bf8edce5e93f9c9dbbad9c0118ac3"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Engines/src/bagaturchess/engines/cfg/base/RootSearchConfig_BaseImpl_SMP_Threads.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Engines-src-bagaturchess-engines-cfg-base-RootSearchConfig_BaseImpl_SMP_Threads.java",
+    "sha256": "7123fba9443f4ad33ddceb9b1ba45e61ca3df0de21e7d484bbf4fd1d496e7c05"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/SMP.scaling.issue.txt",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-SMP.scaling.issue.txt",
+    "sha256": "35dc2f2132536f910e403c0e65b3212d0cb2c5160920edff7758f7d8bab79e30"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/LICENSE",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-LICENSE",
+    "sha256": "ed8d7a24769ac9d57d08769b5f8be27519dd8811d06b0995dbe8ca6714e96d08"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/LICENSE",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-LICENSE",
+    "sha256": "721c2da257578bace3332b14d8ea06643d7d26753e7ef25a837b4e904edc0bf5"
+  },
+  {
+    "engine": "ethereal",
+    "revision": "96cde8d2f82a3ab0536bf33572405fda96f6e236",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/transposition.c",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-src-transposition.c",
+    "sha256": "a0246a2961e89899a952d577b9289b8b0be94a57a5569ba4026946793cfc0ac5"
+  },
+  {
+    "engine": "ethereal",
+    "revision": "96cde8d2f82a3ab0536bf33572405fda96f6e236",
+    "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/transposition.h",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-src-transposition.h",
+    "sha256": "e6e090968ee322911729ff45da85e886cfd8e163310247a6be4aa8f64ff0e611"
+  },
+  {
+    "url": "https://api.github.com/repos/official-stockfish/Stockfish/commits?sha=edb0d9db6731067ec50ce619ff372b463bc4dd5d&path=src/thread.cpp&per_page=6",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\sf-thread-history.json",
+    "sha256": "dde606645782e8a430df8eca0b61203093cbef053abfbae600708648ac863ee9"
+  },
+  {
+    "url": "https://api.github.com/repos/official-stockfish/Stockfish/commits?sha=edb0d9db6731067ec50ce619ff372b463bc4dd5d&path=src/history.h&per_page=6",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\sf-history-history.json",
+    "sha256": "5f293b9d1213f7d792efb9e790576deae613df526f79d8cd7f84c09e12dd15f7"
+  },
+  {
+    "url": "https://api.github.com/repos/AndyGrant/Ethereal/commits?sha=96cde8d2f82a3ab0536bf33572405fda96f6e236&path=src/thread.c&per_page=6",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-thread-history.json",
+    "sha256": "7ebe5d341aba973464d999ac3a169f278ff39d2151a16efa2203fd5e6b0e7773"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/env/MemoryConsumers.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-env-MemoryConsumers.java",
+    "sha256": "abce432e96e511f1ca1e2ca2c79fd4ca10eed85ce129cbb38c62b7fdabd18234"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/env/SearchEnv.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-env-SearchEnv.java",
+    "sha256": "6f3d221a76cf15256869b6f3551f71d5f3d44a338d614ce35be5736068d0a1c1"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/rootsearch/sequential/SequentialSearch_MTD.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-rootsearch-sequential-SequentialSearch_MTD.java",
+    "sha256": "cbed6b9aec7c54617f153117af5ed6a4c65e2ba3ba1ef2d55efa3e47d755d63f"
+  },
+  {
+    "engine": "bagatur",
+    "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+    "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/rootsearch/sequential/mtd/Mediator_AlphaAndBestMoveWindow.java",
+    "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-rootsearch-sequential-mtd-Mediator_AlphaAndBestMoveWindow.java",
+    "sha256": "5c92392f57e14ab524d765113073c128d9489596be78be5b4bcce1f567dc2d5e"
+  }
+]
