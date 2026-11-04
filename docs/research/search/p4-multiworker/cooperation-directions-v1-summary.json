@@ -1,0 +1,124 @@
+{
+  "status": "completed diagnostic direction analysis",
+  "receipts": {
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-root_reuse-shared_scores-v1-execution.json": "df085e6e448efe591f2510f6a4ef5bd591fed99589adc1756af814c480262c1f",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-eager_root-shared_scores-v1-execution.json": "9b94aeefffd5693570dac92784726b59ec46508ac5b7227f0af2012d25158d2f",
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-shared_scores-v1-execution.json": "78fec8a42d55f64bf932f3004473cf256db539538941f03d281d8635f8a70095"
+  },
+  "rows": [
+    {
+      "schedule": "root_reuse",
+      "requests": 40,
+      "consumedProducerConsumer": [
+        [
+          41393,
+          1743,
+          1391,
+          1612
+        ],
+        [
+          2006,
+          4104,
+          1484,
+          1148
+        ],
+        [
+          1486,
+          1252,
+          3032,
+          1249
+        ],
+        [
+          1938,
+          1652,
+          1300,
+          5182
+        ]
+      ],
+      "ownWorker": 53711,
+      "helperToOwner": 5430,
+      "ownerToHelpers": 4746,
+      "helperToOtherHelper": 8085,
+      "requestsWithHelperToOwner": 38,
+      "requestsWithOwnerToHelper": 38
+    },
+    {
+      "schedule": "eager_root",
+      "requests": 40,
+      "consumedProducerConsumer": [
+        [
+          22716,
+          2379,
+          1638,
+          1396
+        ],
+        [
+          2488,
+          10629,
+          2741,
+          2131
+        ],
+        [
+          1828,
+          2393,
+          8657,
+          2111
+        ],
+        [
+          1732,
+          2334,
+          1850,
+          8851
+        ]
+      ],
+      "ownWorker": 50853,
+      "helperToOwner": 6048,
+      "ownerToHelpers": 5413,
+      "helperToOtherHelper": 13560,
+      "requestsWithHelperToOwner": 38,
+      "requestsWithOwnerToHelper": 38
+    },
+    {
+      "schedule": "whole_root_race",
+      "requests": 40,
+      "consumedProducerConsumer": [
+        [
+          8477,
+          13913,
+          13958,
+          13776
+        ],
+        [
+          14205,
+          6429,
+          13401,
+          12666
+        ],
+        [
+          14143,
+          13998,
+          7324,
+          14577
+        ],
+        [
+          14566,
+          15118,
+          15550,
+          7742
+        ]
+      ],
+      "ownWorker": 29972,
+      "helperToOwner": 42914,
+      "ownerToHelpers": 41647,
+      "helperToOtherHelper": 85310,
+      "requestsWithHelperToOwner": 40,
+      "requestsWithOwnerToHelper": 40
+    }
+  ],
+  "scope": "Post-hoc decomposition of already completed frozen diagnostic cells; actual guarded heuristic cutoffs, source/consumer worker indices. No new Search, competitive sample or resource charge; no live confirmation scores read.",
+  "limitations": [
+    "Worker0 denotes the designated owner thread, not ownership of every winning root result.",
+    "Global provenance monitor perturbs timing. Counts do not show marginal score quality, saved nodes, isolated component strength or match superiority.",
+    "Private-score reverse ablation retains shared storage/hints and may alter later decisions. Independent confirmation remains governed solely by its frozen protocol."
+  ]
+}

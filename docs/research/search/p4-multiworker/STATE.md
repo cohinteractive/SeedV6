@@ -39,6 +39,20 @@ Do not inspect interim scores or compile/test during confirmation. Analyze only
 a complete audited sample, using the protocol-frozen analyzer. If interrupted,
 preserve evidence and charge/consume the claim; no automatic resume is authorized.
 
+## Live independent confirmation
+
+The frozen c4-confirm-w4-v1 attempt is now admitted under clean protocol commit
+76f327ac. Supervisor started 2026-11-04T14:18:23.528552+00:00; independent batch deadline 2026-11-04T17:48:23.123793+00:00,
+inside original18:18:03Z owner boundary. Owned supervisor child PID28528; native
+Job owns all descendants and enforces UTC/monotonic deadline and resource/STOP
+guards. Read the execution receipt/resource-state for actual live status.
+The ledger records attemptsStarted=1; first-pair journal is authoritative
+if a crash precedes its atomic ledger update. Never duplicate, resume, replay or
+change this attempt. Do not inspect interim scores or run compilation/tests.
+Use the frozen analyzer only after all160 pairs pass and the native Job drains.
+All frozen runtime-manifest and original screen artifact/model/platform/window
+hashes were explicitly reverified unchanged immediately before launch.
+
 ## Current one-time overnight window
 
 Owner authorization received4 November23:18:03 NZDT; hard deadline5 November

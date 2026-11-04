@@ -327,3 +327,12 @@ all360 completed campaign-game position audit found zero overlap with any of480
 reserve roots, supplementing the retained historical exclusions.15 Python tests
 passed including native claim-initiation/partial interruption/drain and no-start
 no-charge behavior. The protocol is frozen but not initiated at this checkpoint.
+
+Directional decomposition of the completed score-consumption cells confirms
+that cooperation reaches the owner as well as helpers: eager scheduling recorded
+6048 guarded helper-to-owner cutoffs,5413 owner-to-helper and13560 between distinct
+helpers;38/40 requests had both owner/helper directions. ROOT_REUSE recorded
+5430/4746/8085 respectively. See cooperation-directions-v1-summary.json. These
+are actual guarded consumption facts under an intrusive observer, not marginal
+strength, saved-work or clean timing estimates. No live confirmation outcomes
+were inspected and no new Search work was charged for this decomposition.

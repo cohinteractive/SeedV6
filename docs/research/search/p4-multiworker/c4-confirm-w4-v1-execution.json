@@ -1,0 +1,32 @@
+{
+  "id": "c4-confirm-w4-v1",
+  "status": "running",
+  "protocol": "docs\\research\\search\\p4-multiworker\\c4-confirm-w4-v1-protocol.json",
+  "protocolSha256": "783654ce714b501fd0037a361170c2807151bff68a0f4fc45aaeb8f489e30f27",
+  "maximumNodes": 0,
+  "maximumGames": 320,
+  "deadlineUtc": "2026-11-04T17:48:23.123793+00:00",
+  "mode": "B",
+  "kind": "timed",
+  "startedUtc": "2026-11-04T14:18:23.528552+00:00",
+  "preflightEnvironment": {
+    "utc": "2026-11-04T14:18:24.176986+00:00",
+    "totalCpuPercent": 8.312958435207829,
+    "freeMemoryGiB": 20.53891372680664,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 4,
+    "estimatedPeakGiB": 2,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 41.64629176854116,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 28528,
+  "confirmationAttemptConsumed": true
+}

@@ -8,11 +8,13 @@
   },
   "confirmation": {
     "attemptsMaximum": 1,
-    "attemptsStarted": 0,
+    "attemptsStarted": 1,
     "pairsMaximum": 480,
     "protectedTimedGames": 960,
     "protectedTimedWallSeconds": 86400,
-    "protocol": null
+    "protocol": "docs\\research\\search\\p4-multiworker\\c4-confirm-w4-v1-protocol.json",
+    "protocolSha256": "783654ce714b501fd0037a361170c2807151bff68a0f4fc45aaeb8f489e30f27",
+    "firstInitiatedObservedUtc": "2026-11-04T14:18:25.255915+00:00"
   },
   "consumed": {
     "timedWallSeconds": 8143.863106100005,
@@ -27,7 +29,14 @@
     "fixedInterrupted": 0,
     "fixedNodes": 1337751430
   },
-  "pending": [],
+  "pending": [
+    {
+      "id": "c4-confirm-w4-v1",
+      "maximumNodes": 0,
+      "maximumGames": 320,
+      "receipt": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\c4-confirm-w4-v1-execution.json"
+    }
+  ],
   "receipts": [
     "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-no-launch-reconciliation.json",
