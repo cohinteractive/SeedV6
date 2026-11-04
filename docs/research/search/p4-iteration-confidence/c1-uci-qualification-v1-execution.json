@@ -1,0 +1,64 @@
+{
+  "id": "c1-uci-qualification-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-iteration-confidence\\c1-uci-qualification-v1-protocol.json",
+  "protocolSha256": "267228ce761705a201897635bec30b2528eaf1d35d4fcb94e8e7190110ca573c",
+  "command": [
+    "C:\\Program Files\\Python313\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-iteration-confidence-uci.py",
+    "--runtime",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1",
+    "--output",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\c1-uci-qualification-v1\\observations.jsonl"
+  ],
+  "startedUtc": "2026-11-04T21:35:46.063915+00:00",
+  "games": 0,
+  "priority": "below-normal",
+  "preflight": {
+    "utc": "2026-11-04T21:35:46.735042+00:00",
+    "totalCpuPercent": 17.261904761904766,
+    "freeMemoryGiB": 16.818836212158203,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "vivaldi.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.5,
+    "estimatedPeakGiB": 1.5,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 50.5952380952381,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 2644,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 6.078125,
+    "totalOwnedProcesses": 4
+  },
+  "wallSeconds": 2.9042573999613523,
+  "endedUtc": "2026-11-04T21:35:48.983319+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.5047836303710938,
+  "chargedWallSeconds": 2.9042573999613523,
+  "observedNodes": 320289,
+  "summary": {
+    "type": "summary",
+    "status": "passed",
+    "requests": 12,
+    "nodes": 320289,
+    "activeHelpersAfterClose": 0
+  },
+  "inputsStable": true,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-uci-qualification-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-uci-qualification-v1\\CONTROL-uci.txt": "8164d5bdf099bf1507de973a7b0bd4d0ae06844d9e5ca238fb55ab2700efd99d",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-uci-qualification-v1\\environment.jsonl": "408e37eb3b5e160bb8d36c89d74761edd17a0f3183a6ac7930fc677ea41a24c9",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-uci-qualification-v1\\observations.jsonl": "0965a876d5772b5c1bbd557af37a7fb5b388d5f5756f139d1201367dc34297a6",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-uci-qualification-v1\\VOLATILITY_CARRYOVER-uci.txt": "ed1e58f4ae2b8d52f2a96ed9369d1dd6494ab0cc83cebf110008487999e9e456"
+  }
+}

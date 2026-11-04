@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://api.github.com/repos/AndyGrant/Ethereal/commits/93a3bb15155a34f3334cd200e23de52e03a98e09",
+    "path": "docs\\research\\search\\p4-iteration-confidence\\raw\\external\\93a3bb15155a34f3334cd200e23de52e03a98e09.json",
+    "sha256": "1ec5f6e64b6e96272395d27945da5f969493a9140018ff0601b85ceb5dd36aaf",
+    "revision": "93a3bb15155a34f3334cd200e23de52e03a98e09"
+  },
+  {
+    "url": "https://api.github.com/repos/official-stockfish/Stockfish/commits/78d8f09bc8280e1f7343d0941d466fa5b6c9a559",
+    "path": "docs\\research\\search\\p4-iteration-confidence\\raw\\external\\78d8f09bc8280e1f7343d0941d466fa5b6c9a559.json",
+    "sha256": "1441f0bcc02b32717d78dd68775e12b21b686b4a56322a3e33d8bff0b1c431b0",
+    "revision": "78d8f09bc8280e1f7343d0941d466fa5b6c9a559"
+  }
+]

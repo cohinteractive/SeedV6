@@ -1,0 +1,44 @@
+{
+  "source": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "build": 96,
+  "currentSource": "4af0e298b759e222fe53de4fe6ff14bc0b46f612",
+  "currentVersion": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 97
+  },
+  "versionBaselineHex": "7b0a2020226d616a6f72223a20302c0a2020226d696e6f72223a20302c0a2020227061746368223a20302c0a2020226275696c64223a2039370a7d0a",
+  "versionBaselineSha256": "3e882601cfa2e514d589c47d61f41db2672565b045b7ed28ba05c461db7515bc",
+  "coreResearchDiffFromBaseline": "",
+  "historicalArtifactChecks": {
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\SeedV6-UCI.exe": "bdbc9928255cf6a96ae6f3604007089121b4573198d11b628d51d62d572702af",
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\app\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI-windows-x64.zip": "01daacdb0776270f06bce0f34979cd17f2f3a4f8be1d4bcebb40526d6f0a51b1",
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\build-manifest.json": "8699a1fa601a063eabb05e69da00c12860c01e630524d058b69bea2bd82e0857",
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\candidate.json": "15c616288e8392b027af1cf2aa482722a7d153a028ad0be279a196d3018ac1db"
+  },
+  "pinnedRuntimeFiles": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\.jpackage.xml": "0f232d5e96b42971bde756bd1f54f39962c19941a78f7394f076efbb4d4bc1eb",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\app-uci.jar": "d2205f09ff015cbfaa7eaa8d337716ec40bb1d7f51b23dba91f66ac472200111",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\SeedV6-NNUE-CP64.cfg": "b6aa97a2a897acb5fc48a3f5903c6e52256b5513a83a2ab518004c54b9bffe34",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\SeedV6-UCI.cfg": "c8803fd617b5425d2f88c2070f34c2570424b461bdd9fbfbfab0bfcf615b0f1d"
+  },
+  "java": "C:\\java\\jdk-21\\bin\\java.exe",
+  "javaSha256": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+  "javaVersion": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+  "model": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+  "modelSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "payloadSha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+  "configuration": {
+    "workers": 4,
+    "hashMiB": 64,
+    "flags": 1182007295,
+    "schedule": "EAGER_ROOT",
+    "aspiration": "ADAPTIVE16",
+    "clock": "BOUNDARY2",
+    "profile": "MW_C4_W4"
+  },
+  "comparison": "Exact pinned build96 core and UCI dependencies; Java21 research invocation, no installed engine changed. Native package runtime is separately recorded in historical qualification."
+}

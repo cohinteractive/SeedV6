@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "suites": {
+    "research": {
+      "tests": 31,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "engine-core": {
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "supervisorTests": 6,
+  "limitations": "No full application/platform suite, browser/UI, deployment or strength qualification; no production code changed."
+}

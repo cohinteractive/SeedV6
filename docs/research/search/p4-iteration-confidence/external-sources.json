@@ -1,0 +1,62 @@
+{
+  "verifiedPinnedFiles": [
+    {
+      "engine": "stockfish",
+      "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+      "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/search.cpp",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-search.cpp",
+      "sha256": "a934524dd2f386ec38cdf95b7b2e41cecdc85c9b17e12c0668621e6ae16be28a"
+    },
+    {
+      "engine": "stockfish",
+      "revision": "edb0d9db6731067ec50ce619ff372b463bc4dd5d",
+      "url": "https://raw.githubusercontent.com/official-stockfish/Stockfish/edb0d9db6731067ec50ce619ff372b463bc4dd5d/src/search.h",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\stockfish-src-search.h",
+      "sha256": "06a9339666e75c43a92185c33a111307bca143cf57c85e64f368ca34a87c8071"
+    },
+    {
+      "engine": "ethereal",
+      "revision": "96cde8d2f82a3ab0536bf33572405fda96f6e236",
+      "url": "https://raw.githubusercontent.com/AndyGrant/Ethereal/96cde8d2f82a3ab0536bf33572405fda96f6e236/src/search.c",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-src-search.c",
+      "sha256": "4d2ede2539b3eed669dba3d72244bf1e9b8de5ba64edeca831f6b179a5b16b92"
+    },
+    {
+      "engine": "bagatur",
+      "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+      "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/rootsearch/parallel/SearchersInfo.java",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-rootsearch-parallel-SearchersInfo.java",
+      "sha256": "217deefb148f2e984075b7729097cdb48a19ad733983e6152ccb34f4a473f450"
+    },
+    {
+      "url": "https://api.github.com/repos/official-stockfish/Stockfish/commits?sha=edb0d9db6731067ec50ce619ff372b463bc4dd5d&path=src/thread.cpp&per_page=6",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\sf-thread-history.json",
+      "sha256": "dde606645782e8a430df8eca0b61203093cbef053abfbae600708648ac863ee9"
+    },
+    {
+      "url": "https://api.github.com/repos/official-stockfish/Stockfish/commits?sha=edb0d9db6731067ec50ce619ff372b463bc4dd5d&path=src/history.h&per_page=6",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\sf-history-history.json",
+      "sha256": "5f293b9d1213f7d792efb9e790576deae613df526f79d8cd7f84c09e12dd15f7"
+    },
+    {
+      "url": "https://api.github.com/repos/AndyGrant/Ethereal/commits?sha=96cde8d2f82a3ab0536bf33572405fda96f6e236&path=src/thread.c&per_page=6",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\ethereal-thread-history.json",
+      "sha256": "7ebe5d341aba973464d999ac3a169f278ff39d2151a16efa2203fd5e6b0e7773"
+    },
+    {
+      "engine": "bagatur",
+      "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+      "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/rootsearch/sequential/SequentialSearch_MTD.java",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-rootsearch-sequential-SequentialSearch_MTD.java",
+      "sha256": "cbed6b9aec7c54617f153117af5ed6a4c65e2ba3ba1ef2d55efa3e47d755d63f"
+    },
+    {
+      "engine": "bagatur",
+      "revision": "56d1b3651f62bc770c7cde5f4c1b0360890b9bd5",
+      "url": "https://raw.githubusercontent.com/bagaturchess/Bagatur/56d1b3651f62bc770c7cde5f4c1b0360890b9bd5/Search/src/bagaturchess/search/impl/rootsearch/sequential/mtd/Mediator_AlphaAndBestMoveWindow.java",
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\external\\bagatur-Search-src-bagaturchess-search-impl-rootsearch-sequential-mtd-Mediator_AlphaAndBestMoveWindow.java",
+      "sha256": "5c92392f57e14ab524d765113073c128d9489596be78be5b4bcce1f567dc2d5e"
+    }
+  ],
+  "scope": "Read-only existing raw sources, exact hashes checked; no historical research result allowance reused."
+}

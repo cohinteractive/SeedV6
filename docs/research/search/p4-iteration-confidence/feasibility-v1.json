@@ -1,0 +1,53 @@
+{
+  "status": "prospective planning, not frozen independent confirmation",
+  "confirmationGamesMaximum": 480,
+  "gameCeiling": 800,
+  "pilotGames": 4,
+  "firstScreenGames": 64,
+  "remainingDevelopmentAfterThisPlan": 252,
+  "normalApproximationScenarios": [
+    {
+      "pairSdAssumption": 0.2717313968683508,
+      "pairs": 240,
+      "normal95HalfWidth": 0.034378133322743,
+      "effectiveScoreThreshold": 0.534378133322743,
+      "approximatePower": {
+        "0.53": 0.40144608208118504,
+        "0.55": 0.8134369244001656,
+        "0.57": 0.9788659909557665
+      }
+    },
+    {
+      "pairSdAssumption": 0.35,
+      "pairs": 240,
+      "normal95HalfWidth": 0.0442802959158581,
+      "effectiveScoreThreshold": 0.5442802959158581,
+      "approximatePower": {
+        "0.53": 0.26366600132004236,
+        "0.55": 0.5999313272332937,
+        "0.57": 0.872527988539693
+      }
+    },
+    {
+      "pairSdAssumption": 0.5,
+      "pairs": 240,
+      "normal95HalfWidth": 0.06325756559408299,
+      "effectiveScoreThreshold": 0.563257565594083,
+      "approximatePower": {
+        "0.53": 0.1513998796343854,
+        "0.55": 0.3406203596087565,
+        "0.57": 0.5827394589784104
+      }
+    }
+  ],
+  "historicalSdReference": "MW-C4 vs TC-P1 independent pair variance; different comparator/effect, illustrative only, not a transferable variance estimate.",
+  "runtimePlanning": {
+    "historicalSecondsPerPair": 61.525,
+    "expected68GameWallSeconds": 2091.85,
+    "pilotHardSeconds": 300,
+    "screenHardSeconds": 3600,
+    "requestedIdleMinutes": 75,
+    "confirmationWallReserveSeconds": 21600
+  },
+  "limitations": "At240 pairs, a true53% score has limited gate power. The ceiling can support a moderate integrated gain but cannot reliably resolve small improvements. Do not lower the gate or enlarge allowance after seeing results."
+}

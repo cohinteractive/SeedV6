@@ -1,0 +1,424 @@
+{
+  "status": "passed observational summary",
+  "input": "docs\\research\\search\\p4-iteration-confidence\\raw\\c1-mixed-w4-v2\\observations.jsonl",
+  "sha256": "c098b2dc8934ae863dbfaf0acf726b8538627fe932551befc1c98ea8e4381388",
+  "identity": {
+    "networkSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "java": "21+35-2513",
+    "scope": "Instrumented fixed-node facts; not playing strength or clean speed",
+    "args": [
+      "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\c1-mixed-w4-v2\\observations.jsonl",
+      "2",
+      "14",
+      "200000",
+      "20",
+      "VOLATILITY_CARRYOVER"
+    ],
+    "aspiration": "VOLATILITY_CARRYOVER",
+    "source": "44fc2bf2fe54",
+    "build": 96,
+    "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION];futility=100d;reverse=200d;extensionCap=1;workers=4;hashMiB=64;aspiration=ADAPTIVE16;parallel=EAGER_ROOT",
+    "type": "identity"
+  },
+  "requests": 40,
+  "nodes": 8000000,
+  "attemptClasses": {
+    "resolved-selective": 316,
+    "upper": 92,
+    "incomplete": 40,
+    "lower": 39
+  },
+  "nodesByClass": {
+    "resolved-selective": 5120570,
+    "upper": 261865,
+    "incomplete": 2072180,
+    "lower": 545385
+  },
+  "completedBoundPassNodeFraction": 0.10090625,
+  "incompletePassNodeFraction": 0.2590225,
+  "meanCompletedDepth": 7.9,
+  "completedDepthCounts": {
+    "7": 15,
+    "10": 2,
+    "8": 13,
+    "5": 2,
+    "9": 5,
+    "13": 2,
+    "6": 1
+  },
+  "completedMoveChanges": 108,
+  "stableTwoIterationOpportunities": 138,
+  "subsequentChangesAfterStableTwo": 37,
+  "baselineOnlyCounterfactual": {
+    "eligibleInitialWindows": 316,
+    "firstFailures": 81,
+    "carryoverWouldWiden": 0,
+    "widenedObservedFailures": 0,
+    "meaning": "Read-only replay of widths on observed trajectory; does not predict changed-search outcomes."
+  },
+  "perRequest": [
+    {
+      "root": "c1-game1-ply40",
+      "round": 0,
+      "depth": 7,
+      "move": 395085,
+      "score": 417,
+      "nodes": 200000,
+      "failedPassNodes": 5158
+    },
+    {
+      "root": "c1-game1-ply80",
+      "round": 0,
+      "depth": 7,
+      "move": 11734192,
+      "score": 2941,
+      "nodes": 200000,
+      "failedPassNodes": 25039
+    },
+    {
+      "root": "c1-game9-ply40",
+      "round": 0,
+      "depth": 10,
+      "move": 13763723,
+      "score": 739,
+      "nodes": 200000,
+      "failedPassNodes": 254
+    },
+    {
+      "root": "c1-game9-ply80",
+      "round": 0,
+      "depth": 8,
+      "move": 396133,
+      "score": 1701,
+      "nodes": 200000,
+      "failedPassNodes": 48016
+    },
+    {
+      "root": "c1-game17-ply40",
+      "round": 0,
+      "depth": 5,
+      "move": 395158,
+      "score": 144,
+      "nodes": 200000,
+      "failedPassNodes": 7554
+    },
+    {
+      "root": "c1-game17-ply80",
+      "round": 0,
+      "depth": 8,
+      "move": 263621,
+      "score": 1035,
+      "nodes": 200000,
+      "failedPassNodes": 3004
+    },
+    {
+      "root": "c1-game25-ply40",
+      "round": 0,
+      "depth": 8,
+      "move": 263500,
+      "score": -234,
+      "nodes": 200000,
+      "failedPassNodes": 8111
+    },
+    {
+      "root": "c1-game25-ply80",
+      "round": 0,
+      "depth": 8,
+      "move": 262803,
+      "score": -17,
+      "nodes": 200000,
+      "failedPassNodes": 13688
+    },
+    {
+      "root": "c1-game25-ply120",
+      "round": 0,
+      "depth": 8,
+      "move": 198425,
+      "score": -347,
+      "nodes": 200000,
+      "failedPassNodes": 124014
+    },
+    {
+      "root": "c1-game33-ply40",
+      "round": 0,
+      "depth": 8,
+      "move": 11733218,
+      "score": 283,
+      "nodes": 200000,
+      "failedPassNodes": 91496
+    },
+    {
+      "root": "c1-game33-ply80",
+      "round": 0,
+      "depth": 7,
+      "move": 263372,
+      "score": 291,
+      "nodes": 200000,
+      "failedPassNodes": 4358
+    },
+    {
+      "root": "c1-game33-ply120",
+      "round": 0,
+      "depth": 8,
+      "move": 395808,
+      "score": 376,
+      "nodes": 200000,
+      "failedPassNodes": 7289
+    },
+    {
+      "root": "c1-game41-ply40",
+      "round": 0,
+      "depth": 7,
+      "move": 12846988,
+      "score": -91,
+      "nodes": 200000,
+      "failedPassNodes": 99007
+    },
+    {
+      "root": "c1-game41-ply80",
+      "round": 0,
+      "depth": 9,
+      "move": 67022,
+      "score": -167,
+      "nodes": 200000,
+      "failedPassNodes": 6468
+    },
+    {
+      "root": "c1-game41-ply120",
+      "round": 0,
+      "depth": 13,
+      "move": 66967,
+      "score": -59,
+      "nodes": 200000,
+      "failedPassNodes": 28009
+    },
+    {
+      "root": "c1-game49-ply40",
+      "round": 0,
+      "depth": 7,
+      "move": 197632,
+      "score": 208,
+      "nodes": 200000,
+      "failedPassNodes": 2638
+    },
+    {
+      "root": "c1-game49-ply80",
+      "round": 0,
+      "depth": 7,
+      "move": 196864,
+      "score": -159,
+      "nodes": 200000,
+      "failedPassNodes": 260
+    },
+    {
+      "root": "c1-game49-ply120",
+      "round": 0,
+      "depth": 9,
+      "move": 131780,
+      "score": -478,
+      "nodes": 200000,
+      "failedPassNodes": 21867
+    },
+    {
+      "root": "c1-game57-ply40",
+      "round": 0,
+      "depth": 7,
+      "move": 329385,
+      "score": -376,
+      "nodes": 200000,
+      "failedPassNodes": 3173
+    },
+    {
+      "root": "c1-game57-ply80",
+      "round": 0,
+      "depth": 7,
+      "move": 394573,
+      "score": -926,
+      "nodes": 200000,
+      "failedPassNodes": 261
+    },
+    {
+      "root": "c1-game57-ply80",
+      "round": 1,
+      "depth": 8,
+      "move": 394573,
+      "score": -937,
+      "nodes": 200000,
+      "failedPassNodes": 261
+    },
+    {
+      "root": "c1-game57-ply40",
+      "round": 1,
+      "depth": 6,
+      "move": 329385,
+      "score": -415,
+      "nodes": 200000,
+      "failedPassNodes": 3173
+    },
+    {
+      "root": "c1-game49-ply120",
+      "round": 1,
+      "depth": 9,
+      "move": 131780,
+      "score": -499,
+      "nodes": 200000,
+      "failedPassNodes": 28462
+    },
+    {
+      "root": "c1-game49-ply80",
+      "round": 1,
+      "depth": 7,
+      "move": 196864,
+      "score": -159,
+      "nodes": 200000,
+      "failedPassNodes": 260
+    },
+    {
+      "root": "c1-game49-ply40",
+      "round": 1,
+      "depth": 7,
+      "move": 197632,
+      "score": 215,
+      "nodes": 200000,
+      "failedPassNodes": 2567
+    },
+    {
+      "root": "c1-game41-ply120",
+      "round": 1,
+      "depth": 13,
+      "move": 66967,
+      "score": -59,
+      "nodes": 200000,
+      "failedPassNodes": 28009
+    },
+    {
+      "root": "c1-game41-ply80",
+      "round": 1,
+      "depth": 9,
+      "move": 67022,
+      "score": -167,
+      "nodes": 200000,
+      "failedPassNodes": 6468
+    },
+    {
+      "root": "c1-game41-ply40",
+      "round": 1,
+      "depth": 7,
+      "move": 196805,
+      "score": -137,
+      "nodes": 200000,
+      "failedPassNodes": 37784
+    },
+    {
+      "root": "c1-game33-ply120",
+      "round": 1,
+      "depth": 8,
+      "move": 395808,
+      "score": 409,
+      "nodes": 200000,
+      "failedPassNodes": 8085
+    },
+    {
+      "root": "c1-game33-ply80",
+      "round": 1,
+      "depth": 7,
+      "move": 263372,
+      "score": 302,
+      "nodes": 200000,
+      "failedPassNodes": 3884
+    },
+    {
+      "root": "c1-game33-ply40",
+      "round": 1,
+      "depth": 8,
+      "move": 11733218,
+      "score": 283,
+      "nodes": 200000,
+      "failedPassNodes": 1401
+    },
+    {
+      "root": "c1-game25-ply120",
+      "round": 1,
+      "depth": 8,
+      "move": 198425,
+      "score": -265,
+      "nodes": 200000,
+      "failedPassNodes": 875
+    },
+    {
+      "root": "c1-game25-ply80",
+      "round": 1,
+      "depth": 8,
+      "move": 262803,
+      "score": -17,
+      "nodes": 200000,
+      "failedPassNodes": 37234
+    },
+    {
+      "root": "c1-game25-ply40",
+      "round": 1,
+      "depth": 7,
+      "move": 263500,
+      "score": -179,
+      "nodes": 200000,
+      "failedPassNodes": 7857
+    },
+    {
+      "root": "c1-game17-ply80",
+      "round": 1,
+      "depth": 9,
+      "move": 15010679,
+      "score": 1093,
+      "nodes": 200000,
+      "failedPassNodes": 12014
+    },
+    {
+      "root": "c1-game17-ply40",
+      "round": 1,
+      "depth": 5,
+      "move": 395158,
+      "score": 144,
+      "nodes": 200000,
+      "failedPassNodes": 7554
+    },
+    {
+      "root": "c1-game9-ply80",
+      "round": 1,
+      "depth": 8,
+      "move": 396133,
+      "score": 1701,
+      "nodes": 200000,
+      "failedPassNodes": 53745
+    },
+    {
+      "root": "c1-game9-ply40",
+      "round": 1,
+      "depth": 10,
+      "move": 13763723,
+      "score": 739,
+      "nodes": 200000,
+      "failedPassNodes": 36448
+    },
+    {
+      "root": "c1-game1-ply80",
+      "round": 1,
+      "depth": 7,
+      "move": 11734192,
+      "score": 2941,
+      "nodes": 200000,
+      "failedPassNodes": 26026
+    },
+    {
+      "root": "c1-game1-ply40",
+      "round": 1,
+      "depth": 7,
+      "move": 395085,
+      "score": 417,
+      "nodes": 200000,
+      "failedPassNodes": 5479
+    }
+  ],
+  "limitations": "Fresh TT, instrumented fixed-node requests, selected mixed-phase roots, SMP variance and repeated roots. Effort is admissions, not useful work. No move-truth, timed-strength, clean-speed or independent confidence conclusion."
+}

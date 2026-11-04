@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://api.github.com/repos/official-stockfish/Stockfish/commits?sha=edb0d9db6731067ec50ce619ff372b463bc4dd5d&path=src/search.cpp&per_page=100",
+    "path": "docs\\research\\search\\p4-iteration-confidence\\raw\\external\\stockfish-search-history.json",
+    "sha256": "687c4bcfe6700cd6b70b68aabd538cee644d6e40daceefdfafc217745ed84028",
+    "selected": [
+      {
+        "sha": "78d8f09bc8280e1f7343d0941d466fa5b6c9a559",
+        "url": "https://github.com/official-stockfish/Stockfish/commit/78d8f09bc8280e1f7343d0941d466fa5b6c9a559",
+        "title": "Revert f8aa78e0a7e8853370e5989fc23783f3b244ac42"
+      },
+      {
+        "sha": "67a2c247d45034509fbdd669751f3dabe11e797d",
+        "url": "https://github.com/official-stockfish/Stockfish/commit/67a2c247d45034509fbdd669751f3dabe11e797d",
+        "title": "Improve multi-threaded go-mate searches"
+      }
+    ],
+    "scope": "Compact material-history index; complete fetched100-commit response preserved unchanged at raw path. No exhaustive development-history claim."
+  },
+  {
+    "url": "https://api.github.com/repos/AndyGrant/Ethereal/commits?sha=96cde8d2f82a3ab0536bf33572405fda96f6e236&path=src/search.c&per_page=100",
+    "path": "docs\\research\\search\\p4-iteration-confidence\\raw\\external\\ethereal-search-history.json",
+    "sha256": "748b93425c7426c215002ea16c53165fba7b8dec049799f82b5357e4b218d044",
+    "selected": [
+      {
+        "sha": "b1b7f212781c5b3c08041cd7d2b07369ab629e35",
+        "url": "https://github.com/AndyGrant/Ethereal/commit/b1b7f212781c5b3c08041cd7d2b07369ab629e35",
+        "title": "Improve speed to report TB Win/Loss"
+      },
+      {
+        "sha": "93a3bb15155a34f3334cd200e23de52e03a98e09",
+        "url": "https://github.com/AndyGrant/Ethereal/commit/93a3bb15155a34f3334cd200e23de52e03a98e09",
+        "title": "Revert the functional changes in V12.29"
+      }
+    ],
+    "scope": "Compact material-history index; complete fetched100-commit response preserved unchanged at raw path. No exhaustive development-history claim."
+  }
+]

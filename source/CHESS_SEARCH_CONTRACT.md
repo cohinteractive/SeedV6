@@ -1,12 +1,43 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R029**
+Internal revision: **P4-R030**
 
-Status: **ACTIVE Phase 4 - 5 November 2026. Owner-adopted build96 rolling production selects confirmed MW-C4 only at W4 and exact TC-P1 at all other supported worker counts. MW-R001 remains accepted and closed successfully in its documented W4 domain. TT-R001 is GPT-reconciled, owner-accepted and formally closed with its original strength objective not demonstrated and an INCONCLUSIVE outcome. Historical baseline79 and W1 champion HL-G1/build84 are unchanged. No active successor research, deployment or release.**
+Status: **ACTIVE Phase 4 - 5 November 2026. IC-R001 iteration confidence and root Search effectiveness is owner-authorized and active against exact build96 MW-C4 W4 production. Strength remains unresolved. Existing closed campaigns, production routing, baseline79 and W1 champion HL-G1/build84 are preserved. No promotion, deployment or release.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
+
+## Active IC-R001 - iteration confidence and root Search effectiveness
+
+The owner authorizes a new strength-development CGLHW against exact accepted
+build96 MW-C4 EAGER_MEMORY at W4. [Focused CONTRACT](../docs/research/search/p4-iteration-confidence/CONTRACT.md)
+records scope, correctness/concurrency safeguards, autonomy and human gates;
+[STATE](../docs/research/search/p4-iteration-confidence/STATE.md) is the single
+resume point. Investigate integrated iteration information, aspiration/recovery,
+root competition and effort/cooperation with consequential Search dependencies.
+Success requires independent practical W4 strength improvement, not efficiency,
+stability, technical completion or exhaustion of resources.
+
+Fresh limits: 24 charged experimental wall-hours, 800 initiated timed games,
+one independent attempt of at most240 fresh pairs/480 games included in800.
+Proposed primary gate: score>=53% and paired-normal95% lower>50%, plus technical
+and operational qualification. W4/CP64/Hash64/10+0.1/BOUNDARY2 on Windows Ryzen5500/
+Java21 is the primary domain. Daytime bounded fixed-work is authorized; timed
+experiments require a specific owner idle window, absent at launch. No old budget,
+confirmation or window transfers. Frozen independent clock studies stay unopened.
+No production-default change, champion advance, installation, push or deployment.
+
+Observed HEAD4af0e298/build97 adds packaging/UCI identity changes; Search source
+matches44fc2bf2/build96. Preserve pinned build96 as the competitive control.
+MW-R001 and TT-R001 remain closed; historical no-successor statements below
+refer to their prior authorizations, superseded only by this new IC-R001 launch.
+The owner confirms launch Project Source mirrors P4-R029/P4-F047. Current masters
+are **P4-R030/P4-F048**; owner refresh is required before dependent GPT coordination,
+non-blocking for authorized repository execution. Repository edits do not refresh
+mirrors. Shared behavioral governance, its R4 projection and registry are unchanged.
+Historical revision/mirror requests below record earlier decisions; this section
+owns the current master pair and mirror requirement.
 
 ## Rolling production selection - 5 November 2026
 

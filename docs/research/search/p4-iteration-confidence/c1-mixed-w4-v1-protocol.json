@@ -1,0 +1,53 @@
+{
+  "id": "c1-mixed-w4-v1",
+  "kind": "fixed-work",
+  "games": 0,
+  "workers": 4,
+  "requests": 40,
+  "maximumNodes": 8000000,
+  "timeoutSeconds": 180,
+  "inputs": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-v1\\lib\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-v1\\lib\\research.jar": "7834ce39967dc920e72ab075dd8ff66d138a432c98a6131f5f6d6f45e9a7b8f1",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4IterationConfidenceStudy.java": "de93301fdd8b87d508b551dc167eff09250355491adbfabdaf1c774d71a8c223",
+    "tools\\p4-iteration-confidence.py": "1280e2a0aa5b7a432df58612a69e3a0be02e62bebcaa40337e4d2a9364a4253e",
+    "tools\\p4-multiworker.py": "5f02d3808abf4c796d706140216d46ef45fc98f6bb655c2964ce1b1309645021",
+    "tools\\p4-tactical-supervise.py": "f2d3d425b4e0ab43bbd8285b1f7a614dbde43984558488ecd8bfceb32bf92ede",
+    "tools\\tournament-process.py": "d52f10d46a81ff3bac9b064ca98576d41bc5010a47f6e27aaa42d36114073e9f",
+    "build-assets\\nnue-candidate\\conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "C:/java/jdk-21/bin/java.exe": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+    "docs/research/search/p4-correction/mixedphase-v1-roots.tsv": "191f79788729bcb35fe92b11b6572749e8794b4d8fee4af256fa5764b1685ae2",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4IterationConfidenceSearch.java": "2064f1c735a32fdfa0f9c5c860d8a228fec2a62d9b0a22c595215e11a22a7a4f"
+  },
+  "question": "IC-C1 volatility carryover integrated with exact MW-C4: compare honest completion, recovery and root trajectories at equal admissions; no strength criterion.",
+  "resources": {
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2
+  },
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms128m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "ROOT:docs/research/search/p4-iteration-confidence/raw/runtime-c1-v1/lib/*",
+    "com.ohinteractive.seedv6.search.exact.P4IterationConfidenceStudy",
+    "ROOT:build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "ROOT:docs/research/search/p4-correction/mixedphase-v1-roots.tsv",
+    "{output}",
+    "2",
+    "14",
+    "200000",
+    "20",
+    "VOLATILITY_CARRYOVER"
+  ],
+  "stopping": "Fixed 40 requests; operational failure/CPU/memory/owner STOP/deadline only. Preserve all partial evidence.",
+  "prospective": true
+}

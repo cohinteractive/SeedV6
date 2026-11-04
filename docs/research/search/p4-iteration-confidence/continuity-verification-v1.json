@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "initialHead": "4af0e298b759e222fe53de4fe6ff14bc0b46f612",
+  "masters": [
+    "P4-R030",
+    "P4-F048"
+  ],
+  "versionDecision": "no_bump; research-only code/tools/tests/docs",
+  "versionExactBytesPreserved": true,
+  "rootJournalAbsent": true,
+  "productionSourceUnchanged": true,
+  "fiveExperimentsPassed": true,
+  "rawReceiptFilesRehashed": 17,
+  "ignoredRawFilesVerified": 72,
+  "timedInputsFrozenAndAvailable": true,
+  "timedRunsNotAdmitted": true,
+  "ledger": {
+    "chargedWallSeconds": 37.5157479000045,
+    "fixedWallSeconds": 37.5157479000045,
+    "timedWallSeconds": 0,
+    "fixedNodes": 32320289,
+    "initiatedTimedGames": 0,
+    "completedTimedGames": 0,
+    "failedTimedGames": 0,
+    "interruptedTimedGames": 0,
+    "confirmationAttempts": 0
+  },
+  "pending": [],
+  "ownedExperimentalProcesses": 0,
+  "humanActions": [
+    {
+      "action": "Authorize a specific75-minute idle window for pilot4 + screen64 timed games",
+      "blockingFor": "timed competitive execution"
+    },
+    {
+      "action": "Refresh Project mirrors to P4-R030/P4-F048",
+      "blockingFor": "mirror-dependent GPT coordination only; non-blocking for repository execution"
+    }
+  ],
+  "limitations": "Targeted verification, not full repository/ignored-file hashing or UI/platform/strength acceptance. Raw artifacts are local and absent from fresh checkout."
+}

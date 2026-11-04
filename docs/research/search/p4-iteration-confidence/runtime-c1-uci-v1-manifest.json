@@ -1,0 +1,25 @@
+{
+  "identity": "IC-C1 VOLATILITY_CARRYOVER research overlay, not a new application build",
+  "coreSource": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "coreBuild": 96,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\lib\\app-uci.jar": "d2205f09ff015cbfaa7eaa8d337716ec40bb1d7f51b23dba91f66ac472200111",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\lib\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\lib\\research.jar": "7834ce39967dc920e72ab075dd8ff66d138a432c98a6131f5f6d6f45e9a7b8f1",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P4IterationConfidenceUciMain$1.class": "a13ea87fdd3bfc6cca78f0f0d554d26ad35e407bc35d1c0239b39b5d75460052",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-c1-uci-v1\\classes\\com\\ohinteractive\\seedv6\\integration\\P4IterationConfidenceUciMain.class": "3e8ce13e699086f15f746314b8115209e030d990b96305b5a816bd31f4dac093"
+  },
+  "sourceInputs": {
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/P4IterationConfidenceSearch.java": "2064f1c735a32fdfa0f9c5c860d8a228fec2a62d9b0a22c595215e11a22a7a4f",
+    "src/researchLauncher/java/com/ohinteractive/seedv6/integration/P4IterationConfidenceUciMain.java": "6a492b0877e186063225ac3b19ea63eca9c3638674acc1f8c593a328121b5bbe"
+  },
+  "commonEngineChanges": "None. Pinned production build96 engine-core and app-uci jars; both formulations share identical research UCI binding and Java runtime.",
+  "configuration": "W4 CP64 Hash64 EAGER_ROOT flags1182007295 PVS BOUNDARY2. CONTROL=ADAPTIVE16, candidate=VOLATILITY_CARRYOVER. Other workers delegate exact build96 production routing.",
+  "qualified": "Bounded12-request UCI identity/node/stop/reset/reuse/PV and process qualification passed; managed-clock competitive pilot remains pending.",
+  "qualificationReceipt": "c1-uci-qualification-v1-execution.json"
+}

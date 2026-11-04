@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "javaTests": 13,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "supervisorTests": 4,
+  "raw": "raw/c1-tests-v1",
+  "scope": "New aspiration completion/stop/mate/reversal/reset/reentry plus existing eager-root and memory checks; native failed-launch charge/drain and admission tests."
+}

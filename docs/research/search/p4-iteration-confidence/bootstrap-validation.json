@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "correctedGradleInvocation": "Java GradleWrapperMain with exact argv; first PowerShell -D argument split failed before compilation. No experiment charged.",
+  "coreEntryDifferencesFromBuild96": [
+    "com/ohinteractive/seedv6/application-version.properties"
+  ],
+  "suites": {
+    "research": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "engine-core": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+}
