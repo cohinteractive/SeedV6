@@ -145,7 +145,9 @@ build timestamp; inspection confirmed that sole additional metadata difference.
   JAR SHA is identical in native GUI, native UCI, Java UCI and research workspace.
   The C6 source remains separate and unselected; no C6 runtime/strength claim follows.
 
-No failing validation remains. Source JUnit results were not represented as a new
+The final documentation whitespace check caught CRLF in the newly authored JSON
+manifest; a follow-up normalization preserves its JSON values and all evidence
+hashes. No failing validation remains. Source JUnit results were not represented as a new
 219-test rerun after the metadata-only commit. No full unrelated training suite,
 macOS/mobile execution, interactive Windows play or external persistent-client
 acceptance was performed. Bounded persistent service correctness is not warmed
