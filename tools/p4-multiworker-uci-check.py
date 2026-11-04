@@ -11,7 +11,7 @@ m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 
 def main(runtime, output, architectures=('ROOT_REUSE','WHOLE_ROOT_RACE')):
     if not architectures or len(set(architectures))!=len(architectures) or any(
-            a not in ('ROOT_REUSE','WHOLE_ROOT_RACE','WHOLE_ROOT_SHARING') for a in architectures):
+            a not in ('ROOT_REUSE','WHOLE_ROOT_RACE','WHOLE_ROOT_SHARING','EAGER_ROOT') for a in architectures):
         raise ValueError('Unknown/duplicate qualification architecture')
     nodes=0; requests=0
     with Path(output).open('x',encoding='utf-8') as stream:

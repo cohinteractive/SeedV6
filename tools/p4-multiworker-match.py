@@ -71,7 +71,7 @@ def configure(engine, workers, architecture):
                   'networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b',
                   'scoreMapping=BT4_Q_LOGIT400_V1', 'clockPolicy=boundary2-d6-v1',
                   f'workers={workers};hashMiB=64;aspiration=ADAPTIVE16',
-                  'formulation='+{'ROOT_REUSE':'TC-P1','WHOLE_ROOT_RACE':'MW-C1','WHOLE_ROOT_SHARING':'MW-C2'}[architecture],
+                  'formulation='+{'ROOT_REUSE':'TC-P1','WHOLE_ROOT_RACE':'MW-C1','WHOLE_ROOT_SHARING':'MW-C2','EAGER_ROOT':'MW-C3'}[architecture],
                   'learning='+('completed-winner-private-copies' if workers>1 and architecture=='WHOLE_ROOT_SHARING' else 'request-worker-private'),
                   'architecture='+('OWNER' if workers == 1 else architecture)]:
         if token not in identity: raise ValueError('Missing identity '+token+': '+identity)

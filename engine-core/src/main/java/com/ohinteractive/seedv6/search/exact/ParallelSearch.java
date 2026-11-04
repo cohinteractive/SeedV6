@@ -40,6 +40,7 @@ public final class ParallelSearch implements SingleDepthSearch {
     private final Worker[] workers;
     private final FlatSearchConfig construction;
     private final ConcurrencyPolicy policy;
+    private final boolean eagerFiniteRoots;
     private final java.util.function.IntFunction<ExactEvaluator> evaluatorFactory;
     private final TTable table;
     private final MoveReservations reservations;
@@ -59,6 +60,7 @@ public final class ParallelSearch implements SingleDepthSearch {
     private boolean active;
     private boolean closed;
     private boolean splitActive;
+    private boolean eagerActive;
     private int rootAlpha, rootBeta;
     private long[] splitMoves = new long[0], previousMoves = new long[0], previousEffort = new long[0];
     private long[] splitEffort = new long[0];
@@ -222,8 +224,34 @@ public final class ParallelSearch implements SingleDepthSearch {
     /** Delivered private snapshots, not evidence of subsequent use or strength. */
     public long completedLearningTransfers() { ensureIdle(); return completedLearningTransfers; }
 
+    /** MW-C3: overlap root jobs only inside a finite aspiration window. Full-window
+     * passes keep the original owner-first schedule. Normal construction is unchanged. */
+    public static ParallelSearch constructionEagerRootResearch(int threads, SearchEvaluation evaluation,
+            TTable table, FlatSearchConfig config) {
+        return constructionEagerRootResearch(threads,evaluation,table,config,null);
+    }
+
+    static ParallelSearch constructionEagerRootResearch(int threads, SearchEvaluation evaluation,
+            TTable table, FlatSearchConfig config, java.util.function.IntFunction<ExactEvaluator> evaluators) {
+        Objects.requireNonNull(config,"config");
+        if(threads<2) throw new IllegalArgumentException("Eager root research requires multiple workers");
+        return new ParallelSearch(threads,evaluation,table,
+                config.has(FlatSearchConfig.Feature.EFFORT)?ConcurrencyPolicy.ROOT_REUSE:ConcurrencyPolicy.ROOT_SPLIT,
+                evaluators,config,true);
+    }
+
+    /** Quiescent invocation fact; not a claim that every helper found useful work. */
+    public boolean eagerRootScheduling() { ensureIdle(); return eagerActive; }
+
     private ParallelSearch(int threads,SearchEvaluation definition,TTable table,ConcurrencyPolicy policy,
             java.util.function.IntFunction<ExactEvaluator> evaluatorFactory,FlatSearchConfig construction) {
+        this(threads,definition,table,policy,evaluatorFactory,construction,false);
+    }
+
+    private ParallelSearch(int threads,SearchEvaluation definition,TTable table,ConcurrencyPolicy policy,
+            java.util.function.IntFunction<ExactEvaluator> evaluatorFactory,FlatSearchConfig construction,
+            boolean eagerFiniteRoots) {
+        this.eagerFiniteRoots=eagerFiniteRoots;
         this.construction=construction;
         if(threads < MIN_WORKERS || threads > MAX_WORKERS)
             throw new IllegalArgumentException("Threads must be in 1..16: " + threads);
@@ -333,15 +361,15 @@ public final class ParallelSearch implements SingleDepthSearch {
 
         private void rootJobs() {
             for(int job; !cancelled() && (job=nextRoot.getAndIncrement())<splitMoves.length;) {
-                if(splitBest.get().score()>=rootBeta) return;
-                int originalAlpha=policy==ConcurrencyPolicy.ROOT_FULL ? rootAlpha : Math.max(rootAlpha,splitBest.get().score());
-                var result=rootJob(job,originalAlpha,policy==ConcurrencyPolicy.ROOT_FULL ? rootBeta : originalAlpha+1,
-                        policy!=ConcurrencyPolicy.ROOT_FULL);
+                if(rootBestScore()>=rootBeta) return;
+                int originalAlpha=policy==ConcurrencyPolicy.ROOT_FULL ? rootAlpha : Math.max(rootAlpha,rootBestScore());
+                boolean scout=policy!=ConcurrencyPolicy.ROOT_FULL && !(eagerActive && job==0);
+                var result=rootJob(job,originalAlpha,scout ? originalAlpha+1 : rootBeta,scout);
                 if(!result.completed()) return;
-                if(policy!=ConcurrencyPolicy.ROOT_FULL && result.score()>originalAlpha && result.score()<rootBeta) {
+                if(scout && result.score()>originalAlpha && result.score()<rootBeta) {
                     // The old scout lower bound cannot be compared with a newer alpha
                     // to skip its full retry. Re-search every original-window fail-high.
-                    int retryAlpha=Math.max(rootAlpha,splitBest.get().score());
+                    int retryAlpha=Math.max(rootAlpha,rootBestScore());
                     if(retryAlpha>=rootBeta) return; // Another completed job already proves this root cutoff.
                     result=rootJob(job,retryAlpha,rootBeta,false);
                     if(!result.completed()) return;
@@ -349,10 +377,16 @@ public final class ParallelSearch implements SingleDepthSearch {
                 completed=result;
                 for(;;) {
                     var before=splitBest.get();
-                    if(result.score()<=before.score() || splitBest.compareAndSet(before,result)) break;
+                    if((before!=null && result.score()<=before.score()) || splitBest.compareAndSet(before,result)) break;
                 }
             }
         }
+    }
+
+    /** Absence is scheduling state only: never manufacture an incomplete score/PV. */
+    private int rootBestScore() {
+        var completed=splitBest.get();
+        return completed==null ? -ExactSearch.INFINITY : completed.score();
     }
 
     @Override public int maxSupportedDepth() { return ExactSearch.MAX_DEPTH; }
@@ -427,6 +461,7 @@ public final class ParallelSearch implements SingleDepthSearch {
         winner.set(null);
         failure.set(null);
         completedLearningTransfers=0;
+        eagerActive=false;
         for(var worker : workers) {
             worker.nodes = worker.evaluations = worker.qnodes = worker.abortedNodes = 0;
             worker.maximumPly = worker.maximumQply = 0;
@@ -441,6 +476,7 @@ public final class ParallelSearch implements SingleDepthSearch {
                     root[Board.KEY], true, rootMoves, scratch);
             splitActive=policy.rootSplit() && next.depth()>=3 && count>1
                     && DrawAdjudicator.adjudicateNonTerminal(root,new SearchLineHistory(next.gameHistory()))==DrawAdjudicator.RuleDraw.NONE;
+            eagerActive=splitActive && eagerFiniteRoots && alpha>-ExactSearch.INFINITY && beta<ExactSearch.INFINITY;
             try {
                 if(splitActive) {
                     splitMoves=workers[0].search.orderedRootMoves(root,preferred);
@@ -453,15 +489,23 @@ public final class ParallelSearch implements SingleDepthSearch {
                         }
                         splitMoves[j]=move;
                     }
-                    splitEffort=new long[splitMoves.length];nextRoot.set(1);splitIncomplete.set(false);
+                    splitEffort=new long[splitMoves.length];splitIncomplete.set(false);
                     if(rootOrdering != null) for(var worker:workers) worker.search.prepareRootIteration(rootOrdering);
-                    workers[0].used=true;participating.incrementAndGet();
-                    ExactSearchResult first;
-                    try { first=workers[0].rootJob(0,rootAlpha,rootBeta,false); }
-                    finally { participating.decrementAndGet(); }
-                    splitBest.set(first);
-                    if(!first.completed()) abort.set(true);
-                    else if(rootOrdering != null) for(var worker:workers) worker.search.seedRootHistoryFrom(workers[0].search);
+                    if(eagerActive) {
+                        nextRoot.set(0);splitBest.set(null);
+                        // Quiescent preparation only. TC-P1 keeps each worker's own
+                        // request learning; no live first-job history is copied.
+                        if(rootOrdering!=null) for(var worker:workers) worker.search.seedRootHistoryFrom(workers[0].search);
+                    } else {
+                        nextRoot.set(1);
+                        workers[0].used=true;participating.incrementAndGet();
+                        ExactSearchResult first;
+                        try { first=workers[0].rootJob(0,rootAlpha,rootBeta,false); }
+                        finally { participating.decrementAndGet(); }
+                        splitBest.set(first);
+                        if(!first.completed()) abort.set(true);
+                        else if(rootOrdering != null) for(var worker:workers) worker.search.seedRootHistoryFrom(workers[0].search);
+                    }
                 }
                 if(pool != null && next.depth() >= 3 && count > 1) {
                     for(int i = 0; i < futures.length; i++) futures[i] = pool.submit(workers[i + 1]);
@@ -475,7 +519,7 @@ public final class ParallelSearch implements SingleDepthSearch {
             if(problem instanceof Error error) throw error;
             if(problem instanceof RuntimeException runtime) throw runtime;
             if(problem != null) throw new IllegalStateException("Parallel Search failed.", problem);
-            if(splitActive && !cancelled() && (splitBest.get().score()>=rootBeta
+            if(splitActive && !cancelled() && splitBest.get()!=null && (splitBest.get().score()>=rootBeta
                     || (!splitIncomplete.get() && nextRoot.get()>=splitMoves.length))) {
                 winner.set(splitBest.get());
                 if((alpha==-ExactSearch.INFINITY && beta==ExactSearch.INFINITY

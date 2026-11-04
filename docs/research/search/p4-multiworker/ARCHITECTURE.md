@@ -234,3 +234,12 @@ can support this without a request-level interface change. It trades earlier hel
 work against poorer early alpha and needs independent bound/rule/accounting tests.
 This is an unimplemented competing hypothesis, not a claim that eager splitting
 outperforms either whole-root or independent iterative Search.
+
+MW-C3 now implements the finite-window hypothesis with an explicit opt-in factory.
+The empty completed-result slot is null scheduling state, never an invented score
+or PV. Only completed root results can raise alpha; an original scout fail-high
+still receives its full retry even if another worker has meanwhile raised alpha.
+All workers drain before publication; require complete root coverage or a completed
+beta-cutoff witness. Quiescent preparation preserves TC-P1 worker-private learning.
+The39-test qualification includes actual concurrent first-root entry; runtime and
+playing strength remain unmeasured at this implementation boundary.

@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "tests": 39,
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c3-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest.xml",
+      "sha256": "ed768e2cb5a746029eccd042a6636fc024fed927dc129d523f9ebabeeea0c25a"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4EagerRootTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c3-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.P4EagerRootTest.xml",
+      "sha256": "b9c93e2bce272834329eec93acbdc41ddc19ddaefeac14a96d7e72310b5bb810"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4MultiworkerTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c3-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.P4MultiworkerTest.xml",
+      "sha256": "383bafe3d73ed33983d21e0706f6a9b5acddca6924795a318cebc26f1bb9f082"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4WholeRootSharingTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c3-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.P4WholeRootSharingTest.xml",
+      "sha256": "1a0d9c674511d87cb3d129312de1ef348cbe7a7f6295f5a3473069f0ad7e77b8"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4WholeRootTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c3-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.P4WholeRootTest.xml",
+      "sha256": "8b01a00bc1150b03598223f0ceb36ab0a4c9adefb16c1497fd0da9ed037dd176"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c3-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineEngineTest.xml",
+      "sha256": "b7ff0b46dd9fb2ba6a005b1a02ebe26a65449c54513d462cc9d218906eefb013"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c3-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineProfileTest.xml",
+      "sha256": "69aee40f4c9aa342598c3baccbd1456507e2aedef7258f1f612d32bde4f359ec"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.EngineFormulationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\c3-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.EngineFormulationTest.xml",
+      "sha256": "9d7cedc92dd9c1aecdebb673887921ba94eb5606427299776ff3f72068de9764"
+    }
+  ],
+  "sourceBase": "048810fa",
+  "buildAtTests": 93,
+  "scope": "C1/C2/C3 exact bounds, legal PV/terminal rules/state, TC-P1 callbacks and lifecycle W2/W4/W8/W16; C3 finite-root overlap latch witness, full/one-sided/shallow fallback, zero-budget no-publication, real threefold; normal production identities. researchLauncherClasses compiled.",
+  "tools": "Five focused supervisor tests passed with project venv, including native deadline partial-pair accounting/drain. Synthetic attempts are test fixtures, not campaign games.",
+  "retainedFailures": [
+    "raw/c3-tests-v1.log: test source used nonexistent Builder.build; corrected to existing snapshot API, then all tests passed",
+    "raw/c3-tool-tests-v1.log: system Python lacked chess dependency; qualified project venv passed v2, no dependency installation"
+  ],
+  "sourceHashes": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java": "204038aca18a30170f07ba868ea0ee6fbab5a56085b65eb09992c5028a4181e2",
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/P4MultiworkerStudy.java": "711a44547d5e5a0e4e1ae8b4705c052244f915861f954c3e75352365143ff73c",
+    "src/researchLauncher/java/com/ohinteractive/seedv6/integration/P4MultiworkerUciMain.java": "32ae0465d83cc3fb1a5aa797cd61ea180e4ec97de790a1f41275c15841862036"
+  }
+}

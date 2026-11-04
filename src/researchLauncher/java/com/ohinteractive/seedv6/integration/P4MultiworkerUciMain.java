@@ -15,9 +15,10 @@ import com.ohinteractive.seedv6.uci.*;
 public final class P4MultiworkerUciMain {
     public static void main(String[] args) throws Exception {
         if (args.length != 4 || !args[0].equals("--network") || !args[2].equals("--architecture"))
-            throw new IllegalArgumentException("--network <CP64> --architecture ROOT_REUSE|WHOLE_ROOT_RACE|WHOLE_ROOT_SHARING");
+            throw new IllegalArgumentException("--network <CP64> --architecture ROOT_REUSE|WHOLE_ROOT_RACE|WHOLE_ROOT_SHARING|EAGER_ROOT");
         String architecture = args[3];
-        if (!architecture.equals("ROOT_REUSE") && !architecture.equals("WHOLE_ROOT_RACE") && !architecture.equals("WHOLE_ROOT_SHARING"))
+        if (!architecture.equals("ROOT_REUSE") && !architecture.equals("WHOLE_ROOT_RACE")
+                && !architecture.equals("WHOLE_ROOT_SHARING") && !architecture.equals("EAGER_ROOT"))
             throw new IllegalArgumentException("Unknown MW architecture");
         var model = ConventionalNnueEngine.load(Path.of(args[1])); var clocks = ClockPolicy.configured();
         var configuration = new UciConfiguration() {
@@ -31,6 +32,8 @@ public final class P4MultiworkerUciMain {
                     return clocks.apply(workers == 1 || architecture.equals("ROOT_REUSE") ? c.create(model.evaluation())
                             : new AspirationSearch(architecture.equals("WHOLE_ROOT_SHARING")
                                     ? ParallelSearch.constructionWholeRootSharingResearch(workers,model.evaluation(),new TTable(hash),c.mechanisms())
+                                    : architecture.equals("EAGER_ROOT")
+                                    ? ParallelSearch.constructionEagerRootResearch(workers,model.evaluation(),new TTable(hash),c.mechanisms())
                                     : ParallelSearch.constructionWholeRootResearch(workers,model.evaluation(),new TTable(hash),c.mechanisms()),c.aspiration()));
                 }, RootTablebase.NONE, Book.EMPTY);
             }
@@ -41,7 +44,8 @@ public final class P4MultiworkerUciMain {
             public String identity(int workers, int hash) {
                 var version = ApplicationVersion.load();
                 String actual = workers == 1 ? "OWNER" : architecture;
-                return "mode=research experimental=true formulation=" + (architecture.equals("ROOT_REUSE") ? "TC-P1" : architecture.equals("WHOLE_ROOT_SHARING") ? "MW-C2" : "MW-C1")
+                return "mode=research experimental=true formulation=" + (architecture.equals("ROOT_REUSE") ? "TC-P1"
+                        : architecture.equals("WHOLE_ROOT_SHARING") ? "MW-C2" : architecture.equals("EAGER_ROOT") ? "MW-C3" : "MW-C1")
                         + " architecture=" + actual + " evaluator=CONVENTIONAL_NNUE checkpoint=64 networkSha256="
                         + ConventionalNnueEngine.SHA256 + " schema=" + model.model().schema()
                         + " heads=" + model.model().outputBuckets() + " head=" + model.model().headBackend()

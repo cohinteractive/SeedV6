@@ -203,3 +203,20 @@ are consistent with excessive convergence after copying. No C2 competitive games
 or strength verdict. Deprioritize its expansion and select finite-window eager
 root splitting to target the observed first-root barrier with separate root jobs.
 All raw/negative evidence is retained in c2-coverage-w4-v1-summary.json and receipts.
+
+## MW-C3 finite-window eager root implementation
+
+The separate opt-in EAGER_ROOT formulation starts preferred-root full search and
+alternative scouts concurrently only in finite aspiration windows. Full-window,
+one-sided and shallow searches retain the original schedule.39 Java tests passed,
+including a two-worker latch witness before either root finishes, exact controls,
+formal real-history repetition, zero-budget publication and W2-W16 lifecycle. Five
+supervisor tests passed with the project venv; initial test compile/API typo and
+system-Python missing chess dependency are retained in the test summary. Runtime
+qualification and competitive evidence remain next. Normal TC-P1 stays unchanged.
+
+Protocol annotation: the immutable C1 fixed screen retained the stale phrase
+"Two game pilot" in interpretation. Its explicit12 openingIndices, question,
+selectionPlan and stopping fields prospectively specified24 games; execution and
+analysis use that declared screen, never the separate2-game pilot. No protocol
+bytes, outcomes or sample are retrospectively changed. Correct later templates.

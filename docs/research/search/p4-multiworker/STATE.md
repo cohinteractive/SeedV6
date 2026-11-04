@@ -247,15 +247,15 @@ Fresh-session sequence:
 1. Verify masters/Git/version/journal, this state, budget/receipts and source/artifact
    hashes. Check raw availability; fresh checkout lacks ignored evidence. Missing
    artifacts need a new identified export, not silent recreation of frozen files.
-2. Do not repeat completed v3 baseline or90 tests without a concrete change/reason.
-   Read their summaries. Continue fixed-node paired-runner qualification and opening partition under Mode A;
-   any new source/runtime needs a fresh manifest/protocol/run ID before admission.
-3. Verify resources once at admission; use tools/p4-multiworker.py. Its current
-   scope deliberately rejects competitive/timed protocols. If temporarily blocked,
-   apply the behavior above and preserve no-launch vs launched charging semantics.
-4. Before competitive exploration, qualify a fixed-node match path against exact
-   TC-P1. Existing TC runner hardcodes84 and cannot simply be relabelled. Reserve
-   disjoint independent confirmation openings before development selection.
+2. Read the latest implementation/runtime checkpoint below and existing summaries.
+   Do not repeat completed tests or screens without a change or concrete reason.
+   Any new runtime/protocol needs a new identity; preserve prior frozen bytes.
+3. Verify resources once at admission. tools/p4-multiworker.py owns diagnostics;
+   tools/p4-multiworker-match.py owns paired fixed/timed matches. Both preserve
+   no-launch versus launched accounting and native process ownership/draining.
+4. The exact TC-P1 paired runner and protected opening partition are qualified.
+   Actual alternating-first-color runtime pilot is pending; confirmation remains
+   unfrozen/unspent. Follow the latest selected candidate, not historical next steps.
 5. Use local GRADLE_USER_HOME build/migration/gradle-user-home, no daemon and one
    build worker; no experiment concurrent with compilation/tests. Record new results
    and clean owned-process drain before handoff. Owner STOP file blocks admission.
@@ -272,3 +272,12 @@ Before later competitive protocols, qualify alternating first-game colors (Fastc
 prefix/color binding auditor. Record cold versus second-game descriptive results;
 no claim that these are warmed persistent-production conditions. This is a future
 qualification task, not a failure of the current declared paired protocol.
+
+Current implementation checkpoint: MW-C3 EAGER_ROOT passed39 focused Java tests
+and5 supervisor tests; see c3-tests-v2-summary.json, including retained initial
+invocation failures. Shared-core runtime impact warrants build93->94 in this unit.
+Next: freeze a clean new runtime, qualify UCI and comparable ROOT_REUSE/EAGER_ROOT
+100k-node diagnostics, then actual alternating-first-color paired pilot and an
+economical competitive screen if warranted. Budget unchanged335,628,984 fixed
+nodes/26 games;66 timed games/2042.5878s. No owned engines or matches. The entire
+Goal remains active; deadline18:18:03Z unchanged and no human action is required.

@@ -14,7 +14,7 @@ import com.ohinteractive.seedv6.search.tt.TTable;
  * No production instrumentation or scheduling change. Timing is diagnostic only:
  * instrumentation and thread scheduling can alter an SMP search at equal nodes. */
 public final class P4MultiworkerStudy {
-    enum Architecture { ROOT_REUSE, WHOLE_ROOT_RACE, WHOLE_ROOT_SHARING }
+    enum Architecture { ROOT_REUSE, WHOLE_ROOT_RACE, WHOLE_ROOT_SHARING, EAGER_ROOT }
     static final class Admissions implements ExactEvaluator {
         final ExactEvaluator delegate;
         long nodes, qnodes, reentries, evaluations, initializations;
@@ -96,6 +96,7 @@ public final class P4MultiworkerStudy {
                     case ROOT_REUSE -> ParallelSearch.constructionResearch(workers,model.evaluation(),table,config,evaluators);
                     case WHOLE_ROOT_RACE -> ParallelSearch.constructionWholeRootResearch(workers,model.evaluation(),table,config,evaluators);
                     case WHOLE_ROOT_SHARING -> ParallelSearch.constructionWholeRootSharingResearch(workers,model.evaluation(),table,config,evaluators);
+                    case EAGER_ROOT -> ParallelSearch.constructionEagerRootResearch(workers,model.evaluation(),table,config,evaluators);
                 };
                 var attempts = new ArrayList<Map<String, Object>>();
                 AspirationSearch.AttemptObserver observer = (d, alpha, beta, result, elapsed) -> {
@@ -117,8 +118,10 @@ public final class P4MultiworkerStudy {
                     row.put("result", result); row.put("elapsedNanos", elapsed); row.put("workers", snapshots);
                     row.put("workerCompletion",work);
                     row.put("completedLearningTransfers",owner.completedLearningTransfers());
+                    row.put("eagerRootScheduling",owner.eagerRootScheduling());
                     row.put("firstHelperDelayNanos", firstHelper == Long.MAX_VALUE ? null : firstHelper - admissions[0].firstInitialization);
-                    // ROOT_REUSE split depths: first restricted root job. Whole-root race
+                    // Serial ROOT_REUSE: first restricted root job. Eager mode's first
+                    // owner job is not a serialization barrier. Whole-root race
                     // and depth1/2: entire owner invocation, NOT serialized first-job work.
                     row.put("firstOwnerJobNodes", admissions[0].firstJobNodes < 0 ? admissions[0].nodes : admissions[0].firstJobNodes);
                     attempts.add(row);

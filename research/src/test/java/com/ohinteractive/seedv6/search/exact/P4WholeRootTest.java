@@ -16,12 +16,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Timeout(90)
 class P4WholeRootTest {
-    @ParameterizedTest @ValueSource(booleans={false,true})
-    void narrowRaceReportsBoundsForAspirationWithoutInventingExactResults(boolean sharing) {
+    @ParameterizedTest @ValueSource(strings={"RACE","SHARING","EAGER"})
+    void narrowRaceReportsBoundsForAspirationWithoutInventingExactResults(String architecture) {
         var evaluation = SearchEvaluation.handcrafted(); var board = Board.startingPosition();
         var history = GameHistory.initial(board);
         int expected = ExactSearch.quiescenceResearch(ExactEvaluator.from(evaluation)).search(board, history, 3, () -> false).score();
-        try (var owner = cohort(sharing, 4, evaluation, new TTable(1), FlatSearchConfig.exact(), null)) {
+        try (var owner = cohort(architecture, 4, evaluation, new TTable(1), FlatSearchConfig.exact(), null)) {
             for (int[] window : new int[][]{{expected - 1, expected + 1}, {expected + 50, expected + 51}, {expected - 51, expected - 50}}) {
                 var r = owner.searchWindow(new SearchRequest(board, history, 3), window[0], window[1]);
                 assertTrue(r.completed()); assertEquals(3, r.depth()); assertEquals(0, owner.activeSearchThreads());
@@ -33,15 +33,15 @@ class P4WholeRootTest {
         }
     }
 
-    @ParameterizedTest @ValueSource(booleans={false,true})
-    void completeExactRaceAgreesWithIndependentTreeAndPreservesBoard(boolean sharing) {
+    @ParameterizedTest @ValueSource(strings={"RACE","SHARING","EAGER"})
+    void completeExactRaceAgreesWithIndependentTreeAndPreservesBoard(String architecture) {
         var evaluation = SearchEvaluation.handcrafted();
         for (String fen : List.of("4k3/8/8/3pP3/8/8/8/4K3 w - d6 98 1",
                 "8/k1P5/2K5/8/8/8/8/8 w - - 98 1", "7k/6Q1/5K2/8/8/8/8/8 b - - 100 1")) {
             var board = Board.fromFen(fen); var saved = board.clone(); var history = GameHistory.initial(board);
             int expected = ExactSearch.quiescenceResearch(ExactEvaluator.from(evaluation)).search(board, history, 3, () -> false).score();
             for (int workers : new int[]{2, 4}) try (var driver = new SearchDriver(
-                    cohort(sharing, workers, evaluation, new TTable(1), FlatSearchConfig.exact(), null))) {
+                    cohort(architecture, workers, evaluation, new TTable(1), FlatSearchConfig.exact(), null))) {
                 var result = driver.search(new SearchRequest(board, history, 3));
                 assertTrue(result.targetDepthCompleted()); assertEquals(expected, result.lastCompletedResult().score());
                 Phase2Oracle.legalPv(board, result.lastCompletedResult().principalVariation());
@@ -50,13 +50,13 @@ class P4WholeRootTest {
         }
     }
 
-    @ParameterizedTest @ValueSource(booleans={false,true})
-    void tcP1RaceAccountsAbortedPeersAndReusesAfterFailureOrStop(boolean sharing) throws Exception {
+    @ParameterizedTest @ValueSource(strings={"RACE","SHARING","EAGER"})
+    void tcP1RaceAccountsAbortedPeersAndReusesAfterFailureOrStop(String architecture) throws Exception {
         var model = ConventionalNnueEngine.load(); var board = Board.startingPosition(); var saved = board.clone();
         var config = BaselineEngine.configuration(4, 1, BaselineEngine.SearchProfile.TC_P1).mechanisms();
         for (int workers : new int[]{2, 4, 8, 16}) {
             var counts = new P4MultiworkerStudy.Admissions[workers];
-            var owner = cohort(sharing, workers, model.evaluation(), new TTable(1), config,
+            var owner = cohort(architecture, workers, model.evaluation(), new TTable(1), config,
                     i -> counts[i] = new P4MultiworkerStudy.Admissions(ExactEvaluator.from(model.evaluation())));
             try (var driver = new SearchDriver(ClockPolicy.BOUNDARY2.apply(new AspirationSearch(owner, AspirationSearch.Policy.ADAPTIVE16)))) {
                 for (int cap : new int[]{1, 100, 5000}) {
@@ -85,9 +85,12 @@ class P4WholeRootTest {
             }
         }
     }
-    private static ParallelSearch cohort(boolean sharing, int workers, SearchEvaluation evaluation,
+    private static ParallelSearch cohort(String architecture, int workers, SearchEvaluation evaluation,
             TTable table, FlatSearchConfig config, java.util.function.IntFunction<ExactEvaluator> evaluators) {
-        return sharing ? ParallelSearch.constructionWholeRootSharingResearch(workers,evaluation,table,config,evaluators)
-                : ParallelSearch.constructionWholeRootResearch(workers,evaluation,table,config,evaluators);
+        return switch(architecture) {
+            case "SHARING" -> ParallelSearch.constructionWholeRootSharingResearch(workers,evaluation,table,config,evaluators);
+            case "EAGER" -> ParallelSearch.constructionEagerRootResearch(workers,evaluation,table,config,evaluators);
+            default -> ParallelSearch.constructionWholeRootResearch(workers,evaluation,table,config,evaluators);
+        };
     }
 }
