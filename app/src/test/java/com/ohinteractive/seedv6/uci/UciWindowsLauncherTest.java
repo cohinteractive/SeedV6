@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
+import com.ohinteractive.seedv6.ApplicationVersion;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -43,7 +45,7 @@ class UciWindowsLauncherTest {
 
             assertEquals(0, process.exitValue());
             assertEquals(List.of(
-                "id name SeedV6", "id author Charles Clark",
+                "id name SeedV6-" + ApplicationVersion.load().build(), "id author Charles Clark",
                 "option name Threads type spin default 1 min 1 max 16",
                 "option name ClockPolicy type combo default BOUNDARY2 var BOUNDARY2 var FACTUAL",
                 "option name UseBook type check default false",

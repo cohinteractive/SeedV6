@@ -49,7 +49,9 @@ def verify_baseline_identity(identity, workers, hash_mib):
 
 
 def verify_uci_identity(handshake, workers, hash_mib):
-    check(any(line.startswith('id name SeedV6 Construction V1 NNUE CP64 ') for line in handshake), 'Wrong UCI identity')
+    names = [line for line in handshake if line.startswith('id name')]
+    check(len(names) == 1 and re.fullmatch(r'id name SeedV6-(0|[1-9][0-9]*)', names[0]),
+          'Wrong UCI identity')
     for option in ('Threads type spin default 1 min 1 max 16', 'Hash type spin default 64 min 1 max 1024',
                    'Clear Hash type button', 'UseBook type check default false', 'OwnBook type check default false'):
         check('option name ' + option in handshake, 'Wrong or missing UCI option ' + option)

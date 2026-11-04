@@ -18,6 +18,7 @@ import java.util.concurrent.TimeoutException;
 
 import org.junit.jupiter.api.Test;
 
+import com.ohinteractive.seedv6.ApplicationVersion;
 import com.ohinteractive.seedv6.Main;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.move.LegalMoveResolver;
@@ -99,7 +100,7 @@ class UciProcessTest {
     void actualMainProvidesHandshakeReadinessAndCleanQuitWithoutStartupNoise() throws Exception {
         try(EngineSession engine = EngineSession.launch()) {
             engine.send("uci");
-            assertEquals("id name SeedV6", engine.readLine());
+            assertEquals("id name SeedV6-" + ApplicationVersion.load().build(), engine.readLine());
             assertEquals("id author Charles Clark", engine.readLine());
             assertEquals("option name Threads type spin default 1 min 1 max 16", engine.readLine());
             assertEquals("option name ClockPolicy type combo default BOUNDARY2 var BOUNDARY2 var FACTUAL", engine.readLine());
@@ -121,7 +122,7 @@ class UciProcessTest {
     void actualMainExitsCleanlyOnEofWithoutQuit() throws Exception {
         try(EngineSession engine = EngineSession.launch()) {
             engine.send("uci");
-            assertEquals("id name SeedV6", engine.readLine());
+            assertEquals("id name SeedV6-" + ApplicationVersion.load().build(), engine.readLine());
             assertEquals("id author Charles Clark", engine.readLine());
             assertEquals("option name Threads type spin default 1 min 1 max 16", engine.readLine());
             assertEquals("option name ClockPolicy type combo default BOUNDARY2 var BOUNDARY2 var FACTUAL", engine.readLine());

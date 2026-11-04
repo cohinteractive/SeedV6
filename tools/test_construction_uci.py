@@ -27,6 +27,8 @@ def main():
     check({j.name for j in jars} == {'app-uci.jar', 'engine-core.jar'}, 'Unexpected runtime dependency')
     with zipfile.ZipFile(install / 'lib/engine-core.jar') as archive:
         check(hashlib.sha256(archive.read('models/bre-pair2-g32.brn-pair2')).hexdigest() == SHA, 'Wrong packaged model')
+        version = archive.read('com/ohinteractive/seedv6/application-version.properties').decode('utf-8')
+        build = next(line.removeprefix('build=') for line in version.splitlines() if line.startswith('build='))
     env = os.environ.copy()
     for key in ('JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS', 'JAVA_OPTS', 'SEEDV6_CONSTRUCTION_V1_OPTS'):
         env.pop(key, None)
@@ -42,7 +44,9 @@ def main():
     def identity(engine, workers, hash_mib, aspiration='OFF'):
         engine.send('uci'); lines = engine.until('uciok')
         text = '\n'.join(lines)
-        for expected in ('id name SeedV6 construction-v1 experimental', 'flags=262143', SHA,
+        check([line for line in lines if line.startswith('id name')] == [f'id name SeedV6-{build}'],
+              'Wrong UCI build identity')
+        for expected in ('flags=262143', SHA,
                          'futility=100d;reverse=200d;extensionCap=1',
                          f'workers={workers};hashMiB={hash_mib};aspiration={aspiration}'):
             check(expected in text, 'Missing identity: ' + expected)

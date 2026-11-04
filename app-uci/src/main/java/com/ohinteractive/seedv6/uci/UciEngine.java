@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
+import com.ohinteractive.seedv6.ApplicationVersion;
 import com.ohinteractive.seedv6.core.Board;
 import com.ohinteractive.seedv6.core.Gen;
 import com.ohinteractive.seedv6.core.move.Move;
@@ -45,7 +46,7 @@ public final class UciEngine implements AutoCloseable {
         String[] tokens = input.split("\\s+");
         try {
             if (tokens.length == 1 && tokens[0].equals("uci")) {
-                uciOutput.line("id name " + configuration.name());
+                uciOutput.line("id name SeedV6-" + ApplicationVersion.load().build());
                 uciOutput.line("id author Charles Clark");
                 uciOutput.line("option name Threads type spin default 1 min 1 max " + configuration.maximumWorkers());
                 if (configuration.standalone()) {

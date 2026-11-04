@@ -3,6 +3,7 @@ package com.ohinteractive.seedv6.uci;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
+import com.ohinteractive.seedv6.ApplicationVersion;
 import com.ohinteractive.seedv6.search.driver.BaselineEngine;
 import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +26,9 @@ class FormulationUciTest {
                         output, error, configuration)) { engine.run(); }
                 String text = output.toString(StandardCharsets.UTF_8);
                 assertEquals("", error.toString(StandardCharsets.UTF_8));
-                assertTrue(text.contains("id name SeedV6 Construction V1 NNUE CP64 "));
+                String expectedName = "id name SeedV6-" + ApplicationVersion.load().build();
+                assertEquals(java.util.List.of(expectedName, expectedName),
+                        text.lines().filter(s -> s.startsWith("id name ")).toList());
                 assertEquals(2, text.lines().filter(s -> s.equals("uciok")).count());
                 assertEquals(1, text.lines().filter(s -> s.equals("readyok")).count());
                 assertEquals(2, text.lines().filter(s -> s.startsWith("info string formulation snapshot:")).count());

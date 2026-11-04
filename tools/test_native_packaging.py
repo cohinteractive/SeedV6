@@ -37,7 +37,7 @@ def cp64_identity(workers=1, hash_mib=64):
 
 
 def cp64_handshake(identity=None):
-    return ['id name SeedV6 Construction V1 NNUE CP64 0.0.0 (build 74)',
+    return ['id name SeedV6-74',
             'option name Threads type spin default 1 min 1 max 16',
             'option name Hash type spin default 64 min 1 max 1024',
             'option name Clear Hash type button',
@@ -95,6 +95,11 @@ class PackagingSafety(unittest.TestCase):
 
     def test_uci_identity_cannot_borrow_fields_from_other_protocol_lines(self):
         checks.verify_uci_identity(cp64_handshake(), 1, 64)
+        for names in ([], ['id name SeedV6-74', 'id name SeedV6-74'],
+                      ['id name SeedV6 Construction V1 NNUE CP64 0.0.0 (build 74)'],
+                      ['id name SeedV6-74 source=fixture'], ['id name SeedV6-unknown']):
+            with self.assertRaisesRegex(RuntimeError, 'Wrong UCI identity'):
+                checks.verify_uci_identity(names + cp64_handshake()[1:], 1, 64)
         bad = cp64_handshake(cp64_identity().replace('flags=1177812991', 'flags=262143'))
         bad.insert(-1, 'info string flags=1177812991')
         for lines in (bad, cp64_handshake() + ['info string ' + cp64_identity()],
