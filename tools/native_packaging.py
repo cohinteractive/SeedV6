@@ -239,7 +239,11 @@ def verify_published(output):
     safe_tree(output)
     receipt = json.loads((output / 'candidate.json').read_text())
     require(receipt['status'] == 'VERIFIED_LOCAL_CANDIDATE', 'Unverified previous output: ' + str(output))
-    require({item.name for item in output.iterdir()} == {'candidate.json', receipt['image'], receipt['archive']},
+    # Finder adds directory metadata when browsing a distribution. Tolerate only
+    # that regular file; directories, links and other user content remain protected.
+    entries = {item.name for item in output.iterdir()
+               if item.name != '.DS_Store' or not stat.S_ISREG(item.lstat().st_mode)}
+    require(entries == {'candidate.json', receipt['image'], receipt['archive']},
             'Unexpected files in previous output; preserve/move user work before retrying: ' + str(output))
     image = contained(output / receipt['image'], output)
     archive = contained(output / receipt['archive'], output)

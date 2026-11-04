@@ -234,6 +234,35 @@ class PackagingSafety(unittest.TestCase):
         self.assertFalse(new.exists())
         self.assertFalse((self.work / '.previous-current').exists())
 
+    def test_finder_metadata_does_not_block_replacing_current_distribution(self):
+        old = self.published_fixture(); new = self.published_fixture('new')
+        metadata = old / '.DS_Store'; metadata.write_bytes(b'Finder metadata')
+        p.verify_published(old)
+        self.assertEqual(b'Finder metadata', metadata.read_bytes())
+        p.publish(new, old, True)
+        p.verify_published(old)
+        self.assertEqual('new', (old / 'image/payload').read_text())
+        self.assertFalse((self.work / '.previous-current').exists())
+
+    def test_directory_named_like_finder_metadata_is_preserved(self):
+        old = self.published_fixture(); new = self.published_fixture('new')
+        directory = old / '.DS_Store'; directory.mkdir()
+        note = directory / 'user-notes.txt'; note.write_text('keep this work')
+        with self.assertRaisesRegex(RuntimeError, 'Unexpected files'):
+            p.publish(new, old, True)
+        self.assertEqual('keep this work', note.read_text())
+        self.assertTrue(new.exists())
+
+    @unittest.skipIf(os.name == 'nt', 'Symlink creation requires Windows privileges')
+    def test_symlink_named_like_finder_metadata_is_preserved(self):
+        old = self.published_fixture(); new = self.published_fixture('new')
+        metadata = old / '.DS_Store'; metadata.symlink_to('image/payload')
+        with self.assertRaisesRegex(RuntimeError, 'Unexpected files'):
+            p.publish(new, old, True)
+        self.assertTrue(metadata.is_symlink())
+        self.assertEqual('current', metadata.read_text())
+        self.assertTrue(new.exists())
+
     def test_publication_failure_restores_exact_previous_distribution(self):
         old = self.published_fixture(); before = p.file_inventory(old)
         new = self.published_fixture('new')
@@ -289,6 +318,7 @@ class PackagingSafety(unittest.TestCase):
 
     def test_unrelated_files_beside_current_image_are_not_discarded(self):
         old = self.published_fixture(); new = self.published_fixture('new')
+        (old / '.DS_Store').write_bytes(b'Finder metadata')
         note = old / 'user-notes.txt'; note.write_text('keep this work')
         with self.assertRaisesRegex(RuntimeError, 'Unexpected files'):
             p.publish(new, old, True)
