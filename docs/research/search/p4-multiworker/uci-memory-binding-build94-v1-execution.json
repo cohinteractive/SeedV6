@@ -1,0 +1,67 @@
+{
+  "id": "uci-memory-binding-build94-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\uci-memory-binding-build94-v1-protocol.json",
+  "protocolSha256": "c9da0cc646749fa6e21864cef7e39d596417948572c84c5895e5d77db7677b56",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-multiworker-uci-check.py",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\runtime-memory-binding-build94-v1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-memory-binding-build94-v1\\observations.jsonl",
+    "EAGER_MEMORY,ROOT_MEMORY"
+  ],
+  "startedUtc": "2026-11-04T12:44:09.000837+00:00",
+  "maximumNodes": 480000,
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-memory-binding-build94-v1\\observations.jsonl",
+  "priority": "below-normal",
+  "games": 0,
+  "preflightEnvironment": {
+    "utc": "2026-11-04T12:44:09.632241+00:00",
+    "totalCpuPercent": 7.543103448275867,
+    "freeMemoryGiB": 20.778892517089844,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 40.8764367816092,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 18556,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 4.921875,
+    "totalOwnedProcesses": 5
+  },
+  "wallSeconds": 2.5498413000022992,
+  "endedUtc": "2026-11-04T12:44:11.570796+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.3511161804199219,
+  "temporaryResourceBlocker": null,
+  "chargedNodes": 280294,
+  "nodeCharge": "verified callback admissions",
+  "summary": {
+    "type": "summary",
+    "status": "passed",
+    "nodes": 280294,
+    "requests": 8,
+    "activeHelpersAfterClose": 0,
+    "scope": "All selected JVMs exited normally after UCI quit; no surviving in-process helper is possible. Parent Job verifies descendants."
+  },
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-memory-binding-build94-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-memory-binding-build94-v1\\EAGER_MEMORY-uci.txt": "99fc9b8293f58040f615f8357a4587ae4a8d9079f95bf180156aeeb4c8416f9d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-memory-binding-build94-v1\\environment.jsonl": "705a5eee50fb67fbeb405728ff33d3ad78bb36a9eb870be8dd297ea2a6edb5c5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-memory-binding-build94-v1\\observations.jsonl": "339e1d65854f5768ece799f487e84e55095781e175e18aa5d3898314afc321a2",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-memory-binding-build94-v1\\ROOT_MEMORY-uci.txt": "c775769cee469c2b0055e3c184860aea21fd32038e1b7b4988d4a000f07a33e8"
+  },
+  "inputsStable": true
+}

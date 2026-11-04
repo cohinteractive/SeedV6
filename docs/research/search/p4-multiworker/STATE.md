@@ -14,23 +14,30 @@ These are exploratory comparisons to exact TC-P1, not independent confirmation o
 a causal C4-versus-C5 comparison. C4 is selected for prospective confirmation
 planning:160 fresh pairs at10+0.1, measured9843.94s projected wall,12600s deadline
 allowance including >25% margin; latest launch14:47:03Z under unchanged18:18:03Z
-window. Full protocol not yet frozen/initiated. confirmation-feasibility-v2.json
+window. The c4-confirm-w4-v1 protocol is now frozen; not yet initiated. confirmation-feasibility-v2.json
 records limited power for small gains and all gate assumptions. Additional360-game
 played-position audit found zero overlaps with any protected reserve root.
 
-The separate independent iterative core unit passed69 Java tests and compiled its
+The separate independent iterative core unit c59a9488 passed69 Java tests and compiled its
 research probe. Build94->95 verified token-only; default TC-P1 remains unchanged.
 Independent runtime/UCI/strength qualification remains pending; do not imply that
 C1 same-depth racing or these tests establish independent Lazy SMP strength. C4
 continues to use unchanged clean9d380c30/build94 frozen artifact, not this new core.
 
 Confirmation admission/analysis implementation passed15 Python tests, including
-native partial-claim initiation/drain and no-launch/no-claim handling. Final review
-and prospective protocol/commit are next. No reserve spent, pending admission or
+native partial-claim initiation/drain and no-launch/no-claim handling. Final preflight/commit is complete when the next verified research commit lands;
+then launch the frozen c4-confirm-w4-v1 protocol exactly once. No reserve spent, pending admission or
 owned research engine/match remains. Java processes observed are pre-existing
 VS Code language servers, not owned research. Resource ledger:1,337,751,430 fixed
 nodes/102 games,1580.1959s fixed wall;258 timed games/8143.8631s. All complete; no
-failed/interrupted campaign games. Human actions required: None. Full Goal active.
+failed/interrupted campaign games. Human actions required: None. Full Goal active. Masters advance toP4-R025/F043.
+
+Safe next command (only if no receipt/pending admission):
+`build/research/venv/Scripts/python.exe -B tools/p4-multiworker-match.py --protocol docs/research/search/p4-multiworker/c4-confirm-w4-v1-protocol.json`.
+After admission, use immutable receipt and resource-state; never duplicate/replay.
+Do not inspect interim scores or compile/test during confirmation. Analyze only
+a complete audited sample, using the protocol-frozen analyzer. If interrupted,
+preserve evidence and charge/consume the claim; no automatic resume is authorized.
 
 ## Current one-time overnight window
 
@@ -45,7 +52,7 @@ confirmed an ACTIVE Goal for the entire MW-R001 objective, not an intermediate u
 Do not end execution just because a work unit, test, experiment or commit finishes.
 Continue the highest-value safe authorized investigation; preserve any genuine blocker.
 
-## Overnight progress
+## Historical overnight checkpoints (latest resume instructions above)
 
 Opening selection completed:64 development pairs from the established legal16 pool;
 480 fresh protected reserve pairs from the pinned held-out book partition. Six
@@ -281,8 +288,8 @@ Fresh-session sequence:
    tools/p4-multiworker-match.py owns paired fixed/timed matches. Both preserve
    no-launch versus launched accounting and native process ownership/draining.
 4. The exact TC-P1 paired runner and protected opening partition are qualified.
-   Actual alternating-first-color runtime pilot is pending; confirmation remains
-   unfrozen/unspent. Follow the latest selected candidate, not historical next steps.
+   Alternating-first-color runtime pilot is qualified; confirmation is now
+   frozen and its live attempt status is in the ledger. Follow the latest selected candidate, not historical next steps.
 5. Use local GRADLE_USER_HOME build/migration/gradle-user-home, no daemon and one
    build worker; no experiment concurrent with compilation/tests. Record new results
    and clean owned-process drain before handoff. Owner STOP file blocks admission.
@@ -291,14 +298,14 @@ No current blocking human action. Timed work must fit the current window; later
 windows require new owner authority. Mirrors require refresh only before mirror-dependent planning.
 MW-R001 has not ended, and technical qualification is not strength success.
 
-Current timed protocol limitation: fresh JVMs for each pair, baseline White first,
+Historical C1 timed protocol limitation: fresh JVMs for each pair, baseline White first,
 restart=off inside the pair, no Search warmup before game1. Cold-start effects are
 part of this frozen exploratory domain. Do not change it mid-run or exclude game1.
 Before later competitive protocols, qualify alternating first-game colors (Fastchess
 -reverse is available) with explicit raw PGN color/order checks and the existing
 prefix/color binding auditor. Record cold versus second-game descriptive results;
-no claim that these are warmed persistent-production conditions. This is a future
-qualification task, not a failure of the current declared paired protocol.
+no claim that these are warmed persistent-production conditions. That qualification subsequently passed for C3 and all later protocols; this is
+not a failure of the original declared paired C1 protocol.
 
 Current implementation checkpoint: MW-C3 EAGER_ROOT passed39 focused Java tests
 and5 supervisor tests; see c3-tests-v2-summary.json, including retained initial

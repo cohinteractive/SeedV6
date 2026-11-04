@@ -1,0 +1,75 @@
+{
+  "status": "prospective planning; no claim initiated",
+  "candidate": "MW-C4/EAGER_MEMORY",
+  "basis": "c4-timed-screen-w4-v1-analysis.json",
+  "basisSha256": "90a16435fb862f99c76ff13dc2a6b2a02a765b6971de25f4d6b92451cc87dc65",
+  "observedPairScoreSd": 0.2535036743387082,
+  "observedSecondsPerPair": 61.52462734374967,
+  "scenarios": [
+    {
+      "pairs": 128,
+      "games": 256,
+      "projectedSeconds": 7875.152299999958,
+      "timeoutWith25PercentAnd120Seconds": 9964,
+      "normal95HalfWidth": 0.043916463969088854,
+      "approxMinimumObservedScore": 0.5439164639690889,
+      "gateProbabilityAtTrue53": 0.26727251461076573,
+      "gateProbabilityAtTrue55": 0.6069984272594658,
+      "gateProbabilityAtTrue60": 0.9938422479738375
+    },
+    {
+      "pairs": 160,
+      "games": 320,
+      "projectedSeconds": 9843.940374999947,
+      "timeoutWith25PercentAnd120Seconds": 12425,
+      "normal95HalfWidth": 0.03928007950652116,
+      "approxMinimumObservedScore": 0.5392800795065211,
+      "gateProbabilityAtTrue53": 0.32166443933214683,
+      "gateProbabilityAtTrue55": 0.7036382384786442,
+      "gateProbabilityAtTrue60": 0.998776222534723
+    },
+    {
+      "pairs": 180,
+      "games": 360,
+      "projectedSeconds": 11074.43292187494,
+      "timeoutWith25PercentAnd120Seconds": 13964,
+      "normal95HalfWidth": 0.03703361411281047,
+      "approxMinimumObservedScore": 0.5370336141128105,
+      "gateProbabilityAtTrue53": 0.3548546929217473,
+      "gateProbabilityAtTrue55": 0.7537165744128999,
+      "gateProbabilityAtTrue60": 0.999569541112908
+    },
+    {
+      "pairs": 240,
+      "games": 480,
+      "projectedSeconds": 14765.910562499921,
+      "timeoutWith25PercentAnd120Seconds": 18578,
+      "normal95HalfWidth": 0.03207205061564377,
+      "approxMinimumObservedScore": 0.5320720506156438,
+      "gateProbabilityAtTrue53": 0.44961834328651906,
+      "gateProbabilityAtTrue55": 0.863373044948958,
+      "gateProbabilityAtTrue60": 0.9999834605518886
+    },
+    {
+      "pairs": 480,
+      "games": 960,
+      "projectedSeconds": 29531.821124999842,
+      "timeoutWith25PercentAnd120Seconds": 37035,
+      "normal95HalfWidth": 0.022678364476879896,
+      "approxMinimumObservedScore": 0.53,
+      "gateProbabilityAtTrue53": 0.5,
+      "gateProbabilityAtTrue55": 0.9580496100911413,
+      "gateProbabilityAtTrue60": 0.9999999992744562
+    }
+  ],
+  "selectedPairs": 160,
+  "plannedTimeoutSeconds": 12600,
+  "latestStartWith60SecondWindowDrain": "2026-11-04T14:47:03Z",
+  "limitations": [
+    "Selected exploratory64.06% is biased upward by candidate selection and is not assumed true. No exploration will be pooled.",
+    "At true53%, the point gate and finite interval yield limited pass probability; failure remains possible and will not trigger extension/replay.",
+    "Normal approximation uses pair variance, not independent games. Bounded and fixed-seed paired bootstrap sensitivity will accompany primary gate.",
+    "Fresh book-derived opening population differs from development; measured variance/throughput are estimates.25% wall margin plus120s and original hard window apply.",
+    "160 pairs can detect a substantial benefit but has modest power for a small gain.240/480 pairs do not fit this remaining window. No future window is inferred."
+  ]
+}

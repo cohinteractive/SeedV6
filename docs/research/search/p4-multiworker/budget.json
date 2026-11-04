@@ -15,17 +15,17 @@
     "protocol": null
   },
   "consumed": {
-    "timedWallSeconds": 4151.9442049000645,
-    "timedInitiated": 130,
-    "timedCompleted": 130,
+    "timedWallSeconds": 8143.863106100005,
+    "timedInitiated": 258,
+    "timedCompleted": 258,
     "timedFailed": 0,
     "timedInterrupted": 0,
-    "fixedWallSeconds": 828.4865696998895,
-    "fixedInitiated": 54,
-    "fixedCompleted": 54,
+    "fixedWallSeconds": 1580.1959072998725,
+    "fixedInitiated": 102,
+    "fixedCompleted": 102,
     "fixedFailed": 0,
     "fixedInterrupted": 0,
-    "fixedNodes": 691221293
+    "fixedNodes": 1337751430
   },
   "pending": [],
   "receipts": [
@@ -69,7 +69,12 @@
     "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-eager_root-private_scores-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-hints_only-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-shared_scores-v1-execution.json",
-    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-private_scores-v1-execution.json"
+    "docs\\research\\search\\p4-multiworker\\memory-mixed-w4-whole_root_race-private_scores-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\uci-memory-binding-build94-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c4-fixed-screen-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c5-fixed-screen-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c4-timed-screen-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c5-timed-screen-w4-v1-execution.json"
   ],
   "timedWindows": [
     "docs\\research\\search\\p4-multiworker\\window-20261104-v1.json"

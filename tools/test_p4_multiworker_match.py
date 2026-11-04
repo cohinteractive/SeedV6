@@ -127,5 +127,41 @@ class MatchTest(unittest.TestCase):
         self.assertEqual(ledger['consumed']['fixedInterrupted'],2)
         with self.assertRaises(FileExistsError):m.supervise(path)
 
+    def test_confirmation_native_first_game_consumes_claim_and_drains_partial_attempt(self):
+        p=dict(self.p,category='confirmation',kind='timed',mode='B',openingIndices=list(range(32)))
+        self.ledger['confirmation'].update(attemptsStarted=0,attemptsMaximum=1,pairsMaximum=480,protocol=None)
+        path=self.root/'claim.json';path.write_text(json.dumps(p));m.mw.save(self.out/'budget.json',self.ledger)
+        original=subprocess.Popen
+        def child(command,**kwargs):
+            directory=command[command.index('--directory')+1]
+            script='import pathlib,json,sys,time; p=pathlib.Path(sys.argv[1])/"progress.jsonl"; p.write_text(json.dumps(dict(type="pair-start",pair=0,initiatedGames=2))+"\\n"); time.sleep(30)'
+            return original([sys.executable,'-B','-c',script,directory],**kwargs)
+        sample=dict(totalCpuPercent=5,freeMemoryGiB=16,logicalProcessors=12,overwatch=False,demandingForeground=False)
+        # Separate validator tests exercise actual frozen metadata. This fixture
+        # exercises native ownership/accounting without playing reserve positions.
+        with patch.object(m.confirmation,'validate'),patch.object(m.subprocess,'Popen',side_effect=child), \
+                patch.object(m.mw.PcUse,'sample',return_value=sample):
+            with self.assertRaises(SystemExit):m.supervise(path)
+        receipt=json.loads((self.out/'fixture-execution.json').read_text())
+        ledger=json.loads((self.out/'budget.json').read_text())
+        self.assertEqual(receipt['status'],'interrupted');self.assertEqual(receipt['initiatedGames'],2)
+        self.assertEqual(receipt['drain']['ownedProcessesRemaining'],0);self.assertEqual(ledger['pending'],[])
+        self.assertEqual(ledger['confirmation']['attemptsStarted'],1)
+        self.assertEqual(ledger['confirmation']['protocolSha256'],m.b.digest(path))
+        self.assertEqual(ledger['consumed']['timedInterrupted'],2);self.assertGreater(ledger['consumed']['timedWallSeconds'],0)
+
+    def test_confirmation_preflight_block_does_not_spend_uninitiated_attempt(self):
+        p=dict(self.p,category='confirmation',kind='timed',mode='B',openingIndices=list(range(32)))
+        self.ledger['confirmation'].update(attemptsStarted=0,attemptsMaximum=1,pairsMaximum=480,protocol=None)
+        path=self.root/'claim.json';path.write_text(json.dumps(p));m.mw.save(self.out/'budget.json',self.ledger)
+        sample=dict(totalCpuPercent=95,freeMemoryGiB=1,logicalProcessors=12,overwatch=False,demandingForeground=False)
+        with patch.object(m.confirmation,'validate'),patch.object(m.mw.PcUse,'sample',return_value=sample):
+            with self.assertRaises(SystemExit):m.supervise(path)
+        receipt=json.loads((self.out/'fixture-execution.json').read_text())
+        ledger=json.loads((self.out/'budget.json').read_text())
+        self.assertEqual(receipt['initiatedGames'],0);self.assertEqual(receipt['drain']['ownedProcessesRemaining'],0)
+        self.assertEqual(ledger['confirmation']['attemptsStarted'],0);self.assertEqual(ledger['consumed']['timedWallSeconds'],0)
+        self.assertEqual(ledger['pending'],[])
+
 
 if __name__=='__main__':unittest.main()

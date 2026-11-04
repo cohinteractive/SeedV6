@@ -22,6 +22,7 @@ def module(name, file):
 mw = module('mw_supervision', 'p4-multiworker.py')
 b = module('mw_game_audit', 'search-baseline.py')
 trace = module('mw_trace_audit', 'p4-tt-trace.py')
+confirmation = module('mw_confirmation', 'p4-multiworker-confirmation.py')
 ROOT, OUT = mw.ROOT, mw.OUT
 JAVA = 'C:/java/jdk-21/bin/java.exe'
 MODEL = ROOT/'build-assets/nnue-candidate/conventional-cp64.cnnue'
@@ -192,18 +193,21 @@ def admission(p, ledger, now):
         raise ValueError('First-game color policy')
     if p['kind']=='fixed' and (type(p['nodesPerMove']) is not int or not 1 <= p['nodesPerMove'] <= 1_000_000):
         raise ValueError('Fixed-work admission limit')
-    if p['category'] != 'exploration': raise ValueError('Independent confirmation needs its own prospective admission')
+    claim = p['category'] == 'confirmation'
+    if p['category'] not in ('exploration','confirmation'): raise ValueError('Unknown competitive category')
     pairs = len(p['openingIndices'])
-    if not 1 <= pairs <= 64 or len(set(p['openingIndices'])) != pairs: raise ValueError('Opening count/duplicates')
+    if not 1 <= pairs <= (480 if claim else 64) or len(set(p['openingIndices'])) != pairs: raise ValueError('Opening count/duplicates')
+    if claim: confirmation.validate(ROOT,p,ledger)
     if not 1 <= p['timeoutSeconds'] <= 28800 or not 1 <= p['maxMoves'] <= 400: raise ValueError('Operating bounds')
     if ledger['pending'] or ledger['ownedProcesses']: raise ValueError('Unresolved prior ownership/admission')
     timed = p['kind']=='timed'; group = 'timed' if timed else 'fixed'
-    reserve = ledger['confirmation']['protectedTimedGames'] if timed else 0
+    reserve = ledger['confirmation']['protectedTimedGames'] if timed and not claim else 0
     if ledger['consumed'][group+'Initiated']+2*pairs+reserve > ledger['ceilings'][group+'Games']:
         raise ValueError('Game allowance/reserve')
     maximum = 0 if timed else 2*pairs*2*p['maxMoves']*p['nodesPerMove']
     if maximum+ledger['consumed']['fixedNodes'] > ledger['ceilings']['fixedNodes']: raise ValueError('Node allowance')
-    if timed and ledger['consumed']['timedWallSeconds']+p['timeoutSeconds']+60+ledger['confirmation']['protectedTimedWallSeconds'] > ledger['ceilings']['timedWallSeconds']:
+    wall_reserve = ledger['confirmation']['protectedTimedWallSeconds'] if not claim else 0
+    if timed and ledger['consumed']['timedWallSeconds']+p['timeoutSeconds']+60+wall_reserve > ledger['ceilings']['timedWallSeconds']:
         raise ValueError('Timed wall/reserve')
     end = now+dt.timedelta(seconds=p['timeoutSeconds'])
     if p['mode']=='B':
@@ -215,6 +219,17 @@ def admission(p, ledger, now):
     elif p['mode']!='A' or timed or p['timeoutSeconds']>1800:
         raise ValueError('No timed/high-load authority')
     return maximum, end
+
+
+def first_pair_start(path):
+    """Only read complete durable records up to first initiation, never live scores."""
+    if not path.exists(): return None
+    with path.open(encoding='utf-8') as stream:
+        for line in stream:
+            if not line.endswith('\n'): break
+            row=json.loads(line)
+            if row.get('type')=='pair-start': return row
+    return None
 
 
 def supervise(protocol):
@@ -231,6 +246,7 @@ def supervise(protocol):
     mw.save(receipt_path,receipt)
     ledger['pending'].append(dict(id=p['id'], maximumNodes=maximum, maximumGames=receipt['maximumGames'], receipt=str(receipt_path)))
     mw.save(ledger_path,ledger); admitted=ledger_path.read_bytes()
+    claim=p['category']=='confirmation'; claim_path=str(protocol.resolve().relative_to(ROOT))
     job=mw.support.owned.OwnedJob(); process=None; error=None; pressure=False; peak=0; started=time.monotonic()
     # Wall clock and monotonic stop both apply; backward clock changes cannot extend a batch.
     stop_at=started+max(0,(deadline-mw.support.utc()).total_seconds()); pc=mw.PcUse()
@@ -248,6 +264,14 @@ def supervise(protocol):
             mw.save(OUT/'resource-state.json',dict(status='running',receipt=str(receipt_path),processId=process.pid,deadlineUtc=deadline.isoformat()))
             job.resume_initial_thread(process);hot=0
             while True:
+                if claim and ledger['confirmation']['attemptsStarted']==0:
+                    first=first_pair_start(directory/'progress.jsonl')
+                    if first is not None:
+                        if ledger_path.read_bytes()!=admitted: raise RuntimeError('Unexpected ledger edit before claim initiation')
+                        confirmation.consume_attempt(ledger,claim_path,receipt['protocolSha256'],
+                                first['initiatedGames'],first.get('utc',mw.support.utc().isoformat()))
+                        mw.save(ledger_path,ledger);admitted=ledger_path.read_bytes()
+                        receipt['confirmationAttemptConsumed']=True;mw.save(receipt_path,receipt)
                 remaining=min(stop_at-time.monotonic(),(deadline-mw.support.utc()).total_seconds())
                 if remaining<=0: raise TimeoutError('Independent batch/window deadline')
                 if (OUT/'STOP').exists():pressure=True;raise RuntimeError('Owner STOP')
@@ -297,6 +321,10 @@ def supervise(protocol):
     if not receipt['inputsStable']:receipt['status']='failed'
     mw.save(receipt_path,receipt)
     if ledger_path.read_bytes()!=admitted:raise RuntimeError('Unexpected ledger edit; preserve pending admission')
+    if claim:
+        # Handles a very short run and conservative journal loss as well as the
+        # ordinary live update. Zero initiated games never consume the claim.
+        confirmation.consume_attempt(ledger,claim_path,receipt['protocolSha256'],initiated,receipt['endedUtc'])
     group='fixed' if p['kind']=='fixed' else 'timed';c=ledger['consumed']
     c[group+'Initiated']+=initiated;c[group+'Completed']+=2*len(done)
     c[group+('Interrupted' if receipt['status']=='interrupted' else 'Failed')]+=initiated-2*len(done)

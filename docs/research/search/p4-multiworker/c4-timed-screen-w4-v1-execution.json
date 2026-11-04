@@ -1,0 +1,545 @@
+{
+  "id": "c4-timed-screen-w4-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\c4-timed-screen-w4-v1-protocol.json",
+  "protocolSha256": "c9a66e7ac440109d580bac1a9e79b55a0c777ef5815b9125e2ee67176591760b",
+  "maximumNodes": 0,
+  "maximumGames": 64,
+  "deadlineUtc": "2026-11-04T13:47:55.583004+00:00",
+  "mode": "B",
+  "kind": "timed",
+  "startedUtc": "2026-11-04T12:57:55.614368+00:00",
+  "preflightEnvironment": {
+    "utc": "2026-11-04T12:57:56.237153+00:00",
+    "totalCpuPercent": 6.0475161987041055,
+    "freeMemoryGiB": 20.776268005371094,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 4,
+    "estimatedPeakGiB": 2,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 39.380849532037445,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 4880,
+  "activeOwnedBeforeDrain": 1,
+  "membersBeforeDrain": [
+    {
+      "pid": 44948,
+      "image": "C:\\Windows\\System32\\conhost.exe"
+    }
+  ],
+  "settleOwnedSeconds": 0.05031130003044382,
+  "membersAfterSettle": [],
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 6150.984375,
+    "totalOwnedProcesses": 133
+  },
+  "error": null,
+  "wallSeconds": 1968.7880749999895,
+  "endedUtc": "2026-11-04T13:30:44.420483+00:00",
+  "peakOwnedCommittedGiB": 0.7842140197753906,
+  "initiatedGames": 64,
+  "completedGames": 64,
+  "gameCounting": "Both paired games conservatively initiated before each Fastchess creation; unfinished/unverified pairs retained, not rescored",
+  "observedNodes": 2375457196,
+  "chargedNodes": 0,
+  "pairs": [
+    {
+      "pair": 0,
+      "wdl": [
+        2,
+        0,
+        0
+      ],
+      "score": 1.0
+    },
+    {
+      "pair": 1,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 2,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 3,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 4,
+      "wdl": [
+        2,
+        0,
+        0
+      ],
+      "score": 1.0
+    },
+    {
+      "pair": 5,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 6,
+      "wdl": [
+        0,
+        2,
+        0
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 7,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 8,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 9,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 10,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 11,
+      "wdl": [
+        2,
+        0,
+        0
+      ],
+      "score": 1.0
+    },
+    {
+      "pair": 12,
+      "wdl": [
+        2,
+        0,
+        0
+      ],
+      "score": 1.0
+    },
+    {
+      "pair": 13,
+      "wdl": [
+        0,
+        2,
+        0
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 14,
+      "wdl": [
+        2,
+        0,
+        0
+      ],
+      "score": 1.0
+    },
+    {
+      "pair": 15,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 16,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 17,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 18,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 19,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 20,
+      "wdl": [
+        0,
+        1,
+        1
+      ],
+      "score": 0.25
+    },
+    {
+      "pair": 21,
+      "wdl": [
+        2,
+        0,
+        0
+      ],
+      "score": 1.0
+    },
+    {
+      "pair": 22,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 23,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 24,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 25,
+      "wdl": [
+        0,
+        2,
+        0
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 26,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 27,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 28,
+      "wdl": [
+        0,
+        1,
+        1
+      ],
+      "score": 0.25
+    },
+    {
+      "pair": 29,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 30,
+      "wdl": [
+        0,
+        0,
+        2
+      ],
+      "score": 0.0
+    },
+    {
+      "pair": 31,
+      "wdl": [
+        0,
+        1,
+        1
+      ],
+      "score": 0.25
+    }
+  ],
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\baseline-preflight.txt": "71e36b34063ceb749c96ae6e1ac79e8e2b86ad4b58ae43eeb3be2dedecaeda93",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\candidate-preflight.txt": "c59d9e71b5f446b2b4da07da03b954e3f0ce99633d84633eba5dbd3a11472377",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\environment.jsonl": "3dfe4a6d0a95dc605bdc583feb346d1047a192e2611860b0e1afc588dbdf7d07",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\progress.jsonl": "a0c09dbee36fa16e0aece479221f338ba7e7685283a0ef6426af852aa4668793",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-000\\config.json": "77e93e84bf41e617516250a7c6672084baf2641cbb17a1d1c1c547cd849b2c98",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-000\\games.pgn": "d1cca12722f0ea94bb08a17b6be41db6d08e6c570ea7a2fffe878abd15d6b725",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-000\\opening.pgn": "2302b387d61590a63a4b17197f6634074f13a668688254e6bd2a823d7fb10ced",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-000\\runner.txt": "ea0bee6590ca0314eb74187138d546b808c4b04e63eef7e860af9f15fddd5e31",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-000\\uci-trace.log": "2d1527bab4e128baf44f2619118f2dcfdc6064a2522999131e4e9de66de8228f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-000\\verified.json": "47c6f335a364e95508b35250e290a3de0495df6c2bbf9fad002cc559ba8ba0a6",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-001\\config.json": "c8f4fee8f9a2d543a1552c7453ca32e7e9f60057afc143fd7695034409c4812e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-001\\games.pgn": "e516d7da9a07e6aef438534f50419bae4e58a7be96b7c5e2fb3539d104929bc7",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-001\\opening.pgn": "a994a9375442b1ee77d6e83bbfa02d470fe1f2958e4e393b2859b20fe4f497bd",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-001\\runner.txt": "170ad01d622cb1ecdbab12384c2ae26a67546632aafbca8ae1100e1847bd6570",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-001\\uci-trace.log": "a1d592b85eaf5a2160aa5d872d73b683299c50db3669d070cf3d65a80c9bc67e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-001\\verified.json": "c4379f604ea6339c0c5e7ec7986d0f4fcafe2e753ada2f8e17c475402d969d06",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-002\\config.json": "20125d109d7406c2081f0ca75578e5f8b7589aa6b976addf422198bb00d88ddb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-002\\games.pgn": "f9c92cd8cfbd81e51b3ec70e8d9df26b997a482799716c1ad5939d65eeba7e5d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-002\\opening.pgn": "70f7499a47c1e95747ea1eef84614f52577f0b3cfa1f232d64c67768fa858ed5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-002\\runner.txt": "a06e25cc12474fe05193b8feedfe7dbebc924cf6b3649f6afd2a7e37c5e68a1f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-002\\uci-trace.log": "0d7f1019cdef1557c2f60d843065ea904f9fc6c119cf9b228a3b760769a47740",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-002\\verified.json": "eb4dea52a98da9d1216e5d1a35fd03949d373c4c5a75d644d7ede2dab873f4bb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-003\\config.json": "476ba8538c068eeb23cb1c4797bc8022b4fda44ba8ac228a29e5edfe750bb8aa",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-003\\games.pgn": "7790f4555f5dcdbe40072b439a5320236cd786e4924304b3f40e81c1a43f1916",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-003\\opening.pgn": "2b040325a63d88834f76f0cd8217833a4b1a39a227e0836546deb3a00d795f04",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-003\\runner.txt": "ed060ee55e22e280e6a2bdccbb2ea8edeecf6885016863eaf9be1996eaa1ef83",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-003\\uci-trace.log": "5dc83c7d3af46c32680e0cff27ee0cde6efcc215a53a5002a57dda06cd2daa09",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-003\\verified.json": "5acd7a9cb22c6fde4196dfcc467cbef31de3337789a744fb8644d36e6d595174",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-004\\config.json": "d819a23220a7b95ac15a6ee8eee50cb35fce0b86b0f0a618ec9c53959de280e8",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-004\\games.pgn": "154e076c2225c6ddfd62cfda2970d40f89b12b004e1ee01d2ea66c389fc3e971",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-004\\opening.pgn": "0eb16dac04d2ee6f66863fe865296c8ed9d987525f2020251c275b351cc03990",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-004\\runner.txt": "2005c06a8fed11fb096fe8c9e737151923f05ccbf093f14362f9d1fd862b3fe8",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-004\\uci-trace.log": "2cbe7e4612a365e6c3192203506fbcbbf627ba2dc7ad0600bf2d3e4a343cbda2",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-004\\verified.json": "f9c2b14aa77757c380196a50c08b67669c17de0472d14198dc9098ff7911a0b4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-005\\config.json": "44885d3640a7078f418761fbd86defc750d637e4cbe173a73eee6c4bef105d0d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-005\\games.pgn": "1eb0cbc019e55ef3f411f61ee530ab2af77aedff3b9e2734868cf35a2db805d9",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-005\\opening.pgn": "7cbf9826772157feb680cc5dca0a16c7b73a718b7f76125d2c9960de35e47f6b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-005\\runner.txt": "17d081919545a01b299c28042c6c24c9eae95adaa86a3f715709baf26dbdd261",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-005\\uci-trace.log": "1a9ca9daf86ec8dc402f2792e732a46695a0efd8d8eebe4770d66b824c6affcc",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-005\\verified.json": "295e52310d341a3fe433dac4e4e3d7882b40166e0f1c5d82d7e9292b176f311b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-006\\config.json": "48038696bd36421424268c5e24fdcbcf9f25c9fb70390caf16b0e61f9235fee2",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-006\\games.pgn": "08d49a68abaf5307be66b1980638d5873637c260be8b5b6d1193147abe539c18",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-006\\opening.pgn": "d3accdb5e6ba8666d3a1d66f5cd58a422caa6bd8bcb27c463c18caefb8ec02f4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-006\\runner.txt": "f830248cfc10ee3efdd177e6902d44b5c7ba61195ff7616c49bef7f6239cdd9c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-006\\uci-trace.log": "72201fde9c5d4fd94efe13ddded097c7b5c8c0d7fc157e8a11f4ba928cc01071",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-006\\verified.json": "77c6cdc79f1c94abe68948ea48accc9f4dcbdc6ff593928d12091f18acef3c5c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-007\\config.json": "f4a4946252bf207550b67afc4b43598058a891648aede8bcad3895a6ce204bbc",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-007\\games.pgn": "210e23593121276fbe024c1eb44350f7fba73e9aa159b221d7a6015aabc3df0f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-007\\opening.pgn": "3af25954ead5c00851cde270ca300b2a1a8204257f91c1e07e5664c67701a028",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-007\\runner.txt": "d1e9f1a95a7ce2107c1761cf88bb12901d9789ea05b2435f138c554c25b81869",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-007\\uci-trace.log": "5bb72dc655330f0d43e50fcedb67c2bc54a42177d72f4f3b8cbbfd9cdf52b8df",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-007\\verified.json": "d3c2d49b7b446adfed42b7f96941143acf8ace591ed896c2434e29c52a0f3259",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-008\\config.json": "483b7de13065603540cfd8a791cedbea5adce44985bd14e07c6dae8e1d5e2950",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-008\\games.pgn": "d75fb0c93c98ca4d1ba7879eb8ccda015a54e708328e873f9f002072216237bb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-008\\opening.pgn": "345bf45d654f2a6fe1ac74119ee7ef4a2190d73e56f0db35cfd0470d870f55fb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-008\\runner.txt": "80e66e9c6f23d4d83461501b4b43b367529adfe5c1b9e83498f200fdd971b4cb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-008\\uci-trace.log": "070d9ffeda80ca3a11c0bc4bf4da3ba465585fea12f72d43835bb4555cdb3145",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-008\\verified.json": "05f5a0563735afdac426e32b9e58a4106d525bbeffb18997ff27ea60a52c6eea",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-009\\config.json": "075f1548caf794bed969165657259f8bdd9073a06356841806a6c2122fe0224e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-009\\games.pgn": "1829c08c05bfd85bb58920a130c74e9edc0571f2f38336db9b4cbf8633f7c88d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-009\\opening.pgn": "42ba32269d8a55b2db0257c633caa4d5bb290ca26bcf580e736acdebc2b5ba47",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-009\\runner.txt": "a1c6ec89b0084754e736c1f337ce3eb07a45100f0790117959643d03407b8c9f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-009\\uci-trace.log": "fe010e505488d81cd757a9b703aeba1a245e6784be1dbc9b4bdec5f8f1969d2c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-009\\verified.json": "feaf67d51542ab415a558219e960dd897125db9fdd4145061afb763adfbed838",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-010\\config.json": "bc13034ef5d62b69bae55a138fa371e15fb7fa04c8677e6d63293b0ce4ac8ee1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-010\\games.pgn": "e4c1d85fc9b09da418548e6285de7b3d47e4d79e654dfacceb0ecbf62f4c776a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-010\\opening.pgn": "a0448061a0e3578d62c52683f35b99ea7cab359f7e24869bcb86943b6f21767b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-010\\runner.txt": "bd91e442538ff9e15ca88131702dffb93a537cff2d948d757d6ca543eef603ea",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-010\\uci-trace.log": "39f8b2b50201446c81d535bc9b91cfe89c447eb868bccc66b0ddea6c8be83298",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-010\\verified.json": "d912d0623e44e42dfac756d1a687c557dd0227a873cec33a9d35c8a99e9adc9f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-011\\config.json": "c19606f59edc4e14230bc34f77dbc79353b52905bca7910b79d7a25b40900f2d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-011\\games.pgn": "226c203dbb37c6f9be2257f649332608e7b80eabf98ca90bf6b8c4370d94c096",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-011\\opening.pgn": "c83f3ab56d2bc14d3fcb91354c45eb6a08f2121d39a9038ee6aa84684a0913bf",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-011\\runner.txt": "9f6f908b4a566cfbb422d955b69e97ed02de6bc45b38b30445f7a05d7dd420a5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-011\\uci-trace.log": "6af537c11c18a196cf1cc3e91d881ca020fa3436e711e508438af966f2dcaddf",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-011\\verified.json": "3b999b430958df2a59363c79836a01b9d88c568718185c7c4fc029e65f386ba0",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-012\\config.json": "8f913f4d8a5d2323ab0394d262e59f9ed753d695a7802d9484106634ecf666ee",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-012\\games.pgn": "5611ad72aa70a3272129912b0754c84ae2b04435c5d4a946f43acfa321eede56",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-012\\opening.pgn": "f182222dde8b9eff48e7974c1b03ed699d380201770a2b8c6528c704d9eacb2a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-012\\runner.txt": "ea0bee6590ca0314eb74187138d546b808c4b04e63eef7e860af9f15fddd5e31",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-012\\uci-trace.log": "db2d4645cc9c06b4a89143c91254eaf4a082743b6fdd8195a6523ad940646829",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-012\\verified.json": "1d90406b5566a7c17af31a33e0ccfed74e2856371c64c3636e0e801d7c44c5bc",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-013\\config.json": "6c2ef337796eebdad85a71412161d94074cbeefbb091128411ba9c1198947b35",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-013\\games.pgn": "7832174a4d62f094660dd4c47fd903378fb25e4ca0dba7e2a5b698e770b488ab",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-013\\opening.pgn": "63997974c4ee4bbe8ec6188009e281d6b3d3534bf43c4a786f117f51d75e7004",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-013\\runner.txt": "576bcd34068b6badac3e9173ccda78227f9f74f737ace2cb1642e7d175021840",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-013\\uci-trace.log": "e2b2a8081c28ec2219f6dccc6cef3d4402318ea542f5ad37835232a8cd4a70ad",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-013\\verified.json": "599cd48350d516eab7750262d06589e50b6e94ded83c3eb054c128bbdc51e712",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-014\\config.json": "468737ea5998f67b4039485a27986392d4b88598eae501c6f4b2ba53aacc757b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-014\\games.pgn": "cea17ee207c19823701fea7ecfd42e8a86b86c901bdc9593d804fa528e2d674b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-014\\opening.pgn": "c9a6801097ad00b9bd395a62e2b876187ad43d7546e47073e934d8fca7d6c340",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-014\\runner.txt": "c7db9d6753db4b250a3afc4096673fed2b5feb7f5a92d22ad87e95723f5ae5f0",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-014\\uci-trace.log": "214640c08c136f242e86e2df0044d25800d085b99f3cbbac564e74545290b2bd",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-014\\verified.json": "491a105596bf7bc00a6f3c6f2416f4624731aa640eaaeaebb01b44cb4585fed4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-015\\config.json": "ea0f74761a9ea1622964e625045c69c0c68bd819e0e2d731a7775b4ab0cd5b62",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-015\\games.pgn": "86cf3a43ec8c869cb2c7bdb7ceb4d4b8be97ed85d79328ce017f9d5b33b1487f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-015\\opening.pgn": "53d7c739e5af9c035ccc511291bc130d0e6557edf157f8b4258ce083d878b7f8",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-015\\runner.txt": "c686fd91364afffeefd1aaa6567021fb5b2487af9f1d9e0a0ef0293c0ec2444f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-015\\uci-trace.log": "793602cdfa75360ca504b2ade18af1328dd0484722b440b8935c3c5cdf917ef4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-015\\verified.json": "ec3c02053842c287bb9656936cbe15c9afff7d22746695cdfaa13a7d0287e992",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-016\\config.json": "22400a64a19771286347f38d896d490c28d851edf7957ae94368161c0cd100a4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-016\\games.pgn": "b37e17e1b992741c72d518a73b746af9b2d1b570e3243df2daa6e7dc9d2e344a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-016\\opening.pgn": "38732a83fe6c352710d78d6bca321983d2fd43779cf8947760f9a6ba86811fc1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-016\\runner.txt": "7019001f3ae3e2e73e28c4df4a9cee98e0356e86c98027d7a68f9e1b7eef4753",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-016\\uci-trace.log": "f1945d727f139fe007e6dac36b57ae7210c1ac35479b3e29df07dd2f52f77bba",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-016\\verified.json": "5f8730dce31ef31496ce69ec7ab322686b6b3ae12e3f495acab9de27613f01fa",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-017\\config.json": "4703b7c91efc63dc4c25e16c9b0693832df1598b9a51969dd47af8b23a8d7d87",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-017\\games.pgn": "d87e9d6d892291169acd8fb0bac783a1c4fcf37a65a4c64fccd5d7c8d4d47784",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-017\\opening.pgn": "e3cc57c93c69d546ec0ee4691a62377899277ee078854a1d8f5854e5bbe0ee4a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-017\\runner.txt": "e6b564436a9f7dad40a46f461d03ee825dcc7e8b5408e7060db7be0bd29fcdde",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-017\\uci-trace.log": "455f9f4b0b39f12cb5405eb160ae72c7a550577d66f69a56972424674cee1faf",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-017\\verified.json": "0a359ae3ed2b9681af7d5f6fc14a0a284eddf8d4c31b80e41a37a2204502d3db",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-018\\config.json": "cdd1293674390baf423ba603222ba745c2f12b0657cf89a5baeae3e728458b79",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-018\\games.pgn": "0b9c7330cc22c62d2261b1b41c8c8a644f90a3471318d9ac889796a61f9426eb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-018\\opening.pgn": "6727e353d6814197a4d4014fd9afc78c2521fd16d9b75d3574578654631b8be3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-018\\runner.txt": "7019001f3ae3e2e73e28c4df4a9cee98e0356e86c98027d7a68f9e1b7eef4753",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-018\\uci-trace.log": "d806fc768115d32b9cec3b64f188ca62afa295cda886ba67e40f38b49cebef1b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-018\\verified.json": "8ca17ac6f7e704c5e16e42441ddf29233e0bbe45962513eb36cabe4ebcf344a5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-019\\config.json": "481323e87d1b8e2f255da936dc8aaa6d1ed607cbcac4a06ff4bdcc44a6f99b69",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-019\\games.pgn": "67a0a89155ccee36dc1a930ae6a098b9df1b636b54693d55ba813c8e4c89f9ab",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-019\\opening.pgn": "7a7a0cc581050553e6ceaa63c5d92e6bee0a4a940a57dfd2acfd728d9638f207",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-019\\runner.txt": "15017682d18939f42a3ee4761bdd702623abcae297981c6388d1095d7d2b6355",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-019\\uci-trace.log": "00d9538970d2b5a715491040bc8c8c31644d71e59ef2bae805f241dec750f627",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-019\\verified.json": "50fef9005e03a275932cc09ce2f307752fefaf4a019592ac5b8292f7ef7f0d86",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-020\\config.json": "66fa49ec0de8248f3041e72e2ce5eef1d411b4a9a00ce61fb5cb98838a172f14",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-020\\games.pgn": "4189aefe2464acefa34e68e752bdaebf11314826c04b03dc619e2113a622b8c2",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-020\\opening.pgn": "d1e3cb73ecc50a1aead76877c8424677989862675fbfc6f0ff2384e07bec3639",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-020\\runner.txt": "08f3cb3a7303fdead17c1d4e97f1ef8cfc1a26bd12a3905db40295c12959f1b9",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-020\\uci-trace.log": "64f41c1fd2391533842878fb9e64b4def827ae0a42df930e415af6b65ae19da3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-020\\verified.json": "5c97eca639250f54ed6dcb58d096a2115f8bc00d7387eaeaaaf750f4facb4fc2",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-021\\config.json": "543b664b96ca7511274f81b99bc289f392a63f7fdd85878af8bf09a5762fa864",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-021\\games.pgn": "f819e3450d6404bc4c4baec140f99b1ec58390c997021e752accc95e1e162c0c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-021\\opening.pgn": "e618027391882394ca1f3ca0a282d33d5d02fa7445ebb9b46efe90cf21afd3fe",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-021\\runner.txt": "09eb1cf87e57cd2a6cf0e8c1d56db0fdc1148124e17b1c0a0b12f1a4b2f90c08",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-021\\uci-trace.log": "0a243036c8f4f099173d37183d7fc14d0db29c8a014943bfe043ab7a1f920995",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-021\\verified.json": "a7968d633e3bb33cbea156a91dd2ea4bcd25a46522430dbe58cb7fef9b588bcb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-022\\config.json": "51f06716179f939f284a1eab78fb2a5b18593038beced91fe8a4af3b8740381a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-022\\games.pgn": "e9de3e50b3ef72a759f7692310ad8ce06ba9aa1c942c8f56b7a80adef4a3e7eb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-022\\opening.pgn": "6d1fee296495d3880cb79ef2337c314e54c398fa2186932e16bbcee7faf6d267",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-022\\runner.txt": "16f4726751883486847e4ba37cc6aba703d9154f4e6e74e8b6a2eb14198682be",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-022\\uci-trace.log": "54f11da2e255189a65ed3b72cda848dc071caf6ec0b293cce5c7c3c1ee4d5ca7",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-022\\verified.json": "8022af8994ff75b375d7308d46423c5a8172dcd5e36aa78ad8239b3f3f36149c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-023\\config.json": "9539591109202894bf487d949bdcdda84558d1ef94454ee07392b947f89fbb8f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-023\\games.pgn": "f8d605a0bf80bcd428b144848e45a81962b162bcaa5c3d04ebb7c945dbf38a46",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-023\\opening.pgn": "47924c8db22bfe2f6bbbd5cf27538e2bee08caaf3f2ba27fdada1575394528e8",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-023\\runner.txt": "03554bdda3dd79bc39536dcd2eb2a95a4c6d83d3f2b383d1e6567754a327eb64",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-023\\uci-trace.log": "51945dd1982c181d9f69c7388a3119e99d4d5e2cad303ba2ad58758f67dd639a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-023\\verified.json": "66e898b75c4a7e8be268b710ea65661ef2aad5eecdf0209aef28a7a426c79f9b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-024\\config.json": "28ae7ec152acbbc60e40b891a60219c3cc75b18ef1aa87aecbc0a2f8dbead358",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-024\\games.pgn": "9bd4ee0a85b8a59f70a331dcd65da1881bfeb086cb41d05372952b19ac2dccaa",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-024\\opening.pgn": "514046411dfaeb039aad51aeba170d22f0f35813951007e44f9593038de61956",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-024\\runner.txt": "488853590707d338819e4df49ca571037b145fa4ce67f5a8e9201f0b72b84222",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-024\\uci-trace.log": "388e52d2dea0405e99b621a83aaa0c833224a85963d76c51c12fd71b7104c7a4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-024\\verified.json": "a7a52f09cdc675da0d08977bc01e1d3022bace4c1beda58466904bf2b91137e5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-025\\config.json": "a8b334144f92ac8eb2e7d73e662c58f86053a6c7f55102ce19e7304b4b9da92d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-025\\games.pgn": "72d1b821b43facb0a04a1e309b4c15a35de7ec206fcf037b5f0f0fb468afa574",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-025\\opening.pgn": "85a8e2a19835d7436c180535972c24f4536fb502cad585d29f0c44d069675f30",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-025\\runner.txt": "4059b55c4428e0252eabc854d485f4b3024e83a4bb7fe5c17fb4e3eb82124987",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-025\\uci-trace.log": "1b5cdd46821b18bd48ce6f4ccab10c75472fa77ffe990b756a42792e6597de42",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-025\\verified.json": "caa35b81ff0ff69a3cc41d45af765bee6b8976a8380c49fd322871b6bfab6ea5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-026\\config.json": "f0ad37e969a211b5c77ad0a3d3ca3455bfd52e30198bd336009e07fe235ba62e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-026\\games.pgn": "254177b98ace298a842fdd4e75eed4d72f20d2a23983f39dec21c165efdb7c4e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-026\\opening.pgn": "8bdbff5c5ef4754ba1b789b875f19c4a25176c85f5782db8746f8a760d168f27",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-026\\runner.txt": "bee29a94431bf5f838d08df8f88621070d32608a41ac2a1250c7a0bc9fb2ed58",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-026\\uci-trace.log": "8c0d8b247d251c5d9b3596d6daba59656e09bf8e53e89d64aa9252ebb62dc3b4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-026\\verified.json": "9d30b0bb8e1e82373ad1c839e691fbf1b92c6c468064c4279c8349bf14b5eeb8",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-027\\config.json": "b5379f124237bfb7dd9c798511144c3e0c0b74889d91b755cfda09176856789f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-027\\games.pgn": "b37dbb72cb713dfbe1fb24a4ebf521119a11ec3661f00698803fecf7eedef940",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-027\\opening.pgn": "86dd2fec70f5b7c68b38093b7afe50ccc87bdc703dad00627069ffd2f6c86e2b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-027\\runner.txt": "a9ba2077e5c5a8a332eb062f0897d50936da8e01a1861c219042fc51fa8986c9",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-027\\uci-trace.log": "8df8eb09fc20757380b5c020ea65c0bf16c7942f3b4f840579fd26fd9e210b69",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-027\\verified.json": "1e55af7a716813d814d68fab283a7d8b592b67d43102a985a58965611fec0bc9",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-028\\config.json": "0f0a66f6d247784854ace68068706ea7123461bd08db4906f3885c4267c5585b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-028\\games.pgn": "96e2cb1ae50ff5f931e6c864a8bab81aad1373674c64b6dd3a3bbbf6d906423c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-028\\opening.pgn": "123f704b602f659886ee8fcd249077c3cb5cc4f8fd9fa3e809386208ed22f587",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-028\\runner.txt": "6b1ba386b4487752fdf3de436c602291f1ae9dd6ff23635be012172f9e6c8796",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-028\\uci-trace.log": "db7e0eccfa10c8bc8435f18641d16fbdf340f6d03d828261079b4f61e082f2cf",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-028\\verified.json": "50dbefbba39dab371aa1bdee6be6f884f218d6915947c9365febd4b7570255c1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-029\\config.json": "8cfd751e5a7f2619072e480a96d57d56841be8922d46960acc308099a095f2a9",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-029\\games.pgn": "ac1b6daeba8e7d1d69f5624ad943245363d55b48d46e50ab2972657be49a2224",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-029\\opening.pgn": "5fe5d0e22273c5863f01ffc6cc8b69d88c0b0c22906e39c2de5faf3e47af0593",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-029\\runner.txt": "6ff4e406db0397d219c65d81eac28b8481adc77b9bf166a6df118be030668032",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-029\\uci-trace.log": "04e56eb4a7df8bda8a35ed384aa8daf642e04d3a28f145f02f473c28d7f64ada",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-029\\verified.json": "5212999e5ee55bbaca5aaf9fb40bcbba834d853fac5e31718d8275ded0db9461",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-030\\config.json": "6ba40db03a29dc3080abdf9ac1f5bac6dc0a0c25a330c82b03044a235f0e55a1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-030\\games.pgn": "e408796229cacdcf4f86cc38c31848187c83ee9a1e6b7b0957d064e1163be1b6",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-030\\opening.pgn": "81f6e4da442a19f6c7427b56fbb4f478ec6a3b1e8c467dae27ea2b0b5f33e7be",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-030\\runner.txt": "cb6801fbf4ae6eb1be96f64b83c3dea040b6af7a09c7fffe5c8705e6f1d09d3d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-030\\uci-trace.log": "a86b6ae067e22afea6361bc6ee325d77be76e79f378c36bacfbeb74c919590fc",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-030\\verified.json": "7df3db0e21ab772054be858576c28c6545b2a91d778d9b35d69a710d5082e064",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-031\\config.json": "cf4239164489be028227c4eb465d31453ca3eda5f2a456bd85f139da2c2f8726",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-031\\games.pgn": "04aa212a5b9c68027e94015faea656b214d31aa3fd740a81f43669a824ced079",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-031\\opening.pgn": "1e7f7a7a2f125afc6e1e2aa214e1c5a0c0081c32ab8a9c6970e0cd8ef32b9c9c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-031\\runner.txt": "8c289ade2f6dd062853f29e0afc733f406d59b2241b229e2755c488fead09115",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-031\\uci-trace.log": "70860ace6dd627caf49ee8b8c206022d60f121ac2e3972fe196656bf4c28d3f9",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c4-timed-screen-w4-v1\\pair-031\\verified.json": "1ced5acf5a6889214cdca08d0faec8955cc29ac35d295c2fd145afa0ef50de08"
+  },
+  "inputsStable": true
+}

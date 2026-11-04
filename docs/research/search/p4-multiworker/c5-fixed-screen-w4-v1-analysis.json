@@ -1,0 +1,87 @@
+{
+  "status": "complete exploratory analysis",
+  "id": "c5-fixed-screen-w4-v1",
+  "kind": "fixed",
+  "workers": 4,
+  "candidate": "ROOT_MEMORY",
+  "baseline": "ROOT_REUSE",
+  "runtime": "docs/research/search/p4-multiworker/raw/runtime-memory-binding-build94-v1",
+  "games": 24,
+  "wdl": [
+    11,
+    6,
+    7
+  ],
+  "statistics": {
+    "pairs": 12,
+    "pentanomial": [
+      2,
+      1,
+      2,
+      5,
+      2
+    ],
+    "score": 0.5833333333333334,
+    "logisticElo": 58.45121427129523,
+    "pairedHoeffding95Score": [
+      0.19128319548349065,
+      0.9753834711831761
+    ],
+    "pairedHoeffding95Elo": [
+      -250.44785969279255,
+      639.1794315374605
+    ],
+    "pairScoreStandardError": 0.0989209458878833,
+    "pairedNormal95Score": null,
+    "pairedNormal95Elo": null,
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 1612,
+      "nodes": 157636686,
+      "elapsedNanos": 184721832700
+    },
+    "candidate": {
+      "requests": 1613,
+      "nodes": 157816287,
+      "elapsedNanos": 171465661200
+    }
+  },
+  "descriptiveGameOrderScores": {
+    "first": 0.5,
+    "second": 0.6666666666666666
+  },
+  "descriptiveCandidateColorScores": {
+    "White": 0.625,
+    "Black": 0.5416666666666666
+  },
+  "orderInterpretation": "Post-hoc descriptive strata; game order/color/opening dependence is not a causal warmup test. No exclusions or score-driven extension.",
+  "terminations": {
+    "normal": 24
+  },
+  "meanGamePlies": 150.375,
+  "qualifiedFallbackWarnings": 0,
+  "chargedNodes": 315452973,
+  "wallSeconds": 395.43341559998225,
+  "peakOwnedCommittedGiB": 0.7976455688476562,
+  "environment": {
+    "samples": 194,
+    "meanTotalCpuPercent": 27.65666540291879,
+    "maximumTotalCpuPercent": 48.96103896103896,
+    "minimumFreeMemoryGiB": 19.114299774169922
+  },
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 1083.96875,
+    "totalOwnedProcesses": 53
+  },
+  "protocol": "docs\\research\\search\\p4-multiworker\\c5-fixed-screen-w4-v1-protocol.json",
+  "protocolSha256": "0fd9c5bc6e6a75a7a9b8625153636c9e9b895f8e4279ecaa1640bd74c387cef3",
+  "execution": "docs\\research\\search\\p4-multiworker\\c5-fixed-screen-w4-v1-execution.json",
+  "executionSha256": "a0068e3caf6b817feb62a62c6ac6ff8889f6b7e33b8edd7bded0be26ea8dbdd5",
+  "analyzerSha256": "51a5eec45931d96de990f40ef48d74f5c75dc3ebc3d07fed6718da88f737b6b8",
+  "rawDirectory": "docs\\research\\search\\p4-multiworker\\raw\\c5-fixed-screen-w4-v1",
+  "interpretation": "Frozen development sample only; paired intervals do not correct candidate selection/multiple comparisons. No independent confirmation, neutrality, champion or production claim."
+}

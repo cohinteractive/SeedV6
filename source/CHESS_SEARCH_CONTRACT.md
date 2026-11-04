@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R024**
+Internal revision: **P4-R025**
 
 Status: **ACTIVE - 4 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. The separate owner request authorizes MW-R001 multiworker strength research below; no champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
 
@@ -53,6 +53,21 @@ paired-normal95%44.53-66.41%, promising but inconclusive. Existing guarded TT
 score sharing is selected as an integrated dependency test;12 focused Java tests
 passed. Default TC-P1 is unchanged. The focused STATE/ledger retain
 all evidence and the active strength objective; no confirmation has been spent.
+
+MW-C4 EAGER_MEMORY adds existing current-generation heuristic score sharing to
+finite-window eager roots. Its completed64-game W4 timed screen scored64.0625%,
+paired-normal95%55.2792-72.8458%; its24-game fixed screen scored45.8333%. C5
+ROOT_REUSE plus memory scored53.90625% timed (46.2501-61.5624%) and58.3333%
+fixed. These are exploration, not independent strength or causal C4-C5 claims.
+C4's sole160-pair fresh W4 confirmation is prospectively frozen at10+0.1, same
+clean9d380c30/build94 runtime, unchanged score>=53%/normal95 lower>50% gate,
+12600s independent deadline and original18:18:03Z window. No interim stopping,
+replay/extension or exploration pooling; attempt is spent at first initiated game.
+The separate opt-in independent iterative coordinator c59a9488/build95 passed69
+Java tests including service/clock/drain/accounting safeguards; runtime/competitive
+qualification remains pending. It is not part of C4's frozen artifact. Default
+TC-P1, historical identities, accepted build91 application and all prior claims
+remain unchanged. See focused STATE/protocol/ledger for actual execution state.
 
 This new request supplies successor authority without reopening any prior objective,
 spent confirmation or frozen BOUNDARY2 study. Exact TC-P1 remains rolling production,

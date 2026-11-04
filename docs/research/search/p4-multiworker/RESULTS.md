@@ -286,3 +286,44 @@ and production identity regression selections passed. The initial probe syntax
 error and corrected validation are retained in independent-tests-v2-summary.json.
 Build95 records shared-core impact; no normal production selector changed. The
 independent diagnostic runner compiles, but runtime/strength evidence is pending.
+
+## C4/C5 completed development and independent selection
+
+The four prospectively frozen screens all completed with independent legality,
+real-history, PV, trace/request accounting, stable inputs and native Job-zero audits.
+C4 EAGER_MEMORY: fixed8W/6D/10L (45.8333%,24 games); timed31W/20D/13L
+(64.0625%,64 games), paired-normal95%55.2792-72.8458%, bounded40.0544-88.0706%.
+C5 ROOT_MEMORY: fixed11W/6D/7L (58.3333%); timed26W/17D/21L (53.90625%),
+normal46.2501-61.5624%, bounded29.8982-77.9143%. Fixed12-pair samples do not
+support the normal approximation. These four samples contain176 games (48 fixed,128 timed), each compared directly
+with matching W4 TC-P1.
+
+C4 is selected for the sole independent attempt, not declared stronger from
+selection-biased development or an indirect C4-C5 comparison. Its adverse fixed
+point estimate stays valid. The complete nine-cell diagnostic showed actual
+guarded cross-worker consumption and eager scheduling changes; these support
+integration but do not isolate a component's strength contribution. Both timed
+screens had zero qualified scoreless fallbacks and all games ended normally.
+C4/C5 timed wall1968.7881/2023.1308s; minimum free memory19.645/19.927GiB and
+mean total CPU29.83/25.81%. Frozen source9d380c30/build94 runtime/model unchanged.
+
+The frozen c4-confirm-w4-v1 protocol selects160 fresh pairs/320 games from the
+original unplayed reserve,10+0.1, W4, alternating first White, cold JVM per pair,
+restart off within pair, same CP64/Hash64/ADAPTIVE16/BOUNDARY2 and300-fullmove cap.
+No exploration pooling, interim score selection, extension, replay or replacement.
+An incomplete attempt cannot pass; first initiated game consumes the claim.
+Primary score>=53% and paired-normal95 lower>50% remain unchanged; bounded and
+fixed-seed pair bootstrap sensitivity accompany the result. Zero pair variance
+is prospectively inconclusive. New69-test build95 independent iteration is NOT
+in this frozen candidate/control artifact. Full consumer/platform/adoption work
+would require separate owner acceptance; no production promotion follows.
+
+Measured throughput projects9843.94s; independent12600s timeout includes more
+than25% plus120s margin and must fit the original18:18:03Z window with60s drain
+headroom. Prospective half-width is about3.928 points; power for small gains is
+limited (about70.4% at true55%,32.2% at true53%). These are estimates, not a
+promise or assumption that selected64.06% transfers. See feasibility-v2. Additional
+all360 completed campaign-game position audit found zero overlap with any of480
+reserve roots, supplementing the retained historical exclusions.15 Python tests
+passed including native claim-initiation/partial interruption/drain and no-start
+no-charge behavior. The protocol is frozen but not initiated at this checkpoint.

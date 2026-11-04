@@ -1,4 +1,4 @@
-"""Aggregate a complete frozen MW-R001 exploratory match; never score a live prefix."""
+"""Aggregate a complete frozen MW-R001 match; never score a live or failed prefix."""
 import argparse
 import importlib.util
 import json
@@ -17,8 +17,13 @@ def analyze(receipt_path):
             or r['completedGames']!=r['maximumGames'] or r['initiatedGames']!=r['completedGames']
             or len(r['pairs'])!=len(p['openingIndices'])):
         raise ValueError('Requires the complete audited sample and clean drain, not a live/failed prefix')
-    if m.b.digest(p_path)!=r['protocolSha256'] or p['id']!=r['id'] or p['category']!='exploration':
+    if m.b.digest(p_path)!=r['protocolSha256'] or p['id']!=r['id'] or p['category'] not in ('exploration','confirmation'):
         raise ValueError('Protocol identity/domain changed')
+    claim=p['category']=='confirmation'
+    if claim:
+        for tool in ('tools/p4-multiworker-results.py','tools/p4-multiworker-confirmation.py'):
+            if m.b.digest(m.ROOT/tool)!=p['inputs'].get(tool): raise ValueError('Changed frozen confirmation analysis')
+        if p['confirmation']['gate']!=m.confirmation.GATE: raise ValueError('Changed primary gate')
     directory=m.OUT/'raw'/p['id']
     def verified(path):
         if m.b.digest(path)!=r['files'][str(path)]: raise ValueError('Changed/missing evidence '+str(path))
@@ -48,7 +53,7 @@ def analyze(receipt_path):
     if sum(v['nodes'] for v in resources.values())!=r['observedNodes']:raise ValueError('Node total')
     environment=directory/'environment.jsonl';verified(environment)
     samples=[json.loads(line) for line in environment.read_text().splitlines()]
-    return dict(status='complete exploratory analysis',id=p['id'],kind=p['kind'],workers=p['workers'],
+    summary=dict(status='complete independent confirmation analysis' if claim else 'complete exploratory analysis',id=p['id'],kind=p['kind'],workers=p['workers'],
         candidate=p['candidate'],baseline=p['baseline'],runtime=p['runtime'],games=r['completedGames'],wdl=wdl,
         statistics=m.b.paired_statistics(pairs),wholeRequestResources=resources,
         descriptiveGameOrderScores=dict(first=statistics.mean(first),second=statistics.mean(second)),
@@ -63,6 +68,10 @@ def analyze(receipt_path):
         execution=str(receipt_path.relative_to(m.ROOT)),executionSha256=m.b.digest(receipt_path),
         analyzerSha256=m.b.digest(Path(__file__)),rawDirectory=str(directory.relative_to(m.ROOT)),
         interpretation='Frozen development sample only; paired intervals do not correct candidate selection/multiple comparisons. No independent confirmation, neutrality, champion or production claim.')
+    if claim:
+        summary['confirmation']=m.confirmation.assess(summary['statistics'])
+        summary['interpretation']='One complete independent fixed sample, separate from candidate-selection exploration. The statistical gate is reported without inferring technical acceptance, champion advancement, production adoption or transfer beyond the frozen W4 domain.'
+    return summary
 
 
 if __name__=='__main__':
