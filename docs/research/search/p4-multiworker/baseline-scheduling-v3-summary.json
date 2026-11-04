@@ -1,0 +1,110 @@
+{
+  "status": "passed",
+  "runs": [
+    {
+      "id": "baseline-opening-w4-v3",
+      "receipt": "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v3-execution.json",
+      "evidenceSha256": "7936a75fd8434e9b484f22a14fbee70f82e92e3dd070415282f7c8c1977ec5cc",
+      "requests": 18,
+      "nodes": 1800000,
+      "attempts": 184,
+      "splitDepthAttempts": 128,
+      "splitDepthNodes": 1791716,
+      "firstOwnerJobNodeFraction": 0.3290052664596398,
+      "workerNodeShares": [
+        0.49399737458391846,
+        0.17381158621120757,
+        0.17178615360916574,
+        0.16040488559570826
+      ],
+      "noHelperAdmissionAttempts": 14,
+      "noHelperAdmissionNodes": 83980,
+      "firstHelperDelayMedianMs": 3.2081,
+      "firstHelperDelayMaxMs": 87.2655,
+      "repeatedRoots": 9,
+      "repeatBestMoveDisagreements": 1,
+      "repeatScoreOrDepthDisagreements": 4,
+      "completedDepthMean": 6.5,
+      "peakOwnedCommittedGiB": 0.492919921875,
+      "wallSeconds": 3.9787083999835886
+    },
+    {
+      "id": "baseline-mixed-w4-v3",
+      "receipt": "docs\\research\\search\\p4-multiworker\\baseline-mixed-w4-v3-execution.json",
+      "evidenceSha256": "57a6092ed63230a99b4f7be494fcae9d1291e1ccf2c85c3b0fe76339fe3dcca2",
+      "requests": 40,
+      "nodes": 4000000,
+      "attempts": 483,
+      "splitDepthAttempts": 347,
+      "splitDepthNodes": 3943530,
+      "firstOwnerJobNodeFraction": 0.34023552502453386,
+      "workerNodeShares": [
+        0.5132206424193553,
+        0.15892994347703707,
+        0.17066739697682026,
+        0.15718201712678742
+      ],
+      "noHelperAdmissionAttempts": 63,
+      "noHelperAdmissionNodes": 434996,
+      "firstHelperDelayMedianMs": 2.2963505,
+      "firstHelperDelayMaxMs": 119.7711,
+      "repeatedRoots": 20,
+      "repeatBestMoveDisagreements": 4,
+      "repeatScoreOrDepthDisagreements": 8,
+      "completedDepthMean": 7.075,
+      "peakOwnedCommittedGiB": 0.3547706604003906,
+      "wallSeconds": 7.816273499978706
+    },
+    {
+      "id": "baseline-opening-w2-v3",
+      "receipt": "docs\\research\\search\\p4-multiworker\\baseline-opening-w2-v3-execution.json",
+      "evidenceSha256": "474911da2de1c47490e9156c729b5a9a8ffa1c42b483f834916d6d8eed9e4fe7",
+      "requests": 18,
+      "nodes": 1800000,
+      "attempts": 185,
+      "splitDepthAttempts": 129,
+      "splitDepthNodes": 1791716,
+      "firstOwnerJobNodeFraction": 0.33326598635051535,
+      "workerNodeShares": [
+        0.6675014343791091,
+        0.3324985656208908
+      ],
+      "noHelperAdmissionAttempts": 11,
+      "noHelperAdmissionNodes": 63410,
+      "firstHelperDelayMedianMs": 3.7802995,
+      "firstHelperDelayMaxMs": 115.5619,
+      "repeatedRoots": 9,
+      "repeatBestMoveDisagreements": 0,
+      "repeatScoreOrDepthDisagreements": 3,
+      "completedDepthMean": 6.611111111111111,
+      "peakOwnedCommittedGiB": 0.3957862854003906,
+      "wallSeconds": 5.128135200007819
+    },
+    {
+      "id": "baseline-mixed-w2-v3",
+      "receipt": "docs\\research\\search\\p4-multiworker\\baseline-mixed-w2-v3-execution.json",
+      "evidenceSha256": "f6deb55709ef8b8766cd0914f25e5ace86aa05f6a3ce2c7d8be5cb56e0e8ee8e",
+      "requests": 40,
+      "nodes": 4000000,
+      "attempts": 487,
+      "splitDepthAttempts": 351,
+      "splitDepthNodes": 3943530,
+      "firstOwnerJobNodeFraction": 0.37572023035199426,
+      "workerNodeShares": [
+        0.6909477042142446,
+        0.3090522957857554
+      ],
+      "noHelperAdmissionAttempts": 65,
+      "noHelperAdmissionNodes": 486150,
+      "firstHelperDelayMedianMs": 2.47255,
+      "firstHelperDelayMaxMs": 81.300801,
+      "repeatedRoots": 20,
+      "repeatBestMoveDisagreements": 5,
+      "repeatScoreOrDepthDisagreements": 10,
+      "completedDepthMean": 7.175,
+      "peakOwnedCommittedGiB": 0.4771270751953125,
+      "wallSeconds": 9.254670399997849
+    }
+  ],
+  "interpretation": "Exact TC-P1 instrumented scheduling diagnostics. Fractions count admitted work, not serial wall fraction or utilization. No timed strength, NPS scaling, tail-idle, cross-worker TT consumption or duplication claim. Repetitions expose scheduling variation; not an inferential competitive sample."
+}

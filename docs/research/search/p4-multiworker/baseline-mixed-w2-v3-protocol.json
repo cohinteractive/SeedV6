@@ -1,0 +1,52 @@
+{
+  "id": "baseline-mixed-w2-v3",
+  "mode": "A",
+  "kind": "diagnostic",
+  "competitiveGames": 0,
+  "workers": 2,
+  "requests": 40,
+  "maximumNodes": 4000000,
+  "timeoutSeconds": 180,
+  "inputs": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4MultiworkerStudy.java": "b31a041c8d27393ef91691fe28332e38eefbfcf0079658018b85c072f3279e05",
+    "docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv": "191f79788729bcb35fe92b11b6572749e8794b4d8fee4af256fa5764b1685ae2",
+    "build-assets\\nnue-candidate\\conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "tools\\p4-multiworker.py": "03e11c0528e4e7b06f4280307069792d042170593e85bdfd193cd87d338ec7a6",
+    "tools\\tournament-process.py": "d52f10d46a81ff3bac9b064ca98576d41bc5010a47f6e27aaa42d36114073e9f",
+    "tools\\p4-tactical-supervise.py": "f2d3d425b4e0ab43bbd8285b1f7a614dbde43984558488ecd8bfceb32bf92ede",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-bootstrap-v1\\lib\\engine-core.jar": "54c14fd5eda23c99b4b1c0ef87293ea2c45bc958f14fbe9270aca1d5cbd8f80a",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-bootstrap-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-bootstrap-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-bootstrap-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-bootstrap-v1\\lib\\research.jar": "a3e4c4dcdc5121e5195767e25c37787f5ac1772f88c2e0949154562bb7a5bdfc",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-bootstrap-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p4-multiworker\\raw\\runtime-bootstrap-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "C:/java/jdk-21/bin/java.exe": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950"
+  },
+  "question": "Measure exact TC-P1 root-job serialization, callback admissions, helper startup and private work distribution; diagnostic, not strength/cost equivalence.",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms128m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "ROOT:docs/research/search/p4-multiworker/raw/runtime-bootstrap-v1/lib/*",
+    "com.ohinteractive.seedv6.search.exact.P4MultiworkerStudy",
+    "ROOT:build-assets/nnue-candidate/conventional-cp64.cnnue",
+    "ROOT:docs/research/search/p4-correction/mixedphase-v1-roots.tsv",
+    "{output}",
+    "2",
+    "2",
+    "12",
+    "100000"
+  ],
+  "protocolStatus": "prospective diagnostic; frozen before first admission",
+  "supersedes": "docs\\research\\search\\p4-multiworker\\baseline-mixed-w2-v2-protocol.json",
+  "resources": {
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "basis": "Single Xmx512m JVM, current TC-P1 Hash64, up to4 workers; 768MiB additional native/JIT/thread/observation headroom, to verify with measured peak. Not measured latency."
+  }
+}

@@ -1,6 +1,6 @@
 # MW-R001 - Integrated multiworker Search strength
 
-Revision 1, 4 November 2026 (Pacific/Auckland). Owner-authorized CGLHW under
+Revision 2, 4 November 2026 (Pacific/Auckland). Owner-authorized CGLHW under
 the [Phase 4 Contract](../../../../source/CHESS_SEARCH_CONTRACT.md) and
 [Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). Launch authority
 is the owner's explicit multiworker execution request in this session, confirming
@@ -129,6 +129,40 @@ every admitted batch by its actual deadline, leave drain headroom, supervise and
 drain all owned descendants. Apparent idleness is not permission. No future timed
 scheduling, recurring execution or unsupervised future-session continuation.
 Missing Mode B authority does not block useful Mode A/source/engineering work.
+
+### Temporary resource blockers - owner continuation clarification
+
+The 4 November continuation explicitly requires temporary pressure handling without
+closing MW-R001. Admit safe Mode A work under existing permission. If a planned batch
+is temporarily blocked, continue useful authorized low-impact work. If none remains,
+checkpoint the exact condition, reconciled resources, owned-process drain and next
+unused protocol/run identity; ask the owner whether the condition has cleared or
+what must change. Prefer an available client user-input interaction. Do not repeatedly
+poll the PC, run inference loops waiting for availability, or leave experiments alive.
+If this client cannot preserve a blocking input interaction, explicitly hand off the
+pending action and durable STATE reference. A file checkpoint does not keep a turn
+alive. Silence, timeout and a stale 'ready' observation are not authorization or
+evidence that conditions have cleared. A reply/continuation triggers one fresh check.
+
+Repository supervision controls admission, bounded monitoring while owned work runs,
+drain, accounting and disposition/checkpoint output. It cannot force a Codex client
+to suspend interactively or keep a question alive. The agent performs the user-input
+step; no client, shared governance, service or scheduled resumption is modified.
+
+Resource admission uses the anticipated whole-process peak plus a personal-use
+reserve, current CPU headroom, workers/concurrency and foreground risk. A running
+application name alone is not a pressure measure. The initial512MiB-heap single-JVM
+probe plans1.25GiB peak committed memory (heap plus conservative native/JIT/thread
+headroom), preserving2GiB available for personal use. Record measured peak before
+generalizing this estimate. Plan projected CPU<=70% including requested workers on
+the verified logical processors; below-normal priority remains. During execution,
+stop below the2GiB reserve, above planned owned memory, at critical CPU>=95% or
+sustained>=80%, owner STOP, hard deadline, or demanding foreground gameplay. Background
+Overwatch can be admissible with sufficient measured headroom and known foreground;
+foreground Overwatch is a responsiveness risk even if instantaneous total CPU is low.
+Unobservable foreground when the game is present remains conservative. This is not
+direct input-latency or thermal measurement. Recalibration requires evidence and
+preserves user priority; it is not permission to weaken safeguards to force launch.
 
 ## Auditable accounting and interruption
 

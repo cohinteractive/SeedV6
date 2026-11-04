@@ -1,0 +1,116 @@
+{
+  "status": "passed",
+  "tests": 90,
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.SearchDriverTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.driver.SearchDriverTest.xml",
+      "sha256": "199bd732b98fad9b18649a01a0b4b6b6e8a6c8f6c5f528b9a244bafd83a7891d"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest.xml",
+      "sha256": "23c7b09c2f03b71186f2a3c701cd410ea91d6e5b99ead23e0e9a65ae1b8a7921"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ConstructionSearchTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.ConstructionSearchTest.xml",
+      "sha256": "9f01c969b78ac96ec146ab593ce2c3e2f15c969647566d4fcbdaa464eea09e53"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest.xml",
+      "sha256": "075c4eee1d8f49d0db887b47651b02707180b1abbb4405d5cde2ba4eff177882"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineEngineTest.xml",
+      "sha256": "10031a9184095bd11a53b34e45fc3e8a79534cfd0da554ec755651efb3765af4"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineProfileTest.xml",
+      "sha256": "b7611380f92ba2206ae472d922cab8cde26d8aa8db527267729e1525f3aa5d81"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.EngineFormulationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.EngineFormulationTest.xml",
+      "sha256": "48b17dd9ae430acb1850a329afc9749acfb9ea28cb438f07be0aa5175e58bd4a"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.tt.TTableAgedMemoryTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.tt.TTableAgedMemoryTest.xml",
+      "sha256": "0b3945151b2160778c84a8f1254bd24548f0359a31955b23218351efdb304a9d"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.tt.TTableHintsTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.tt.TTableHintsTest.xml",
+      "sha256": "16c9431cb63c783033fb47ca5416d148fcb573b981f8cb5cc5b0fc03faef54f8"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.tt.TTableInformationTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.tt.TTableInformationTest.xml",
+      "sha256": "de4e6d4d00d43ede11607f27204256cc4f9fd06e478f8c2b6d406d70141369a4"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.tt.TTableMemoryTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.tt.TTableMemoryTest.xml",
+      "sha256": "e122591d108eaf2ba65a14a477bbd9a1db777998b85387c4bae687ce5223c4fd"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.tt.TTableTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\baseline-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.tt.TTableTest.xml",
+      "sha256": "a29cfeb5bcc0cab03b4186c78bc4b921faf04af5f6bebb1e4a2632a6d97e39ee"
+    }
+  ],
+  "earlierMismatch": "Research-owned classes were incorrectly selected under engine-core; the no-match invocation failed and remains recorded. Correct module selection executes the intended tests.",
+  "log": "raw/baseline-tests-v2.log"
+}

@@ -1,7 +1,7 @@
 # MW-R001 findings and results
 
-4 November 2026. Bootstrap/source challenge complete; experimental computation is
-suspended for user PC use. No empirical strength result or candidate qualification.
+4 November 2026. Bootstrap/source challenge and original scheduling-probe
+qualification complete. Active research; no empirical strength result or finalist.
 [CONTRACT](CONTRACT.md) owns the unchanged success conditions;
 [STATE](STATE.md) owns operational resumption.
 
@@ -32,7 +32,7 @@ licensing boundaries, external author test reports and an evidence-ranked next
 selection. These are source facts/inferences awaiting bounded runtime diagnostics.
 Existing adverse W4 evidence remains unexplained. No independent campaign reopened.
 
-## Executed validation and operational outcome
+## Bootstrap validation and initial operational interruption (historical)
 
 The new research-owned callback/scheduling probe compiles. Existing TC-P1 learning,
 tactical and verified-null accounting suites passed16 tests; the combined Gradle
@@ -51,18 +51,48 @@ No initiated/completed/failed competitive games, no experimental node admissions
 no charged timed or fixed experimental wall, no spent confirmation and no live
 owned processes. Ordinary tests/compilation and a dummy process are separate.
 
+## Continuation: resource handling and baseline qualification
+
+The initial interruption exposed both an overbroad application-name guard and an
+agent handoff gap: supervisor exit did not request user input, and the agent ended
+normally after checkpointing. Repository code can record a disposition but cannot
+hold a client turn open. CONTRACT revision2 and the revised supervisor now distinguish
+admissible work, useful light alternatives and a pending owner condition. Nine focused
+supervisor tests passed, including native Job drain and recovery/accounting. Background
+Overwatch is assessed with memory/CPU/foreground evidence; foreground gaming remains
+conservatively protected. See [resource report](resource-handling-v2-summary.json).
+
+Corrected baseline selection passed90 tests; two focused TC-P1 lifecycle tests passed.
+The unmatched original selection remains a failed invocation, not an execution pass.
+Four frozen v3 scheduling protocols passed116 requests at100k nodes/request across
+W2/W4 opening/mixed roots. All callbacks reconciled to private/shared/request totals;
+PV legality, board restoration and helper/native drains passed. Raw evidence hashes
+and measurements are in [baseline summary](baseline-scheduling-v3-summary.json).
+
+W4 first-root admissions were32.90% (opening) and34.02% (mixed) of split-depth work;
+owner shares49.40% and51.32%. This is a substantial allocation asymmetry to investigate,
+not measured wall loss, a strength defect or a reason to blindly remove first-root
+ordering. Equal-limit repeats disagreed on best move1/9 and4/20 roots respectively.
+Information-channel consumption, exact tail idle and duplicate-position coverage are
+not measured by this probe. Ordinary TT diagnostic zeros exclude the hint channel.
+
+The four runs charged11.6M nodes and26.1777875 fixed wall seconds, zero games/timed
+wall. Peaks0.355-0.493GiB support the declared1.25GiB process allowance for this
+specific workload. No resource interruption occurred. Confirmation remains untouched.
+
 ## Decisions, unknowns and continuation
 
 Retain exact TC-P1 production and all historical identities. No new engine architecture
 has yet been implemented or chosen as finalist. Source investigation supports both
-root-distribution improvements and independent-worker alternatives; actual work
-distribution and information consumption are not measured. A same-depth race would
+root-distribution improvements and independent-worker alternatives; work distribution is now measured; cross-worker information consumption remains
+unresolved. The next selected diagnostic observes hint provenance and reverses
+cross-worker delivery before choosing an integrated architecture experiment. A same-depth race would
 be a narrower diagnostic, not a mislabeled true Lazy SMP architecture. Async helpers
 require explicit final accounting and result-depth integration before execution.
 
-All cumulative allowances remain, including protected independent capacity. No
-timed window was granted. The precise prepared baseline commands, environmental
-conditions and subsequent fixed-node-runner dependency are in STATE. Do not infer
+Remaining allowances and protected independent capacity are recorded in STATE and
+budget.json. No timed window was granted. The selected next diagnostic, resource
+behavior and subsequent fixed-node-runner dependency are in STATE. Do not infer
 automatic continuation from this checkpoint. The governing strength objective is
 **unmet**, not failed by an unrun experiment and not relabeled foundational success.
 No owner acceptance, champion advancement, production adoption or deployment claimed.

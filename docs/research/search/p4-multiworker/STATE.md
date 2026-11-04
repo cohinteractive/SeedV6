@@ -1,127 +1,113 @@
 # MW-R001 resume state
 
-4 November 2026 (Pacific/Auckland). **ACTIVE workstream, compute suspended for
-PC use. Bootstrap/source challenge complete; baseline probe compiled but not run.
-Strength objective unmet; no candidate selected or confirmed.**
-Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md), [budget.json](budget.json), then
-current Phase 4 masters before fresh work. This is a separate owner-authorized
-workstream from accepted build91 and closed historical Search campaigns.
+4 November 2026 (Pacific/Auckland). **ACTIVE. Temporary-resource handling and the
+original scheduling probe are qualified. Strength objective unmet; no competitive
+candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md),
+[budget.json](budget.json), then current Phase 4 masters before fresh work.
 
-## Verified starting state
+## Authority, identities and provenance
 
-- Clean main at acc997b2 (full identity recorded in bootstrap manifest), build91.
-  Later training/build-tool commits are inherited committed work, not this objective.
-- Root CODEXLOG_CURRENT.md absent; do not create it. VERSION_STATE.txt is regular,
-  one link, strict four-integer UTF-8 JSON, LF, build91; initial SHA256
+- Masters currently P4-R017/P4-F034. Project Source mirrors were not refreshed.
+- Bootstrap c2ad1e3b and checkpoint10e974cf followed clean acc997b2; this continuation
+  began clean main at10e974cf. Inherited training/build changes remain unrelated.
+- Build91 remains unchanged: VERSION_STATE.txt SHA256
   4e87e34cc8db4604f3b6e7d70127d4ce52a1f9144645cbe2cbf68b8b79136fa0.
-- Masters verified P4-R016/P4-F032 at launch. Current owner prompt supplies new
-  execution authority; historical no-successor statements retain historical scope.
-  Repository masters now **P4-R017/P4-F033**. Project mirrors were not modified.
-- Hardware observed Ryzen5 5500, 6 physical/12 logical, Windows11 Pro10.0.26300,
-  33339348 KiB visible RAM, about17327216 KiB free at bootstrap. Java21+35-2513.
-  VSCode Java25 processes are unrelated and must not be touched. No owned match.
-- TC-P1/flags1177812991 remains production. [ARCHITECTURE](ARCHITECTURE.md) records
-  the completed source challenge, external code/history/licensing and dependencies.
-  Static findings are not runtime verification. Frozen BOUNDARY2 evidence untouched.
+  Root CODEXLOG_CURRENT.md absent; do not create. Research tools/tests/docs do not
+  create a new application build. No production/About/selector change or installation.
+- TC-P1/flags1177812991 remains production. Historical79, accounting80, champion84,
+  production Search90 and accepted application91 remain distinct. No closed objective
+  reopened, promotion, push, deployment or frozen BOUNDARY2 study modified.
+- Ryzen5 5500,6 physical/12 logical,32GB Windows11; Java21+35-2513. At continuation,
+  about16.4GiB available and low CPU; Overwatch absent. Existing VSCode/global Gradle
+  Java processes are unrelated and must not be killed. No owned process remains.
 
-## Completed coherent bootstrap unit
+## Established evidence
 
-- Focused contract, budget/confirmation protection, explicit operating/admission
-  boundaries and dynamic research frontier established. No material authority
-  contradiction found. Prior no-successor decisions do not veto this explicit request.
-- Research-owned P4MultiworkerStudy observes successful callbacks, first owner root
-  job, helper startup and worker work at exact TC-P1. Compilation/installResearch
-  export passed; no production source/selector/About change or application install.
-- Baseline P4LearningTest7, P4TacticalTest4, VerifiedNullAccountingTest5: **16 passed**.
-  Broader engine-core filter matched no tests and failed; this is not a passed check.
-  Preserve [bootstrap-validation](bootstrap-validation.json), JUnit raw copies and
-  [initial selection summary](baseline-tests-v1-summary.json). New probe runtime
-  validation and broader baseline tests are still outstanding.
-- Four new supervision/admission tests passed. They cover busy-PC zero-launch/zero
-  charge, duplicate ID protection, unresolved ownership, ceiling rejection, timed/
-  competitive rejection and stale-budget-write refusal. Native suspended dummy
-  ownership/kill/drain qualification passed; no image-name/process-wide killing.
-- Initial system-Python imports failed because chess was absent; existing
-  `build/research/venv/Scripts/python.exe` has the required dependency. No install.
-- First W4 diagnostic v1 was refused before Popen: game present and memory pressure.
-  The first supervisor revision conservatively charged its entire1.8M-node reservation
-  despite proven zero process creation. The original receipt is preserved; a separate
-  [factual reconciliation](baseline-opening-w4-v1-no-launch-reconciliation.json)
-  returns that charge. Regression tests now protect this exact case. Actual campaign
-  experimental nodes/games/wall remain zero, with no unresolved reservation.
-- Frozen [research runtime](runtime-bootstrap-v1-manifest.json) preserves the compiled
-  probe/current TC-P1 classes and source hash. It is build91 plus research-only code,
-  not a new Search formulation or a runtime-qualified artifact. No build bump.
+[ARCHITECTURE](ARCHITECTURE.md) retains verified ROOT_REUSE/source challenge, pinned
+external engine mechanisms/history/licensing, and the SearchDriver finalization
+constraint for independent asynchronous helpers. No external code incorporated.
 
-## Git and artifact provenance
+- Initial16 baseline tests passed. The broader core filter matched no tests and
+  failed, preserved in [bootstrap validation](bootstrap-validation.json). Corrected
+  module selection now executes **90 tests, all passed**, covering concurrency,
+  driver/lifecycle/construction and core formulation/TT behavior; see
+  [baseline-tests-v2-summary.json](baseline-tests-v2-summary.json).
+- Revised resource supervisor **9 tests passed**, including native Windows Job
+  interruption/drain, zero-launch zero-charge, recovery under a new ID, ceilings,
+  pending ownership, STOP and atomic ledger safeguards. Client boundary and prior
+  stop diagnosis: [resource-handling-v2-summary.json](resource-handling-v2-summary.json).
+- **2 focused TC-P1 lifecycle tests passed**: W1/W2/W4/W8/W16 bounded node limits,
+  pre-stop, board/PV/accounting and reuse; W2/W4 observed helper failure, drain/reset.
+  Hash1 test resource, not scaling/competitive evidence. See
+  [probe-lifecycle-v1-summary.json](probe-lifecycle-v1-summary.json).
+- Frozen [bootstrap runtime](runtime-bootstrap-v1-manifest.json) remains the original
+  acc997b2 base plus explicit probe source hash, build91/research-only. Its unchanged
+  scheduling probe passed four v3 protocols: opening9/mixed20 roots x2 rounds at
+  W4/W2,116 requests/11.6M admissions, all legal PV/board restoration/callback/private/
+  request accounting and clean drains. See [summary](baseline-scheduling-v3-summary.json).
+- W4 split-depth first owner root work fraction32.90% opening/34.02% mixed; owner
+  share49.40%/51.32%. This counts admissions, not wall serialization or wasted work.
+  Repeat best-move disagreement1/9 opening and4/20 mixed roots at identical limits.
+  Peak owned committed memory0.355-0.493GiB across four runs, below1.25GiB allowance.
+- The initial v1 refusal (Overwatch/about4.2GiB) and separate factual zero-launch
+  [reconciliation](baseline-opening-w4-v1-no-launch-reconciliation.json) remain intact.
+  It consumed zero Search work. Prepared v2 was superseded without launch; all v3
+  protocols/receipts/raw files are frozen and must not be overwritten/reused.
 
-Bootstrap commit **c2ad1e3b** contains the focused authority/source map, research probe,
-supervision and masters P4-R017/P4-F033. It follows clean acc997b2 without absorbing
-unrelated changes. Build91 bytes are unchanged (research tooling/docs only). No push,
-application installation, production source/default or accepted About modification.
-The frozen artifact still identifies its actual pre-commit acc997b2 source base plus
-explicit probe source hash; the new commit does not retrospectively relabel its JARs.
-Raw evidence stays ignored/local and was hash/ignore checked before staging.
+## Operating behavior and budgets
 
-The default staged whitespace check flagged Windows CRLF in newly written JSON;
-validation with explicit cr-at-eol passed. Frozen protocol/receipt bytes are preserved,
-not reformatted to make a cosmetic check pass. Final verification/provenance is
-recorded in the subsequent documentation-only commit; no history rewrite.
+Mode A is already authorized: one restrained fixed-work process, at most4 active
+Search workers, below-normal priority. No dated timed window exists. No scheduled
+execution or unattended future continuation. Small W8/W16 correctness tests are
+technical qualification, not competitive oversubscription permission.
 
-## Working frontier
+The revised guard evaluates declared whole-process memory plus personal reserve,
+CPU headroom/worker count and foreground risk, not merely an application name or
+an unexplained6GiB threshold. Single512MiB-heap probe envelope1.25GiB plus2GiB personal
+reserve. Measured peaks support this envelope; do not generalize to larger jobs.
+Foreground gameplay, memory/CPU pressure, STOP or deadline stops and drains work.
+No measured input-latency/thermal claim. See focused CONTRACT revision2.
 
-| Question | Next discriminating work | Status |
+If blocked: continue useful light work. If none remains, retain receipt, reconciled
+budget, drain proof and exact next unused protocol; ask the owner about the specific
+condition through an available input tool. Repository resource-state.json records
+agent disposition only. The available asynchronous input tool returns immediately;
+there is no supported blocking request tool in this Default session. Never claim a
+checkpoint preserves client liveness. If the client ends the turn, explicitly retain
+pending user action and this resume reference. No repeated availability polling.
+
+**Consumed:**11,600,000 fixed diagnostic nodes,26.1777875 fixed wall seconds;0 games,
+0 timed wall. **Remaining:**99,988,400,000 nodes,6000 fixed games,3000 timed games,
+72 timed hours. Protected independent allowance960 timed games/initial24h intact.
+No confirmation protocol selected or attempt spent. budget.json has no pending
+reservation or live owned processes. Receipts, not historic PIDs, establish ownership.
+
+## Evidence-ranked frontier and exact safe continuation
+
+| Question | Selected discriminating work | Status |
 | --- | --- | --- |
-| How much W4 effort is serialized before helpers or unevenly assigned? | Prepared bounded TC-P1 W4/W2 callback/scheduling probe on9 opening and20 mixed-phase legal-history roots;2 repetitions/domain,100k admission cap/request. First-root nodes and startup delay do not measure exact idle/tail cost. | First selected diagnostic, PC-blocked |
-| Would independent/overlapping workers help despite hints-only TT and private learning? | Source map complete. Design final accounting after drain and honest cross-depth result publication; current SearchDriver finalization cannot safely host a naive asynchronous wrapper. | Competing hypothesis; no implementation selected |
-| Is useful TT information the enabling dependency? | Separate move consumption from score/eval availability; justified integrated/reverse ablations, retaining prior F3 adverse evidence. | Open, not preselected |
-| Does root work benefit from shared learning or arbitration changes? | Diagnose current private lifetime, scout/retry and completed-publication behavior before selecting sharing. | Open |
-
-## Operations and exact resume boundary
-
-No timed window granted. Mode A already authorized: serial restrained fixed-work
-research, user PC use first. Overwatch and4.208GiB free RAM triggered the initial
-pause; the guard requires no Overwatch and at least6GiB free, and stops for sustained
->=80% total CPU, memory pressure, owner STOP or hard deadline. These operational
-choices are revisable from evidence without weakening the user's PC-use priority.
-No responsiveness/thermal instrumentation is claimed. Do not repeatedly poll or
-automatically wait for idleness and resume after this turn.
-
-**Budget:** all72h/3000 timed games,6000 fixed games and100 billion fixed nodes remain.
-Protected one-confirmation allowance remains960 games/initial24h planning reservation.
-No confirmation sample, clock or opening selection is frozen and no claim is spent.
-No owned background process or scheduled execution. `budget.json` has no pending
-admission; historical receipt PIDs are evidence, not authority to attach/kill.
+| Can better scheduling reduce first-root waiting without harming useful Search? | Develop a controlled overlap/root or independent-worker alternative after identifying information dependence. Retain exact TC-P1 comparator and honest drain/accounting. | First-root admissions now measured; neither ROOT_REUSE nor Lazy SMP presumed optimal. |
+| Do workers actually benefit from each other's completed TT hints? | Research-only provenance observation and reverse ablation of cross-worker hint delivery at W4, matching flags/evaluator/resources. Observe availability separately from delivery and changed decisions. | Next selected small diagnostic; production counters omit hints, so zero ordinary TT counters are not evidence of no sharing. |
+| What does independent iterative SMP require? | Explicit final accounting after drain and honest result depth/PV selection; current SearchDriver outcome is built before endRequest. | Source constraint remains; no naive asynchronous wrapper. |
+| Can shared learning or arbitration support a stronger combination? | Use information-flow and scheduling evidence to select integration; retain prior TT adverse evidence and request-private histories as comparator. | Open, not prescribed. |
 
 Fresh-session sequence:
+1. Verify masters/Git/version/journal, this state, budget/receipts and source/artifact
+   hashes. Check raw availability; fresh checkout lacks ignored evidence. Missing
+   artifacts need a new identified export, not silent recreation of frozen files.
+2. Do not repeat completed v3 baseline or90 tests without a concrete change/reason.
+   Read their summaries. Continue selected information-flow diagnostic under Mode A;
+   any new source/runtime needs a fresh manifest/protocol/run ID before admission.
+3. Verify resources once at admission; use tools/p4-multiworker.py. Its current
+   scope deliberately rejects competitive/timed protocols. If temporarily blocked,
+   apply the behavior above and preserve no-launch vs launched charging semantics.
+4. Before competitive exploration, qualify a fixed-node match path against exact
+   TC-P1. Existing TC runner hardcodes84 and cannot simply be relabelled. Reserve
+   disjoint independent confirmation openings before development selection.
+5. Use local GRADLE_USER_HOME build/migration/gradle-user-home, no daemon and one
+   build worker; no experiment concurrent with compilation/tests. Record new results
+   and clean owned-process drain before handoff. Owner STOP file blocks admission.
 
-1. Re-read this state/contract, masters, Git provenance, root version/journal presence,
-   budget and receipts. Verify frozen runtime/model/input hashes and actual PC conditions.
-   Do not restore raw evidence silently if absent; runtime recompilation needs a fresh
-   identity/manifest. Ordinary investigation needs no renewed daytime permission.
-2. When PC conditions permit, run the first prepared protocol from repository root:
-   `build/research/venv/Scripts/python.exe -B tools/p4-multiworker.py --protocol docs/research/search/p4-multiworker/baseline-opening-w4-v2-protocol.json`.
-   Its180s hard guard, node cap and Job containment are autonomous. Before launch,
-   check its output ID unused; if already attempted, reconcile and use a new ID/version.
-   V1 refusal is immutable. Prepared/unlaunched v2 protocols may be corrected before
-   admission; once admitted, preserve bytes and evidence even on failure.
-3. Audit exact callback/private/shared/request totals, legal PV/restoration and
-   activeHelpersAfterClose=0, then analyze first-root fraction/startup and worker balance.
-   If sound, run the prepared mixed W4, opening W2 and mixed W2 protocols serially.
-   Maximum all four is11.6M nodes/116 requests; actual admissions own charging.
-   Freeze/record summaries and select next architecture from the results/source map.
-4. Broader corrected baseline selection (when resources permit) uses research-owned
-   `ConcurrencyExtensionTest`, `SearchDriverTest`, `SearchLifecycleServiceTest` and
-   `ConstructionSearchTest`, plus core `BaselineEngineTest`, `BaselineProfileTest`,
-   `EngineFormulationTest`/`TTable*` as relevant. Use local Gradle home
-   `build/migration/gradle-user-home`, one/two build workers and no competing experiment.
-5. Before competitive development, qualify a fixed-node match path and protect fresh
-   confirmation openings. The diagnostic supervisor intentionally rejects games/timed
-   mode. Existing TC runner hardcodes exact84 and cannot be relabelled TC-P1 control.
-   One W4 game at a time, exact matching comparator and full admission audit are required.
-
-Blocking boundary is environmental for the next runtime probe, not a demand to stop
-the user's game or obtain another daytime permit. A later timed batch additionally
-needs an explicit dated window. Owner mirror refresh toP4-R017/P4-F033 is non-blocking
-for repository execution and required only before mirror-dependent planning.
-No research closeout, candidate acceptance, champion change or production promotion.
+No current blocking human action. A later timed batch requires an explicitly dated
+idle window; mirrors require refresh only before mirror-dependent planning.
+MW-R001 has not ended, and technical qualification is not strength success.

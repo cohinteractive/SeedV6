@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "tests": 2,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "evidence": "docs\\research\\search\\p4-multiworker\\raw\\probe-lifecycle-tests-v1.xml",
+  "sha256": "7c81901a9b36dc558cfeeacc261b7a2a83be53eae9d5d1eab41c205d4de48616",
+  "scope": "Exact TC-P1 CP64/ADAPTIVE16/BOUNDARY2; bounded Hash1 correctness tests W1/W2/W4/W8/W16 node limits, pre-stop and reuse; observed W2/W4 helper exception/drain/reset, callback accounting and legal PV. W8/W16 technical only, no scaling or strength claim.",
+  "source": "research/src/test/java/com/ohinteractive/seedv6/search/exact/P4MultiworkerTest.java"
+}

@@ -20,17 +20,21 @@
     "timedCompleted": 0,
     "timedFailed": 0,
     "timedInterrupted": 0,
-    "fixedWallSeconds": 0.0,
+    "fixedWallSeconds": 26.177787499967963,
     "fixedInitiated": 0,
     "fixedCompleted": 0,
     "fixedFailed": 0,
     "fixedInterrupted": 0,
-    "fixedNodes": 0
+    "fixedNodes": 11600000
   },
   "pending": [],
   "receipts": [
     "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-execution.json",
-    "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-no-launch-reconciliation.json"
+    "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v1-no-launch-reconciliation.json",
+    "docs\\research\\search\\p4-multiworker\\baseline-opening-w4-v3-execution.json",
+    "docs\\research\\search\\p4-multiworker\\baseline-mixed-w4-v3-execution.json",
+    "docs\\research\\search\\p4-multiworker\\baseline-opening-w2-v3-execution.json",
+    "docs\\research\\search\\p4-multiworker\\baseline-mixed-w2-v3-execution.json"
   ],
   "timedWindows": [],
   "ownedProcesses": []

@@ -1,0 +1,34 @@
+{
+  "unit": "MW-R001 resource continuation handling",
+  "utc": "2026-11-04T09:31:02.767282+00:00",
+  "initialHead": "10e974cf",
+  "initialTree": "clean main",
+  "version": 91,
+  "reasonPriorTurnEnded": "Supervisor emitted an ordinary failure; STATE prescribed terminal checkpoint/no automatic waiting. Agent ended after static work without using available asynchronous user-input interaction. No repository function can force client liveness.",
+  "changes": "Separate measured resource admission and structured temporary disposition. Continue known useful low-impact work, otherwise checkpoint and request user input; no polling/resume daemon. Budgeted memory, projected CPU, foreground risk replace process-name veto/fixed6GiB. Explicit peak measurement and owner stop retained.",
+  "tests": {
+    "count": 9,
+    "passed": 9,
+    "failures": 0,
+    "raw": "raw/resource-tests-v2.log",
+    "sha256": "3b4f257d27702bb800f2882f618c07a3d2665f5d43dbfe364a610707993c7f93",
+    "scope": "Decision tests plus real harmless native child success, pressure termination/drain, zero-charge refusal, conservative failed charge, recovery/new ID, duplicate/pending/stale ledger safeguards. Synthetic node figures use isolated temporary ledgers, not campaign experiments."
+  },
+  "clientEvidence": {
+    "observedTools": "Default mode exposes request_user_input_async (immediate return; replies arrive as user messages), not a synchronous blocking input tool available for this task.",
+    "officialSource": "https://learn.chatgpt.com/docs/app-server#toolrequestuserinput",
+    "officialFinding": "Pending requests can be cleared by turn completion/start/interruption. Documentation does not prove current client will preserve an awaiting state.",
+    "boundary": "Agent asks using available input tool and continues independent work; if no blocking wait is supported, durable fallback states pending human action. No claim repository code enforces pause; no client modification."
+  },
+  "inputs": {
+    "tools/p4-multiworker.py": "03e11c0528e4e7b06f4280307069792d042170593e85bdfd193cd87d338ec7a6",
+    "tools/test_p4_multiworker.py": "578d6ba52192064fc551d68de440326e83b2d6cfb3a12ee621fc154e68749063",
+    "tools/tournament-process.py": "d52f10d46a81ff3bac9b064ca98576d41bc5010a47f6e27aaa42d36114073e9f",
+    "tools/p4-tactical-supervise.py": "f2d3d425b4e0ab43bbd8285b1f7a614dbde43984558488ecd8bfceb32bf92ede"
+  },
+  "remaining": "None for resource-handling unit. Client awaiting-state behavior is not enforced by repository code; native diagnostics subsequently verified declared footprint. See baseline-scheduling-v3-summary.json and STATE.md for active research.",
+  "measuredPeakGiBRange": [
+    0.3547706604003906,
+    0.492919921875
+  ]
+}
