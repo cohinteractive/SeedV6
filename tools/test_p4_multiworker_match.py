@@ -81,6 +81,33 @@ class MatchTest(unittest.TestCase):
         (directory/'games.pgn').write_text(games[0]+'\n\n'+games[0]+'\n')
         with self.assertRaises(ValueError):m.audit_pair(directory,self.p,reverse=True)
 
+    def test_reversed_decisive_games_score_the_named_candidate_in_both_colors(self):
+        directory=self.out/'mates';directory.mkdir()
+        (directory/'opening.pgn').write_text(str(m.b.chess.pgn.Game())+'\n')
+        games=[];trace=[]
+        # Candidate wins as White first, then Black. A color/index inversion cannot
+        # hide behind a paired1-1 or two draws in this fixture.
+        for white,moves,result in [
+            ('candidate',['e2e4','e7e5','f1c4','b8c6','d1h5','g8f6','h5f7'],'1-0'),
+            ('baseline',['f2f3','e7e5','g2g4','d8h4'],'0-1')]:
+            game=m.b.chess.pgn.Game();game.headers.update(White=white,
+                Black='baseline' if white=='candidate' else 'candidate',Result=result,Termination='normal')
+            node=game;played=[]
+            for ply,move in enumerate(moves):
+                actor=game.headers['White' if ply%2==0 else 'Black'];prefix=f'[Engine] fixture {actor} '
+                trace.extend([prefix+'<--- position startpos'+(' moves '+' '.join(played) if played else ''),
+                              prefix+'<--- go nodes 100',prefix+'---> info depth 1 score cp 0 time 0 nodes 1 pv '+move,
+                              prefix+'---> info string request nodes=1 elapsedNanos=1 termination=COMPLETED',
+                              prefix+'---> bestmove '+move])
+                node=node.add_main_variation(m.b.chess.Move.from_uci(move))
+                node.comment='info string request nodes=1 elapsedNanos=1 termination=COMPLETED';played.append(move)
+            self.assertTrue(game.end().board().is_checkmate());games.append(str(game))
+        (directory/'games.pgn').write_text('\n\n'.join(games)+'\n')
+        (directory/'uci-trace.log').write_text('\n'.join(trace)+'\n')
+        result=m.audit_pair(directory,self.p,reverse=True)
+        self.assertEqual(result['results']['wdl'],[2,0,0]);self.assertEqual(result['results']['statistics']['score'],1)
+        self.assertEqual(result['nodes'],11)
+
     def test_native_deadline_drains_and_conservatively_accounts_partial_pair(self):
         path=self.root/'protocol.json';path.write_text(json.dumps(self.p));m.mw.save(self.out/'budget.json',self.ledger)
         original=subprocess.Popen

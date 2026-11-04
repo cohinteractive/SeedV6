@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "tests": 12,
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4MultiworkerMemoryTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\memory-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.P4MultiworkerMemoryTest.xml",
+      "sha256": "8d152a29d57d779422bc108d824786311c755adfc11c203a5c2779cbb3db62a4"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4TacticalTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\memory-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.P4TacticalTest.xml",
+      "sha256": "7ad404a3662175af11a311b14b9e7a268df3f496f65b0bd15cec98e8dd8d9411"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4TtMemoryTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\memory-tests-v1\\TEST-com.ohinteractive.seedv6.search.exact.P4TtMemoryTest.xml",
+      "sha256": "031686c27b9a21f2473d7b5beed33bd77695518e047d48ae5efe080d73d0947b"
+    }
+  ],
+  "sourceBase": "3ba1daad",
+  "build": 94,
+  "scope": "Existing H1 and TC-P1 safeguards plus new score-provenance snapshot/cutoff/withholding tests, integrated global admissions/drain/reuse at W2/W4/W8/W16 for ROOT_REUSE/EAGER_ROOT/WHOLE_ROOT_RACE, reached TC-P1 tactical verifier cannot read/write heuristic TT. No new core Search policy or historical research reopening.",
+  "sourceHashes": {
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/P4MultiworkerMemoryStudy.java": "95a3f35677ddb636bc37b201a760c9e2e269310898efb8be21ce5efd9a693824",
+    "research/src/test/java/com/ohinteractive/seedv6/search/exact/P4MultiworkerMemoryTest.java": "648e9de727bf44863774c13cf59f6ebd6e9580b245bee9065dda3780f9f437e1"
+  },
+  "runtimeQualification": "Pending fresh runtime export and nine-cell diagnostic",
+  "tools": "Six supervisor tests passed including independent legal decisive reversed-color candidate wins in both colors, duplicate/color rejection and native partial-pair deadline/accounting/drain. Raw memory-tool-tests-v1.log."
+}

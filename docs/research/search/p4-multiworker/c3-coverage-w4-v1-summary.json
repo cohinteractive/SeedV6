@@ -1,0 +1,106 @@
+{
+  "status": "passed",
+  "runs": [
+    {
+      "id": "c3-coverage-opening-w4-root_reuse-v1",
+      "requests": 18,
+      "nodes": 1800000,
+      "completedDepthMean": 6.611111111111111,
+      "uniqueBoardKeysMean": 56914.666666666664,
+      "crossWorkerExcessMembershipsMean": 11385.055555555555,
+      "workerNodeShares": [
+        0.5180949436182967,
+        0.16343940669168552,
+        0.16312741528233268,
+        0.15533823440768516
+      ],
+      "eagerAttempts": 0,
+      "attempts": 185,
+      "abortedWorkerNodes": 204990,
+      "receipt": "docs\\research\\search\\p4-multiworker\\c3-coverage-opening-w4-root_reuse-v1-execution.json",
+      "receiptSha256": "a17d2c04fade33a54746f1fafbbccd9a15ae365614e5221728947374fc10b821",
+      "evidenceSha256": "6fdf424ca4cb2e5779780a517a6feadee72ce48a2c21f8892ad21e0898fbb786",
+      "peakOwnedCommittedGiB": 0.5303077697753906
+    },
+    {
+      "id": "c3-coverage-opening-w4-eager_root-v1",
+      "requests": 18,
+      "nodes": 1800000,
+      "completedDepthMean": 6.5,
+      "uniqueBoardKeysMean": 57742.88888888889,
+      "crossWorkerExcessMembershipsMean": 13185.666666666666,
+      "workerNodeShares": [
+        0.28714874455549877,
+        0.24284373193073008,
+        0.2431668858234229,
+        0.22684063769034823
+      ],
+      "eagerAttempts": 127,
+      "attempts": 183,
+      "abortedWorkerNodes": 220770,
+      "receipt": "docs\\research\\search\\p4-multiworker\\c3-coverage-opening-w4-eager_root-v1-execution.json",
+      "receiptSha256": "b1cd537085b91619723e938b4883a03d9db994d827cbebc3875f11981d954133",
+      "evidenceSha256": "ebfaac9132a850a22d35b20f8964f768bf45bbb91f323f459834639b1ba0860c",
+      "peakOwnedCommittedGiB": 0.6504554748535156
+    },
+    {
+      "id": "c3-coverage-mixed-w4-root_reuse-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 7.125,
+      "uniqueBoardKeysMean": 47720.1,
+      "crossWorkerExcessMembershipsMean": 10954.075,
+      "workerNodeShares": [
+        0.5095627521535274,
+        0.1706164274140174,
+        0.1603756025692717,
+        0.1594452178631835
+      ],
+      "eagerAttempts": 0,
+      "attempts": 489,
+      "abortedWorkerNodes": 422080,
+      "receipt": "docs\\research\\search\\p4-multiworker\\c3-coverage-mixed-w4-root_reuse-v1-execution.json",
+      "receiptSha256": "39bc937990d8fe41e1b0e9b04d820ac43773a095be9552f4d2554e2b5dcb1660",
+      "evidenceSha256": "25f092d500e06b5e5a5fb90a59bcec082ee476e7497cd1621440699ea84a2688",
+      "peakOwnedCommittedGiB": 0.6478691101074219
+    },
+    {
+      "id": "c3-coverage-mixed-w4-eager_root-v1",
+      "requests": 40,
+      "nodes": 4000000,
+      "completedDepthMean": 6.7,
+      "uniqueBoardKeysMean": 45671.15,
+      "crossWorkerExcessMembershipsMean": 11843.25,
+      "workerNodeShares": [
+        0.2971850093697778,
+        0.2536220087079343,
+        0.23013188691350137,
+        0.21906109500878654
+      ],
+      "eagerAttempts": 331,
+      "attempts": 469,
+      "abortedWorkerNodes": 602680,
+      "receipt": "docs\\research\\search\\p4-multiworker\\c3-coverage-mixed-w4-eager_root-v1-execution.json",
+      "receiptSha256": "95c2458fbb15dc47362b4e6d758609af0d225f92966ed2653f626c03fbe8306e",
+      "evidenceSha256": "26a32c42a561b2016018cd0f2371b1add28e971d73cfe19b4b14909b002c3808",
+      "peakOwnedCommittedGiB": 0.5378150939941406
+    }
+  ],
+  "comparisons": [
+    {
+      "domain": "opening",
+      "requests": 18,
+      "eagerDeeper": 0,
+      "eagerShallower": 2,
+      "meanDepthDifference": -0.1111111111111111
+    },
+    {
+      "domain": "mixed",
+      "requests": 40,
+      "eagerDeeper": 1,
+      "eagerShallower": 17,
+      "meanDepthDifference": -0.425
+    }
+  ],
+  "interpretation": "Instrumented single-run SMP observations at100k admissions, not strength/speed or proof of causation. Board keys omit Search-state domains. firstOwnerJobNodes is not a serial barrier in eager passes. C3 retains useful depth and separate coverage sufficiently to justify economical competition; no independent confirmation selected."
+}

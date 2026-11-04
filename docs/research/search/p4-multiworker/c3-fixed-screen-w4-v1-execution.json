@@ -1,0 +1,245 @@
+{
+  "id": "c3-fixed-screen-w4-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\c3-fixed-screen-w4-v1-protocol.json",
+  "protocolSha256": "f43455c73a8ede32811eb563ff22a2a809cc8eaf9ebc29fe5206a40b1443ba18",
+  "maximumNodes": 1440000000,
+  "maximumGames": 24,
+  "deadlineUtc": "2026-11-04T12:07:23.328989+00:00",
+  "mode": "B",
+  "kind": "fixed",
+  "startedUtc": "2026-11-04T11:52:23.358835+00:00",
+  "preflightEnvironment": {
+    "utc": "2026-11-04T11:52:23.974296+00:00",
+    "totalCpuPercent": 3.854389721627405,
+    "freeMemoryGiB": 20.550796508789062,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 4,
+    "estimatedPeakGiB": 2,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 37.18772305496074,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 20648,
+  "activeOwnedBeforeDrain": 1,
+  "membersBeforeDrain": [
+    {
+      "pid": 29804,
+      "image": "C:\\Windows\\System32\\conhost.exe"
+    }
+  ],
+  "settleOwnedSeconds": 0.050512999994680285,
+  "membersAfterSettle": [],
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 914.09375,
+    "totalOwnedProcesses": 53
+  },
+  "error": null,
+  "wallSeconds": 285.05153840000276,
+  "endedUtc": "2026-11-04T11:57:08.426069+00:00",
+  "peakOwnedCommittedGiB": 0.7729911804199219,
+  "initiatedGames": 24,
+  "completedGames": 24,
+  "gameCounting": "Both paired games conservatively initiated before each Fastchess creation; unfinished/unverified pairs retained, not rescored",
+  "observedNodes": 252158698,
+  "chargedNodes": 252158698,
+  "pairs": [
+    {
+      "pair": 0,
+      "wdl": [
+        0,
+        1,
+        1
+      ],
+      "score": 0.25
+    },
+    {
+      "pair": 1,
+      "wdl": [
+        0,
+        1,
+        1
+      ],
+      "score": 0.25
+    },
+    {
+      "pair": 2,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 3,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 4,
+      "wdl": [
+        0,
+        1,
+        1
+      ],
+      "score": 0.25
+    },
+    {
+      "pair": 5,
+      "wdl": [
+        0,
+        0,
+        2
+      ],
+      "score": 0.0
+    },
+    {
+      "pair": 6,
+      "wdl": [
+        0,
+        1,
+        1
+      ],
+      "score": 0.25
+    },
+    {
+      "pair": 7,
+      "wdl": [
+        1,
+        1,
+        0
+      ],
+      "score": 0.75
+    },
+    {
+      "pair": 8,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 9,
+      "wdl": [
+        0,
+        0,
+        2
+      ],
+      "score": 0.0
+    },
+    {
+      "pair": 10,
+      "wdl": [
+        0,
+        2,
+        0
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 11,
+      "wdl": [
+        0,
+        1,
+        1
+      ],
+      "score": 0.25
+    }
+  ],
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\baseline-preflight.txt": "12439d29e1e8170ad4bfd3edd36477e8fcad05e292c921811c9d4a8cbf7ff3ed",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\candidate-preflight.txt": "685a8a98bbadefd98d99b21f22452eb9b075516ac23459798042b89c9d4cf1e3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\environment.jsonl": "a754cd48d7fef688f431145a13765b30009e2c07e72662680c583cd459ac76af",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\progress.jsonl": "26c3290da1f5548f18f8b593fc8d98a94f437c923aaeab218675381650fb89fb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-000\\config.json": "a4211c21d2be656ba8233446fe4c48d78adeba85b72062cc405b0496d81d37e3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-000\\games.pgn": "d73c3d81fc85cd46ea2a229801a6fc8f97b0f5091754acff5ce583f4da7809b0",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-000\\opening.pgn": "2302b387d61590a63a4b17197f6634074f13a668688254e6bd2a823d7fb10ced",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-000\\runner.txt": "d0ec438034a143355b9067d128efe30e355dd0c97cc0cb0e9bd35131e6c3bb3f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-000\\uci-trace.log": "250818f093c6fdc204463214e3ed972e300c99d18691b9027fb0ac4e290daedf",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-000\\verified.json": "71519abf510fce5102bc7bbc8f6637642a4ef07c12725c7263b045e136c53046",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-001\\config.json": "3bcebce4175b32ffe13a2ab9078c41873dc225676a5c7124204b3079704c3622",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-001\\games.pgn": "79e4d86bd516c495f2418d1cd7894e410475015670317ffe2564af6edcdc8e9c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-001\\opening.pgn": "a994a9375442b1ee77d6e83bbfa02d470fe1f2958e4e393b2859b20fe4f497bd",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-001\\runner.txt": "a5a0391f639d2e0202925a00212d6b8af6501cd82e8e384c33460b7419931bd3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-001\\uci-trace.log": "0d46610c99b9008ccd1a14017fda1a7d38dc1f5a95e3ce6f253207020f30700e",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-001\\verified.json": "14b2e6b2c46d7b4d87379162985044dc2cc0e895a042e945519774b178e99bd3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-002\\config.json": "3d69ef449abe8d2078f4e592bb409164993f2cb9c910443167f4a5dbfaf42ab3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-002\\games.pgn": "24fc918cb114c78f76ef3085d2665e3ae13c4f905592f3a1f87fdd42f93986d3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-002\\opening.pgn": "70f7499a47c1e95747ea1eef84614f52577f0b3cfa1f232d64c67768fa858ed5",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-002\\runner.txt": "2f97a011c9c8c08f3a860581a0716b49fa2bc4c52b4990998eeff59ba4b11e98",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-002\\uci-trace.log": "2ac806aeb8ab7234741b5d55114428356f36ff1f94a867e9e2f86432dd419443",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-002\\verified.json": "8f7d4f61d15cf25a34af8cf83e0c5ce865c3d23b506be781258ae0f91ee29af4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-003\\config.json": "6abffe62b40000c60242d13e1281a0417a2795838183110135cf8fa27f73c24c",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-003\\games.pgn": "72d35b18f0b3d66234242996afa96b60580ef5fdc16d5371e4279439ff40fca2",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-003\\opening.pgn": "2b040325a63d88834f76f0cd8217833a4b1a39a227e0836546deb3a00d795f04",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-003\\runner.txt": "929e92ab4cc35c769ad6966fc39b2e4f55f32c82fe37e48cd0f70b2e3d145ae4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-003\\uci-trace.log": "707a9b15073089813c7ad69f8f9fe7b820f587bbdfb63c1764c08c9199b6c253",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-003\\verified.json": "258e842bf6af64ac4f35f2b872c64219fe8ff663f4cf6e59faf09d175909730d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-004\\config.json": "a3ef147c9850af1bc1ae619fc6edb4d6266a7dd67cd949366e0d2fc67e1ff536",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-004\\games.pgn": "d1e0d860c5489e3a128bd47f0e442571c02329fe489b50fb4add31e3e2072c3f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-004\\opening.pgn": "0eb16dac04d2ee6f66863fe865296c8ed9d987525f2020251c275b351cc03990",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-004\\runner.txt": "2553efdaa6f45638037895a146e5a902c23d17c13cff74d18f7cb9cdedad5f8b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-004\\uci-trace.log": "4fa306a81e4ffd42ecb8d43fd1bd7463e46dbab3e718ae288abf372cd128c6a3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-004\\verified.json": "a0f753c605ea670e4c8ce9a59ad57eca15b8c8c101571b21d4e48c32c35f6daf",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-005\\config.json": "f79fd205c99f8a705d0a615509ca63391192365e55088d2d4edcdf457844d50f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-005\\games.pgn": "596338f52d6364dccbaf478dc2b4bf9f89b8168492fe822d2b14cba7cb2e52ef",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-005\\opening.pgn": "7cbf9826772157feb680cc5dca0a16c7b73a718b7f76125d2c9960de35e47f6b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-005\\runner.txt": "6e63ed8e891d8cee55079bc2ad2f3779d06891ec99d1ed6099d78c2da9a7cd82",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-005\\uci-trace.log": "6c5f450bb87928e838aa61a7e2d00a0ac571811cee8a7e1c2c1fb1f48e97bee2",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-005\\verified.json": "72f3d0e00bf2265a6b396471132055ce1967d0d5855cab29a090d4873ada2028",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-006\\config.json": "373432b1d6320f96e805b66c70b5eb98b5a33ff42a3177193882cc81f6d55a5d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-006\\games.pgn": "c164679f927d3ab30d7699ac8ba991eacab54e842c47c80def1a3a1a23d6ec44",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-006\\opening.pgn": "d3accdb5e6ba8666d3a1d66f5cd58a422caa6bd8bcb27c463c18caefb8ec02f4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-006\\runner.txt": "692c4205bbef8da483fb569262491a9f0e0f763fe7ca0b7dd6dd4b7c98b3ec3d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-006\\uci-trace.log": "92ba21c32473dd41e4ac7ecbc94a3e3e0b2f16a698ac9c26898c7e213f95fc13",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-006\\verified.json": "dfeba192dd3eb555a1c5ab610b34ae895389ad06395a073f420c2912638b0fcf",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-007\\config.json": "a832d4e094a3a9793f00a6930cdbe9cc37ed380b626d40da07bd415ac74ab5c8",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-007\\games.pgn": "d43f7fb542b65fbd87f8ce665480cf128e698cdc0ad85ef5bc61f8093ddfc64d",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-007\\opening.pgn": "3af25954ead5c00851cde270ca300b2a1a8204257f91c1e07e5664c67701a028",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-007\\runner.txt": "4381e71c6e7f61fa3653db1453b8f4c42b1ba453db6bae3619f0718001736d76",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-007\\uci-trace.log": "0b8505495edd98d25b97918a7cc7cd0902d35d43bc8132bc8e0c5bd9f16fef3a",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-007\\verified.json": "c5755fbd1fe9c049432e861d969e9543a3cb5a8dfb49b6ed869a2c67970c18ad",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-008\\config.json": "54ec503316af0e9937693520fd634d7e7113ec1886892897938a17cf3a230218",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-008\\games.pgn": "22f7f02be813cd0128ae54efa006a1d2d4c278a902fdf800edfec8a5eabc53ee",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-008\\opening.pgn": "345bf45d654f2a6fe1ac74119ee7ef4a2190d73e56f0db35cfd0470d870f55fb",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-008\\runner.txt": "7dcc55ab6055dd787b8b423017b32adc9eff5b1013e0488f651933777db8ba26",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-008\\uci-trace.log": "a5165b28f7df79f08506f988b7006cc3824e084339d306c32d85eb7767f6cbfa",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-008\\verified.json": "6092acb41cad82912bea1f8911bdf303256cb72ed55fccb872882f9234085f03",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-009\\config.json": "c5b16dbc4f12d67e7bebf2090915b56a0f841d710807315a38c4a3ed05bf8572",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-009\\games.pgn": "f609a12ecdb0f71d041f79cb88cc11cfdca2f1f945fb32c4d77f3300c29dca63",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-009\\opening.pgn": "42ba32269d8a55b2db0257c633caa4d5bb290ca26bcf580e736acdebc2b5ba47",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-009\\runner.txt": "34d1970aad6112fe22a5fe5757313208466968e583b8f14ba70d9f280cf28f14",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-009\\uci-trace.log": "bd2eab1c6fe802e1625b5102a5c832bf4677cef9c879bae5fbc89e73c3d322de",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-009\\verified.json": "7ca34ec8ea68e5bbe4361e9d6c3141cf65b9ae1ce83142fa1272f1dd8c26d1a4",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-010\\config.json": "07041984b84f4b8012c4b45ca6014e39f9132aa8c531794bc15217a88ea13887",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-010\\games.pgn": "66a7d8b7cb2f8583290461a3794a5b92fece4b8f9b6b6e0a50b9658c0f6d4768",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-010\\opening.pgn": "a0448061a0e3578d62c52683f35b99ea7cab359f7e24869bcb86943b6f21767b",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-010\\runner.txt": "bb7501bc8cf61962fa5a8295d80106c71b30281ddb3b5a80f124b09136e7e708",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-010\\uci-trace.log": "0f0c3d3445378e9ddb94dc5b58aca3916cf92133caadd0712e8a649102abf908",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-010\\verified.json": "b1009b924ada1fa6528096119a971b0be4e322672a1fdd425f1368354734055f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-011\\config.json": "6dbca7d6bd21deb4d91bc36a45045496acc24aadba4625b60a70264400b985ec",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-011\\games.pgn": "418e8b9c07c7a2748ee9a9a1fc117d9dbfef85f48e6b1d093cb425beb0ad4fc7",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-011\\opening.pgn": "c83f3ab56d2bc14d3fcb91354c45eb6a08f2121d39a9038ee6aa84684a0913bf",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-011\\runner.txt": "08af0acd96305633a615a5d5d782d375a9da8f563f263f23aa5a8f82b2f6d7f3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-011\\uci-trace.log": "c1c3b7646ceada8ab97d466aee632eecb2199ed1d557e2d056b9bd8d2378fbc6",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-fixed-screen-w4-v1\\pair-011\\verified.json": "408d98af359fed0388df43273861439d7d9d0818aec2d22dbcf3ba9812335582"
+  },
+  "inputsStable": true
+}

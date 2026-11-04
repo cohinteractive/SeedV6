@@ -1,0 +1,55 @@
+{
+  "status": "planning-only; no confirmation protocol frozen or attempt admitted",
+  "basis": "docs\\research\\search\\p4-multiworker\\c1-timed-screen-w4-v1-analysis.json",
+  "basisSha256": "ab9b7c166f1a71d0de7d894d7a3acc5c3c3d31aae46c052532e2bc1531529ee9",
+  "candidate": "None selected",
+  "observedPairScoreSd": 0.28386996540328907,
+  "observedSecondsPerPair": 61.32560378749986,
+  "scenarios": [
+    {
+      "pairs": 160,
+      "games": 320,
+      "projectedMatchWallHours": 2.7255823905555494,
+      "normal95HalfWidth": 0.04398529859435658,
+      "approxMinimumObservedScore": 0.5439852985943566,
+      "approxGateProbabilityAtTrueScore53": 0.26658369528069836,
+      "approxGateProbabilityAtTrueScore55": 0.6056550490632593
+    },
+    {
+      "pairs": 240,
+      "games": 480,
+      "projectedMatchWallHours": 4.088373585833324,
+      "normal95HalfWidth": 0.035913845913377256,
+      "approxMinimumObservedScore": 0.5359138459133772,
+      "approxGateProbabilityAtTrueScore53": 0.37344512518090944,
+      "approxGateProbabilityAtTrueScore55": 0.7789757065675167
+    },
+    {
+      "pairs": 320,
+      "games": 640,
+      "projectedMatchWallHours": 5.451164781111099,
+      "normal95HalfWidth": 0.03110230290858465,
+      "approxMinimumObservedScore": 0.5311023029085846,
+      "approxGateProbabilityAtTrueScore53": 0.47231035307093994,
+      "approxGateProbabilityAtTrueScore55": 0.8831477276089664
+    },
+    {
+      "pairs": 480,
+      "games": 960,
+      "projectedMatchWallHours": 8.176747171666648,
+      "normal95HalfWidth": 0.025394923983837837,
+      "approxMinimumObservedScore": 0.53,
+      "approxGateProbabilityAtTrueScore53": 0.5,
+      "approxGateProbabilityAtTrueScore55": 0.9386558164717553
+    }
+  ],
+  "limitations": [
+    "C1 losing-screen variance and throughput are planning inputs, not known selected-candidate variance or future runtime.",
+    "Approximate normal calculations, no discreteness/skew/multiple-comparison correction; require candidate-specific exploratory variance and bounded sensitivity before selection.",
+    "The practical point gate53% itself gives at most about50% pass probability at a true53% score even if interval width is adequate.",
+    "480 pairs project beyond one eight-hour window even before conservative margin; current remaining window is shorter. Do not assume a future owner window or start a protocol that cannot reasonably finish.",
+    "The current paired runner deliberately rejects confirmation and caps each exploratory batch64 pairs. Independent admission, sample hashing, fixed analysis/operational failure rules and safe segmented continuation need prospective qualification if selected.",
+    "No reserve openings were played or scored; no gate changes, historical reuse or pilot pooling."
+  ],
+  "protectedPairsMaximum": 480
+}

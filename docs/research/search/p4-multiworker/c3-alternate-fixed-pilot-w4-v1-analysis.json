@@ -1,0 +1,87 @@
+{
+  "status": "complete exploratory analysis",
+  "id": "c3-alternate-fixed-pilot-w4-v1",
+  "kind": "fixed",
+  "workers": 4,
+  "candidate": "EAGER_ROOT",
+  "baseline": "ROOT_REUSE",
+  "runtime": "docs/research/search/p4-multiworker/raw/runtime-eager-build94-v1",
+  "games": 4,
+  "wdl": [
+    2,
+    0,
+    2
+  ],
+  "statistics": {
+    "pairs": 2,
+    "pentanomial": [
+      0,
+      0,
+      2,
+      0,
+      0
+    ],
+    "score": 0.5,
+    "logisticElo": 0.0,
+    "pairedHoeffding95Score": [
+      0,
+      1
+    ],
+    "pairedHoeffding95Elo": [
+      "-infinity",
+      "+infinity"
+    ],
+    "pairScoreStandardError": 0.0,
+    "pairedNormal95Score": null,
+    "pairedNormal95Elo": null,
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 286,
+      "nodes": 27840495,
+      "elapsedNanos": 32718716200
+    },
+    "candidate": {
+      "requests": 286,
+      "nodes": 27852957,
+      "elapsedNanos": 21739755100
+    }
+  },
+  "descriptiveGameOrderScores": {
+    "first": 0.5,
+    "second": 0.5
+  },
+  "descriptiveCandidateColorScores": {
+    "White": 0,
+    "Black": 1
+  },
+  "orderInterpretation": "Post-hoc descriptive strata; game order/color/opening dependence is not a causal warmup test. No exclusions or score-driven extension.",
+  "terminations": {
+    "normal": 4
+  },
+  "meanGamePlies": 159,
+  "qualifiedFallbackWarnings": 0,
+  "chargedNodes": 55693452,
+  "wallSeconds": 61.89271410001675,
+  "peakOwnedCommittedGiB": 0.7545661926269531,
+  "environment": {
+    "samples": 30,
+    "meanTotalCpuPercent": 29.725140073926887,
+    "maximumTotalCpuPercent": 41.720990873533246,
+    "minimumFreeMemoryGiB": 19.856239318847656
+  },
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 184.828125,
+    "totalOwnedProcesses": 13
+  },
+  "protocol": "docs\\research\\search\\p4-multiworker\\c3-alternate-fixed-pilot-w4-v1-protocol.json",
+  "protocolSha256": "fa41dbc77347dba49e6285ea6b802cc2c3b327f561e862dca40aea6048a71800",
+  "execution": "docs\\research\\search\\p4-multiworker\\c3-alternate-fixed-pilot-w4-v1-execution.json",
+  "executionSha256": "b1ff2e41ab2b12bb1213ef2bb552d9c55c04e7eaad6b224849147d2a173aab6f",
+  "analyzerSha256": "51a5eec45931d96de990f40ef48d74f5c75dc3ebc3d07fed6718da88f737b6b8",
+  "rawDirectory": "docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1",
+  "interpretation": "Frozen development sample only; paired intervals do not correct candidate selection/multiple comparisons. No independent confirmation, neutrality, champion or production claim."
+}

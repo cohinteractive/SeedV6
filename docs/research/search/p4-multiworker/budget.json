@@ -15,17 +15,17 @@
     "protocol": null
   },
   "consumed": {
-    "timedWallSeconds": 2042.587751300016,
-    "timedInitiated": 66,
-    "timedCompleted": 66,
+    "timedWallSeconds": 4151.9442049000645,
+    "timedInitiated": 130,
+    "timedCompleted": 130,
     "timedFailed": 0,
     "timedInterrupted": 0,
-    "fixedWallSeconds": 405.95971510000527,
-    "fixedInitiated": 26,
-    "fixedCompleted": 26,
+    "fixedWallSeconds": 777.6214753999957,
+    "fixedInitiated": 54,
+    "fixedCompleted": 54,
     "fixedFailed": 0,
     "fixedInterrupted": 0,
-    "fixedNodes": 335628984
+    "fixedNodes": 655221293
   },
   "pending": [],
   "receipts": [
@@ -52,7 +52,15 @@
     "docs\\research\\search\\p4-multiworker\\c2-coverage-opening-w4-whole_root_sharing-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-root_reuse-v1-execution.json",
     "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-whole_root_race-v1-execution.json",
-    "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-whole_root_sharing-v1-execution.json"
+    "docs\\research\\search\\p4-multiworker\\c2-coverage-mixed-w4-whole_root_sharing-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\uci-eager-build94-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c3-coverage-opening-w4-root_reuse-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c3-coverage-opening-w4-eager_root-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c3-coverage-mixed-w4-root_reuse-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c3-coverage-mixed-w4-eager_root-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c3-alternate-fixed-pilot-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c3-fixed-screen-w4-v1-execution.json",
+    "docs\\research\\search\\p4-multiworker\\c3-timed-screen-w4-v1-execution.json"
   ],
   "timedWindows": [
     "docs\\research\\search\\p4-multiworker\\window-20261104-v1.json"

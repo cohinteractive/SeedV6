@@ -220,3 +220,36 @@ Protocol annotation: the immutable C1 fixed screen retained the stale phrase
 selectionPlan and stopping fields prospectively specified24 games; execution and
 analysis use that declared screen, never the separate2-game pilot. No protocol
 bytes, outcomes or sample are retrospectively changed. Correct later templates.
+
+## MW-C3 runtime and fixed-work exploration
+
+The clean3ba1daad/build94 runtime passed UCI4 requests/140159 admissions and116
+W4 coverage requests/11.6M admissions. Eager worker shares were about29/24/24/23%
+versus ROOT_REUSE52/16/16/16%. Completed-depth means were6.50/6.70 on opening/mixed
+roots versus6.61/7.125; board-key coverage stayed broadly comparable. See
+c3-coverage-w4-v1-summary.json. Distribution improved, equal-work depth did not.
+
+Actual alternating-first-color fixed pilot passed4 games/all independent audits,
+55,693,452 nodes and native drain. It is excluded from every screen. The frozen
+12-pair fixed screen completed4W/9D/11L,35.4167%,252,158,698 admissions,285.0515s.
+Its bounded95 interval is0-74.62%; no paired-normal interval is asserted for12
+pairs. This is an adverse exploratory point estimate, not a universal rejection
+or independent strength conclusion. Timed32-pair screen continues unchanged;
+its result will be interpreted only after completion/drain. Both samples were
+frozen together before admission. No candidate/acceptance threshold was changed.
+
+The C3 timed32-pair10+0.1 screen subsequently completed27W/17D/20L,55.46875%,
+paired-normal95%44.5267-66.4108%, bounded31.4607-79.4768%. All64 games completed
+normally, independent audits passed, inputs stayed stable and native Job drained
+to zero. Charged wall2109.3565s; mean total CPU29.36%, max53.97%, minimum free
+memory19.42GiB. This is promising but imprecise exploration; neither superiority
+nor neutrality is established. The adverse fixed-work screen remains valid. The
+contrast is consistent with useful scheduling speed compensating for poorer work
+efficiency, but different resource domains do not prove that causal explanation.
+Retain C3 for integration investigation; no independent confirmation is selected.
+
+The integrated score-provenance probe passed12 focused Java tests, including
+existing H1/TC-P1 safeguards, snapshot ownership after replacement, score-only
+withholding, W2-W16 callbacks/drain/reuse and reached TC-P1 tactical isolation.
+Six supervisor tests passed, adding decisive reversed-color scoring. New runtime
+and nine-cell diagnostic remain next; no production source/build change in this unit.

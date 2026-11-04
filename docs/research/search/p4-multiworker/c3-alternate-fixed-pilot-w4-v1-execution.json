@@ -1,0 +1,95 @@
+{
+  "id": "c3-alternate-fixed-pilot-w4-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\c3-alternate-fixed-pilot-w4-v1-protocol.json",
+  "protocolSha256": "fa41dbc77347dba49e6285ea6b802cc2c3b327f561e862dca40aea6048a71800",
+  "maximumNodes": 240000000,
+  "maximumGames": 4,
+  "deadlineUtc": "2026-11-04T11:55:59.032403+00:00",
+  "mode": "B",
+  "kind": "fixed",
+  "startedUtc": "2026-11-04T11:50:59.062811+00:00",
+  "preflightEnvironment": {
+    "utc": "2026-11-04T11:50:59.679613+00:00",
+    "totalCpuPercent": 3.828828828828834,
+    "freeMemoryGiB": 20.57341766357422,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 4,
+    "estimatedPeakGiB": 2,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 37.16216216216217,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 12688,
+  "activeOwnedBeforeDrain": 1,
+  "membersBeforeDrain": [
+    {
+      "pid": 38784,
+      "image": "C:\\Windows\\System32\\conhost.exe"
+    }
+  ],
+  "settleOwnedSeconds": 0.05032270000083372,
+  "membersAfterSettle": [],
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 184.828125,
+    "totalOwnedProcesses": 13
+  },
+  "error": null,
+  "wallSeconds": 61.89271410001675,
+  "endedUtc": "2026-11-04T11:52:00.971512+00:00",
+  "peakOwnedCommittedGiB": 0.7545661926269531,
+  "initiatedGames": 4,
+  "completedGames": 4,
+  "gameCounting": "Both paired games conservatively initiated before each Fastchess creation; unfinished/unverified pairs retained, not rescored",
+  "observedNodes": 55693452,
+  "chargedNodes": 55693452,
+  "pairs": [
+    {
+      "pair": 0,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    },
+    {
+      "pair": 1,
+      "wdl": [
+        1,
+        0,
+        1
+      ],
+      "score": 0.5
+    }
+  ],
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\baseline-preflight.txt": "12439d29e1e8170ad4bfd3edd36477e8fcad05e292c921811c9d4a8cbf7ff3ed",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\candidate-preflight.txt": "685a8a98bbadefd98d99b21f22452eb9b075516ac23459798042b89c9d4cf1e3",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\environment.jsonl": "fcf7ac84ff69fcc896266cf83d8519f17725b5d800102473a55c3af8db9ec265",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\progress.jsonl": "d04242f659e0c5fa319828fa4b58b730b887aa18dad066741e4c379aa97ed9bc",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-000\\config.json": "10e40bc756bec1c8193c72569cfd7753d8eeee67aa610116659ea8c8b7359f47",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-000\\games.pgn": "23c1cb8e8f733aa3001d7e33481ed2eea9bb6a81a2d87eb5edbc85277fbd6458",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-000\\opening.pgn": "e48752a188b1aaaa71e1620759a216525db045e9b1bb39b5f38bb1735209ff10",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-000\\runner.txt": "0fdb72439453f821b68ee73bdeff0b0a8baf23bc1babb736b44ca0e1cd573216",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-000\\uci-trace.log": "3245322138edf42ec0f018b14ed3976735f6a8c5c283ef18d19efcc358f784dd",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-000\\verified.json": "8e7c7300c76c8c8000440bc0cbd50b17e7c1c990a023e29656df21bc0f693e22",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-001\\config.json": "4f9187c46caae21ec20eb275b92af94ebe9eda0f63bdf13afb7458109ae13add",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-001\\games.pgn": "097f14c22add73c2b11a5e2a5b29f9443802618ca4ea190d2c03dce9afa3decc",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-001\\opening.pgn": "0245dfaf4be611e34f90baa212561624417d3a49e07adfe6b449402c63fbb4da",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-001\\runner.txt": "8f4c69a6c95f15a63afb83048edc61808fa8e8969df32f508b3e2e0b586b49b1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-001\\uci-trace.log": "b7a7d805a26592c9e70b982143999525bfa7e5632c378521f08ff7d3b7101be0",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\c3-alternate-fixed-pilot-w4-v1\\pair-001\\verified.json": "10d9342399d9b3f170a1e37cbb14db5106f1eabab5c4534671db761f3ed2cba8"
+  },
+  "inputsStable": true
+}

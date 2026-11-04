@@ -1,0 +1,93 @@
+{
+  "status": "complete exploratory analysis",
+  "id": "c3-timed-screen-w4-v1",
+  "kind": "timed",
+  "workers": 4,
+  "candidate": "EAGER_ROOT",
+  "baseline": "ROOT_REUSE",
+  "runtime": "docs/research/search/p4-multiworker/raw/runtime-eager-build94-v1",
+  "games": 64,
+  "wdl": [
+    27,
+    17,
+    20
+  ],
+  "statistics": {
+    "pairs": 32,
+    "pentanomial": [
+      3,
+      7,
+      8,
+      8,
+      6
+    ],
+    "score": 0.5546875,
+    "logisticElo": 38.153397218633565,
+    "pairedHoeffding95Score": [
+      0.3146068021700198,
+      0.7947681978299802
+    ],
+    "pairedHoeffding95Elo": [
+      -135.26867264857964,
+      235.19832879614765
+    ],
+    "pairScoreStandardError": 0.055827687761236616,
+    "pairedNormal95Score": [
+      0.4452672426478287,
+      0.6641077573521713
+    ],
+    "pairedNormal95Elo": [
+      -38.18522633132673,
+      118.41543166972642
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 4595,
+      "nodes": 1069809055,
+      "elapsedNanos": 995981728100
+    },
+    "candidate": {
+      "requests": 4600,
+      "nodes": 1509994075,
+      "elapsedNanos": 1014354062900
+    }
+  },
+  "descriptiveGameOrderScores": {
+    "first": 0.5625,
+    "second": 0.546875
+  },
+  "descriptiveCandidateColorScores": {
+    "White": 0.609375,
+    "Black": 0.5
+  },
+  "orderInterpretation": "Post-hoc descriptive strata; game order/color/opening dependence is not a causal warmup test. No exclusions or score-driven extension.",
+  "terminations": {
+    "normal": 64
+  },
+  "meanGamePlies": 159.671875,
+  "qualifiedFallbackWarnings": 0,
+  "chargedNodes": 0,
+  "wallSeconds": 2109.3564536000486,
+  "peakOwnedCommittedGiB": 0.7750816345214844,
+  "environment": {
+    "samples": 1041,
+    "meanTotalCpuPercent": 29.355647613799075,
+    "maximumTotalCpuPercent": 53.97135416666667,
+    "minimumFreeMemoryGiB": 19.41653060913086
+  },
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 6501.5,
+    "totalOwnedProcesses": 133
+  },
+  "protocol": "docs\\research\\search\\p4-multiworker\\c3-timed-screen-w4-v1-protocol.json",
+  "protocolSha256": "a626d521f5a78a38e6edd87679ad2302a179c17bacd2596bc51a897c35aec0fb",
+  "execution": "docs\\research\\search\\p4-multiworker\\c3-timed-screen-w4-v1-execution.json",
+  "executionSha256": "4f9fb0e526f498cb506e055e75116e6cdbfb79f134baafc6d0fee49ccdc823ca",
+  "analyzerSha256": "51a5eec45931d96de990f40ef48d74f5c75dc3ebc3d07fed6718da88f737b6b8",
+  "rawDirectory": "docs\\research\\search\\p4-multiworker\\raw\\c3-timed-screen-w4-v1",
+  "interpretation": "Frozen development sample only; paired intervals do not correct candidate selection/multiple comparisons. No independent confirmation, neutrality, champion or production claim."
+}

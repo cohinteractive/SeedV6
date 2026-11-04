@@ -243,3 +243,73 @@ All workers drain before publication; require complete root coverage or a comple
 beta-cutoff witness. Quiescent preparation preserves TC-P1 worker-private learning.
 The39-test qualification includes actual concurrent first-root entry; runtime and
 playing strength remain unmeasured at this implementation boundary.
+
+## Selected score-sharing dependency investigation
+
+BaselineEngine.legacyConfiguration plus TC-P1 enables bits25/26/30 but leaves
+HEURISTIC_TT_MEMORY22, AGED_HEURISTIC_TT_MEMORY23 and TT_INFORMATION24 disabled.
+The existing H1 current-generation mechanism is therefore available as a new
+integrated supporting-condition test, not already present in TC-P1. H1/H2/F3
+historical results and spent acceptance attempts remain intact. The hypothesis is
+that separate/eager root scheduling may benefit from richer reusable estimates
+beyond completed hints, reducing work needed while helpers start with poorer alpha.
+The same mechanism may also benefit ROOT_REUSE; use both to distinguish integration
+from a general Search effect rather than presuming an interaction.
+
+Selected diagnostic: ROOT_REUSE and EAGER_ROOT crossed with HINTS_ONLY,
+SHARED_SCORES and PRIVATE_SCORES delivery. Both score modes add only existing
+HEURISTIC_TT_MEMORY to exact TC-P1. No aged retention, raw caching, changed depth
+threshold, score domain, synthetic-null permission or clock policy. PRIVATE_SCORES
+retains shared storage/replacement and hints but withholds other-worker score
+probes; it is not a worker-private table and may change subsequent ordering as
+well as cutoff eligibility. Actual heuristicCutoff callbacks distinguish guarded
+consumption from availability. Score producer snapshots survive later replacement;
+independently retained move hints are not falsely attributed to that score writer.
+A research-only global provenance monitor perturbs scheduling, so no NPS or timed
+strength inference comes from this probe. New source/tests are pending validation
+until the active frozen C3 competitive screen drains.
+
+Include WHOLE_ROOT_RACE as the third schedule in this bounded diagnostic matrix: its
+negative unchanged-C1 screens do not test whether missing score sharing is a material
+supporting dependency. This adds only an existing factory to the probe, not another
+large implementation. Complete all nine preselected schedule/delivery cells before
+choosing any competitive integration. No unchanged-C1 sample extension or historic
+confirmation is selected.
+
+Further pinned-source detail: Stockfish search.cpp333-394 lets every worker advance
+its own rootDepth; only main observes the requested-depth stop. Its aspiration width
+also includes thread index and each root move has local score history; main history
+is decayed at request startup instead of rebuilt from zero. Ethereal search.c205-235
+likewise advances each helper independently and skips main time/report decisions.
+Neither observation proves a Seed gain, and C1 same-depth synchronized races do not
+reproduce those conditions. Stockfish also adjusts effective depth during aspiration
+recovery, requiring care when comparing nominal completed depths across engines.
+No external constants or code are imported. These source findings reinforce keeping
+independent iteration/learning continuity distinct from first-finished cohort racing.
+
+A narrower independent-iteration interface option is now identified (design only):
+SearchLifecycleService uses SearchDriver through just search, maxSupportedDepth,
+activeSearchThreads, lastCompletedResult, lastDiagnostics, newGame and close. A
+small iterative-owner interface implemented by existing SearchDriver plus a separate
+opt-in coordinator could preserve SingleDepthSearch semantics and all ordinary
+constructors. A research service factory can inject that owner without teaching the
+fixed-depth driver to return asynchronously or overloading endRequest accounting.
+The coordinator would share one request generation/admission control, run private
+aspiration loops, let only owner make unchanged BOUNDARY2 allocation decisions,
+then locally stop/join helpers before final aggregate outcome. Normal owner depth
+completion must not falsely mark the shared control STOPPED; helpers reaching their
+own depth ceiling must not stop owner. Start with owner PV selection and retain
+actual helper completed depths for later arbitration research. New-game, replacement,
+failure and stale-publication tests must qualify the managed service seam if selected.
+No interface or coordinator change is currently implemented.
+
+SearchKey is another transfer constraint: it folds ordered reversible history and
+complete Board.STATUS into the position key; pawn/capture edges reset that history
+fingerprint. Consequently equal board Zobrist keys need not be reusable TT states,
+including across separately assigned root paths. This supports the existing caution
+that the board-key overlap metric is not useful transposition coverage. The selected
+score probe keeps SearchKey unchanged and will measure actual eligible cross-worker
+cutoffs. A future separately identified legal-move-only position hint domain could
+be investigated if evidence warrants it, while retaining history-rich score keys
+and exact controls; it is not implemented or presumed beneficial. No position-only
+score fallback or rule-history weakening is authorized by this observation.

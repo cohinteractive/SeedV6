@@ -1,6 +1,6 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R023**
+Internal revision: **P4-R024**
 
 Status: **ACTIVE - 4 November 2026. The owner adopts exact TC-P1 (HL-G1 + bounded capture ProbCut) as the rolling experimental production baseline across W1-W16, with the unresolved W4 competitive warning explicitly accepted. Production integration is build90; qualification and artifact identities are recorded in the tactical PRODUCTION record. TC-R001 completed its authorized research execution but failed its original independent W1 strength criterion; its sole attempt remains spent. HL-G1/build84 remains the research champion and P4-BASELINE-001/build79 remains immutable. The separate owner request authorizes MW-R001 multiworker strength research below; no champion advancement, deployment or release. HL-R001 and CH-R001 dispositions, TTF-R001 limited acceptance and separate pending TT-R001 reconciliation are unchanged.**
 
@@ -47,9 +47,11 @@ MW-C1's completed exploratory W4 screens are adverse:27.08% at100k nodes
 not advance to independent confirmation. A bounded completed-learning cooperation
 candidate MW-C2/build93 passed runtime qualification but failed to recover useful
 coverage; competitive expansion is deprioritized without a strength verdict.
-MW-C3/build94 finite-window eager root splitting passed39 focused Java tests;
-artifact/runtime and competitive investigation follow. Default TC-P1 is unchanged.
-The focused STATE/ledger retain
+MW-C3/build94 finite-window eager root splitting passed technical/runtime checks.
+Its24-game fixed screen was adverse35.42%;64-game timed screen scored55.47%,
+paired-normal95%44.53-66.41%, promising but inconclusive. Existing guarded TT
+score sharing is selected as an integrated dependency test;12 focused Java tests
+passed. Default TC-P1 is unchanged. The focused STATE/ledger retain
 all evidence and the active strength objective; no confirmation has been spent.
 
 This new request supplies successor authority without reopening any prior objective,

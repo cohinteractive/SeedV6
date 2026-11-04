@@ -5,6 +5,23 @@ original scheduling probe are qualified. Strength objective unmet; no competitiv
 candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESULTS.md),
 [budget.json](budget.json), then current Phase 4 masters before fresh work.
 
+## Immediate continuation checkpoint
+
+Implementation3ba1daad/build94, mastersP4-R023/P4-F040. Both C3 frozen screens
+completed and native Jobs drained: fixed24 games35.4167%; timed64 games55.46875%,
+paired-normal95%44.5267-66.4108%. Retain C3 as promising/imprecise timed exploration;
+no superiority, neutrality or confirmation claim. Current budget655,221,293 fixed
+nodes/54 fixed games;130 timed games/4151.9442s. No pending match admission.
+
+P4MultiworkerMemoryStudy/Test and existing H1/TC-P1 safeguards passed12 focused
+Java tests. Six supervisor tests passed, including the new decisive reversed-color
+fixture. See memory-tests-v1-summary.json and retained XML/logs. Next: freeze a
+clean new research runtime and execute all nine preselected schedule/delivery
+diagnostic cells before selecting any memory integration for competition. This
+research-only unit leaves build94 bytes and production routing unchanged. The
+full Goal remains active; no candidate confirmed, no reserve spent, deadline18:18:03Z.
+Human actions required: None.
+
 ## Current one-time overnight window
 
 Owner authorization received4 November23:18:03 NZDT; hard deadline5 November
@@ -281,3 +298,26 @@ Next: freeze a clean new runtime, qualify UCI and comparable ROOT_REUSE/EAGER_RO
 economical competitive screen if warranted. Budget unchanged335,628,984 fixed
 nodes/26 games;66 timed games/2042.5878s. No owned engines or matches. The entire
 Goal remains active; deadline18:18:03Z unchanged and no human action is required.
+
+Runtime checkpoint at build94/3ba1daad: UCI4 requests/140159 nodes and116 coverage
+requests/11.6M nodes passed, all callbacks/PVs/state/drains. Eager admission shares
+about29/24/24/23% versus control52/16/16/16%; opening completed depth6.50 versus
+6.61, mixed6.70 versus7.125. Separate board-key coverage is broadly retained;
+this is not strength evidence. Actual alternating-color pilot4 games passed normal
+results and all independent audits (55,693,452 nodes); excluded from screens.
+
+Frozen c3-fixed-screen-w4-v1 (12 pairs) then c3-timed-screen-w4-v1 (32 pairs)
+are supervised sequentially, each with its independent deadline and window checks.
+Use immutable receipts/progress and budget pending state to determine actual live
+status; do not start a duplicate batch. Native Job ownership is in those receipts.
+No interim score-driven selection. Protected confirmation untouched.
+
+While these run, selected low-impact follow-up is a research-only score-provenance
+probe combining existing HEURISTIC_TT_MEMORY with exact TC-P1 and root/eager
+scheduling. Production flags1177812991 explicitly leave bits22/23/24 off; no
+heuristic score or raw-eval sharing currently occurs. Existing H1/H2/F3 campaigns
+are not reopened. This new integrated dependency test will distinguish score
+storage, other-worker availability and actual guarded heuristic cutoffs; a
+private-score-delivery ablation retains shared hints/storage. No new score rules,
+parameters, proof permissions or production selection are proposed. Compile/run
+only after the competitive batch drains; no CPU interference from validation.

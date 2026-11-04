@@ -1,0 +1,66 @@
+{
+  "id": "uci-eager-build94-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-multiworker\\uci-eager-build94-v1-protocol.json",
+  "protocolSha256": "f84d908cf1cae470e458b0eccb9cc366fef0562a74486a079e9cdd44b5881fc0",
+  "command": [
+    "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\venv\\Scripts\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-multiworker-uci-check.py",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\runtime-eager-build94-v1",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-eager-build94-v1\\observations.jsonl",
+    "EAGER_ROOT"
+  ],
+  "startedUtc": "2026-11-04T11:49:38.485742+00:00",
+  "maximumNodes": 240000,
+  "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-eager-build94-v1\\observations.jsonl",
+  "priority": "below-normal",
+  "games": 0,
+  "preflightEnvironment": {
+    "utc": "2026-11-04T11:49:39.104443+00:00",
+    "totalCpuPercent": 9.397590361445785,
+    "freeMemoryGiB": 20.481807708740234,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "explorer.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 42.73092369477912,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 11440,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 2.5625,
+    "totalOwnedProcesses": 4
+  },
+  "wallSeconds": 1.7128516000229865,
+  "endedUtc": "2026-11-04T11:49:40.212248+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.3563385009765625,
+  "temporaryResourceBlocker": null,
+  "chargedNodes": 140159,
+  "nodeCharge": "verified callback admissions",
+  "summary": {
+    "type": "summary",
+    "status": "passed",
+    "nodes": 140159,
+    "requests": 4,
+    "activeHelpersAfterClose": 0,
+    "scope": "All selected JVMs exited normally after UCI quit; no surviving in-process helper is possible. Parent Job verifies descendants."
+  },
+  "files": {
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-eager-build94-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-eager-build94-v1\\EAGER_ROOT-uci.txt": "9fa006264d4a2f793e88ffd4fcbda8462d4586906fe7f21d4031c3765d982d75",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-eager-build94-v1\\environment.jsonl": "c2ede70bda9528065f4efd1ee4e91d6a6a73d59f534a5fe4555851558156389f",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-multiworker\\raw\\uci-eager-build94-v1\\observations.jsonl": "b89f8ba05c44e90d33261f55db515ced31b82ed17462c43a4d56fb5cbd0b9a3b"
+  },
+  "inputsStable": true
+}
