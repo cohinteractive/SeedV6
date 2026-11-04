@@ -65,8 +65,8 @@ fixed-work nodes; timed wall/games are charged in full.
 
 The immutable window authority retains its original grant-time Goal/status fields;
 those are historical, not permission to restart the clock or reactivate completed
-research. The client Goal is to be marked complete only after this verified outcome
-and durable finalization; acceptance remains distinct. Ending before the window
+research. The client confirmed the full MW-R001 Goal COMPLETE after verified durable
+finalization at2026-11-04T17:19:01Z; owner acceptance remains distinct. Ending before the window
 expires follows achieved research criteria, not an intermediate milestone.
 
 Human actions: None blocking the achieved research result. GPT/owner reconciliation
