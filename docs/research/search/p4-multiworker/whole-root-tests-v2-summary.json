@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "tests": 26,
+  "suites": [
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\whole-root-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.ConcurrencyExtensionTest.xml",
+      "sha256": "82decbe088371c3adb1da5bb76169e3b4daab8411cbd6285728f1f3cece67178"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4MultiworkerTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\whole-root-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.P4MultiworkerTest.xml",
+      "sha256": "3affc045f3a144c1bf90ef851e61c5d14ebe2f49b16b62a3c59d2a5a51a74152"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.exact.P4WholeRootTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\whole-root-tests-v2\\research-TEST-com.ohinteractive.seedv6.search.exact.P4WholeRootTest.xml",
+      "sha256": "3b341b2e8a4356285aeaf7411cea0d1aad1ebe53f7cf033956adfe553a574c6e"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineEngineTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\whole-root-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineEngineTest.xml",
+      "sha256": "c66f98523022712afd33695f10f9f6886c77b6fc21689696bbef3c51631c525d"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.BaselineProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\whole-root-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.BaselineProfileTest.xml",
+      "sha256": "4a9fbcc028a2c90c393da8c274fabb179eae71313551cf02668af90f6329e2c7"
+    },
+    {
+      "name": "com.ohinteractive.seedv6.search.driver.EngineFormulationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "path": "docs\\research\\search\\p4-multiworker\\raw\\whole-root-tests-v2\\engine-core-TEST-com.ohinteractive.seedv6.search.driver.EngineFormulationTest.xml",
+      "sha256": "20a9c06f41f7995c8253e2d32c2ae60f3e80678efcb08bab48e15b2032974522"
+    }
+  ],
+  "earlierFailure": "v1: existing narrow-window guard rejected construction PRIVATE policy before node-limit qualification. Preserved raw/whole-root-tests-v1 XML/log. Scoped guard now permits only the new construction race and has independent exact-window tests.",
+  "scope": "Same-depth bounds/exact control, TC-P1 callbacks/limits and helper failure/drain/reuse W2/W4/W8/W16; normal TC-P1 baseline and identities unchanged. No competitive or runtime-artifact qualification yet."
+}

@@ -10,10 +10,11 @@ candidate selected or confirmed.** Read [CONTRACT](CONTRACT.md), [RESULTS](RESUL
 - Masters currently P4-R018/P4-F035. Project Source mirrors were not refreshed.
 - Bootstrap c2ad1e3b and checkpoint10e974cf followed clean acc997b2; this continuation
   began clean main at10e974cf. Inherited training/build changes remain unrelated.
-- Build91 remains unchanged: VERSION_STATE.txt SHA256
+- Original build91 baseline VERSION_STATE.txt SHA256
   4e87e34cc8db4604f3b6e7d70127d4ce52a1f9144645cbe2cbf68b8b79136fa0.
-  Root CODEXLOG_CURRENT.md absent; do not create. Research tools/tests/docs do not
-  create a new application build. No production/About/selector change or installation.
+  Root CODEXLOG_CURRENT.md absent; do not create. Research tools/tests/docs did not create a build. The subsequent opt-in shared
+  whole-root factory qualifies for build92 (see below); no production algorithm,
+  About functionality, selector or installation change.
 - TC-P1/flags1177812991 remains production. Historical79, accounting80, champion84,
   production Search90 and accepted application91 remain distinct. No closed objective
   reopened, promotion, push, deployment or frozen BOUNDARY2 study modified.
@@ -67,6 +68,26 @@ reverse ablation retains shared storage/replacement and is not a private TT.
 See [summary](hints-mixed-w4-v1-summary.json) and [runtime](runtime-hints-v1-manifest.json).
 No production source changed in this unit. All native/helper drains passed.
 
+## MW-C1 whole-root alternative implementation
+
+MW-C1 is the explicitly selected WHOLE_ROOT_RACE over exact TC-P1 flags1177812991,
+shared hints and private request learning. Same depth/window per worker, first
+completed window wins, complete drain before publication; honest aspiration resolves
+bounds. This is not independent iterative Lazy SMP. Normal ConstructionSearch and
+production TC_P1 still select ROOT_REUSE. W1 remains the independent adapter.
+
+A small shared-core opt-in factory plus probe selector is implemented.26 focused
+exact-bound, callback, cancellation/failure/reuse and baseline tests passed. The
+initial narrow-window guard failure and its scoped fix are preserved in
+[whole-root-tests-v2-summary.json](whole-root-tests-v2-summary.json). Existing
+non-construction historical policies retain their window restrictions.
+
+Shared runtime impact requires build91->92, token-only verified under direct version
+rules. This identifies code, not a qualified runtime or new production adoption.
+No application/platform qualification or competitive evidence claimed. Next export
+and freeze a fresh build92 research artifact, then compare bounded ROOT_REUSE and
+WHOLE_ROOT_RACE diagnostics before choosing whether a competitive screen is justified.
+
 ## Operating behavior and budgets
 
 Mode A is already authorized: one restrained fixed-work process, at most4 active
@@ -109,7 +130,7 @@ Fresh-session sequence:
    hashes. Check raw availability; fresh checkout lacks ignored evidence. Missing
    artifacts need a new identified export, not silent recreation of frozen files.
 2. Do not repeat completed v3 baseline or90 tests without a concrete change/reason.
-   Read their summaries. Continue selected whole-root race implementation under Mode A;
+   Read their summaries. Freeze/export the implemented whole-root race and run bounded diagnostics under Mode A;
    any new source/runtime needs a fresh manifest/protocol/run ID before admission.
 3. Verify resources once at admission; use tools/p4-multiworker.py. Its current
    scope deliberately rejects competitive/timed protocols. If temporarily blocked,

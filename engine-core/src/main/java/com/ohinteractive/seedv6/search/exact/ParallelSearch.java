@@ -186,6 +186,22 @@ public final class ParallelSearch implements SingleDepthSearch {
                 evaluators,config);
     }
 
+    /** MW-R001 opt-in same-depth whole-root race, not independent iterative Lazy SMP.
+     * Each worker retains its own configured request learning/iteration guidance.
+     * The first completed window stops its peers; all admitted work drains and is
+     * counted before publication. Normal ConstructionSearch never selects this. */
+    public static ParallelSearch constructionWholeRootResearch(int threads, SearchEvaluation evaluation,
+            TTable table, FlatSearchConfig config) {
+        return constructionWholeRootResearch(threads, evaluation, table, config, null);
+    }
+
+    static ParallelSearch constructionWholeRootResearch(int threads, SearchEvaluation evaluation,
+            TTable table, FlatSearchConfig config, java.util.function.IntFunction<ExactEvaluator> evaluators) {
+        if (threads < 2) throw new IllegalArgumentException("Whole-root race requires multiple workers");
+        return new ParallelSearch(threads, evaluation, table, ConcurrencyPolicy.PRIVATE,
+                evaluators, Objects.requireNonNull(config, "config"));
+    }
+
     private ParallelSearch(int threads,SearchEvaluation definition,TTable table,ConcurrencyPolicy policy,
             java.util.function.IntFunction<ExactEvaluator> evaluatorFactory,FlatSearchConfig construction) {
         this.construction=construction;
@@ -370,15 +386,15 @@ public final class ParallelSearch implements SingleDepthSearch {
     }
 
     /** Invocation-only research seam. Narrow completion is a bound, never a completed iteration.
-     * ROOT_REUSE retains private seeding and drains every pass; restricted jobs never store root proof. */
+     * Root cohorts and the opt-in construction whole-root race drain every pass. */
     public SearchResult searchWindow(SearchRequest next,int alpha,int beta) {
         Objects.requireNonNull(next, "request");
         ensureIdle();
         if(alpha < -ExactSearch.INFINITY || beta > ExactSearch.INFINITY || alpha>=beta)
             throw new IllegalArgumentException("Invalid root window");
         if((alpha!=-ExactSearch.INFINITY || beta!=ExactSearch.INFINITY) && policy!=ConcurrencyPolicy.ROOT_REUSE
-                && !(construction!=null && policy==ConcurrencyPolicy.ROOT_SPLIT))
-            throw new IllegalStateException("Narrow parallel research requires ROOT_REUSE");
+                && !(construction!=null && (policy==ConcurrencyPolicy.ROOT_SPLIT || policy==ConcurrencyPolicy.PRIVATE)))
+            throw new IllegalStateException("Narrow parallel research requires a qualified construction or ROOT_REUSE");
         if(next.depth() > maxSupportedDepth()) throw new IllegalArgumentException("Unsupported depth.");
         boolean standalone = !requestActive;
         if(standalone) beginRequest();

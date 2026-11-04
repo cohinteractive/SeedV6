@@ -13,6 +13,7 @@ import com.ohinteractive.seedv6.search.tt.TTable;
  * No production instrumentation or scheduling change. Timing is diagnostic only:
  * instrumentation and thread scheduling can alter an SMP search at equal nodes. */
 public final class P4MultiworkerStudy {
+    enum Architecture { ROOT_REUSE, WHOLE_ROOT_RACE }
     static final class Admissions implements ExactEvaluator {
         final ExactEvaluator delegate;
         long nodes, qnodes, reentries, evaluations, initializations;
@@ -49,7 +50,9 @@ public final class P4MultiworkerStudy {
      * Use W2/W4 to study the actual production ROOT_REUSE path. W1 uses the independent
      * production adapter and is qualified separately, not relabelled ParallelSearch(1). */
     public static void main(String[] args) throws Exception {
-        if (args.length != 7) throw new IllegalArgumentException("model corpus output workers rounds depth node-cap");
+        if (args.length != 7 && args.length != 8)
+            throw new IllegalArgumentException("model corpus output workers rounds depth node-cap [architecture]");
+        var architecture = args.length == 8 ? Architecture.valueOf(args[7]) : Architecture.ROOT_REUSE;
         int workers = Integer.parseInt(args[3]), rounds = Integer.parseInt(args[4]), depth = Integer.parseInt(args[5]);
         long cap = Long.parseLong(args[6]);
         if (workers < 2 || workers > 4 || rounds < 1 || rounds > 4 || depth < 3 || depth > 16
@@ -64,13 +67,17 @@ public final class P4MultiworkerStudy {
         try (var out = Files.newBufferedWriter(Path.of(args[2]), StandardOpenOption.CREATE_NEW)) {
             out.write(gson.toJson(Map.of("type", "identity", "source", ApplicationVersion.load().sourceRevision(),
                     "build", ApplicationVersion.load().build(), "flags", config.flags(), "args", args,
-                    "java", System.getProperty("java.runtime.version"), "availableProcessors", Runtime.getRuntime().availableProcessors())));
+                    "java", System.getProperty("java.runtime.version"), "availableProcessors", Runtime.getRuntime().availableProcessors(),
+                    "architecture", architecture)));
             out.newLine(); out.flush();
             for (int round = 0; round < rounds; round++) for (var root : roots) {
                 var admissions = new Admissions[workers];
                 var table = new TTable(64);
-                var owner = ParallelSearch.constructionResearch(workers, model.evaluation(), table, config, i ->
-                        admissions[i] = new Admissions(ExactEvaluator.from(model.evaluation())));
+                java.util.function.IntFunction<ExactEvaluator> evaluators = i ->
+                        admissions[i] = new Admissions(ExactEvaluator.from(model.evaluation()));
+                var owner = architecture == Architecture.ROOT_REUSE
+                        ? ParallelSearch.constructionResearch(workers, model.evaluation(), table, config, evaluators)
+                        : ParallelSearch.constructionWholeRootResearch(workers, model.evaluation(), table, config, evaluators);
                 var attempts = new ArrayList<Map<String, Object>>();
                 AspirationSearch.AttemptObserver observer = (d, alpha, beta, result, elapsed) -> {
                     long nodes = 0, qnodes = 0, firstHelper = Long.MAX_VALUE;
@@ -89,8 +96,8 @@ public final class P4MultiworkerStudy {
                     row.put("depth", d); row.put("alpha", alpha); row.put("beta", beta);
                     row.put("result", result); row.put("elapsedNanos", elapsed); row.put("workers", snapshots);
                     row.put("firstHelperDelayNanos", firstHelper == Long.MAX_VALUE ? null : firstHelper - admissions[0].firstInitialization);
-                    // At split depths this is exactly owner0's first restricted root-job work.
-                    // At depth1/2 it denotes the entire unsplit owner invocation instead.
+                    // ROOT_REUSE split depths: first restricted root job. Whole-root race
+                    // and depth1/2: entire owner invocation, NOT serialized first-job work.
                     row.put("firstOwnerJobNodes", admissions[0].firstJobNodes < 0 ? admissions[0].nodes : admissions[0].firstJobNodes);
                     attempts.add(row);
                     for (var a : admissions) a.reset();
