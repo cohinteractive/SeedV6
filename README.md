@@ -6,13 +6,12 @@ fixed-work comparisons. Its unique resume entry point preserves older completed
 and suspended programmes separately; it does not authorize production promotion.
 
 SeedV6 is a Java 21 chess engine with UCI, desktop Play, and Network Training.
-The rolling production default is **MW-C4 EAGER_MEMORY at W4**, and **TC-P1 at
-W1-W3 and W5-W16**, with Conventional NNUE CP64, integrated as **build96**.
-GUI Play, built-in Arena and UCI share engine-core's `BaselineEngine`. Normal
-profile **MW_C4_W4** needs no property: W4 selects eager root scheduling and guarded
-current-generation TT scores over TC-P1 (**flags1182007295**, EAGER_ROOT); all
-other supported worker counts retain **flags1177812991**, OWNER at W1 and
-ROOT_REUSE otherwise. PVS/ADAPTIVE16, CP64, default W1 and bounded Max are unchanged.
+The rolling production default is **MW-C4 EAGER_MEMORY across W1-W16**, with
+Conventional NNUE CP64. GUI Play, built-in Arena and UCI share engine-core's
+`BaselineEngine`. Normal profile **MW_C4** needs no property and selects
+**flags1182007295** at every worker count: guarded current-generation TT scores
+over TC-P1, single-owner execution at W1 and **EAGER_ROOT** cooperation at W2-W16.
+PVS/ADAPTIVE16, CP64, default W1 and bounded Max are unchanged.
 
 MW-R001's independent W4 result passed its original strength criterion in the
 documented 10+0.1 Windows/Java21 cold-JVM domain. Other worker-count strength,
@@ -20,11 +19,25 @@ longer clocks, warmed persistent clients and other platforms remain unqualified.
 **HL-G1/build84** remains the W1 research champion; **P4-BASELINE-001/build79**
 remains immutable. Original TC-P1/build90 and frozen MW-C4/build94 retain their identities.
 
-Use **`-Dseedv6.searchProfile=TC_P1`** for exact previous TC-P1, including at W4.
+Use **`-Dseedv6.searchProfile=TC_P1`** for exact previous TC-P1 at every worker count.
+Explicit **MW_C4_W4** preserves the historical build96 worker-dependent selector.
 **HL_G1** remains flags104071167 and **LEGACY** flags3407871; invalid selectors fail.
 Frozen research profiles and independent controls retain their meanings.
 See the [production qualification, artifacts and rollback record](docs/research/search/p4-multiworker/PRODUCTION.md).
 These are local candidates; no installed GUI or active bot is replaced.
+
+UCI identifies the executable as **`SeedV6-<build number>`**. To inspect its
+current configuration after setting Threads, Hash or ClockPolicy, send:
+
+```text
+setoption name Show Search Configuration
+isready
+```
+
+The `info string` replies report the actual profile, feature flags, scheduling,
+workers/hash, evaluator, clock and configuration fingerprint before `readyok`.
+This optional diagnostic adds no normal-game output. BotLi's engine-name
+substitution does not imply spectator chat displays these diagnostics.
 
 Normal managed-clock configurations use **BOUNDARY2**, with explicit **FACTUAL**
 fallback. Its independent studies remain clock-unqualified with scores unopened;

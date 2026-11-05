@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BaselineArenaTest {
     @TempDir Path temporary;
     @Test void threeEvaluatorsPersistAndPlayRepeatedColorPairsWithoutTrainingStores() throws Exception {
-        for (int workers : new int[]{1, 4, 16}) for (var evaluator : BaselineEngine.Evaluator.values()) {
+        for (int workers : new int[]{1, 2, 3, 4, 5, 8, 16}) for (var evaluator : BaselineEngine.Evaluator.values()) {
             var a = Competitor.competitive(evaluator);
             var b = Competitor.competitive(BaselineEngine.Evaluator.CONVENTIONAL_CP64);
             var config = LearningArenaConfig.match("baseline lifecycle", a, b, 19,
@@ -32,7 +32,7 @@ class BaselineArenaTest {
                     assertEquals(game.gameInPair() == 1 ? evaluator : BaselineEngine.Evaluator.CONVENTIONAL_CP64, game.white().competitiveEvaluator());
                     assertEquals(game.gameInPair() == 1 ? BaselineEngine.Evaluator.CONVENTIONAL_CP64 : evaluator, game.black().competitiveEvaluator());
                     for (var participant : java.util.List.of(game.white(), game.black())) {
-                        long flags = participant.competitiveEvaluator() == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? (workers == 4 ? 1182007295 : 1177812991) : 262143;
+                        long flags = participant.competitiveEvaluator() == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 1182007295 : 262143;
                         assertTrue(participant.searchProfile().contains("flags=" + flags));
                         assertTrue(participant.searchProfile().contains("parallel=" + (workers == 1 ? "OWNER"
                                 : flags == 1182007295 ? "EAGER_ROOT" : "ROOT_REUSE")));

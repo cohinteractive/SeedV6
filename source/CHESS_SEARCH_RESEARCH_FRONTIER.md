@@ -1,13 +1,63 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F050**
+Internal frontier revision: **P4-F051**
 
-Status: **ACTIVE Phase 4 - 5 November 2026. IC-R001 is GPT-reconciled, owner-accepted and formally closed with an INCONCLUSIVE playing-strength outcome; its governing W4 strength objective remains UNMET. No continuation, replacement experiment or successor is authorized. Existing production, closed campaigns, baseline79 and W1 champion HL-G1/build84 are preserved. No champion advancement, promotion, installation, push, deployment or release.**
+Status: **ACTIVE Phase 4 - 5 November 2026. Owner-authorized unified rolling production integration: MW-C4 EAGER_MEMORY is selected across W1-W16. Closed research outcomes, baseline79 and W1 champion HL-G1/build84 remain unchanged. No successor research, champion advancement, installation, push, deployment or release.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
-Governing [Contract P4-R032](CHESS_SEARCH_CONTRACT.md). This Frontier records
+Governing [Contract P4-R033](CHESS_SEARCH_CONTRACT.md). This Frontier records
 current state, opportunities and dependencies; it supplies no independent launch
 or promotion authority.
+
+## Unified rolling production - 5 November 2026
+
+The owner authorizes one normal rolling production Search formulation across
+W1-W16. The shared CP64 default is **MW_C4 (MW-C4 EAGER_MEMORY)**, flags
+**1182007295 at every supported worker count**. W1 uses **OWNER** execution;
+W2-W16 select **EAGER_ROOT** cooperation. W4 retains the exact prior configuration,
+including the existing shallow/unbounded-window scheduling rules. Worker count
+changes execution resources and scheduling, not the adopted feature set.
+
+GUI Play, built-in Arena and UCI use the shared engine-core factory. Loaded
+profiles survive worker/hash/clock reconstruction. About describes the common
+normal formulation and each loaded Play binding. UCI keeps `SeedV6-<build>` and
+adds `setoption name Show Search Configuration`, a standard button emitting
+`info string` snapshots of the actual profile, flags, workers, schedule, hash,
+evaluator, clock and configuration fingerprint, without per-move verbosity.
+BotLi engine-name substitution is distinct from optional diagnostic visibility;
+no spectator-chat diagnostic display is assumed or external bot changed.
+
+Explicit `-Dseedv6.searchProfile=TC_P1` retains exact TC-P1, flags1177812991,
+OWNER at W1 and ROOT_REUSE at W2-W16. `MW_C4_W4` retains the historical build96
+worker-dependent selector only when explicitly requested. HL_G1, LEGACY,
+evaluator-specific routes and independent exact/research controls remain intact.
+No second production implementation or new Search heuristic is introduced.
+
+[Production integration record](../docs/research/search/p4-multiworker/PRODUCTION.md)
+owns source/artifact identities, technical checks, bounded exploratory observations,
+limitations and rollback. Source qualification passed 405 JUnit checks plus 22 focused
+rechecks and Windows headless packaging/runtime checks. The bounded W1/W4/W8
+competitive plan was refused by the existing foreground-workload resource guard
+before any game started; no new strength observation is claimed. W4's historical independent 61.71875% result remains
+limited to its original domain; other workers have no independent MW-C4 strength
+qualification. This integration neither changes that conclusion nor reopens
+MW-R001, IC-R001, TT-R001 or frozen independent clock studies.
+
+Current masters are **P4-R033/P4-F051**. The owner must refresh both Phase 4
+Project Source mirrors before subsequent mirror-dependent GPT coordination;
+repository changes do not upload them. This is non-blocking for repository
+integration. Interactive visual checks are explicitly reserved to the owner;
+Codex does not open the app for visual confirmation. Installed clients and
+platform acceptance remain separate from implemented repository changes.
+Historical revision/selection statements below retain their original time scope.
+
+The [enduring production policy](CHESS_SEARCH_CONTRACT.md#rolling-experimental-production-baseline)
+requires one adopted applicable feature set across W1-W16. Representative
+competitive investigation is proportionate; independent superiority/equivalence
+at every worker count is not an adoption prerequisite. Strength uncertainty,
+costs, interactions and future integrated potential inform the owner's decision,
+with mandatory correctness/concurrency/lifecycle safeguards. The unified adopted
+formulation is the common production starting point, not a new CGLHW objective.
 
 ## IC-R001 accepted inconclusive closeout - 5 November 2026
 
@@ -47,14 +97,14 @@ Observed HEAD4af0e298/build97 adds packaging/UCI identity changes; Search source
 matches44fc2bf2/build96. Preserve pinned build96 as the competitive control.
 MW-R001 and TT-R001 remain closed; historical no-successor statements below
 refer to their prior authorizations, superseded only for the now-closed IC-R001 launch.
-The owner confirms launch Project Source mirrors P4-R029/P4-F047. Current masters
-are **P4-R032/P4-F050**; owner upload of both masters is required before subsequent
+The owner confirmed launch Project Source mirrors P4-R029/P4-F047. At this closeout
+the masters were **P4-R032/P4-F050**; owner upload of both masters is required before subsequent
 mirror-dependent GPT research coordination, non-blocking for this completed closeout.
 Repository edits do not refresh mirrors. Shared behavioral governance, its R4 projection and registry are unchanged.
 Historical revision/mirror requests below record earlier decisions; this section
-owns the current master pair and mirror requirement.
+recorded that closeout's master pair and mirror requirement.
 
-## Rolling production selection - 5 November 2026
+## Historical build96 rolling production selection - 5 November 2026
 
 The owner separately adopts **MW-C4 EAGER_MEMORY for normal W4 CP64 Search**.
 Shared engine-core profile **MW_C4_W4** selects flags1182007295 / **EAGER_ROOT**
@@ -564,8 +614,8 @@ these findings establishes a SeedV6 playing-strength improvement.
 
 | Kind | Current state and implications |
 | --- | --- |
-| Adopted programme decision | Improvement-oriented integrated Search development under P4-R029, with agreed strength or enabling objectives and prompt, risk-proportionate consideration of useful experimental adoption. Apply the [adoption policy](CHESS_SEARCH_CONTRACT.md#incremental-experimental-adoption): enabling value, strength, champion status, active deployment and production defaults remain distinct. |
-| Baseline, champion and correction | P4-BASELINE-001/build79 remains immutable and the unresolved W4 competitive reference. HL-G1/build84, flags104071167, is the owner-accepted W1-qualified research champion. Build80 remains the separate accounting-corrected technical control. Build96 rolling production selects MW-C4/flags1182007295/EAGER_ROOT at W4 and TC-P1/flags1177812991 elsewhere; original build90 adoption stays historical; no deployment. |
+| Adopted programme decision | Improvement-oriented integrated Search development under P4-R033, with agreed strength or enabling objectives and prompt, risk-proportionate consideration of useful experimental adoption. Apply the [adoption policy](CHESS_SEARCH_CONTRACT.md#incremental-experimental-adoption): enabling value, strength, champion status, active deployment and production defaults remain distinct. |
+| Baseline, champion and correction | P4-BASELINE-001/build79 remains immutable and the unresolved W4 competitive reference. HL-G1/build84, flags104071167, is the owner-accepted W1-qualified research champion. Build80 remains the separate accounting-corrected technical control. Unified rolling production selects MW_C4/flags1182007295 throughout W1-W16, OWNER at W1 and EAGER_ROOT at W2-W16. Build96 worker-dependent selection and build90 adoption stay historical; no deployment. |
 | Completed preparatory work | Inventory, accounting investigation/correction, P4-F002 consolidation and external research-map investigation are closed. The map is reconciled and accepted; Contract initialization statements describe historical sequencing, not unfinished work. |
 | A. Useful TT memory for selective PVS | **First authorized CGLHW: Codex execution and GPT reconciliation complete; owner-accepted bounded inconclusive outcome and formal closeout on 5 November 2026.** Investigated hypothesis: retained heuristic scores with suitable admission, selective provenance, bound interpretation, retention/replacement and preserved completed-move guidance may strengthen existing CP64/PVS. Interactions include extensions, selective pruning, aspiration and repeated-window work. |
 | Foundational TT information architecture | **TTF-R001 accepted and closed:** [terminal STATE](../docs/research/search/p4-tt-foundation/STATE.md). TTF-F3-v1 packed coherent main-node information is qualified for its limited foundational purpose; speed/strength/competitive neutrality remain unproven and W4 evidence adverse. No reopening of TT-R001 or retroactive H1/H2 qualification. |
@@ -573,7 +623,7 @@ these findings establishes a SeedV6 playing-strength improvement.
 | Search-feedback correction and evaluation-guided selectivity | **CH-R001 technically completed and owner-accepted as unsuccessful on 3 November 2026; strength objective unmet.** C3/build88 decayed pawn correction with main/qsearch consumers failed its single independent W1 criterion against exact84 (44.84375%, normal95%40.18-49.50%; bounded34.11-55.58%). W4 remains inconclusive. Technical work and negative evidence are preserved; unused exploration does not authorize another confirmation or successor. |
 | C. Tactical coverage through verification and extensions | **TC-R001 execution complete; strength criterion failed; exact TC-P1 separately owner-adopted for production.** Sole independent claim spent; unresolved W4 adverse risk explicitly accepted for adoption. See terminal STATE/RESULTS above. TT-supported verification and integrated alternatives remain future hypotheses requiring separate authority; no successor selected. |
 | D. Iteration confidence, re-search and resource allocation | **Credible follow-on.** Aspiration recovery, iteration feedback, root effort, MTD and managed-time expenditure; driver comparisons must control TT information and state lifetime. Clock-policy research needs separate authorization. |
-| E. Multiworker cooperation and W2-16 information exchange | **MW-R001 accepted and formally closed on 5 November 2026 after GPT reconciliation; governing W4 strength objective achieved.** C4 eager roots plus guarded current-generation TT scores confirmed150W/95D/75L,61.71875%, paired-normal95%57.5083-65.9292%, with technical/integration/operational qualification. C1/C2 adverse evidence, C3/C5 imprecision and C4 fixed-work limits remain. C6 independent iteration is technically tested but runtime/strength unqualified. See [STATE](../docs/research/search/p4-multiworker/STATE.md). Separate build96 W4 production adoption is recorded above; no champion/deployment change or new CGLHW follows. |
+| E. Multiworker cooperation and W2-16 information exchange | **MW-R001 accepted and formally closed on 5 November 2026 after GPT reconciliation; governing W4 strength objective achieved.** C4 eager roots plus guarded current-generation TT scores confirmed150W/95D/75L,61.71875%, paired-normal95%57.5083-65.9292%, with technical/integration/operational qualification. C1/C2 adverse evidence, C3/C5 imprecision and C4 fixed-work limits remain. C6 independent iteration is technically tested but runtime/strength unqualified. See [STATE](../docs/research/search/p4-multiworker/STATE.md). Separate build96 W4 adoption and subsequent unified production integration are recorded above; no champion/deployment change or new CGLHW follows. |
 | Historical TT research disposition | **Useful TT score memory for selective PVS**, owner-authorized30 October2026. [Objective TT-R001/results and resume boundary](../docs/research/search/p4-tt-memory/STATE.md). Both integrated candidates passed technical qualification; W1/W4 development screens were inconclusive. Fresh single-worker confirmation of **heuristic TT score reuse (H1/build81)**, which adds separate heuristic provenance and eligible interior null-window score reuse while preserving legal hints, versus the accounting-corrected build80 control completed160 pairs,54.06%, adjusted99.375% interval47.34-60.78%; no confirmed improvement. Conditional direct79 did not execute. Remaining affordable branches are dispositioned; materially larger precision/domain campaigns need a fresh resource decision. Technical execution, GPT reconciliation and owner-accepted inconclusive closeout are complete; stronger integrated TT information handling remains an engineering opportunity, not an active objective. No champion advancement or production promotion. |
 
 The remaining opportunities are connected relative priorities, **not an execution

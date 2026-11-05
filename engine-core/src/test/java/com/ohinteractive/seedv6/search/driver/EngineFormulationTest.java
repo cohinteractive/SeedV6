@@ -28,18 +28,19 @@ class EngineFormulationTest {
         try {
             System.clearProperty(BaselineEngine.SearchProfile.PROPERTY);
             var normal = BaselineEngine.load().formulation(1, 64);
-            assertEquals(1177812991L, normal.search().mechanisms().flags());
-            assertEquals("TC-P1 — HL-G1 + bounded capture ProbCut", normal.searchName());
-            assertTrue(BaselineEngine.productionFormulation().contains("W4: MW-C4"));
+            assertEquals(1182007295L, normal.search().mechanisms().flags());
+            assertTrue(normal.searchName().startsWith("MW-C4"));
+            assertTrue(BaselineEngine.productionFormulation().contains("W1-W16: MW-C4"));
             assertTrue(BaselineEngine.productionFormulation().contains(normal.searchName()));
             for (var profile : BaselineEngine.SearchProfile.values()) {
                 var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
                         ClockPolicy.BOUNDARY2, profile).formulation(1, 64);
-                assertEquals(profile == BaselineEngine.SearchProfile.TC_P1 || profile == BaselineEngine.SearchProfile.MW_C4_W4,
+                assertEquals(profile == BaselineEngine.SearchProfile.TC_P1 || profile == BaselineEngine.SearchProfile.MW_C4_W4
+                        || profile == BaselineEngine.SearchProfile.MW_C4,
                         explicit.principalMechanisms().contains("ProbCut"));
                 assertEquals(profile != BaselineEngine.SearchProfile.LEGACY,
                         explicit.principalMechanisms().contains("retained Search learning"));
-                if (profile == BaselineEngine.SearchProfile.TC_P1)
+                if (profile == BaselineEngine.SearchProfile.MW_C4)
                     assertEquals(normal.configurationId(), explicit.configurationId());
             }
         } finally { restore(previous); }

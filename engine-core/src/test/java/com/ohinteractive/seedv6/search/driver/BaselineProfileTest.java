@@ -8,7 +8,16 @@ import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BaselineProfileTest {
-    @Test void workerScopedAdoptionAndRollbackReconstructBothSchedulingAndFlags() throws Exception {
+    @Test void historicalSelectorAndQualifiedW4ConfigurationRemainExact() {
+        for (int workers = 1; workers <= 16; workers++) {
+            var unified = BaselineEngine.configuration(workers, 64, BaselineEngine.SearchProfile.MW_C4);
+            var historical = BaselineEngine.configuration(workers, 64, BaselineEngine.SearchProfile.MW_C4_W4);
+            assertEquals(1182007295L, unified.mechanisms().flags());
+            if (workers == 4) assertEquals(historical, unified);
+            else assertEquals(BaselineEngine.configuration(workers, 64, BaselineEngine.SearchProfile.TC_P1), historical);
+        }
+    }
+    @Test void unifiedAdoptionAndRollbackReconstructBothSchedulingAndFlags() throws Exception {
         String property = BaselineEngine.SearchProfile.PROPERTY;
         String previous = System.getProperty(property);
         try {
@@ -19,7 +28,7 @@ class BaselineProfileTest {
             System.setProperty(property, "LEGACY");
             for (var binding : new BaselineEngine[]{normal, rollback}) {
                 for (int workers : new int[]{4, 1, 2, 3, 4, 5, 8, 16, 4}) {
-                    boolean c4 = binding == normal && workers == 4;
+                    boolean c4 = binding == normal;
                     for (int hash : new int[]{1, 64}) {
                         var rebound = binding.withClockPolicy(hash == 1 ? ClockPolicy.FACTUAL : ClockPolicy.BOUNDARY2);
                         var config = rebound.formulation(workers, hash);
@@ -59,7 +68,7 @@ class BaselineProfileTest {
             var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
                     ClockPolicy.BOUNDARY2, BaselineEngine.SearchProfile.HL_G1);
             for (int workers = 1; workers <= 16; workers++) {
-                assertTrue(promoted.identity(workers, 1).contains("searchProfile=MW_C4_W4"));
+                assertTrue(promoted.identity(workers, 1).contains("searchProfile=MW_C4"));
                 assertTrue(explicit.identity(workers, 1).contains("flags=104071167"));
                 assertTrue(rollback.identity(workers, 1).contains("searchProfile=LEGACY"));
                 assertTrue(rollback.withClockPolicy(ClockPolicy.FACTUAL).identity(workers, 1).contains("flags=3407871"));
@@ -72,7 +81,7 @@ class BaselineProfileTest {
                 try (var driver = new SearchDriver(clock)) {
                     Object aspiration = field(clock, "owner");
                     Object kernel = field(field(aspiration, "owner"), "exact");
-                    assertEquals(binding == rollback ? 3407871 : binding == promoted ? 1177812991 : 104071167,
+                    assertEquals(binding == rollback ? 3407871 : binding == promoted ? 1182007295 : 104071167,
                             ((FlatSearchConfig) field(kernel, "construction")).flags());
                     assertTrue(driver.search(new SearchRequest(Board.startingPosition(), 4)).targetDepthCompleted());
                     assertEquals(0, driver.activeSearchThreads());

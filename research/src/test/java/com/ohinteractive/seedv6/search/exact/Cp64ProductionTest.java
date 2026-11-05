@@ -13,7 +13,7 @@ import static com.ohinteractive.seedv6.search.exact.Policy4ProductionTest.field;
 
 @Timeout(180)
 class Cp64ProductionTest {
-    @Test void workerScopedCompositionMatchesProductionAndWorkerStateIsPrivate() throws Exception {
+    @Test void unifiedCompositionMatchesProductionAndWorkerStateIsPrivate() throws Exception {
         var engine = BaselineEngine.load();
         for (int workers = 1; workers <= 16; workers++) {
             for (int hash : new int[]{1, 64}) {
@@ -21,9 +21,9 @@ class Cp64ProductionTest {
                 assertEquals(Cp64SelectivityLab.configuration("nominal-verified-null", workers, hash), BaselineEngine.legacyConfiguration(workers, hash));
                 assertEquals(frozen, BaselineEngine.configuration(workers, hash, BaselineEngine.SearchProfile.TC_P1));
                 var selected = BaselineEngine.configuration(engine.evaluation(), workers, hash);
-                assertEquals(workers == 4 ? P4TacticalStudy.flags("probcut", workers)
-                        .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true) : frozen.mechanisms(), selected.mechanisms());
-                assertEquals(workers == 4 ? ConstructionSearch.RootScheduling.EAGER_ROOT
+                assertEquals(P4TacticalStudy.flags("probcut", workers)
+                        .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true), selected.mechanisms());
+                assertEquals(workers > 1 ? ConstructionSearch.RootScheduling.EAGER_ROOT
                         : ConstructionSearch.RootScheduling.STANDARD, selected.rootScheduling());
                 assertEquals(1177812991, frozen.mechanisms().flags());
                 assertEquals(262143, Cp64SelectivityLab.configuration("baseline", workers, hash).mechanisms().flags());
@@ -37,8 +37,7 @@ class Cp64ProductionTest {
                 for (var kernel : actual) {
                     assertSame(table, field(kernel, "table"));
                     var expected = (FlatSearchConfig) field(reference[0], "construction");
-                    assertEquals(workers == 4 ? expected.with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true)
-                            : expected, field(kernel, "construction"));
+                    assertEquals(expected.with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true), field(kernel, "construction"));
                     for (String name : List.of("boards", "pv", "quietHistory", "constructionState", "constructionNullMoves", "evaluator"))
                         assertTrue(mutable.add(field(kernel, name)), name + " must be worker-private");
                 }
@@ -47,7 +46,7 @@ class Cp64ProductionTest {
         for (int processors : new int[]{1, 2, 4, 8, 16, 32}) {
             int max = new SearchThreads(SearchThreads.MAX).resolve(processors);
             assertEquals(Math.min(processors, 16), max);
-            assertEquals(max == 4 ? 1182007295 : 1177812991, BaselineEngine.configuration(max, 64).mechanisms().flags());
+            assertEquals(1182007295, BaselineEngine.configuration(max, 64).mechanisms().flags());
             assertEquals(16, new SearchThreads(16).resolve(processors));
         }
     }
@@ -100,7 +99,7 @@ class Cp64ProductionTest {
         for (int workers = 1; workers <= 16; workers++) {
             var search = engine.create(workers, 1);
             try (var driver = new SearchDriver(search)) {
-                long budget = Set.of(1, 2, 4, 8, 16).contains(workers) ? 100000 : 10000;
+                long budget = Set.of(1, 2, 3, 4, 5, 8, 16).contains(workers) ? 100000 : 10000;
                 long[] completedAttempts = {0, 0};
                 var observer = new SearchObserver() {
                     @Override public void onIterationCompleted(IterationSnapshot snapshot) {
@@ -140,7 +139,7 @@ class Cp64ProductionTest {
 
     @Test void terminalHistoryMateAndPvSemanticsSurviveAtRepresentativeWorkers() throws Exception {
         var engine = BaselineEngine.load();
-        for (int workers : new int[]{1, 4, 16}) try (var driver = new SearchDriver(engine.create(workers, 1))) {
+        for (int workers : new int[]{1, 2, 3, 4, 5, 8, 16}) try (var driver = new SearchDriver(engine.create(workers, 1))) {
             String[] fens = {"7k/6Q1/5K2/8/8/8/8/8 b - - 100 1", "7k/5Q2/6K1/8/8/8/8/8 b - - 100 1",
                     "7k/8/5KQ1/8/8/8/8/8 w - - 0 1"};
             int[] scores = {-ExactSearch.MATE_SCORE, 0, ExactSearch.MATE_SCORE - 1};

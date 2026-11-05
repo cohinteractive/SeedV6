@@ -56,7 +56,7 @@ class ConventionalGameplayTest {
             assertEquals(8, binding.conventional().model().outputBuckets());
             assertEquals(1, adapter.workerCount()); assertEquals(4, binding.effectiveWorkers(4));
             assertNotSame(field(adapter, "service"), field(adapter, "blackService"));
-            assertTrue(binding.identity(1).contains("flags=1177812991"));
+            assertTrue(binding.identity(1).contains("flags=1182007295"));
             assertTrue(binding.identity(1).contains("clockPolicy=boundary2-d6-v1"));
             assertTrue(adapter.participants().black().identity(1).contains("clockPolicy=boundary2-d6-v1"));
             assertTrue(adapter.participants().black().identity(1).contains("flags=262143"));
@@ -90,10 +90,10 @@ class ConventionalGameplayTest {
             assertNull(bind(adapter, PlayEvaluator.Mode.CONSTRUCTION_V1, PlayParticipants.Selection.BEST));
             assertTrue(retired.isTerminated());
             assertNull(bind(adapter, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayParticipants.Selection.BEST));
-            for (int workers : new int[]{4, 16}) {
+            for (int workers : new int[]{1, 2, 3, 4, 5, 8, 16}) {
                 edt(() -> { adapter.replaceWorkerCount(workers); return null; });
                 assertEquals(workers, adapter.evaluator().effectiveWorkers(adapter.workerCount()));
-                assertTrue(adapter.evaluator().identity(workers).contains("flags=" + (workers == 4 ? 1182007295 : 1177812991)));
+                assertTrue(adapter.evaluator().identity(workers).contains("flags=" + 1182007295));
                 assertNull(search(adapter, Board.startingPosition(), new SearchLimits(100, -1, 150, false), false).failure());
                 assertNull(search(adapter, Board.startingPosition(), new SearchLimits(4, -1, -1, false), false).failure());
             }
@@ -110,7 +110,7 @@ class ConventionalGameplayTest {
                     var binding = mode == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted() : PlayEvaluator.bundled(mode);
                     assertEquals(clocks, binding.baseline().clockPolicy());
                     EngineSearchAdapter.LifecycleFactory factory = workers -> { throw new AssertionError("Evaluator-aware route required"); };
-                    for (int workers : new int[]{1,4,16}) try (var service = factory.create(workers, binding)) {
+                    for (int workers : new int[]{1,2,3,4,5,8,16}) try (var service = factory.create(workers, binding)) {
                         service.setBookEnabled(false);
                         assertEquals(clocks == ClockPolicy.BOUNDARY2,
                                 field(field(service, "search"), "exact") instanceof Boundary2ClockPolicy);

@@ -58,6 +58,7 @@ public final class UciEngine implements AutoCloseable {
                             + " var BOUNDARY2 var FACTUAL");
                 uciOutput.line("option name UseBook type check default false");
                 uciOutput.line("option name OwnBook type check default false");
+                uciOutput.line("option name Show Search Configuration type button");
                 identify();
                 uciOutput.line("uciok");
             } else if (tokens.length == 1 && tokens[0].equals("isready")) {
@@ -140,6 +141,14 @@ public final class UciEngine implements AutoCloseable {
     // Never hold publicationLock while entering core: callbacks hold core's generation gate.
     private synchronized void setOption(String[] tokens) {
         if (closed) return;
+        // Explicit, protocol-compatible inspection of this instance's current binding.
+        // It neither reconstructs nor interrupts Search and adds no per-move output.
+        if (tokens.length == 5 && tokens[1].equalsIgnoreCase("name")
+                && tokens[2].equalsIgnoreCase("Show") && tokens[3].equalsIgnoreCase("Search")
+                && tokens[4].equalsIgnoreCase("Configuration")) {
+            identify();
+            return;
+        }
         if (tokens.length == 5 && tokens[1].equalsIgnoreCase("name")
                 && (tokens[2].equalsIgnoreCase("UseBook") || tokens[2].equalsIgnoreCase("OwnBook"))
                 && tokens[3].equalsIgnoreCase("value")

@@ -8,6 +8,27 @@ import com.ohinteractive.seedv6.search.driver.BaselineEngine;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AboutEnginePanelTest {
+    @Test void normalPlayReportsUnifiedFormulationAndActualWorkerSchedule() throws Exception {
+        String previous = System.getProperty(BaselineEngine.SearchProfile.PROPERTY);
+        try {
+            System.clearProperty(BaselineEngine.SearchProfile.PROPERTY);
+            var binding = PlayEvaluator.bundled(PlayEvaluator.Mode.CONVENTIONAL_CP64);
+            for (int workers : new int[]{1, 2, 3, 4, 5, 8, 16}) {
+                String text = AboutEnginePanel.play(PlayParticipants.shared(binding), true, false,
+                        GameController.GameMode.ENGINE_VS_ENGINE, GameController.HumanSide.WHITE, workers, true);
+                assertTrue(text.contains("MW-C4"));
+                assertTrue(text.contains("searchProfile=MW_C4 "));
+                assertTrue(text.contains("flags=1182007295"));
+                assertTrue(text.contains("parallel=" + (workers == 1 ? "OWNER" : "EAGER_ROOT")));
+                assertTrue(text.contains(binding.baseline().formulation(workers, 64).configurationId()));
+            }
+            assertTrue(BaselineEngine.productionFormulation().contains("W1-W16: MW-C4"));
+            assertFalse(BaselineEngine.productionFormulation().contains("W4:"));
+        } finally {
+            if (previous == null) System.clearProperty(BaselineEngine.SearchProfile.PROPERTY);
+            else System.setProperty(BaselineEngine.SearchProfile.PROPERTY, previous);
+        }
+    }
     @Test void idleLoadingAndHumanGamesDoNotClaimAnActiveDefault() {
         var bindings = PlayParticipants.shared(PlayEvaluator.handcrafted());
         assertTrue(play(bindings, false, false).contains("not an active runtime"));

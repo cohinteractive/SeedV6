@@ -20,16 +20,16 @@ import native_package_checks as checks
 # Independent accepted CP64 fixture: never assembled from verifier constants or
 # from the runtime being checked. HCE/BREP2 and historical E008 are not this default.
 def cp64_identity(workers=1, hash_mib=64):
-    return ('baseline=construction-v1-cp64 search=construction-v1 searchProfile=MW_C4_W4 '
-            f'flags={1182007295 if workers == 4 else 1177812991} '
+    return ('baseline=construction-v1-cp64 search=construction-v1 searchProfile=MW_C4 '
+            f'flags={1182007295} '
             'configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,'
             'CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,'
             'CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,'
             'HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,'
-            + ('HEURISTIC_TT_MEMORY,' if workers == 4 else '')
+            + 'HEURISTIC_TT_MEMORY,'
             + 'REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION];futility=100d;reverse=200d;'
             f'extensionCap=1;workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16;'
-            f'parallel={"OWNER" if workers == 1 else "EAGER_ROOT" if workers == 4 else "ROOT_REUSE"} '
+            f'parallel={"OWNER" if workers == 1 else "EAGER_ROOT"} '
             'evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=S6CNU002 heads=8 '
             'networkSha256=8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b '
             'payload=5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6 '
@@ -64,12 +64,12 @@ class PackagingSafety(unittest.TestCase):
 
     def test_cp64_identity_rejects_stale_or_wrong_search_and_evaluator(self):
         for old, new in (
-                ('flags=1177812991', 'flags=3407871'), ('searchProfile=MW_C4_W4', 'searchProfile=LEGACY'),
-                ('flags=1177812991', 'flags=262143'), ('flags=1177812991', 'flags=11778129910'),
+                ('flags=1182007295', 'flags=3407871'), ('searchProfile=MW_C4', 'searchProfile=LEGACY'),
+                ('flags=1182007295', 'flags=262143'), ('flags=1182007295', 'flags=11820072950'),
                 ('baseline=construction-v1-cp64', 'baseline=construction-v1-BREP2_32'),
                 ('search=construction-v1', 'search=E008_QXRAY_LMR_WINDOW_EFFORT_HINTS'),
                 ('flat-pvs-v1[', 'recursive-pvs['), (',NOMINAL_FUTILITY', ''), (',VERIFIED_NULL', ''), (',REQUEST_LEARNING', ''), (',HISTORY_EFFORT', ''), (',TACTICAL_VERIFICATION', ''),
-                ('flags=1177812991', 'flags=104071167'), ('searchProfile=MW_C4_W4', 'searchProfile=HL_G1'),
+                ('flags=1182007295', 'flags=104071167'), ('searchProfile=MW_C4', 'searchProfile=HL_G1'),
                 ('futility=100d', 'futility=101d'), ('aspiration=ADAPTIVE16', 'aspiration=WIDEN16'),
                 ('parallel=OWNER', 'parallel=ROOT_REUSE'), ('workers=1;', 'workers=4;'),
                 ('hashMiB=64;', 'hashMiB=8;'), ('evaluator=CONVENTIONAL_NNUE', 'evaluator=HCE'),
@@ -80,18 +80,20 @@ class PackagingSafety(unittest.TestCase):
                 ('score=side-to-move-cp', 'score=white-cp')):
             with self.subTest(field=old), self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
                 checks.verify_baseline_identity(cp64_identity().replace(old, new), 1, 64)
-        for identity in (cp64_identity().replace('flags=1177812991 ', ''), cp64_identity() + ' flags=262143'):
+        for identity in (cp64_identity().replace('flags=1182007295 ', ''), cp64_identity() + ' flags=262143'):
             with self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
                 checks.verify_baseline_identity(identity, 1, 64)
 
-    def test_c4_identity_requires_both_guarded_memory_and_eager_schedule_at_w4(self):
-        for old, new in [('flags=1182007295', 'flags=1177812991'),
-                         ('HEURISTIC_TT_MEMORY,', ''), ('parallel=EAGER_ROOT', 'parallel=ROOT_REUSE'),
-                         ('parallel=EAGER_ROOT', 'parallel=INDEPENDENT')]:
-            with self.subTest(field=old), self.assertRaises(RuntimeError):
-                checks.verify_baseline_identity(cp64_identity(4).replace(old, new), 4, 64)
-        with self.assertRaises(RuntimeError):
-            checks.verify_baseline_identity(cp64_identity(4).replace('workers=4;', 'workers=8;'), 8, 64)
+    def test_c4_identity_requires_guarded_memory_and_worker_appropriate_schedule(self):
+        for workers in (1, 2, 3, 4, 5, 8, 16):
+            schedule = 'OWNER' if workers == 1 else 'EAGER_ROOT'
+            for old, new in [('flags=1182007295', 'flags=1177812991'),
+                             ('HEURISTIC_TT_MEMORY,', ''),
+                             ('parallel=' + schedule, 'parallel=ROOT_REUSE'),
+                             ('parallel=' + schedule, 'parallel=INDEPENDENT'),
+                             ('searchProfile=MW_C4', 'searchProfile=MW_C4_W4')]:
+                with self.subTest(workers=workers, field=old), self.assertRaises(RuntimeError):
+                    checks.verify_baseline_identity(cp64_identity(workers).replace(old, new), workers, 64)
 
     def test_uci_identity_cannot_borrow_fields_from_other_protocol_lines(self):
         checks.verify_uci_identity(cp64_handshake(), 1, 64)
@@ -100,8 +102,8 @@ class PackagingSafety(unittest.TestCase):
                       ['id name SeedV6-74 source=fixture'], ['id name SeedV6-unknown']):
             with self.assertRaisesRegex(RuntimeError, 'Wrong UCI identity'):
                 checks.verify_uci_identity(names + cp64_handshake()[1:], 1, 64)
-        bad = cp64_handshake(cp64_identity().replace('flags=1177812991', 'flags=262143'))
-        bad.insert(-1, 'info string flags=1177812991')
+        bad = cp64_handshake(cp64_identity().replace('flags=1182007295', 'flags=262143'))
+        bad.insert(-1, 'info string flags=1182007295')
         for lines in (bad, cp64_handshake() + ['info string ' + cp64_identity()],
                       [line for line in cp64_handshake() if not line.startswith('info string baseline=')]):
             with self.assertRaises(RuntimeError):
@@ -113,9 +115,9 @@ class PackagingSafety(unittest.TestCase):
                 checks.verify_uci_identity(bad, 1, 64)
 
     def test_native_gate_checks_cold_default_before_setting_options(self):
-        for identity in (cp64_identity().replace('flags=1177812991', 'flags=3407871'),
-                         cp64_identity().replace('searchProfile=MW_C4_W4', 'searchProfile=LEGACY'),
-                         cp64_identity().replace('flags=1177812991', 'flags=262143'), cp64_identity(1, 8)):
+        for identity in (cp64_identity().replace('flags=1182007295', 'flags=3407871'),
+                         cp64_identity().replace('searchProfile=MW_C4', 'searchProfile=LEGACY'),
+                         cp64_identity().replace('flags=1182007295', 'flags=262143'), cp64_identity(1, 8)):
             with patch.object(checks, 'Engine') as engine_class:
                 engine = engine_class.return_value
                 engine.until.return_value = cp64_handshake(identity)
@@ -542,7 +544,7 @@ class PackagingSafety(unittest.TestCase):
         for app in ('gui', 'uci'):
             stage = self.work / app; stage.mkdir()
             identity = dict(p.production_manifest()['identity'], **{
-                'baseline.identity': cp64_identity().replace('flags=1177812991', 'flags=262143')})
+                'baseline.identity': cp64_identity().replace('flags=1182007295', 'flags=262143')})
             with patch.object(p, 'model_probe', return_value=identity), patch.object(p, 'run') as native:
                 with self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
                     p.build_image(context, app, stage, [])

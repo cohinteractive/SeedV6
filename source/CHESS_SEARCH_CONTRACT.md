@@ -1,12 +1,54 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R032**
+Internal revision: **P4-R033**
 
-Status: **ACTIVE Phase 4 - 5 November 2026. IC-R001 is GPT-reconciled, owner-accepted and formally closed with an INCONCLUSIVE playing-strength outcome; its governing W4 strength objective remains UNMET. No continuation, replacement experiment or successor is authorized. Existing production, closed campaigns, baseline79 and W1 champion HL-G1/build84 are preserved. No champion advancement, promotion, installation, push, deployment or release.**
+Status: **ACTIVE Phase 4 - 5 November 2026. Owner-authorized unified rolling production integration: MW-C4 EAGER_MEMORY is selected across W1-W16. Closed research outcomes, baseline79 and W1 champion HL-G1/build84 remain unchanged. No successor research, champion advancement, installation, push, deployment or release.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
+
+## Unified rolling production - 5 November 2026
+
+The owner authorizes one normal rolling production Search formulation across
+W1-W16. The shared CP64 default is **MW_C4 (MW-C4 EAGER_MEMORY)**, flags
+**1182007295 at every supported worker count**. W1 uses **OWNER** execution;
+W2-W16 select **EAGER_ROOT** cooperation. W4 retains the exact prior configuration,
+including the existing shallow/unbounded-window scheduling rules. Worker count
+changes execution resources and scheduling, not the adopted feature set.
+
+GUI Play, built-in Arena and UCI use the shared engine-core factory. Loaded
+profiles survive worker/hash/clock reconstruction. About describes the common
+normal formulation and each loaded Play binding. UCI keeps `SeedV6-<build>` and
+adds `setoption name Show Search Configuration`, a standard button emitting
+`info string` snapshots of the actual profile, flags, workers, schedule, hash,
+evaluator, clock and configuration fingerprint, without per-move verbosity.
+BotLi engine-name substitution is distinct from optional diagnostic visibility;
+no spectator-chat diagnostic display is assumed or external bot changed.
+
+Explicit `-Dseedv6.searchProfile=TC_P1` retains exact TC-P1, flags1177812991,
+OWNER at W1 and ROOT_REUSE at W2-W16. `MW_C4_W4` retains the historical build96
+worker-dependent selector only when explicitly requested. HL_G1, LEGACY,
+evaluator-specific routes and independent exact/research controls remain intact.
+No second production implementation or new Search heuristic is introduced.
+
+[Production integration record](../docs/research/search/p4-multiworker/PRODUCTION.md)
+owns source/artifact identities, technical checks, bounded exploratory observations,
+limitations and rollback. Source qualification passed 405 JUnit checks plus 22 focused
+rechecks and Windows headless packaging/runtime checks. The bounded W1/W4/W8
+competitive plan was refused by the existing foreground-workload resource guard
+before any game started; no new strength observation is claimed. W4's historical independent 61.71875% result remains
+limited to its original domain; other workers have no independent MW-C4 strength
+qualification. This integration neither changes that conclusion nor reopens
+MW-R001, IC-R001, TT-R001 or frozen independent clock studies.
+
+Current masters are **P4-R033/P4-F051**. The owner must refresh both Phase 4
+Project Source mirrors before subsequent mirror-dependent GPT coordination;
+repository changes do not upload them. This is non-blocking for repository
+integration. Interactive visual checks are explicitly reserved to the owner;
+Codex does not open the app for visual confirmation. Installed clients and
+platform acceptance remain separate from implemented repository changes.
+Historical revision/selection statements below retain their original time scope.
 
 ## IC-R001 accepted inconclusive closeout - 5 November 2026
 
@@ -46,14 +88,14 @@ Observed HEAD4af0e298/build97 adds packaging/UCI identity changes; Search source
 matches44fc2bf2/build96. Preserve pinned build96 as the competitive control.
 MW-R001 and TT-R001 remain closed; historical no-successor statements below
 refer to their prior authorizations, superseded only for the now-closed IC-R001 launch.
-The owner confirms launch Project Source mirrors P4-R029/P4-F047. Current masters
-are **P4-R032/P4-F050**; owner upload of both masters is required before subsequent
+The owner confirmed launch Project Source mirrors P4-R029/P4-F047. At this closeout
+the masters were **P4-R032/P4-F050**; owner upload of both masters is required before subsequent
 mirror-dependent GPT research coordination, non-blocking for this completed closeout.
 Repository edits do not refresh mirrors. Shared behavioral governance, its R4 projection and registry are unchanged.
 Historical revision/mirror requests below record earlier decisions; this section
-owns the current master pair and mirror requirement.
+recorded that closeout's master pair and mirror requirement.
 
-## Rolling production selection - 5 November 2026
+## Historical build96 rolling production selection - 5 November 2026
 
 The owner separately adopts **MW-C4 EAGER_MEMORY for normal W4 CP64 Search**.
 Shared engine-core profile **MW_C4_W4** selects flags1182007295 / **EAGER_ROOT**
@@ -289,6 +331,30 @@ investigate and proportionately adapt surrounding mechanisms when compatibility
 is necessary to establish the foundation's effectiveness.
 
 ### Rolling experimental production baseline
+
+Exactly **one normal rolling production Search formulation** is maintained
+across all supported worker counts W1-W16. The same adopted, applicable Search
+features and policy are selected regardless of worker count. Worker counts may
+change execution ownership, parallel scheduling and genuinely worker-dependent
+implementation details; they must not implicitly select older or different
+adopted feature sets. Applicable evaluator-specific calibration and independent
+exact controls retain their distinct semantics. Identical schedules, nodes,
+move choices or playing strength across worker counts are not required.
+
+When evaluating formulations, Codex should reasonably investigate competitive
+strength at representative worker counts, proportionately to the objective and
+available resources. Independent superiority or equivalence at every worker
+count is **not** a prerequisite to owner-authorized experimental production
+adoption. Adoption considers practical strength, competitive uncertainty,
+operational costs, interactions with existing features and credible potential
+for stronger future integrated formulations. Material competitive uncertainty
+must be disclosed to the owner; it is neither hidden nor automatically a veto.
+The adopted formulation becomes the common starting point for subsequent
+production evolution. Historical controls, explicit rollback profiles and
+experimental configurations remain available, without becoming alternative
+automatic production defaults. Genuine chess correctness, board/history
+integrity, score validity, safe concurrency, truthful reporting and reliable
+lifecycle operation remain mandatory at every supported worker count.
 
 The latest explicitly owner-adopted integrated Search formulation is the rolling
 production baseline for normal GUI Play, built-in Arena and UCI. Future authorized

@@ -16,7 +16,7 @@ def main():
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--install', type=Path)
     source.add_argument('--launcher', type=Path, help='Native packaged UCI launcher')
-    parser.add_argument('--profile', choices=('MW_C4_W4', 'TC_P1', 'HL_G1', 'LEGACY'), default='MW_C4_W4')
+    parser.add_argument('--profile', choices=('MW_C4', 'MW_C4_W4', 'TC_P1', 'HL_G1', 'LEGACY'), default='MW_C4')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     output = args.output.resolve(); output.mkdir(parents=True, exist_ok=False)
@@ -26,7 +26,7 @@ def main():
     env = {k: v for k, v in os.environ.items() if k not in
            ('JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS', 'JAVA_OPTS', 'SEEDV6_UCI_OPTS', 'CLASSPATH')}
     allowed = (VECTOR_WARNING, REJECTED)
-    if args.profile != 'MW_C4_W4':
+    if args.profile != 'MW_C4':
         env['JAVA_TOOL_OPTIONS'] = '-Dseedv6.searchProfile=' + args.profile
         allowed += ('Picked up JAVA_TOOL_OPTIONS: -Dseedv6.searchProfile=' + args.profile, )
     report = dict(status='FAIL', profile=args.profile, sessions=[], workers=[],
@@ -39,12 +39,17 @@ def main():
 
     def identify(engine, workers, hash_mib):
         engine.send('uci'); lines = engine.until('uciok'); identity = '\n'.join(lines)
-        c4 = args.profile == 'MW_C4_W4' and workers == 4
-        flags = {'MW_C4_W4': 1182007295 if c4 else 1177812991,
+        engine.send('setoption name Show Search Configuration\nisready')
+        snapshot = engine.until('readyok')
+        check(not any(line.startswith('id name ') for line in snapshot), 'Inspection repeated handshake')
+        check([line for line in lines if line.startswith('info string ')] ==
+              [line for line in snapshot if line.startswith('info string ')], 'Inspection differs from current identity')
+        c4 = args.profile == 'MW_C4' or args.profile == 'MW_C4_W4' and workers == 4
+        flags = {'MW_C4': 1182007295, 'MW_C4_W4': 1182007295 if c4 else 1177812991,
                  'TC_P1': 1177812991, 'HL_G1': 104071167, 'LEGACY': 3407871}[args.profile]
         features = ('NOMINAL_FUTILITY,VERIFIED_NULL' + (',HEURISTIC_TT_MEMORY' if c4 else '')
                     + (',REQUEST_LEARNING,HISTORY_EFFORT' if args.profile != 'LEGACY' else '')
-                    + (',TACTICAL_VERIFICATION' if args.profile in ('TC_P1', 'MW_C4_W4') else '') + ']')
+                    + (',TACTICAL_VERIFICATION' if args.profile in ('TC_P1', 'MW_C4', 'MW_C4_W4') else '') + ']')
         parallel = 'OWNER' if workers == 1 else 'EAGER_ROOT' if c4 else 'ROOT_REUSE'
         check('parallel=' + parallel in identity, 'Wrong scheduling identity')
         for value in (f'flags={flags} ', f'searchProfile={args.profile} ', features, SHA, 'schema=S6CNU002 heads=8',
@@ -76,7 +81,7 @@ def main():
             engine.until('readyok'); identify(engine, workers, hash_mib)
             lines = search(engine, 'startpos', chess.Board(), 'depth 3')
             check(any(line.startswith('info depth 3 ') for line in lines), 'Incomplete depth 3')
-            if workers in (1, 2, 4, 8, 16):
+            if workers in (1, 2, 3, 4, 5, 8, 16):
                 lines = search(engine, 'startpos', chess.Board(), 'depth 40 nodes 25000')
                 check(any('request nodes=25000 ' in line for line in lines), 'Whole-request budget mismatch')
                 engine.send('position startpos\ngo infinite\nisready'); engine.until('readyok')

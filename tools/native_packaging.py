@@ -597,11 +597,11 @@ def package_locked(a, context, jars, output):
         engine = {'model': identity, 'coreJarSha256': sha(app / 'engine-core.jar'),
                   'coreContent': core_content(app / 'engine-core.jar'),
                   'productionSearch': {'profile': dict(field.split('=', 1) for field in identity['baseline.identity'].split()
-                                                       if '=' in field)['searchProfile'], 'flags': CP64_TC_P1_FLAGS,
+                                                       if '=' in field)['searchProfile'], 'flags': CP64_MW_C4_FLAGS,
                      'defaultWorkers': 1,
-                     'workerRouting': {'W4': {'formulation': 'MW-C4', 'flags': CP64_MW_C4_FLAGS, 'parallel': 'EAGER_ROOT'},
-                                       'W1-W3,W5-W16': {'formulation': 'TC-P1', 'flags': CP64_TC_P1_FLAGS,
-                                                        'parallel': 'OWNER at W1; ROOT_REUSE otherwise'}},
+                     'workerRouting': {'W1': {'formulation': 'MW-C4', 'flags': CP64_MW_C4_FLAGS, 'parallel': 'OWNER'},
+                                       'W2-W16': {'formulation': 'MW-C4', 'flags': CP64_MW_C4_FLAGS,
+                                                   'parallel': 'EAGER_ROOT'}},
                      'evaluator': 'Conventional NNUE CP64', 'schema': 'S6CNU002', 'materialHeads': 8,
                      'configuration': identity['baseline.identity']},
                   'coreInputs': {n: v for n, v in context['source']['files'].items()

@@ -9,6 +9,43 @@ import com.ohinteractive.seedv6.search.manage.ClockPolicy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FormulationUciTest {
+    @Test void inspectionButtonReportsCurrentBindingWithoutAnotherHandshakeOrReconstruction() throws Exception {
+        String previous = System.getProperty(BaselineEngine.SearchProfile.PROPERTY);
+        try {
+            System.clearProperty(BaselineEngine.SearchProfile.PROPERTY);
+            var configuration = BaselineUciConfiguration.load();
+            System.setProperty(BaselineEngine.SearchProfile.PROPERTY, "LEGACY");
+            var commands = new StringBuilder("uci\n");
+            for (int workers : new int[]{1, 2, 3, 4, 5, 8, 16}) {
+                commands.append("setoption name Threads value ").append(workers).append("\n");
+                commands.append("setoption name Hash value 1\nsetoption name ClockPolicy value FACTUAL\n");
+                commands.append("setoption name Show Search Configuration\nisready\n");
+            }
+            commands.append("quit\n");
+            var output = new ByteArrayOutputStream(); var error = new ByteArrayOutputStream();
+            try (var engine = new UciEngine(new ByteArrayInputStream(commands.toString().getBytes(StandardCharsets.UTF_8)),
+                    output, error, configuration)) { engine.run(); }
+            String text = output.toString(StandardCharsets.UTF_8);
+            assertEquals("", error.toString(StandardCharsets.UTF_8));
+            assertTrue(text.contains("option name Show Search Configuration type button"));
+            assertEquals(1, text.lines().filter(s -> s.startsWith("id name SeedV6-")).count());
+            assertEquals(8, text.lines().filter(s -> s.startsWith("info string formulation snapshot:")).count());
+            var identities = text.lines().filter(s -> s.contains("searchProfile=")).toList();
+            assertEquals(8, identities.size());
+            for (int workers : new int[]{1, 2, 3, 4, 5, 8, 16}) {
+                String identity = identities.stream().filter(s -> s.contains("workers=" + workers + ";hashMiB=1;")).findFirst().orElseThrow();
+                assertTrue(identity.contains("searchProfile=MW_C4 "));
+                assertTrue(identity.contains("flags=1182007295"));
+                assertTrue(identity.contains("parallel=" + (workers == 1 ? "OWNER" : "EAGER_ROOT")));
+                assertTrue(identity.contains("evaluator=CONVENTIONAL_NNUE checkpoint=64"));
+                assertTrue(identity.contains("clockPolicy=" + ClockPolicy.FACTUAL.identity()));
+                assertTrue(text.contains(configuration.withClockPolicy(ClockPolicy.FACTUAL).formulation(workers, 1).configurationId()));
+            }
+        } finally {
+            if (previous == null) System.clearProperty(BaselineEngine.SearchProfile.PROPERTY);
+            else System.setProperty(BaselineEngine.SearchProfile.PROPERTY, previous);
+        }
+    }
     @Test void handshakeKeepsNameAndOptionsAndReportsCurrentSnapshot() throws Exception {
         String previous = System.getProperty(BaselineEngine.SearchProfile.PROPERTY);
         try {

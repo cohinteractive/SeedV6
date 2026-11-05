@@ -1,3 +1,123 @@
+# Unified MW-C4 rolling production - 5 November 2026
+
+Revision 2. Owner-authorized production integration, independent of closed
+MW-R001 and IC-R001. Started from clean main `2e45f703`, build97,
+P4-R032/P4-F050. The current masters are **P4-R033/P4-F051**. The earlier build96
+record below is preserved in its historical domain, including its evidence,
+qualifications and original handback. It does not define the current default.
+
+## Unified selection and consumers
+
+**MW_C4 (MW-C4 EAGER_MEMORY)** is the one normal CP64 Search profile at W1-W16,
+with **flags1182007295** everywhere. W1 uses OWNER; W2-W16 use EAGER_ROOT.
+W4's complete configuration equals explicit historical MW_C4_W4 at W4. The
+existing kernel, TT, aspiration and eager scheduling algorithms are unchanged;
+no unrelated heuristic is tuned. W1 safely consumes the same guarded TT memory
+in its existing single owner. At multiple workers, the existing coordinator owns
+request generations and the common synchronized TT; boards, evaluator state,
+PV stacks, learning and history remain worker-private, and all workers drain
+before reuse/reset/shutdown. Finite eligible roots use eager jobs; shallow,
+single-legal-move, drawn and unbounded-window cases retain existing scheduling
+rules. These are execution conditions, not worker-dependent feature selection.
+
+| Representative workers | Profile | Flags | Schedule |
+| --- | --- | --- | --- |
+| W1 | MW_C4 | 1182007295 | OWNER |
+| W2, W3, W4, W5, W8, W16 | MW_C4 | 1182007295 | EAGER_ROOT |
+
+All other supported counts use the same applicable features. Default W1,
+Hash64, CP64 checkpoint/payload, PVS/ADAPTIVE16 and BOUNDARY2 remain unchanged.
+The existing exact-control and non-CP64 evaluator routes retain their meanings.
+No second production Search implementation is added.
+
+GUI Play, built-in Arena and UCI inherit the common engine-core selection.
+Profiles are snapshotted when loaded and survive worker/hash/clock reconstruction.
+About's production description now says W1-W16 MW-C4 and derives flags and
+scheduling from the factory; its Play details still describe actual loaded
+bindings, including explicit overrides. It does not claim to observe Arena.
+Native production manifests also identify MW_C4 with W1/OWNER and W2-W16/EAGER_ROOT.
+
+UCI's supported executable name remains `SeedV6-<build>`. Send
+`setoption name Show Search Configuration` followed by `isready` to inspect the
+actual loaded profile, feature flags, worker/hash resources, schedule, evaluator,
+clock, source/build and configuration fingerprint. The standard button emits
+`info string` reports and adds no normal-game output or Search reconstruction.
+The initial `uci` handshake retains its existing snapshots. BotLi's engine-name
+substitution does not establish spectator-chat display of diagnostic strings;
+no external BotLi installation, configuration or process is touched.
+
+## Qualification and competitive limits
+
+[Compact qualification record](unified-production-qualification.json) binds
+source, configuration, tests, local evidence and artifact identities.
+**405 JUnit checks passed** (215 core, 89 GUI, 28 UCI, one multi-domain Arena test,
+72 focused research/control checks), with zero failures/errors/skips in the
+passing results. The Arena test executes bounded temporary-store fixtures at
+W1/W2/W3/W4/W5/W8/W16 with all three supported competitive evaluators. These
+fixtures are technical checks, not competitive games. A subsequent **22 focused
+rechecks** passed after deriving About's display values directly from the factory.
+Coverage includes all W1-W16 actual production kernels, shared TT/private state,
+flags and scheduling, snapshot/reconstruction, legal PV and state restoration,
+real history/repetition, mate scores, node accounting, hard stops, cancellation,
+reset/reuse, full drain, exact controls and GUI/UCI/Arena routes. Existing
+independent exact tests retain their semantics; cross-worker node equality is
+not asserted. Project dependency boundaries passed.
+
+**40 Python packaging checks passed; one Windows symlink-privilege fixture was
+skipped.** Source validation initially found an outdated W1 comparison fixture
+that still constructed TC-P1; adding adopted memory to that explicit expected
+formulation resolved it, and the entire 215-test core suite passed again. The
+first process verifier invocation used a Python without `chess`; the existing
+research virtual environment resolved that environment issue. Failure logs are
+preserved, not presented as successful runs.
+
+Java UCI qualification passed **168 searches**, 56 each for default MW_C4,
+exact TC_P1 and historical MW_C4_W4. Each profile covers all W1-W16 and the
+on-demand identity button, hash/clock reconstruction, legal moves/PVs,
+accounting, hard stops, reset/reuse, terminal/mate/history, quit and EOF.
+Precommit Windows GUI/UCI packaging and extracted-package checks passed in
+2m15s, using identical shared engine-core bytes and bundled Temurin21.0.12.1.
+GUI resource/JNI checks are headless. These provisional packages embed build97
+with an uncommitted-source marker and are **not** the historical build97 artifact.
+
+The prospectively recorded [bounded observation plan](unified-production-exploration-v1.json)
+was 24 games: four same-worker opening pairs each at W1/W4/W8 against exact
+TC_P1, 10+0.1, Hash64, CP64, BOUNDARY2, sequential Fastchess, no tuning or sample
+extension, within the owner's 48-game/60-minute ceiling. The existing resource
+guard detected Overwatch in the foreground and refused admission before engine
+or match launch: **zero initiated/completed games; zero charged match wall time**.
+The attempted plan and refusal are retained under `raw/unified-production-v1/`.
+No competitive conclusion is available; no closed campaign or clock study ran.
+
+Historical MW-R001 remains 150W/95D/75L in 320 independent W4 games, **61.71875%**,
+paired-normal95%57.5083-65.9292%, in its recorded Windows/Java21 domain. It is
+not evidence of strength transfer to W1 or other counts. Higher-worker cost,
+competitive regressions/improvements, warmed persistent clients, longer clocks
+and other platforms remain uncertain. Technical qualification is not independent
+playing-strength qualification. Baseline79, corrected80, champion HL-G1/build84,
+TC-P1/build90, confirmed MW-C4/build94 and all frozen results remain unchanged.
+
+## Rollback and owner handoff
+
+Use `-Dseedv6.searchProfile=TC_P1` to select exact prior TC-P1 at every count
+(flags1177812991; W1 OWNER, W2-W16 ROOT_REUSE). `MW_C4_W4` explicitly restores
+the build96 worker-dependent selector. HL_G1 and LEGACY retain their identities.
+For generated Java UCI set process-local `SEEDV6_UCI_OPTS`; for native launchers
+use process-local `JAVA_TOOL_OPTIONS`, preserving other options. Restart without
+the override for unified normal production. Verify both `id name` and the
+on-demand configuration report; a build number alone does not establish selection.
+
+Visual GUI/About confirmation is reserved to the owner by explicit instruction;
+no app is opened for visual confirmation. macOS/native non-Windows and live BotLi
+acceptance are not established. No installation, replacement, push, release or
+deployment is performed. Required human actions: visual checks are non-blocking
+for repository integration and blocking for visual desktop acceptance; refresh
+both Project Source mirrors to P4-R033/P4-F051 before mirror-dependent coordination
+(non-blocking here). Owner acceptance and any later deployment are separate.
+No blocking human action remains for the implemented repository integration.
+
+---
+
 # MW-C4 W4 rolling production adoption - 5 November 2026
 
 Revision 1, final qualification complete. Owner-authorized production integration, separate from the accepted

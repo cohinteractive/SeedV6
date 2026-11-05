@@ -110,7 +110,7 @@ class BaselineEngineTest {
                 assertEquals(AspirationSearch.Policy.ADAPTIVE16, field(aspiration, "policy"));
                 var owner = field(aspiration, "owner");
                 var kernel = workers == 1 ? field(owner, "exact") : owner;
-                assertEquals(workers == 4 ? 1182007295L : 1177812991L, ((FlatSearchConfig)
+                assertEquals(1182007295L, ((FlatSearchConfig)
                         field(kernel, "construction")).flags());
                 if (workers > 1) assertEquals(workers, ((Object[]) field(owner, "workers")).length);
                 var completed = driver.search(new SearchRequest(board, 3));
@@ -135,7 +135,8 @@ class BaselineEngineTest {
                              .with(FlatSearchConfig.Feature.VERIFIED_NULL, true)
                              .with(FlatSearchConfig.Feature.REQUEST_LEARNING, true)
                              .with(FlatSearchConfig.Feature.HISTORY_EFFORT, true)
-                             .with(FlatSearchConfig.Feature.TACTICAL_VERIFICATION, true),
+                             .with(FlatSearchConfig.Feature.TACTICAL_VERIFICATION, true)
+                             .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true),
                              1, 8, AspirationSearch.Policy.ADAPTIVE16).create(engine.evaluation()))) {
             var a = actual.search(new SearchRequest(board, 6)).lastCompletedResult();
             var b = explicit.search(new SearchRequest(board, 6)).lastCompletedResult();

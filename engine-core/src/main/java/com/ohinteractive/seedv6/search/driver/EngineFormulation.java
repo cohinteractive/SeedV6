@@ -32,7 +32,7 @@ public record EngineFormulation(ConstructionSearch search, String evaluator, Str
                     case TC_P1 -> "TC-P1 — HL-G1 + bounded capture ProbCut";
                     case HL_G1 -> "HL-G1 — retained Search learning and history-guided reductions";
                     case LEGACY -> "LEGACY — pre-HL Search configuration";
-                    case MW_C4_W4 -> "MW-C4 — eager root scheduling + guarded TT memory over TC-P1";
+                    case MW_C4, MW_C4_W4 -> "MW-C4 — guarded TT memory over TC-P1; eager root cooperation with multiple workers";
                 };
         }
         if (actual.equals(FlatSearchConfig.candidate())) return "Construction V1";
