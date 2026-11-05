@@ -1,0 +1,12 @@
+{
+  "initialStudy": {
+    "path": "docs\\research\\search\\p4-critical-line\\raw\\ClvStudy-v1.java",
+    "sha256": "74a4183635ea6999917d0c509a0eabdff962c40c189c012a5e713c0b5026526e",
+    "recovery": "Reconstructed initial harness from attributable W1-support diff; exact hash matches pre-run protocol."
+  },
+  "initialKernelPatch": {
+    "path": "docs\\research\\search\\p4-critical-line\\raw\\c1-source.patch",
+    "sha256": "6c48643359fd3676d756981af9c1b05dbda867162cb7dee8896619c150363919"
+  },
+  "base": "b8ac447e9f3d2ed0aa4935ea495a5a7df24a85bf"
+}

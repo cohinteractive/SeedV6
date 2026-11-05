@@ -1,0 +1,37 @@
+{
+  "campaign": "CLV-R001",
+  "ceilings": {
+    "chargedWallSeconds": 86400,
+    "initiatedTimedGames": 1280,
+    "developmentGames": 640,
+    "confirmationGames": 640,
+    "confirmationAttempts": 1
+  },
+  "consumed": {
+    "chargedWallSeconds": 129.082105800102,
+    "fixedWallSeconds": 129.082105800102,
+    "timedWallSeconds": 0,
+    "fixedNodes": 81385004,
+    "initiatedTimedGames": 0,
+    "developmentGames": 0,
+    "confirmationGames": 0,
+    "completedTimedGames": 0,
+    "failedTimedGames": 0,
+    "interruptedTimedGames": 0,
+    "confirmationAttempts": 0
+  },
+  "planningReserve": {
+    "confirmationGames": 640,
+    "confirmationWallSeconds": 21600
+  },
+  "authorizedIdleWindows": [],
+  "pending": [],
+  "ownedProcesses": [],
+  "receipts": [
+    "docs\\research\\search\\p4-critical-line\\c1-fixed-w4-v2-execution.json",
+    "docs\\research\\search\\p4-critical-line\\c1-fixed-w1-v1-execution.json",
+    "docs\\research\\search\\p4-critical-line\\c1-reference-w1-v1-execution.json",
+    "docs\\research\\search\\p4-critical-line\\c1-repeat-w4-v1-execution.json",
+    "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-v1-execution.json"
+  ]
+}

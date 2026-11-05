@@ -112,10 +112,11 @@ class P4TacticalTest {
         }
     }
 
-    @Test void adoptedProfileMatchesDefaultAndPreservesHistoricalFlags() {
+    @Test void explicitTacticalProfilePreservesHistoricalFlagsUnderUnifiedDefault() {
         assertEquals(1177812991L,config().flags());
         assertEquals(104071167L,P4TacticalStudy.flags("guided",1).flags());
-        assertEquals(1177812991L,BaselineEngine.configuration(1,64).mechanisms().flags());
+        assertEquals(1177812991L,BaselineEngine.configuration(1,64,BaselineEngine.SearchProfile.TC_P1).mechanisms().flags());
+        assertEquals(1182007295L,BaselineEngine.configuration(1,64).mechanisms().flags());
         assertEquals(3407871L,BaselineEngine.legacyConfiguration(1,64).mechanisms().flags());
         assertThrows(IllegalArgumentException.class,()->FlatSearchConfig.exact().with(TACTICAL_VERIFICATION,true));
     }

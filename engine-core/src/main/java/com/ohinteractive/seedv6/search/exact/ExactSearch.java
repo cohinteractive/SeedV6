@@ -98,6 +98,9 @@ public final class ExactSearch {
     /** Scaled policy protecting the first three actually searched quiet children. */
     public static final int LMR_QUIET = 5;
     private final int lmrPolicy;
+    // CLV-C1 research-only cumulative observations, private to this kernel owner.
+    // Kept across root jobs/aborts so completed-job snapshots do not omit work.
+    private long criticalTtNodes, criticalTtReliefs;
     private final LmrDiagnostics lmrDiagnostics;
     public static final int LMP_OFF = 0, LMP_SHALLOW = 1, LMP_LMR = 2, LMP_COMBINED = 3;
     public static final int LMP_GUARDED = 4, LMP_DEPTH_TWO = 5;
@@ -245,6 +248,25 @@ public final class ExactSearch {
             result.put("tacticalProbeNodes",s.tacticalProbeNodes);
         }
         return java.util.Collections.unmodifiableMap(result);
+    }
+
+    /** Lifetime counters, read only after the owner has drained. Not confidence. */
+    long[] criticalLineCounters() {
+        if(active) throw new IllegalStateException("Search active");
+        return new long[]{criticalTtNodes,criticalTtReliefs};
+    }
+
+    /** CLV-C1: node-level selective evidence, not a score/move association or proof.
+     * The caller has already excluded synthetic/verification work and checked the
+     * completed hint's legality. No extra TT read, evaluation or score substitution. */
+    static boolean criticalTtRelief(long data,int generation,int depth,int ply,int alpha,int beta) {
+        int storedDepth=(int)(data&255),type=(int)(data>>>8)&3,estimate=(int)(data>>32);
+        return ply>0 && depth>=4 && beta==alpha+1
+                && alpha>=-MAX_STATIC_SCORE && beta<=MAX_STATIC_SCORE
+                && ((data>>>10)&255)==generation
+                && storedDepth>=depth-2 && storedDepth<depth
+                && (type==TTable.TYPE_LOWER || type==TTable.TYPE_EXACT)
+                && estimate>=beta && estimate<=MAX_STATIC_SCORE;
     }
 
     /** Explicit immutable composition; ordinary constructors and references stay unchanged. */
@@ -1213,6 +1235,10 @@ public final class ExactSearch {
                         }
                         if(!containsMove(legalMoves,count,hashMove)) hashMove=0;
                         int estimate=(int)(data>>32),type=(int)(data>>>8)&3;
+                        if(construction.has(FlatSearchConfig.Feature.TT_CRITICAL_RELIEF)
+                                && hashMove!=0 && criticalTtRelief(data,generation,depth,ply,originalAlpha,originalBeta)) {
+                            flags|=32;criticalTtNodes++;
+                        }
                         if(ply>0 && originalBeta==originalAlpha+1
                                 && originalAlpha>=-MAX_STATIC_SCORE && originalBeta<=MAX_STATIC_SCORE
                                 && (data&255)>=depth && (((data>>>10)&255)==generation
@@ -1389,6 +1415,10 @@ public final class ExactSearch {
                         if(adjusted<reduction)constructionState.historyLess++;
                         reduction=adjusted;
                     }
+                    // A near-depth bound predicted this node could exceed beta.
+                    // Spend one extra ply on otherwise reduced quiet alternatives;
+                    // existing fail-high verification, history and extension limits remain.
+                    if(reduction>0 && (flags&32)!=0) {reduction--;criticalTtReliefs++;}
                     if(selectivityTrace!=null && !nullProbeActive && !nullVerification) {
                         int context=ContinuationHistory.context(constructionState.pathMoves[ply]);
                         int continuation=constructionState.continuation!=null && context>=0

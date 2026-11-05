@@ -1,0 +1,58 @@
+{
+  "source": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "build": 96,
+  "currentSource": "b8ac447e9f3d2ed0aa4935ea495a5a7df24a85bf",
+  "currentVersion": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 98
+  },
+  "versionBaselineHex": "7b0a2020226d616a6f72223a20302c0a2020226d696e6f72223a20302c0a2020227061746368223a20302c0a2020226275696c64223a2039380a7d0a",
+  "versionBaselineSha256": "f1166d261db7122eb1e631bed6093d4239a0338e15af6887fb8d589dac5c71be",
+  "historicalArtifactChecks": {
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\SeedV6-UCI.exe": "bdbc9928255cf6a96ae6f3604007089121b4573198d11b628d51d62d572702af",
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\app\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI-windows-x64.zip": "01daacdb0776270f06bce0f34979cd17f2f3a4f8be1d4bcebb40526d6f0a51b1",
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\SeedV6-UCI\\build-manifest.json": "8699a1fa601a063eabb05e69da00c12860c01e630524d058b69bea2bd82e0857",
+    "releases\\candidates\\windows-x64\\mw-c4-build96-v1\\candidate.json": "15c616288e8392b027af1cf2aa482722a7d153a028ad0be279a196d3018ac1db"
+  },
+  "pinnedRuntimeFiles": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\.jpackage.xml": "0f232d5e96b42971bde756bd1f54f39962c19941a78f7394f076efbb4d4bc1eb",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\app-uci.jar": "d2205f09ff015cbfaa7eaa8d337716ec40bb1d7f51b23dba91f66ac472200111",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\SeedV6-NNUE-CP64.cfg": "b6aa97a2a897acb5fc48a3f5903c6e52256b5513a83a2ab518004c54b9bffe34",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\baseline-build96-v1\\app\\SeedV6-UCI.cfg": "c8803fd617b5425d2f88c2070f34c2570424b461bdd9fbfbfab0bfcf615b0f1d"
+  },
+  "java": "C:\\java\\jdk-21\\bin\\java.exe",
+  "javaSha256": "28b603f0fc719e06f020bcb99f2b5c01f27234adccb1f525b004850d506e1950",
+  "javaVersion": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+  "model": "build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+  "modelSha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+  "payloadSha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+  "configuration": {
+    "workers": 4,
+    "hashMiB": 64,
+    "flags": 1182007295,
+    "schedule": "EAGER_ROOT",
+    "aspiration": "ADAPTIVE16",
+    "clock": "BOUNDARY2",
+    "profile": "MW_C4_W4"
+  },
+  "comparison": "Exact pinned build96 core and UCI dependencies; Java21 research invocation, no installed engine changed. Native package runtime is separately recorded in historical qualification.",
+  "launchSource": "b8ac447e9f3d2ed0aa4935ea495a5a7df24a85bf",
+  "verifiedUtc": "2026-11-05T21:18:28.269770+00:00",
+  "searchDiffFromExact96": "diff --git a/engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/BaselineEngine.java b/engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/BaselineEngine.java\nindex f4171bc8..73cb748f 100644\n--- a/engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/BaselineEngine.java\n+++ b/engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/BaselineEngine.java\n@@ -23,13 +23,13 @@ public final class BaselineEngine {\n     public enum Evaluator { HCE, BREP2_32, CONVENTIONAL_CP64 }\n     /** CP64 production policy only; explicit ConstructionSearch controls bypass this selector. */\n     public enum SearchProfile {\n-        TC_P1, HL_G1, LEGACY, MW_C4_W4;\n-        public static final SearchProfile PRODUCTION_DEFAULT = MW_C4_W4;\n+        TC_P1, HL_G1, LEGACY, MW_C4, MW_C4_W4;\n+        public static final SearchProfile PRODUCTION_DEFAULT = MW_C4;\n         public static final String PROPERTY = \"seedv6.searchProfile\";\n         public static SearchProfile configured() {\n             try { return valueOf(System.getProperty(PROPERTY, PRODUCTION_DEFAULT.name()).trim().toUpperCase(Locale.ROOT)); }\n             catch (IllegalArgumentException invalid) {\n-                throw new IllegalArgumentException(\"seedv6.searchProfile must be MW_C4_W4, TC_P1, HL_G1 or LEGACY\", invalid);\n+                throw new IllegalArgumentException(\"seedv6.searchProfile must be MW_C4, TC_P1, HL_G1, LEGACY or historical MW_C4_W4\", invalid);\n             }\n         }\n     }\n@@ -73,17 +73,20 @@ public final class BaselineEngine {\n     public static ConstructionSearch configuration(int workers, int hashMiB, SearchProfile profile) {\n         Objects.requireNonNull(profile);\n         var legacy = legacyConfiguration(workers, hashMiB);\n-        // The adopted policy resolves afresh for each resource reconstruction. Only W4\n-        // selects confirmed C4; explicit TC_P1 remains the exact ROOT_REUSE rollback.\n-        boolean memory = profile == SearchProfile.MW_C4_W4 && workers == 4;\n+        // One adopted feature set at every worker count. W1 owns its search directly;\n+        // multiple workers cooperate eagerly. MW_C4_W4 preserves the build96 selector\n+        // solely as an explicit historical control; TC_P1 is the exact rollback.\n+        boolean memory = profile == SearchProfile.MW_C4\n+                || profile == SearchProfile.MW_C4_W4 && workers == 4;\n         return new ConstructionSearch(legacy.mechanisms()\n                 .with(FlatSearchConfig.Feature.REQUEST_LEARNING, profile != SearchProfile.LEGACY)\n                 .with(FlatSearchConfig.Feature.HISTORY_EFFORT, profile != SearchProfile.LEGACY)\n                 // Exact TC-P1/build89 formulation; HL_G1 and LEGACY retain their prior meanings.\n                 .with(FlatSearchConfig.Feature.TACTICAL_VERIFICATION,\n-                        profile == SearchProfile.TC_P1 || profile == SearchProfile.MW_C4_W4)\n+                        profile == SearchProfile.TC_P1 || profile == SearchProfile.MW_C4\n+                                || profile == SearchProfile.MW_C4_W4)\n                 .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, memory),\n-                workers, hashMiB, legacy.aspiration(), memory\n+                workers, hashMiB, legacy.aspiration(), memory && workers > 1\n                         ? ConstructionSearch.RootScheduling.EAGER_ROOT : ConstructionSearch.RootScheduling.STANDARD);\n     }\n     /** Pre-HL production policy, independent of defaults/properties. Retains current correctness fixes. */\n@@ -155,8 +158,11 @@ public final class BaselineEngine {\n         return new EngineFormulation(selectedConfiguration(workers, hashMiB), label, evaluatorIdentity(), clockPolicy);\n     }\n     public static String productionFormulation() {\n-        return \"W4: \" + EngineFormulation.searchName(configuration(4, 64, SearchProfile.PRODUCTION_DEFAULT))\n-                + \"\\nW1-W3 / W5-W16: \" + EngineFormulation.searchName(configuration(1, 64, SearchProfile.PRODUCTION_DEFAULT));\n+        var owner = configuration(1, 64, SearchProfile.PRODUCTION_DEFAULT);\n+        var parallel = configuration(16, 64, SearchProfile.PRODUCTION_DEFAULT);\n+        return \"W1-W16: \" + EngineFormulation.searchName(owner)\n+                + \"\\nProfile \" + SearchProfile.PRODUCTION_DEFAULT + \"; flags\" + owner.mechanisms().flags()\n+                + \"; W1 \" + owner.parallelIdentity() + \" / W2-W16 \" + parallel.parallelIdentity();\n     }\n     public String identity(int workers, int hashMiB) {\n         var version = ApplicationVersion.load();\ndiff --git a/engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/EngineFormulation.java b/engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/EngineFormulation.java\nindex dd17167c..cae9b6b8 100644\n--- a/engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/EngineFormulation.java\n+++ b/engine-core/src/main/java/com/ohinteractive/seedv6/search/driver/EngineFormulation.java\n@@ -32,7 +32,7 @@ public record EngineFormulation(ConstructionSearch search, String evaluator, Str\n                     case TC_P1 -> \"TC-P1 \u00e2\u20ac\u201d HL-G1 + bounded capture ProbCut\";\n                     case HL_G1 -> \"HL-G1 \u00e2\u20ac\u201d retained Search learning and history-guided reductions\";\n                     case LEGACY -> \"LEGACY \u00e2\u20ac\u201d pre-HL Search configuration\";\n-                    case MW_C4_W4 -> \"MW-C4 \u00e2\u20ac\u201d eager root scheduling + guarded TT memory over TC-P1\";\n+                    case MW_C4, MW_C4_W4 -> \"MW-C4 \u00e2\u20ac\u201d guarded TT memory over TC-P1; eager root cooperation with multiple workers\";\n                 };\n         }\n         if (actual.equals(FlatSearchConfig.candidate())) return \"Construction V1\";\n",
+  "clvPinnedFiles": {
+    "docs\\research\\search\\p4-critical-line\\raw\\baseline-build96-v1\\app\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-critical-line\\raw\\baseline-build96-v1\\app\\app-uci.jar": "d2205f09ff015cbfaa7eaa8d337716ec40bb1d7f51b23dba91f66ac472200111",
+    "docs\\research\\search\\p4-critical-line\\raw\\baseline-build96-v1\\app\\SeedV6-UCI.cfg": "c8803fd617b5425d2f88c2070f34c2570424b461bdd9fbfbfab0bfcf615b0f1d",
+    "docs\\research\\search\\p4-critical-line\\raw\\baseline-build96-v1\\app\\SeedV6-NNUE-CP64.cfg": "b6aa97a2a897acb5fc48a3f5903c6e52256b5513a83a2ab518004c54b9bffe34"
+  },
+  "sourceKernelIdenticalTo96": [
+    "ExactSearch.java",
+    "ParallelSearch.java",
+    "FlatSearchConfig.java",
+    "FlatSearchState.java"
+  ]
+}

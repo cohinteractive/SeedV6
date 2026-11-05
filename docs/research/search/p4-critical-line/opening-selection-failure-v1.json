@@ -1,0 +1,7 @@
+{
+  "status": "Selection preparation failure; no games or experimental processes",
+  "path": "docs\\research\\search\\p4-critical-line\\development-v1-openings.pgn",
+  "sha256": "1d25bae6f6dddb0f3b353506e33702d63444dfb7a89527011649ad0cda246254",
+  "reason": "Selector wrote PGN then passed str __file__ to Path-only digest while constructing receipt; subsequent retry refused existing frozen output. Preserve v1; corrected v2 uses identical seed and full manifest.",
+  "log": "raw/opening-selection-v1.log"
+}

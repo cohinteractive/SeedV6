@@ -1,12 +1,39 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R033**
+Internal revision: **P4-R034**
 
-Status: **ACTIVE Phase 4 - 5 November 2026. Owner-authorized unified rolling production integration: MW-C4 EAGER_MEMORY is selected across W1-W16. Closed research outcomes, baseline79 and W1 champion HL-G1/build84 remain unchanged. No successor research, champion advancement, installation, push, deployment or release.**
+Status: **ACTIVE Phase 4 - 6 November 2026. CLV-R001 Critical-Line Verification and Selective Search is newly owner-authorized. Unified build98 production and all closed research dispositions remain unchanged; no timed idle window, promotion, installation, push, deployment or release is authorized.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
+
+## CLV-R001 launch - 6 November 2026
+
+The owner authorizes **CLV-R001 - Critical-Line Verification and Selective Search**,
+a new focused W4 strength-development objective governed by its
+[CONTRACT](../docs/research/search/p4-critical-line/CONTRACT.md) and restart
+[STATE](../docs/research/search/p4-critical-line/STATE.md). Investigate integrated
+selectivity, critical-line verification and consequential TT/history dependencies
+from current accepted production, against **exact build96/source44fc2bf2**.
+Build98/sourcef2216ffe is the unified production integration, not a replacement
+competitive artifact. W4 retains flags1182007295/EAGER_ROOT, CP64/Hash64,
+PVS/ADAPTIVE16/BOUNDARY2; the comparison is10+0.1 on Windows Ryzen5500/Java21.
+
+Fresh ceilings:86,400 charged experimental seconds and1,280 initiated timed games,
+partitioned into at most640 development and640 independent games. At most one
+independent attempt, using up to320 fresh opposite-colour pairs and a prospectively
+fixed sample/protocol. Both score>=53% and paired-normal95% lower>50% are mandatory,
+alongside technical/operational qualification. No success or candidate is presumed.
+Fixed-work investigation is authorized with resource guards; **no owner idle window
+exists for timed games**. Preserve closed campaigns and frozen evidence/allowances.
+No production-default change, champion advance, installation, push or deployment.
+Historical no-successor statements retain their time scope and are superseded only
+by this new explicit launch. This does not reopen IC-R001 or other closed work.
+
+Current masters are **P4-R034/P4-F052**. Owner refresh of both Phase4 Project Source
+mirrors is required before mirror-dependent GPT coordination, non-blocking for
+repository research. No behavioral-governance/CEC change or registry release claim.
 
 ## Unified rolling production - 5 November 2026
 
@@ -45,7 +72,7 @@ limited to its original domain; other workers have no independent MW-C4 strength
 qualification. This integration neither changes that conclusion nor reopens
 MW-R001, IC-R001, TT-R001 or frozen independent clock studies.
 
-Current masters are **P4-R033/P4-F051**. The owner must refresh both Phase 4
+At the production integration, masters were **P4-R033/P4-F051**. The owner must refresh both Phase 4
 Project Source mirrors before subsequent mirror-dependent GPT coordination;
 repository changes do not upload them. This is non-blocking for repository
 integration. Interactive visual checks are explicitly reserved to the owner;
