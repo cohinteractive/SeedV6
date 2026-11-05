@@ -1,0 +1,72 @@
+{
+  "id": "independent-control-v2",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-iteration-confidence\\independent-control-v2-protocol.json",
+  "protocolSha256": "a6e28120fba1b93d72b1641d386e27c330a95837f4639b1113366f494c696597",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms128m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4IndependentIterationStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\independent-control-v2\\observations.jsonl",
+    "2",
+    "14",
+    "200000",
+    "20",
+    "CONTROL"
+  ],
+  "startedUtc": "2026-11-05T00:23:47.509541+00:00",
+  "games": 0,
+  "priority": "below-normal",
+  "preflight": {
+    "utc": "2026-11-05T00:23:48.194013+00:00",
+    "totalCpuPercent": 7.8125,
+    "freeMemoryGiB": 15.289131164550781,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "ChatGPT.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 41.145833333333336,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 41840,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 25.921875,
+    "totalOwnedProcesses": 2
+  },
+  "wallSeconds": 7.925747300032526,
+  "endedUtc": "2026-11-05T00:23:55.449769+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.5255241394042969,
+  "chargedWallSeconds": 7.925747300032526,
+  "observedNodes": 8000000,
+  "summary": {
+    "requests": 40,
+    "status": "passed",
+    "type": "summary",
+    "nodes": 8000000,
+    "activeHelpersAfterClose": 0
+  },
+  "inputsStable": true,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\independent-control-v2\\console.log": "4411019227658aced13c4faade7db49d754b9f0e1e479e4eaec5961580161d7c",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\independent-control-v2\\environment.jsonl": "31cd735e5724c2b52224a4d340849b5da6aa8e1f30d49d542be7f92e16913439",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\independent-control-v2\\observations.jsonl": "4064b520e9bfe8bfef21c2204e749a1efdad813b80aa94719a1a10b2906aba3b"
+  }
+}

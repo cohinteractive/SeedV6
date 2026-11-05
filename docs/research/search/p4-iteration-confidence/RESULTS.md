@@ -368,3 +368,208 @@ prepared C2 pilot4 plus screen64. Prior75-minute scope covered C1 only and is sp
 remaining clock time is not additional authorization. Mirrors P4-R030/P4-F048 still
 need owner refresh before dependent GPT coordination. Governing strength objective
 is unresolved; no acceptance, closure, champion/promotion or deployment is claimed.
+
+## Challenger provenance replay before C2 screen results
+
+`challenger-replay-v1.json`, reproduced by
+`tools/p4-iteration-confidence-challengers.py`, analyzes only the four existing C4
+root-job runs. It requires final resolved split passes at or below the request's
+last published depth; every observed root job is complete and the move set has
+exactly the reported legal-root count. All input hashes passed. No new Search run
+or timed-score access occurred.
+
+A marker records that an original-window scout fail-high received a full retry.
+It is a provenance event, not an exact comparable score or confidence. Across927
+published split iterations there were1265 marked alternative entries;1110 (87.75%)
+were already in the three highest final-pass-effort alternatives. In280 next-depth
+favorite changes,130 had the marker and190 were already among effort's top three.
+A hypothetical marker-first ordering moves the next favorite earlier7 times,
+later24, and leaves its rank unchanged249 times. Observed job order breaks ties;
+actual next-iteration history-order ties and changed Search trajectories may differ.
+The four runs reuse selected roots and correlated SMP; none of these counts are
+independent trials, proof of correct moves or calibrated confidence.
+
+**Decision:** defer marker-first root ordering. The event contains descriptive
+information, but current effort ordering already captures much of it, and this
+replay does not support overriding that ordering. Preserve this negative/weak
+candidate-selection evidence. No additional implementation or competitive sample
+is selected by it; the unchanged C2 timed screen remains the active experiment.
+
+The conditional independent-iteration alternative was rechecked against current
+source without running it: `engine-core/.../search/exact/IndependentSearch.java`
+is unchanged from exact96 and already exposes an opt-in iterative owner seam through
+SearchLifecycleService. It has private adjacent aspiration loops, a shared generation
+and admission budget, OWNER-only completed result selection/BOUNDARY2 decisions,
+then local helper stop and join. Its progress snapshots expose actual completed helper
+depths, not independent votes. Earlier MW-C6 tests do not constitute an IC runtime or
+strength qualification. If C2 does not warrant continuation, a separately identified
+W4 diagnostic of this existing architecture is a possible next structural unit;
+no new coordinator, arbitration rule, candidate or timed authorization is selected now.
+
+## Completed IC-C2 timed exploration
+
+Owner window v2 authorized prepared4+64 games from first observed2026-11-04T23:38:44Z
+until2026-11-05T00:53:44Z. Pilot passed4 normal games/763 audited requests, no fallback
+warnings, stable inputs and native drain;157.1903228 charged seconds. Its score-blind
+operational review preceded admission of the unchanged screen. Pilot WDL is excluded.
+
+Screen passed64 normal games/9,852 audited requests, stable inputs and all132 owned
+processes drained;2183.2793712 charged seconds. Mean total CPU38.0712%, maximum88.1510%,
+minimum free memory15.0523GiB and peak owned commitment0.7793GiB. No failed/interrupted
+games, exclusions, live-score stopping, tuning, or sample changes. Complete operational
+review passed before the fixed paired analysis was opened.
+
+**IC-C2:21 wins,25 draws,18 losses;52.34375%.** Pair pentanomial[2,7,10,12,1];
+paired-normal95%[43.7212%,60.9663%], bounded Hoeffding95%[28.3357%,76.3518%]. The
+normal interval is approximate with32 opening pairs; both methods assume independent
+pairs and do not remove adaptive selection, repeated-opening-family or hardware
+limitations. This reused DEVELOPMENT sample is not independent confirmation.
+C1/C2 results and pilots are not pooled.
+
+Descriptive first/second-game scores43.75%/60.9375%, White/Black62.5%/42.1875%.
+These small subgroups do not justify exclusions or extra hypotheses. Candidate/control
+request elapsed1036.4555/1039.7575s and admissions1,523,930,897/1,552,571,556 are from
+divergent games. Their differences, and lower throughput for both formulations
+compared with the C1 batch, do not establish a causal speed/clock effect or a
+between-batch strength comparison. Protocol resource guards passed; no thermal or
+clean-speed equivalence is claimed.
+
+**Disposition:** C2 is inconclusive, retained as a weak exploratory reference but
+not selected for the sole confirmation attempt. No claim of improvement, equivalence
+or failure of every aspiration mechanism. Do not respond by blind width tuning or
+automatically enlarging the completed sample. The fresh next unit is bounded
+qualification/observation of the existing IndependentSearch architecture with C4's
+shared-memory flags, owner-only publication and unchanged BOUNDARY2. This investigates
+cooperation/state lifetime rather than treating the older synchronized-race negatives
+as decisive. No timed independent-worker variant is selected before diagnostics.
+
+Evidence is `c2-timed-{pilot,screen}-w4-v1-execution.json`, corresponding operational
+reviews and `c2-timed-screen-w4-v1-analysis.json`; all raw traces/PGNs remain ignored
+at their hashed `raw/c2-timed-{pilot,screen}-w4-v1/` paths. Current total4588.202510000032s
+(1h16m28.20s),136/800 initiated/completed games,0 failed/interrupted,0/1 confirmation
+attempt.81,811.79748999997s and664 games remain, including480 reserved confirmation
+games (184 development games left). All18 experiments completed and drained. Window
+v2's4+64 scope is fully used; it grants no further timed games. Strength remains
+unresolved and the workstream remains active, without promotion or owner acceptance.
+
+
+## Independent-owner and complementary-depth diagnostics
+
+Following the inconclusive C2 result, existing exact96 `IndependentSearch` was
+qualified under a new IC identity with C4 memory flags1182007295.29 tests passed:
+6 existing independent-search tests and23 lifecycle-service tests. The new
+`P4IndependentIterationStudy` checks owner-only publication, completed helper PVs,
+board restoration, exact global/private accounting and drain. Shared TT correlates
+workers; agreement is not confidence or evidence of correct moves.
+
+Each reciprocal batch uses the first20 mixed-phase fixture roots, forward then
+reverse,40 requests/run,200,000 global nodes/request, depth cap14. Fresh request/TT,
+selected repeated roots, JIT/observation overhead and SMP variability limit inference.
+All eight launched runs passed, each with8M admissions and native drain.
+
+| Batch/run | Mean owner depth | Summed request seconds | Process CPU seconds |
+| --- | ---: | ---: | ---: |
+| Independent control v1 |7.825|6.5155|24.3125|
+| Independent owner v1 |7.200|5.6414|29.1250|
+| Independent owner v2 |7.175|5.0722|25.5156|
+| Independent control v2 |7.925|6.4664|24.4844|
+| Complementary control v1b |7.750|6.6895|25.7969|
+| C3 v1 |7.000|5.9482|29.7656|
+| C3 v2 |7.000|5.6312|28.1250|
+| Complementary control v2 |7.825|7.2619|27.6094|
+
+Independent helpers matched owner completed depth224/240 times, were deeper6 and
+shallower10; completed move agreement228/240. Owner used approximately25% of nodes.
+**Decision:** defer timed independent-owner testing. Lower owner depth and extensive
+same-depth repetition provide no compelling allocation improvement. Faster measured
+elapsed is not clean-speed qualification or strength evidence; nodes traverse different
+selective trajectories and the application still lacks a timed qualification here.
+
+**IC-C3 Complementary-depth helpers** tests a structural response to that duplication.
+`tools/p4-iteration-confidence-complementary-source.py --check` verifies the isolated
+research copy against exact96: only class identity/documentation and helper depth-loop
+start/stride differ. Owner retains every adjacent depth; helpers1/3 visit even depths,
+helper2 odd depths atW4. Depth1 clamps to1. Owner-only selection/BOUNDARY2, hard stops,
+private mutable worker state, common guarded TT/generation/global budget and joins
+are preserved. Skipped depths are never represented as completed.
+
+Source inspection before experimentation identified important coupling: aspiration's
+adjacency guard gives helpers full windows across gaps, and IterationReuse invalidates
+adjacent-only completed PV/effort reuse. Request learning remains. This is an integrated
+schedule/window/reuse change, not isolated diversity. Seven tests passed, including
+actual parity/completion provenance, exact rules/PV/history, accounting/caps, helper
+failure and stop dominance, managed replacement/reuse, and tail-drain witnesses.
+Small other-worker correctness cases grant no competitive worker-count authority.
+
+C3 helpers matched depth129/240, were shallower105 and deeper6; move agreement189/240.
+Owner depth fell further to7.0 in both runs. **Decision:** defer C3 timed testing.
+Reduced same-depth repetition mostly leaves helpers shallower; no evidence here
+justifies consuming games on C3 or implementing helper-result voting. This does not
+prove universal inferiority, but preserves a negative structural investigation.
+
+`complementary-control-v1` was refused before launch at37.03% existing CPU load
+(projected70.36%, above daytime planning envelope). No owned process/node/charge.
+Unrelated pre-existing Java processes were not touched. Two later read-only resource
+samples at16.13%/11.525% were admissible; `complementary-resource-recheck-v1.json`
+records them. New frozen v1b explicitly names the refused predecessor. The original
+protocol/refusal and all subsequent results remain preserved, with no score exclusion.
+
+`runtime-independent-v1-manifest.json` and `runtime-complementary-v1-manifest.json`
+pin source/core96/CP64/runtime/test identities. Research JAR hashes respectively
+`e31c799fd03f1fa36e55fc2531c80b1f86fec78a93cc56e15a16889f1a5ebcaa` and
+`a8daca1ddad7ef1a33be602b023b60b849096f3c4c0b41c53a1d1b2de99f7bfa`.
+`independent-analysis-v1.json`/`complementary-analysis-v1.json`, produced by
+`tools/p4-iteration-confidence-independent.py`, rehash complete observations against
+their successful drained receipts. Raw evidence remains at `raw/independent-*/` and
+`raw/complementary-*/`; frozen JAR/source copies stay under their named runtime paths.
+Eight new experiments charged61.00638979999349s and64M admissions; the refusal charged0.
+
+## Separate prospective C2 developmental replication
+
+The unchanged qualified C2 formulation remains the only current candidate with a
+non-adverse, though inconclusive, timed screen. Root-challenger replay and independent
+owner/C3 observations do not justify another timed formulation. Select **one fixed64
+replication on32 new IC-development positions** to test consistency across input sets
+before considering the sole independent attempt. This is an evidence-directed new
+unit, not a larger replacement of the completed screen, a rescue of C1, width tuning,
+or automatic continuation after each result. No further extension is preauthorized.
+
+`development-v2-openings.pgn` uses unchanged `search-baseline.py::select_openings`,
+seed2026110506, hash partition0, sorted unique final-FEN keys and Python random.sample.
+Source hash verified against development v1; no source results/evaluation filtering.
+It selects32 legal startpos16-ply histories from20,110 eligible distinct positions,
+excluding all34 previous IC pilot/screen keys and20 mixed-phase diagnostic final keys.
+The selection manifest pins source/selector/output/exclusion hashes and environment;
+`diagnostic-root-exclusions-v1.json` makes the latter exclusion reproducible. Existing
+narrow `*-openings.pgn` input exception covers this intentional fixture; no tournament
+output exception or force-add is introduced. Freshness is **only relative to these IC
+inputs**, not every historical campaign; future confirmation must exclude these too.
+
+`c2-timed-replication-w4-v1-protocol.json` freezes unchanged C2 runtime and exact96
+control,64 games/32 pairs,W4/10+0.1, alternating first color, all full-history audits,
+fixed analyzer/method, stopping/failure rules and3600s hard limit. The unchanged runtime
+already passed pilot4 and screen64, so another pilot is unnecessary. Complete operational
+review must pass before any score analysis. Standalone replication results are primary;
+any combined C2 development summary is secondary descriptive only, never confirmation.
+No C1/pilot pooling or score-prefix/subgroup selection.
+
+Observed C2 pair SD approximately0.24886 yields estimated SE0.04399 and95% half-width
+0.08623 for32 new pairs; normal-approximation80% detectable gain is about12.33 percentage
+points. These uncertain planning estimates ignore selection/dependence. This small
+screen cannot reliably qualify a3-point gain; a later confirmation decision still
+needs defensible power and fresh inputs, with the original53%/lower>50% gate unchanged.
+Prior screen used2183s; a requested65-minute idle window accommodates3600s plus30s drain.
+The previous v2 permission covers completed4+64 only and cannot authorize these games.
+
+Current total4649.208899800025 charged seconds (1h17m29.21s),160,640,558 fixed admissions,
+136 initiated/completed games,0 failed/interrupted,0/1 confirmation attempt.26 launches
+passed/drained plus one zero-charge refusal; no pending/owned experiment. Remaining
+81,750.79110019998s and664 games:184 development plus480 confirmation reserve. Proposed64
+would leave120 development games and preserve480 confirmation games/21,600s reserve.
+All46 protocol inputs verified locally before the new authorization request. No new
+replication game has run. Full application/UI/platform/deployment and independent
+strength validation were not run. Research-only work leaves build97 bytes unchanged.
+
+**Human gate:** new65-minute idle authority for this exact replication. Mirror refresh
+toP4-R030/P4-F048 remains an owner dependency before mirror-based GPT coordination only.
+The governing objective remains unresolved; no acceptance or closure is claimed.

@@ -8,12 +8,12 @@
     "confirmationAttempts": 1
   },
   "consumed": {
-    "chargedWallSeconds": 2247.7328160000616,
-    "fixedWallSeconds": 103.55012320005335,
-    "timedWallSeconds": 2144.182692800008,
-    "fixedNodes": 96640558,
-    "initiatedTimedGames": 68,
-    "completedTimedGames": 68,
+    "chargedWallSeconds": 4649.208899800025,
+    "fixedWallSeconds": 164.55651300004683,
+    "timedWallSeconds": 4484.652386799979,
+    "fixedNodes": 160640558,
+    "initiatedTimedGames": 136,
+    "completedTimedGames": 136,
     "failedTimedGames": 0,
     "interruptedTimedGames": 0,
     "confirmationAttempts": 0
@@ -37,10 +37,22 @@
     "docs\\research\\search\\p4-iteration-confidence\\root-c2-v1-execution.json",
     "docs\\research\\search\\p4-iteration-confidence\\root-c2-v2-execution.json",
     "docs\\research\\search\\p4-iteration-confidence\\root-c2-control-v2-execution.json",
-    "docs\\research\\search\\p4-iteration-confidence\\c2-uci-qualification-v1-execution.json"
+    "docs\\research\\search\\p4-iteration-confidence\\c2-uci-qualification-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\c2-timed-pilot-w4-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\c2-timed-screen-w4-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\independent-control-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\independent-owner-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\independent-owner-v2-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\independent-control-v2-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\complementary-control-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\complementary-control-v1b-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\complementary-c3-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\complementary-c3-v2-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\complementary-control-v2-execution.json"
   ],
   "authorizedIdleWindows": [
-    "docs/research/search/p4-iteration-confidence/owner-idle-window-v1.json"
+    "docs/research/search/p4-iteration-confidence/owner-idle-window-v1.json",
+    "docs/research/search/p4-iteration-confidence/owner-idle-window-v2.json"
   ],
   "planningReserve": {
     "confirmationGames": 480,

@@ -1,0 +1,33 @@
+{
+  "identity": "IC-C3 Complementary-depth helpers; research-only diagnostic candidate",
+  "coreSource": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "coreBuild": 96,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\app-uci.jar": "d2205f09ff015cbfaa7eaa8d337716ec40bb1d7f51b23dba91f66ac472200111",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\research.jar": "a8daca1ddad7ef1a33be602b023b60b849096f3c4c0b41c53a1d1b2de99f7bfa",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\source\\p4-iteration-confidence-complementary-source.py": "2f732bbbae7c53a3df685e365af1133c5c409b9ed1fd85f57d2c0382d07a8205",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\source\\P4ComplementaryDepthStudy.java": "09f52e3ff90a7db2709c2daca417bef02fe0887236c11fa8c2f9a60ebb1cb8c5",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\source\\P4ComplementarySearch.java": "1f733df6d9dbcfaa912be4d00fcb40a83c4c7d90a2af36aa800843a85e098f13"
+  },
+  "sourceInputs": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4ComplementarySearch.java": "1f733df6d9dbcfaa912be4d00fcb40a83c4c7d90a2af36aa800843a85e098f13",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4ComplementaryDepthStudy.java": "09f52e3ff90a7db2709c2daca417bef02fe0887236c11fa8c2f9a60ebb1cb8c5",
+    "tools\\p4-iteration-confidence-complementary-source.py": "2f732bbbae7c53a3df685e365af1133c5c409b9ed1fd85f57d2c0382d07a8205"
+  },
+  "configuration": "W4 CP64 Hash64 flags1182007295; owner adjacent ADAPTIVE16/BOUNDARY2 and sole result selection; helpers alternate even/odd depths, full windows after skipped depths; one shared generation/global budget/final join.",
+  "coupling": "Helpers skip adjacency: AspirationSearch uses full windows and IterationReuse invalidates adjacent-only completed PV/effort reuse. Request learning and guarded shared TT remain. Owner remains adjacent. Depth1 requests clamp helper first depth to1. This is an integrated scheduling/reuse/window experiment, not isolated diversity or independent worker evidence.",
+  "tests": {
+    "com.ohinteractive.seedv6.search.exact.P4ComplementarySearchTest": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "status": "descriptive baseline-only replay; no new experiment or candidate",
+  "analyzerSha256": "7282a930c519bdd49eb7fab10970664d9660c4270db2ffa31d3c44ef98faf10f",
+  "runs": [
+    {
+      "run": "root-baseline-v1",
+      "sha256": "1b81dea806854c553e7b9bb94472701ed78bc354283f4155cce106b7935ed1fe",
+      "counts": {
+        "publishedSplitIterations": 234,
+        "withRetriedAlternative": 147,
+        "markedAlternativesAlreadyTopThree": 283,
+        "changesTopAlternative": 16,
+        "changesTopThreeSet": 19,
+        "nextPublishedFavoriteChanges": 68,
+        "nextFavoriteWasRetried": 30,
+        "nextFavoriteAlreadyTopThree": 47,
+        "nextFavoriteRankSame": 57,
+        "nextFavoriteRankLater": 10,
+        "nextFavoriteRankEarlier": 1
+      },
+      "markedAlternativeEntries": 318,
+      "allAlternativeEntries": 6019
+    },
+    {
+      "run": "root-baseline-v2",
+      "sha256": "7392ac860dfc7c175cd0d2a279cf9a3839e8010a1b5a040334f296208588b05a",
+      "counts": {
+        "publishedSplitIterations": 230,
+        "withRetriedAlternative": 142,
+        "markedAlternativesAlreadyTopThree": 277,
+        "changesTopAlternative": 14,
+        "changesTopThreeSet": 24,
+        "nextPublishedFavoriteChanges": 72,
+        "nextFavoriteWasRetried": 38,
+        "nextFavoriteAlreadyTopThree": 49,
+        "nextFavoriteRankSame": 64,
+        "nextFavoriteRankLater": 5,
+        "nextFavoriteRankEarlier": 3
+      },
+      "markedAlternativeEntries": 320,
+      "allAlternativeEntries": 5876
+    },
+    {
+      "run": "root-c2-control-v1",
+      "sha256": "487d7632bb7da9b910c3dd10c8ea4c3b08bd6ead8d8a7910f106960dc7dee2be",
+      "counts": {
+        "publishedSplitIterations": 231,
+        "withRetriedAlternative": 146,
+        "markedAlternativesAlreadyTopThree": 282,
+        "changesTopAlternative": 12,
+        "changesTopThreeSet": 15,
+        "nextPublishedFavoriteChanges": 68,
+        "nextFavoriteWasRetried": 32,
+        "nextFavoriteAlreadyTopThree": 50,
+        "nextFavoriteRankSame": 63,
+        "nextFavoriteRankLater": 4,
+        "nextFavoriteRankEarlier": 1
+      },
+      "markedAlternativeEntries": 319,
+      "allAlternativeEntries": 5898
+    },
+    {
+      "run": "root-c2-control-v2",
+      "sha256": "92763d1277501eaa61e462e3c24d2a43d5c94387cd8166b0066c3645b9af2947",
+      "counts": {
+        "publishedSplitIterations": 232,
+        "withRetriedAlternative": 146,
+        "markedAlternativesAlreadyTopThree": 268,
+        "changesTopAlternative": 16,
+        "changesTopThreeSet": 25,
+        "nextPublishedFavoriteChanges": 72,
+        "nextFavoriteWasRetried": 30,
+        "nextFavoriteAlreadyTopThree": 44,
+        "nextFavoriteRankSame": 65,
+        "nextFavoriteRankLater": 5,
+        "nextFavoriteRankEarlier": 2
+      },
+      "markedAlternativeEntries": 308,
+      "allAlternativeEntries": 5981
+    }
+  ],
+  "semantics": "Only final resolved split passes at or below the request last-published depth. Marker means an original-window scout fail-high received a full retry. Favorite stays first; hypothetical alternative order is marker-first then final-pass admissions. Ties retain observed job order, which need not equal future history-order ties.",
+  "limitations": "Repeated selected roots and correlated SMP; no independent trials. Next-published favorite is selective, not ground truth. No cross-window score comparison, independent worker vote, confidence calibration or changed-trajectory prediction."
+}

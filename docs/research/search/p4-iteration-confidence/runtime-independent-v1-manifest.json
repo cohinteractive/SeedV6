@@ -1,0 +1,37 @@
+{
+  "identity": "Independent owner with C4 shared heuristic memory; diagnostic qualification only",
+  "coreSource": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "coreBuild": 96,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\app-uci.jar": "d2205f09ff015cbfaa7eaa8d337716ec40bb1d7f51b23dba91f66ac472200111",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\research.jar": "e31c799fd03f1fa36e55fc2531c80b1f86fec78a93cc56e15a16889f1a5ebcaa",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\source\\IndependentSearch.java": "e2b12ccde5588a10b1502b0a8bb74ff410d974aec7ad9ec4ec7b79ec8be3e029",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-independent-v1\\source\\P4IndependentIterationStudy.java": "4b4d6e84fbe3e9ad5d98edae0d42d1984d3fd667a9da3c4580ea0f8690187656"
+  },
+  "sourceInputs": {
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4IndependentIterationStudy.java": "4b4d6e84fbe3e9ad5d98edae0d42d1984d3fd667a9da3c4580ea0f8690187656",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\IndependentSearch.java": "e2b12ccde5588a10b1502b0a8bb74ff410d974aec7ad9ec4ec7b79ec8be3e029"
+  },
+  "configuration": "W4 CP64 Hash64 flags1182007295 PVS ADAPTIVE16 BOUNDARY2; exact C4 EAGER_ROOT control; candidate separate adjacent iterative workers with OWNER-only selection and local final join.",
+  "tests": {
+    "com.ohinteractive.seedv6.search.exact.P4IndependentSearchTest": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.ohinteractive.seedv6.search.manage.SearchLifecycleServiceTest": {
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "independentSourceUnchangedFromExact96": true
+}

@@ -1,0 +1,63 @@
+{
+  "id": "complementary-control-v1",
+  "status": "refused-before-launch",
+  "protocol": "docs\\research\\search\\p4-iteration-confidence\\complementary-control-v1-protocol.json",
+  "protocolSha256": "1afe382105696fb833ed8687661454727d134925249fe6791d0a2c51ddc2f2ac",
+  "command": [
+    "C:/java/jdk-21/bin/java.exe",
+    "--add-modules=jdk.incubator.vector",
+    "-Xms128m",
+    "-Xmx512m",
+    "-XX:ActiveProcessorCount=4",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-complementary-v1\\lib\\*",
+    "com.ohinteractive.seedv6.search.exact.P4ComplementaryDepthStudy",
+    "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\nnue-candidate\\conventional-cp64.cnnue",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-correction\\mixedphase-v1-roots.tsv",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-iteration-confidence\\raw\\complementary-control-v1\\observations.jsonl",
+    "2",
+    "14",
+    "200000",
+    "20",
+    "CONTROL"
+  ],
+  "startedUtc": "2026-11-05T00:29:31.322531+00:00",
+  "games": 0,
+  "priority": "below-normal",
+  "preflight": {
+    "utc": "2026-11-05T00:29:32.036914+00:00",
+    "totalCpuPercent": 37.03007518796993,
+    "freeMemoryGiB": 14.748359680175781,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "vivaldi.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": false,
+    "reasons": [
+      "existing CPU load plus requested workers exceeds planning envelope"
+    ],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 70.36340852130326,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 0.0,
+    "totalOwnedProcesses": 0
+  },
+  "wallSeconds": 0.7101590000092983,
+  "endedUtc": "2026-11-05T00:29:32.047523+00:00",
+  "error": "ResourcePressure('existing CPU load plus requested workers exceeds planning envelope')",
+  "peakOwnedCommittedGiB": 0,
+  "chargedWallSeconds": 0,
+  "observedNodes": null,
+  "maximumPossibleNodes": 0,
+  "inputsStable": true,
+  "files": {}
+}

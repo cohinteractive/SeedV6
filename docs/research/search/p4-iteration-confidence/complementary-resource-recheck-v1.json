@@ -1,0 +1,43 @@
+{
+  "status": "read-only resource recheck; no experiment",
+  "samples": [
+    {
+      "utc": "2026-11-05T00:30:44.598383+00:00",
+      "totalCpuPercent": 16.13095238095238,
+      "freeMemoryGiB": 14.373321533203125,
+      "overwatch": false,
+      "logicalProcessors": 12,
+      "foregroundApplication": "vivaldi.exe",
+      "demandingForeground": false
+    },
+    {
+      "utc": "2026-11-05T00:30:52.759003+00:00",
+      "totalCpuPercent": 11.525313364805466,
+      "freeMemoryGiB": 14.712108612060547,
+      "overwatch": false,
+      "logicalProcessors": 12,
+      "foregroundApplication": "vivaldi.exe",
+      "demandingForeground": false
+    }
+  ],
+  "decisions": [
+    {
+      "admissible": true,
+      "reasons": [],
+      "requiredAvailableGiB": 3.25,
+      "estimatedPeakGiB": 1.25,
+      "personalReserveGiB": 2,
+      "projectedCpuPercent": 49.464285714285715,
+      "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+    },
+    {
+      "admissible": true,
+      "reasons": [],
+      "requiredAvailableGiB": 3.25,
+      "estimatedPeakGiB": 1.25,
+      "personalReserveGiB": 2,
+      "projectedCpuPercent": 44.8586466981388,
+      "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+    }
+  ]
+}

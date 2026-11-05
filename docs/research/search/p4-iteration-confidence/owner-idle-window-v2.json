@@ -1,0 +1,10 @@
+{
+  "status": "authorized",
+  "receivedUtc": "2026-11-04T23:38:44+00:00",
+  "hardDeadlineUtc": "2026-11-05T00:53:44+00:00",
+  "durationMinutes": 75,
+  "ownerWording": "Authorize 75 minutes starting now",
+  "scope": "Prepared IC-C2 Upper-window carryover pilot4 then fixed screen64 only, screen contingent on score-blind operational pilot pass; no confirmation or additional match implied.",
+  "timingProvenance": "First machine-clock observation after receipt; exact client reply timestamp not provided.",
+  "sourceCommit": "ab80fe824d9890b907d5d2b89eb2cecdd370317b"
+}

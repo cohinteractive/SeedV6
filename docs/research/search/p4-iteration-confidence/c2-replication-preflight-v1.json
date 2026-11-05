@@ -1,0 +1,37 @@
+{
+  "checkedUtc": "2026-11-05T00:42:38.623275+00:00",
+  "status": "Prepared inputs/evidence verified; timed execution blocked by missing new owner window",
+  "protocol": "docs\\research\\search\\p4-iteration-confidence\\c2-timed-replication-w4-v1-protocol.json",
+  "protocolSha256": "0ccf6d1186a3b165b62a9f8eb1a70c0f43502e0a3cd369e4c9a9de75008ca6ca",
+  "protocolInputsVerified": 46,
+  "newExecutionReceiptsVerified": [
+    "c2-timed-pilot-w4-v1",
+    "c2-timed-screen-w4-v1",
+    "independent-control-v1",
+    "independent-owner-v1",
+    "independent-owner-v2",
+    "independent-control-v2",
+    "complementary-control-v1",
+    "complementary-control-v1b",
+    "complementary-c3-v1",
+    "complementary-c3-v2",
+    "complementary-control-v2"
+  ],
+  "rawEvidenceFilesRehashed": 238,
+  "ledgerReconciled": true,
+  "ownedOrPendingExperiments": 0,
+  "sourceGenerators": "C3 and root observer --check passed against exact96",
+  "analysisReproduction": "Independent/complementary/challenger summaries reproduced exactly after JSON normalization",
+  "newOpeningFixture": "32 unique legal16 full histories, excluding54 IC selected development/diagnostic keys; existing narrow PGN input exception reviewed",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 97
+  },
+  "versionBytesUnchanged": true,
+  "buildDecision": "no_bump: research tools/tests/evidence only",
+  "journal": "Root CODEXLOG_CURRENT.md absent",
+  "admissionRefusal": "No recorded owner idle-window authority",
+  "limitations": "No runtime replication games, application/UI/platform/deployment tests or independent strength confirmation. Frozen historical clock-study scores untouched."
+}
