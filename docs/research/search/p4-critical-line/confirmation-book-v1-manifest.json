@@ -1,0 +1,10 @@
+{
+  "repository": "official-stockfish/books",
+  "revision": "a804a97e709f40aa75a00f9d19e84915b7a3a45c",
+  "url": "https://raw.githubusercontent.com/official-stockfish/books/a804a97e709f40aa75a00f9d19e84915b7a3a45c/bjbraams_chessdb_198350_lines.pgn.zip",
+  "archiveSha256": "14d9bc9fce1fd96b58d2814fe7ab5b0967109c8411570a0d114558e13ad28fce",
+  "path": "docs\\research\\search\\p4-critical-line\\raw\\confirmation-book-v1\\bjbraams_chessdb_198350_lines.pgn",
+  "sha256": "7b3ede8b13736df09c7c8560a16dd0068c7247cf8cbdec4052073329fff3fb0e",
+  "matchesExistingHistoricalSourceBytes": true,
+  "selection": "Investigate legal14-ply full-history records, excluding prior experiment positions. No evaluator/result filtering."
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed preparation checks; blocked solely on separate idle-window authority",
+  "protocol": "c1-confirm-w4-v2",
+  "evidence": {
+    "pairs": 320,
+    "minimumTimeoutSeconds": 26348,
+    "openingOrderVerified": true
+  },
+  "tests": 9,
+  "testNativeExit": 0,
+  "testsLog": "raw/confirmation-admission-tests-v5.log",
+  "attemptsStarted": 0,
+  "confirmationGames": 0,
+  "scope": "Synthetic tests cover full640-game accounting, interrupted pair spending, prelaunch refusal, sticky single-attempt attribution, sample/gate/window boundaries and explicit variance handling. No real engines or games launched. Full447-input evidence/order/qualification dry-run also passed. Shared Windows Job and game/request auditing exercised by completed pilot/screen.",
+  "testLogSha256": "1de4eb190b6ba3db79355802d2f8cb6211bb34bfd087619550480a9464a0a9e3",
+  "supervisorSha256": "4f71c267acfd47300677de3099a4bb2aa1c8165451daa09a0500da8874a09ba4"
+}

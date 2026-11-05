@@ -8,23 +8,25 @@
     "confirmationAttempts": 1
   },
   "consumed": {
-    "chargedWallSeconds": 132.96221470012097,
+    "chargedWallSeconds": 2357.434475000133,
     "fixedWallSeconds": 132.96221470012097,
-    "timedWallSeconds": 0,
+    "timedWallSeconds": 2224.472260300012,
     "fixedNodes": 81865451,
-    "initiatedTimedGames": 0,
-    "developmentGames": 0,
+    "initiatedTimedGames": 68,
+    "developmentGames": 68,
     "confirmationGames": 0,
-    "completedTimedGames": 0,
+    "completedTimedGames": 68,
     "failedTimedGames": 0,
     "interruptedTimedGames": 0,
     "confirmationAttempts": 0
   },
   "planningReserve": {
     "confirmationGames": 640,
-    "confirmationWallSeconds": 21600
+    "confirmationWallSeconds": 28830
   },
-  "authorizedIdleWindows": [],
+  "authorizedIdleWindows": [
+    "docs/research/search/p4-critical-line/owner-idle-window-v1.json"
+  ],
   "pending": [],
   "ownedProcesses": [],
   "receipts": [
@@ -33,6 +35,16 @@
     "docs\\research\\search\\p4-critical-line\\c1-reference-w1-v1-execution.json",
     "docs\\research\\search\\p4-critical-line\\c1-repeat-w4-v1-execution.json",
     "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-v1-execution.json",
-    "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-build99-v1-execution.json"
-  ]
+    "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-build99-v1-execution.json",
+    "docs\\research\\search\\p4-critical-line\\c1-timed-pilot-w4-v2-execution.json",
+    "docs\\research\\search\\p4-critical-line\\c1-timed-screen-w4-v2-execution.json"
+  ],
+  "confirmationSelection": {
+    "candidate": "C1",
+    "source": "46d1543121f9bc13e7c2a4832efa78bd14b5363c",
+    "build": 99,
+    "protocol": "docs/research/search/p4-critical-line/c1-confirm-w4-v2-protocol.json",
+    "protocolSha256": "64773e309f779556e91a38296f807218ab2184e2d406ad04cecedf7b066d4254",
+    "status": "frozen-awaiting-separate-idle-window"
+  }
 }

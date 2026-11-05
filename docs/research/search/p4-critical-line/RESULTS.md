@@ -188,3 +188,102 @@ JSON as trailing whitespace. Frozen bytes/protocol hashes were preserved; a
 per-command CR-aware check and explicit space/tab scan pass. No global Git setting
 or repository attribute was changed. Raw binaries/logs/observations were verified
 ignored and excluded from staging. No push, installation or deployment occurred.
+
+## Owner-authorized timed development - 6 November 2026
+
+The owner replied "Authorize75 minutes now" to the concrete pilot4/screen64
+request. `owner-idle-window-v1.json` records first clock observation21:42:37Z and
+hard deadline22:57:37Z on5 November (10:42:37-11:57:37am NZDT6 November), with the
+explicit scope. Its timestamp is an observation, not exact native message timing.
+That scope is now fulfilled; unused clock time grants no further games.
+
+Pilot v2 passed4 normal games,515 independently audited requests, no qualified
+fallback warnings and native drain; charged126.2590071s. Its scores were not
+inspected for candidate selection or pooled. `c1-timed-pilot-w4-v2-operational.json`
+is the evidence-bearing operational review that admitted the separate screen.
+
+Screen v2 completed64 normal games: **31W/15D/18L,60.15625%**, paired-normal95%
+**50.107827-70.204673%**, bounded95%36.148180-84.164320%, descriptive logistic
+Elo+71.57 (paired-normal interval+0.75 to+148.89). Pentanomial[1,7,9,8,7];32 pairs.
+All9039 requests passed independent game/history/PV/terminal/accounting audits,
+input hashes were stable, no fallback warning occurred and all132 owned processes
+drained. Charged2098.2132532s. Mean CPU35.84%, maximum66.67%; minimum free memory
+16.14GiB, peak owned commitment0.79046GiB. No score-based stopping, exclusion,
+replacement or tuning occurred. See the immutable protocol, execution and analysis.
+
+This is **promising exploration, not independent strength success**. Candidate
+score was76.5625% as White and43.75% as Black; first/second games62.5%/57.8125%.
+These descriptive strata are not separate tests or causal explanations and are
+not excluded/reweighted. The small sample, opening dependence, normal approximation
+and mixed fixed-work proxies remain uncertainty. Neither the point estimate nor
+the barely-positive exploratory normal lower bound satisfies independent acceptance.
+
+Decision: select **unchanged C1/build99/source46d15431** for the sole independent
+confirmation. This was the only implemented integrated candidate, not the winner
+of a parameter sweep. The basis combines externally motivated TT information use,
+demonstrated consumption, deterministic integration, worker/lifecycle qualification,
+economical fixed-work costs and the completed competitive observation. The adverse
+depth observations and colour split are preserved. No further development or
+candidate substitution is selected before this attempt.
+
+## Frozen independent preparation and remaining authority
+
+The comprehensive input-only freshness audit includes360 recorded input files,
+all tracked Search PGN fixtures/root and history TSVs, selection keys, hash-verified
+named replay inputs, the entire legal16 development pool and CLV inputs. Frozen
+clock **opening/selection inputs only** were included; no clock result, execution,
+analysis, transcript or tournament-output files were opened or reinterpreted.
+Some historical input manifests retain source game result headers; the selector
+ignores them. This work does not revise any closed study's conclusions.
+
+The old16-ply pool could not supply320 fresh pairs after these exclusions. To retain
+full real history and the established broad source family, use exact14-ply records
+from [pinned Stockfish-books bjbraams source](https://github.com/official-stockfish/books/tree/a804a97e709f40aa75a00f9d19e84915b7a3a45c).
+Freshly retrieved archive/unpacked bytes match the historical local source; manifest
+pins them. Of198350 records,44033 have14 plies,4264 of these overlap exclusions,
+and19928 distinct legal positions remain in the fixed odd-hash partition. The fixed
+seed2026110605 selects320, with zero overlap. No evaluator/result filtering or
+confirmation Search was performed. `confirmation-v1-openings.selection.json` and
+`confirmation-freshness-v1.json` preserve the exact distribution and all exclusions.
+This seven-move distribution differs from the eight-move development sample; that
+transfer uncertainty is explicit, not retrospective acceptance redefinition.
+
+`c1-confirm-w4-v2-protocol.json` freezes640 games/320 opposite-colour pairs, original
+exact96 control, unchanged C1, source/runtime/evaluator/configuration, input order,
+runner, all447 input pins, no interim score access and the original primary gates.
+Primary normal interval uses the CONTRACT's1.96 multiplier and sample pair variance;
+zero sample variance is explicitly reported as a degenerate descriptive interval.
+Bounded95%, fixed-seed10000-resample pair bootstrap, colour/order and operational
+sensitivity remain supplementary, without changing the gates or excluding games.
+
+The sole attempt is consumed at first durable pair-start; both games are then
+charged. Interrupted/disqualified attempts cannot pass or be replayed/replaced.
+Pending ownership and the durable progress journal prevent silent restart. Nine
+focused tests cover actual supervisor control flow with isolated synthetic workers,
+including successful640-game accounting, failed-pair spending and refusal before
+process creation. They launch no real engines/games. Full evidence/order/identity
+preflight passes. Existing Windows Job, PC guards and independent game/request
+audits are reused. `confirmation-readiness-v1.json` records checks and limitations.
+
+Preparation failures are preserved: selectionv1 rejected inherited source outcome
+headers unnecessarily; v2 exposed a manifest-relative path; v3 established the old
+pool's inadequate cardinality; v4 successfully selected the new14-ply population.
+No partial confirmation input was used. A synthetic-test mock PID needed an integer;
+the corrected9-test run passed. Confirmation protocolv1 never launched: its full
+evidence dry-run caught a missing local binding after helper extraction; corrected
+v2 keeps the identical candidate/sample/gates. No attempt or confirmation game was
+spent by these preparation steps. Logs remain under the named ignored raw paths.
+
+Current expenditure: **2357.434475000133s /86400s**,68 development timed games,
+zero failures/interruption,0 confirmation games/attempts,81,865,451 fixed-work nodes.
+All experiments drained; no active pending reservation. Planning reserve now28830s
+for the same authorized640-game confirmation, within the existing24-hour ceiling.
+The observed throughput projects20982s (5h49m42s); its25%+120s allowance requires
+26348s. Freeze an8-hour maximum plus30s drain and request an**8h15m PC-idle/awake
+window**. The changed opening distribution makes throughput/variance forecasts
+uncertain. No confirmation is authorized by the already-completed75-minute scope.
+
+Master pair remains P4-R034/P4-F052; focused research advances without another
+programme-canon change. Owner Project Source refresh remains necessary before
+mirror-dependent coordination. No acceptance, champion, production promotion,
+installation, push or deployment follows. Strength objective remains unproven.

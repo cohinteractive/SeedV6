@@ -1,0 +1,14 @@
+{
+  "status": "authorized",
+  "receivedUtc": "2026-11-05T21:42:37Z",
+  "hardDeadlineUtc": "2026-11-05T22:57:37Z",
+  "durationMinutes": 75,
+  "authority": "Owner reply: Authorize 75 minutes now, answering the explicit request for CLV frozen4-game operational pilot and, if passed, separate64-game W4 screen against exact96.",
+  "timing": "receivedUtc is the first machine-clock observation immediately after the authorization reply, not an exact native message timestamp.",
+  "allowedProtocols": [
+    "c1-timed-pilot-w4-v2",
+    "c1-timed-screen-w4-v2"
+  ],
+  "maximumTimedGames": 68,
+  "scope": "Sequential existing workload guards, independent audits, fixed deadlines and owned drain. No confirmation, replacement games, other campaign or extension beyond this window."
+}

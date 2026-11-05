@@ -1,0 +1,19 @@
+{
+  "status": "verified",
+  "chargedWallSeconds": 2357.434475000133,
+  "fixedNodes": 81865451,
+  "initiatedTimedGames": 68,
+  "completedTimedGames": 68,
+  "failedInterruptedGames": 0,
+  "confirmationAttempts": 0,
+  "confirmationGames": 0,
+  "allRawEvidenceAndProtocolsHashStable": true,
+  "allReceiptsDrained": true,
+  "budgetReconciled": true,
+  "source": "46d1543121f9bc13e7c2a4832efa78bd14b5363c",
+  "build": 99,
+  "versionBytesVerified": true,
+  "readiness": "docs\\research\\search\\p4-critical-line\\confirmation-readiness-v1.json",
+  "remainingGate": "Separate8h15m idle/awake owner window for frozen c1-confirm-w4-v2; old68-game scope fulfilled.",
+  "scope": "Technical/exploratory progress only. No independent confirmation, owner acceptance, champion advance, promotion or deployment."
+}

@@ -1,0 +1,41 @@
+{
+  "status": "passed complete operational review",
+  "id": "c1-timed-pilot-w4-v2",
+  "games": 4,
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 258,
+      "nodes": 81860763,
+      "elapsedNanos": 58856746600
+    },
+    "candidate": {
+      "requests": 257,
+      "nodes": 76187308,
+      "elapsedNanos": 59510094200
+    }
+  },
+  "terminations": {
+    "normal": 4
+  },
+  "qualifiedFallbackWarnings": 0,
+  "chargedWallSeconds": 126.25900710001588,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 435.296875,
+    "totalOwnedProcesses": 12
+  },
+  "environment": {
+    "samples": 62,
+    "meanTotalCpuPercent": 37.7646409498614,
+    "maximumTotalCpuPercent": 67.59921925829538,
+    "minimumFreeMemoryGiB": 16.696903228759766,
+    "peakOwnedCommittedGiB": 0.78594970703125
+  },
+  "execution": "docs\\research\\search\\p4-critical-line\\c1-timed-pilot-w4-v2-execution.json",
+  "executionSha256": "cb4ac56d10766a73b5a729ef8d6620d52fbe7167b7f2b2fe59dcab4f758a9f49",
+  "protocolSha256": "55f66f1f0591d073ea4581bc367dd178b54d47c2c4763d92721e0d15a9c09fa9",
+  "analyzerSha256": "6929f391320cf2c421c6d582426da10985bc9ec70ea3a208b88312a39ebe3943",
+  "strengthInterpretation": "Pilot never informs selection or pools with screen.",
+  "clvAdapterSha256": "8a13f7dda0f5eadfd43bde3ed7b7d52590154b8da7c8722ae38b93d16c34ca57"
+}

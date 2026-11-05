@@ -1,0 +1,84 @@
+{
+  "status": "complete exploratory analysis",
+  "id": "c1-timed-screen-w4-v2",
+  "games": 64,
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 4515,
+      "nodes": 1401310787,
+      "elapsedNanos": 995701729800
+    },
+    "candidate": {
+      "requests": 4524,
+      "nodes": 1418949011,
+      "elapsedNanos": 997687847900
+    }
+  },
+  "terminations": {
+    "normal": 64
+  },
+  "qualifiedFallbackWarnings": 0,
+  "chargedWallSeconds": 2098.213253199996,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 7364.0,
+    "totalOwnedProcesses": 132
+  },
+  "environment": {
+    "samples": 1032,
+    "meanTotalCpuPercent": 35.83699121266503,
+    "maximumTotalCpuPercent": 66.66666666666667,
+    "minimumFreeMemoryGiB": 16.141216278076172,
+    "peakOwnedCommittedGiB": 0.7904586791992188
+  },
+  "execution": "docs\\research\\search\\p4-critical-line\\c1-timed-screen-w4-v2-execution.json",
+  "executionSha256": "076bb29bbf29cd700fb47f5b85193f32e668262972f71c72d4404e61f3744435",
+  "protocolSha256": "bf71f2d5c5d37ce48a76bf988aa1b450f6c088e5f9e0442326883f66324df2e3",
+  "analyzerSha256": "6929f391320cf2c421c6d582426da10985bc9ec70ea3a208b88312a39ebe3943",
+  "strengthInterpretation": "Exploratory paired interval only; selected candidate/openings and approximate dependence. No independent strength, equivalence or promotion claim.",
+  "wdl": [
+    31,
+    15,
+    18
+  ],
+  "statistics": {
+    "pairs": 32,
+    "pentanomial": [
+      1,
+      7,
+      9,
+      8,
+      7
+    ],
+    "score": 0.6015625,
+    "logisticElo": 71.5682196298182,
+    "pairedHoeffding95Score": [
+      0.3614818021700198,
+      0.8416431978299802
+    ],
+    "pairedHoeffding95Elo": [
+      -98.83473616723967,
+      290.1965178798178
+    ],
+    "pairScoreStandardError": 0.05126840616565068,
+    "pairedNormal95Score": [
+      0.5010782703705534,
+      0.7020467296294466
+    ],
+    "pairedNormal95Elo": [
+      0.7492601566112884,
+      148.88714557730594
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "descriptiveGameOrderScores": {
+    "first": 0.625,
+    "second": 0.578125
+  },
+  "descriptiveCandidateColorScores": {
+    "White": 0.765625,
+    "Black": 0.4375
+  },
+  "clvAdapterSha256": "8a13f7dda0f5eadfd43bde3ed7b7d52590154b8da7c8722ae38b93d16c34ca57"
+}

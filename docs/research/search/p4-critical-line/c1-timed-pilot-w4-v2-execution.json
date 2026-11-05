@@ -1,0 +1,73 @@
+{
+  "id": "c1-timed-pilot-w4-v2",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-critical-line\\c1-timed-pilot-w4-v2-protocol.json",
+  "protocolSha256": "55f66f1f0591d073ea4581bc367dd178b54d47c2c4763d92721e0d15a9c09fa9",
+  "command": [
+    "C:\\Program Files\\Python313\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-critical-line-uci.py",
+    "--worker",
+    "--protocol",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-critical-line\\c1-timed-pilot-w4-v2-protocol.json",
+    "--directory",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2"
+  ],
+  "startedUtc": "2026-11-05T21:43:28.069760+00:00",
+  "games": 4,
+  "priority": "below-normal",
+  "preflight": {
+    "utc": "2026-11-05T21:43:28.721414+00:00",
+    "totalCpuPercent": 18.49593495934959,
+    "freeMemoryGiB": 17.605567932128906,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "ChatGPT.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 4,
+    "estimatedPeakGiB": 2,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 51.829268292682926,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 31628,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 435.296875,
+    "totalOwnedProcesses": 12
+  },
+  "wallSeconds": 126.25900710001588,
+  "endedUtc": "2026-11-05T21:45:34.344593+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.78594970703125,
+  "chargedWallSeconds": 126.25900710001588,
+  "initiatedGames": 4,
+  "completedGames": 4,
+  "observedNodes": 158048071,
+  "gameCounting": "Conservatively charge both games before pair creation; failed/partial pairs preserved",
+  "inputsStable": true,
+  "files": {
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\baseline-preflight.txt": "50c7fc9349ab16bdcd262800f8a21f58026d2a63fb472709fe8846c32ff7c41b",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\candidate-preflight.txt": "bf1975ac44199eb89fd63f9ba4ea6a1c8e985777f2a798258a74c1d88a7e4f30",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\environment.jsonl": "fc33f47da8a1545fb6afc460d26b656c48b3afb6ccdeeb679de073a29a1c5be5",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\progress.jsonl": "9a230c0bb57c1b83f01a029da977396517c65bbdce33cefff9e463f29ca63acc",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-000\\config.json": "f06274a6f4798cc5d5dd6b6ee7040e76bd3d3e5d4f102060f444765dc9ed2978",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-000\\games.pgn": "5398c27f30d43f166996feb9d7a3e8a8a1458091848ca664e97633bc4f13f5bc",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-000\\opening.pgn": "929eb5bf53d376b68da6c42bdf7a920a0dada8991061b342bc8ea5233d830840",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-000\\runner.txt": "586f6cb25e362ea80c81492b993d66ea4f5ac9f1bcd240e71cf66e10761c94da",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-000\\uci-trace.log": "e51c34d9d97c3ca32f3136ca8ed9a47f25681a52ab4f7400ba59311eed65bd50",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-000\\verified.json": "19a7190c271460dfdd0aaa26212a37b69d3481e99049e47746643a1f470c2127",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-001\\config.json": "abe6cfc9608759a431ce574e53113c536632c3e178c7ec3ce841000074431c5a",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-001\\games.pgn": "e853049846f7744892bbf91c49c3a37fd4d241ee1ee5cbfec6f657f9b420d99d",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-001\\opening.pgn": "a55866ed6aeba03701be5ad650035e1e5e8c3b4a97daf77f41ccb22e47626a01",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-001\\runner.txt": "ac158034d88e715f9a1147e00e89943bd772b6fe5ce003659b26e5497af2fb9e",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-001\\uci-trace.log": "1b236304e7dcdaeef637a3023137b37cb0aec84d93ff02c50b46f7944abd7740",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-timed-pilot-w4-v2\\pair-001\\verified.json": "cb23e9df5c4bdb261f3d66411283d20fabbf85ad3f4a80e09f46bf7c16fdff64"
+  }
+}
