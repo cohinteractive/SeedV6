@@ -1,0 +1,33 @@
+This document describes the current production Search and Evaluation feature set of SeedV6. It is maintained in place: obsolete descriptions are revised or removed rather than retained as history.
+
+SEARCH
+
+- Alpha-Beta Negamax / Principal Variation Search — Searches the first move with a full window and later moves with null-window scouts, re-searching improving moves as needed to establish the principal variation.
+- Iterative Deepening / Adaptive Aspiration Windows — Searches successive depths using windows centered on the previous score and sized from recent score changes; failed windows widen, with a full-window fallback.
+- Quiescence Search — Continues through captures and promotions, including en passant and underpromotions, using stand-pat evaluation outside check and searching every legal check evasion.
+- Static Exchange Evaluation — Ranks tactical moves and prunes losing nonchecking captures in quiescence, while preserving promotions, en passant and captures that uncover additional friendly slider attacks.
+- Transposition Tables — Stores completed move hints and selective search estimates with depth, bound type and generation information; keys incorporate position, rule state and relevant repetition history.
+- Guarded Transposition-Table Score Reuse — Non-mate estimates from the current move search can cut off interior null-window nodes only when stored depth is sufficient, the associated move is legal and the bound is compatible.
+- Move Ordering — Combines hash-move priority, material and capture-history scores, two killer moves per ply, countermoves, quiet history and immediate continuation history, with unfavorable captures deprioritized.
+- Principal Variation / Root Effort Reuse — Reuses the previous completed iteration’s principal variation and orders root alternatives by their earlier search effort, favoring branches that previously required more work.
+- History Learning — Retains each worker’s learned histories, killers and countermoves across iterations, retries and root jobs within one move search. Cutoff rewards and alternative-move penalties exclude results obtained only at reduced depth.
+- History-Guided Late Move Reductions — Searches later quiet moves at reduced depth and verifies promising results at unreduced depth. Quiet and continuation history adjust reductions, while improving evaluations and refuted reduced probes encourage more cautious searching.
+- Late Move Pruning — At shallow null-window nodes, omits late quiet moves after a protected initial set, retaining checking moves, castling, hash moves and positive-history moves, with pruning disabled in sparse positions.
+- Futility Pruning — Omits selected late, nonchecking quiet moves at depths up to five when static evaluation plus a nominal-depth margin cannot reach alpha, protecting pawn moves, king moves, positive-history moves and sparse endings.
+- Reverse Futility Pruning — At eligible null-window nodes within two plies of the horizon, cuts off when static evaluation exceeds beta by a depth-dependent margin, subject to check, material and rule-clock safeguards.
+- Verified Null-Move Pruning — At eligible depths three through six, tests a reduced search after a synthetic pass; a fail-high permits pruning only after a separate reduced search using legal moves confirms it.
+- Tactical Verification / ProbCut — Tests up to three non-losing captures or promotions with quiescence followed by a reduced legal search; confirmation above an elevated beta threshold permits a selective cutoff.
+- Forced-Evasion / Recapture Extensions — Adds a ply for a single legal check evasion near the horizon or a qualifying nonchecking same-square recapture at the horizon, capped at one additional ply along a line.
+- Mate-Distance Pruning / Draw Recognition — Tightens search windows using achievable mate distances and recognizes checkmate, stalemate, formal threefold repetition, the fifty-move rule and supported insufficient-material draws.
+- Parallel Root Search — Distributes root moves among up to sixteen workers from depth three, sharing a synchronized transposition table while keeping boards, histories and NNUE accumulators private. Finite aspiration windows start root jobs concurrently; full-window passes search the first root move before distributing alternatives.
+- Time Management / Search Termination — Allocates time from the remaining clock, increment and moves to go, with clock reserves and best-move-stability stopping from depth six. Workers share time and node limits, and interrupted searches preserve the last completed iteration.
+
+EVALUATION
+
+- NNUE Architecture — A bundled quantized network uses a shared 256-unit feature transformer for each perspective, feeding the combined 512 activations directly into a selected scalar output head. The network supplies the complete static evaluation without added handcrafted material or positional terms.
+- Piece-Square Inputs — Encodes every piece, including both kings, through 7,680 sparse features combining ten king-location buckets, twelve relative piece-and-color channels and 64 squares.
+- Perspective Normalization — Maintains both sides’ perspectives, reversing ranks for Black and mirroring files according to each perspective’s king position. The output head receives the side-to-move accumulator first and the opponent’s second.
+- Squared Clipped ReLU / Integer Inference — Clips accumulator activations to 0–255 and squares them before the output dot product, using signed 16-bit network parameters, 32-bit accumulators and 64-bit output sums.
+- Material-Dependent Output Heads — Selects one of eight separately weighted output heads according to total piece count, including kings, adapting the final evaluation as material disappears.
+- Incremental Evaluation — Copies parent accumulators and adds or subtracts changed piece features, rebuilding an affected perspective when its king changes bucket or mirroring orientation. Separate accumulators per worker and search ply preserve parent state across sibling moves and retries.
+- Output Scaling / Score Interpretation — Applies fixed integer normalization with a scale factor of 400 to produce side-to-move scores kept outside the reserved mate range. Centipawn-format reporting represents the network’s learned expected-score scale, rather than literal material pawn values or calibrated winning probabilities.

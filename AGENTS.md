@@ -36,3 +36,34 @@ and configuration identities, results and limitations. Check local availability
 before analysis: a fresh checkout does not contain ignored evidence. This storage
 policy preserves all Search Contract evidence, reproducibility, frozen-experiment,
 negative-result and independent-confirmation requirements.
+
+## Production Search and Evaluation feature inventory
+
+`docs/SEARCH_AND_EVALUATION_FEATURES.md` is a concise, human-readable snapshot of
+the Search and Evaluation features actually active in the normal production
+SeedV6 engine. It describes what production currently does, not how it evolved.
+
+- Whenever implementation or configuration changes add, remove, enable, disable,
+  replace or materially alter a production Search or Evaluation feature, Codex
+  must update the inventory as part of the same work unit. Revise descriptions
+  when behavior changes, add newly adopted production features, and remove
+  features no longer used in normal production.
+- Maintain descriptions in place. Related features may be grouped for readability;
+  descriptions must remain concise, technically accurate and understandable to
+  chess-engine developers. Do not append changelogs, historical entries, dated
+  updates, research narratives or obsolete descriptions.
+- Routine refactoring, parameter tuning and implementation corrections require
+  no inventory change unless they materially affect a feature description.
+  Experimental changes require no update until adopted into the normal production
+  formulation. If no inventory update is needed, leave the file unchanged.
+- For relevant production feature changes, verify the inventory against the actual
+  implementation and effective resolved production configuration before completing
+  the work unit.
+
+This is repository product documentation, not a competing research authority or
+production configuration selector. Actual implementation and resolved production
+configuration establish feature behavior; the applicable Search canon,
+`source/CHESS_SEARCH_CONTRACT.md` and `source/CHESS_SEARCH_RESEARCH_FRONTIER.md`,
+establishes adopted production policy. Historical implementations, research results,
+experimental candidates or configurations, and planned features do not belong in
+this inventory.
