@@ -1,7 +1,7 @@
 {
   "id": "unified-production-qualification-v1",
   "sourceParent": "2e45f703540f3b36f41cc75fecfb393d35628cf2",
-  "status": "source-and-precommit-Windows-qualification-passed",
+  "status": "implemented-and-Windows-technically-qualified; owner visual acceptance separate",
   "profile": "MW_C4",
   "flags": 1182007295,
   "workerSelection": {
@@ -229,7 +229,10 @@
     "docs/research/search/p4-multiworker/raw/unified-production-v1/qualification-2.log": "2bdce170911ffdd8c4b018748ab9dc29ce522af388ffb98e5f63c4561c788371",
     "docs/research/search/p4-multiworker/raw/unified-production-v1/package-precommit.log": "f2fa84e9b19abd0238cd3a5633a6f99c56a1ee80de062ded8db36d9058534de8",
     "docs/research/search/p4-multiworker/raw/unified-production-v1/python-packaging-final.log": "bcf48e67c744ec62b74d53a9844d17befce9370f09fc79b889079887198b6e84",
-    "docs/research/search/p4-multiworker/raw/unified-production-v1/matches/result.json": "6bb1c03ad3f7b20f0ed9a24cf53e2ae7cf780e45a62d145039a5c642acf50420"
+    "docs/research/search/p4-multiworker/raw/unified-production-v1/matches/result.json": "6bb1c03ad3f7b20f0ed9a24cf53e2ae7cf780e45a62d145039a5c642acf50420",
+    "docs/research/search/p4-multiworker/raw/unified-production-v1/package-build98.log": "23841b43bb93c0a077337a5a88caabad392c4b5c7ca403cad9d4967fe9cbc175",
+    "docs/research/search/p4-multiworker/raw/unified-production-v1/artifact-class-bridge.json": "b77840aef3adcb2d451fceedca36cedf0b6e6f3bfe05bb05d1827edbef2e5320",
+    "docs/research/search/p4-multiworker/raw/unified-production-v1/version-verification.json": "71e59df16d524ab6a4616884b4d7652d63179b0be23ed381cc5017105de06345"
   },
   "versionVerification": {
     "decision": "bump",
@@ -276,5 +279,310 @@
     "tools/p4-unified-production-match.py",
     "tools/test_native_packaging.py",
     "tools/verify_cp64_production.py"
+  ],
+  "sourceCommit": "f2216ffea94105a54f3d141190e8566b886798de",
+  "build": 98,
+  "contractRevision": "P4-R033",
+  "frontierRevision": "P4-F051",
+  "nativeUci": {
+    "MW_C4": {
+      "status": "PASS",
+      "workerCounts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "searchResponses": 56,
+      "evidence": "docs/research/search/p4-multiworker/raw/unified-production-v1/native-build98-default/result.json",
+      "sha256": "ad9b2b62d7dfd394c665efc40dcd31ead6989ee32ca7a1a794a3861fb3dcf246"
+    },
+    "TC_P1": {
+      "status": "PASS",
+      "workerCounts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "searchResponses": 56,
+      "evidence": "docs/research/search/p4-multiworker/raw/unified-production-v1/native-build98-tc-p1/result.json",
+      "sha256": "30e5ff4ca8afeb15936908afbee85b972550a9f2fe7333431bfd1f9a7f36eecc"
+    },
+    "MW_C4_W4": {
+      "status": "PASS",
+      "workerCounts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "searchResponses": 56,
+      "evidence": "docs/research/search/p4-multiworker/raw/unified-production-v1/native-build98-historical/result.json",
+      "sha256": "da802882e9409164db4f98fd0fdc6901912f7c722577bb2999bff5666c7a587d"
+    }
+  },
+  "representativeRuntimeSnapshots": {
+    "1": {
+      "profile": "MW_C4",
+      "flags": 1182007295,
+      "workers": 1,
+      "hashMiB": 64,
+      "scheduling": "OWNER",
+      "aspiration": "ADAPTIVE16",
+      "evaluator": "CONVENTIONAL_NNUE",
+      "checkpoint": "64",
+      "clockPolicy": "boundary2-d6-v1",
+      "source": "f2216ffea941",
+      "build": 98,
+      "configurationId": "cfg-9d13b765f0eff595"
+    },
+    "2": {
+      "profile": "MW_C4",
+      "flags": 1182007295,
+      "workers": 2,
+      "hashMiB": 1,
+      "scheduling": "EAGER_ROOT",
+      "aspiration": "ADAPTIVE16",
+      "evaluator": "CONVENTIONAL_NNUE",
+      "checkpoint": "64",
+      "clockPolicy": "boundary2-d6-v1",
+      "source": "f2216ffea941",
+      "build": 98,
+      "configurationId": "cfg-79da8b6eaf9d4ff4"
+    },
+    "3": {
+      "profile": "MW_C4",
+      "flags": 1182007295,
+      "workers": 3,
+      "hashMiB": 1,
+      "scheduling": "EAGER_ROOT",
+      "aspiration": "ADAPTIVE16",
+      "evaluator": "CONVENTIONAL_NNUE",
+      "checkpoint": "64",
+      "clockPolicy": "boundary2-d6-v1",
+      "source": "f2216ffea941",
+      "build": 98,
+      "configurationId": "cfg-38f7e475b0ab089c"
+    },
+    "4": {
+      "profile": "MW_C4",
+      "flags": 1182007295,
+      "workers": 4,
+      "hashMiB": 64,
+      "scheduling": "EAGER_ROOT",
+      "aspiration": "ADAPTIVE16",
+      "evaluator": "CONVENTIONAL_NNUE",
+      "checkpoint": "64",
+      "clockPolicy": "boundary2-d6-v1",
+      "source": "f2216ffea941",
+      "build": 98,
+      "configurationId": "cfg-965d2f2609b383f7"
+    },
+    "5": {
+      "profile": "MW_C4",
+      "flags": 1182007295,
+      "workers": 5,
+      "hashMiB": 1,
+      "scheduling": "EAGER_ROOT",
+      "aspiration": "ADAPTIVE16",
+      "evaluator": "CONVENTIONAL_NNUE",
+      "checkpoint": "64",
+      "clockPolicy": "boundary2-d6-v1",
+      "source": "f2216ffea941",
+      "build": 98,
+      "configurationId": "cfg-bb9e91f19c850fdf"
+    },
+    "8": {
+      "profile": "MW_C4",
+      "flags": 1182007295,
+      "workers": 8,
+      "hashMiB": 1,
+      "scheduling": "EAGER_ROOT",
+      "aspiration": "ADAPTIVE16",
+      "evaluator": "CONVENTIONAL_NNUE",
+      "checkpoint": "64",
+      "clockPolicy": "boundary2-d6-v1",
+      "source": "f2216ffea941",
+      "build": 98,
+      "configurationId": "cfg-4b79f1e016682d6f"
+    },
+    "16": {
+      "profile": "MW_C4",
+      "flags": 1182007295,
+      "workers": 16,
+      "hashMiB": 64,
+      "scheduling": "EAGER_ROOT",
+      "aspiration": "ADAPTIVE16",
+      "evaluator": "CONVENTIONAL_NNUE",
+      "checkpoint": "64",
+      "clockPolicy": "boundary2-d6-v1",
+      "source": "f2216ffea941",
+      "build": 98,
+      "configurationId": "cfg-fe66c8ebd8c48dcc"
+    }
+  },
+  "committedArtifacts": [
+    {
+      "application": "SeedV6-GUI",
+      "manifest": "dist/windows/candidates/unified-search-build98-v1/SeedV6-GUI/build-manifest.json",
+      "manifestSha256": "f0f3a257e42fdb94b113067b913f53ab59bde867b8061cbbe0ff5a012e6e16f5",
+      "source": "f2216ffea94105a54f3d141190e8566b886798de",
+      "sourceClean": true,
+      "version": {
+        "build": 98,
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      },
+      "runtime": {
+        "BUILD_INFO": "\"OS: Windows Server 2022 Version: 10.0\"",
+        "BUILD_SOURCE": "\"git:e6ba7dec3d07654074559310376a3ae89da5f4ac\"",
+        "BUILD_SOURCE_REPO": "\"https://github.com/adoptium/temurin-build.git\"",
+        "FULL_VERSION": "\"21.0.12.1+1-LTS\"",
+        "IMAGE_TYPE": "\"JDK\"",
+        "IMPLEMENTOR": "\"Eclipse Adoptium\"",
+        "IMPLEMENTOR_VERSION": "\"Temurin-21.0.12.1+1\"",
+        "JAVA_RUNTIME_VERSION": "\"21.0.12.1+1-LTS\"",
+        "JAVA_VERSION": "\"21.0.12.1\"",
+        "JAVA_VERSION_DATE": "\"2026-08-18\"",
+        "JVM_VARIANT": "\"Hotspot\"",
+        "JVM_VERSION": "\"21.0.12.1+1-LTS\"",
+        "LIBC": "\"default\"",
+        "MODULES": "\"java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.incubator.vector jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jlink jdk.jpackage jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom\"",
+        "OS_ARCH": "\"x86_64\"",
+        "OS_NAME": "\"Windows\"",
+        "SEMANTIC_VERSION": "\"21.0.12.1+1\"",
+        "SOURCE": "\".:git:1c417fbfc2f7\"",
+        "SOURCE_REPO": "\"https://github.com/adoptium/jdk21u.git\""
+      },
+      "files": {
+        "dist/windows/candidates/unified-search-build98-v1/SeedV6-GUI/SeedV6-GUI.exe": "f013ab1497e58145b1e245be93554bc3c03edc2191b4b6e1227eb2b2e3f39375",
+        "dist/windows/candidates/unified-search-build98-v1/SeedV6-GUI-windows-x64.zip": "2fda546fd858ba0d3995a4135099022c6c7ad7b3e44bce22c8d563f922d47180",
+        "dist/windows/candidates/unified-search-build98-v1/SeedV6-GUI/app/engine-core.jar": "38979d7a20a320b53135cb935b996e881b6b4dcbde99d6a0949429d4b82fe877"
+      },
+      "verification": "headless-resources-jni-passed"
+    },
+    {
+      "application": "SeedV6-UCI",
+      "manifest": "releases/candidates/windows-x64/unified-search-build98-v1/SeedV6-UCI/build-manifest.json",
+      "manifestSha256": "a5dec6e06c1b6457f6e8872ea2029a65d628daa5d65dc14371653d8bb4e2da9b",
+      "source": "f2216ffea94105a54f3d141190e8566b886798de",
+      "sourceClean": true,
+      "version": {
+        "build": 98,
+        "major": 0,
+        "minor": 0,
+        "patch": 0
+      },
+      "runtime": {
+        "BUILD_INFO": "\"OS: Windows Server 2022 Version: 10.0\"",
+        "BUILD_SOURCE": "\"git:e6ba7dec3d07654074559310376a3ae89da5f4ac\"",
+        "BUILD_SOURCE_REPO": "\"https://github.com/adoptium/temurin-build.git\"",
+        "FULL_VERSION": "\"21.0.12.1+1-LTS\"",
+        "IMAGE_TYPE": "\"JDK\"",
+        "IMPLEMENTOR": "\"Eclipse Adoptium\"",
+        "IMPLEMENTOR_VERSION": "\"Temurin-21.0.12.1+1\"",
+        "JAVA_RUNTIME_VERSION": "\"21.0.12.1+1-LTS\"",
+        "JAVA_VERSION": "\"21.0.12.1\"",
+        "JAVA_VERSION_DATE": "\"2026-08-18\"",
+        "JVM_VARIANT": "\"Hotspot\"",
+        "JVM_VERSION": "\"21.0.12.1+1-LTS\"",
+        "LIBC": "\"default\"",
+        "MODULES": "\"java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.incubator.vector jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jlink jdk.jpackage jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom\"",
+        "OS_ARCH": "\"x86_64\"",
+        "OS_NAME": "\"Windows\"",
+        "SEMANTIC_VERSION": "\"21.0.12.1+1\"",
+        "SOURCE": "\".:git:1c417fbfc2f7\"",
+        "SOURCE_REPO": "\"https://github.com/adoptium/jdk21u.git\""
+      },
+      "files": {
+        "releases/candidates/windows-x64/unified-search-build98-v1/SeedV6-UCI/SeedV6-UCI.exe": "bdbc9928255cf6a96ae6f3604007089121b4573198d11b628d51d62d572702af",
+        "releases/candidates/windows-x64/unified-search-build98-v1/SeedV6-UCI-windows-x64.zip": "30277838713bbdf530832e8f6999c0e9d9cfdee82e3817eaa6ebef117a78559a",
+        "releases/candidates/windows-x64/unified-search-build98-v1/SeedV6-UCI/app/engine-core.jar": "38979d7a20a320b53135cb935b996e881b6b4dcbde99d6a0949429d4b82fe877"
+      },
+      "verification": "passed"
+    }
+  ],
+  "commonCoreJarSha256": "38979d7a20a320b53135cb935b996e881b6b4dcbde99d6a0949429d4b82fe877",
+  "artifactClassBridge": {
+    "status": "passed",
+    "classEntriesCompared": 3302,
+    "allClassBytesIdentical": true,
+    "nonClassDifferences": {
+      "SeedV6-GUI/desktop-package.jar": [
+        "com/ohinteractive/seedv6/desktop-build.properties"
+      ],
+      "SeedV6-GUI/engine-core.jar": [
+        "com/ohinteractive/seedv6/application-version.properties"
+      ],
+      "SeedV6-UCI/engine-core.jar": [
+        "com/ohinteractive/seedv6/application-version.properties"
+      ]
+    }
+  },
+  "generatedJavaLauncher": {
+    "status": "passed",
+    "requests": 12,
+    "profiles": [
+      "default",
+      "MW_C4",
+      "TC_P1"
+    ],
+    "workers": [
+      1,
+      4,
+      8,
+      16
+    ],
+    "propertyMechanism": "SEEDV6_UCI_OPTS",
+    "evidence": "docs/research/search/p4-multiworker/raw/unified-production-v1/java-build98-options/result.json",
+    "sha256": "984415ad16427d387a564010f7adff99d10bc3073542b4b461f69850e6aa46dd"
+  },
+  "humanActions": [
+    {
+      "action": "Manual GUI Play, Arena and About visual checks as requested",
+      "blocking": "visual desktop acceptance only; non-blocking for repository integration"
+    },
+    {
+      "action": "Refresh both Project Source mirrors to P4-R033/P4-F051",
+      "blocking": "future mirror-dependent coordination only; non-blocking for this work unit"
+    }
   ]
 }

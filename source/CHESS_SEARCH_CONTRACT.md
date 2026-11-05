@@ -37,7 +37,10 @@ owns source/artifact identities, technical checks, bounded exploratory observati
 limitations and rollback. Source qualification passed 405 JUnit checks plus 22 focused
 rechecks and Windows headless packaging/runtime checks. The bounded W1/W4/W8
 competitive plan was refused by the existing foreground-workload resource guard
-before any game started; no new strength observation is claimed. W4's historical independent 61.71875% result remains
+before any game started; no new strength observation is claimed. Committed
+**build98/sourcef2216ffe** and its Windows artifacts passed the recorded headless
+checks; visual acceptance remains with the owner. W4's historical independent
+61.71875% result remains
 limited to its original domain; other workers have no independent MW-C4 strength
 qualification. This integration neither changes that conclusion nor reopens
 MW-R001, IC-R001, TT-R001 or frozen independent clock studies.

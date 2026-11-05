@@ -97,6 +97,39 @@ and other platforms remain uncertain. Technical qualification is not independent
 playing-strength qualification. Baseline79, corrected80, champion HL-G1/build84,
 TC-P1/build90, confirmed MW-C4/build94 and all frozen results remain unchanged.
 
+## Committed build98 artifacts
+
+Implementation commit **f2216ffea94105a54f3d141190e8566b886798de** carries the
+single verified build97->98 increment; major/minor/patch and other version bytes
+are preserved. Committed-source Windows packaging passed in54s from a clean
+tree. Native GUI and UCI, ZIP integrity and separately extracted packages passed
+the existing headless/resource/JNI/protocol/model gates. Source qualification
+was not claimed as a new full-suite rerun after this metadata-only build step.
+
+| Artifact | Repository-relative path |
+| --- | --- |
+| GUI executable | `dist/windows/candidates/unified-search-build98-v1/SeedV6-GUI/SeedV6-GUI.exe` |
+| GUI ZIP | `dist/windows/candidates/unified-search-build98-v1/SeedV6-GUI-windows-x64.zip` |
+| UCI executable | `releases/candidates/windows-x64/unified-search-build98-v1/SeedV6-UCI/SeedV6-UCI.exe` |
+| UCI ZIP | `releases/candidates/windows-x64/unified-search-build98-v1/SeedV6-UCI-windows-x64.zip` |
+| Java UCI | `app-uci/build/install/seedv6-uci/bin/seedv6-uci.bat` |
+
+The qualification JSON pins full artifact/manifest SHA-256 values and actual
+representative runtime snapshots. Native GUI, native UCI and generated Java UCI
+share core SHA-256
+`38979d7a20a320b53135cb935b996e881b6b4dcbde99d6a0949429d4b82fe877`.
+All3302 compared JAR class entries equal the tested precommit packages. Only
+application version/source resources and the desktop build timestamp differ.
+
+Committed **native UCI passed168 additional searches**, 56/profile for normal
+MW_C4, TC_P1 and MW_C4_W4 across all W1-W16. All handshakes report **SeedV6-98**;
+configuration reports name the effective profile, build98 and clean source
+`f2216ffea941`. The generated Java launcher passed12 further depth3 requests
+at W1/W4/W8/W16 for default, explicit MW_C4 and TC_P1 through `SEEDV6_UCI_OPTS`,
+plus active-search quit. Native overrides used process-local `JAVA_TOOL_OPTIONS`.
+No app window or visual confirmation was performed. Final evidence is recorded
+by a documentation-only successor commit; no further build increment follows.
+
 ## Rollback and owner handoff
 
 Use `-Dseedv6.searchProfile=TC_P1` to select exact prior TC-P1 at every count
