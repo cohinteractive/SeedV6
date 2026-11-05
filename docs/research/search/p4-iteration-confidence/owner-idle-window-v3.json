@@ -1,0 +1,10 @@
+{
+  "status": "authorized",
+  "receivedUtc": "2026-11-05T00:46:33+00:00",
+  "hardDeadlineUtc": "2026-11-05T01:51:33+00:00",
+  "durationMinutes": 65,
+  "ownerWording": "Authorize 65 minutes starting now",
+  "scope": "Frozen IC-C2 replication64 on32 new IC-development opening pairs versus exact build96 only. No pilot, additional games or confirmation implied.",
+  "timingProvenance": "First machine-clock observation after receipt; exact client reply timestamp not provided.",
+  "sourceCommit": "19ed60a920c9503fccef51a2a21aab23c802e12c"
+}

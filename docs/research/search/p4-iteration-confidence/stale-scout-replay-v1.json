@@ -1,0 +1,117 @@
+{
+  "status": "Completed C4-only descriptive replay; no new Search or current match scores",
+  "analyzerSha256": "226470afd468064c77a0be1079bf308030c360064c4ff632ad40f229d80b898c",
+  "runs": [
+    {
+      "run": "root-baseline-v1",
+      "inputSha256": "1b81dea806854c553e7b9bb94472701ed78bc354283f4155cce106b7935ed1fe",
+      "requests": 40,
+      "totalNodes": 8000000,
+      "counts": {
+        "allFullRetries": 507,
+        "alphaAdvancedRetries": 88,
+        "advancedCompletedAtOrBelowAlpha": 68,
+        "advancedCompletedAboveAlpha": 18,
+        "advancedIncomplete": 2
+      },
+      "nodes": {
+        "allFullRetries": 1532922,
+        "alphaAdvancedRetries": 110152,
+        "advancedCompletedAtOrBelowAlpha": 40945,
+        "advancedCompletedAboveAlpha": 51500,
+        "advancedIncomplete": 17707
+      },
+      "maximumAlphaAdvance": 512,
+      "requestNodeFractions": {
+        "allFullRetries": 0.19161525,
+        "alphaAdvancedRetries": 0.013769,
+        "advancedCompletedAtOrBelowAlpha": 0.005118125,
+        "advancedCompletedAboveAlpha": 0.0064375,
+        "advancedIncomplete": 0.002213375
+      }
+    },
+    {
+      "run": "root-baseline-v2",
+      "inputSha256": "7392ac860dfc7c175cd0d2a279cf9a3839e8010a1b5a040334f296208588b05a",
+      "requests": 40,
+      "totalNodes": 8000000,
+      "counts": {
+        "allFullRetries": 508,
+        "alphaAdvancedRetries": 100,
+        "advancedCompletedAtOrBelowAlpha": 77,
+        "advancedCompletedAboveAlpha": 22,
+        "advancedIncomplete": 1
+      },
+      "nodes": {
+        "allFullRetries": 1556125,
+        "alphaAdvancedRetries": 175570,
+        "advancedCompletedAtOrBelowAlpha": 76159,
+        "advancedCompletedAboveAlpha": 97695,
+        "advancedIncomplete": 1716
+      },
+      "maximumAlphaAdvance": 512,
+      "requestNodeFractions": {
+        "allFullRetries": 0.194515625,
+        "alphaAdvancedRetries": 0.02194625,
+        "advancedCompletedAtOrBelowAlpha": 0.009519875,
+        "advancedCompletedAboveAlpha": 0.012211875,
+        "advancedIncomplete": 0.0002145
+      }
+    },
+    {
+      "run": "root-c2-control-v1",
+      "inputSha256": "487d7632bb7da9b910c3dd10c8ea4c3b08bd6ead8d8a7910f106960dc7dee2be",
+      "requests": 40,
+      "totalNodes": 8000000,
+      "counts": {
+        "allFullRetries": 502,
+        "alphaAdvancedRetries": 81,
+        "advancedCompletedAtOrBelowAlpha": 67,
+        "advancedCompletedAboveAlpha": 14
+      },
+      "nodes": {
+        "allFullRetries": 1614361,
+        "alphaAdvancedRetries": 107674,
+        "advancedCompletedAtOrBelowAlpha": 70097,
+        "advancedCompletedAboveAlpha": 37577
+      },
+      "maximumAlphaAdvance": 512,
+      "requestNodeFractions": {
+        "allFullRetries": 0.201795125,
+        "alphaAdvancedRetries": 0.01345925,
+        "advancedCompletedAtOrBelowAlpha": 0.008762125,
+        "advancedCompletedAboveAlpha": 0.004697125
+      }
+    },
+    {
+      "run": "root-c2-control-v2",
+      "inputSha256": "92763d1277501eaa61e462e3c24d2a43d5c94387cd8166b0066c3645b9af2947",
+      "requests": 40,
+      "totalNodes": 8000000,
+      "counts": {
+        "allFullRetries": 494,
+        "alphaAdvancedRetries": 91,
+        "advancedCompletedAtOrBelowAlpha": 75,
+        "advancedCompletedAboveAlpha": 15,
+        "advancedIncomplete": 1
+      },
+      "nodes": {
+        "allFullRetries": 1469921,
+        "alphaAdvancedRetries": 107189,
+        "advancedCompletedAtOrBelowAlpha": 45916,
+        "advancedCompletedAboveAlpha": 50811,
+        "advancedIncomplete": 10462
+      },
+      "maximumAlphaAdvance": 512,
+      "requestNodeFractions": {
+        "allFullRetries": 0.183740125,
+        "alphaAdvancedRetries": 0.013398625,
+        "advancedCompletedAtOrBelowAlpha": 0.0057395,
+        "advancedCompletedAboveAlpha": 0.006351375,
+        "advancedIncomplete": 0.00130775
+      }
+    }
+  ],
+  "interpretation": "Counts include all observed passes and incomplete retry costs. A completed full retry at or below its newer alpha is an observed selective bound, not proof that a fresh scout would reject it cheaply. Old scout scores cannot skip retries.",
+  "limitations": "Repeated selected roots, correlated SMP, changing shared TT/order and no alternative trajectory. Cost fractions are exposure, not recoverable work or strength evidence."
+}

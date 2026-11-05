@@ -1,16 +1,16 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R030**
+Internal revision: **P4-R031**
 
-Status: **ACTIVE Phase 4 - 5 November 2026. IC-R001 iteration confidence and root Search effectiveness is owner-authorized and active against exact build96 MW-C4 W4 production. Strength remains unresolved. Existing closed campaigns, production routing, baseline79 and W1 champion HL-G1/build84 are preserved. No promotion, deployment or release.**
+Status: **ACTIVE Phase 4 - 5 November 2026. IC-R001 Codex technical execution concludes INCONCLUSIVE against exact build96 MW-C4 W4; the strength objective is UNMET. Owner reconciliation/acceptance/formal closure remain pending. Existing production, closed campaigns, baseline79 and W1 champion HL-G1/build84 are preserved. No promotion, deployment or release.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
 
-## Active IC-R001 - iteration confidence and root Search effectiveness
+## IC-R001 technical disposition - iteration confidence and root Search effectiveness
 
-The owner authorizes a new strength-development CGLHW against exact accepted
+The owner authorized this strength-development CGLHW against exact accepted
 build96 MW-C4 EAGER_MEMORY at W4. [Focused CONTRACT](../docs/research/search/p4-iteration-confidence/CONTRACT.md)
 records scope, correctness/concurrency safeguards, autonomy and human gates;
 [STATE](../docs/research/search/p4-iteration-confidence/STATE.md) is the single
@@ -18,6 +18,15 @@ resume point. Investigate integrated iteration information, aspiration/recovery,
 root competition and effort/cooperation with consequential Search dependencies.
 Success requires independent practical W4 strength improvement, not efficiency,
 stability, technical completion or exhaustion of resources.
+
+Codex technical execution now concludes **INCONCLUSIVE**, with no candidate
+selected for confirmation. C1 exploration was adverse; C2 scored52.34375% then
+48.4375% in separate64-game samples (combined exploration50.390625%). Structural
+worker/ordering diagnostics provide no demonstrated strength gain. See STATE and
+RESULTS for the preserved negative evidence, limitations and remaining possibilities.
+Spent6779.8406709s and200 initiated/completed games; confirmation remains unspent.
+Unused resources do not justify automatic sample extensions or a successor. Owner
+review/disposition is pending; no formal acceptance, closure or strength success.
 
 Fresh limits: 24 charged experimental wall-hours, 800 initiated timed games,
 one independent attempt of at most240 fresh pairs/480 games included in800.
@@ -33,7 +42,7 @@ matches44fc2bf2/build96. Preserve pinned build96 as the competitive control.
 MW-R001 and TT-R001 remain closed; historical no-successor statements below
 refer to their prior authorizations, superseded only by this new IC-R001 launch.
 The owner confirms launch Project Source mirrors P4-R029/P4-F047. Current masters
-are **P4-R030/P4-F048**; owner refresh is required before dependent GPT coordination,
+are **P4-R031/P4-F049**; owner refresh is required before dependent GPT coordination,
 non-blocking for authorized repository execution. Repository edits do not refresh
 mirrors. Shared behavioral governance, its R4 projection and registry are unchanged.
 Historical revision/mirror requests below record earlier decisions; this section

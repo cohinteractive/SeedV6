@@ -1,0 +1,33 @@
+{
+  "identity": "IC-C4 Initial helper depth offsets with adjacent iterations; research-only fixed-work candidate",
+  "coreSource": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "coreBuild": 96,
+  "files": {
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\lib\\app-uci.jar": "d2205f09ff015cbfaa7eaa8d337716ec40bb1d7f51b23dba91f66ac472200111",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\lib\\engine-core.jar": "3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84ea",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\lib\\engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\lib\\error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\lib\\gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\lib\\research.jar": "7f9be5d4e69378bb81650316f0cde00d83d227a56b56526fb4ff5a88919a70ad",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\lib\\sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\lib\\zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\source\\p4-iteration-confidence-adjacent-source.py": "0354d73a936b84799f512268be4db89e2084151bd73eccf3d5fc580be8a81038",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\source\\P4AdjacentOffsetSearch.java": "8ba663ff47a2c5b19fc24b67888c1a73279bedffc840426c77924901940126cd",
+    "docs\\research\\search\\p4-iteration-confidence\\raw\\runtime-adjacent-offset-v1\\source\\P4AdjacentOffsetStudy.java": "c7e0eadc0a4a8bd3107ee8bb3ea6368a46b944bb82e4e9ee925afddb88e6a1f9"
+  },
+  "sourceInputs": {
+    "tools\\p4-iteration-confidence-adjacent-source.py": "0354d73a936b84799f512268be4db89e2084151bd73eccf3d5fc580be8a81038",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4AdjacentOffsetSearch.java": "8ba663ff47a2c5b19fc24b67888c1a73279bedffc840426c77924901940126cd",
+    "research\\src\\main\\java\\com\\ohinteractive\\seedv6\\search\\exact\\P4AdjacentOffsetStudy.java": "c7e0eadc0a4a8bd3107ee8bb3ea6368a46b944bb82e4e9ee925afddb88e6a1f9"
+  },
+  "configuration": "W4/CP64/Hash64/flags1182007295; owner starts1, helpers start2/3/4 clamped to requested depth; every subsequent depth adjacent. Owner-only result/BOUNDARY2. One shared generation/global budget, private learning and full join.",
+  "coupling": "First helper iteration uses full window without prior iteration reuse; later adjacent iterations retain existing eligibility. No persistent depth gaps, helper voting, clock redesign or manufactured completions. Shared TT still correlates workers; offsets may converge later.",
+  "tests": {
+    "com.ohinteractive.seedv6.search.exact.P4AdjacentOffsetSearchTest": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+}

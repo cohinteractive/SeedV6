@@ -1,7 +1,9 @@
 # IC-R001 - Iteration confidence and root Search effectiveness
 
-Revision 1, 5 November 2026 (Pacific/Auckland). **ACTIVE strength-development
-CGLHW**, authorized by the owner's complete execution request in this root turn.
+Revision 2, 5 November 2026 (Pacific/Auckland). **CODEX TECHNICAL EXECUTION
+INCONCLUSIVE; strength objective UNMET; owner disposition pending.** The original
+owner-authorized CGLHW scope, ceilings, safeguards and acceptance meaning below
+remain unchanged. This records technical disposition, not owner acceptance or closure.
 Subordinate to the [Phase 4 Contract](../../../../source/CHESS_SEARCH_CONTRACT.md)
 and [Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
 [STATE](STATE.md) is the single resume point; [RESULTS](RESULTS.md) holds compact

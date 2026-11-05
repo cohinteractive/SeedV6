@@ -8,12 +8,12 @@
     "confirmationAttempts": 1
   },
   "consumed": {
-    "chargedWallSeconds": 4649.208899800025,
-    "fixedWallSeconds": 164.55651300004683,
-    "timedWallSeconds": 4484.652386799979,
-    "fixedNodes": 160640558,
-    "initiatedTimedGames": 136,
-    "completedTimedGames": 136,
+    "chargedWallSeconds": 6779.840670900012,
+    "fixedWallSeconds": 193.058945100056,
+    "timedWallSeconds": 6586.781725799956,
+    "fixedNodes": 192640558,
+    "initiatedTimedGames": 200,
+    "completedTimedGames": 200,
     "failedTimedGames": 0,
     "interruptedTimedGames": 0,
     "confirmationAttempts": 0
@@ -48,11 +48,17 @@
     "docs\\research\\search\\p4-iteration-confidence\\complementary-control-v1b-execution.json",
     "docs\\research\\search\\p4-iteration-confidence\\complementary-c3-v1-execution.json",
     "docs\\research\\search\\p4-iteration-confidence\\complementary-c3-v2-execution.json",
-    "docs\\research\\search\\p4-iteration-confidence\\complementary-control-v2-execution.json"
+    "docs\\research\\search\\p4-iteration-confidence\\complementary-control-v2-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\c2-timed-replication-w4-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\adjacent-control-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\adjacent-c4-v1-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\adjacent-c4-v2-execution.json",
+    "docs\\research\\search\\p4-iteration-confidence\\adjacent-control-v2-execution.json"
   ],
   "authorizedIdleWindows": [
     "docs/research/search/p4-iteration-confidence/owner-idle-window-v1.json",
-    "docs/research/search/p4-iteration-confidence/owner-idle-window-v2.json"
+    "docs/research/search/p4-iteration-confidence/owner-idle-window-v2.json",
+    "docs/research/search/p4-iteration-confidence/owner-idle-window-v3.json"
   ],
   "planningReserve": {
     "confirmationGames": 480,

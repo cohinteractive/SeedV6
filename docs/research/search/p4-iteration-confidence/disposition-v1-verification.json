@@ -1,0 +1,108 @@
+{
+  "checkedUtc": "2026-11-05T01:31:32.744749+00:00",
+  "technicalDisposition": "INCONCLUSIVE; governing strength objective UNMET; owner acceptance/formal closure not claimed",
+  "sourceRootStart": "19ed60a920c9503fccef51a2a21aab23c802e12c",
+  "consumed": {
+    "chargedWallSeconds": 6779.840670900012,
+    "fixedWallSeconds": 193.058945100056,
+    "timedWallSeconds": 6586.781725799956,
+    "fixedNodes": 192640558,
+    "initiatedTimedGames": 200,
+    "completedTimedGames": 200,
+    "failedTimedGames": 0,
+    "interruptedTimedGames": 0,
+    "confirmationAttempts": 0
+  },
+  "launchedPassed": 31,
+  "prelaunchRefusals": 1,
+  "ledgerReconciled": true,
+  "pendingOrOwnedExperiments": 0,
+  "currentRootExecutionChecks": {
+    "c2-timed-replication-w4-v1": {
+      "protocolSha256": "0ccf6d1186a3b165b62a9f8eb1a70c0f43502e0a3cd369e4c9a9de75008ca6ca",
+      "receiptSha256": "dc9eb6f60f350abe8ddb43657288918b141cf6283d471724569019a0531faab1",
+      "rawFilesRehashed": 197,
+      "inputsVerified": 46
+    },
+    "adjacent-control-v1": {
+      "protocolSha256": "589307f8d0b8da4e573c8937a6fed4ee4155c79363ad20240bcfc10f809831d8",
+      "receiptSha256": "64bdff9f3d2c6080afba72c7316a9a372b15b647343c5ec2827df90f7b0e0673",
+      "rawFilesRehashed": 3,
+      "inputsVerified": 37
+    },
+    "adjacent-c4-v1": {
+      "protocolSha256": "938c63a21b3605ded68f99803dfe32109f782c9bd057e6123dc3b978ce3ba3eb",
+      "receiptSha256": "1154e5656bc6f9d486133a56e1ce7f28d9dc893c07e056ba828585e30cc30ac4",
+      "rawFilesRehashed": 3,
+      "inputsVerified": 37
+    },
+    "adjacent-c4-v2": {
+      "protocolSha256": "6247b2d9df0688c309c28693172616af189221ad5f0d82efea0b6df11a0b9e52",
+      "receiptSha256": "813ec9ca5e49af9bb6b21458154b23706252e3373a25f74812c1123969223369",
+      "rawFilesRehashed": 3,
+      "inputsVerified": 37
+    },
+    "adjacent-control-v2": {
+      "protocolSha256": "332402f2018a346300f6a0f541cb8c5e1c48056c32e2916b782739d257cd2ed9",
+      "receiptSha256": "b824027e90d2fd850a11f9e146fa0fc182a66ac0ccf1e3120c2796bd42d5d9da",
+      "rawFilesRehashed": 3,
+      "inputsVerified": 37
+    }
+  },
+  "exactRawRuntimePathsVerifiedIgnored": 220,
+  "sourceGenerators": [
+    {
+      "status": "verified",
+      "base": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+      "source": "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/IndependentSearch.java",
+      "target": "research/src/main/java/com/ohinteractive/seedv6/search/exact/P4AdjacentOffsetSearch.java",
+      "originalLfSha256": "e2b12ccde5588a10b1502b0a8bb74ff410d974aec7ad9ec4ec7b79ec8be3e029",
+      "targetSha256": "8ba663ff47a2c5b19fc24b67888c1a73279bedffc840426c77924901940126cd"
+    },
+    {
+      "status": "verified",
+      "base": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+      "source": "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/IndependentSearch.java",
+      "target": "research/src/main/java/com/ohinteractive/seedv6/search/exact/P4ComplementarySearch.java",
+      "originalLfSha256": "e2b12ccde5588a10b1502b0a8bb74ff410d974aec7ad9ec4ec7b79ec8be3e029",
+      "targetSha256": "1f733df6d9dbcfaa912be4d00fcb40a83c4c7d90a2af36aa800843a85e098f13"
+    },
+    {
+      "status": "verified",
+      "base": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+      "source": "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java",
+      "originalLfSha256": "204038aca18a30170f07ba868ea0ee6fbab5a56085b65eb09992c5028a4181e2",
+      "target": "research/src/main/java/com/ohinteractive/seedv6/search/exact/P4ObservedRootSearch.java",
+      "targetSha256": "b2200ce2a10ca9fd1829537a83a505fc5d4c7bdf1400a5c9f1601eb0e6c451aa"
+    }
+  ],
+  "analysesReproduced": [
+    "adjacent-analysis-v1",
+    "stale-scout-replay-v1",
+    "c2-combined-exploration-v1"
+  ],
+  "targetedJavaTests": {
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "testReportSha256": "87ee15542cdb454978b88021055db43ad4303624ec10047fd73b67eece499f5b",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 97
+  },
+  "versionSha256": "3e882601cfa2e514d589c47d61f41db2672565b045b7ed28ba05c461db7515bc",
+  "versionBytesUnchanged": true,
+  "buildDecision": "no_bump: research/tools/tests/evidence and technical-master status only",
+  "journal": "Root CODEXLOG_CURRENT.md absent",
+  "masters": [
+    "P4-R031",
+    "P4-F049"
+  ],
+  "historicalMasterTailsPreserved": true,
+  "productionDiff": false,
+  "limitations": "No independent strength attempt, full application/UI/platform/deployment validation, independent-worker timed UCI qualification or thermal equivalence. Raw evidence is local-only. No push/deployment or owner acceptance."
+}

@@ -1,8 +1,9 @@
 # IC-R001 evidence and work selection
 
 5 November 2026. [STATE](STATE.md) is the resume point; [CONTRACT](CONTRACT.md)
-defines authority and success. The first timed exploratory result is adverse;
-IC-C1 is not selected for confirmation. Governing strength success remains unresolved.
+defines authority and success. Technical execution concludes INCONCLUSIVE; the
+governing strength objective is UNMET. No candidate is selected for confirmation;
+owner acceptance and formal closure remain pending.
 
 ## Bootstrap challenge: current implementation facts
 
@@ -32,23 +33,17 @@ strength result is integrated, not an independent scheduling or TT effect. Prior
 whole-root race/sharing failures and adverse fixed-work results remain unchanged;
 MW-C6 is tested but runtime/strength-unqualified. No frozen clock study was opened.
 
-## Dynamic selection
+## Final work selection and disposition
 
-1. **Selected now:** root-job provenance observation to explain the mismatch between
-   C1's reduced failed-pass work and adverse timed result. Separate within-pass
-   scout/full-retry work, honest bounds and completion rather than assume a cause.
-2. **Completed:** exact-C4 diagnostics, IC-C1 implementation/qualification and the
-   fixed64-game exploratory screen. C1 is rejected for confirmation; do not repeat
-   or enlarge that completed sample.
-3. **Deferred after weak/mixed replay evidence:** cumulative failed-pass effort
-   ordering and directional aspiration carryover. No parameter tuning is selected.
-4. **Conditional:** challenger-aware ordering/verification after provenance-bearing
-   measurement. Independent worker iterations remain a larger accounting/lifetime
-   alternative, not a mechanism already rejected on strength.
-
-Do not implement a fixed feature queue. Reorder from results; do not select a
-candidate by depth/NPS alone. Timed exploratory evidence is the next strength
-dependency after a technically qualified integrated formulation.
+Codex technical execution is **INCONCLUSIVE; strength objective UNMET**. C1 is
+adverse in exploration; C2 remains inconclusive across two separately frozen samples.
+Independent-owner, C3 complementary-depth and IC-C4 adjacent-offset diagnostics are
+technically qualified within their recorded scope but deferred from timed testing.
+Read-only ordering/retry alternatives were also deferred on weak evidence.
+No further experiment, confirmation attempt, promotion or successor is selected.
+The closing sections below explain the evidence, unused resources, remaining
+possibilities and owner-disposition boundary. Earlier next-step statements in dated
+experiment narratives are historical; STATE is the single current resume point.
 
 ## External investigation and transfer limits
 
@@ -573,3 +568,167 @@ strength validation were not run. Research-only work leaves build97 bytes unchan
 **Human gate:** new65-minute idle authority for this exact replication. Mirror refresh
 toP4-R030/P4-F048 remains an owner dependency before mirror-based GPT coordination only.
 The governing objective remains unresolved; no acceptance or closure is claimed.
+
+
+## Alpha-advance retry replay during the frozen C2 replication
+
+Before opening any replication scores, `tools/p4-iteration-confidence-stale-scout.py`
+rehashes and analyzes the four completed C4 root-observation runs only. It asks
+whether many full root retries follow an alpha increase while their original scout
+was running. A fresh scout at the newer alpha could be a hypothesis; comparing the
+old lower bound to that alpha to skip search would remain invalid.
+
+`stale-scout-replay-v1.json` records2,011 full retries across160 requests/32M nodes.
+Alpha advanced before360 retries;287 completed at/below their newer alpha,69 above,
+and4 were incomplete. All advanced-alpha retries consumed500,585 nodes (1.5643%
+of request work); the completed-at/below subset consumed233,117 (0.7285%). Across
+runs that latter exposure was0.5118-0.9520% of request admissions. Existing full
+retry work overall was6,173,329 nodes (19.2917%), mostly without an alpha advance.
+
+These are observed selective results, not a prediction of fresh-scout cost/outcome.
+An extra scout changes TT/history/scheduling and adds work when it also fails high.
+Repeated selected roots and SMP correlation limit extrapolation. **Decision:** defer
+stale-alpha re-scout implementation; the identified exposure is small and does not
+explain the dominant full-retry cost. No current timed-score access, new Search run,
+width tuning or experiment charge. The frozen C2 replication continues unchanged.
+
+
+### Confirmation planning sensitivity before replication scores
+
+No confirmation is selected. A read-only normal approximation uses the first C2
+screen's estimated pair SD0.2488633 and the unchanged compound gate: observed mean
+at least0.53 and lower95% above0.50. With fixed planning SD, SE=SD/sqrt(n), the
+approximate pass threshold is max(0.53,0.50+1.96*SE); power at true mean p is
+1-Phi((threshold-p)/SE). This treats estimated variance as fixed and independent
+pairs as normal; it ignores discreteness, variance-estimation uncertainty, selection
+and opening dependence. It is a planning sensitivity, not validation or a new gate.
+
+| Pairs | Assumed pair SD | Power if true53% | Power if true55% | True score for80% power |
+| --- | ---: | ---: | ---: | ---: |
+|160|0.24886|33.2%|72.0%|55.51%|
+|240|0.24886|46.3%|87.5%|54.50%|
+|240|0.20000|50.0%|93.9%|54.09%|
+|240|0.30000|34.1%|73.3%|55.43%|
+
+The point-score threshold itself limits power near exactly53%; more precise estimates
+do not remove that condition. A weak exploratory point estimate alone is therefore
+insufficient justification for spending the sole attempt. If a candidate is selected,
+its actual prospective protocol must justify sample/power/variance assumptions and
+freshness; no promised future outcome or automatic sample allocation follows here.
+
+
+## Completed standalone C2 replication and next structural unit
+
+Owner window v3 authorized only the frozen64-game replication from first observed
+2026-11-05T00:46:33Z until01:51:33Z. It completed in2102.129339 charged seconds.
+Full operational review preceded score analysis:64 normal games,8,968 audited
+requests, zero fallback warnings, stable frozen inputs, all132 owned processes
+drained. Mean total CPU40.3355%, maximum96.1190%, minimum free memory13.1517GiB,
+peak owned commitment0.7866GiB. The transient CPU maximum did not trigger the frozen
+three-observation sustained-contention guard; no game was excluded or replayed.
+No thermal/clean-speed equivalence is established by these resource checks.
+
+**Standalone replication:25W/12D/27L,48.4375%**,32 pairs,
+pentanomial[6,5,11,5,5], paired-normal95%37.0186-59.8564%,
+Hoeffding95%24.4294-72.4456%. White/Black59.375%/37.5%, first/second-game
+51.5625%/45.3125% are descriptive only. Candidate/control request elapsed
+1000.2599/999.4668s and nodes1,653,876,545/1,613,167,144 reflect divergent games;
+these differences do not establish useful-work, strength or causal clock effects.
+
+`c2-combined-exploration-v1.json` is the prospectively allowed secondary descriptive
+summary of the two separate C2 screens:128 games/64 pairs,46W/37D/45L,50.390625%,
+paired-normal95%43.2769-57.5044%, Hoeffding95%33.4144-67.3669%. It excludes C1 and
+both pilots. Disjoint IC-development roots do not remove adaptive selection, common
+opening-family or hardware limitations. Neither standalone nor combined evidence
+establishes improvement, equivalence, or independent confirmation.
+
+**Decision:** do not advance C2 to the sole confirmation attempt, and do not extend
+or replay either completed sample. All C2 protocol/runtime/input/result identities
+remain frozen. Governing strength success remains unresolved. Ledger after replication:
+6751.338238800003s,200 initiated/completed games,160,640,558 fixed nodes,0 failed or
+interrupted games,0/1 confirmation.600 games remain, including480 confirmation games
+and120 development games. Window v3's64-game scope is spent regardless of clock time.
+
+A further bounded structural diagnostic is justified by C3's identified coupling:
+its recurring depth gaps disable adjacent aspiration and completed PV/effort reuse.
+**IC-C4 Initial helper depth offsets** changes only the initial worker depth:
+owner1, helpers2/3/4 atW4, clamped to request ceiling, then every worker advances by1.
+It retains independent request-private learning and guarded shared TT, owner-only
+result/BOUNDARY2, global accounting and full join. First helper windows remain full;
+subsequent completed adjacent iterations regain the existing eligibility. Offsets
+may converge, so diversity or useful cooperation is a hypothesis, not a confidence
+measure or preselected strength result. It is not an alteration of frozen C3.
+
+`p4-iteration-confidence-adjacent-source.py --check` reproduces the research copy
+from exact96 with class/documentation changes, the starting-depth expression and
+quiescent first-attempt provenance only. Seven tests passed: real coordinated first
+depths/clamping, oracle rules/PVs/history, owner-only clock selection, global caps,
+failures/stops, managed replacement/reuse and tail drains. Compilation/boundaries passed.
+`runtime-adjacent-offset-v1-manifest.json` pins exact96 core and research JAR
+`7f9be5d4e69378bb81650316f0cde00d83d227a56b56526fb4ff5a88919a70ad`.
+The four prospective adjacent-{control,c4}-v{1,2} protocols freeze the same40-request,
+20-root forward/reverse,200k-node/depth14 diagnostic design. No timed C4 run is selected.
+
+
+## IC-C4 diagnostic outcome and technical disposition
+
+All four adjacent-offset runs passed40 requests/8M admissions each, exact actual
+first-depth provenance, completed PV/rules/restoration/accounting and native drain;
+28.502432100009173 charged seconds. `adjacent-analysis-v1.json` rehashes observations
+against their receipts and preserves the full counts. The frozen runtime/source and
+protocols remain available locally under `raw/runtime-adjacent-offset-v1/` and
+`raw/adjacent-{control,c4}-v{1,2}/`.
+
+| Run | Mean owner depth | Request seconds | Process CPU seconds |
+| --- | ---: | ---: | ---: |
+|Exact96 C4 control v1|7.775|6.0501|23.3281|
+|IC-C4 initial offsets v1|7.225|5.4540|27.7813|
+|IC-C4 initial offsets v2|7.225|4.6899|23.4688|
+|Exact96 C4 control v2|7.875|6.4136|24.5469|
+
+Helpers matched owner completed depth218/240 times, were shallower13 and deeper9;
+move agreement226/240. Owner node share24.75%/24.94%. Restoring adjacent iterations
+avoids C3's recurring gaps, but the initial offsets largely converge and do not
+produce a clear allocation improvement over ordinary independent iterations. Fresh
+request/TT, repeated selected roots, JIT/observation cost and SMP variance still
+limit inference. Lower elapsed alone is not a strength result. **Defer IC-C4 timed
+testing**, retaining technical qualification without declaring competitive inferiority.
+
+**Codex technical/research execution disposition: INCONCLUSIVE; governing practical
+strength objective UNMET.** This is an evidence-based stop with unused resources,
+not a claim that the research space or resource ceiling is exhausted. C1's adverse
+screen motivated root-job diagnosis; C2's two separately frozen screens do not
+establish improvement. Cumulative effort, directional/marker ordering and stale-alpha
+re-scout replays lack support. Independent-worker duplication, complementary helper
+depths and the adjacent-offset repair did not provide a compelling allocation case
+for additional timed selection. No candidate is selected for the sole confirmation.
+
+Further blind width tuning, repeated larger C2 samples, or spending confirmation
+on an approximately50% selected development result is not a defensible next unit.
+More substantial challenger-specific root verification or a worker scheme that
+maintains useful diversity could remain worthwhile research; current observations
+do not identify a qualified formulation or predict a gain. Such work would require
+a new concrete hypothesis, supporting state/provenance design and correctness plus
+fixed-work qualification before spending the remaining development games. No claim
+is made that these alternatives are impossible, ruled out on strength or outside
+all existing scope. Their expected value is uncertain, implementation/qualification
+cost exceeds the isolated experiments here, and no automatic continuation is selected.
+The owner may review this disposition, defer/formally close without success, or
+request focused continuation. Formal acceptance/reconciliation/closure is not claimed.
+
+Final ledger:6779.840670900012/86,400s (1h52m59.84s),200/800 initiated/completed games,
+192,640,558 fixed admissions,0 failed/interrupted games,0/1 independent attempt.
+All31 launched experiments passed/drained; one prelaunch refusal charged0. No pending
+reservation or owned process.79,620.15932909999s and600 games remain, including480-game/
+21,600s confirmation planning reserve and120 development games. These are unused
+allowances, not another authorization or spending target. All three specific idle
+window scopes are fulfilled. No further timed game or successor is selected.
+
+Research-only code/tools/tests/evidence and scoped technical-master status updates
+leave strict build97 bytes unchanged. Production defaults, installed GUI/Lichess,
+closed campaigns, baseline79 and HL-G1/build84 remain unchanged; no push/deployment.
+Full application/UI/platform/deployment tests and independent strength confirmation
+were not run. Raw evidence stays ignored/local; compact protocols/manifests/reports
+stay tracked. Phase4 masters advance toP4-R031/P4-F049 for this technical disposition;
+owner mirrors require refresh before dependent GPT coordination. See STATE for the
+single handback and the verification record for final integrity checks.

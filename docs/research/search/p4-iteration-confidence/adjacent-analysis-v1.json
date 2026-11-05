@@ -1,0 +1,104 @@
+{
+  "status": "validated fixed-work observation; not strength or clean-speed qualification",
+  "analyzerSha256": "a1d24f450be21bf72aa851f67d427dc42371603343e0e04703418d4dc80bc65a",
+  "runs": [
+    {
+      "run": "adjacent-control-v1",
+      "inputSha256": "1a4670db02fc6d72a2ebeae00dcf8bee1a38fe374642f650c7f4e1b55739f067",
+      "requests": 40,
+      "nodes": 8000000,
+      "meanOwnerDepth": 7.775,
+      "depthCounts": {
+        "7": 13,
+        "9": 6,
+        "8": 14,
+        "5": 2,
+        "13": 2,
+        "6": 3
+      },
+      "requestElapsedSeconds": 6.0501276,
+      "processCpuSeconds": 23.328125,
+      "helperDepths": {},
+      "helperMoveAgreement": {},
+      "meanOwnerNodeShare": null
+    },
+    {
+      "run": "adjacent-c4-v1",
+      "inputSha256": "81f65cc509d0067d51e67eaff8db5d553b481645bf234bca7bdb023fc847ee3b",
+      "requests": 40,
+      "nodes": 8000000,
+      "meanOwnerDepth": 7.225,
+      "depthCounts": {
+        "7": 15,
+        "6": 7,
+        "8": 14,
+        "4": 2,
+        "11": 2
+      },
+      "requestElapsedSeconds": 5.4539972,
+      "processCpuSeconds": 27.78125,
+      "helperDepths": {
+        "requestsWithDeeperHelper": 3,
+        "sameDepth": 110,
+        "shallower": 6,
+        "deeper": 4
+      },
+      "helperMoveAgreement": {
+        "sameMove": 116,
+        "differentMove": 4
+      },
+      "meanOwnerNodeShare": 0.24748175
+    },
+    {
+      "run": "adjacent-c4-v2",
+      "inputSha256": "b92d5ceca9210985ef1927e8f65a6d211d283e62ce246b86034f6f3b2191aae9",
+      "requests": 40,
+      "nodes": 8000000,
+      "meanOwnerDepth": 7.225,
+      "depthCounts": {
+        "7": 17,
+        "6": 7,
+        "8": 11,
+        "4": 2,
+        "9": 1,
+        "12": 1,
+        "11": 1
+      },
+      "requestElapsedSeconds": 4.6898975,
+      "processCpuSeconds": 23.46875,
+      "helperDepths": {
+        "requestsWithDeeperHelper": 2,
+        "sameDepth": 108,
+        "shallower": 7,
+        "deeper": 5
+      },
+      "helperMoveAgreement": {
+        "sameMove": 110,
+        "differentMove": 10
+      },
+      "meanOwnerNodeShare": 0.249439625
+    },
+    {
+      "run": "adjacent-control-v2",
+      "inputSha256": "ffdf7c01ab554813b1c0e7780bcbd67fad62cb51de28d89e300a31bdd2f66b19",
+      "requests": 40,
+      "nodes": 8000000,
+      "meanOwnerDepth": 7.875,
+      "depthCounts": {
+        "7": 13,
+        "10": 1,
+        "8": 14,
+        "5": 2,
+        "9": 6,
+        "13": 2,
+        "6": 2
+      },
+      "requestElapsedSeconds": 6.4136367,
+      "processCpuSeconds": 24.546875,
+      "helperDepths": {},
+      "helperMoveAgreement": {},
+      "meanOwnerNodeShare": null
+    }
+  ],
+  "limitations": "Fresh request/TT, selected repeated roots, JIT/measurement overhead and SMP variance. Helper depths and moves are actual completed observations at differing depths; common TT/order can correlate them. No voting, truth or causal-speed inference."
+}

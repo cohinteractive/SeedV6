@@ -1,0 +1,45 @@
+{
+  "status": "Secondary descriptive C2 exploration only; no independent claim or acceptance",
+  "inputs": {
+    "docs\\research\\search\\p4-iteration-confidence\\c2-timed-screen-w4-v1-analysis.json": "2a5238da6dcf022b33da7f1b4da94595d2639ebb120dc41ba5e854ead4257fff",
+    "docs\\research\\search\\p4-iteration-confidence\\c2-timed-replication-w4-v1-analysis.json": "c3d0d4d58e3a14359ca57e735d2992f28c5363a3c00bc40f33d69ac2c9c66e2b"
+  },
+  "games": 128,
+  "wdl": [
+    46,
+    37,
+    45
+  ],
+  "statistics": {
+    "pairs": 64,
+    "pentanomial": [
+      8,
+      12,
+      21,
+      17,
+      6
+    ],
+    "score": 0.50390625,
+    "logisticElo": 2.714395737316835,
+    "pairedHoeffding95Score": [
+      0.33414356053242256,
+      0.6736689394675774
+    ],
+    "pairedHoeffding95Elo": [
+      -119.7790032541493,
+      125.91524465860215
+    ],
+    "pairScoreStandardError": 0.036295207981162377,
+    "pairedNormal95Score": [
+      0.432768949545531,
+      0.575043550454469
+    ],
+    "pairedNormal95Elo": [
+      -47.00156118874788,
+      52.54252479164493
+    ],
+    "method": "Fixed sample opening-pair mean; pair-variance normal approximation (only n>=30, nonzero variance), plus conservative bounded-pair Hoeffding alpha=.05. No acceptance inferred."
+  },
+  "exclusions": "C1 and both operational pilots excluded. Two separately frozen64-game C2 batches on disjoint IC-development roots; common opening families and adaptive selection remain.",
+  "decision": "Do not advance C2 to confirmation or automatically extend either completed sample."
+}

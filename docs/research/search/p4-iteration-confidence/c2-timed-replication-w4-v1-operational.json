@@ -1,0 +1,40 @@
+{
+  "status": "passed complete operational review",
+  "id": "c2-timed-replication-w4-v1",
+  "games": 64,
+  "wholeRequestResources": {
+    "baseline": {
+      "requests": 4483,
+      "nodes": 1613167144,
+      "elapsedNanos": 999466780900
+    },
+    "candidate": {
+      "requests": 4485,
+      "nodes": 1653876545,
+      "elapsedNanos": 1000259858400
+    }
+  },
+  "terminations": {
+    "normal": 64
+  },
+  "qualifiedFallbackWarnings": 0,
+  "chargedWallSeconds": 2102.1293389999773,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 7204.9375,
+    "totalOwnedProcesses": 132
+  },
+  "environment": {
+    "samples": 1030,
+    "meanTotalCpuPercent": 40.335542846321815,
+    "maximumTotalCpuPercent": 96.11901681759379,
+    "minimumFreeMemoryGiB": 13.151676177978516,
+    "peakOwnedCommittedGiB": 0.7865829467773438
+  },
+  "execution": "docs\\research\\search\\p4-iteration-confidence\\c2-timed-replication-w4-v1-execution.json",
+  "executionSha256": "dc9eb6f60f350abe8ddb43657288918b141cf6283d471724569019a0531faab1",
+  "protocolSha256": "0ccf6d1186a3b165b62a9f8eb1a70c0f43502e0a3cd369e4c9a9de75008ca6ca",
+  "analyzerSha256": "6929f391320cf2c421c6d582426da10985bc9ec70ea3a208b88312a39ebe3943",
+  "strengthInterpretation": "Pilot never informs selection or pools with screen."
+}
