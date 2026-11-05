@@ -1,0 +1,30 @@
+{
+  "requestedWindowMinutes": 75,
+  "plannedGames": {
+    "pilotOperational": 4,
+    "screenExploratory": 64,
+    "totalDevelopment": 68,
+    "confirmation": 0
+  },
+  "maximumAdmittedWallSeconds": 4020,
+  "forecasts": {
+    "priorIC64GameElapsedSeconds": 2102.129339,
+    "context": "Historical measured throughput only; different C1 Search and openings may differ. No old authority transferred.",
+    "screenDeadlineSeconds": 3600,
+    "pilotDeadlineSeconds": 360,
+    "memoryGiB": 2,
+    "personalReserveGiB": 2,
+    "sequentialGames": true
+  },
+  "statisticalPlanning": {
+    "pairSdProxy": 0.2717313968683508,
+    "source": "Historical MW-C4 independent sample pair SE; uncertain planning only, not new Seed evidence.",
+    "screen32PairApprox95HalfWidth": 0.09414839552893182,
+    "confirmation320PairApprox95HalfWidth": 0.029772336792183763,
+    "confirmation80PercentDetectableGainOver50": 0.04255677110578985,
+    "scope": "Normal iid-pair approximation; selected opening/opponent/variance dependence can invalidate power estimates. Governing score>=53 and lower>50 remain unchanged."
+  },
+  "confirmationGameCapacity": 640,
+  "remainingFullIndependentInputAudit": true,
+  "authority": "No idle window yet. No timed process launched.75-minute request includes fixed maximums, drain and review slack; no indefinite/all-day permission implied."
+}

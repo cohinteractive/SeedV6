@@ -8,10 +8,10 @@
     "confirmationAttempts": 1
   },
   "consumed": {
-    "chargedWallSeconds": 129.082105800102,
-    "fixedWallSeconds": 129.082105800102,
+    "chargedWallSeconds": 132.96221470012097,
+    "fixedWallSeconds": 132.96221470012097,
     "timedWallSeconds": 0,
-    "fixedNodes": 81385004,
+    "fixedNodes": 81865451,
     "initiatedTimedGames": 0,
     "developmentGames": 0,
     "confirmationGames": 0,
@@ -32,6 +32,7 @@
     "docs\\research\\search\\p4-critical-line\\c1-fixed-w1-v1-execution.json",
     "docs\\research\\search\\p4-critical-line\\c1-reference-w1-v1-execution.json",
     "docs\\research\\search\\p4-critical-line\\c1-repeat-w4-v1-execution.json",
-    "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-v1-execution.json"
+    "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-v1-execution.json",
+    "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-build99-v1-execution.json"
   ]
 }

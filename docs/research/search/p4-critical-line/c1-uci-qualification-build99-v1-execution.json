@@ -1,0 +1,65 @@
+{
+  "id": "c1-uci-qualification-build99-v1",
+  "status": "passed",
+  "protocol": "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-build99-v1-protocol.json",
+  "protocolSha256": "2dae91be8af2cd24c16a02cc625830623fd93cc70f86d09ea057042478c180ca",
+  "command": [
+    "C:\\Program Files\\Python313\\python.exe",
+    "-B",
+    "C:\\projects\\seed\\java\\seedv6-unified\\tools\\p4-critical-line-uci.py",
+    "--runtime",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-critical-line\\raw\\runtime-c1-build99-v1",
+    "--output",
+    "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-critical-line\\raw\\c1-uci-qualification-build99-v1\\observations.jsonl"
+  ],
+  "startedUtc": "2026-11-05T21:37:10.167006+00:00",
+  "games": 0,
+  "priority": "below-normal",
+  "preflight": {
+    "utc": "2026-11-05T21:37:10.839248+00:00",
+    "totalCpuPercent": 11.377245508982037,
+    "freeMemoryGiB": 17.677207946777344,
+    "overwatch": false,
+    "logicalProcessors": 12,
+    "foregroundApplication": "ChatGPT.exe",
+    "demandingForeground": false
+  },
+  "resourceDecision": {
+    "admissible": true,
+    "reasons": [],
+    "requiredAvailableGiB": 3.25,
+    "estimatedPeakGiB": 1.25,
+    "personalReserveGiB": 2,
+    "projectedCpuPercent": 44.71057884231537,
+    "scope": "Resource/foreground guard, not measured input latency or thermal qualification"
+  },
+  "processId": 3164,
+  "drain": {
+    "ownedProcessesRemaining": 0,
+    "processDrained": true,
+    "ownedCpuSeconds": 9.546875,
+    "totalOwnedProcesses": 5
+  },
+  "wallSeconds": 3.8801089000189677,
+  "endedUtc": "2026-11-05T21:37:14.063943+00:00",
+  "error": null,
+  "peakOwnedCommittedGiB": 0.5180816650390625,
+  "chargedWallSeconds": 3.8801089000189677,
+  "observedNodes": 480447,
+  "summary": {
+    "type": "summary",
+    "status": "passed",
+    "requests": 18,
+    "nodes": 480447,
+    "activeHelpersAfterClose": 0
+  },
+  "inputsStable": true,
+  "files": {
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-uci-qualification-build99-v1\\C1-uci.txt": "2a44e434d63490b915b739a50185fc9e2ed71bf29fa9bb4d493e19189668ed6f",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-uci-qualification-build99-v1\\console.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-uci-qualification-build99-v1\\CONTROL-uci.txt": "96990deb0096884fd955a2b77c168806cc3169283197690342d4faf10b0bab33",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-uci-qualification-build99-v1\\environment.jsonl": "95c54619cb97bb7e0777061d4615a68c168c7ff553edec60906eaf4377dbeec6",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-uci-qualification-build99-v1\\EXACT96-uci.txt": "35b2598f134e5f1b220c6cdcc41cc540e2589519cdb8005a30fb1bf0dc896c38",
+    "docs\\research\\search\\p4-critical-line\\raw\\c1-uci-qualification-build99-v1\\observations.jsonl": "0ee2d62773df2cab2655d421c8d9d677671f9992e27e0ba92f8e5be8a65e2ca6"
+  }
+}

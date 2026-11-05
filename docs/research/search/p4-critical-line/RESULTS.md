@@ -158,3 +158,33 @@ replace the fixed independent score>=53% and paired95% lower>50% gate. All640
 independent games and the sole attempt remain reserved. Full320-pair confirmation
 is preferred if a later frozen candidate merits it and fresh inputs/feasibility
 support it; neither candidate nor independent protocol is selected now.
+
+## Committed candidate and exact handback
+
+Commit46d15431 contains the attributable runtime work and the sole build98->99
+increment, preserving exact version representation/user fields. The new flag is
+non-default; production inventory needs no change. Committed runtime99 is frozen
+in `candidate-build99-manifest.json`; kernel/config class bytes match the tested
+prototype. Its18-request actual-UCI recheck passed with480447 nodes, original96
+control identities, legal PV/accounting and natural drain. This is evidence-bearing
+technical progress, not confirmation of stronger chess.
+
+Six experiments total:276 requests,81,865,451 nodes,132.96221470012097 charged
+seconds, zero timed games, no active owned processes or unresolved reservations.
+All640 independent games and the sole attempt remain available only under their
+original conditions. Tests/compilation are excluded from experimental charging as
+prospectively specified. `budget.json` and execution receipts reconcile exactly.
+
+Timed pilot/screen v2 are frozen but unlaunched. v1 preflight found one stale
+supervisor hash under a duplicate Windows path spelling; the corrected prospective
+v2 uses canonical paths and leaves v1 intact. Both v2 input checks pass and admission
+correctly refuses absent owner-window authority. No refusal spent games or time.
+Pilot operational review gates the screen; complete paired audits gate analysis.
+The required next decision is the75-minute idle window, not confirmation selection
+or production adoption. STATE contains exact commands and restart requirements.
+
+The original default whitespace checker interprets CR in newly authored frozen
+JSON as trailing whitespace. Frozen bytes/protocol hashes were preserved; a
+per-command CR-aware check and explicit space/tab scan pass. No global Git setting
+or repository attribute was changed. Raw binaries/logs/observations were verified
+ignored and excluded from staging. No push, installation or deployment occurred.

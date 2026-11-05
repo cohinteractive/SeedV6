@@ -38,6 +38,12 @@ def validate(protocol, ledger):
     if protocol['kind'] == 'fixed-work' and protocol['workers'] == 1:
         checked['workers'] = 4
     original_validate(checked, ledger)
+    prerequisite = protocol.get('prerequisiteOperationalReview')
+    if prerequisite:
+        report = json.loads((ROOT / prerequisite).read_text(encoding='utf8'))
+        if (report['status'] != 'passed complete operational review' or report['games'] != 4
+                or report['drain']['ownedProcessesRemaining'] != 0):
+            raise ValueError('Complete pilot operational review required before screen')
 
 
 execution.validate = validate

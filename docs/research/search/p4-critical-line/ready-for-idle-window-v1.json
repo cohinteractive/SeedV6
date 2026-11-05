@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "protocol": "c1-timed-pilot-w4-v2",
+      "inputHashes": "all matched",
+      "admission": "correctly refused: No recorded owner idle-window authority"
+    },
+    {
+      "protocol": "c1-timed-screen-w4-v2",
+      "inputHashes": "all matched",
+      "admission": "correctly refused: No recorded owner idle-window authority"
+    }
+  ],
+  "receipts": 6,
+  "chargedSeconds": 132.96221470012097,
+  "fixedNodes": 81865451,
+  "timedGames": 0,
+  "confirmationAttemptSpent": false,
+  "allAdmittedProcessesDrained": true,
+  "compiledCandidateSource": "46d1543121f9bc13e7c2a4832efa78bd14b5363c",
+  "compiledBuild": 99,
+  "versionBytesVerified": true,
+  "limitations": "Actual UCI engine/audit integration qualified at fixed nodes. Fastchess timed pilot requires owner window and is the first match operational check. No timed strength, native GUI, full platform, deployment or independent confirmation validation."
+}
