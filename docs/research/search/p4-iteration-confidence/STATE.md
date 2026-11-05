@@ -1,15 +1,25 @@
-# IC-R001 technical disposition and resume state
+# IC-R001 terminal state
 
-5 November 2026 (Pacific/Auckland). **CODEX TECHNICAL/RESEARCH EXECUTION COMPLETE -
-INCONCLUSIVE. Governing practical W4 strength objective UNMET.** No candidate is
-selected for independent confirmation. Owner/GPT reconciliation, acceptance and
-formal closure are pending; none is claimed. No active experiment, pending native
-ownership, next run, promotion or successor is selected.
+5 November 2026 (Pacific/Auckland). **GPT-RECONCILED, OWNER-ACCEPTED AND FORMALLY
+CLOSED - INCONCLUSIVE.** The owner explicitly accepts GPT's completed reconciliation
+and authorizes formal closure on this date. IC-R001 is accepted as a valid,
+technically completed research investigation with an inconclusive playing-strength
+outcome. The original governing practical W4 strength objective remains **UNMET**;
+no independently confirmed improvement over exact build96 was demonstrated.
 
-Read [CONTRACT revision2](CONTRACT.md), [RESULTS](RESULTS.md), `budget.json` and
-`disposition-v1-verification.json`. Current Phase4 masters are **P4-R031/P4-F049**.
+No further autonomous IC-R001 work is authorized. No active experiment, pending
+native ownership, selected candidate, confirmation, continuation, replacement
+experiment, promotion or successor exists. Unused resources grant no further
+execution. No champion advance, production adoption, installation, push, deployment
+or release follows from accepting this unsuccessful strength-development outcome.
+
+Read [CONTRACT revision3](CONTRACT.md), [RESULTS](RESULTS.md), `budget.json` and
+`disposition-v1-verification.json`. Current Phase4 masters are **P4-R032/P4-F050**.
 Owner-confirmed launch mirrors were P4-R029/P4-F047; refresh is required before
 mirror-dependent GPT coordination. Repository edits do not update owner mirrors.
+RESULTS and the verification record retain the pre-acceptance technical handback
+unchanged; their pending-owner wording is historical and superseded by this decision.
+The evidence and research possibilities below remain preserved, not an active queue.
 
 ## Exact domain and preserved production
 
@@ -20,8 +30,9 @@ Core JAR SHA256 `3211f4f375d667f3f442a21d88d8b9755d178ea6a261f0fee74f8ffe84bf84e
 CP64 SHA256 `8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b`.
 Later build97 changed packaging/UCI naming, not the Search comparator.
 
-Current root began clean at `19ed60a920c9503fccef51a2a21aab23c802e12c`.
-New work is attributable research/tests/tools/evidence and scoped master status.
+Documentation-only closeout began at clean handback
+`f02cf23fa31c7c55743ae73e9600a5b9249403ad`. Only focused CONTRACT/STATE and the two
+Phase4 masters changed; Search, production, RESULTS and evidence/accounting did not.
 Strict regular/single-link VERSION_STATE.txt remains0.0.0/build97 with exact baseline
 bytes: **no_bump**. Root CODEXLOG_CURRENT.md absent; no finalizer or behavioral/CEC
 maintenance. Production defaults, installed GUI/Lichess, W1-W3/W5-W16 routes,
@@ -60,9 +71,10 @@ Evidence: `c2-timed-replication-w4-v1-{execution,operational,analysis}.json`,
 `raw/runtime-c2-v1/`, research JAR SHA256
 `52443c7a56957d19613b6ea716a5f2c3b7a25cd0001500640a254032f97a094b`.
 New32 development roots exclude prior34 IC pilot/screen and20 diagnostic roots;
-they are not independently held out from all historical campaigns. Future genuine
-confirmation would have to exclude all86 selected IC roots and all other prior
-research inputs through a full input-only audit, without opening frozen clock scores.
+they are not independently held out from all historical campaigns. Any separately
+authorized future confirmation would have to exclude all86 selected IC roots and all
+other prior research inputs through a full input-only audit, without opening frozen
+clock scores.
 
 ## Structural diagnostics and negative findings
 
@@ -117,13 +129,19 @@ qualified formulation or predicted gain; each would need a concrete hypothesis,
 state/provenance design and correctness/fixed-work qualification before more games.
 These are possibilities, not a prescribed queue, ruled-out architectures or a new
 objective. No automatic continuation or successor is selected solely to spend budget.
-The owner may review this disposition, defer/formally close without success, or request
-focused continuation. Do not infer that decision from silence or a later invocation.
+The owner has accepted and formally closed this investigation without strength
+success. These historical possibilities select no active queue or next objective;
+future related research requires separate owner authorization. This outcome does
+not establish that every investigated mechanism is ineffective or that no future
+configuration could improve strength.
 
 ## Verification, local evidence and human dependencies
 
-Final integrity verification checks ledger reconciliation, completed receipts, frozen
-protocol/runtime/raw hashes, source generators and reproducible compact analyses.
+The preserved technical-handback verification records ledger reconciliation,
+completed receipts, frozen protocol/runtime/raw hashes, source generators and
+reproducible compact analyses. This documentation-only closeout verifies document
+agreement, links/revisions, unchanged results/accounting/build bytes and Git scope;
+it runs no experiments, matches, independent confirmation or application tests.
 Raw evidence under `raw/` stays ignored/local-only and is absent in a fresh checkout;
 check availability/hashes before analysis. Do not replace snapshots or rerun frozen
 samples. The existing narrow opening-PGN input exception excludes tournament output.
@@ -135,9 +153,9 @@ scores, shared-worker agreement and changed clock use do not establish strength 
 independent confidence. Neither thermal equivalence nor other-platform transfer is
 claimed. All limitations and failed/negative/inconclusive findings remain explicit.
 
-Human actions: owner/GPT review and disposition are **blocking only for formal
-acceptance/closure or a changed continuation decision**, not incomplete technical
-validation. Owner mirror refresh toP4-R031/P4-F049 is **blocking for mirror-dependent
-GPT coordination**, nonblocking for this repository handback. No new idle window is
-requested because no further timed experiment is selected. Champion/promotion,
-installation/push/release/deployment remain separate and unauthorized.
+Human actions required for IC-R001 formal closeout: **None**. GPT reconciliation,
+owner acceptance and formal closure are complete. Owner mirror refresh to
+**P4-R032/P4-F050** is **blocking for subsequent mirror-dependent GPT research
+coordination**, nonblocking for this completed repository closeout. No new idle
+window, further IC-R001 execution, replacement experiment or successor is authorized.
+Champion/promotion, installation/push/release/deployment remain separate and unauthorized.

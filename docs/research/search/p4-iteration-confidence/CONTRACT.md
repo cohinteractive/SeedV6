@@ -1,13 +1,28 @@
 # IC-R001 - Iteration confidence and root Search effectiveness
 
-Revision 2, 5 November 2026 (Pacific/Auckland). **CODEX TECHNICAL EXECUTION
-INCONCLUSIVE; strength objective UNMET; owner disposition pending.** The original
-owner-authorized CGLHW scope, ceilings, safeguards and acceptance meaning below
-remain unchanged. This records technical disposition, not owner acceptance or closure.
+Revision 3, 5 November 2026 (Pacific/Auckland). **GPT-RECONCILED, OWNER-ACCEPTED
+AND FORMALLY CLOSED - INCONCLUSIVE.** The owner explicitly accepts GPT's
+reconciliation and authorizes formal closure on this date: IC-R001 is a valid,
+technically completed research investigation with an inconclusive playing-strength
+outcome. The original governing W4 strength-development objective remains **UNMET**;
+no independently confirmed improvement over exact build96 was demonstrated.
 Subordinate to the [Phase 4 Contract](../../../../source/CHESS_SEARCH_CONTRACT.md)
 and [Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md).
 [STATE](STATE.md) is the single resume point; [RESULTS](RESULTS.md) holds compact
-findings and evidence-directed work selection. This is not a second programme canon.
+findings and historical work selection. Current Phase4 masters are P4-R032/P4-F050.
+This is not a second programme canon.
+
+No candidate, experiment, independent confirmation, continuation, replacement run or
+successor is selected or authorized. No further autonomous IC-R001 work is authorized;
+unused resources do not renew execution. Acceptance establishes neither successful
+strength development nor that every mechanism is ineffective. No champion advance,
+production promotion, installation, push, deployment or release follows.
+
+## Original execution contract (historical)
+
+The objective, criteria, authority, resource limits and experimental requirements
+below are preserved without retrospective changes. Their execution instructions
+are historical and grant no current authority after this accepted closure.
 
 ## Objective and exact control
 

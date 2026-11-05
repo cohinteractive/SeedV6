@@ -1,50 +1,55 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R031**
+Internal revision: **P4-R032**
 
-Status: **ACTIVE Phase 4 - 5 November 2026. IC-R001 Codex technical execution concludes INCONCLUSIVE against exact build96 MW-C4 W4; the strength objective is UNMET. Owner reconciliation/acceptance/formal closure remain pending. Existing production, closed campaigns, baseline79 and W1 champion HL-G1/build84 are preserved. No promotion, deployment or release.**
+Status: **ACTIVE Phase 4 - 5 November 2026. IC-R001 is GPT-reconciled, owner-accepted and formally closed with an INCONCLUSIVE playing-strength outcome; its governing W4 strength objective remains UNMET. No continuation, replacement experiment or successor is authorized. Existing production, closed campaigns, baseline79 and W1 champion HL-G1/build84 are preserved. No champion advancement, promotion, installation, push, deployment or release.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
 
-## IC-R001 technical disposition - iteration confidence and root Search effectiveness
+## IC-R001 accepted inconclusive closeout - 5 November 2026
 
-The owner authorized this strength-development CGLHW against exact accepted
-build96 MW-C4 EAGER_MEMORY at W4. [Focused CONTRACT](../docs/research/search/p4-iteration-confidence/CONTRACT.md)
-records scope, correctness/concurrency safeguards, autonomy and human gates;
-[STATE](../docs/research/search/p4-iteration-confidence/STATE.md) is the single
-resume point. Investigate integrated iteration information, aspiration/recovery,
-root competition and effort/cooperation with consequential Search dependencies.
-Success requires independent practical W4 strength improvement, not efficiency,
-stability, technical completion or exhaustion of resources.
+The owner explicitly accepts GPT's completed reconciliation and authorizes formal
+closure on 5 November 2026. **IC-R001 is accepted and formally closed** as a valid,
+technically completed research investigation with an inconclusive playing-strength
+outcome. The original practical W4 strength objective is **UNMET**: no independently
+confirmed improvement over exact build96 MW-C4 EAGER_MEMORY was demonstrated.
+[Focused CONTRACT revision3](../docs/research/search/p4-iteration-confidence/CONTRACT.md)
+preserves the original governing requirements; [terminal STATE](../docs/research/search/p4-iteration-confidence/STATE.md)
+records the final decision. Technical completion and owner acceptance do not
+establish strength success, champion advancement or production adoption.
 
-Codex technical execution now concludes **INCONCLUSIVE**, with no candidate
-selected for confirmation. C1 exploration was adverse; C2 scored52.34375% then
+Codex technical execution completed **INCONCLUSIVELY**, with no candidate selected
+for independent confirmation and no independent confirmation conducted. C1 exploration
+was adverse; C2 scored52.34375% then
 48.4375% in separate64-game samples (combined exploration50.390625%). Structural
 worker/ordering diagnostics provide no demonstrated strength gain. See STATE and
 RESULTS for the preserved negative evidence, limitations and remaining possibilities.
 Spent6779.8406709s and200 initiated/completed games; confirmation remains unspent.
-Unused resources do not justify automatic sample extensions or a successor. Owner
-review/disposition is pending; no formal acceptance, closure or strength success.
+Unused resources authorize no further execution. No candidate, experiment,
+confirmation, continuation, replacement run, promotion or successor is selected or
+authorized; no further autonomous IC-R001 work is authorized. Remaining research
+possibilities are historical, not an active queue. This unsuccessful outcome does
+not prove every mechanism ineffective or rule out future improvement. RESULTS and
+all frozen evidence remain unchanged; their pending-closeout wording is historical.
 
-Fresh limits: 24 charged experimental wall-hours, 800 initiated timed games,
-one independent attempt of at most240 fresh pairs/480 games included in800.
-Proposed primary gate: score>=53% and paired-normal95% lower>50%, plus technical
-and operational qualification. W4/CP64/Hash64/10+0.1/BOUNDARY2 on Windows Ryzen5500/
-Java21 is the primary domain. Daytime bounded fixed-work is authorized; timed
-experiments require a specific owner idle window, absent at launch. No old budget,
-confirmation or window transfers. Frozen independent clock studies stay unopened.
+Historical limits were 24 charged experimental wall-hours, 800 initiated timed games,
+and one independent attempt of at most240 fresh pairs/480 games included in800.
+The original primary gate remains score>=53% and paired-normal95% lower>50%, plus
+technical/operational qualification, in W4/CP64/Hash64/10+0.1/BOUNDARY2 on Windows
+Ryzen5500/Java21. Original execution permissions and unused allowances do not survive
+closure as authority for new work. Frozen independent clock studies stay unopened.
 No production-default change, champion advance, installation, push or deployment.
 
 Observed HEAD4af0e298/build97 adds packaging/UCI identity changes; Search source
 matches44fc2bf2/build96. Preserve pinned build96 as the competitive control.
 MW-R001 and TT-R001 remain closed; historical no-successor statements below
-refer to their prior authorizations, superseded only by this new IC-R001 launch.
+refer to their prior authorizations, superseded only for the now-closed IC-R001 launch.
 The owner confirms launch Project Source mirrors P4-R029/P4-F047. Current masters
-are **P4-R031/P4-F049**; owner refresh is required before dependent GPT coordination,
-non-blocking for authorized repository execution. Repository edits do not refresh
-mirrors. Shared behavioral governance, its R4 projection and registry are unchanged.
+are **P4-R032/P4-F050**; owner upload of both masters is required before subsequent
+mirror-dependent GPT research coordination, non-blocking for this completed closeout.
+Repository edits do not refresh mirrors. Shared behavioral governance, its R4 projection and registry are unchanged.
 Historical revision/mirror requests below record earlier decisions; this section
 owns the current master pair and mirror requirement.
 
