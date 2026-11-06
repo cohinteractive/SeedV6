@@ -1,0 +1,13 @@
+{
+  "status": "authorized",
+  "receivedUtc": "2026-11-06T11:55:45Z",
+  "hardDeadlineUtc": "2026-11-06T20:10:45Z",
+  "durationMinutes": 495,
+  "allowedProtocols": [
+    "c1-confirm-w4-v2"
+  ],
+  "maximumTimedGames": 640,
+  "authority": "Owner replied Authorize8h15m now to the explicit new PC-idle/awake window for the sole frozen320-pair/640-game CLV confirmation of unchanged C1 against exact96.",
+  "timing": "receivedUtc is the first machine-clock observation immediately after this authorization reply, not an exact native message timestamp.",
+  "scope": "One unchanged prospectively frozen confirmation attempt; original gates and operational guards. No interim score access, tuning, replacement pairs, replay after first pair-start, added attempt, promotion, installation, push or deployment."
+}

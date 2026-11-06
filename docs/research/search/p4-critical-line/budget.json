@@ -8,24 +8,26 @@
     "confirmationAttempts": 1
   },
   "consumed": {
-    "chargedWallSeconds": 2357.434475000133,
+    "chargedWallSeconds": 23274.421601200127,
     "fixedWallSeconds": 132.96221470012097,
-    "timedWallSeconds": 2224.472260300012,
+    "timedWallSeconds": 23141.459386500006,
     "fixedNodes": 81865451,
-    "initiatedTimedGames": 68,
+    "initiatedTimedGames": 708,
     "developmentGames": 68,
-    "confirmationGames": 0,
-    "completedTimedGames": 68,
+    "confirmationGames": 640,
+    "completedTimedGames": 708,
     "failedTimedGames": 0,
     "interruptedTimedGames": 0,
-    "confirmationAttempts": 0
+    "confirmationAttempts": 1
   },
   "planningReserve": {
     "confirmationGames": 640,
-    "confirmationWallSeconds": 28830
+    "confirmationWallSeconds": 28830,
+    "status": "Historical prospective plan; confirmation games and sole attempt are spent"
   },
   "authorizedIdleWindows": [
-    "docs/research/search/p4-critical-line/owner-idle-window-v1.json"
+    "docs/research/search/p4-critical-line/owner-idle-window-v1.json",
+    "docs/research/search/p4-critical-line/owner-idle-window-v2.json"
   ],
   "pending": [],
   "ownedProcesses": [],
@@ -37,7 +39,8 @@
     "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-v1-execution.json",
     "docs\\research\\search\\p4-critical-line\\c1-uci-qualification-build99-v1-execution.json",
     "docs\\research\\search\\p4-critical-line\\c1-timed-pilot-w4-v2-execution.json",
-    "docs\\research\\search\\p4-critical-line\\c1-timed-screen-w4-v2-execution.json"
+    "docs\\research\\search\\p4-critical-line\\c1-timed-screen-w4-v2-execution.json",
+    "docs\\research\\search\\p4-critical-line\\c1-confirm-w4-v2-execution.json"
   ],
   "confirmationSelection": {
     "candidate": "C1",
@@ -45,6 +48,27 @@
     "build": 99,
     "protocol": "docs/research/search/p4-critical-line/c1-confirm-w4-v2-protocol.json",
     "protocolSha256": "64773e309f779556e91a38296f807218ab2184e2d406ad04cecedf7b066d4254",
-    "status": "frozen-awaiting-separate-idle-window"
+    "status": "completed-independent-strength-gates-failed"
+  },
+  "confirmationAttempt": {
+    "id": "c1-confirm-w4-v2",
+    "protocol": "docs\\research\\search\\p4-critical-line\\c1-confirm-w4-v2-protocol.json",
+    "protocolSha256": "64773e309f779556e91a38296f807218ab2184e2d406ad04cecedf7b066d4254",
+    "firstInitiatedObservedUtc": "2026-11-06T11:57:10.723820+00:00",
+    "resume": "none-after-first-pair-start"
+  },
+  "disposition": {
+    "technicalExecution": "complete",
+    "strengthObjective": "unmet",
+    "statisticalEvidence": "inconclusive",
+    "independentAcceptance": "both primary conditions failed",
+    "gptReconciliation": "pending",
+    "ownerDisposition": "pending",
+    "formalClosure": false,
+    "activeExperiment": null,
+    "nextAutonomousExperiment": null,
+    "unusedAllowances": "Do not renew confirmation, automatically continue, or launch a successor",
+    "analysis": "docs/research/search/p4-critical-line/c1-confirm-w4-v2-analysis.json",
+    "verification": "docs/research/search/p4-critical-line/c1-confirm-w4-v2-verification.json"
   }
 }

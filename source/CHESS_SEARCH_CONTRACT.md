@@ -1,12 +1,49 @@
 # SeedV6 Search Contract - Phase 4
 
-Internal revision: **P4-R034**
+Internal revision: **P4-R035**
 
-Status: **ACTIVE Phase 4 - 6 November 2026. CLV-R001 Critical-Line Verification and Selective Search is newly owner-authorized. Unified build98 production and all closed research dispositions remain unchanged; no timed idle window, promotion, installation, push, deployment or release is authorized.**
+Status: **ACTIVE Phase4 - 7 November2026. CLV-R001 technical execution is complete; independent strength criteria failed and its objective is UNMET. GPT reconciliation and owner disposition are pending. Unified production, champions and closed research remain unchanged. No further experiment, successor, promotion, installation, push or deployment is selected.**
 
 Repository master: `source/CHESS_SEARCH_CONTRACT.md` in `C:/projects/seed/java/seedv6-unified`.
 The [Frontier](CHESS_SEARCH_RESEARCH_FRONTIER.md) records current priorities,
 dependencies and decisions under this Contract. These are the two Phase 4 masters.
+
+## CLV-R001 technical execution complete - 7 November 2026
+
+CLV-R001's sole independently held-out W4 confirmation completed320 pairs/640
+normal games against original build96 MW-C4 EAGER_MEMORY. Unchanged **C1 near-depth
+TT-backed quiet reduction relief**, build99/source46d15431, scored **242W/191D/207L,
+52.734375%; paired-normal95%49.670255-55.798495%**. Both original primary conditions
+(score>=53%, lower strictly>50%) failed. **The governing strength objective is UNMET;
+Codex technical execution is complete with inconclusive statistical strength evidence.**
+GPT reconciliation and owner disposition remain pending; no formal closeout is claimed.
+
+[Focused CONTRACT revision2](../docs/research/search/p4-critical-line/CONTRACT.md),
+[RESULTS](../docs/research/search/p4-critical-line/RESULTS.md) and
+[technical handback STATE](../docs/research/search/p4-critical-line/STATE.md) preserve
+requirements, identities, technical evidence, negative/inconclusive findings and
+limitations. All90187 requests passed independent game/history/PV/resource audits;
+all1284 owned processes drained. Input and evidence hashes are stable. A supplementary
+game-order labelling error is corrected from raw PGNs in the verification record;
+all320 primary pair totals, statistics and gate failures are unchanged. No game
+was excluded and no criterion, sample or candidate was changed.
+
+The frozen domain is W4/CP64/Hash64/PVS/ADAPTIVE16/BOUNDARY2,10+0.1, Windows
+Ryzen5500/Java21 with320 fresh14-ply startpos histories. The seven-move distribution,
+colour effects, paired-normal approximation and transfer limits are explicit.
+The earlier64-game60.15625% exploration is separate and cannot rescue confirmation.
+
+Spent23274.4216012/86400s and708 initiated/completed timed games (68 development,
+640 confirmation); failed/interrupted0; the sole independent attempt is spent.
+No active process, reservation, selected further experiment or successor remains.
+Unused resources/window time do not renew a claim. No extra resources are requested
+to rescue inconclusive data. This is not successful foundational relabelling,
+owner acceptance, champion advancement, production adoption, installation or release.
+Normal unified MW-C4 production and all closed research dispositions remain intact.
+
+Current masters are **P4-R035/P4-F053**. Owner refresh of both Phase4 Project Source
+mirrors is required before mirror-dependent GPT reconciliation; repository changes
+do not upload them. The next boundary is GPT reconciliation and owner disposition.
 
 ## CLV-R001 launch - 6 November 2026
 
@@ -31,7 +68,7 @@ No production-default change, champion advance, installation, push or deployment
 Historical no-successor statements retain their time scope and are superseded only
 by this new explicit launch. This does not reopen IC-R001 or other closed work.
 
-Current masters are **P4-R034/P4-F052**. Owner refresh of both Phase4 Project Source
+At CLV launch, masters were **P4-R034/P4-F052**. Owner refresh of both Phase4 Project Source
 mirrors is required before mirror-dependent GPT coordination, non-blocking for
 repository research. No behavioral-governance/CEC change or registry release claim.
 

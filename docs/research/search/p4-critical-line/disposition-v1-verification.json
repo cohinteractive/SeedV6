@@ -1,0 +1,81 @@
+{
+  "status": "verified technical execution complete; strength objective unmet",
+  "verificationUtc": "2026-11-06T17:57:41.841074+00:00",
+  "masterPair": "P4-R035/P4-F053",
+  "candidateSource": "46d1543121f9bc13e7c2a4832efa78bd14b5363c",
+  "candidateBuild": 99,
+  "comparatorSource": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+  "comparatorBuild": 96,
+  "confirmation": {
+    "games": 640,
+    "pairs": 320,
+    "wdl": [
+      242,
+      191,
+      207
+    ],
+    "score": 0.52734375,
+    "pairedNormal95": [
+      0.4967025537537524,
+      0.5579849462462476
+    ],
+    "bothPrimaryGatesFailed": true,
+    "operationalQualification": "passed",
+    "rawReplay": "all640 games and320 pair totals matched",
+    "supplementaryOrderCorrection": [
+      0.5203125,
+      0.534375
+    ]
+  },
+  "budget": {
+    "chargedWallSeconds": 23274.421601200127,
+    "fixedWallSeconds": 132.96221470012097,
+    "timedWallSeconds": 23141.459386500006,
+    "fixedNodes": 81865451,
+    "initiatedTimedGames": 708,
+    "developmentGames": 68,
+    "confirmationGames": 640,
+    "completedTimedGames": 708,
+    "failedTimedGames": 0,
+    "interruptedTimedGames": 0,
+    "confirmationAttempts": 1
+  },
+  "allNineReceiptsDrained": true,
+  "ownershipReservationClear": true,
+  "windowAndRunDeadlineVerified": true,
+  "all447InputsStable": true,
+  "version": {
+    "tuple": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 99
+    },
+    "sha256": "3191fbbe6025f604ac9c755e92f4461b4b433f591aa30aa3da7033eb69d558ed",
+    "bytesUnchanged": true,
+    "decision": "no_bump; no attributable built/shipped changes in this execution/disposition root"
+  },
+  "tests": {
+    "priorQualification": "215 core;53/54 research plus8/8 rechecks after inherited stale expectation correction;4 development and9 confirmation-control tests;36 UCI fixed requests",
+    "thisRoot": "Frozen640-game runtime audit and independent raw replay/statistical/hash verification; no engine code changed, so no unit/build rerun",
+    "notPerformed": "Native GUI/platform/deployment acceptance"
+  },
+  "evidence": {
+    "docs\\research\\search\\p4-critical-line\\c1-confirm-w4-v2-protocol.json": "64773e309f779556e91a38296f807218ab2184e2d406ad04cecedf7b066d4254",
+    "docs\\research\\search\\p4-critical-line\\c1-confirm-w4-v2-execution.json": "d15c45f5a11a003d4fdac2e7117f278580cb5eb3f3301576c4bbe6bd925ba42b",
+    "docs\\research\\search\\p4-critical-line\\c1-confirm-w4-v2-analysis.json": "ce794b08c58bdf5b513581b4e02fef05fc17f7b57d2a3317ec6ad62695befc7b",
+    "docs\\research\\search\\p4-critical-line\\c1-confirm-w4-v2-verification.json": "b2f317cf438ab09b65defe452802f532e7fabecca40da0adf8f6cb0906eee416",
+    "docs\\research\\search\\p4-critical-line\\owner-idle-window-v2.json": "c0eb59da1fd0f1da02125c2fe088741a7d6c84a7f924ce313a5be92576faad14"
+  },
+  "completionAudit": {
+    "authorityAndBaseline": "Canon, focused contract and exact artifact/source/runtime identities verified; no inherited changes at start",
+    "bootstrapAndExternalResearch": "Focused contract/state, challenged dependencies and pinned implementation/history observations preserved in RESULTS and manifests",
+    "implementationAndInvariants": "Explicit C1 only; shared core, defaults and independent references preserved; prior tests and actual audits cover relevant domain",
+    "resourcesAndScheduling": "All9 receipts reconcile;68 development plus640 confirmation; one attempt spent; both explicit windows fulfilled",
+    "prospectiveIndependentMethod": "320 fixed held-out pairs; frozen candidate/control/input/order/gates; no interim score inspection, exclusions or pooling; completed all640",
+    "governingStrengthAcceptance": "NOT ACHIEVED:52.734375%<53%, lower49.670255%<=50%",
+    "evidenceAndContinuity": "Raw evidence retained/ignored; compact reports/manifests and scoped technical disposition; original supplementary analysis preserved with correction",
+    "humanWorkflow": "GPT reconciliation, owner disposition/formal closeout and mirror refresh remain human dependencies; no acceptance or promotion claimed"
+  },
+  "nextAction": "GPT reconciliation and owner disposition of the unmet objective. No further experiment, confirmation, replacement, added resource request or successor is selected."
+}

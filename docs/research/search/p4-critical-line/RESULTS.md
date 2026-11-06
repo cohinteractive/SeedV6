@@ -1,6 +1,9 @@
 # CLV-R001 findings and decisions
 
-6 November 2026. Initial investigation; no playing-strength evidence yet.
+7 November 2026. **Technical execution complete; independent acceptance failed;
+governing strength objective UNMET.** The initial investigation and successive
+decisions below retain their original time scope. Final evidence and disposition
+follow at the end; GPT reconciliation and owner disposition remain pending.
 
 ## Bootstrap challenge
 
@@ -287,3 +290,109 @@ Master pair remains P4-R034/P4-F052; focused research advances without another
 programme-canon change. Owner Project Source refresh remains necessary before
 mirror-dependent coordination. No acceptance, champion, production promotion,
 installation, push or deployment follows. Strength objective remains unproven.
+
+## Sole independent confirmation - completed 7 November 2026
+
+The owner explicitly authorized the separately requested8h15m idle/awake window.
+`owner-idle-window-v2.json` records first clock observation2026-11-06T11:55:45Z
+through20:10:45Z (12:55:45am-9:10:45am NZDT7 November), for the sole frozen
+`c1-confirm-w4-v2` attempt. Actual admission11:57:07.989560Z; completion
+17:45:45.009638Z, inside both the8-hour run ceiling and owner window. First durable
+pair-start consumed the attempt, recorded at11:57:10.723820Z. No intermediate
+scores were inspected by Codex; deterministic process waits supervised the unchanged
+run. No additional game, replacement, tuning, candidate substitution or stopping
+decision was made from scores.
+
+**640 normal games /320 fresh opposite-colour pairs:242W/191D/207L.** Candidate
+points337.5/640, score**52.734375%**; pair sample variance0.0782076557601881,
+SE0.015633263390942655. Frozen primary paired-normal95% interval:
+**49.6702553754-55.7984946246%**. Gate A(score>=53%) **FAILED**;
+gate B(lower strictly>50%) **FAILED**. This is an unsuccessful acceptance outcome
+with inconclusive statistical strength evidence, not demonstrated improvement or
+equivalence. The positive point estimate does not establish the governing objective.
+
+Pentanomial[23,73,112,70,42]. Descriptive logistic effect+19.0194 Elo, approximate
+normal interval about-2.3 to+40.5 Elo. Supplementary pair bootstrap95%
+49.6875-55.859375%; bounded Hoeffding95%45.142357-60.326393%. These methods have
+different assumptions; none changes either primary gate. Pairing does not eliminate
+opening-family, common-opponent, platform or selective-distribution dependencies.
+The held-out seven-move distribution differs from the eight-move exploration and
+qualifies only its declared domain. No historical clock result was opened or revised.
+
+The frozen result is `c1-confirm-w4-v2-analysis.json`; the raw replay and exact
+arithmetic verification are `c1-confirm-w4-v2-verification.json`. Every original
+pair total, WDL, primary mean/variance/interval/gate and all frozen input/raw hashes
+match independently. Candidate White score62.03125%, Black43.4375%; actual first-game
+score52.03125%, second53.4375%, with160 openings beginning each colour order.
+These strata are descriptive only; no exclusion, weighting or extra test follows.
+
+**Supplementary reporting correction:** the frozen analyzer's
+`descriptiveGameOrderScores` enumerated the verifier's colour-canonicalized records,
+so its43.4375%/62.03125% fields were colour slots rather than actual execution order.
+`tools/p4-critical-line-final-audit.py` derives the corrected52.03125%/53.4375%
+directly from raw sequential PGNs and checks all640 legal histories/terminals and
+all320 pair totals using exact rational arithmetic. The original analyzer and its
+output bytes remain unchanged. Use the verification supplement for game-order
+sensitivity. This implementation correction affects no primary statistic, game
+validity, resource total, frozen condition or acceptance conclusion; it is not a
+retrospective protocol relaxation.
+
+All**90187** engine requests passed independent UCI/PV/history/legal terminal and
+whole-request resource audits (baseline45085; candidate45102). Total admitted
+nodes29,017,307,055; baseline14,465,601,877 and candidate14,551,705,178. No qualified
+fallback warnings occurred. Mean total CPU32.06%, maximum65.84%; minimum free
+memory17.9071GiB, peak owned commitment0.818516GiB. All1284 owned processes drained;
+no process/reservation remains. Actual game lengths49-426 plies, mean154.9172.
+Execution charged20916.9871262s (5h48m36.99s), including startup, in-worker audits,
+supervision and drain under the frozen charging convention. The native execution
+receipt records all evidence hashes and exact endpoints.
+
+## Final interpretation, resources and handback
+
+**Codex technical/research execution is complete; the governing practical W4
+strength-development objective is UNMET.** The independent attempt was valid and
+both acceptance conditions failed. No further autonomous research unit is selected:
+the sole independent allowance is spent, and another confirmation or changed
+acceptance condition requires new explicit owner authority. This is not a claim
+that every selectivity idea is ineffective or that the full research space/time
+budget is exhausted. No extra resources are requested to rescue inconclusive data.
+
+C1 was genuinely enabled/exercised, its TT input was available and its state,
+accounting, concurrency and lifecycle behavior qualified. A small fixed-work depth
+cost and unchanged deeper-control agreement were retained before exploration.
+The completed confirmation provides no material technical failure explaining away
+the strength result. Small true benefit, sampling variation and opening-population
+effects remain compatible with the evidence; their separate contributions are not
+identified. Do not pool the positive64-game screen or operational pilot with the
+independent sample, reinterpret proxy depth/NPS as strength, or declare an enabling
+foundation successful in place of the failed governing objective.
+
+The investigation establishes a limited information-flow fact: existing coherent
+selective TT fields can drive node-level reduction relief without a table redesign.
+It does not establish that they support move-specific singular verification;
+score/hint association remains a distinct dependency. Potential future questions
+include reliability of a near-depth bound when the leading continuation disappoints,
+interactions with quiet pruning/history relief, and adequately isolated excluded-move
+verification. They are conditional opportunities with uncertain value, not an active
+queue, selected successor or authority to repeat this claim.
+
+Final ledger: **23274.421601200127/86400 charged seconds (6h27m54.42s)**;
+**708/1280 initiated/completed timed games**, comprising68 development and640
+confirmation; **1/1 independent attempts spent**. Failed/interrupted games0.
+Fixed-work admissions81,865,451 across276 requests; timed request audits99741.
+All9 supervised experiments passed/drained; pending and ownedProcesses empty.
+Unused63125.5783988s and572 development games are not renewed claim, continuation
+or successor authority. Both explicit idle-window scopes are fulfilled.
+
+Current engine source/configuration remains C1/build99/source46d15431 against
+original build96/source44fc2bf2, as pinned. Only records, input-neutral verification
+tooling and minimal technical-disposition canon updates are made after confirmation:
+**no_bump**, exact build99 bytes retained. Production flags1182007295, champion,
+baseline79, closed campaigns and installed/external clients remain unchanged.
+No native GUI/platform/deployment acceptance was performed or inferred; there is no
+push, installation, production promotion, champion advance or formal closure.
+
+Masters advance to**P4-R035/P4-F053** for this technical disposition. The owner must
+refresh both Project Source mirrors before dependent GPT coordination. GPT
+reconciliation and owner disposition/possible formal closeout are outstanding;
+neither is claimed by this handback. STATE is the exact next-action boundary.

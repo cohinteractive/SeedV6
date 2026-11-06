@@ -1,12 +1,35 @@
 # CLV-R001 - Critical-Line Verification and Selective Search
 
-Revision 1, 6 November 2026 (Pacific/Auckland). **ACTIVE owner-authorized Phase 4
-strength-development research.** Subordinate to the repository
+Revision 2, 7 November 2026 (Pacific/Auckland). **CODEX TECHNICAL EXECUTION COMPLETE;
+independent strength criteria failed; governing strength objective UNMET.
+GPT reconciliation and owner disposition remain pending.** Subordinate to the repository
 [Search Contract](../../../../source/CHESS_SEARCH_CONTRACT.md) and
 [Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). This focused
-contract records the owner's complete launch request of this date; it does not
+contract records the owner's complete launch request of 6 November 2026; it does not
 replace the Phase 4 masters. [STATE](STATE.md) is the single resume point;
 [RESULTS](RESULTS.md) contains the bootstrap challenge, findings and decisions.
+
+## Technical execution disposition - 7 November 2026
+
+The sole frozen320-pair confirmation of unchanged C1/build99 against exact build96
+completed640 normal audited games:242W/191D/207L,52.734375%, paired-normal95%
+49.670255-55.798495%. Both original primary conditions failed. Technical/game/
+resource qualification passed; statistical strength evidence is inconclusive.
+This is not successful strength development or a foundational relabelling.
+
+The attempt and640 confirmation games are spent. No further autonomous experiment,
+replacement, retuning, confirmation or successor is selected. Unused development
+games, wall allowance and idle-window time do not renew the claim. The next step
+is GPT reconciliation and an owner disposition, not a request for extra resources
+merely because the result is inconclusive. Formal acceptance/closure, champion
+advancement, production adoption and deployment are not claimed or performed.
+
+The original objective, constraints, resources and acceptance requirements below
+are preserved unchanged. Their original execution instructions do not override
+the spent one-attempt boundary or this evidence-based technical handback.
+Current master pair: P4-R035/P4-F053; owner mirrors need refresh before dependent
+coordination. STATE/RESULTS and the frozen analysis plus verification supplement
+contain the exact result, limitations, correction, accounting and restart boundary.
 
 ## Objective and exact domain
 
