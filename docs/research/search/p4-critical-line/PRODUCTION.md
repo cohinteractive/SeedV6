@@ -3,7 +3,7 @@
 Revision 1, 7 November 2026 (Pacific/Auckland). Owner-authorized integration,
 separate from the accepted unsuccessful CLV-R001 research closeout at `25d7d182`.
 Starting repository was clean `f2ba5eaf`, build99, P4-R035/P4-F053; no root journal.
-Source qualification is complete; committed artifact qualification follows below.
+Source integration and committed Windows headless artifact qualification are complete.
 
 ## Decision and scope
 
@@ -36,7 +36,8 @@ All 45 pinned C1 runtime files and the original96 core were locally available an
 rehashed before integration. Historical build79/source75336761 and the W1-qualified
 HL-G1/build84 champion remain distinct and unchanged.
 
-Integrated production: **build100 / CLV_C1**, flags **3329490943**, selected without JVM
+Integrated production: **d71ec4071640916b3821fb7d24a7476e1e0fac57 / build100 /
+CLV_C1**, flags **3329490943**, selected without JVM
 properties by `BaselineEngine.SearchProfile.PRODUCTION_DEFAULT`. This is a new
 production source/build identity, not a replacement or relabelling of frozen99.
 The source commit and final artifact hashes are recorded in
@@ -127,6 +128,62 @@ The default whitespace check flags preserved CRLF as trailing whitespace; the
 CR-aware check passes without global Git configuration changes. Plain space/tab
 trailing whitespace is checked separately. No runtime acceptance claim follows
 from static inspection or source metadata alone.
+
+## Committed build100 artifacts and final checks
+
+Source commit **d71ec4071640916b3821fb7d24a7476e1e0fac57** contains the verified
+single99->100 build-token increment, preserving user version fields and all other
+version bytes. Clean-source `clv-c1-build100-v3` packaging passed in62 seconds,
+using bundled Temurin21.0.12.1. Native GUI/UCI, copied images and separately extracted
+archives passed headless resource/JNI/model/protocol checks in paths with spaces.
+
+| Artifact | Repository-relative path |
+| --- | --- |
+| GUI image | `dist/windows/candidates/clv-c1-build100-v3/SeedV6-GUI/SeedV6-GUI.exe` |
+| GUI ZIP | `dist/windows/candidates/clv-c1-build100-v3/SeedV6-GUI-windows-x64.zip` |
+| UCI image | `releases/candidates/windows-x64/clv-c1-build100-v3/SeedV6-UCI/SeedV6-UCI.exe` |
+| UCI ZIP | `releases/candidates/windows-x64/clv-c1-build100-v3/SeedV6-UCI-windows-x64.zip` |
+| Java UCI | `app-uci/build/install/seedv6-uci/bin/seedv6-uci.bat` |
+
+GUI, native UCI and generated Java UCI share core SHA-256
+`3808b4d6c931d0780b16fa978edcbf4ae6542f640252fd2f55f95226aeb2460d`.
+All3302 compared JAR class entries equal the tested precommit packages; only version,
+source and desktop timestamp resources differ. The qualification manifest pins
+archive/executable-package manifest hashes, runtime/source identities and commands.
+No metadata-only full JUnit rerun is claimed.
+
+- **Native UCI:**336 additional searches,56 per profile for default CLV_C1 and
+  explicit MW_C4, MW_C4_W4, TC_P1, HL_G1 and LEGACY, each across W1-W16. All report
+  SeedV6-100/source d71ec4071640 and the actual expected flags/schedule. Configuration
+  fingerprints are independently recomputed from emitted binding identities.
+  W4/Hash64/CP64/vector-256/ADAPTIVE16/EAGER_ROOT/BOUNDARY2 is `cfg-4cf89fcfafe20fc8`.
+- **Packaged GUI Play:**231 additional headless EDT/service requests,77 each for
+  CLV_C1, MW_C4 and TC_P1, covering W1/W2/W4/W8/W16 and return/reuse transitions.
+  Actual search, legal moves/PVs, terminals/repetition/mate scores, exact restoration,
+  depth/time/stop limits and shutdown drain passed. No interactive window was opened.
+- **Packaged Arena:**20 additional depth4/four-ply fixtures across CLV_C1/MW_C4 and
+  W1/W2/W4/W8/W16;60 actual telemetry snapshots, persisted completion/resume and
+  helper drain passed. These are bounded technical checks, not competitive results.
+- **Generated Java UCI:**56 final default-profile searches across W1-W16 passed the
+  same identity, reconstruction, chess-rule, accounting and lifecycle gates.
+- **Historical artifacts:**original79/source75336761 JAR hashes and its pinned Java
+  hash match; original96 remains intact. Four actual depth3 searches at W1/W4 pass,
+  retaining flags3407871 for79 and TC-P1-at-W1/MW-C4-at-W4 for96. Current profiles
+  never substitute for these historical binaries.
+
+Preparation limitations are retained honestly. The text-mode ignore-path preflight
+added CR to Git input; its null-delimited replacement verified every new raw path
+ignored. The ensuing build100-v1 was made before the source commit and is provisional.
+Build100-v2 correctly refused a source snapshot changed by a probe-generated untracked
+Python cache. That attributable cache was moved into ignored evidence, subsequent
+probes used `-B`, and clean build100-v3 passed. Neither attempt caused a second
+build increment or a change to Search. No failed validation remains unresolved.
+
+Final evidence is a documentation-only successor commit: **no_bump**, strict
+build100 bytes retained. Final masters remain **P4-R036/P4-F054**, revised once
+for this work unit. Research/results/budget pins were rechecked unchanged after
+qualification. No broader training suite, native non-Windows platform, interactive
+GUI, installed external client or competitive campaign is represented as tested.
 
 ## Competitive limits and preserved controls
 

@@ -1,6 +1,6 @@
 {
   "id": "clv-c1-production-qualification-v1",
-  "status": "source-qualified; committed artifacts pending",
+  "status": "production integration and Windows headless technical qualification complete; owner artifact/visual/deployment acceptance separate",
   "sourceParent": "25d7d182",
   "buildBefore": 99,
   "profile": "CLV_C1",
@@ -170,7 +170,7 @@
   ],
   "rollback": "-Dseedv6.searchProfile=MW_C4",
   "build": 100,
-  "sourceQualification": "complete; final committed artifact build pending",
+  "sourceQualification": "319 passing precommit source checks; final executable class bridge verified; no full-suite metadata-only rerun",
   "javaUci": {
     "clv_c1": {
       "status": "PASS",
@@ -208,23 +208,10 @@
       "MW_C4"
     ],
     "kernelClassBridge": {
-      "frozen": "docs\\research\\search\\p4-critical-line\\raw\\runtime-c1-build99-v1\\lib\\engine-core.jar",
-      "integrated": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\clv-c1-precommit-v2\\SeedV6-GUI\\app\\engine-core.jar",
-      "classes": {
-        "com/ohinteractive/seedv6/search/exact/ConstructionSearch$RootScheduling.class": "81030f39098219de16b2f1022b69a201598d4c5511fb7bbee88d20b8e3fb9cf7",
-        "com/ohinteractive/seedv6/search/exact/ConstructionSearch.class": "1bd4a45e2c430c343424ede130ee20ae2b48efe481572646fdab9808f9ae2d58",
-        "com/ohinteractive/seedv6/search/exact/ExactSearch$Aborted.class": "b872d496b0b7b6e9050a89ea2e6eff18e5bcfcbeb9081b11c2f1a59ce03fa2de",
-        "com/ohinteractive/seedv6/search/exact/ExactSearch.class": "4f63f7105d935c27629de47ce1b51fbdf6bd8f38ba38122b872d123f4c14cedc",
-        "com/ohinteractive/seedv6/search/exact/FlatSearchConfig$Feature.class": "3ec76ae72f1b61fff458947577c24ddce48a05ad47bd3eb61b49848cde16cdb3",
-        "com/ohinteractive/seedv6/search/exact/FlatSearchConfig.class": "d4b35649b72238a43f115d1c8c4459b38bd77f9ef543238a7949c56f0439e776",
-        "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker$1.class": "7fe9d64f92f71472bf9ace7ac7275ee8f50869adabf0a8a672d30ab5f8f0252a",
-        "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.class": "47dfcf4a0c8aef2878430aa86b73d5ee76ae5f605d3cc10c887dae530ca4b58b",
-        "com/ohinteractive/seedv6/search/exact/ParallelSearch$WorkerWork.class": "1f1bff9b8c693bf1e6c1975e63324194ebbe277513bcafc9eb9bcc69d5f04499",
-        "com/ohinteractive/seedv6/search/exact/ParallelSearch.class": "5cfd9f4b990c77eacfdc2b3e68f421dda8639195894a9c26c4fbe8f3cc2d1952",
-        "com/ohinteractive/seedv6/search/tt/TTable$StripeLock.class": "50a92e72371e5106c0d6abbd1036d7c5b78047515c374e6d52f24ab57eced1dd",
-        "com/ohinteractive/seedv6/search/tt/TTable$TEntry.class": "6c9afa4d910a0a0945aeb0d6eab54968ca69a3bbef953c94f687e98ea5634065",
-        "com/ohinteractive/seedv6/search/tt/TTable.class": "67dca920e0e22545e28f6f1d80ee6f792c950933060e3a58df1e9e50c59de426"
-      }
+      "path": "docs/research/search/p4-critical-line/raw/production-adoption-v1/kernel-class-bridge.json",
+      "sha256": "5095956f729ba435b90d15ee0d75d49f5dc31df93e738e554fed5237536e7e20",
+      "classEntries": 13,
+      "allClassBytesIdenticalToFrozenC1": true
     }
   },
   "commands": [
@@ -286,6 +273,272 @@
     "docs/research/search/p4-critical-line/raw/production-adoption-v1/precommit-probe-commands.json": "540e0771be38be1ec2e17b1b5a3fa23961afb07f097018d52d9c1c9a2ee6690f",
     "docs/research/search/p4-critical-line/raw/production-adoption-v1/precommit-probe-compile.log": "f4c75f9fb60409630095c40c7677159bc43ac1242cfeb3d929de9df90df6235b",
     "docs/research/search/p4-critical-line/raw/production-adoption-v1/qualification-tests.log": "a20c7a1364819aef1833d2b1a86493f6e5f1d973f85aa60eeeff5a9aa6281892",
-    "docs/research/search/p4-critical-line/raw/production-adoption-v1/version-before.bin": "3191fbbe6025f604ac9c755e92f4461b4b433f591aa30aa3da7033eb69d558ed"
-  }
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/version-before.bin": "3191fbbe6025f604ac9c755e92f4461b4b433f591aa30aa3da7033eb69d558ed",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/build100-package-v2.log": "b16fa7fd808195596eb83d49ae0535975807d6fd503981306ace7b9e1331949e",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/build100-package-v3.log": "a7e0435bfc3183dc1357ce138a6dac153c9910998954df2e23ff480c3d121340",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/build100-package.log": "066f5114f2dd1ecf05b2960134c91aa6e69e607b0f3777e1788a736a7d28f98b",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-arena.log": "e8247190f7dfb33b0643e8529d69b8efc5d1e992dd8c240810f8f8b6d8588529",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-class-bridge.json": "2c0af2175276597660942f5eaa23155ecf185523927bc83169e71e1aba4ac24d",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-gui-clv_c1.log": "003af7ecf6046f9fe7aeb0d870062d90709901228e8cdbdb4191cdf86c9a01d0",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-gui-mw_c4.log": "8ef84bbd00215ef4eb051fc4dcca11ac5903000d65363690256be48c57f052b0",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-gui-tc_p1.log": "f8a8c5b73611603d93a16d33f25b8de9897a3fd80e2cce9df3c5e618dcd07472",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-java-default.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-native-clv_c1.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-native-hl_g1.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-native-legacy.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-native-mw_c4.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-native-mw_c4_w4.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-native-tc_p1.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-probe-compile.log": "f4c75f9fb60409630095c40c7677159bc43ac1242cfeb3d929de9df90df6235b",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-relocated-gui.log": "705a84e7fc50d1ead3be39835b38c88cd541b62b348af5b4ea9a06ebb628b5fc",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-relocated-uci.log": "305afc108f0ea10af5351206714fb0561c1c1f64d3f847bb44f905c87a318e86",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/historical-controls.json": "a63f95b9653df1835a787d3220f9347655a66af4145515293122f7ab3679a797",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/source-commit.txt": "21870ec58c2a87bcefe01689f85417e01ccf7073ccf6963b320a90dcb5e620aa",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/version-verification.json": "be741c4ecd5e873e56059503ce306e679613e3e82d89bed5316b1a60ea512938",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-build100-default/result.json": "4749d1abf16d772e624811d856c6aa7dd604399bf719d9fa543b821a65f96d9f",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-clv_c1/result.json": "5e247ed95313f2cb9a11021414058c0c4eb169b86658e5d47f701ce97db3b91e",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-mw_c4/result.json": "ff2108093efb9e2a16b5339bd9d659fa47c75d4a7e2f16e8b836a09793e72d34",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-mw_c4_w4/result.json": "22721a8d661ae3ecd0be96b5289201c061d0fced4026bb5b1aa7175856a90bb8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-clv_c1/result.json": "99d5440476ec035b3532e43a5af1e61e4a161ffff192727f210eaf9d92567b08",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-hl_g1/result.json": "7cc178e3777b03fc3530cdae5c11c4fccc6c32f61be1922eaa27657cebb8ae45",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-legacy/result.json": "e12f1e0361c29cc86c0f7ce1a7cb5ed38512770803cb5b0b6dd73006655309dc",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-mw_c4/result.json": "0af938ca7cb36bcc29abea3120af5bc0273847df6b989b59004f0cfdc85a8051",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-mw_c4_w4/result.json": "8a561193723c60c959545d416e8f70f6123f7a1939f168d18b3861fa84f9c538",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-tc_p1/result.json": "54823396f17d6a6ee4969af00d16d65561adbae1896d0b7b67907ad6e8881556",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/relocated-gui/verification.json": "31c73d48c5dffa808e93dbe643e079c47d659ae9ceebe8920d9862765ae29542",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/relocated-uci/verification.json": "7754b35a92e653f252f363a0518ff84cd9ed69ae5ff12626801398332e39a314"
+  },
+  "sourceCommit": "d71ec4071640916b3821fb7d24a7476e1e0fac57",
+  "versionVerification": {
+    "before": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 99
+    },
+    "after": {
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "build": 100
+    },
+    "beforeSha256": "3191fbbe6025f604ac9c755e92f4461b4b433f591aa30aa3da7033eb69d558ed",
+    "afterSha256": "c7366d7991bbb2e04a110d8c629d3e97ba29f51b309e7eda62e7f179f16b8236",
+    "onlyBuildTokenChanged": true
+  },
+  "nativeUci": {
+    "clv_c1": {
+      "searchResponses": 56,
+      "workers": "W1-W16",
+      "status": "PASS",
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-clv_c1/result.json",
+      "sha256": "99d5440476ec035b3532e43a5af1e61e4a161ffff192727f210eaf9d92567b08"
+    },
+    "mw_c4": {
+      "searchResponses": 56,
+      "workers": "W1-W16",
+      "status": "PASS",
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-mw_c4/result.json",
+      "sha256": "0af938ca7cb36bcc29abea3120af5bc0273847df6b989b59004f0cfdc85a8051"
+    },
+    "mw_c4_w4": {
+      "searchResponses": 56,
+      "workers": "W1-W16",
+      "status": "PASS",
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-mw_c4_w4/result.json",
+      "sha256": "8a561193723c60c959545d416e8f70f6123f7a1939f168d18b3861fa84f9c538"
+    },
+    "tc_p1": {
+      "searchResponses": 56,
+      "workers": "W1-W16",
+      "status": "PASS",
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-tc_p1/result.json",
+      "sha256": "54823396f17d6a6ee4969af00d16d65561adbae1896d0b7b67907ad6e8881556"
+    },
+    "hl_g1": {
+      "searchResponses": 56,
+      "workers": "W1-W16",
+      "status": "PASS",
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-hl_g1/result.json",
+      "sha256": "7cc178e3777b03fc3530cdae5c11c4fccc6c32f61be1922eaa27657cebb8ae45"
+    },
+    "legacy": {
+      "searchResponses": 56,
+      "workers": "W1-W16",
+      "status": "PASS",
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/native-legacy/result.json",
+      "sha256": "e12f1e0361c29cc86c0f7ce1a7cb5ed38512770803cb5b0b6dd73006655309dc"
+    }
+  },
+  "finalGui": {
+    "status": "PASS",
+    "profiles": [
+      "CLV_C1",
+      "MW_C4",
+      "TC_P1"
+    ],
+    "requestsPerProfile": 77,
+    "totalRequests": 231,
+    "workerSequence": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      4,
+      1
+    ],
+    "mode": "headless actual packaged GUI JARs and bundled Java; no interactive window"
+  },
+  "finalArena": {
+    "status": "PASS",
+    "profiles": [
+      "CLV_C1",
+      "MW_C4"
+    ],
+    "workers": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "fixtures": 20,
+    "depth": 4,
+    "maxPlies": 4,
+    "telemetry": 60,
+    "meaning": "bounded technical fixtures, no timed strength games"
+  },
+  "finalJavaUci": {
+    "status": "PASS",
+    "profile": "CLV_C1",
+    "searchResponses": 56,
+    "workers": "W1-W16",
+    "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-build100-default/result.json"
+  },
+  "historicalControlChecks": {
+    "status": "PASS",
+    "searches": 4,
+    "builds": [
+      79,
+      96
+    ],
+    "workers": [
+      1,
+      4
+    ],
+    "depth": 3,
+    "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/historical-controls.json"
+  },
+  "finalClassBridge": {
+    "path": "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-class-bridge.json",
+    "sha256": "2c0af2175276597660942f5eaa23155ecf185523927bc83169e71e1aba4ac24d",
+    "totalComparedClassEntries": 3302,
+    "allClassBytesIdentical": true,
+    "comparedArtifacts": "qualified precommit v2 and committed build100 v3 GUI/UCI JARs"
+  },
+  "commonCoreJarSha256": "3808b4d6c931d0780b16fa978edcbf4ae6542f640252fd2f55f95226aeb2460d",
+  "committedArtifacts": {
+    "gui": {
+      "candidate": "dist/windows/candidates/clv-c1-build100-v3",
+      "executable": "dist/windows/candidates/clv-c1-build100-v3/SeedV6-GUI/SeedV6-GUI.exe",
+      "archive": "dist/windows/candidates/clv-c1-build100-v3/SeedV6-GUI-windows-x64.zip",
+      "archiveSha256": "0350b14597b4af0008d339224760e0124cbf8db77a8f8ae4889883ffc645b862",
+      "manifest": "dist/windows/candidates/clv-c1-build100-v3/SeedV6-GUI/build-manifest.json",
+      "manifestSha256": "c1e1da64f366fef06c5dd03cd078ae11131107f98eb7c810924a2f1a6143be30",
+      "sourceCommit": "d71ec4071640916b3821fb7d24a7476e1e0fac57",
+      "sourceStatus": [],
+      "build": 100,
+      "coreJarSha256": "3808b4d6c931d0780b16fa978edcbf4ae6542f640252fd2f55f95226aeb2460d",
+      "jdk": {
+        "BUILD_INFO": "\"OS: Windows Server 2022 Version: 10.0\"",
+        "BUILD_SOURCE": "\"git:e6ba7dec3d07654074559310376a3ae89da5f4ac\"",
+        "BUILD_SOURCE_REPO": "\"https://github.com/adoptium/temurin-build.git\"",
+        "FULL_VERSION": "\"21.0.12.1+1-LTS\"",
+        "IMAGE_TYPE": "\"JDK\"",
+        "IMPLEMENTOR": "\"Eclipse Adoptium\"",
+        "IMPLEMENTOR_VERSION": "\"Temurin-21.0.12.1+1\"",
+        "JAVA_RUNTIME_VERSION": "\"21.0.12.1+1-LTS\"",
+        "JAVA_VERSION": "\"21.0.12.1\"",
+        "JAVA_VERSION_DATE": "\"2026-08-18\"",
+        "JVM_VARIANT": "\"Hotspot\"",
+        "JVM_VERSION": "\"21.0.12.1+1-LTS\"",
+        "LIBC": "\"default\"",
+        "MODULES": "\"java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.incubator.vector jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jlink jdk.jpackage jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom\"",
+        "OS_ARCH": "\"x86_64\"",
+        "OS_NAME": "\"Windows\"",
+        "SEMANTIC_VERSION": "\"21.0.12.1+1\"",
+        "SOURCE": "\".:git:1c417fbfc2f7\"",
+        "SOURCE_REPO": "\"https://github.com/adoptium/jdk21u.git\""
+      },
+      "relocationEvidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/relocated-gui/verification.json",
+      "relocationChecks": "copied image and extracted archive, paths with spaces; passed"
+    },
+    "uci": {
+      "candidate": "releases/candidates/windows-x64/clv-c1-build100-v3",
+      "executable": "releases/candidates/windows-x64/clv-c1-build100-v3/SeedV6-UCI/SeedV6-UCI.exe",
+      "archive": "releases/candidates/windows-x64/clv-c1-build100-v3/SeedV6-UCI-windows-x64.zip",
+      "archiveSha256": "98b167ec0cea4f1960ec91445a4b40beea37a5dc89eec521d1af9c270c378dbb",
+      "manifest": "releases/candidates/windows-x64/clv-c1-build100-v3/SeedV6-UCI/build-manifest.json",
+      "manifestSha256": "29a960b1f69ac8019afebdf86241cacf4f2b2c738e390760ab2a1a781c64f126",
+      "sourceCommit": "d71ec4071640916b3821fb7d24a7476e1e0fac57",
+      "sourceStatus": [],
+      "build": 100,
+      "coreJarSha256": "3808b4d6c931d0780b16fa978edcbf4ae6542f640252fd2f55f95226aeb2460d",
+      "jdk": {
+        "BUILD_INFO": "\"OS: Windows Server 2022 Version: 10.0\"",
+        "BUILD_SOURCE": "\"git:e6ba7dec3d07654074559310376a3ae89da5f4ac\"",
+        "BUILD_SOURCE_REPO": "\"https://github.com/adoptium/temurin-build.git\"",
+        "FULL_VERSION": "\"21.0.12.1+1-LTS\"",
+        "IMAGE_TYPE": "\"JDK\"",
+        "IMPLEMENTOR": "\"Eclipse Adoptium\"",
+        "IMPLEMENTOR_VERSION": "\"Temurin-21.0.12.1+1\"",
+        "JAVA_RUNTIME_VERSION": "\"21.0.12.1+1-LTS\"",
+        "JAVA_VERSION": "\"21.0.12.1\"",
+        "JAVA_VERSION_DATE": "\"2026-08-18\"",
+        "JVM_VARIANT": "\"Hotspot\"",
+        "JVM_VERSION": "\"21.0.12.1+1-LTS\"",
+        "LIBC": "\"default\"",
+        "MODULES": "\"java.base java.compiler java.datatransfer java.xml java.prefs java.desktop java.instrument java.logging java.management java.security.sasl java.naming java.rmi java.management.rmi java.net.http java.scripting java.security.jgss java.transaction.xa java.sql java.sql.rowset java.xml.crypto java.se java.smartcardio jdk.accessibility jdk.internal.jvmstat jdk.attach jdk.charsets jdk.internal.opt jdk.zipfs jdk.compiler jdk.crypto.ec jdk.crypto.cryptoki jdk.crypto.mscapi jdk.dynalink jdk.internal.ed jdk.editpad jdk.hotspot.agent jdk.httpserver jdk.incubator.vector jdk.internal.le jdk.internal.vm.ci jdk.internal.vm.compiler jdk.internal.vm.compiler.management jdk.jartool jdk.javadoc jdk.jcmd jdk.management jdk.management.agent jdk.jconsole jdk.jdeps jdk.jdwp.agent jdk.jdi jdk.jfr jdk.jlink jdk.jpackage jdk.jshell jdk.jsobject jdk.jstatd jdk.localedata jdk.management.jfr jdk.naming.dns jdk.naming.rmi jdk.net jdk.nio.mapmode jdk.random jdk.sctp jdk.security.auth jdk.security.jgss jdk.unsupported jdk.unsupported.desktop jdk.xml.dom\"",
+        "OS_ARCH": "\"x86_64\"",
+        "OS_NAME": "\"Windows\"",
+        "SEMANTIC_VERSION": "\"21.0.12.1+1\"",
+        "SOURCE": "\".:git:1c417fbfc2f7\"",
+        "SOURCE_REPO": "\"https://github.com/adoptium/jdk21u.git\""
+      },
+      "relocationEvidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/relocated-uci/verification.json",
+      "relocationChecks": "copied image and extracted archive, paths with spaces; passed"
+    }
+  },
+  "representativeConfigurationFingerprint": "cfg-4cf89fcfafe20fc8 (W4/Hash64/CP64/ADAPTIVE16/EAGER_ROOT/BOUNDARY2/vector-256)",
+  "finalCommands": {
+    "path": "docs/research/search/p4-critical-line/raw/production-adoption-v1/final-commands.json",
+    "sha256": "4482c888943e6352c55aa2f670862d04d47251d31ec745e163ac8139f08c819c",
+    "templates": [
+      "gradlew.bat --gradle-user-home build/maintenance-gradle-home --no-daemon --max-workers=2 packageWindows :app-uci:installDist :installResearchWorkspace -PcandidateId=clv-c1-build100-v3",
+      "build/research/venv/Scripts/python.exe -B tools/verify-native-candidate.py --candidate <GUI-or-UCI-candidate-directory> --work <new-output-directory> --jdk C:/java/jdk-21-packaging --peer <other-app-build-manifest.json>",
+      "build/research/venv/Scripts/python.exe -B tools/verify_cp64_production.py --launcher <packaged-SeedV6-UCI.exe> --profile <CLV_C1|MW_C4|MW_C4_W4|TC_P1|HL_G1|LEGACY> --output <new-output-directory>",
+      "build/research/venv/Scripts/python.exe -B tools/verify_cp64_production.py --install app-uci/build/install/seedv6-uci --output <new-output-directory>",
+      "<GUI-bundled-java.exe> --add-modules=jdk.incubator.vector -Djava.awt.headless=true -Xmx768m -XX:ActiveProcessorCount=4 -cp <compiled-probe-classes;GUI-app/*> [-Dseedv6.searchProfile=MW_C4|TC_P1] com.ohinteractive.seedv6.gui.HlG1ProductionProbe",
+      "<same-bundled-java-and-classpath> PackagedArenaProbe <new-temporary-fixture-store>"
+    ]
+  },
+  "retainedPreparationFailures": [
+    "one expected-production fixture omitted C1; corrected and full core suite passed",
+    "precommit packaging source-stability refusal while production record was authored; retried with edits paused",
+    "text-mode Git ignore input added CR to paths; null-delimited check passed; build100-v1 is provisional dirty-source, not final",
+    "build100-v2 source-stability refusal due to probe-generated untracked bytecode; moved attributable cache into ignored evidence, disabled bytecode generation, clean build100-v3 passed"
+  ],
+  "humanActions": [
+    {
+      "action": "Refresh both Phase4 Project Source mirrors to P4-R036/P4-F054",
+      "blockingFor": "mirror-dependent coordination",
+      "nonBlockingFor": "completed repository integration"
+    },
+    {
+      "action": "Owner artifact acceptance and interactive GUI/installed-client/platform qualification before separately authorized deployment or release",
+      "blockingFor": "those later acceptance/operational claims",
+      "nonBlockingFor": "completed repository integration"
+    }
+  ]
 }

@@ -30,7 +30,8 @@ P4-R035 distinguishes these decisions and requires a common applicable feature
 policy across workers. No generalized automatic-adoption rule is introduced.
 STATE is the terminal research record. RESULTS and all frozen protocols/results
 remain unchanged; their pending-disposition wording records the earlier handback.
-The masters will be revised once for the completed adoption and closeout together.
+The once-revised P4-R036/P4-F054 masters record adoption and closeout together;
+[PRODUCTION](PRODUCTION.md) records the separate integration qualification.
 
 ## Historical technical execution disposition - 7 November 2026
 
