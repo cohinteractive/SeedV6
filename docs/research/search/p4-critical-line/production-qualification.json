@@ -1,0 +1,291 @@
+{
+  "id": "clv-c1-production-qualification-v1",
+  "status": "source-qualified; committed artifacts pending",
+  "sourceParent": "25d7d182",
+  "buildBefore": 99,
+  "profile": "CLV_C1",
+  "flags": 3329490943,
+  "workerSelection": {
+    "1": {
+      "flags": 3329490943,
+      "schedule": "OWNER"
+    },
+    "2": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "3": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "4": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "5": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "6": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "7": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "8": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "9": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "10": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "11": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "12": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "13": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "14": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "15": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    },
+    "16": {
+      "flags": 3329490943,
+      "schedule": "EAGER_ROOT"
+    }
+  },
+  "research": {
+    "status": "owner-accepted closed unsuccessful",
+    "candidateSource": "46d1543121f9bc13e7c2a4832efa78bd14b5363c",
+    "candidateBuild": 99,
+    "controlSource": "44fc2bf2fe54e87dee7721bdaa451f3b00f3b1d0",
+    "controlBuild": 96,
+    "protocol": "c1-confirm-w4-v2",
+    "scorePercent": 52.734375,
+    "originalStrengthGates": "both failed",
+    "chargedSeconds": 23274.421601200127,
+    "timedGames": 708,
+    "attemptsSpent": 1,
+    "additionalTimedGames": 0
+  },
+  "junit": {
+    "engine-core": {
+      "tests": 215,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "app-uci": {
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "app-gui": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "engine-training": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "research": {
+      "tests": 68,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "mechanismWitness": {
+    "1": {
+      "nodes": 1000000,
+      "signals": 768,
+      "reliefs": 193
+    },
+    "2": {
+      "nodes": 1000000,
+      "signals": 895,
+      "reliefs": 294
+    },
+    "4": {
+      "nodes": 1000000,
+      "signals": 951,
+      "reliefs": 543
+    },
+    "8": {
+      "nodes": 1000000,
+      "signals": 1135,
+      "reliefs": 159
+    },
+    "16": {
+      "nodes": 1000000,
+      "signals": 717,
+      "reliefs": 264
+    }
+  },
+  "frozenSourceBridge": {
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ExactSearch.java": "2a7d7724afeca2ca2417df78dce7a86f881696a0192778b0cc878511ea360840",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ParallelSearch.java": "204038aca18a30170f07ba868ea0ee6fbab5a56085b65eb09992c5028a4181e2",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/FlatSearchConfig.java": "f3674daef859f869bad3f19f368e9890221b19788c9a37f0a06044931f771783",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/exact/ConstructionSearch.java": "0bfa26831592e28cc7a7a8d59caf7f44f8def3ab1d9ed3b29197840c52de75a5",
+    "engine-core/src/main/java/com/ohinteractive/seedv6/search/tt/TTable.java": "c28e3eccc67a01328b1cbae1cecb1a5d7aabead3f980483d1b84c7ef8831399b",
+    "src/researchLauncher/java/com/ohinteractive/seedv6/integration/ClvUciMain.java": "3e31d63181d548889d68b6cf4388c89ad50cd1a31e79849a0dd79557fd89c172",
+    "research/src/main/java/com/ohinteractive/seedv6/search/exact/ClvStudy.java": "348c0649be1490e46e84ccde61ff01715b565ea7b1cc739a4301ad7d2e7e9a14"
+  },
+  "python": {
+    "tests": 41,
+    "passed": 40,
+    "skipped": 1,
+    "skipReason": "Windows symlink creation privilege fixture"
+  },
+  "evidenceRoot": "docs/research/search/p4-critical-line/raw/production-adoption-v1",
+  "contractRevision": "P4-R036",
+  "frontierRevision": "P4-F054",
+  "limitations": [
+    "No new competitive evidence or games",
+    "No interactive GUI or installed-client acceptance",
+    "No native macOS/non-Windows qualification",
+    "No push, installation, release or deployment"
+  ],
+  "rollback": "-Dseedv6.searchProfile=MW_C4",
+  "build": 100,
+  "sourceQualification": "complete; final committed artifact build pending",
+  "javaUci": {
+    "clv_c1": {
+      "status": "PASS",
+      "searchResponses": 56,
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-clv_c1/result.json",
+      "sha256": "5e247ed95313f2cb9a11021414058c0c4eb169b86658e5d47f701ce97db3b91e"
+    },
+    "mw_c4": {
+      "status": "PASS",
+      "searchResponses": 56,
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-mw_c4/result.json",
+      "sha256": "ff2108093efb9e2a16b5339bd9d659fa47c75d4a7e2f16e8b836a09793e72d34"
+    },
+    "mw_c4_w4": {
+      "status": "PASS",
+      "searchResponses": 56,
+      "evidence": "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-mw_c4_w4/result.json",
+      "sha256": "22721a8d661ae3ecd0be96b5289201c061d0fced4026bb5b1aa7175856a90bb8"
+    }
+  },
+  "precommitPackagedConsumers": {
+    "guiRequests": 77,
+    "guiWorkers": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      4,
+      1
+    ],
+    "arenaFourPlyDepth4Fixtures": 20,
+    "arenaProfiles": [
+      "CLV_C1",
+      "MW_C4"
+    ],
+    "kernelClassBridge": {
+      "frozen": "docs\\research\\search\\p4-critical-line\\raw\\runtime-c1-build99-v1\\lib\\engine-core.jar",
+      "integrated": "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\clv-c1-precommit-v2\\SeedV6-GUI\\app\\engine-core.jar",
+      "classes": {
+        "com/ohinteractive/seedv6/search/exact/ConstructionSearch$RootScheduling.class": "81030f39098219de16b2f1022b69a201598d4c5511fb7bbee88d20b8e3fb9cf7",
+        "com/ohinteractive/seedv6/search/exact/ConstructionSearch.class": "1bd4a45e2c430c343424ede130ee20ae2b48efe481572646fdab9808f9ae2d58",
+        "com/ohinteractive/seedv6/search/exact/ExactSearch$Aborted.class": "b872d496b0b7b6e9050a89ea2e6eff18e5bcfcbeb9081b11c2f1a59ce03fa2de",
+        "com/ohinteractive/seedv6/search/exact/ExactSearch.class": "4f63f7105d935c27629de47ce1b51fbdf6bd8f38ba38122b872d123f4c14cedc",
+        "com/ohinteractive/seedv6/search/exact/FlatSearchConfig$Feature.class": "3ec76ae72f1b61fff458947577c24ddce48a05ad47bd3eb61b49848cde16cdb3",
+        "com/ohinteractive/seedv6/search/exact/FlatSearchConfig.class": "d4b35649b72238a43f115d1c8c4459b38bd77f9ef543238a7949c56f0439e776",
+        "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker$1.class": "7fe9d64f92f71472bf9ace7ac7275ee8f50869adabf0a8a672d30ab5f8f0252a",
+        "com/ohinteractive/seedv6/search/exact/ParallelSearch$Worker.class": "47dfcf4a0c8aef2878430aa86b73d5ee76ae5f605d3cc10c887dae530ca4b58b",
+        "com/ohinteractive/seedv6/search/exact/ParallelSearch$WorkerWork.class": "1f1bff9b8c693bf1e6c1975e63324194ebbe277513bcafc9eb9bcc69d5f04499",
+        "com/ohinteractive/seedv6/search/exact/ParallelSearch.class": "5cfd9f4b990c77eacfdc2b3e68f421dda8639195894a9c26c4fbe8f3cc2d1952",
+        "com/ohinteractive/seedv6/search/tt/TTable$StripeLock.class": "50a92e72371e5106c0d6abbd1036d7c5b78047515c374e6d52f24ab57eced1dd",
+        "com/ohinteractive/seedv6/search/tt/TTable$TEntry.class": "6c9afa4d910a0a0945aeb0d6eab54968ca69a3bbef953c94f687e98ea5634065",
+        "com/ohinteractive/seedv6/search/tt/TTable.class": "67dca920e0e22545e28f6f1d80ee6f792c950933060e3a58df1e9e50c59de426"
+      }
+    }
+  },
+  "commands": [
+    "gradlew.bat --gradle-user-home build/maintenance-gradle-home --no-daemon --max-workers=2 -Pheadless -PconventionalVectorTests :engine-core:test :app-uci:test :app-gui:test --tests *AboutEnginePanelTest --tests *ConventionalGameplayTest --tests *PlayEvaluatorTest --tests *EngineSearchAdapterTest --tests *GameControllerTest :engine-training:test --tests *BaselineArenaTest :research:test --tests *ClvCriticalLineTest --tests *Cp64ProductionTest --tests *P4TacticalTest --tests *P4MultiworkerMemoryTest --tests *P4TtMemoryTest --tests *FlatExactSearchTest --tests *SearchLifecycleServiceTest --tests *TranspositionTableConcurrencyTest verifyProjectBoundaries :app-uci:installDist :installResearchWorkspace",
+    "python -B -m unittest discover -s tools -p test_native_packaging.py",
+    "gradlew.bat --gradle-user-home build/maintenance-gradle-home --no-daemon --max-workers=2 packageWindows -PcandidateId=clv-c1-precommit-v2",
+    "build/research/venv/Scripts/python.exe -B tools/verify_cp64_production.py --install app-uci/build/install/seedv6-uci --profile <CLV_C1|MW_C4|MW_C4_W4> --output <new-output>",
+    [
+      "C:/java/jdk-21/bin/javac.exe",
+      "-encoding",
+      "UTF-8",
+      "--add-modules",
+      "jdk.incubator.vector",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\clv-c1-precommit-v2\\SeedV6-GUI\\app\\*",
+      "-d",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-critical-line\\raw\\production-adoption-v1\\precommit-probe-classes",
+      "app-gui/src/test/java/com/ohinteractive/seedv6/gui/ConventionalGuiProbe.java",
+      "tools/gui-smoke/HlG1ProductionProbe.java",
+      "tools/gui-smoke/PackagedArenaProbe.java"
+    ],
+    [
+      "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\clv-c1-precommit-v2\\SeedV6-GUI\\runtime\\bin\\java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-Djava.awt.headless=true",
+      "-Xmx768m",
+      "-XX:ActiveProcessorCount=4",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-critical-line\\raw\\production-adoption-v1\\precommit-probe-classes;C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\clv-c1-precommit-v2\\SeedV6-GUI\\app\\*",
+      "com.ohinteractive.seedv6.gui.HlG1ProductionProbe"
+    ],
+    [
+      "C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\clv-c1-precommit-v2\\SeedV6-GUI\\runtime\\bin\\java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-Djava.awt.headless=true",
+      "-Xmx768m",
+      "-XX:ActiveProcessorCount=4",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-critical-line\\raw\\production-adoption-v1\\precommit-probe-classes;C:\\projects\\seed\\java\\seedv6-unified\\dist\\windows\\candidates\\clv-c1-precommit-v2\\SeedV6-GUI\\app\\*",
+      "PackagedArenaProbe",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\search\\p4-critical-line\\raw\\production-adoption-v1\\precommit-arena-stores"
+    ]
+  ],
+  "evidence": {
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/frozen-source-bridge.json": "b3629d4603e1e9cd6060d16bad239e9285b88ca6bdf191c9a8c9705bca97185f",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/initial-tests.log": "f1bba203b151b593a633d6b99a19b6ecfe96e5bad8f8ae42db52849c6051938c",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/initial-verification.json": "ee6bf5f60517f88eb7dd4c2cb838081570a5fbe662648cd641d9a1abfd42c931",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-clv_c1.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-mw_c4.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/java-mw_c4_w4.log": "7d9e9b027c36824c5372d3fb4b5d2e15e50f4f6a08beb5a81fd38253be5c02c8",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/junit-summary.json": "7c67ba2d096e3e9fc11fae541e74a0b1d53bdf6cf5c63d859dabf396d4e1bd0b",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/kernel-class-bridge.json": "5095956f729ba435b90d15ee0d75d49f5dc31df93e738e554fed5237536e7e20",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/packaging-tests-final.log": "f5068ef1b926e2dfa8de99f07f5295e313a92b41d653322f954de791a4c4d536",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/packaging-tests.log": "dacf6d573411cfea55b4dd5da4c6e21ea1ffaa33c385fef2a130273eb8fe0e3a",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/precommit-arena.log": "e8247190f7dfb33b0643e8529d69b8efc5d1e992dd8c240810f8f8b6d8588529",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/precommit-gui.log": "5059de73d787f482d431045ab83ab982eecac7d9a9a88c2ec66e886c0b1ed6e0",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/precommit-package-v2.log": "de41e2945bbbf39386855a813c337b63ec501c0085ac3c5688fddd878683741f",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/precommit-package.log": "8fbbe29639aaf329a440930f2020e2192765a4f97eae40c82b7ea420f04daafb",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/precommit-probe-commands.json": "540e0771be38be1ec2e17b1b5a3fa23961afb07f097018d52d9c1c9a2ee6690f",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/precommit-probe-compile.log": "f4c75f9fb60409630095c40c7677159bc43ac1242cfeb3d929de9df90df6235b",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/qualification-tests.log": "a20c7a1364819aef1833d2b1a86493f6e5f1d973f85aa60eeeff5a9aa6281892",
+    "docs/research/search/p4-critical-line/raw/production-adoption-v1/version-before.bin": "3191fbbe6025f604ac9c755e92f4461b4b433f591aa30aa3da7033eb69d558ed"
+  }
+}

@@ -12,11 +12,12 @@ UCI_MODULES = ('java.base', 'jdk.incubator.vector')
 NNUE_LAUNCHER = 'SeedV6-NNUE-CP64'
 NNUE_MAIN = 'com.ohinteractive.seedv6.uci.NnueCandidateUciMain'
 VECTOR_WARNING = 'WARNING: Using incubator modules: jdk.incubator.vector'
-# Owner-authorized unified W1-W16 MW-C4 production configuration. These are verifier
+# Owner-authorized unified W1-W16 CLV-C1 production configuration. These are verifier
 # expectations, independent of the candidate's output and embedded model manifest.
 # HCE, BREP2-32, unrelated conventional payloads and historical E008 are separate.
 CP64_TC_P1_FLAGS = 1177812991
 CP64_MW_C4_FLAGS = 1182007295
+CP64_CLV_C1_FLAGS = 3329490943
 
 
 def check(ok, message):
@@ -30,11 +31,11 @@ def verify_baseline_identity(identity, workers, hash_mib):
                      'CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,'
                      'HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,'
                      + 'HEURISTIC_TT_MEMORY,'
-                     + 'REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION];futility=100d;reverse=200d;'
+                     + 'REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;'
                      f'extensionCap=1;workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16;'
                      f'parallel={"OWNER" if workers == 1 else "EAGER_ROOT"}')
     expected = {'baseline': 'construction-v1-cp64', 'search': 'construction-v1',
-                'searchProfile': 'MW_C4', 'flags': str(CP64_MW_C4_FLAGS), 'configuration': configuration,
+                'searchProfile': 'CLV_C1', 'flags': str(CP64_CLV_C1_FLAGS), 'configuration': configuration,
                 'evaluator': 'CONVENTIONAL_NNUE', 'checkpoint': '64', 'schema': 'S6CNU002', 'heads': '8',
                 'networkSha256': '8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b',
                 'payload': '5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6',

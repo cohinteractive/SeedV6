@@ -16,13 +16,13 @@ class AboutEnginePanelTest {
             for (int workers : new int[]{1, 2, 3, 4, 5, 8, 16}) {
                 String text = AboutEnginePanel.play(PlayParticipants.shared(binding), true, false,
                         GameController.GameMode.ENGINE_VS_ENGINE, GameController.HumanSide.WHITE, workers, true);
-                assertTrue(text.contains("MW-C4"));
-                assertTrue(text.contains("searchProfile=MW_C4 "));
-                assertTrue(text.contains("flags=1182007295"));
+                assertTrue(text.contains("CLV-C1"));
+                assertTrue(text.contains("searchProfile=CLV_C1 "));
+                assertTrue(text.contains("flags=3329490943"));
                 assertTrue(text.contains("parallel=" + (workers == 1 ? "OWNER" : "EAGER_ROOT")));
                 assertTrue(text.contains(binding.baseline().formulation(workers, 64).configurationId()));
             }
-            assertTrue(BaselineEngine.productionFormulation().contains("W1-W16: MW-C4"));
+            assertTrue(BaselineEngine.productionFormulation().contains("W1-W16: CLV-C1"));
             assertFalse(BaselineEngine.productionFormulation().contains("W4:"));
         } finally {
             if (previous == null) System.clearProperty(BaselineEngine.SearchProfile.PROPERTY);

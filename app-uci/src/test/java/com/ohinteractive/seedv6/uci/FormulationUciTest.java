@@ -34,8 +34,8 @@ class FormulationUciTest {
             assertEquals(8, identities.size());
             for (int workers : new int[]{1, 2, 3, 4, 5, 8, 16}) {
                 String identity = identities.stream().filter(s -> s.contains("workers=" + workers + ";hashMiB=1;")).findFirst().orElseThrow();
-                assertTrue(identity.contains("searchProfile=MW_C4 "));
-                assertTrue(identity.contains("flags=1182007295"));
+                assertTrue(identity.contains("searchProfile=CLV_C1 "));
+                assertTrue(identity.contains("flags=3329490943"));
                 assertTrue(identity.contains("parallel=" + (workers == 1 ? "OWNER" : "EAGER_ROOT")));
                 assertTrue(identity.contains("evaluator=CONVENTIONAL_NNUE checkpoint=64"));
                 assertTrue(identity.contains("clockPolicy=" + ClockPolicy.FACTUAL.identity()));

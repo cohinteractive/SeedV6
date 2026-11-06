@@ -33,6 +33,7 @@ public record EngineFormulation(ConstructionSearch search, String evaluator, Str
                     case HL_G1 -> "HL-G1 — retained Search learning and history-guided reductions";
                     case LEGACY -> "LEGACY — pre-HL Search configuration";
                     case MW_C4, MW_C4_W4 -> "MW-C4 — guarded TT memory over TC-P1; eager root cooperation with multiple workers";
+                    case CLV_C1 -> "CLV-C1 — near-depth TT-backed quiet reduction relief over MW-C4";
                 };
         }
         if (actual.equals(FlatSearchConfig.candidate())) return "Construction V1";
@@ -73,6 +74,7 @@ public record EngineFormulation(ConstructionSearch search, String evaluator, Str
                 case CORRECTED_QSEARCH -> "corrected qsearch";
                 case RETAINED_CORRECTION -> "retained correction";
                 case TACTICAL_VERIFICATION -> "bounded capture ProbCut";
+                case TT_CRITICAL_RELIEF -> "TT-backed quiet reduction relief";
                 default -> null;
             };
             if (label != null) labels.add(label);

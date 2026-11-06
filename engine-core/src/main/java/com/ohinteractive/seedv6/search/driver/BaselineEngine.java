@@ -23,13 +23,13 @@ public final class BaselineEngine {
     public enum Evaluator { HCE, BREP2_32, CONVENTIONAL_CP64 }
     /** CP64 production policy only; explicit ConstructionSearch controls bypass this selector. */
     public enum SearchProfile {
-        TC_P1, HL_G1, LEGACY, MW_C4, MW_C4_W4;
-        public static final SearchProfile PRODUCTION_DEFAULT = MW_C4;
+        TC_P1, HL_G1, LEGACY, MW_C4, MW_C4_W4, CLV_C1;
+        public static final SearchProfile PRODUCTION_DEFAULT = CLV_C1;
         public static final String PROPERTY = "seedv6.searchProfile";
         public static SearchProfile configured() {
             try { return valueOf(System.getProperty(PROPERTY, PRODUCTION_DEFAULT.name()).trim().toUpperCase(Locale.ROOT)); }
             catch (IllegalArgumentException invalid) {
-                throw new IllegalArgumentException("seedv6.searchProfile must be MW_C4, TC_P1, HL_G1, LEGACY or historical MW_C4_W4", invalid);
+                throw new IllegalArgumentException("seedv6.searchProfile must be CLV_C1, MW_C4, TC_P1, HL_G1, LEGACY or historical MW_C4_W4", invalid);
             }
         }
     }
@@ -75,17 +75,19 @@ public final class BaselineEngine {
         var legacy = legacyConfiguration(workers, hashMiB);
         // One adopted feature set at every worker count. W1 owns its search directly;
         // multiple workers cooperate eagerly. MW_C4_W4 preserves the build96 selector
-        // solely as an explicit historical control; TC_P1 is the exact rollback.
-        boolean memory = profile == SearchProfile.MW_C4
+        // solely as an explicit historical control. MW_C4 retains the prior unified
+        // formulation; CLV_C1 adds frozen C1 relief without changing worker scheduling.
+        boolean memory = profile == SearchProfile.CLV_C1 || profile == SearchProfile.MW_C4
                 || profile == SearchProfile.MW_C4_W4 && workers == 4;
         return new ConstructionSearch(legacy.mechanisms()
                 .with(FlatSearchConfig.Feature.REQUEST_LEARNING, profile != SearchProfile.LEGACY)
                 .with(FlatSearchConfig.Feature.HISTORY_EFFORT, profile != SearchProfile.LEGACY)
                 // Exact TC-P1/build89 formulation; HL_G1 and LEGACY retain their prior meanings.
                 .with(FlatSearchConfig.Feature.TACTICAL_VERIFICATION,
-                        profile == SearchProfile.TC_P1 || profile == SearchProfile.MW_C4
+                        profile == SearchProfile.TC_P1 || profile == SearchProfile.CLV_C1 || profile == SearchProfile.MW_C4
                                 || profile == SearchProfile.MW_C4_W4)
-                .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, memory),
+                .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, memory)
+                .with(FlatSearchConfig.Feature.TT_CRITICAL_RELIEF, profile == SearchProfile.CLV_C1),
                 workers, hashMiB, legacy.aspiration(), memory && workers > 1
                         ? ConstructionSearch.RootScheduling.EAGER_ROOT : ConstructionSearch.RootScheduling.STANDARD);
     }

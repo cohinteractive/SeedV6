@@ -17,8 +17,8 @@ class ConstructionUciTest {
                     field(aspiration, "policy"));
             var owner = field(aspiration, "owner");
             var kernel = workers == 1 ? field(owner, "exact") : owner;
-            assertEquals(1182007295L, ((FlatSearchConfig) field(kernel, "construction")).flags());
-            assertTrue(configuration.identity(workers, 1).contains("flags=" + 1182007295));
+            assertEquals(3329490943L, ((FlatSearchConfig) field(kernel, "construction")).flags());
+            assertTrue(configuration.identity(workers, 1).contains("flags=" + 3329490943L));
             assertTrue(configuration.identity(workers, 1).contains("workers=" + workers + ";hashMiB=1;aspiration=ADAPTIVE16"));
         }
     }

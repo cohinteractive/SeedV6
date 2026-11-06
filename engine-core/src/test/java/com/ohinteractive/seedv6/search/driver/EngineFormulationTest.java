@@ -28,19 +28,19 @@ class EngineFormulationTest {
         try {
             System.clearProperty(BaselineEngine.SearchProfile.PROPERTY);
             var normal = BaselineEngine.load().formulation(1, 64);
-            assertEquals(1182007295L, normal.search().mechanisms().flags());
-            assertTrue(normal.searchName().startsWith("MW-C4"));
-            assertTrue(BaselineEngine.productionFormulation().contains("W1-W16: MW-C4"));
+            assertEquals(3329490943L, normal.search().mechanisms().flags());
+            assertTrue(normal.searchName().startsWith("CLV-C1"));
+            assertTrue(BaselineEngine.productionFormulation().contains("W1-W16: CLV-C1"));
             assertTrue(BaselineEngine.productionFormulation().contains(normal.searchName()));
             for (var profile : BaselineEngine.SearchProfile.values()) {
                 var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
                         ClockPolicy.BOUNDARY2, profile).formulation(1, 64);
                 assertEquals(profile == BaselineEngine.SearchProfile.TC_P1 || profile == BaselineEngine.SearchProfile.MW_C4_W4
-                        || profile == BaselineEngine.SearchProfile.MW_C4,
+                        || profile == BaselineEngine.SearchProfile.MW_C4 || profile == BaselineEngine.SearchProfile.CLV_C1,
                         explicit.principalMechanisms().contains("ProbCut"));
                 assertEquals(profile != BaselineEngine.SearchProfile.LEGACY,
                         explicit.principalMechanisms().contains("retained Search learning"));
-                if (profile == BaselineEngine.SearchProfile.MW_C4)
+                if (profile == BaselineEngine.SearchProfile.CLV_C1)
                     assertEquals(normal.configurationId(), explicit.configurationId());
             }
         } finally { restore(previous); }

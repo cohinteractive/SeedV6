@@ -22,7 +22,7 @@ class Cp64ProductionTest {
                 assertEquals(frozen, BaselineEngine.configuration(workers, hash, BaselineEngine.SearchProfile.TC_P1));
                 var selected = BaselineEngine.configuration(engine.evaluation(), workers, hash);
                 assertEquals(P4TacticalStudy.flags("probcut", workers)
-                        .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true), selected.mechanisms());
+                        .with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true).with(FlatSearchConfig.Feature.TT_CRITICAL_RELIEF, true), selected.mechanisms());
                 assertEquals(workers > 1 ? ConstructionSearch.RootScheduling.EAGER_ROOT
                         : ConstructionSearch.RootScheduling.STANDARD, selected.rootScheduling());
                 assertEquals(1177812991, frozen.mechanisms().flags());
@@ -37,7 +37,7 @@ class Cp64ProductionTest {
                 for (var kernel : actual) {
                     assertSame(table, field(kernel, "table"));
                     var expected = (FlatSearchConfig) field(reference[0], "construction");
-                    assertEquals(expected.with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true), field(kernel, "construction"));
+                    assertEquals(expected.with(FlatSearchConfig.Feature.HEURISTIC_TT_MEMORY, true).with(FlatSearchConfig.Feature.TT_CRITICAL_RELIEF, true), field(kernel, "construction"));
                     for (String name : List.of("boards", "pv", "quietHistory", "constructionState", "constructionNullMoves", "evaluator"))
                         assertTrue(mutable.add(field(kernel, name)), name + " must be worker-private");
                 }
@@ -46,7 +46,7 @@ class Cp64ProductionTest {
         for (int processors : new int[]{1, 2, 4, 8, 16, 32}) {
             int max = new SearchThreads(SearchThreads.MAX).resolve(processors);
             assertEquals(Math.min(processors, 16), max);
-            assertEquals(1182007295, BaselineEngine.configuration(max, 64).mechanisms().flags());
+            assertEquals(3329490943L, BaselineEngine.configuration(max, 64).mechanisms().flags());
             assertEquals(16, new SearchThreads(16).resolve(processors));
         }
     }

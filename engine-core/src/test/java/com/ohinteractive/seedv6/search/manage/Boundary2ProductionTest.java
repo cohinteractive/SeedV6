@@ -22,7 +22,7 @@ class Boundary2ProductionTest {
             assertEquals(660, engine.clockBudgetMillis(7959, 100, 30));
             assertEquals(330, factual.clockBudgetMillis(7959, 100, 30));
             for (int workers = 1; workers <= 16; workers++) {
-                assertEquals(evaluator == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 1182007295 : 262143,
+                assertEquals(evaluator == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 3329490943L : 262143,
                         BaselineEngine.configuration(engine.evaluation(), workers, 1).mechanisms().flags());
                 for (var selected : List.of(engine, factual)) {
                     var search = selected.create(workers, 1);

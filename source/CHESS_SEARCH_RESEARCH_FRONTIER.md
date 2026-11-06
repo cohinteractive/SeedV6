@@ -1,15 +1,68 @@
 # SeedV6 Search Research Frontier - Phase 4
 
-Internal frontier revision: **P4-F053**
+Internal frontier revision: **P4-F054**
 
-Status: **ACTIVE Phase4 - 7 November2026. CLV-R001 technical execution is complete; independent strength criteria failed and its objective is UNMET. GPT reconciliation and owner disposition are pending. Unified production, champions and closed research remain unchanged. No further experiment, successor, promotion, installation, push or deployment is selected.**
+Status: **ACTIVE Phase4 - 7 November2026. CLV-R001 is owner-accepted and formally closed with its strength objective UNMET. The owner separately adopts CLV-C1 as common W1-W16 production. Mandatory technical qualification is recorded separately; champion and frozen research remain unchanged. No research continuation, push, installation, release or deployment is authorized.**
 
 Repository master: `source/CHESS_SEARCH_RESEARCH_FRONTIER.md` in `C:/projects/seed/java/seedv6-unified`.
-Governing [Contract P4-R035](CHESS_SEARCH_CONTRACT.md). This Frontier records
+Governing [Contract P4-R036](CHESS_SEARCH_CONTRACT.md). This Frontier records
 current state, opportunities and dependencies; it supplies no independent launch
 or promotion authority.
 
-## CLV-R001 technical execution complete - 7 November 2026
+## CLV-C1 owner-authorized production and research closeout - 7 November 2026
+
+The owner explicitly accepts CLV-R001's technically completed but unsuccessful
+strength-development outcome and separately adopts **C1/build99** as the normal
+rolling production Search formulation across **W1-W16**. CLV-R001 is formally
+closed with its original strength objective **UNMET**. Its independent640-game
+242W/191D/207L,52.734375%, paired-normal95%49.670255-55.798495% result and both
+failed gates remain unchanged. The sole confirmation attempt is spent; expenditure
+remains23274.421601200127 seconds and708 initiated games. No GPT reconciliation
+is fabricated, no research is reopened and no successor or extra game is authorized.
+
+The existing Contract's **Rolling experimental production baseline** and
+**Incremental experimental adoption** rules already govern this decision: common
+applicable features across workers, explicit owner acceptance of competitive
+uncertainty, mandatory correctness/operational safety, distinct champion/adoption/
+deployment decisions. No new generalized policy or behavioral-governance change
+is introduced. The historical champion remains W1-qualified HL-G1/build84;
+P4-BASELINE-001/build79 and exact original build96 controls remain immutable.
+
+Shared engine-core `BaselineEngine` now normally selects **CLV_C1**, flags
+**3329490943 at every worker count**; W1 uses OWNER and W2-W16 EAGER_ROOT, with
+existing shallow/full-window owner-first scheduling preserved. Frozen C1's
+near-depth TT-backed quiet reduction relief has no W4-only condition. No kernel,
+TT, clock or evaluator adaptation is required. CP64, score mapping, requested hash,
+PVS/ADAPTIVE16 and BOUNDARY2 remain. GUI Play, built-in Arena and UCI use this
+single factory without experimental properties. Loaded worker/hash/clock rebinding,
+About and UCI configuration/fingerprint diagnostics retain truthful identities.
+
+Frozen research remains source46d15431/build99 and its pinned runtime; integrated
+production build100 receives its own source identity in the
+[production record](../docs/research/search/p4-critical-line/PRODUCTION.md) and
+[qualification manifest](../docs/research/search/p4-critical-line/production-qualification.json).
+Source qualification passed319 selected JUnit checks, including actual C1 consumption
+at W1/W2/W4/W8/W16 and all-count selection/isolation. The focused record owns
+Windows build/artifact qualification and its remaining boundaries. No strength
+claim follows; transfer to other workers, clocks, opponents, warmed clients and
+platforms is unqualified. The owner accepts this competitive uncertainty.
+
+Explicit `MW_C4` restores the prior unified policy; `MW_C4_W4` preserves historical
+build96 worker-dependent selection. TC_P1, HL_G1, LEGACY, evaluator-specific routes,
+research CONTROL/C1 and independent exact controls retain their meanings. A current
+rollback profile does not replace the exact original historical binary.
+[CONTRACT revision3](../docs/research/search/p4-critical-line/CONTRACT.md) and
+[terminal STATE](../docs/research/search/p4-critical-line/STATE.md) own research closure;
+RESULTS and all frozen evidence remain unchanged. Integration does not establish
+owner artifact acceptance, interactive GUI acceptance, installation, release or
+deployment. No push is authorized.
+
+Current masters are **P4-R036/P4-F054**. Refresh both Phase4 Project Source mirrors
+before mirror-dependent coordination; this owner action is non-blocking for
+repository integration. Historical selection/status statements below retain their
+original time scope and do not override this adoption and closeout.
+
+## Historical CLV-R001 technical handback - 7 November 2026
 
 CLV-R001's sole independently held-out W4 confirmation completed320 pairs/640
 normal games against original build96 MW-C4 EAGER_MEMORY. Unchanged **C1 near-depth

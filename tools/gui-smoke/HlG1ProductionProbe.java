@@ -18,8 +18,9 @@ public final class HlG1ProductionProbe {
         int requests = 0;
         try {
             require(bind(adapter, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayParticipants.Selection.BEST) == null, "CP64 binding");
-            for (int workers : new int[]{1, 4, 8, 16, 4, 1}) {
+            for (int workers : new int[]{1, 2, 4, 8, 16, 4, 1}) {
                 long flags = switch (profile) {
+                    case CLV_C1 -> 3329490943L; case MW_C4 -> 1182007295;
                     case MW_C4_W4 -> workers == 4 ? 1182007295 : 1177812991;
                     case TC_P1 -> 1177812991; case HL_G1 -> 104071167; case LEGACY -> 3407871;
                 };
@@ -63,7 +64,7 @@ public final class HlG1ProductionProbe {
             }
         } finally { edt(adapter::beginShutdown).run(); }
         for (String name : List.of("service", "blackService")) require(service(adapter, name).isTerminated(), "shutdown drain");
-        System.out.println("PASS GUI Play profile=" + profile + " requests=" + requests + " workers=1,4,8,16,4,1 depth/movetime/stop/history/mate/PV/restore/reuse/drain");
+        System.out.println("PASS GUI Play profile=" + profile + " requests=" + requests + " workers=1,2,4,8,16,4,1 depth/movetime/stop/history/mate/PV/restore/reuse/drain");
     }
     private static SearchLifecycleService service(EngineSearchAdapter adapter, String name) throws Exception {
         var f = EngineSearchAdapter.class.getDeclaredField(name); f.setAccessible(true); return (SearchLifecycleService) f.get(adapter);

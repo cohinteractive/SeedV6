@@ -15,10 +15,10 @@ and earlier idle windows provide no authority. The W1 HL-G1/build84 champion sta
 
 The owner separately authorizes **C1 production adoption across W1-W16** through
 the shared GUI Play/Arena/UCI engine-core path, accepting competitive uncertainty.
-Integration and technical qualification proceed independently of this closed research
-claim. Until that implementation is qualified, current source defaults remain MW-C4.
+Integration and technical qualification are recorded independently in
+[PRODUCTION](PRODUCTION.md). The shared source default is now CLV_C1 across W1-W16.
 No installation, push, deployment, release or acceptance of new artifacts is claimed.
-The final production record and once-revised Phase 4 masters will identify the
+The production record and once-revised P4-R036/P4-F054 masters identify the
 integrated source/build, qualification, rollback and Project Source refresh boundary.
 
 No additional research action remains. Repository closeout requires no blocking

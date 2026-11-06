@@ -32,9 +32,9 @@ class BaselineProfileTest {
                     for (int hash : new int[]{1, 64}) {
                         var rebound = binding.withClockPolicy(hash == 1 ? ClockPolicy.FACTUAL : ClockPolicy.BOUNDARY2);
                         var config = rebound.formulation(workers, hash);
-                        assertEquals(c4 ? 1182007295L : 1177812991L, config.search().mechanisms().flags());
+                        assertEquals(c4 ? 3329490943L : 1177812991L, config.search().mechanisms().flags());
                         assertEquals(workers == 1 ? "OWNER" : c4 ? "EAGER_ROOT" : "ROOT_REUSE", config.search().parallelIdentity());
-                        assertTrue(config.searchName().startsWith(c4 ? "MW-C4" : "TC-P1"));
+                        assertTrue(config.searchName().startsWith(c4 ? "CLV-C1" : "TC-P1"));
                         var search = rebound.create(workers, hash);
                         try (var driver = new SearchDriver(search)) {
                             Object aspiration = hash == 64 ? field(search, "owner") : search;
@@ -68,7 +68,7 @@ class BaselineProfileTest {
             var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
                     ClockPolicy.BOUNDARY2, BaselineEngine.SearchProfile.HL_G1);
             for (int workers = 1; workers <= 16; workers++) {
-                assertTrue(promoted.identity(workers, 1).contains("searchProfile=MW_C4"));
+                assertTrue(promoted.identity(workers, 1).contains("searchProfile=CLV_C1"));
                 assertTrue(explicit.identity(workers, 1).contains("flags=104071167"));
                 assertTrue(rollback.identity(workers, 1).contains("searchProfile=LEGACY"));
                 assertTrue(rollback.withClockPolicy(ClockPolicy.FACTUAL).identity(workers, 1).contains("flags=3407871"));
@@ -81,7 +81,7 @@ class BaselineProfileTest {
                 try (var driver = new SearchDriver(clock)) {
                     Object aspiration = field(clock, "owner");
                     Object kernel = field(field(aspiration, "owner"), "exact");
-                    assertEquals(binding == rollback ? 3407871 : binding == promoted ? 1182007295 : 104071167,
+                    assertEquals(binding == rollback ? 3407871 : binding == promoted ? 3329490943L : 104071167,
                             ((FlatSearchConfig) field(kernel, "construction")).flags());
                     assertTrue(driver.search(new SearchRequest(Board.startingPosition(), 4)).targetDepthCompleted());
                     assertEquals(0, driver.activeSearchThreads());

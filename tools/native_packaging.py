@@ -22,7 +22,7 @@ import uuid
 import zipfile
 
 import packaging_jdk
-from native_package_checks import UCI_MODULES, NNUE_LAUNCHER, NNUE_MAIN, CP64_TC_P1_FLAGS, CP64_MW_C4_FLAGS, verify_baseline_identity
+from native_package_checks import UCI_MODULES, NNUE_LAUNCHER, NNUE_MAIN, CP64_TC_P1_FLAGS, CP64_CLV_C1_FLAGS, verify_baseline_identity
 
 ROOT = Path(__file__).resolve().parents[1]
 APPS = {'gui': ('SeedV6-GUI', 'com.ohinteractive.seedv6.gui.SwingLauncher'),
@@ -597,10 +597,10 @@ def package_locked(a, context, jars, output):
         engine = {'model': identity, 'coreJarSha256': sha(app / 'engine-core.jar'),
                   'coreContent': core_content(app / 'engine-core.jar'),
                   'productionSearch': {'profile': dict(field.split('=', 1) for field in identity['baseline.identity'].split()
-                                                       if '=' in field)['searchProfile'], 'flags': CP64_MW_C4_FLAGS,
+                                                       if '=' in field)['searchProfile'], 'flags': CP64_CLV_C1_FLAGS,
                      'defaultWorkers': 1,
-                     'workerRouting': {'W1': {'formulation': 'MW-C4', 'flags': CP64_MW_C4_FLAGS, 'parallel': 'OWNER'},
-                                       'W2-W16': {'formulation': 'MW-C4', 'flags': CP64_MW_C4_FLAGS,
+                     'workerRouting': {'W1': {'formulation': 'CLV-C1', 'flags': CP64_CLV_C1_FLAGS, 'parallel': 'OWNER'},
+                                       'W2-W16': {'formulation': 'CLV-C1', 'flags': CP64_CLV_C1_FLAGS,
                                                    'parallel': 'EAGER_ROOT'}},
                      'evaluator': 'Conventional NNUE CP64', 'schema': 'S6CNU002', 'materialHeads': 8,
                      'configuration': identity['baseline.identity']},

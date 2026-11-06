@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import chess
 from native_package_checks import Engine, check, VECTOR_WARNING
@@ -16,7 +17,7 @@ def main():
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--install', type=Path)
     source.add_argument('--launcher', type=Path, help='Native packaged UCI launcher')
-    parser.add_argument('--profile', choices=('MW_C4', 'MW_C4_W4', 'TC_P1', 'HL_G1', 'LEGACY'), default='MW_C4')
+    parser.add_argument('--profile', choices=('CLV_C1', 'MW_C4', 'MW_C4_W4', 'TC_P1', 'HL_G1', 'LEGACY'), default='CLV_C1')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     output = args.output.resolve(); output.mkdir(parents=True, exist_ok=False)
@@ -26,7 +27,7 @@ def main():
     env = {k: v for k, v in os.environ.items() if k not in
            ('JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS', 'JAVA_OPTS', 'SEEDV6_UCI_OPTS', 'CLASSPATH')}
     allowed = (VECTOR_WARNING, REJECTED)
-    if args.profile != 'MW_C4':
+    if args.profile != 'CLV_C1':
         env['JAVA_TOOL_OPTIONS'] = '-Dseedv6.searchProfile=' + args.profile
         allowed += ('Picked up JAVA_TOOL_OPTIONS: -Dseedv6.searchProfile=' + args.profile, )
     report = dict(status='FAIL', profile=args.profile, sessions=[], workers=[],
@@ -44,12 +45,24 @@ def main():
         check(not any(line.startswith('id name ') for line in snapshot), 'Inspection repeated handshake')
         check([line for line in lines if line.startswith('info string ')] ==
               [line for line in snapshot if line.startswith('info string ')], 'Inspection differs from current identity')
-        c4 = args.profile == 'MW_C4' or args.profile == 'MW_C4_W4' and workers == 4
-        flags = {'MW_C4': 1182007295, 'MW_C4_W4': 1182007295 if c4 else 1177812991,
+        binding = next(line for line in lines if line.startswith('info string baseline='))
+        config = re.search(r' configuration=(\S+)', binding).group(1)
+        evaluator = binding.split(' evaluator=', 1)[1].split(' clockPolicy=', 1)[0]
+        clock = re.search(r' clockPolicy=(\S+)', binding).group(1)
+        fingerprint = 'cfg-' + hashlib.sha256((config + '\nevaluator=' + evaluator
+                                              + '\nclockPolicy=' + clock).encode()).hexdigest()[:16]
+        formulation = next(line for line in snapshot if line.startswith('info string formulation snapshot: '))
+        check(fingerprint in formulation, 'Fingerprint differs from actual configuration')
+        if args.profile == 'CLV_C1':
+            check('CLV-C1' in formulation and 'TT-backed quiet reduction relief' in formulation,
+                  'Missing adopted formulation diagnostics')
+        c4 = args.profile in ('CLV_C1', 'MW_C4') or args.profile == 'MW_C4_W4' and workers == 4
+        flags = {'CLV_C1': 3329490943, 'MW_C4': 1182007295, 'MW_C4_W4': 1182007295 if c4 else 1177812991,
                  'TC_P1': 1177812991, 'HL_G1': 104071167, 'LEGACY': 3407871}[args.profile]
         features = ('NOMINAL_FUTILITY,VERIFIED_NULL' + (',HEURISTIC_TT_MEMORY' if c4 else '')
                     + (',REQUEST_LEARNING,HISTORY_EFFORT' if args.profile != 'LEGACY' else '')
-                    + (',TACTICAL_VERIFICATION' if args.profile in ('TC_P1', 'MW_C4', 'MW_C4_W4') else '') + ']')
+                    + (',TACTICAL_VERIFICATION' if args.profile in ('TC_P1', 'MW_C4', 'MW_C4_W4', 'CLV_C1') else '')
+                    + (',TT_CRITICAL_RELIEF' if args.profile == 'CLV_C1' else '') + ']')
         parallel = 'OWNER' if workers == 1 else 'EAGER_ROOT' if c4 else 'ROOT_REUSE'
         check('parallel=' + parallel in identity, 'Wrong scheduling identity')
         for value in (f'flags={flags} ', f'searchProfile={args.profile} ', features, SHA, 'schema=S6CNU002 heads=8',
