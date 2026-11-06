@@ -1,15 +1,38 @@
 # CLV-R001 - Critical-Line Verification and Selective Search
 
-Revision 2, 7 November 2026 (Pacific/Auckland). **CODEX TECHNICAL EXECUTION COMPLETE;
-independent strength criteria failed; governing strength objective UNMET.
-GPT reconciliation and owner disposition remain pending.** Subordinate to the repository
+Revision 3, 7 November 2026 (Pacific/Auckland). **OWNER-ACCEPTED AND FORMALLY
+CLOSED with unsuccessful strength development; governing objective remains UNMET.** Subordinate to the repository
 [Search Contract](../../../../source/CHESS_SEARCH_CONTRACT.md) and
 [Frontier](../../../../source/CHESS_SEARCH_RESEARCH_FRONTIER.md). This focused
 contract records the owner's complete launch request of 6 November 2026; it does not
 replace the Phase 4 masters. [STATE](STATE.md) is the single resume point;
 [RESULTS](RESULTS.md) contains the bootstrap challenge, findings and decisions.
 
-## Technical execution disposition - 7 November 2026
+## Owner disposition and separate production decision - 7 November 2026
+
+The owner explicitly accepts the technically completed but unsuccessful research
+outcome and requires formal closeout under the existing conventions. **CLV-R001
+is accepted and closed; its original strength objective remains UNMET.** Both
+independent gates failed. The 640-game result, negative findings, frozen C1/build99,
+exact build96 comparator, evidence and spent sole confirmation attempt are unchanged.
+No GPT reconciliation is invented or claimed by this owner-directed disposition.
+
+Separately, the owner selects C1 as the normal rolling production Search baseline
+across W1-W16 and GUI Play, built-in Arena and UCI, accepting the competitive
+uncertainty. This authorizes production integration and proportionate technical
+qualification, not further CLV research, games, a successor, champion advancement,
+installation, push or release. Mandatory correctness and operational safety remain
+gates. Production source/artifact qualification is a separate work unit; research
+closure does not assert its completion or owner acceptance of integrated artifacts.
+
+The existing Contract's "Rolling experimental production baseline" rule at
+P4-R035 distinguishes these decisions and requires a common applicable feature
+policy across workers. No generalized automatic-adoption rule is introduced.
+STATE is the terminal research record. RESULTS and all frozen protocols/results
+remain unchanged; their pending-disposition wording records the earlier handback.
+The masters will be revised once for the completed adoption and closeout together.
+
+## Historical technical execution disposition - 7 November 2026
 
 The sole frozen320-pair confirmation of unchanged C1/build99 against exact build96
 completed640 normal audited games:242W/191D/207L,52.734375%, paired-normal95%

@@ -1,3 +1,34 @@
+# CLV-R001 accepted unsuccessful closeout
+
+7 November 2026 (Pacific/Auckland). **OWNER-ACCEPTED AND FORMALLY CLOSED.**
+The owner accepts CLV-R001 as a valid technically completed investigation with an
+unsuccessful strength-development outcome. Its governing objective remains **UNMET**:
+242W/191D/207L, 52.734375%, paired-normal 95% 49.670255-55.798495%; both gates failed.
+This is neither strength success nor successful foundational relabelling.
+
+[CONTRACT revision 3](CONTRACT.md) preserves the original objective and criteria.
+[RESULTS](RESULTS.md), candidate/control identities, frozen evidence and resource
+ledger are unchanged: 23274.421601200127 seconds, 708 initiated/completed games,
+sole independent attempt spent. No active process, reservation, research continuation,
+new experiment, replacement confirmation or successor is authorized. Unused allowances
+and earlier idle windows provide no authority. The W1 HL-G1/build84 champion stays.
+
+The owner separately authorizes **C1 production adoption across W1-W16** through
+the shared GUI Play/Arena/UCI engine-core path, accepting competitive uncertainty.
+Integration and technical qualification proceed independently of this closed research
+claim. Until that implementation is qualified, current source defaults remain MW-C4.
+No installation, push, deployment, release or acceptance of new artifacts is claimed.
+The final production record and once-revised Phase 4 masters will identify the
+integrated source/build, qualification, rollback and Project Source refresh boundary.
+
+No additional research action remains. Repository closeout requires no blocking
+human action. Mirror-dependent coordination requires owner refresh of the final
+master pair after production integration; repository changes do not upload mirrors.
+This disposition follows direct owner authority; no separate GPT reconciliation is
+asserted. The earlier technical handback below is preserved as historical context.
+
+---
+
 # CLV-R001 technical handback
 
 7 November 2026 (Pacific/Auckland). **CODEX TECHNICAL EXECUTION COMPLETE;
