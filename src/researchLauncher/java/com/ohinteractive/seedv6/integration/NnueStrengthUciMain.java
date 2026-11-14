@@ -42,7 +42,7 @@ public final class NnueStrengthUciMain {
                         RootTablebase.NONE,Book.EMPTY);
             }
             public boolean standalone(){return true;}
-            public boolean acceptsWorkers(int n){return n==1;}
+            public boolean acceptsWorkers(int n){return n==1||n==2;}
             public String name(){return "SeedV6 NNUE strength research";}
             public String identity(int workers){return identity(workers,32);}
             public String identity(int workers,int hash) {

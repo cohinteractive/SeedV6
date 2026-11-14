@@ -1,7 +1,7 @@
 # Phase 2 research state
 
-Status: ACTIVE — all15 development endpoints audited; none accepted.
-C001 single512-game independent confirmation of direct128 checkpoint64 is active.
+Status: ACTIVE — C001 passed all predeclared gates; owner acceptance is not claimed.
+R001 bounded clock/worker robustness is qualified and frozen for execution.
 Observed start: 2026-11-14T10:26:04Z. Initial HEAD08877838, clean worktree,
 build101; no exact-root CODEXLOG_CURRENT.md. Branch research/nnue-phase2.
 No production change or acceptance is authorized.
@@ -56,7 +56,8 @@ isolated Windows research, not Mac access. Recheck before expensive launches.
 | D003 | Quantization may change predictive comparisons or calibration | Complete:6753 positions/model, Java aggregates match, predictive ranking unchanged; no demonstrated material quantization limitation |
 | A002 | More training of standard256 may change the recommendation | Complete:64 exact optimizer transitions,320.77 native seconds, all qualification gates pass |
 | S003 | Equally trained128/256 formulations can compete in equal time | All256 games audited without caps; standard+38,direct+22,pawn+11,deep-16; exploratory only |
-| C001 | The selected compact direct model improves over production WDL25 | One512-game independent endpoint active; fixed technical/statistical/+20 practical gates, no alternate attempt |
+| C001 | The selected compact direct model improves over production WDL25 | Complete: 179W/204D/129L, +34.04 Elo, paired95% +10.86..+56.82; all three gates pass |
+| R001 | The confirmed candidate transfers to longer clocks and two workers | Qualified/frozen: two fixed 64-game conditions, 7200 total match seconds; final outcomes pending |
 
 This is a dynamic decision table, not a mandatory implementation checklist.
 Conditional subnetworks, other activations, widths, quantization and threat features
@@ -536,11 +537,15 @@ and source snapshot raw/c001-preparation-v1 are preserved. **Active plan is
 c001-plan-v2.json**; all scientific parameters compare exactly equal to the first
 plan, only reporting safety/driver identity changed. No completed protocol was rewritten.
 
-Current operation: `run_confirmation.py`, log raw/c001-driver-01.log, native match
-output raw/c001-direct128-64. Inspect this process/controller before resuming;
-do not launch a duplicate or inspect interim scores for efficacy. It will run
-the fixed endpoint, independent legal/artifact audit and c001-decision.json gates.
-Do not modify the pinned runtime/models/openings/match/audit/UCI tools or driver.
+C001 completed with driver exit0 and independent audit exit0 at
+2026-11-14T22:14:33Z; controller idle, zero owned processes. Log
+raw/c001-driver-01.log, native output raw/c001-direct128-64. All 512 games are
+uncensored: 179W/204D/129L, 54.8828%, +34.04 Elo. Paired bootstrap95%
++10.86..+56.82 and normal95% +11.15..+57.22. Legal replay and frozen artifacts
+pass; technical, statistical and practical gates all pass (c001-results.json,
+c001-decision.json). No development pooling or acceptance claim. Do not repeat
+these games or modify frozen runtime/models/openings/protocols. R001.md selects
+bounded robustness; only subsequent research source/tool revisions may change.
 Both C001 preflights pass; the actual native protocol matches the selected model
 and incumbent hashes,200ms/W1/Hash32/CLV_C1,800-ply censor ceiling,14400s and
 family size1. REPORT.md now consolidates the completed evidence and explicitly
@@ -597,4 +602,39 @@ PERFORMED. Manual target/sequence/current-state review, V1 legacy/freshness
 approval and Apply remain with the owner and do not block research. Unknown
 unresolved items/grouping remain omitted. Publication manifests retain all details.
 
-Completion criteria: NOT SATISFIED. No new strength winner or promotion recommendation.
+Completion criteria: NOT SATISFIED. Direct128 checkpoint64 is independently
+stronger under the primary tested conditions; R001 qualification/robustness and
+final synthesis remain. No promotion or deployment is authorized.
+
+## R001 execution boundary
+
+Qualification passes in r001-qualification.json (raw/r001-qualification-r4).
+The actual trained candidate's 82,474 evaluations match independent full rebuild,
+including 29,784 helper-thread evaluations across four 20k-node searches. Every
+root includes helper and qsearch work, legal completed PVs, node-budget unwind,
+drained workers and depth3 new-game restart. Eight targeted Java tests and five
+Python match/warmup/durability tests pass. Both models pass real UCI lifecycle
+and resolved CLV_C1 configuration at W1/W2. Sixteen bounded W1 requests match
+exact moves, nodes, scores, depths and PVs across frozen v4/v5.
+
+Runtime v5 changes only the research launcher's accepted worker counts and the
+engine-core jar's sourceRevision metadata. All other jar entries are identical;
+major/minor/patch/build remain unchanged. This is bounded qualification, not
+cross-platform proof. The active plan is r001-plan.json; preserve all pinned
+tools/runtime/models/openings until both matches and audits finish.
+
+Retained preparation failures: missing compute_gate import before work; overly
+strict whole-jar equality before recognizing sourceRevision-only metadata;
+a test assumption that qsearch calls initializeFrom (ExactEvaluator actually
+uses one absolute-ply stack); and an attempt to configure Python chess's managed
+Ponder option. All were harness assumptions, with no observed evaluator mismatch
+or scored games. Logs r001-qualification-driver-01..05.log and attempts r1..r4
+remain local. The failed parallel helper source/classes are preserved in r2.
+
+Next/current driver: run_robustness.py, log raw/r001-driver-01.log. Run/check its
+process and nnue-control status before resuming; never launch duplicates. First
+64 games at400ms/W1, then64 at200ms/W2, each on32 distinct unused robustness pairs.
+Raw outputs raw/r001-long and raw/r001-workers. No interim efficacy decisions,
+sample extension, retest or pooled score. Driver produces independently audited
+r001-long-results.json, r001-workers-results.json and r001-summary.json. Remaining
+64 robustness pairs are unused and are not an automatic extension allowance.

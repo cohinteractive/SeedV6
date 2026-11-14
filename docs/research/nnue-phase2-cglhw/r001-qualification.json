@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "elapsed_seconds": 24.9060931999702,
+  "local_evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\r001-qualification-r4",
+  "runtime_manifest_sha256": {
+    "4": "72ea0b9ea508855e9f49696223083fbe5dc010caba7fefadf5a25b92eba464d1",
+    "5": "980dfb113dff606f5fb9b466319be07dd6823285a2503d59113829db7d02f7c9"
+  },
+  "changed_runtime_files": [
+    "lib/engine-core.jar",
+    "classes/com/ohinteractive/seedv6/integration/NnueStrengthUciMain$1.class"
+  ],
+  "core_metadata_difference": {
+    "entry": "com/ohinteractive/seedv6/application-version.properties",
+    "before": "major=0\nminor=0\npatch=0\nbuild=101\nsourceRevision=1341c622da30 (uncommitted changes)\nversionUpdated=2026-11-14\nplatform=Portable Java 21 (runtime platform reported separately)\n",
+    "after": "major=0\nminor=0\npatch=0\nbuild=101\nsourceRevision=1e5e650ec398 (uncommitted changes)\nversionUpdated=2026-11-14\nplatform=Portable Java 21 (runtime platform reported separately)\n"
+  },
+  "parallel": {
+    "payload": "969dd242ad58c5927d53d87b6c26d0f898a6e9cccc93b5ae0331cc7cabb239be",
+    "lifecycleCopies": 0,
+    "limits": "Bounded actual W2 search with full-rebuild checks. ExactEvaluator uses one absolute-ply stack for main/qsearch; lifecycle copies are not expected. Test wrapper is not timed production inference.",
+    "evaluationsByThread": {
+      "main": 52690,
+      "seedv6-search-helper": 29784
+    },
+    "observations": [
+      {
+        "evaluationsByThread": {
+          "main": 12038,
+          "seedv6-search-helper": 8793
+        },
+        "nodes": 20000,
+        "restartDepth": 3,
+        "completedDepth": 4,
+        "qnodes": 16199,
+        "root": 0
+      },
+      {
+        "evaluationsByThread": {
+          "main": 13082,
+          "seedv6-search-helper": 6055
+        },
+        "nodes": 20000,
+        "restartDepth": 3,
+        "completedDepth": 7,
+        "qnodes": 14693,
+        "root": 1
+      },
+      {
+        "evaluationsByThread": {
+          "main": 14794,
+          "seedv6-search-helper": 8123
+        },
+        "nodes": 20000,
+        "restartDepth": 3,
+        "completedDepth": 4,
+        "qnodes": 17712,
+        "root": 2
+      },
+      {
+        "evaluationsByThread": {
+          "main": 12776,
+          "seedv6-search-helper": 6813
+        },
+        "nodes": 20000,
+        "restartDepth": 3,
+        "completedDepth": 5,
+        "qnodes": 14898,
+        "root": 3
+      }
+    ],
+    "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=2;hashMiB=32;aspiration=ADAPTIVE16;parallel=EAGER_ROOT",
+    "states": 8,
+    "status": "PASS"
+  },
+  "uci_preflights": {
+    "candidate-w1": {
+      "summary": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\r001-qualification-r4\\uci-candidate-w1\\summary.json",
+      "sha256": "70ffaca151daa358930f1cbb0ea87445f8f7e60e6ee2c080997cf4dad3e991d5",
+      "status": "PASS"
+    },
+    "incumbent-w1": {
+      "summary": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\r001-qualification-r4\\uci-incumbent-w1\\summary.json",
+      "sha256": "679a2a03a0c81b58b0a8be1eea98407628b12b3a88b8fc88f64a7e7c1572b1bc",
+      "status": "PASS"
+    },
+    "candidate-w2": {
+      "summary": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\r001-qualification-r4\\uci-candidate-w2\\summary.json",
+      "sha256": "45dc4d18e8e3004d28b021590c53c79ea5017a84c46c5d2e635f0416578655a3",
+      "status": "PASS"
+    },
+    "incumbent-w2": {
+      "summary": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\r001-qualification-r4\\uci-incumbent-w2\\summary.json",
+      "sha256": "7cafd861f43b8f8a9c63fb94227893f5dab3bc728665ce6984da8465bf37da67",
+      "status": "PASS"
+    }
+  },
+  "one_worker_equivalent_requests": 16,
+  "helper_source_sha256": "c0d0a40e845d730bb07f1c3aaa07e9faae4e94729ad7d55483d6ab7395f0bd45",
+  "helper_class_sha256": {
+    "ParallelCompactCheck$Checked.class": "c6765fd99eacb446fac5f3a26e6b69ffe9c97b6af115d8d80eb412fb8fc3ede3",
+    "ParallelCompactCheck.class": "9deefbde002f401c837a95138351246a9e4b7268c9ec8f20a55b9c7698cb246e"
+  },
+  "driver_sha256": "cf75c4e6f46f3697a22c2d0700097471b68e2bc8a1058bf7bd38b9691532262c",
+  "uci_tool_sha256": "8143ef7679cfbe8cdf6097c0b18b0d3c655bab6d1e7652b589ccbb53339eee9d",
+  "limits": "Actual bounded W2 candidate search with full-rebuild oracle; 16 matching W1 requests across v4/v5, not exhaustive equivalence or performance/strength evidence."
+}

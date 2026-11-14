@@ -1,8 +1,8 @@
 # SeedV6 NNUE strength research — Phase 2
 
 **Interim synthesis: research remains active.** All development experiments below
-are complete. C001 is running its independent confirmation; no Phase2 evaluator
-has been accepted or promoted. Production WDL25/build101 and historical CP64 are
+are complete. C001 passed independent confirmation; bounded robustness is next.
+No Phase2 evaluator has been accepted or promoted. Production WDL25/build101 and historical CP64 are
 unchanged. [STATE.md](STATE.md) records the current operation and restart boundary.
 
 ## Current finding and confirmation choice
@@ -199,8 +199,12 @@ all scientific parameters compare equal. The active plan is v2.
 
 ## Independent confirmation and remaining work
 
-**C001 is active; results are pending.** The selected checkpoint64 direct128 model
-plays WDL25 for512 games on256 reserved opening pairs, with no development-score
+**C001 passed all three predeclared gates.** The selected checkpoint64 direct128
+model finished 179W/204D/129L: 54.8828% score, +34.04 Elo, paired bootstrap95%
++10.86..+56.82 and normal95% +11.15..+57.22. All 512 games are uncensored;
+independent legal replay and frozen-artifact audits pass. See
+[c001-results.json](c001-results.json) and [c001-decision.json](c001-decision.json).
+It played WDL25 on256 reserved opening pairs, with no development-score
 pooling. Roots were verified legal, unique, previously unused in Phase2 matches and disjoint from
 development/cost/parity fixtures. Related opening-family dependence can remain.
 
@@ -212,17 +216,24 @@ above50% score, and a point estimate of at least+20 Elo. No alternate candidate
 or unlucky-result retest is selected. See [C001.md](C001.md) and
 [c001-plan-v2.json](c001-plan-v2.json).
 
-If all primary gates pass, bounded longer-clock and two-worker checks may follow
-on the separate robustness pool. The current research launcher accepts onlyW1;
-actualW2 needs isolated enablement and targeted validation before any claim of
-coverage. Existing transfer tests do not substitute for observed parallel search.
+R001 selects bounded longer-clock and two-worker checks on separate robustness
+roots. Isolated launcher/harness enablement is qualified: 82,474 actual W2
+evaluations match full rebuild, including 29,784 helper-thread evaluations;
+both models pass W1/W2 UCI lifecycle checks, and 16 bounded W1 requests match
+exactly across v4/v5. Eight targeted Java and five Python checks pass. The only
+other runtime-byte change is sourceRevision metadata inside engine-core.jar;
+all its other entries match. Preparation failures remain preserved and described
+in STATE.md. The two fixed follow-ups are 64 games at400ms/W1 and64 at200ms/W2,
+with separate32-pair roots and a combined7200-second allowance. Results remain
+pending. See [R001.md](R001.md), [r001-plan.json](r001-plan.json) and
+[r001-qualification.json](r001-qualification.json).
 
 Further architecture-specific supervision tuning, conditional subnetworks,
 additional features, more seeds and longer training remain untested possibilities.
 None is selected merely to pursue a favorable result. Source-game independence,
 untested clocks/workers/platforms and sustained live-rating effect remain limits.
-Research completion and the final recommendation await C001 and any justified
-robustness work; completion is not owner acceptance or deployment.
+Research completion and the final recommendation await R001 and final synthesis;
+completion is not owner acceptance or deployment.
 
 ## Preservation and delivery boundary
 

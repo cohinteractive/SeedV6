@@ -1,0 +1,57 @@
+{
+  "schema": "seed-phase2-r001-v1",
+  "primary_decision_sha256": "755370550ae403f13cd13c86ca0298bfdbde6fea4a5822b38ac179ce5f8fd764",
+  "qualification_sha256": "eb9d3d0113fe258faad706a52f14a139f483bb18e09093b11a87f6b7f3b85aed",
+  "protocol_sha256": "1a372eeac2d625b3794c70c8327a3c449b0e9fb6f16b24cca3c097ec99cadbab",
+  "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-64-assessment-r1\\network.p2nnue",
+  "network_sha256": "defaf21da465d6f63fc13a2299299e927029d82558d663c7bbc801e7c35e9d1c",
+  "incumbent": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-wdl25.cnnue",
+  "incumbent_sha256": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v5",
+  "runtime_manifest_sha256": "980dfb113dff606f5fb9b466319be07dd6823285a2503d59113829db7d02f7c9",
+  "conditions": [
+    {
+      "id": "long",
+      "workers": 1,
+      "movetime_ms": 400,
+      "max_wall_seconds": 4800,
+      "games": 64,
+      "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\r001-long-openings.json",
+      "openings_sha256": "a5a6a880d87c715772cef2575f8518463cb414c0ac1e9ae756d2854fb2da6fd4",
+      "robustness_slice": [
+        0,
+        32
+      ],
+      "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\r001-long"
+    },
+    {
+      "id": "workers",
+      "workers": 2,
+      "movetime_ms": 200,
+      "max_wall_seconds": 2400,
+      "games": 64,
+      "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\r001-workers-openings.json",
+      "openings_sha256": "47ed1d843b7897cc57ba28afa78962bc940602bbb1c04af844eae4b6af7ee583",
+      "robustness_slice": [
+        32,
+        64
+      ],
+      "output": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\r001-workers"
+    }
+  ],
+  "max_plies": 800,
+  "hash_mib": 32,
+  "search": "CLV_C1",
+  "aggregate_match_seconds": 7200,
+  "warmup": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+  "warmup_sha256": "732d3587e67baf189fd40e243ea26a35e96d5148f4d2e80cbdb4b3440358e52e",
+  "warmup_nodes": 20000,
+  "jvm_batch": true,
+  "tools_sha256": {
+    "paired_match.py": "3a2ed29849a29b7c66e2ccf1ea57faa869f7987983564c3a282662df389cabc7",
+    "analyze_confirmation.py": "991eaff258a3bde07b06808e2adf9a76aaf91dcf8a2824d17b937e4913c21862",
+    "uci_smoke.py": "8143ef7679cfbe8cdf6097c0b18b0d3c655bab6d1e7652b589ccbb53339eee9d"
+  },
+  "driver_sha256": "43b106301ec9ade333b8ea5bb308a9cc000f296cc11b636214f503142ed1e33e",
+  "interpretation": "Two descriptive robustness endpoints; no pooled estimate, extension, efficacy stop or retest. Technical failures/caps unverified; negative point crossing even uncertain; interval wholly below even detected harm; nonnegative point limited support only."
+}

@@ -1,0 +1,11 @@
+{
+  "plan_sha256": "cd320d29d6e4886180ca48f90b89d0ed8d61d9ff8b0db909b01327a865233f82",
+  "result_sha256": "4d16bbf0c8a74900817597e65a339cd8aeb0c7780e3c7cad8f67e73751fd9ede",
+  "technical_gate": true,
+  "statistical_gate": true,
+  "practical_gate": true,
+  "advances_to_robustness": true,
+  "production_promotion": "NOT AUTHORIZED",
+  "owner_acceptance": "NOT CLAIMED",
+  "limits": "One selected primary endpoint; no pooled development result or automatic alternate candidate. Untested clocks/workers/platforms are not established."
+}

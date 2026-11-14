@@ -34,8 +34,8 @@ def main():
         command=command[:5]+[str(libs/'*')+os.pathsep+str(args.selective_research_classes.resolve()),
             'SeedNnueSelectiveResearch',str(args.network.resolve())]
     if args.strength_research:
-        if not args.network or args.workers!=1 or args.selective_research_classes:
-            raise ValueError('Strength research requires one worker and an explicit network only')
+        if not args.network or args.selective_research_classes:
+            raise ValueError('Strength research requires an explicit network and no selective launcher')
         workspace=args.runtime_lib.resolve().parent if args.runtime_lib else root/'build/research/runtime';libs=workspace/'lib'
         jars=sorted(libs.glob('*.jar'));jar_hashes={jar.name:hashlib.sha256(jar.read_bytes()).hexdigest() for jar in jars}
         command=command[:5]+[str(libs/'*')+os.pathsep+str(workspace/'classes'),
@@ -69,7 +69,7 @@ def main():
         active_identity=[]
         if args.strength_research:
             send('setoption name Show Search Configuration');send('isready');_,active_identity=until('readyok')
-            assert any(all(token in line for token in ('formulation=CLV_C1','flags=3329490943','workers=1','hashMiB=32',
+            assert any(all(token in line for token in ('formulation=CLV_C1','flags=3329490943',f'workers={args.workers}','hashMiB=32',
                 'scoreMapping=BT4_Q_LOGIT400_V1','clockPolicy=boundary2-d6-v1')) for line in active_identity),active_identity
         positions=[chess.STARTING_FEN,
             'r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1',

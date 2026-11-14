@@ -1,4 +1,4 @@
-"""One active game, one worker/engine; paired fixed-movetime diagnostic matches.
+"""One active game; paired fixed-movetime diagnostic matches.
 
 Openings/configuration are frozen before games. Caps remain censored, never draws.
 Use fresh openings for confirmation; this screen is not conclusive strength proof.
@@ -80,6 +80,7 @@ def main():
     p.add_argument('--construction-comparison',action='store_true',help='Informational Construction V1 versus frozen E008 with identical CP64 inference')
     p.add_argument('--strength-research',action='store_true',help='Evaluator-only comparison with explicit identical production CLV_C1 search')
     p.add_argument('--strength-runtime',type=Path,help='Frozen research workspace containing lib/ and classes/')
+    p.add_argument('--workers',type=int,choices=(1,2),default=1,help='Two workers require explicit strength research; default remains one')
     p.add_argument('--network',type=Path,required=True);p.add_argument('--openings',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--movetime-ms',type=int,default=50)
     p.add_argument('--max-plies',type=int,default=400)
@@ -96,6 +97,7 @@ def main():
     p.add_argument('--policy-comparison',action='store_true',help='Explicit selective-versus-unpruned comparison with byte-identical NNUE files')
     a=p.parse_args()
     compute_gate.require()
+    if a.workers!=1 and not a.strength_research:raise ValueError('Multiple workers require explicit strength research')
     if a.confirmation_family_size and not a.confirmation:raise ValueError('Confirmation family requires confirmation mode')
     if a.strength_runtime and not a.strength_research:raise ValueError('Frozen strength runtime requires strength comparison')
     if a.strength_research and (not a.opponent_network or a.construction_comparison or a.policy_comparison or a.selective_research_classes):
@@ -123,7 +125,7 @@ def main():
     a.output.mkdir(parents=True,exist_ok=a.resume)
     root=Path(__file__).resolve().parents[2]
     jars=root/'app-uci/build/install/seedv6-uci/lib'
-    base=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=1','-Xmx512m','-Djava.awt.headless=true',
+    base=['C:/java/jdk-21/bin/java.exe',f'-XX:ActiveProcessorCount={a.workers}','-Xmx512m','-Djava.awt.headless=true',
         '-cp',str(jars/'*'),'com.ohinteractive.seedv6.uci.UciMain']
     commands=[base+['--nnue',str(a.network.resolve())],base+['--model',str(root/'build-assets/production/bre-pair2-g32.brn-pair2')]]
     if a.opponent_network:commands[1]=base+['--nnue',str(a.opponent_network.resolve())]
@@ -144,7 +146,7 @@ def main():
     if a.jvm_batch:
         for command in commands:command.insert(1,'-Xbatch')
     protocol=dict(network=str(a.network.resolve()),network_sha256=sha(a.network),openings_sha256=sha(a.openings),
-        openings=openings,movetime_ms=a.movetime_ms,max_plies=a.max_plies,threads=1,hash_mib=32,
+        openings=openings,movetime_ms=a.movetime_ms,max_plies=a.max_plies,threads=a.workers,hash_mib=32,
         use_book=False,ponder=False,concurrent_games=1,commands=commands,
         jar_sha256={f.name:sha(f) for f in jars.glob('*.jar')},
         baseline_sha256=sha(root/'build-assets/production/bre-pair2-g32.brn-pair2'),
@@ -203,7 +205,7 @@ def main():
     try:
         for cmd in commands:
             engine=chess.engine.SimpleEngine.popen_uci(cmd,timeout=30,creationflags=flags)
-            engine.configure({'Threads':1,'Hash':32,'UseBook':False});engines.append(engine)
+            engine.configure({'Threads':a.workers,'Hash':32,'UseBook':False});engines.append(engine)
         if warmup:
             observations=[];warmup_start=time.monotonic();warmup_complete=False
             try:
