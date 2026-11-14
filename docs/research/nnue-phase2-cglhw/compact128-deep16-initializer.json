@@ -1,0 +1,11 @@
+{
+  "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-deep16-pilot\\segments\\000001-7c1b3202146e\\run\\initial\\weights.bin",
+  "sha256": "ac11a4b415a8d127ce3f4ab68228e7a96b2bec710a5a07a6b8bb874bab100ca4",
+  "base_tensors_exact": {
+    "l0b": true,
+    "l0f": true,
+    "l0w": true,
+    "l1b": true,
+    "l1w": true
+  }
+}

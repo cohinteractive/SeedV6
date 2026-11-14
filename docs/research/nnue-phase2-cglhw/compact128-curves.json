@@ -1,0 +1,995 @@
+{
+  "base": {
+    "superbatches": [
+      {
+        "superbatch": 1,
+        "loss": 0.026411,
+        "config_sha256": "dc662ac1ac173f1fef197617b563dcb76c11418050b8df9dfedd50144a14a8d9"
+      },
+      {
+        "superbatch": 2,
+        "loss": 0.021827,
+        "config_sha256": "a50e1bf90ed9a46594fea26524cb5fd66c7fce78af19e2c801053a2277583f12"
+      },
+      {
+        "superbatch": 3,
+        "loss": 0.020753,
+        "config_sha256": "7333637eed68e675e4a8dee7af0f264851db13ab0baab65dca1f62c935d9bb93"
+      },
+      {
+        "superbatch": 4,
+        "loss": 0.020196,
+        "config_sha256": "4bda6de1a5883f55f4830800c1c921ca337255f4e88a934f4babf49d142df22d"
+      },
+      {
+        "superbatch": 5,
+        "loss": 0.01981,
+        "config_sha256": "8bc615a32bedf83dc45ad5c7d21b61344fe964ebbec5bdb6b715554b49c70ca8"
+      },
+      {
+        "superbatch": 6,
+        "loss": 0.01951,
+        "config_sha256": "eb06ca958c72b9169ca1edb767c2a72d1f54f328bc9141c02fec15638fd6dcd6"
+      },
+      {
+        "superbatch": 7,
+        "loss": 0.019289,
+        "config_sha256": "0bf6b057b0f3d2af4e87dda66176200f3ddb007a38d088e7622cd8da5797cb0f"
+      },
+      {
+        "superbatch": 8,
+        "loss": 0.019076,
+        "config_sha256": "7b854906467381110b9b70185ff80a56b1b4b2f7327dc45d39252ce28928e09a"
+      },
+      {
+        "superbatch": 9,
+        "loss": 0.018939,
+        "config_sha256": "5ab512158814cf7016687dd066c238ef577f95fc480d367b978ffc22affce7c8"
+      },
+      {
+        "superbatch": 10,
+        "loss": 0.018805,
+        "config_sha256": "f4cea06ff2a7a3381919b781ee011d8c21ca59f84d946d16a09f7af89c799bf3"
+      },
+      {
+        "superbatch": 11,
+        "loss": 0.018731,
+        "config_sha256": "d648dfb8bf2fecb8f0fcf8568f02b5eb1f5c87ced49b341136e066aa079118c3"
+      },
+      {
+        "superbatch": 12,
+        "loss": 0.018608,
+        "config_sha256": "338a763069bb3daeb15b8bea142bfbbc1c3fa9291971bc6d90d8166e8b829bce"
+      },
+      {
+        "superbatch": 13,
+        "loss": 0.018524,
+        "config_sha256": "f8ceeca43e52621b6b59b0f5121347b3270a69a0ce1f6193665fca84ac46e1e0"
+      },
+      {
+        "superbatch": 14,
+        "loss": 0.018448,
+        "config_sha256": "482f78ed6de841b2c65f955f175e325133787447f4483ca097bfb36768936bbb"
+      },
+      {
+        "superbatch": 15,
+        "loss": 0.01839,
+        "config_sha256": "e8f303634ccab0ecd674d775e9bc8be98c45dd029f09b50b5b4841ad2db25471"
+      },
+      {
+        "superbatch": 16,
+        "loss": 0.018315,
+        "config_sha256": "7bf01be9729cb3ebac47b20f7a170c56cb7366ee7b8f7db2f6887c49ca53e10a"
+      },
+      {
+        "superbatch": 17,
+        "loss": 0.018254,
+        "config_sha256": "84ac25a5c07341addee80d5f5ba6ed95d380f113abc7813588aac3d34e2a1cdb"
+      },
+      {
+        "superbatch": 18,
+        "loss": 0.01817,
+        "config_sha256": "1ef80b219ea46b9a4d8b11d4065d051a263eff1a2dde5110df8e4e690c037c3e"
+      },
+      {
+        "superbatch": 19,
+        "loss": 0.018104,
+        "config_sha256": "d1ad6a58d32759ad05591e7932f99fb971abd835685b16727d2b04f187c15038"
+      },
+      {
+        "superbatch": 20,
+        "loss": 0.018049,
+        "config_sha256": "564add0bc2e78ff3c2ccd50206c6b67c4642fa658bb3273e4204c63ae423e9a6"
+      },
+      {
+        "superbatch": 21,
+        "loss": 0.018024,
+        "config_sha256": "e411f7f78d6e1b3919c5c2cbf032b4d107c48564622f6b5a2e9a037cdc70973f"
+      },
+      {
+        "superbatch": 22,
+        "loss": 0.017969,
+        "config_sha256": "57911b50388e8c94c6e5f86bfedfec5f2e33520ec42e1e526e81d9c125f79515"
+      },
+      {
+        "superbatch": 23,
+        "loss": 0.017933,
+        "config_sha256": "0cdb5b9f9abe355f168875f4104f08914512f8389e3c5aa97759587c01dbd87a"
+      },
+      {
+        "superbatch": 24,
+        "loss": 0.017873,
+        "config_sha256": "452d4d9d63cd29a6472dd12600bc96c252d4f9303c4693970b932fd9c05b1e0d"
+      },
+      {
+        "superbatch": 25,
+        "loss": 0.017856,
+        "config_sha256": "41fa0b7a22a4bfa9cd95450f11f77d1fff6543739050106af69c00d30a0ad2d3"
+      },
+      {
+        "superbatch": 26,
+        "loss": 0.017815,
+        "config_sha256": "fee53a3c9511724a4af3c14ddedb7da2bf51872817a7f58916f303ab96b1ed9c"
+      },
+      {
+        "superbatch": 27,
+        "loss": 0.017818,
+        "config_sha256": "09b7180a64fe7dd2aef6000f053eb39c377e904e38a6216c1f4e1dd1a57758f2"
+      },
+      {
+        "superbatch": 28,
+        "loss": 0.017771,
+        "config_sha256": "0d1fac33b316960507a9354605ffe79969a418c2a0c091c2bc559845cf8be210"
+      },
+      {
+        "superbatch": 29,
+        "loss": 0.017742,
+        "config_sha256": "7c81972f4c517a96518d2c4a3fa5e0b28be35cc322c309bf4cd6a75b3233d43e"
+      },
+      {
+        "superbatch": 30,
+        "loss": 0.017704,
+        "config_sha256": "f00d1e6373f269b18e2e6c36ce4234a9de4e9b21eb0b1dfcae58c22d0565a048"
+      },
+      {
+        "superbatch": 31,
+        "loss": 0.017693,
+        "config_sha256": "fd33276f7e3a0c7d3db2b13c6ff5d504eceef7a93618a28ec09e159afd697d02"
+      },
+      {
+        "superbatch": 32,
+        "loss": 0.017655,
+        "config_sha256": "1545d32c217e478297daf01a3126a432d6e1b9fd4679ea1e0979954e15628511"
+      },
+      {
+        "superbatch": 33,
+        "loss": 0.017313,
+        "config_sha256": "81105ddc93b6169d4d99aa2ebe7f8de56398669d4e500bdbdc3a01e6a8a36d80"
+      },
+      {
+        "superbatch": 34,
+        "loss": 0.017153,
+        "config_sha256": "877a4294806c8532f05c63f46e760a62bff7bee3a74562d51025a7ebbca68e6a"
+      },
+      {
+        "superbatch": 35,
+        "loss": 0.017065,
+        "config_sha256": "b8ddcc570e709dedc5f395c8a642c61d727d59b5c255ad61f87ecc72679b819f"
+      },
+      {
+        "superbatch": 36,
+        "loss": 0.017016,
+        "config_sha256": "4186fdf9ccb904ff16968dbaf99c3f55d5c73e7d173beed4a8d7d061827de04d"
+      },
+      {
+        "superbatch": 37,
+        "loss": 0.017002,
+        "config_sha256": "91c11adbf87e714a02b69a4ae526b327ec3c11950d40c0712af766b7cd95e572"
+      },
+      {
+        "superbatch": 38,
+        "loss": 0.016947,
+        "config_sha256": "6186ec5321bf7f1dd204609df01f4a5bbd544ba97f63350d3deac822ec88cb39"
+      },
+      {
+        "superbatch": 39,
+        "loss": 0.016916,
+        "config_sha256": "70d2e1c287b0a952fa7d02897485a63c2d2c2c58cf9069bedc3caebff728661a"
+      },
+      {
+        "superbatch": 40,
+        "loss": 0.016861,
+        "config_sha256": "feaff4aba61f5b80d60546f40282a971dbad1624a53fbf67e3b2d0994e78c959"
+      },
+      {
+        "superbatch": 41,
+        "loss": 0.016839,
+        "config_sha256": "dfbd6212620f365b7346d7e0367d09c532a0602b0bbc23f6f829a87ea917fc49"
+      },
+      {
+        "superbatch": 42,
+        "loss": 0.016807,
+        "config_sha256": "c6f5017aafb42ddf73b3884028cceae08157fdcadc9e3521a2355c6066e47148"
+      },
+      {
+        "superbatch": 43,
+        "loss": 0.016804,
+        "config_sha256": "9d4800ffaf8e989d81cd6983062f01263bf0c1505ba52c3952360fd3310f62bb"
+      },
+      {
+        "superbatch": 44,
+        "loss": 0.01677,
+        "config_sha256": "c4e254e0b12468d481f6b434818cadb449aef3248d2644d6d8db03fdd4e39373"
+      },
+      {
+        "superbatch": 45,
+        "loss": 0.016738,
+        "config_sha256": "99f6c52f6a4008fa96542f8e380a7c5072930d74ed2d19b98ae19a1437a9b0bf"
+      },
+      {
+        "superbatch": 46,
+        "loss": 0.016705,
+        "config_sha256": "c1ee183fd8c8cd5947a9418c01c924724298cd5cdf90fc0b46a4d2154f25dc27"
+      },
+      {
+        "superbatch": 47,
+        "loss": 0.016689,
+        "config_sha256": "a299ef181312bc639d91e65a9a26b5687bb0e24223aa835727dd8b89ccf2bd9d"
+      },
+      {
+        "superbatch": 48,
+        "loss": 0.016662,
+        "config_sha256": "690f39d21e18334ed282b5968dba8f41dc4e646e9fbea1f9ac30d6800f3526ac"
+      },
+      {
+        "superbatch": 49,
+        "loss": 0.01682,
+        "config_sha256": "fb1118883d5e3587535b156d9e28f8d1c1ef28704643bfbe7d7a73996d3b093b"
+      },
+      {
+        "superbatch": 50,
+        "loss": 0.016779,
+        "config_sha256": "9c17b2da0d6a4606402bf0ccea8fda437e46bea37f2b8b6227237046e084f3af"
+      },
+      {
+        "superbatch": 51,
+        "loss": 0.016744,
+        "config_sha256": "344e713c181c2417baf60ae99c17cd8c2b0c5946034580792761b9f3f28726be"
+      },
+      {
+        "superbatch": 52,
+        "loss": 0.016732,
+        "config_sha256": "4e0d58756b601175842dd6d8ff629b053ea057371e81cf10fc3da62f998541b2"
+      },
+      {
+        "superbatch": 53,
+        "loss": 0.016749,
+        "config_sha256": "e0ffb984f4a40c821f4cbeaf188803bc516595ab4cda9a51db680f998b8a0622"
+      },
+      {
+        "superbatch": 54,
+        "loss": 0.016716,
+        "config_sha256": "d9e76d2929ce638ff417a6469b08fb1836cd4e18a1732ceff5cfdd3ab9048005"
+      },
+      {
+        "superbatch": 55,
+        "loss": 0.016703,
+        "config_sha256": "d92bcafce03ffd0c2ff6b69f9dae67baff5eeecc34de32b72f3889484b2fa10c"
+      },
+      {
+        "superbatch": 56,
+        "loss": 0.016664,
+        "config_sha256": "4912748e61a622d1a0ac8197bb8f07873a6a0051c19978ad8fa14f7751d3bf62"
+      },
+      {
+        "superbatch": 57,
+        "loss": 0.016655,
+        "config_sha256": "33d4e076a456efe2501e52f91a39366fcc6790ce55ae7bfbce54d71fbb2e863f"
+      },
+      {
+        "superbatch": 58,
+        "loss": 0.016641,
+        "config_sha256": "15306dd311524ff81acd3d4682b2b559cad2175da2a49a02cb4726dfc475fb5e"
+      },
+      {
+        "superbatch": 59,
+        "loss": 0.016652,
+        "config_sha256": "81fc54da40a707386f263569d4ac56a4cc3e14a4d9265dd9674785027d0c2303"
+      },
+      {
+        "superbatch": 60,
+        "loss": 0.016631,
+        "config_sha256": "19a3c59bde8275af08455af6fd8e02ea3921bfb90e8ad923e742bc144f95b1a6"
+      },
+      {
+        "superbatch": 61,
+        "loss": 0.016614,
+        "config_sha256": "38d482d2586ebce7d0611d5d4132a1c2e74ef93be98a7ed0a28176d320d59530"
+      },
+      {
+        "superbatch": 62,
+        "loss": 0.016595,
+        "config_sha256": "e3bd62548ca15d7d9e3a19bf7e2021bc44db40d9fe77ffe92e1c3ae7bf412a5d"
+      },
+      {
+        "superbatch": 63,
+        "loss": 0.016587,
+        "config_sha256": "8290b8fd38069245df586476ea869b31d31b81e11eff45d9f773940b5bb91f1a"
+      },
+      {
+        "superbatch": 64,
+        "loss": 0.016574,
+        "config_sha256": "26ead1e69ce78f5a0c82ae4ed6cf6b69ed49d62a42f57c9e9fe01da924cf0520"
+      }
+    ],
+    "native_wall_seconds": 279.92669289995683,
+    "reported_16_superbatch_means": [
+      0.019727,
+      0.017901875,
+      0.0168929375,
+      0.0166785
+    ]
+  },
+  "deep16": {
+    "superbatches": [
+      {
+        "superbatch": 1,
+        "loss": 0.025497,
+        "config_sha256": "d57658ebc206105d49fd22487ebb15a801d25f81e094d2e0af4900d85fedd181"
+      },
+      {
+        "superbatch": 2,
+        "loss": 0.020676,
+        "config_sha256": "041728cb246c94882df22b5586e3ad2d2616bd77f99834c446faaf30c22e79f4"
+      },
+      {
+        "superbatch": 3,
+        "loss": 0.019608,
+        "config_sha256": "b7dbdd4b9571cc13243aa8763b3f2648ed65a94cc14ea08871d191b261dbe10c"
+      },
+      {
+        "superbatch": 4,
+        "loss": 0.01902,
+        "config_sha256": "9d38209d7a2bb087337db4ce0588eb3206fa99ae5e3c9a1a36eb06021e34d32b"
+      },
+      {
+        "superbatch": 5,
+        "loss": 0.018645,
+        "config_sha256": "f595301055ec8ee6e0fa0cfe4e17797a37742ab8e515f6c4bd0d7e89c3246392"
+      },
+      {
+        "superbatch": 6,
+        "loss": 0.018347,
+        "config_sha256": "64448ac6251792d6c9447e64f267d54cac8cbc1fdd29e99840634d0ecde4f2dd"
+      },
+      {
+        "superbatch": 7,
+        "loss": 0.018144,
+        "config_sha256": "9284a5556e55589310eaf167e99041351054b8838b20263e355b26ef0681542e"
+      },
+      {
+        "superbatch": 8,
+        "loss": 0.017948,
+        "config_sha256": "e1bf918f454f09ea0d233be1f2a438094c78dcd8c4ffe9e88892b005d7a49f87"
+      },
+      {
+        "superbatch": 9,
+        "loss": 0.017794,
+        "config_sha256": "6d754e9707b4bc593603df32dca0844ae744bd90a8d6b4c02334cd233789c8c0"
+      },
+      {
+        "superbatch": 10,
+        "loss": 0.017664,
+        "config_sha256": "d1e477c812cd789840ffda018c05f1d7b0c45bb27c93be03efd96de42a97d072"
+      },
+      {
+        "superbatch": 11,
+        "loss": 0.017591,
+        "config_sha256": "e9d7ee898c3fa894138a08cd5ff3eee8d04158b258f89cac21094e571e4a6ea8"
+      },
+      {
+        "superbatch": 12,
+        "loss": 0.017471,
+        "config_sha256": "1e0238df2fbbd99d4ace7c0650ef164b060211be041f61bebc8ab2d10d00d459"
+      },
+      {
+        "superbatch": 13,
+        "loss": 0.017378,
+        "config_sha256": "f16006b7c3a03b8ced54e20a7396e32e023446d172477e956f1fc2c4663da0e2"
+      },
+      {
+        "superbatch": 14,
+        "loss": 0.017318,
+        "config_sha256": "3557d8000019b3dcc015aaacda9e001d601f45ace50bb227241ee8d00e5e6090"
+      },
+      {
+        "superbatch": 15,
+        "loss": 0.017251,
+        "config_sha256": "7b478cc4cd18ecafaadbac3932be23d0927ab535987fbc441654a369863c5e28"
+      },
+      {
+        "superbatch": 16,
+        "loss": 0.01719,
+        "config_sha256": "6732492bebd4c381e237eb1cf8e28d2b03089c9f80073401b7e2caa554afb56e"
+      },
+      {
+        "superbatch": 17,
+        "loss": 0.017112,
+        "config_sha256": "21d4701aae0a61c64b0f26346d209919083536b364c25c9b4edc7b6de504aecc"
+      },
+      {
+        "superbatch": 18,
+        "loss": 0.017016,
+        "config_sha256": "4378fc6deb8eab4cfed66be77bac2ec577dfe564e45456a28d46b1edd21b5206"
+      },
+      {
+        "superbatch": 19,
+        "loss": 0.016957,
+        "config_sha256": "a1556682d70dc72d7a4cddbdc085c5a26f1ea9af4cd8fc2bd6680569c50e916c"
+      },
+      {
+        "superbatch": 20,
+        "loss": 0.01691,
+        "config_sha256": "d9216239b6efc7d2a3ed55bedd73041d8a2cbeea8a7a9a2ab12abcd690ce6875"
+      },
+      {
+        "superbatch": 21,
+        "loss": 0.016881,
+        "config_sha256": "9e49fc4142de1ce70a51d7548de6438894e40cc7728e62f99bf58ad9ce4b6535"
+      },
+      {
+        "superbatch": 22,
+        "loss": 0.016831,
+        "config_sha256": "d931dd2c4b71817144a513cd2d2dcfa2b616060a60075e2c1bb9ed1fa6a421b7"
+      },
+      {
+        "superbatch": 23,
+        "loss": 0.016806,
+        "config_sha256": "07bc9a36df8f6ad303ed19e6608315b8c5e8c4f2539426209f2445c2e2316efb"
+      },
+      {
+        "superbatch": 24,
+        "loss": 0.016758,
+        "config_sha256": "754b4f0f746a12031947a096662eadb7be3e90f3338c853352ec8abbea0c13d7"
+      },
+      {
+        "superbatch": 25,
+        "loss": 0.016727,
+        "config_sha256": "a5c27fc0a645ddf8002eb145f44c22ec492db22b1f11c20d5cc239087ccefc73"
+      },
+      {
+        "superbatch": 26,
+        "loss": 0.016694,
+        "config_sha256": "e34c896f4d1a27c14d5bcd7491fff4614b54ff5487c4693205878d80a17df56a"
+      },
+      {
+        "superbatch": 27,
+        "loss": 0.016712,
+        "config_sha256": "05dbcb7a170835e3d57d18bd4d4e0b2289bde4cdcd9091f97c08ea3431c57f6e"
+      },
+      {
+        "superbatch": 28,
+        "loss": 0.016661,
+        "config_sha256": "9018cdf3807cc71488c52bcf0d370a562e196c208e509479febedbf8eb952629"
+      },
+      {
+        "superbatch": 29,
+        "loss": 0.016624,
+        "config_sha256": "f4ead61cd1a7ce1cc7f9d7eee611b6b02f97766092e181a0559b9bdc24cf63bb"
+      },
+      {
+        "superbatch": 30,
+        "loss": 0.016603,
+        "config_sha256": "d353c32aa8afb799081f387b928cf46cfd98dcfe6c8a8041221e947ccd068d85"
+      },
+      {
+        "superbatch": 31,
+        "loss": 0.016593,
+        "config_sha256": "78ca3630d891f727e8a90b3be682442d6856035a28e9b8ac2739f7650e9c5e21"
+      },
+      {
+        "superbatch": 32,
+        "loss": 0.016575,
+        "config_sha256": "2b9d9ce129613afa4a717c97d30aab465e1c9ee50f37a9a7cfb6e54ebca8fade"
+      },
+      {
+        "superbatch": 33,
+        "loss": 0.016199,
+        "config_sha256": "6281a8338995ca9af4273dc9d114818c37ecac4bf07bdd2c1b511a80c8431d73"
+      },
+      {
+        "superbatch": 34,
+        "loss": 0.015999,
+        "config_sha256": "a530dcaa7c214ef9c48d120892ad945e39c2d3ae003e237220ae7b59e2b4fa4a"
+      },
+      {
+        "superbatch": 35,
+        "loss": 0.015916,
+        "config_sha256": "6c00d4a6f732fc2f878fe02564846a77220338f5bea20b142664401677f38c4d"
+      },
+      {
+        "superbatch": 36,
+        "loss": 0.015854,
+        "config_sha256": "c88f04ed1f2f27e9a4e8a68e29eb413eb9874c5f98803b9bcb8006bc7cd3b1ed"
+      },
+      {
+        "superbatch": 37,
+        "loss": 0.015823,
+        "config_sha256": "aa6bfa17ebf85abbc9bec14f209931c7dd79a97ff011cb9617f40293d6b890c7"
+      },
+      {
+        "superbatch": 38,
+        "loss": 0.015772,
+        "config_sha256": "d1ffe041cd1a749842ade1483dbe02f8f998a7e92090f02aca7b1fbceb8934c5"
+      },
+      {
+        "superbatch": 39,
+        "loss": 0.015733,
+        "config_sha256": "b5c0355a4ceecfa732faef80558533b94465def44f35725e530877068483fbb5"
+      },
+      {
+        "superbatch": 40,
+        "loss": 0.015677,
+        "config_sha256": "cdd7cf94c15c027ee596d0df2e34a8fd6d3a1d76fe333e276e29f8edf47e192e"
+      },
+      {
+        "superbatch": 41,
+        "loss": 0.01564,
+        "config_sha256": "c3116f66a25831e39b0533a103fc7d1ed591fd61dd6ba4e43e597d1bece127fe"
+      },
+      {
+        "superbatch": 42,
+        "loss": 0.015608,
+        "config_sha256": "c7a38c8de6fda35ea64200542f048100e0931962aeea5c56a3c3af2c203a64e9"
+      },
+      {
+        "superbatch": 43,
+        "loss": 0.015628,
+        "config_sha256": "8bdb5ade6a83d13a7af63f157ecc4289d7075de0a5b21ff3d5ce5e6967b39760"
+      },
+      {
+        "superbatch": 44,
+        "loss": 0.01557,
+        "config_sha256": "85d7166c74f9eb4db1e05430093541be7d314f7f550014f5d7f0bdd0eef56a90"
+      },
+      {
+        "superbatch": 45,
+        "loss": 0.015528,
+        "config_sha256": "1831affe4f6e4310c2581d84468c2b95aeb0396c7fcb30074dda41d1a97677bd"
+      },
+      {
+        "superbatch": 46,
+        "loss": 0.015508,
+        "config_sha256": "b162a9c9e26a63af94d616fc178018b0f14914c94e90ec9988a6fb87218244ad"
+      },
+      {
+        "superbatch": 47,
+        "loss": 0.015494,
+        "config_sha256": "42838f99c13ed88eb4072740d979e31da3b11b9ff85dd24ccfd4e468c3be56fb"
+      },
+      {
+        "superbatch": 48,
+        "loss": 0.015471,
+        "config_sha256": "170d13d9e4fa8e351aff351ca294989f7f0694de5049946b11dd568d19dc5345"
+      },
+      {
+        "superbatch": 49,
+        "loss": 0.015633,
+        "config_sha256": "1ab604e05bd219e849cf855e11b24ce690d494489c7d8fa383f29f8f5173eca6"
+      },
+      {
+        "superbatch": 50,
+        "loss": 0.015569,
+        "config_sha256": "89858fc9089da9d09a91dd311caecc488dc66c97f55ceb38075c4b41223ff52a"
+      },
+      {
+        "superbatch": 51,
+        "loss": 0.015552,
+        "config_sha256": "8ec382304eb539fe17b262e4ce907176e36a43508c145765f045a232bfa783cb"
+      },
+      {
+        "superbatch": 52,
+        "loss": 0.015537,
+        "config_sha256": "a70e25f4fd171f30fecffb0395ba3cbeeddfa3d75acd4293f74d002700b5fa0c"
+      },
+      {
+        "superbatch": 53,
+        "loss": 0.015534,
+        "config_sha256": "30ae20bf1649b830cbae097f7a7109bbf3c1a66869bf8bc5c441c4fa18a81262"
+      },
+      {
+        "superbatch": 54,
+        "loss": 0.015517,
+        "config_sha256": "96d2cc484287a3a665a8abe7448a74fe72184ef14b9dee54f7b8ce43742fe19c"
+      },
+      {
+        "superbatch": 55,
+        "loss": 0.015493,
+        "config_sha256": "f37f9ea1a7a0df78ccfe6a668ffd2cc90b6869cafe1f5174b6586ff10a03c285"
+      },
+      {
+        "superbatch": 56,
+        "loss": 0.015461,
+        "config_sha256": "deabfea7cbaac162548fd68bf4ad712d4ac1b16c1809a5322c1968333a238000"
+      },
+      {
+        "superbatch": 57,
+        "loss": 0.015443,
+        "config_sha256": "5e5519aa1aec04a950665a1878eb62f82e1f17595122ee55c1c0ee2f72b67ebd"
+      },
+      {
+        "superbatch": 58,
+        "loss": 0.01543,
+        "config_sha256": "46d02cc5d55482ac60e342053581343d3a162277d3235dcead24bc6e771aee44"
+      },
+      {
+        "superbatch": 59,
+        "loss": 0.015466,
+        "config_sha256": "a6dc9bd9964b765c2545602394fa948c3e99442d77980a3c8a180041e17514fc"
+      },
+      {
+        "superbatch": 60,
+        "loss": 0.015424,
+        "config_sha256": "aaf083ee7e1d47e599eb112bda962b159a9bf8716814d0bf33cc80861906125c"
+      },
+      {
+        "superbatch": 61,
+        "loss": 0.015396,
+        "config_sha256": "e5f23c1be8bd6b4f75c23814ea04bea10741e335c8424579410bbd07b3c7f6d1"
+      },
+      {
+        "superbatch": 62,
+        "loss": 0.015391,
+        "config_sha256": "11abeefe43be5a7a1a24fc7ce12cc677d0ba449d38ea99159ce664b212e5b4a4"
+      },
+      {
+        "superbatch": 63,
+        "loss": 0.015388,
+        "config_sha256": "e604807d7fbd980f6f3002dc7daf98240dae23c1183639f427eaeaf33c18bd6c"
+      },
+      {
+        "superbatch": 64,
+        "loss": 0.015377,
+        "config_sha256": "cdf4754ec39a9081743e6270fbcaef63bf3aca1fb8939842b59a85c63a1a1d45"
+      }
+    ],
+    "native_wall_seconds": 308.2694807999651,
+    "reported_16_superbatch_means": [
+      0.018596375,
+      0.01677875,
+      0.01571375,
+      0.0154756875
+    ]
+  },
+  "pawnpairs": {
+    "superbatches": [
+      {
+        "superbatch": 1,
+        "loss": 0.026357,
+        "config_sha256": "184d6ab5febb567095b85c8e39895dc4a0267952bafe90ff59e7bd4b5a03f6fd"
+      },
+      {
+        "superbatch": 2,
+        "loss": 0.021535,
+        "config_sha256": "ca1d6e7f0086067bf6c1a7cd6bd3d4164460b3f4e15469f93c9346865d11924d"
+      },
+      {
+        "superbatch": 3,
+        "loss": 0.020349,
+        "config_sha256": "8ad2ca16919b2d07ffb60a1bdecf3e5685f2f1c2436bbf2b9e191b053e3c5025"
+      },
+      {
+        "superbatch": 4,
+        "loss": 0.019694,
+        "config_sha256": "98b2c091e200d3b9fcbaf39e9467c4c85c6309bed414cc7dcd78e3da95c97ccd"
+      },
+      {
+        "superbatch": 5,
+        "loss": 0.019262,
+        "config_sha256": "f1ee361a175e80e455d2c67719a5dcf500a927bfe079e359dacf26cc4fd3f5f9"
+      },
+      {
+        "superbatch": 6,
+        "loss": 0.018925,
+        "config_sha256": "12dac595b6f305c45fcebd6b79e7a087917326daecd506a4bf9c931807ac0321"
+      },
+      {
+        "superbatch": 7,
+        "loss": 0.018688,
+        "config_sha256": "159c7e6a5f1f9ab5e999c8eb84f78303c451263b6e9628804bc3129111ec8766"
+      },
+      {
+        "superbatch": 8,
+        "loss": 0.018435,
+        "config_sha256": "2db2abf666b95382950ade850e0006e353f9fa7af1d227f5afc04409430c20c4"
+      },
+      {
+        "superbatch": 9,
+        "loss": 0.018281,
+        "config_sha256": "a7b174963e8e066d85d0e6f16ecc49eacbfc26718cf77d52873a19af037d6fd3"
+      },
+      {
+        "superbatch": 10,
+        "loss": 0.018126,
+        "config_sha256": "50b9b23295ec502a5d563c2df44cdde33ad41febb32444c929416bde7aff241a"
+      },
+      {
+        "superbatch": 11,
+        "loss": 0.018028,
+        "config_sha256": "6821b4c8b301124645430efad709e9fa8afde339fc89b0fe51493c7f4c92124a"
+      },
+      {
+        "superbatch": 12,
+        "loss": 0.017909,
+        "config_sha256": "174c6b628e80a9aad6e8f92709ee4c63bec468a06dd750e2c0c95f5f49d941d8"
+      },
+      {
+        "superbatch": 13,
+        "loss": 0.017803,
+        "config_sha256": "c1cf609e9d5cea31268ba519e06694a261b078a0cc809eab2f63344d3b43a3b2"
+      },
+      {
+        "superbatch": 14,
+        "loss": 0.017712,
+        "config_sha256": "124eaa03734b77397a02ffd71545eb422afeb5d017607a2554ee4eded73d00dc"
+      },
+      {
+        "superbatch": 15,
+        "loss": 0.017632,
+        "config_sha256": "82379415480e47b17094a717eb7ef89a6473005f033ceaafa16fbce850778a93"
+      },
+      {
+        "superbatch": 16,
+        "loss": 0.017558,
+        "config_sha256": "bc7605d00ca837cc3969131bc512ffbd99cd6c68fa9afdf4352e276571d3c795"
+      },
+      {
+        "superbatch": 17,
+        "loss": 0.017473,
+        "config_sha256": "9e594e7ea34120fd347b0b406d822f172db80287f5f9a97cb402bbe54bb2f649"
+      },
+      {
+        "superbatch": 18,
+        "loss": 0.017383,
+        "config_sha256": "73153ad7d562e56ae4e0cd5857230dc954eda5c88beddcfb84adb8a3ba820833"
+      },
+      {
+        "superbatch": 19,
+        "loss": 0.017314,
+        "config_sha256": "4ca2c0d9b58027c1934864b456f2efbb75254d61a00e3d8d3ed1099885cf8f77"
+      },
+      {
+        "superbatch": 20,
+        "loss": 0.017249,
+        "config_sha256": "8cfc6a0c5e027bc59e0882f773571bc31017ecc7a9d34bf8b548480d77168327"
+      },
+      {
+        "superbatch": 21,
+        "loss": 0.017221,
+        "config_sha256": "55e72ea89f7f648cc41cdc2cf25db9aee97bf309f4dfd57ffb88a0acc3651525"
+      },
+      {
+        "superbatch": 22,
+        "loss": 0.017161,
+        "config_sha256": "8ddd8347ec1795f05323bfe3fae5b77cb0b2f0bc932f835b817d46131b14080a"
+      },
+      {
+        "superbatch": 23,
+        "loss": 0.017127,
+        "config_sha256": "31e38ee420346596bbcead7d17ce9749f0587a17382808930c027057ca83acb6"
+      },
+      {
+        "superbatch": 24,
+        "loss": 0.017053,
+        "config_sha256": "33f082c19f4757b3f1d2de3d533c2a0dd7e4a69380d4b067425fbdfc01ff103c"
+      },
+      {
+        "superbatch": 25,
+        "loss": 0.017022,
+        "config_sha256": "4027adf81472ba4985d183d3481372339104e7a83a3890f7530f22807b903392"
+      },
+      {
+        "superbatch": 26,
+        "loss": 0.016991,
+        "config_sha256": "fbea78d16944855ea0497eac6e35f6f1bde3f124d8e1d380b430bdf715662209"
+      },
+      {
+        "superbatch": 27,
+        "loss": 0.016992,
+        "config_sha256": "a1170bf91bf333fc5d3b4e1b8fc082d651db06ad99bedf79146dfb9e4cb0eda8"
+      },
+      {
+        "superbatch": 28,
+        "loss": 0.016951,
+        "config_sha256": "413fb41675f06bb6f7b1a9ba2fb31e584de2f962eab973bddfba60aab1e3d007"
+      },
+      {
+        "superbatch": 29,
+        "loss": 0.01692,
+        "config_sha256": "203dbc354d61310461c3bb1431ab69ca5eedd4fa8763413e6989d587f24cc125"
+      },
+      {
+        "superbatch": 30,
+        "loss": 0.016884,
+        "config_sha256": "3ca304b0ee3e949b92a11fa3f72c81b4c5e79cd3ccc29041ec9b7df4c8b3effb"
+      },
+      {
+        "superbatch": 31,
+        "loss": 0.016853,
+        "config_sha256": "18d89fe33aff85560d53699ab7f717f8dea298c030fb7d5bbf1af894488d870d"
+      },
+      {
+        "superbatch": 32,
+        "loss": 0.016819,
+        "config_sha256": "97bbdc18ef17f18506a3d4dcabd45ff4bff71b47f2e0b7f1a294428a654c17c4"
+      },
+      {
+        "superbatch": 33,
+        "loss": 0.016424,
+        "config_sha256": "eed0116c7f68985bfb452706936e95c493b52548eed4f47c4202edc341583db1"
+      },
+      {
+        "superbatch": 34,
+        "loss": 0.016253,
+        "config_sha256": "fa275da53aedf4d324077b429b8e905910381f204b1b24157a97c60a7c8a1925"
+      },
+      {
+        "superbatch": 35,
+        "loss": 0.016166,
+        "config_sha256": "708c32f62bb07cc7d449154f063727a336b4a74aa889fde9f518240c4d87ef8c"
+      },
+      {
+        "superbatch": 36,
+        "loss": 0.016104,
+        "config_sha256": "d374efb602314f932a0dc557a87dc5c4850e1d3bc5bc4e0647abcda779d40073"
+      },
+      {
+        "superbatch": 37,
+        "loss": 0.016081,
+        "config_sha256": "9b83a59f3b838954208f61c87658e51419547a604ffee7bef23903f56aa7770d"
+      },
+      {
+        "superbatch": 38,
+        "loss": 0.016026,
+        "config_sha256": "d25db332275c11c04ea182ce34722b7808b9047a0f3efbbfd0e768001691e90f"
+      },
+      {
+        "superbatch": 39,
+        "loss": 0.015998,
+        "config_sha256": "58306f101c2ad7981edd3a987acb11f4d3af699b85aa38707f609f09a966a9f1"
+      },
+      {
+        "superbatch": 40,
+        "loss": 0.015922,
+        "config_sha256": "eb9ae1b4d0d38ee28e30f837d979a222b66571a75070759559baad0cdff99fcb"
+      },
+      {
+        "superbatch": 41,
+        "loss": 0.015894,
+        "config_sha256": "6099e48b8d0d49e33a6d2df25859c6ee89dd0fe0455d914e709da6a0e01aa78d"
+      },
+      {
+        "superbatch": 42,
+        "loss": 0.01588,
+        "config_sha256": "52577a638d768b35b86f871791ee26f2dfc97ffe4268fefdcd0d5984d1bf1fe5"
+      },
+      {
+        "superbatch": 43,
+        "loss": 0.015867,
+        "config_sha256": "30810f93c7c92d311cb8de58c111c5530d8b9c11a71375e481351191a0eb10f0"
+      },
+      {
+        "superbatch": 44,
+        "loss": 0.015835,
+        "config_sha256": "780f62c112ff14a15f51f2f8fb761dbe061deb27f48f372e811b42084afb8136"
+      },
+      {
+        "superbatch": 45,
+        "loss": 0.015796,
+        "config_sha256": "5830c60ff05bce0c4cd3e4be321441fe1a31cf552a46dbdb2fa36343cee8a717"
+      },
+      {
+        "superbatch": 46,
+        "loss": 0.015769,
+        "config_sha256": "5b54ed64430cbf7432ae99375835f1956f830fd576770009a8df62575b5deda9"
+      },
+      {
+        "superbatch": 47,
+        "loss": 0.015733,
+        "config_sha256": "fd0e75b5ff8aacb0f9f9aaef411a7668972cc539312e66876e5412b9689b487c"
+      },
+      {
+        "superbatch": 48,
+        "loss": 0.015704,
+        "config_sha256": "7cf104c05171e745248a2449ad3cca7b0a5a972537ed45491df60cc4ea31b3a0"
+      },
+      {
+        "superbatch": 49,
+        "loss": 0.015878,
+        "config_sha256": "b0f75c4d027cf75ddc6e0774e350b1dac9a919ab7de87015bc4007ab52a7e1c0"
+      },
+      {
+        "superbatch": 50,
+        "loss": 0.015837,
+        "config_sha256": "7c38a5fd6ee30170f99799a999e6a5d8b4687a0a41198cf87f98725e6c290c60"
+      },
+      {
+        "superbatch": 51,
+        "loss": 0.015808,
+        "config_sha256": "bbf1009644b586e7d2b5577a429250239f866ed2a7dfcea94e1661b2354f3acb"
+      },
+      {
+        "superbatch": 52,
+        "loss": 0.015788,
+        "config_sha256": "ddb7a5bb142d7c0eee9cc1edee79faf37a3c60cea0073c91a1e90ce56df658bf"
+      },
+      {
+        "superbatch": 53,
+        "loss": 0.015798,
+        "config_sha256": "961a9e49df094c4f2e4dabd0d856ca1c94596ae93b47c46983b5143548261f15"
+      },
+      {
+        "superbatch": 54,
+        "loss": 0.015764,
+        "config_sha256": "8f92a4a5a4dae7307940113b84922d954eeee2fbaf94e7ef7ed40369a21ca12f"
+      },
+      {
+        "superbatch": 55,
+        "loss": 0.015761,
+        "config_sha256": "b9552d0d4652d1d0ed29697b06bcd412739a715778d3790a07497771f154fcff"
+      },
+      {
+        "superbatch": 56,
+        "loss": 0.015709,
+        "config_sha256": "bdcc78f8b1662aabec99fbcda97e00a5231c1ba6c68d5949c7d36dc3cbd8caca"
+      },
+      {
+        "superbatch": 57,
+        "loss": 0.015689,
+        "config_sha256": "b35b7a1bb91849a457f437b990d6b61eba4dc90cde888289a43e6fdd920b613c"
+      },
+      {
+        "superbatch": 58,
+        "loss": 0.015696,
+        "config_sha256": "a6531fb492cef5a4372eb8402ab0e3fb80b0cf3a0554d12941822202fe962f51"
+      },
+      {
+        "superbatch": 59,
+        "loss": 0.015698,
+        "config_sha256": "609b93d3d593fa6285cf12318b4aa022bf01823ef8a0c08f55cf874c4f0ff605"
+      },
+      {
+        "superbatch": 60,
+        "loss": 0.015682,
+        "config_sha256": "a6e059eac154d5aea58cd845cdba7132dd7184692f347d362a01a8363771a7ec"
+      },
+      {
+        "superbatch": 61,
+        "loss": 0.015655,
+        "config_sha256": "efe5b6586674cc38c09fdf979f64c0bdc91ef30e4443f4992f2e3057d8593b0e"
+      },
+      {
+        "superbatch": 62,
+        "loss": 0.015643,
+        "config_sha256": "019b731f9370bd41177977ad39f2402e3c2aa665ea456d8a3450779b756d5acd"
+      },
+      {
+        "superbatch": 63,
+        "loss": 0.015618,
+        "config_sha256": "741306f6c0f37a4a966e2381ca10e94b4022dafe5571b7c13a67ae26d87abd0a"
+      },
+      {
+        "superbatch": 64,
+        "loss": 0.015604,
+        "config_sha256": "9f55bcc605565721be9f4b2be91f7975eab33db0b1c44890ffcfb47c507fc933"
+      }
+    ],
+    "native_wall_seconds": 398.4436006999458,
+    "reported_16_superbatch_means": [
+      0.019143375,
+      0.0170883125,
+      0.01596575,
+      0.01572675
+    ]
+  }
+}

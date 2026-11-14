@@ -43,6 +43,7 @@ def main():
         source_revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         source_files={str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in
           list((ROOT/'research/src/main/java/com/ohinteractive/seedv6/core/nnue/conventional').glob('Phase2*.java'))+
+          list((ROOT/'research/src/main/java/com/ohinteractive/seedv6/core/nnue/conventional').glob('Compact*.java'))+
           [ROOT/'src/researchLauncher/java/com/ohinteractive/seedv6/integration/NnueStrengthUciMain.java']},
         limitation='Runtime/source hashes define tested uncommitted research bytes; HEAD alone is not their identity'))
     print(json.dumps(dict(openings=416,screen_pairs=32,reserved_confirmation_pairs=256,reserved_robustness_pairs=128,runtime_files=len(files))))

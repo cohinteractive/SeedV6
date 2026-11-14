@@ -16,16 +16,20 @@ import com.ohinteractive.seedv6.uci.*;
 public final class NnueStrengthUciMain {
     public static void main(String[] args) throws Exception {
         if(args.length!=1)throw new IllegalArgumentException("network.cnnue");
-        boolean phase2;
+        boolean phase2,compact;
         try(var input=java.nio.file.Files.newInputStream(Path.of(args[0]))) {
-            phase2=java.util.Arrays.equals(input.readNBytes(8),"S6P2N001".getBytes(java.nio.charset.StandardCharsets.US_ASCII));
+            byte[] magic=input.readNBytes(8);
+            phase2=java.util.Arrays.equals(magic,"S6P2N001".getBytes(java.nio.charset.StandardCharsets.US_ASCII));
+            compact=java.util.Arrays.equals(magic,"S6P2N002".getBytes(java.nio.charset.StandardCharsets.US_ASCII));
         }
-        var model=phase2?null:StrengthNetwork.load(Path.of(args[0]));
+        var model=phase2||compact?null:StrengthNetwork.load(Path.of(args[0]));
         var experimental=phase2?Phase2Network.load(Path.of(args[0])):null;
-        // Every 256-unit model uses the existing production kernel, isolating training changes.
-        SearchEvaluation evaluation=phase2?experimental.evaluation():model.hidden()==256
+        var small=compact?CompactNetwork.load(Path.of(args[0])):null;
+        // Conventional 256-unit files retain the production kernel for training controls.
+        SearchEvaluation evaluation=compact?small.evaluation():phase2?experimental.evaluation():model.hidden()==256
                 ? SearchEvaluation.conventional(ConventionalNetwork.load(Path.of(args[0]))) : model.evaluation();
-        String modelIdentity=phase2?"schema=S6P2N001 architecture="+experimental.architecture()+" hidden=256 heads=8 payload="
+        String modelIdentity=compact?"schema=S6P2N002 architecture="+small.architecture()+" hidden=128 heads=8 payload="
+                +small.payloadSha256()+" head="+small.backend():phase2?"schema=S6P2N001 architecture="+experimental.architecture()+" hidden=256 heads=8 payload="
                 +experimental.payloadSha256()+" head="+experimental.backend():"schema="+model.schema()+" hidden="+model.hidden()
                 +" heads="+model.outputBuckets()+" payload="+model.payloadSha256()+" head="+model.headBackend();
         var configuration=new UciConfiguration() {

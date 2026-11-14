@@ -1,0 +1,177 @@
+{
+  "result": {
+    "schema": "seed-phase2-input-overlap-v1",
+    "input": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-data\\train.data",
+    "sha256": "3a4d8d009e730e2700cf5552b48a165c7cc044d84b3bdb6518a3108d440a5729",
+    "records": 67108864,
+    "source_records_each": 33554432,
+    "unique_fingerprints": 65642886,
+    "original_unique_fingerprints": 33164045,
+    "additional_unique_fingerprints": 33164910,
+    "shared_fingerprints": 686069,
+    "additional_only_fingerprints": 32478841,
+    "additional_records_matching_original": 951243,
+    "duplicate_records": 1465978,
+    "multiplicity_log2_floor_histogram": {
+      "0": 64723831,
+      "1": 797972,
+      "2": 108125,
+      "3": 12958
+    },
+    "seconds": 9.9039363,
+    "method": "Seed2026111504 Zobrist placement fingerprints, native STM view, canonical file mirror,63 hash bits+alternating4096-batch source bit; labels/history excluded.",
+    "collision_model_expected_pair_collisions_upper_approx": 0.0004882812427240424,
+    "limitations": "Fingerprint matches are probabilistic, not exact uniqueness or game independence. Random-hash collision approximation is not a guarantee. No source data or experimental selection is changed."
+  },
+  "fixtures": [
+    {
+      "name": "mirrored",
+      "result": {
+        "schema": "seed-phase2-input-overlap-v1",
+        "input": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\mirrored.data",
+        "sha256": "d6184e12cae6411fd10874ce9e8dc40bd07655a7d82542139b391485a10d40e8",
+        "records": 8192,
+        "source_records_each": 4096,
+        "unique_fingerprints": 1,
+        "original_unique_fingerprints": 1,
+        "additional_unique_fingerprints": 1,
+        "shared_fingerprints": 1,
+        "additional_only_fingerprints": 0,
+        "additional_records_matching_original": 4096,
+        "duplicate_records": 8191,
+        "multiplicity_log2_floor_histogram": {
+          "13": 1
+        },
+        "seconds": 0.0433186,
+        "method": "Seed2026111504 Zobrist placement fingerprints, native STM view, canonical file mirror,63 hash bits+alternating4096-batch source bit; labels/history excluded.",
+        "collision_model_expected_pair_collisions_upper_approx": 7.275069435763726e-12,
+        "limitations": "Fingerprint matches are probabilistic, not exact uniqueness or game independence. Random-hash collision approximation is not a guarantee. No source data or experimental selection is changed."
+      },
+      "input_sha256": "d6184e12cae6411fd10874ce9e8dc40bd07655a7d82542139b391485a10d40e8"
+    },
+    {
+      "name": "distinct",
+      "result": {
+        "schema": "seed-phase2-input-overlap-v1",
+        "input": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\distinct.data",
+        "sha256": "b9a7190db8cbcc7699d243db5c2ea782fa0adf40707a5c6410c1fbdc5a32fae4",
+        "records": 8192,
+        "source_records_each": 4096,
+        "unique_fingerprints": 2,
+        "original_unique_fingerprints": 1,
+        "additional_unique_fingerprints": 1,
+        "shared_fingerprints": 0,
+        "additional_only_fingerprints": 1,
+        "additional_records_matching_original": 0,
+        "duplicate_records": 8190,
+        "multiplicity_log2_floor_histogram": {
+          "12": 2
+        },
+        "seconds": 0.0426467,
+        "method": "Seed2026111504 Zobrist placement fingerprints, native STM view, canonical file mirror,63 hash bits+alternating4096-batch source bit; labels/history excluded.",
+        "collision_model_expected_pair_collisions_upper_approx": 7.275069435763726e-12,
+        "limitations": "Fingerprint matches are probabilistic, not exact uniqueness or game independence. Random-hash collision approximation is not a guarantee. No source data or experimental selection is changed."
+      },
+      "input_sha256": "b9a7190db8cbcc7699d243db5c2ea782fa0adf40707a5c6410c1fbdc5a32fae4"
+    },
+    {
+      "name": "partial",
+      "result": {
+        "schema": "seed-phase2-input-overlap-v1",
+        "input": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\partial.data",
+        "sha256": "12ac58f254d00805046f11e5c783c02b9d3fd8169a2a33e009b440bb2622b8ac",
+        "records": 8192,
+        "source_records_each": 4096,
+        "unique_fingerprints": 2,
+        "original_unique_fingerprints": 1,
+        "additional_unique_fingerprints": 2,
+        "shared_fingerprints": 1,
+        "additional_only_fingerprints": 1,
+        "additional_records_matching_original": 2048,
+        "duplicate_records": 8190,
+        "multiplicity_log2_floor_histogram": {
+          "11": 1,
+          "12": 1
+        },
+        "seconds": 0.0420353,
+        "method": "Seed2026111504 Zobrist placement fingerprints, native STM view, canonical file mirror,63 hash bits+alternating4096-batch source bit; labels/history excluded.",
+        "collision_model_expected_pair_collisions_upper_approx": 7.275069435763726e-12,
+        "limitations": "Fingerprint matches are probabilistic, not exact uniqueness or game independence. Random-hash collision approximation is not a guarantee. No source data or experimental selection is changed."
+      },
+      "input_sha256": "12ac58f254d00805046f11e5c783c02b9d3fd8169a2a33e009b440bb2622b8ac"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "C:/java/jdk-21/bin/javac.exe",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v3\\lib\\*",
+        "-d",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\classes",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\nnue-phase2\\InputOverlapAudit.java"
+      ],
+      "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\compile.log"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=2",
+        "-Xmx2g",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v3\\lib\\*",
+        "InputOverlapAudit",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\mirrored.data",
+        "d6184e12cae6411fd10874ce9e8dc40bd07655a7d82542139b391485a10d40e8",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\mirrored.json"
+      ],
+      "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\mirrored.log"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=2",
+        "-Xmx2g",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v3\\lib\\*",
+        "InputOverlapAudit",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\distinct.data",
+        "b9a7190db8cbcc7699d243db5c2ea782fa0adf40707a5c6410c1fbdc5a32fae4",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\distinct.json"
+      ],
+      "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\distinct.log"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=2",
+        "-Xmx2g",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v3\\lib\\*",
+        "InputOverlapAudit",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\partial.data",
+        "12ac58f254d00805046f11e5c783c02b9d3fd8169a2a33e009b440bb2622b8ac",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\partial.json"
+      ],
+      "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\partial.log"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-XX:ActiveProcessorCount=2",
+        "-Xmx2g",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\classes;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v3\\lib\\*",
+        "InputOverlapAudit",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-data\\train.data",
+        "3a4d8d009e730e2700cf5552b48a165c7cc044d84b3bdb6518a3108d440a5729",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\mixture.json"
+      ],
+      "log": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\d002-input-overlap\\mixture.log"
+    }
+  ],
+  "source_sha256": "221c00adda7c3167c0bbb8fe20abe68eb7eafb5e51164676811c78c97849269b",
+  "class_sha256": "09067c3c28e63898e8ab89c28ab6f6b5386560d0d44ea34511edf4febef9630f",
+  "raw_report_sha256": "8948e068daa9bb680f15d4613ddd8d5442d9974c2b4d2d6c4b99acfc8e5dd7b2",
+  "interpretation": "Source/record accounting audit only. No data mutation and no proof of source-game separation."
+}

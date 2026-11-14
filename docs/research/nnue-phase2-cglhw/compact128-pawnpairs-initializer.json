@@ -1,0 +1,11 @@
+{
+  "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-pilot\\segments\\000001-8c2408ba1608\\run\\initial\\weights.bin",
+  "sha256": "21a8feadf2d62ec113593d0155555db9419e6b65a154fe9de853138dad1f612e",
+  "base_tensors_exact": {
+    "l0b": true,
+    "l0f": true,
+    "l0w": true,
+    "l1b": true,
+    "l1w": true
+  }
+}

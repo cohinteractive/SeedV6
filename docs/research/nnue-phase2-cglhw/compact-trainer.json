@@ -1,0 +1,7 @@
+{
+  "path": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\trainer-compact128-db946920a14e790e84a799a42b3d01c809fa63fb48d02b17617066bfbbdf71f7.exe",
+  "sha256": "db946920a14e790e84a799a42b3d01c809fa63fb48d02b17617066bfbbdf71f7",
+  "source": "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\trainer\\src\\phase2_compact.rs",
+  "source_sha256": "cc36f401c7e7ad4339e2a1eaa0d08a273844b2f91447e044fd9f01d257e36e9d",
+  "runtime_manifest_sha256": "72ea0b9ea508855e9f49696223083fbe5dc010caba7fefadf5a25b92eba464d1"
+}

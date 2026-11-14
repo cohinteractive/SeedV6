@@ -1,0 +1,13 @@
+{
+  "operation": "UPDATE",
+  "id": "4ba7d558-313d-4735-b82e-a9f818e8cc84",
+  "path": "C:\\dev\\tl-local\\seed-phase2-checkpoint-bcfb0919-9d3b-4d5f-a995-6adb3c0eb529.json",
+  "bytes": 2430,
+  "sha256": "36d7d62d4a41c94da9b66859054a86d66ad958fe27f955e9bc8bece0261c96bf",
+  "schema_sha256": "375582db417afefcae28e2b0cd568ecd60445f6f6aae0da61066b28e0374bbe6",
+  "schema_validation": "PASS",
+  "semantic_size_validation": "PASS",
+  "staging": "NOT OBSERVED",
+  "apply": "NOT PERFORMED",
+  "human_action": "Assign intended Phase2 thread, review sequence/current state, explicitly approve V1 legacy/freshness warning and manually Apply; non-blocking for independent repository research"
+}

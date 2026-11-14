@@ -13,7 +13,10 @@ import compute_gate
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('config',type=Path)
-    p.add_argument('--trainer',type=Path,default=ROOT/'build/conventional-nnue/cargo-target/release/seed-phase2-nnue.exe');a=p.parse_args()
+    p.add_argument('--trainer',type=Path,default=ROOT/'build/conventional-nnue/cargo-target/release/seed-phase2-nnue.exe')
+    p.add_argument('--trainer-source',type=Path,default=ROOT/'tools/conventional-nnue/trainer/src/phase2.rs')
+    p.add_argument('--max-native-seconds',type=float,default=3600);a=p.parse_args()
+    if not 0<a.max_native_seconds<=3600:raise ValueError('Native budget outside0..3600 seconds')
     compute_gate.require();source=a.config.resolve();plan=json.loads(source.read_text());out=Path(plan['output'])
     binary=a.trainer.resolve()
     if out.exists():
@@ -22,8 +25,9 @@ def main():
     else:
         out.mkdir(parents=True);(out/'requested-config.json').write_bytes(source.read_bytes())
         write(out/'execution.json',dict(trainer_sha256=sha(binary),config_sha256=sha(source),
-              source_sha256=sha(ROOT/'tools/conventional-nnue/trainer/src/phase2.rs'),
-              bullet='579b78b37a694cacd6e9ede4706386c15c34837c',control_operation=os.environ['SEED_NNUE_OPERATION']))
+              source_sha256=sha(a.trainer_source),
+              bullet='579b78b37a694cacd6e9ede4706386c15c34837c',control_operation=os.environ['SEED_NNUE_OPERATION'],
+              native_wall_budget_seconds=a.max_native_seconds))
     previous=Path(plan['resume']) if plan['resume'] else None;elapsed=0.
     if previous:verify_checkpoint(previous)
     for step in range(plan['start_superbatch'],plan['end_superbatch']+1):
@@ -34,7 +38,7 @@ def main():
             cp=complete[0].parent;config,_=verify_checkpoint(cp)
             if config.get('resume')!=(str(previous) if previous else None):raise ValueError('Broken continuation chain')
             previous=cp;elapsed+=json.loads((cp.parent.parent/'verified.json').read_text())['wall_seconds'];continue
-        if elapsed>=3600:raise RuntimeError('Architecture native wall budget reached; reassess before extending')
+        if elapsed>=a.max_native_seconds:raise RuntimeError('Architecture native wall budget reached; reassess before extending')
         attempt=out/'segments'/f'{step:06d}-{uuid.uuid4().hex[:12]}';attempt.mkdir(parents=True)
         config=dict(plan,output=str(attempt/'run'),start_superbatch=step,end_superbatch=step,resume=str(previous) if previous else None)
         write(attempt/'config.json',config);start=time.monotonic()

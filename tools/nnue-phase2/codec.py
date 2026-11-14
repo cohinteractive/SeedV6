@@ -19,15 +19,16 @@ def sha(path):
     with Path(path).open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 
 
-def shapes(kind):
-    result={'l0w':7680*H,'l0f':768*H,'l0b':H,'l1w':512*8,'l1b':8}
-    if kind==1:result.update(l2w=512*16,l2b=16,l3w=16*8,l3b=8)
-    if kind==2:result['ppw']=4560*H
+def shapes(kind,hidden=H):
+    if type(hidden) is not int or hidden not in (128,256):raise ValueError('Unsupported transformer width')
+    result={'l0w':7680*hidden,'l0f':768*hidden,'l0b':hidden,'l1w':2*hidden*8,'l1b':8}
+    if kind==1:result.update(l2w=2*hidden*16,l2b=16,l3w=16*8,l3b=8)
+    if kind==2:result['ppw']=4560*hidden
     return result
 
 
-def tensors(path,kind):
-    data=Path(path).read_bytes();at=0;result={};expected=shapes(kind)
+def tensors(path,kind,hidden=H):
+    data=Path(path).read_bytes();at=0;result={};expected=shapes(kind,hidden)
     while at<len(data):
         end=data.index(b'\n',at);key=data[at:end].decode('ascii');count,=struct.unpack_from('<Q',data,end+1);at=end+9
         if key in result or expected.get(key)!=count:raise ValueError('Unexpected tensor geometry')
@@ -50,16 +51,16 @@ def verify_checkpoint(path):
     for name,digest in receipt['files'].items():
         if sha(path/name)!=digest:raise ValueError('Checkpoint checksum mismatch: '+name)
     kind=KINDS[config['architecture']]
-    for name in ('weights','momentum','velocity'):tensors(path/f'optimiser_state/{name}.bin',kind)
+    for name in ('weights','momentum','velocity'):tensors(path/f'optimiser_state/{name}.bin',kind,config.get('hidden',256))
     return config,receipt
 
 
 def merged(values,kind):
-    factor=values['l0f']
+    factor=values['l0f'];width=len(values['l0b'])
     first=array.array('f',(x+factor[i%len(factor)] for i,x in enumerate(values['l0w'])))
     if kind==2:first.extend(values['ppw'])
     result=[(first,255),(values['l0b'],255)]
-    for layer,rows,cols in [('l1',8,512)]+([('l2',16,512),('l3',8,16)] if kind==1 else []):
+    for layer,rows,cols in [('l1',8,2*width)]+([('l2',16,2*width),('l3',8,16)] if kind==1 else []):
         result.append((array.array('f',(values[layer+'w'][i*rows+j] for j in range(rows) for i in range(cols))),64))
         result.append((values[layer+'b'],255*64))
     return result
@@ -88,7 +89,7 @@ def wrap_conventional(source,destination):
 
 def export(checkpoint,path):
     checkpoint=Path(checkpoint);path=Path(path);config,receipt=verify_checkpoint(checkpoint);kind=KINDS[config['architecture']]
-    values_by_name=tensors(checkpoint/'optimiser_state/weights.bin',kind)
+    width=config.get('hidden',256);values_by_name=tensors(checkpoint/'optimiser_state/weights.bin',kind,width)
     parts=merged(values_by_name,kind);quant=array.array('h')
     for values,scale in parts:
         for x in values:
@@ -107,9 +108,10 @@ def export(checkpoint,path):
     if sys.byteorder!='little':raw.byteswap()
     if (checkpoint/'raw.bin').read_bytes()!=raw.tobytes():raise ValueError('Native/Python untransformed float mismatch')
     features=7680+(4560 if kind==2 else 0);digest=hashlib.sha256(payload).digest()
-    data=b'S6P2N001'+struct.pack('<9I',1,kind,features,H,16 if kind==1 else 0,255,64,400,len(payload))+digest+payload
+    version=1 if width==256 else 2;schema=f'S6P2N00{version}'
+    data=schema.encode('ascii')+struct.pack('<9I',version,kind,features,width,16 if kind==1 else 0,255,64,400,len(payload))+digest+payload
     with path.open('xb') as f:f.write(data)
-    metadata=dict(schema='S6P2N001',architecture=config['architecture'],hidden=256,output_buckets=8,
+    metadata=dict(schema=schema,architecture=config['architecture'],hidden=width,output_buckets=8,
         features=features,network=str(path),network_sha256=sha(path),payload_sha256=digest.hex(),bytes=len(data),checkpoint=str(checkpoint),receipt_sha256=sha(checkpoint/'receipt.json'))
     with path.with_suffix(path.suffix+'.json').open('x') as f:json.dump(metadata,f,indent=2)
     return metadata
@@ -130,26 +132,27 @@ def features(board,white,kind):
     return sorted(result)
 
 
-def split_flat(flat,kind):
-    count=7680+(4560 if kind==2 else 0);at=count*H
-    parts=[flat[:at],flat[at:at+H]];at+=H
-    for length in [4096,8]+([8192,16,128,8] if kind==1 else []):parts.append(flat[at:at+length]);at+=length
+def split_flat(flat,kind,hidden=H):
+    count=7680+(4560 if kind==2 else 0);at=count*hidden
+    parts=[flat[:at],flat[at:at+hidden]];at+=hidden
+    for length in [2*hidden*8,8]+([2*hidden*16,16,128,8] if kind==1 else []):parts.append(flat[at:at+length]);at+=length
     if at!=len(flat):raise ValueError('Invalid flat geometry')
     return parts
 
 
 def evaluate(parts,board,kind,integer):
-    weights,bias,head,head_bias=parts[:4];fs=[features(board,c,kind) for c in (board.turn,not board.turn)]
-    sums=[[bias[j]+sum(weights[k*H+j] for k in ids) for j in range(H)] for ids in fs]
+    weights,bias,head,head_bias=parts[:4];width=len(bias);inputs=2*width
+    fs=[features(board,c,kind) for c in (board.turn,not board.turn)]
+    sums=[[bias[j]+sum(weights[k*width+j] for k in ids) for j in range(width)] for ids in fs]
     top=255 if integer else 1.;act=[max(0,min(top,x))**2 for side in sums for x in side]
     bucket=(len(board.piece_map())-2)//4
-    dot=sum(x*y for x,y in zip(act,head[bucket*512:(bucket+1)*512]))
+    dot=sum(x*y for x,y in zip(act,head[bucket*inputs:(bucket+1)*inputs]))
     raw=(trunc(dot,255) if integer else dot)+head_bias[bucket]
     direct=raw;hidden=[]
     if kind==1:
         w,b,ow,ob=parts[4:];hidden=[]
         for j in range(16):
-            dot=sum(x*y for x,y in zip(act,w[j*512:(j+1)*512]))
+            dot=sum(x*y for x,y in zip(act,w[j*inputs:(j+1)*inputs]))
             x=trunc(trunc(dot,255)+b[j],64) if integer else dot+b[j]
             hidden.append(max(0,min(top,x))**2)
         extra=sum(x*y for x,y in zip(hidden,ow[bucket*16:(bucket+1)*16]))

@@ -1,7 +1,7 @@
 # Phase 2 research state
 
-Status: ACTIVE — all five training controls and both architecture endpoints assessed;
-final runtime/cost checks pass. Preparing fixed equal-time screens; no scored games yet.
+Status: ACTIVE — S001/D002 and compact128 training/cost qualification completed.
+S002 selects three fixed compact128 development screens; no candidate is accepted.
 Observed start: 2026-11-14T10:26:04Z. Initial HEAD08877838, clean worktree,
 build101; no exact-root CODEXLOG_CURRENT.md. Branch research/nnue-phase2.
 No production change or acceptance is authorized.
@@ -44,11 +44,14 @@ isolated Windows research, not Mac access. Recheck before expensive launches.
 
 | Unit | Hypothesis/decision | Status and next condition |
 |---|---|---|
-| A001 | WDL25's useful recipe survives independent initialization; controls separate supervision, coverage and decay | Freeze matched-seed reproduction and ablations; run first4-superbatch parity pilot, then fixed64 only after it passes |
-| D001 | Existing source metadata can support stronger independence claims | Audit prepared chunk/chain semantics and existing train/validation identities; produce a bounded disjoint diagnostic if justified |
-| B001 | Compact nonlinear downstream capacity can beat width expansion economically | Inspect pinned trainer operations; choose a small residual/downstream pilot, measure actual invocation cost before long play |
-| B002 | Stable pawn relationships supply efficient capacity | Design a bounded symmetric pawn-pair vocabulary with independently testable delta maintenance; first measure refresh/update economics |
-| S001 | Technically qualified candidates compete with production WDL25 | Fresh fixed paired screen; independent confirmation only after candidate selection and prospective family decision |
+| A001 | WDL25's useful recipe survives independent initialization; controls separate supervision, coverage and decay | Five64-game screens audited; broad25% reproduction is plausible, no isolated causal Elo or established superiority |
+| D001 | Existing source metadata can support stronger independence claims | Complete: chunk separation established, game independence unproved; D002 supplements input-frequency accounting |
+| B001 | Compact nonlinear downstream capacity can beat width expansion economically | Deep256+16 is correct and diagnostically better, but its first64-game screen is negative; B003 tests a cheaper formulation |
+| B002 | Stable pawn relationships supply efficient capacity | Pawn256 endpoint is correct but its first64-game screen is negative; B003 tests lower-cost128 formulation |
+| S001 | Technically qualified candidates compete with production WDL25 | All512 games audited without caps; only reproduction has positive point estimate, with interval crossing zero; no confirmation selected |
+| D002 | Broader records may still repeat evaluator inputs | Complete:32.48M additional-only fingerprints;2.83% of added records match original; source-game separation remains unproved |
+| B003 | Depth/relations can replace some accumulator width | All three64 endpoints qualified, zero allocation, matched initializers and full curves; warmed comparative cost complete |
+| S002 | Compact128 cost/capacity trade-offs can compete in equal time | Plan frozen; fixed64-game screens active in order deep128, direct128, pawn128 |
 
 This is a dynamic decision table, not a mandatory implementation checklist.
 Conditional subnetworks, other activations, widths, quantization and threat features
@@ -193,6 +196,13 @@ measured trials and reversed process order. Mean measured NPS: WDL25 production
 before/after controls match nodes/scores/depths/completion/configuration on all48
 requests each. Different learned networks change trees, so their NPS ratios are
 not intrinsic kernel speedups or Elo. Cache/branch hardware counters were not collected.
+
+The separate instrumented fixed-root runs in the endpoint assessments count
+2,110,114 evaluations/2,352,072 nodes for deep256 and2,170,190/2,424,898 for pawn256
+(about90% each). Feature additions per child are8.47 and14.47; perspective
+refreshes per child .198 and .202. These are different learned search trees, not
+an intrinsic paired-cost experiment. They show that downstream evaluation is
+frequent and that stable pawn relationships still add meaningful update work.
 The first cost-driver invocation failed at import before any trials; the corrected
 `raw/comparative-cost-02.log` and original failure are both preserved.
 
@@ -204,17 +214,181 @@ Selected initial game endpoint remains64. If strength/cost evidence leaves a
 credible direction, consider a separately frozen duration/compactness revision;
 do not reject a whole family solely from these endpoints or extend until lucky.
 
-Next: freeze `screen-plan.json` through `run_screens.py --runtime-version 3
---prepare-only`, recheck final UCI runtime, then execute/audit the eight initial
+`screen-plan.json` is frozen and the final UCI runtime passed all nine preflights
+(incumbent plus eight candidates). The first match's actual protocol verifies
+200ms/W1/Hash32/CLV_C1,600-ply censoring,2400-second ceiling, -Xbatch on both sides
+and two fixed-node warmup passes. No interim results guide selection.
+
+Preparation/source/evidence committed as `1341c622da309bfa8aa619a1a54eee453aeb9ef3`
+on research/nnue-phase2; no push. Build101 and production asset bytes are unchanged:
+this commit affects isolated research sources/tooling, not the shipped application.
+Raw models, training output, profiles, runtime copies and games are verified ignored.
+CRLF-aware staged whitespace/JSON/scope checks passed; no active Git hook/finalizer.
+
+Completed operation: `run_screens.py --runtime-version 3`, driver log
+`raw/screen-driver-01.log`, observed exit0. Do not rerun its completed games.
+It executed and audited the eight initial
 64-game paired screens (five training controls, deep16, pawnpairs, exact-weight
 kernel control). All against protected WDL25, same32 roots,200ms/W1/Hash32/CLV_C1,
 with fixed-node warmup and -Xbatch. Each match<=2400s; aggregate initial<=14400s.
 This is a bounded selection stage, not confirmation or an equivalence proof.
+Frozen order: deep16, replica, narrow, teacher, wdl50, pawnpairs, kernel, late.
+Completed-match reports appear as screen-NAME-results.json, with independent legal
+replay/artifact audits. Review whole endpoints; preserve interrupted/failed evidence.
+
+First completed screen: deep16 is8W/33D/23L, no caps, exploratory-82.97 Elo,
+paired-bootstrap95% -149.78..-27.20 (`screen-deep16-results.json`). Independent
+legal replay and all frozen artifacts pass. Disposition: reject this64 endpoint
+at200ms against WDL25; do not infer a family-wide capacity limit. Remaining S001
+comparisons continue unchanged. B003 is now prospectively selected: matched128
+direct/deep/pawn models to test replacement of accumulator width by representation,
+with independent correctness, measured cost and fixed game endpoints. See B003.md.
+
+D002 is also selected (D002.md): a bounded probabilistic input-overlap audit of
+the frozen broad mixture, not a claim of game independence or an instruction to
+change datasets. Its initial process-level queue failed at the handoff described
+below; the audit subsequently ran after all eight screens released the controller.
+Logs/output are raw/d002-input-overlap*. It did not compete with timed games.
+
+Second completed screen: independent-seed replica22W/26D/16L, no caps,
+exploratory+32.67 Elo, paired95% -32.67..+100.42; legal/artifact audit passes
+(`screen-replica-results.json`). It is a plausible candidate, not an established
+improvement or equivalence proof. Source-level and sampling independence are not
+implied by the new initialization seed.
+
+Third completed screen: narrow-data14W/23D/27L, no caps, exploratory-71.57 Elo,
+paired95% -136.97..-10.86; legal/artifact audit passes
+(`screen-narrow-results.json`). This endpoint is uncompetitive against WDL25.
+Together with the matched broad replica, it supports retaining the broad mixture
+for the next architectures, without isolating diversity from sample weighting,
+passes per record, or fixed-order effects. Same-root screening contrasts are
+selection evidence, not independent confirmation or a multi-seed causal estimate.
+
+Fourth completed screen: teacher-only16W/25D/23L, no caps, exploratory-38.15 Elo,
+paired95% -106.35..+27.20; legal/artifact audit passes
+(`screen-teacher-results.json`). Better diagnostic loss did not translate into a
+better screen score than the WDL25 reproduction. Neither this small result nor
+the cross-screen point difference establishes an optimal outcome ratio.
+
+Fifth completed screen: WDL50 is14W/21D/29L, no caps, exploratory-82.97 Elo,
+paired95% -143.33..-21.74; legal/artifact audit passes
+(`screen-wdl50-results.json`). Reject this50% recipe endpoint against WDL25.
+Its weaker common diagnostics and strength screen provide no reason to transfer
+50% supervision to the compact experiments. Retain their prospective25% recipe;
+no general optimum across architectures, seeds or data has been established.
+
+Sixth completed screen: pawnpairs256 is12W/28D/24L, no caps, exploratory-65.92 Elo,
+paired95% -130.69..-5.43; legal/artifact audit passes
+(`screen-pawnpairs-results.json`). Reject this64 endpoint at200ms against WDL25.
+Both initial256 architecture additions are uncompetitive here. Their improving
+training curves and cost penalties leave the already selected compact128
+replacement hypothesis unresolved; do not call either family inherently harmful.
+
+Seventh completed screen: unchanged-weight kernel control19W/20D/25L, no caps,
+exploratory-32.67 Elo, paired95% -77.25..+10.86; legal/artifact audit passes
+(`screen-kernel-results.json`). Exact fixed-node score/tree equivalence and the
+measured throughput gain do not establish equal-time strength. This screen does
+not support a strength-improvement claim or a production change; a small true
+gain remains unresolved. Preserve this negative endpoint without re-running it.
+
+Eighth completed screen: late-decay16W/29D/19L, no caps, exploratory-16.30 Elo,
+paired95% -77.25..+43.66; legal/artifact audit passes
+(`screen-late-results.json`). Early decay has better diagnostics and a higher
+screen point estimate in this matched seed; the small strength samples do not
+establish the isolated effect. S001 finished successfully (driver exit0) at15:08Z.
+
+`s001-summary.json` aggregates the512 audited games and10,887.57 observed match
+seconds. Post-hoc shared-opening score contrasts (replica minus each control,
+percentage points, descriptive paired95%) are teacher+10.16[-3.91,+24.22],
+WDL50+16.41[+2.34,+29.69], narrow+14.84[+3.91,+26.56], late+7.03[-5.47,+18.75].
+These are scores against WDL25, not direct head-to-head Elo; they are not
+multiplicity-adjusted acceptance, independent confirmation, or multi-seed effects.
+
+The PowerShell follow-up queue incorrectly treated Get-Process.ExitCode after
+WaitForExit as failure despite the unified exec observing the screen driver's
+actual exit0. Both dependent queues stopped before D002/build/training. This is a
+supervision handoff failure, not a failed match or a reason to repeat games.
+Recovered from the verified eight audited reports and controller status using
+directly observed child exits. Neither stopped queue remains active.
+
+D002 completed in9.90s, all three synthetic fixtures pass, exact67,108,864-record
+input hash verified (`d002-input-overlap.json`). It found65,642,886 fingerprints
+overall,33,164,045 original and33,164,910 additional, with686,069 shared and
+32,478,841 additional-only. Of the additional33,554,432 records,951,243 (2.83%)
+match original fingerprints. Total duplicate records are1,465,978 (2.18%). The
+broader mixture substantially expands input coverage; this does not isolate the
+Elo contribution of diversity from training frequency or prove game independence.
+The63-bit canonical hash is probabilistic; the stated random-collision upper
+approximation is .000488 expected pairs, not a collision-free guarantee.
+
+B003 implementation and initial endpoints are **qualified for screens**: CompactNetwork/
+Accumulator/VectorHead and probes/tests, explicit S6P2N002/hidden128, separate
+phase2_compact.rs executable, width-aware Python oracle and run_compact.py.
+Java compile and all eight selected tests pass (four CompactNetworkTest and four
+existing Phase2NetworkTest, zero failures/errors/skips). Research workspace installed;
+full engine suite deliberately not run. `raw/compact-java-validation-01.log`.
+Native compact build passed in15.80s (`raw/compact-native-build-01.log`). The width
+oracle's six known-arithmetic cases pass; re-exported256 deep/pawn files are
+byte-identical and all259 accumulators/scores match each prior Java fixture
+(`raw/compact-codec-validation-01/summary.json`). Original trainer binaries,
+protected WDL25 and VERSION101 hashes remain unchanged. Runtime v4 is frozen
+(`frozen-runtime-v4.json`). `run_compact.py --runtime-version 4` finished with
+observed exit0. All4-SB pilots and64 endpoints passed their gates; do not retrain
+completed recipes. Native wall totals986.64s for the trio.
+The direct128 control reached64 and passed259 exact parity probes, GPU tolerance,
+trained incremental/full checks and UCI; zero hot allocation. Teacher/outcome MSE
+.017893933/.070308064, quantization RMS5.96 link units, update+head about386ns
+on the fixed walk (`compact128-base-64-assessment.json`). Prediction loss is
+slightly worse than the256 reproduction; the controlled warmed whole-search
+comparison and strength test remain pending. Deep128 and pawn128 continue in the
+fixed sequence.
+
+Deep128+16 also reached64 and qualified: all259 parity probes, GPU tolerance,
+trained incremental/full and UCI pass; zero allocation, update+head about668ns.
+Teacher/outcome MSE .016535340/.069377701, quantization RMS8.48 link units,
+mean absolute link381.88 (`compact128-deep16-64-assessment.json`). Teacher loss is
+slightly better than deep256 while this fixed-walk cost is much lower; this is a
+credible efficiency hypothesis, not evidence of equal-time strength.
+
+Pawn128 also qualified: teacher/outcome MSE .017446663/.070600296, quantization
+RMS5.88, about636ns/update+head, zero allocation and all259 parity/UCI gates pass.
+`compact128-cost.json` completes the149.23s warmed two-repeat/reversed-order study:
+mean NPS WDL25 production645837, exact-weight kernel695930, direct128923086,
+deep128714819, pawn128624967. All48 unchanged-weight requests match exactly.
+Different learned trees mean these are not intrinsic kernel speedups or Elo.
+All base initializer tensors match across the three compact recipes. Full loss
+curves are retained; final-quarter means continue improving modestly.
+S002.md selects all three for one fixed screen each with explicit economic
+justification. Confirmation/robustness partitions remain unused.
+Completed S001 used immutable v3; these source edits did not change its games.
+Always inspect controller/process ownership before resuming. Logs use
+raw/compact-*-01.log and raw/compact-driver-01.log.
+The compact training driver retained full loss curves and completed its prospective
+reversed-order cost comparison. `run_compact_screens.py --runtime-version 4
+--candidates base deep16 pawnpairs --decision docs/research/nnue-phase2-cglhw/S002.md`
+is now active; driver log raw/compact-screen-driver-01.log. Its frozen plan order
+is deep128, direct128, pawn128. Inspect its process/controller before resume;
+do not duplicate it, modify the frozen decision/runtime/tools or inspect interim
+scores for selection. All192 games receive independent endpoint audits.
+Python AST parsing passes for all20 Phase2 scripts; this is static validation,
+not an executed compact pipeline. A recent resource check found227,009,224,704
+bytes of available disk; this is observed capacity, not a resource reservation.
 
 Threadline CREATE `17030feb-f225-4713-9aa4-c3065adcc796` published atomically to
 `C:/dev/tl-local/seed-phase2-488fb569-3e18-4aa7-9a56-225b48001b3d.json`.
 Schema/semantic/size checks and exact final bytes pass (`threadline-bootstrap-publication.json`).
 Dedicated Playwright lists only about:blank; Threadline staging is not observed.
 No Apply performed. Owner review/manual Apply is non-blocking for this research.
+
+Material S001/D002 UPDATE candidate `4ba7d558-313d-4735-b82e-a9f818e8cc84`
+published atomically to
+`C:/dev/tl-local/seed-phase2-checkpoint-bcfb0919-9d3b-4d5f-a995-6adb3c0eb529.json`.
+2430 bytes; SHA25636d7d62d4a41c94da9b66859054a86d66ad958fe27f955e9bc8bece0261c96bf.
+Current V1 schema/semantic/size checks and exact final bytes pass. Unknown current
+unresolved items and grouping are preserved by omission. Dedicated Playwright
+again shows only about:blank: staging is NOT OBSERVED; Apply NOT PERFORMED.
+Manual target assignment, sequence/current-state review, V1 legacy/freshness
+approval and Apply remain with the owner, non-blocking for repository research.
+See `threadline-s001-checkpoint.json` and `threadline-s001-publication.json`.
 
 Completion criteria: NOT SATISFIED. No new strength winner or promotion recommendation.
