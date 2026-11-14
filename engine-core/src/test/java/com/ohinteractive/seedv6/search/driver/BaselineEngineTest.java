@@ -31,17 +31,25 @@ class BaselineEngineTest {
         try (var driver = new SearchDriver(BaselineEngine.create(evaluation, 4, 1))) {
             assertTrue(driver.search(new SearchRequest(Board.startingPosition(), 3)).targetDepthCompleted());
         }
+        try (var configured = new SearchDriver(BaselineEngine.create(evaluation, 1, 8, ClockPolicy.FACTUAL,
+                     BaselineEngine.SearchProfile.CLV_C1));
+             var control = new SearchDriver(BaselineEngine.configuration(1, 8, BaselineEngine.SearchProfile.CLV_C1).create(evaluation))) {
+            var a = configured.search(new SearchRequest(Board.startingPosition(), 4)).lastCompletedResult();
+            var b = control.search(new SearchRequest(Board.startingPosition(), 4)).lastCompletedResult();
+            assertEquals(b.score(), a.score()); assertEquals(b.nodes(), a.nodes());
+            assertArrayEquals(b.principalVariation(), a.principalVariation());
+        }
     }
     @Test void frozenCompositionAndAllCompetitiveEvaluatorsUseSameSettings() throws Exception {
         for (var choice : BaselineEngine.Evaluator.values()) {
             var engine = BaselineEngine.load(choice);
-            long flags = choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? 3329490943L : 262143;
+            long flags = choice.conventional() ? 3329490943L : 262143;
             assertEquals(flags, BaselineEngine.configuration(engine.evaluation(), 4, 8).mechanisms().flags());
             assertTrue(engine.identity(4, 8).contains("flags=" + flags));
             assertTrue(engine.identity(4, 8).contains("aspiration=ADAPTIVE16;parallel="
-                    + (choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? "EAGER_ROOT" : "ROOT_REUSE")));
+                    + (choice.conventional() ? "EAGER_ROOT" : "ROOT_REUSE")));
             assertTrue(engine.identity(4, 8).contains("workers=4;hashMiB=8"));
-            if (choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64)
+            if (choice.conventional())
                 assertTrue(engine.identity(4, 8).contains("scoreMapping=BT4_Q_LOGIT400_V1"));
             try (var service = engine.service(4, 8)) {
                 service.setBookEnabled(false);

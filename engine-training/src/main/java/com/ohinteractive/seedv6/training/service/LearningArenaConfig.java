@@ -26,13 +26,15 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
         return new LearningArenaConfig(name, a, b, null, 0, 0, 0, seed, arena, Mode.MATCH_ONLY);
     }
     public enum Evaluator {
-        HCE, POLICY4_PAIR2, CONSTRUCTION_V1, HCE_CONSTRUCTION, BREP2_32, CONVENTIONAL_CP64;
-        public boolean competitive() { return this == HCE_CONSTRUCTION || this == BREP2_32 || this == CONVENTIONAL_CP64; }
+        HCE, POLICY4_PAIR2, CONSTRUCTION_V1, HCE_CONSTRUCTION, BREP2_32, CONVENTIONAL_CP64, CONVENTIONAL_WDL25;
+        public boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25; }
+        public boolean competitive() { return this == HCE_CONSTRUCTION || this == BREP2_32 || conventional(); }
         public com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator baseline() {
             return switch (this) {
                 case HCE_CONSTRUCTION -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.HCE;
                 case BREP2_32 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.BREP2_32;
                 case CONVENTIONAL_CP64 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_CP64;
+                case CONVENTIONAL_WDL25 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_WDL25;
                 default -> throw new IllegalArgumentException("Historical profile has no current baseline binding");
             };
         }
@@ -76,6 +78,7 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
                 case HCE -> Evaluator.HCE_CONSTRUCTION;
                 case BREP2_32 -> Evaluator.BREP2_32;
                 case CONVENTIONAL_CP64 -> Evaluator.CONVENTIONAL_CP64;
+                case CONVENTIONAL_WDL25 -> Evaluator.CONVENTIONAL_WDL25;
             };
             return new Competitor(evaluator.label(), choice == com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.BREP2_32
                     ? TrainingArchitecture.BRN_PAIR2 : null, 0, 1, null, null, null, evaluator);
@@ -94,7 +97,7 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
         public Competitor {
             if (name == null || name.isBlank() || minibatch < 1 || minibatch > 100000)
                 throw new IllegalArgumentException("Competitor needs a name and positive minibatch size");
-            if (evaluator == Evaluator.HCE || evaluator == Evaluator.HCE_CONSTRUCTION || evaluator == Evaluator.CONVENTIONAL_CP64) {
+            if (evaluator == Evaluator.HCE || evaluator == Evaluator.HCE_CONSTRUCTION || evaluator != null && evaluator.conventional()) {
                 if (architecture != null || initialModel != null || learningRate != null || nnueObjective != null)
                     throw new IllegalArgumentException("HCE has no network or training recipe");
             } else if (evaluator != null) {

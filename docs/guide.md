@@ -175,21 +175,21 @@ Performance will vary with position, hardware, JVM behaviour, system load, and w
 
 ## Search Architecture
 
-The experimental production default is HL-G1 + bounded capture ProbCut (TC-P1) + Conventional NNUE CP64 (build90).
+The production default is **CLV_C1 + Conventional NNUE WDL25**.
 `BaselineEngine` shares it between Play, ordinary Arena and standalone UCI:
-flattened PVS/ADAPTIVE16, original18 Construction controls, NOMINAL_FUTILITY,
-VERIFIED_NULL, REQUEST_LEARNING, HISTORY_EFFORT and TACTICAL_VERIFICATION
-(**flags1177812991**, profile TC_P1). W1-W16
-are supported with unchanged default1 and ROOT_REUSE at W2-W16. Play and UCI
-own asynchronous jobs through `SearchLifecycleService`; historical training
-profiles retain their existing drivers.
+flattened PVS/ADAPTIVE16, original Construction controls and the adopted CLV_C1
+features (**flags3329490943**). W1-W16 are supported with unchanged default W1,
+OWNER at W1 and EAGER_ROOT cooperation at W2-W16. Play and UCI own asynchronous
+jobs through `SearchLifecycleService`; historical training profiles retain their
+existing drivers. The evaluator promotion does not change any Search heuristic.
 
 Each request owns its coherent `TTable`; each worker owns mutable board/PV,
 ordering, evaluator and retained-learning state. Learning survives iterations and
 retries within one request and is cleared at its boundary. HCE and BREP2-32 retain
 flags262143. BOUNDARY2 remains the managed-clock default with explicit FACTUAL
-fallback. To restore previous CP64 Search policy, set the JVM option
-`-Dseedv6.searchProfile=HL_G1` (flags104071167). `LEGACY` retains flags3407871;
+fallback. `--network cp64` restores CP64 while preserving CLV_C1. Search rollback
+is separate: `-Dseedv6.searchProfile=MW_C4` selects the preceding unified policy;
+TC_P1 and HL_G1 remain explicit controls. `LEGACY` retains flags3407871;
 invalid selectors fail. Explicit Search configurations retain precedence.
 See [promotion/rollback and validation](research/search/p4-tactical/PRODUCTION.md)
 for native/Java launch examples and known W4 uncertainty. Frozen historical
@@ -224,12 +224,12 @@ mirror-dependent planning. Repository changes do not synchronize either Project.
 
 ## UCI and Search Lifecycle
 
-Ordinary `seedv6-uci` and native `SeedV6-UCI` start Construction V1 + CP64 without
+Ordinary `seedv6-uci` and native `SeedV6-UCI` start CLV_C1 + WDL25 without
 arguments or external model files. UCI identity reports the profile, flags,
 checkpoint/schema/heads, network hash, configured workers/hash and build/source.
 Competitive GUI scores use White's perspective. HCE/BREP2-32 use pawn units;
-CP64 displays NNUE score / 100 on its BT4_Q_LOGIT400_V1 teacher-link scale.
-UCI uses side-to-move `cp` as a reporting convention; CP64 values are not source
+WDL25 and CP64 display NNUE score / 100 on the BT4_Q_LOGIT400_V1 link scale.
+UCI uses side-to-move `cp` as a reporting convention; these values are not source
 centipawns or material pawns. Mate scores remain separate. None is an empirically
 fitted winning probability.
 The dedicated `SeedV6-NNUE-CP64` launcher preserves one-worker E008 comparison.
@@ -261,9 +261,56 @@ model input described in [packaging](unified-architecture/WU7-PACKAGING.md).
 Keep the complete `SeedV6-UCI` image, including both JARs, its runtime and
 `models/baseline.brn-pair2`; point a UCI client at its `SeedV6-UCI` executable launcher.
 Preserve executable permissions when extracting. Replacing only the launcher
-does not update engine code or book resources. Both frozen evaluators come from
-tracked assets; CP64 is embedded and strictly validated. No manual model transfer
-or training store is required. Missing/invalid CP64 never falls back to Gen32.
+does not update engine code or book resources. WDL25, CP64 and Gen32 come from
+tracked assets; both NNUE models are embedded in `engine-core.jar` and strictly
+validated. No manual model transfer or training store is required. Missing/invalid
+selected NNUE weights fail closed, without fallback to another model.
+
+### WDL25 production, rollback and BotLi
+
+The exact promoted resource is `build-assets/production/conventional-wdl25.cnnue`,
+SHA-256 `a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab`.
+Its adjacent manifest identifies the completed research and original export.
+Both models use the original 256-unit inference kernel and unchanged CLV_C1.
+Use `--network wdl25` explicitly, or omit arguments for the production default.
+Use `--network cp64` for rollback with the same Search configuration. The GUI
+provides both named evaluators. The historical `SeedV6-NNUE-CP64` executable is
+E008 and is not the CLV_C1 rollback selector.
+
+Windows local builds: `gradlew.bat packageWindows`; outputs are
+`releases/current/windows-x64/SeedV6-UCI/SeedV6-UCI.exe` and
+`dist/windows/current/SeedV6-GUI/SeedV6-GUI.exe`, with ZIPs beside their image
+folders. `:app-uci:distZip :app-uci:distTar :app-uci:installDist` additionally
+produce portable Java launchers requiring an installed Java 21 runtime.
+
+For the Apple Silicon BotLi host, synchronize the reviewed source commit using
+the normal owner-controlled Git workflow, then run on that Mac:
+
+```sh
+./gradlew --no-daemon :app-uci:packageMac
+printf 'uci\nsetoption name Show Search Configuration\nisready\nquit\n' | \
+  ./releases/current/macos-arm64/SeedV6-UCI/SeedV6-UCI
+```
+
+The packaging task verifies the native and relocated executable before completing.
+Confirm `model=WDL25`, the hash above and `searchProfile=CLV_C1` in its diagnostics.
+A Windows `.exe` cannot run on this Mac. Native Mac verification must run there;
+Windows testing and a portable archive do not establish native Mac acceptance.
+Keep the complete new image and the previous engine image. In the existing BotLi
+configuration, change only `engines.standard.dir` to the new `SeedV6-UCI` image
+folder and `engines.standard.name` to `SeedV6-UCI`; preserve current Threads,
+Hash, book, ponder, time-control and matchmaking settings. The recorded BotLi
+configuration is `/Users/charlesclark/chess/BotLi/config.yml`; verify the currently
+used configuration before editing. Starting or restarting BotLi remains an owner
+operation after current games finish and offline verification passes.
+
+For immediate operational rollback, restore the previous BotLi directory/name.
+To use CP64 with the newly built CLV_C1 executable, invoke it with `--network cp64`
+(or point BotLi to a small executable wrapper that supplies those arguments).
+Research uses explicit network paths and explicit Search configuration through
+`NnueStrengthUciMain` / `paired_match.py --strength-research`, independently of the
+production default. Compare future candidates with either retained network; never
+reuse mutable `current` packages as a frozen experimental runtime.
 
 Focused real-process verification (all paths below are local to Unified):
 
@@ -583,8 +630,8 @@ manual Move action, SAN conversion or historical position navigation were added.
 The Engine card consumes existing completed-iteration publications on the EDT.
 Depth, NPS and elapsed time describe the last completed iteration (time is not a
 live chess clock). Scores and the evaluation bar use White's perspective.
-HCE and BREP2-32 display pawn units; conventional CP64 displays NNUE score / 100
-with an explicit teacher-link-scale explanation. Historical NNUE V1 retains its
+HCE and BREP2-32 display pawn units; WDL25 and CP64 display NNUE score / 100
+with an explicit expected-score-link explanation. Historical NNUE V1 retains its
 own raw-unit labels. None is a fitted win probability.
 The bar uses a bounded presentation mapping and does no additional evaluation.
 There are no new engine callbacks, search polling loops or engine dependencies
@@ -605,17 +652,18 @@ writes renderings to `app/build/gui-smoke/`. The slow `NnueGuiSmokeTest` also
 exercises evaluator changes, simultaneous Play/Training and safe shutdown.
 
 In Engine vs Engine, **White Engine** and **Black Engine** independently select
-exactly **HCE**, **BREP2-32** or **Conventional NNUE CP64**, defaulting to CP64.
-Both frozen networks are bundled. **Swap Sides** transfers the selections;
+**HCE**, **BREP2-32**, **Conventional NNUE WDL25** or **Conventional NNUE CP64**,
+defaulting to WDL25. All frozen networks are bundled. **Swap Sides** transfers the selections;
 Start Game pins separate evaluator/search state even for identical weights.
 All choices use Construction V1 and common limits. Changing selections affects
 the next game. Missing/invalid payloads fail visibly without fallback. A saved
 historical or unknown evaluator blocks Start with a visible explanation until
 an explicit supported choice is made.
 
-Human vs Engine offers the same three choices and its own remembered selection,
+Human vs Engine offers the same four choices and its own remembered selection,
 for either human colour. Active diagnostics identify the effective profile,
-checkpoint, workers and build/source. Frozen CP64 is not a training lineage.
+checkpoint, workers and build/source. Frozen WDL25 and CP64 are not training lineages.
+Existing explicit GUI selections remain remembered; choose WDL25 to change a saved CP64 selection.
 
 Historical lineage browsing remains in training/library workflows, separate from
 normal competitive selectors. It reads bounded advisory metadata off the EDT; loading verifies payload

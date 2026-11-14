@@ -19,6 +19,7 @@ apply from: rootProject.file('gradle/syzygy.gradle')
 tasks.named('processResources') {
     from(rootProject.file('build-assets/production/bre-pair2-g32.brn-pair2')) { into 'models' }
     from(rootProject.file('build-assets/nnue-candidate/conventional-cp64.cnnue')) { into 'models' }
+    from(rootProject.file('build-assets/production/conventional-wdl25.cnnue')) { into 'models' }
 }
 
 tasks.withType(Test).configureEach {

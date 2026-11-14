@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductionBaselineDesktopTest {
     @TempDir Path temporary;
 
-    @Test void freshPlayLoadsCp64AndSearchesWithoutAStore() throws Exception {
+    @Test void freshPlayLoadsWdl25AndSearchesWithoutAStore() throws Exception {
         Assumptions.assumeFalse(GraphicsEnvironment.isHeadless(), "Native desktop required");
         var frame = edt(() -> new ChessFrame(TrainingSettings.defaults(temporary, NetworkArchitecture.NNUE),
                 new TrainingController.Backend(), ignored -> {}));
@@ -26,9 +26,9 @@ class ProductionBaselineDesktopTest {
             controllerField.setAccessible(true);
             var controller = (GameController) controllerField.get(frame);
             edt(() -> {
-                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, named(frame, "playEvaluator", JComboBox.class).getSelectedItem());
-                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, named(frame, "whiteEvaluator", JComboBox.class).getSelectedItem());
-                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, named(frame, "blackEvaluator", JComboBox.class).getSelectedItem());
+                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_WDL25, named(frame, "playEvaluator", JComboBox.class).getSelectedItem());
+                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_WDL25, named(frame, "whiteEvaluator", JComboBox.class).getSelectedItem());
+                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_WDL25, named(frame, "blackEvaluator", JComboBox.class).getSelectedItem());
                 named(frame, "playThreads", JSpinner.class).setValue(1);
                 named(frame, "playDepth", JSpinner.class).setValue(3);
                 // Normal GUI enables its book; use a legal non-book position to require evaluation.
@@ -50,7 +50,7 @@ class ProductionBaselineDesktopTest {
         }
     }
 
-    @Test void legacyPlayChoiceRequiresExplicitSelectionAndArenaDefaultsToCp64() throws Exception {
+    @Test void legacyPlayChoiceRequiresExplicitSelectionAndArenaDefaultsToWdl25() throws Exception {
         var preferences = java.util.prefs.Preferences.userRoot().node("seedv6-baseline-test-" + java.util.UUID.randomUUID());
         try {
             preferences.put("evaluator", PlayEvaluator.Mode.CONSTRUCTION_V1.name());
@@ -61,7 +61,7 @@ class ProductionBaselineDesktopTest {
                 assertTrue(edt(play::error).contains("CONSTRUCTION_V1"));
                 edt(() -> { play.evaluator.setSelectedItem(PlayEvaluator.Mode.BREP2_32); return null; });
                 assertTrue(edt(play::validSelection));
-                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64, edt(arena::selectedMode));
+                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_WDL25, edt(arena::selectedMode));
             } finally { edt(() -> { play.dispose(); arena.dispose(); return null; }); }
         } finally { preferences.removeNode(); }
     }

@@ -44,11 +44,11 @@ final class PlayEnginePanel extends JPanel {
                         ? "HCE" : value == PlayEvaluator.Mode.BEST_NNUE ? "Network (production Search)" : value, index, selected, focus);
             }
         });
-        var savedMode = PlayEvaluator.Mode.CONVENTIONAL_CP64;
+        var savedMode = PlayEvaluator.Mode.CONVENTIONAL_WDL25;
         if (preferences != null && !side.equals("opponent")) {
             try { savedMode = PlayEvaluator.Mode.valueOf(preferences.get("evaluator", savedMode.name())); }
             catch (IllegalArgumentException obsolete) { legacySelection = preferences.get("evaluator", "unknown"); }
-            if (!savedMode.competitive()) { legacySelection = savedMode.name(); savedMode = PlayEvaluator.Mode.CONVENTIONAL_CP64; }
+            if (!savedMode.competitive()) { legacySelection = savedMode.name(); savedMode = PlayEvaluator.Mode.CONVENTIONAL_WDL25; }
         }
         evaluator.setSelectedItem(savedMode);
         if (!side.equals("opponent")) {
@@ -79,8 +79,8 @@ final class PlayEnginePanel extends JPanel {
         description.setVisible(fixedBinding != null || !storedNetwork());
         if (fixedBinding == null) description.setText(legacySelection != null ? error() : preset() ? selectedMode().toString() : "HCE does not use a checkpoint.");
         if (fixedBinding == null) description.setToolTipText(preset()
-                ? selectedMode() == PlayEvaluator.Mode.CONVENTIONAL_CP64
-                    ? "Bundled checkpoint 64, eight material heads; Construction V1; configured workers; Hash 64 MiB; ADAPTIVE16 aspiration."
+                ? selectedMode().conventional()
+                    ? "Bundled checkpoint 64, eight material heads; CLV_C1; configured workers; Hash 64 MiB; ADAPTIVE16 aspiration."
                     : "Bundled, SHA-256 verified Pair-2 generation 32; Construction V1; configured workers; Hash 64 MiB; ADAPTIVE16 aspiration." : null);
         revalidate();
     }
@@ -91,10 +91,7 @@ final class PlayEnginePanel extends JPanel {
     }
     LearningArenaConfig.Competitor fixedCompetitor() {
         if (!validSelection()) throw new IllegalStateException("Select an evaluator and an available network generation");
-        if (selectedMode().competitive()) return LearningArenaConfig.Competitor.competitive(
-                selectedMode() == PlayEvaluator.Mode.HANDCRAFTED ? com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.HCE
-                : selectedMode() == PlayEvaluator.Mode.BREP2_32 ? com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.BREP2_32
-                : com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_CP64);
+        if (selectedMode().competitive()) return LearningArenaConfig.Competitor.competitive(selectedMode().baselineChoice());
         if (preset()) return LearningArenaConfig.Competitor.pinned(selectedMode().policy());
         return handcrafted() ? LearningArenaConfig.Competitor.handcrafted()
                 : LearningArenaConfig.Competitor.fixed(model.binding());
@@ -102,13 +99,14 @@ final class PlayEnginePanel extends JPanel {
     void loadFixed(LearningArenaConfig.Competitor competitor) {
         fixedBinding = competitor;
         editing = false;
-        // A disabled saved binding may name a historical profile outside the three
+        // A disabled saved binding may name a historical profile outside the current
         // current choices. Preserve that displayed identity without adding a menu item.
         evaluator.getModel().setSelectedItem(competitor.evaluator() != null && competitor.evaluator().competitive()
                 ? switch (competitor.evaluator()) {
                     case HCE_CONSTRUCTION -> PlayEvaluator.Mode.HANDCRAFTED;
                     case BREP2_32 -> PlayEvaluator.Mode.BREP2_32;
                     case CONVENTIONAL_CP64 -> PlayEvaluator.Mode.CONVENTIONAL_CP64;
+                    case CONVENTIONAL_WDL25 -> PlayEvaluator.Mode.CONVENTIONAL_WDL25;
                     default -> throw new IllegalStateException();
                 } : competitor.isPinned() ? competitor.evaluator() == LearningArenaConfig.Evaluator.CONSTRUCTION_V1
                 ? PlayEvaluator.Mode.CONSTRUCTION_V1 : PlayEvaluator.Mode.POLICY4_PAIR2
@@ -123,7 +121,7 @@ final class PlayEnginePanel extends JPanel {
     }
     void clearFixed() {
         fixedBinding = null;
-        if (!selectedMode().competitive()) evaluator.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
+        if (!selectedMode().competitive()) evaluator.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_WDL25);
         description.setToolTipText(null);
         setEditable(true);
     }

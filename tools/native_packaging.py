@@ -602,7 +602,7 @@ def package_locked(a, context, jars, output):
                      'workerRouting': {'W1': {'formulation': 'CLV-C1', 'flags': CP64_CLV_C1_FLAGS, 'parallel': 'OWNER'},
                                        'W2-W16': {'formulation': 'CLV-C1', 'flags': CP64_CLV_C1_FLAGS,
                                                    'parallel': 'EAGER_ROOT'}},
-                     'evaluator': 'Conventional NNUE CP64', 'schema': 'S6CNU002', 'materialHeads': 8,
+                     'evaluator': 'Conventional NNUE WDL25', 'schema': 'S6CNU002', 'materialHeads': 8,
                      'configuration': identity['baseline.identity']},
                   'coreInputs': {n: v for n, v in context['source']['files'].items()
                                   if n.startswith('engine-core/src/main/') or n in (

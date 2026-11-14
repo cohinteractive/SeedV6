@@ -33,7 +33,7 @@ class EngineFormulationTest {
             assertTrue(BaselineEngine.productionFormulation().contains("W1-W16: CLV-C1"));
             assertTrue(BaselineEngine.productionFormulation().contains(normal.searchName()));
             for (var profile : BaselineEngine.SearchProfile.values()) {
-                var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64,
+                var explicit = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_WDL25,
                         ClockPolicy.BOUNDARY2, profile).formulation(1, 64);
                 assertEquals(profile == BaselineEngine.SearchProfile.TC_P1 || profile == BaselineEngine.SearchProfile.MW_C4_W4
                         || profile == BaselineEngine.SearchProfile.MW_C4 || profile == BaselineEngine.SearchProfile.CLV_C1,

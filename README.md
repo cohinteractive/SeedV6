@@ -6,12 +6,14 @@ fixed-work comparisons. Its unique resume entry point preserves older completed
 and suspended programmes separately; it does not authorize production promotion.
 
 SeedV6 is a Java 21 chess engine with UCI, desktop Play, and Network Training.
-The rolling production default is **MW-C4 EAGER_MEMORY across W1-W16**, with
-Conventional NNUE CP64. GUI Play, built-in Arena and UCI share engine-core's
-`BaselineEngine`. Normal profile **MW_C4** needs no property and selects
-**flags1182007295** at every worker count: guarded current-generation TT scores
-over TC-P1, single-owner execution at W1 and **EAGER_ROOT** cooperation at W2-W16.
-PVS/ADAPTIVE16, CP64, default W1 and bounded Max are unchanged.
+The production default is **CLV_C1 across W1-W16 with Conventional NNUE WDL25**.
+GUI Play, built-in Arena and UCI share engine-core's `BaselineEngine`, selecting
+**flags3329490943** at every worker count: OWNER execution at W1 and EAGER_ROOT
+cooperation at W2-W16. PVS/ADAPTIVE16, BOUNDARY2, default W1 and bounded Max remain.
+The [WDL25 research confirmation](docs/research/conventional-nnue-cglhw/strength-20261114/REPORT.md)
+estimated +63.8 Elo against CP64 at W1/Hash32/200ms per move; other clocks,
+platforms and worker counts are not covered by that strength claim. The owner
+separately authorized production promotion. **CP64 remains bundled for rollback.**
 
 MW-R001's independent W4 result passed its original strength criterion in the
 documented 10+0.1 Windows/Java21 cold-JVM domain. Other worker-count strength,
@@ -19,7 +21,8 @@ longer clocks, warmed persistent clients and other platforms remain unqualified.
 **HL-G1/build84** remains the W1 research champion; **P4-BASELINE-001/build79**
 remains immutable. Original TC-P1/build90 and frozen MW-C4/build94 retain their identities.
 
-Use **`-Dseedv6.searchProfile=TC_P1`** for exact previous TC-P1 at every worker count.
+Explicit **`-Dseedv6.searchProfile=MW_C4`** restores the preceding Search policy;
+**TC_P1** remains available at every worker count. These change Search, not the model.
 Explicit **MW_C4_W4** preserves the historical build96 worker-dependent selector.
 **HL_G1** remains flags104071167 and **LEGACY** flags3407871; invalid selectors fail.
 Frozen research profiles and independent controls retain their meanings.
@@ -59,8 +62,8 @@ Start with the [architecture and source boundaries](docs/architecture.md) and
 The [construction and CP64 consolidation record](docs/research/search/P3_CONSTRUCTION_2026-10-20.md#construction-v1--cp64-consolidation-23-october-2026)
 preserves the original composition, score semantics, worker checks, packaging and
 informational E008 comparison; the later selections are recorded above. Competitive
-GUI selectors offer exactly HCE, BREP2-32 and Conventional NNUE CP64, defaulting to CP64. All
-three use Construction V1 and honor the same resource settings; HCE and BREP2-32
+GUI selectors offer HCE, BREP2-32, Conventional NNUE WDL25 and CP64, defaulting to WDL25. All
+four use Construction V1 and honor the same resource settings; HCE and BREP2-32
 retain flags262143 without the CP64-calibrated additions. Frozen conventional
 NNUE is unavailable in Network Training or Arena learning mode.
 
@@ -73,12 +76,14 @@ records. Their scores and experiments are not attributed to the new baseline.
 The [NNUE strength campaign](docs/research/conventional-nnue-cglhw/strength-20261114/REPORT.md)
 compares evaluator architectures and training changes against protected CP64 with
 identical CLV_C1 search. Its configurations, measurements and local artifact paths
-are recorded together; production remains the frozen CP64 incumbent.
+are recorded together. WDL25 is now the production incumbent; CP64 remains the
+historical comparison baseline. Frozen campaign evidence remains unchanged.
 
 The separate `seedv6-nnue-cp64` / native `SeedV6-NNUE-CP64` launcher preserves
 **E008 + CP64**, with one worker, for reproducible comparison and historical use.
 See the [candidate guide](docs/nnue-botli-candidate.md). Standard `seedv6-uci` /
-`SeedV6-UCI` now starts Construction V1 + CP64 with no arguments. Native macOS
+`SeedV6-UCI` starts CLV_C1 + WDL25 with no arguments. Use `--network cp64`
+for CP64 with the same CLV_C1 Search, or `--network wdl25` explicitly. Native macOS
 acceptance remains a separate handoff; live BotLi activation is outside this work.
 
 The [unified architecture migration contract](docs/unified-architecture/CONTRACT.md)
@@ -99,8 +104,9 @@ for launch instructions, compatibility profiles and the remaining acceptance gat
 On other platforms use `./gradlew` and the generated `seedv6` launcher.
 
 The standalone production UCI application uses only `engine-core` and the frozen
-CP64 payload embedded in its JAR. Ordinary Git clones include the approved asset
-at `build-assets/nnue-candidate/conventional-cp64.cnnue` and its identity manifest.
+WDL25 payload embedded in `engine-core.jar`. Ordinary Git clones include
+`build-assets/production/conventional-wdl25.cnnue` and its provenance manifest.
+The CP64 resource remains at `build-assets/nnue-candidate/conventional-cp64.cnnue`.
 For a Java-only development distribution:
 
 ```powershell
@@ -109,8 +115,8 @@ $env:GRADLE_USER_HOME = "$PWD/build/migration/gradle-user-home"
 .\app-uci\build\install\seedv6-uci\bin\seedv6-uci.bat
 ```
 
-Native packaging bundles CP64 and the alternate Gen32 evaluator. Missing, corrupt
-or different CP64 bytes fail explicitly; there is no fallback to Gen32. Explicit
+Native packaging embeds both WDL25 and CP64, plus the alternate Gen32 evaluator.
+Missing, corrupt or different selected weights fail explicitly, without model fallback. Explicit
 `--model <Gen32-file>` retains the historical Policy 4 configuration; `--nnue`
 retains the older unpruned research path, neither being the normal launch.
 The legacy `seedv6` launcher retains its HCE evaluator. Both UCI launchers default

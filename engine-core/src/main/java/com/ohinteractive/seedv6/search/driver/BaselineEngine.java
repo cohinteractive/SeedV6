@@ -18,10 +18,11 @@ import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
 /** Authoritative competitive engine composition. Mutable search state is per owner/worker.
  * Historical ProductionSearch, PinnedSearch and ConventionalNnueEngine retain their identities. */
 public final class BaselineEngine {
-    // Frozen S6CNU002 CP64 payload; unrelated conventional checkpoints retain original V1.
-    private static final String CP64_PAYLOAD_SHA256 = "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6";
-    public enum Evaluator { HCE, BREP2_32, CONVENTIONAL_CP64 }
-    /** CP64 production policy only; explicit ConstructionSearch controls bypass this selector. */
+    public enum Evaluator {
+        HCE, BREP2_32, CONVENTIONAL_CP64, CONVENTIONAL_WDL25;
+        public boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25; }
+    }
+    /** Adopted conventional production policy; explicit research controls bypass payload selection. */
     public enum SearchProfile {
         TC_P1, HL_G1, LEGACY, MW_C4, MW_C4_W4, CLV_C1;
         public static final SearchProfile PRODUCTION_DEFAULT = CLV_C1;
@@ -47,12 +48,12 @@ public final class BaselineEngine {
         this.evaluation = evaluation;
         this.conventional = conventional;
     }
-    public static BaselineEngine load() throws IOException { return load(Evaluator.CONVENTIONAL_CP64); }
+    public static BaselineEngine load() throws IOException { return load(Evaluator.CONVENTIONAL_WDL25); }
     public static BaselineEngine load(Evaluator evaluator) throws IOException {
         return load(evaluator, ClockPolicy.configured());
     }
     public static BaselineEngine load(Evaluator evaluator, ClockPolicy clockPolicy) throws IOException {
-        return load(evaluator, clockPolicy, evaluator == Evaluator.CONVENTIONAL_CP64
+        return load(evaluator, clockPolicy, evaluator.conventional()
                 ? SearchProfile.configured() : SearchProfile.LEGACY);
     }
     /** Explicit API selection precedes the JVM property and is fixed for this binding's lifetime. */
@@ -60,13 +61,14 @@ public final class BaselineEngine {
         return switch (evaluator) {
             case HCE -> new BaselineEngine(evaluator, SearchEvaluation.handcrafted(), null, clockPolicy, profile);
             case BREP2_32 -> new BaselineEngine(evaluator, SearchEvaluation.brnPair2(ProductionModel.bundled()), null, clockPolicy, profile);
-            case CONVENTIONAL_CP64 -> {
-                var network = ConventionalNnueEngine.load();
+            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25 -> {
+                var network = ConventionalNnueEngine.loadBundled(evaluator == Evaluator.CONVENTIONAL_CP64
+                        ? ConventionalNnueEngine.Model.CP64 : ConventionalNnueEngine.Model.WDL25);
                 yield new BaselineEngine(evaluator, network.evaluation(), network, clockPolicy, profile);
             }
         };
     }
-    /** Selected frozen-CP64 default; evaluator-aware callers use the overload below. */
+    /** Selected production search; evaluator-aware callers use the overload below. */
     public static ConstructionSearch configuration(int workers, int hashMiB) {
         return configuration(workers, hashMiB, SearchProfile.configured());
     }
@@ -100,17 +102,17 @@ public final class BaselineEngine {
     }
     /** Calibrated production selection; explicit ConstructionSearch controls remain independent. */
     public static ConstructionSearch configuration(SearchEvaluation evaluation, int workers, int hashMiB) {
-        return evaluation.matchesConventionalPayload(CP64_PAYLOAD_SHA256)
+        return adoptedConventional(evaluation)
                 ? configuration(workers, hashMiB)
                 : ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
     }
     public static ConstructionSearch legacyConfiguration(SearchEvaluation evaluation, int workers, int hashMiB) {
-        return evaluation.matchesConventionalPayload(CP64_PAYLOAD_SHA256)
+        return adoptedConventional(evaluation)
                 ? legacyConfiguration(workers, hashMiB)
                 : ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
     }
     private ConstructionSearch selectedConfiguration(int workers, int hashMiB) {
-        return evaluation.matchesConventionalPayload(CP64_PAYLOAD_SHA256)
+        return evaluator.conventional()
                 ? configuration(workers, hashMiB, searchProfile)
                 : ConstructionSearch.v1(workers, hashMiB, AspirationSearch.Policy.ADAPTIVE16);
     }
@@ -119,6 +121,15 @@ public final class BaselineEngine {
     }
     public static SingleDepthSearch create(SearchEvaluation evaluation, int workers, int hashMiB, ClockPolicy clocks) {
         return Objects.requireNonNull(clocks).apply(configuration(evaluation, workers, hashMiB).create(evaluation));
+    }
+    /** Explicit research policy never falls back because a candidate has an unknown payload. */
+    public static SingleDepthSearch create(SearchEvaluation evaluation, int workers, int hashMiB,
+                                          ClockPolicy clocks, SearchProfile profile) {
+        return Objects.requireNonNull(clocks).apply(configuration(workers, hashMiB, profile).create(evaluation));
+    }
+    private static boolean adoptedConventional(SearchEvaluation evaluation) {
+        return evaluation.matchesConventionalPayload(ConventionalNnueEngine.Model.CP64.payloadSha256())
+                || evaluation.matchesConventionalPayload(ConventionalNnueEngine.Model.WDL25.payloadSha256());
     }
     public SingleDepthSearch create(int workers, int hashMiB) {
         return clockPolicy.apply(selectedConfiguration(workers, hashMiB).create(evaluation));
@@ -142,8 +153,9 @@ public final class BaselineEngine {
             case HCE -> "evaluator=HCE";
             case BREP2_32 -> "evaluator=BREP2_32 checkpoint=" + ProductionModel.CHECKPOINT
                     + " networkSha256=" + ProductionModel.SHA256 + " mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1";
-            case CONVENTIONAL_CP64 -> "evaluator=CONVENTIONAL_NNUE checkpoint=64 schema=" + conventional.model().schema()
-                    + " heads=" + conventional.model().outputBuckets() + " networkSha256=" + ConventionalNnueEngine.SHA256
+            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25 -> "evaluator=CONVENTIONAL_NNUE model=" + conventional.selection()
+                    + " checkpoint=64 schema=" + conventional.model().schema()
+                    + " heads=" + conventional.model().outputBuckets() + " networkSha256=" + conventional.selection().sha256()
                     + " payload=" + conventional.model().payloadSha256() + " head=" + conventional.model().headBackend()
                     + " scoreMapping=" + ConventionalNnueEngine.SCORE_MAPPING;
         };
@@ -153,9 +165,9 @@ public final class BaselineEngine {
             case HCE -> "HCE (handcrafted)";
             case BREP2_32 -> "BREP2-32 · checkpoint " + ProductionModel.CHECKPOINT
                     + " · SHA-256 " + ProductionModel.SHA256.substring(0, 12);
-            case CONVENTIONAL_CP64 -> "Conventional NNUE CP64 · " + conventional.model().schema()
+            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25 -> "Conventional NNUE " + conventional.selection() + " · " + conventional.model().schema()
                     + " · " + conventional.model().outputBuckets() + " heads · SHA-256 "
-                    + ConventionalNnueEngine.SHA256.substring(0, 12);
+                    + conventional.selection().sha256().substring(0, 12);
         };
         return new EngineFormulation(selectedConfiguration(workers, hashMiB), label, evaluatorIdentity(), clockPolicy);
     }
@@ -169,8 +181,8 @@ public final class BaselineEngine {
     public String identity(int workers, int hashMiB) {
         var version = ApplicationVersion.load();
         var configuration = selectedConfiguration(workers, hashMiB);
-        return "baseline=construction-v1-" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? "cp64" : evaluator.name())
-                + " searchProfile=" + (evaluator == Evaluator.CONVENTIONAL_CP64 ? searchProfile : "CONSTRUCTION_V1")
+        return "baseline=construction-v1-" + (evaluator.conventional() ? conventional.selection().name().toLowerCase(Locale.ROOT) : evaluator.name())
+                + " searchProfile=" + (evaluator.conventional() ? searchProfile : "CONSTRUCTION_V1")
                 + " search=construction-v1 flags=" + configuration.mechanisms().flags()
                 + " configuration=" + configuration.identity() + " " + evaluatorIdentity()
                 + " clockPolicy=" + clockPolicy.identity()

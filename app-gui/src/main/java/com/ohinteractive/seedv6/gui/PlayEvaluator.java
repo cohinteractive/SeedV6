@@ -14,9 +14,10 @@ import com.ohinteractive.seedv6.training.checkpoint.CheckpointStore;
 record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchEvaluation evaluation, com.ohinteractive.seedv6.training.model.TrainingArchitecture architecture, com.ohinteractive.seedv6.training.model.ModelLibrary.Binding binding, PinnedSearch pinned, ConventionalNnueEngine conventional, BaselineEngine baseline) {
     PlayEvaluator {
         java.util.Objects.requireNonNull(mode);
-        if ((mode == Mode.CONVENTIONAL_CP64) != (conventional != null)
+        if (mode.conventional() != (conventional != null)
                 || conventional != null && (evaluation != conventional.evaluation()
-                || !ConventionalNnueEngine.SHA256.equals(networkHash) || !"64".equals(checkpointId)))
+                || conventional.selection() != mode.model()
+                || !conventional.selection().sha256().equals(networkHash) || !"64".equals(checkpointId)))
             throw new IllegalArgumentException("Conventional gameplay requires its verified checkpoint-64 binding");
         if (baseline != null && (!mode.competitive() || evaluation != baseline.evaluation()))
             throw new IllegalArgumentException("Competitive gameplay requires its shared baseline evaluator");
@@ -60,10 +61,28 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     enum Mode {
         HANDCRAFTED("HCE"), BEST_NNUE("Best NNUE"),
         POLICY4_PAIR2("Policy 4 / Pair-2 g32"), CONSTRUCTION_V1("construction-v1 / Pair-2 g32 (experimental)"),
-        CONVENTIONAL_CP64("Conventional NNUE CP64"), BREP2_32("BREP2-32");
-        static Mode[] competitiveChoices() { return new Mode[]{HANDCRAFTED, BREP2_32, CONVENTIONAL_CP64}; }
-        boolean competitive() { return this == HANDCRAFTED || this == BREP2_32 || this == CONVENTIONAL_CP64; }
-        boolean bundled() { return pinned() || this == CONVENTIONAL_CP64 || this == BREP2_32; }
+        CONVENTIONAL_CP64("Conventional NNUE CP64"), BREP2_32("BREP2-32"),
+        CONVENTIONAL_WDL25("Conventional NNUE WDL25");
+        static Mode[] competitiveChoices() { return new Mode[]{HANDCRAFTED, BREP2_32, CONVENTIONAL_WDL25, CONVENTIONAL_CP64}; }
+        boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25; }
+        boolean competitive() { return this == HANDCRAFTED || this == BREP2_32 || conventional(); }
+        boolean bundled() { return pinned() || conventional() || this == BREP2_32; }
+        ConventionalNnueEngine.Model model() {
+            return switch (this) {
+                case CONVENTIONAL_CP64 -> ConventionalNnueEngine.Model.CP64;
+                case CONVENTIONAL_WDL25 -> ConventionalNnueEngine.Model.WDL25;
+                default -> throw new IllegalArgumentException("Not conventional NNUE: " + this);
+            };
+        }
+        BaselineEngine.Evaluator baselineChoice() {
+            return switch (this) {
+                case HANDCRAFTED -> BaselineEngine.Evaluator.HCE;
+                case BREP2_32 -> BaselineEngine.Evaluator.BREP2_32;
+                case CONVENTIONAL_CP64 -> BaselineEngine.Evaluator.CONVENTIONAL_CP64;
+                case CONVENTIONAL_WDL25 -> BaselineEngine.Evaluator.CONVENTIONAL_WDL25;
+                default -> throw new IllegalArgumentException("Not competitive: " + this);
+            };
+        }
         boolean pinned() { return this == POLICY4_PAIR2 || this == CONSTRUCTION_V1; }
         PinnedSearch.Policy policy() {
             return switch (this) {
@@ -92,19 +111,18 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
                     : "Searched score in pawn units (centipawns / 100), White perspective; includes positional and tactical effects and is not a winning probability.";
     }
     static String competitiveScoreUnits(BaselineEngine.Evaluator choice) {
-        return choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64 ? "NNUE score / 100" : "pawns (cp / 100)";
+        return choice.conventional() ? "NNUE score / 100" : "pawns (cp / 100)";
     }
     static String competitiveScoreExplanation(BaselineEngine.Evaluator choice) {
-        return choice == BaselineEngine.Evaluator.CONVENTIONAL_CP64
-                ? "Searched NNUE link score / 100, White perspective. CP64 uses a teacher expected-score scale, not material pawns or a calibrated win probability."
+        return choice.conventional()
+                ? "Searched NNUE link score / 100, White perspective. The network uses an expected-score link scale, not material pawns or a calibrated win probability."
                 : "Searched score in pawn units (centipawns / 100), White perspective; includes positional and tactical effects and is not a winning probability.";
     }
     static PlayEvaluator bundled(Mode mode) throws IOException {
         if (!mode.competitive()) return pinned(mode);
-        var engine = BaselineEngine.load(mode == Mode.BREP2_32 ? BaselineEngine.Evaluator.BREP2_32
-                : BaselineEngine.Evaluator.CONVENTIONAL_CP64);
+        var engine = BaselineEngine.load(mode.baselineChoice());
         return new PlayEvaluator(mode, mode == Mode.BREP2_32 ? ProductionModel.CHECKPOINT : "64",
-                mode == Mode.BREP2_32 ? ProductionModel.SHA256 : ConventionalNnueEngine.SHA256, engine.evaluation(),
+                mode == Mode.BREP2_32 ? ProductionModel.SHA256 : engine.conventional().selection().sha256(), engine.evaluation(),
                 mode == Mode.BREP2_32 ? com.ohinteractive.seedv6.training.model.TrainingArchitecture.BRN_PAIR2 : null,
                 null, null, engine.conventional(), engine);
     }

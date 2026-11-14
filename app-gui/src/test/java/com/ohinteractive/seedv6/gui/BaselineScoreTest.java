@@ -8,7 +8,7 @@ import static com.ohinteractive.seedv6.gui.ConventionalGuiProbe.edt;
 
 class BaselineScoreTest {
     @Test void scoresScaleExactlyOnceWithExplicitUnitsAndKeepMateSeparate() throws Exception {
-        for (var mode : new PlayEvaluator.Mode[]{PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayEvaluator.Mode.BREP2_32, PlayEvaluator.Mode.HANDCRAFTED}) {
+        for (var mode : new PlayEvaluator.Mode[]{PlayEvaluator.Mode.CONVENTIONAL_WDL25, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayEvaluator.Mode.BREP2_32, PlayEvaluator.Mode.HANDCRAFTED}) {
         var binding = mode == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted() : PlayEvaluator.bundled(mode);
         for (int side : new int[]{Value.WHITE, Value.BLACK}) {
             var info = new GameController.SearchInfo("Idle", 5, "cp 550", 10, 10, "", "DEPTH", 1, side);
@@ -23,13 +23,13 @@ class BaselineScoreTest {
             var arena = snapshot(participant, side == Value.WHITE ? 550 : -550, side);
             assertEquals(displayed, MatchPresentation.score(arena, NetworkArchitecture.NNUE));
             assertTrue(MatchPresentation.evaluationCaption(arena, NetworkArchitecture.NNUE).contains(binding.scoreUnits()));
-            if (mode == PlayEvaluator.Mode.CONVENTIONAL_CP64)
-                assertTrue(MatchPresentation.evaluationCaption(arena, NetworkArchitecture.NNUE).contains("teacher expected-score"));
+            if (mode.conventional())
+                assertTrue(MatchPresentation.evaluationCaption(arena, NetworkArchitecture.NNUE).contains("expected-score link"));
             assertEquals("+M1", MatchPresentation.score(snapshot(participant, 32767, side), NetworkArchitecture.NNUE).text());
             assertTrue(score.description().contains(binding.scoreUnits()));
-            if (mode == PlayEvaluator.Mode.CONVENTIONAL_CP64) {
+            if (mode.conventional()) {
                 assertFalse(score.description().contains("pawns"));
-                assertTrue(binding.scoreExplanation().contains("teacher expected-score"));
+                assertTrue(binding.scoreExplanation().contains("expected-score link"));
             } else assertTrue(score.description().contains("pawns"));
         }
         }

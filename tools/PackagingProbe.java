@@ -13,8 +13,12 @@ public final class PackagingProbe {
         var baseline = com.ohinteractive.seedv6.search.driver.BaselineEngine.load();
         System.out.println("baseline.identity=" + baseline.identity(1, 64));
         // Load all supported competitive resources from the actual packaged core.
-        for (var choice : com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.values())
-            com.ohinteractive.seedv6.search.driver.BaselineEngine.load(choice);
+        for (var choice : com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.values()) {
+            var binding = com.ohinteractive.seedv6.search.driver.BaselineEngine.load(choice);
+            if (choice.conventional())
+                System.out.println("network." + binding.conventional().selection().name().toLowerCase(java.util.Locale.ROOT)
+                        + ".identity=" + binding.identity(1, 64));
+        }
         System.out.println("model.sha256=" + ProductionModel.SHA256);
         System.out.println("model.lineage=" + ProductionModel.LINEAGE);
         System.out.println("model.checkpoint=" + ProductionModel.CHECKPOINT);

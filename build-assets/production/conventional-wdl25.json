@@ -1,0 +1,25 @@
+{
+  "model": "WDL25",
+  "checkpoint": 64,
+  "schema": "S6CNU002",
+  "output_heads": 8,
+  "input_king_buckets": 10,
+  "hidden_per_perspective": 256,
+  "activation": "SCReLU",
+  "quantization": {
+    "QA": 255,
+    "QB": 64,
+    "scale": 400
+  },
+  "bytes": 3940952,
+  "file_sha256": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+  "payload_sha256": "efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7",
+  "source": "docs/research/conventional-nnue-cglhw/strength-20261114/raw/wdl25-64/exports/final/network.cnnue",
+  "research_commit": "8c80fcd86548e88f94def6b3c066e20b5d9a43ca",
+  "evidence": "docs/research/conventional-nnue-cglhw/strength-20261114/REPORT.md",
+  "confirmation": "docs/research/conventional-nnue-cglhw/strength-20261114/confirmation-wdl25-results.json",
+  "production_search": "CLV_C1",
+  "score_mapping": "BT4_Q_LOGIT400_V1",
+  "selection": "Explicit owner-authorized production promotion, 2026-11-14; original bytes retained without retraining",
+  "rollback": "Bundled CP64 through --network cp64 or the GUI evaluator selector; historical E008 launcher remains separate"
+}

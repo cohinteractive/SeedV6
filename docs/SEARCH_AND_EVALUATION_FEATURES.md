@@ -25,7 +25,7 @@ SEARCH
 
 EVALUATION
 
-- NNUE Architecture — A bundled quantized network uses a shared 256-unit feature transformer for each perspective, feeding the combined 512 activations directly into a selected scalar output head. The network supplies the complete static evaluation without added handcrafted material or positional terms.
+- NNUE Architecture — The bundled WDL25 quantized network uses a shared 256-unit feature transformer for each perspective, feeding the combined 512 activations directly into a selected scalar output head. The network supplies the complete static evaluation without added handcrafted material or positional terms.
 - Piece-Square Inputs — Encodes every piece, including both kings, through 7,680 sparse features combining ten king-location buckets, twelve relative piece-and-color channels and 64 squares.
 - Perspective Normalization — Maintains both sides’ perspectives, reversing ranks for Black and mirroring files according to each perspective’s king position. The output head receives the side-to-move accumulator first and the opponent’s second.
 - Squared Clipped ReLU / Integer Inference — Clips accumulator activations to 0–255 and squares them before the output dot product, using signed 16-bit network parameters, 32-bit accumulators and 64-bit output sums.

@@ -10,6 +10,13 @@ final class BaselineUciConfiguration {
     static UciConfiguration load() throws IOException {
         return bind(BaselineEngine.load());
     }
+    static UciConfiguration load(String network) throws IOException {
+        return bind(BaselineEngine.load(switch (network.toLowerCase(java.util.Locale.ROOT)) {
+            case "wdl25" -> BaselineEngine.Evaluator.CONVENTIONAL_WDL25;
+            case "cp64" -> BaselineEngine.Evaluator.CONVENTIONAL_CP64;
+            default -> throw new IllegalArgumentException("Bundled network must be wdl25 or cp64");
+        }));
+    }
     private static UciConfiguration bind(BaselineEngine binding) {
         return new UciConfiguration() {
             public com.ohinteractive.seedv6.search.manage.ClockPolicy clockPolicy() { return binding.clockPolicy(); }
@@ -20,7 +27,7 @@ final class BaselineUciConfiguration {
             public boolean standalone() { return true; }
             public boolean acceptsWorkers(int workers) { return workers >= 1 && workers <= 16; }
             public boolean announcesResourceChanges() { return false; }
-            public String name() { return "SeedV6 Construction V1 NNUE CP64 " + ApplicationVersion.load().displayVersion(); }
+            public String name() { return "SeedV6 NNUE " + binding.conventional().selection() + " " + ApplicationVersion.load().displayVersion(); }
             public String identity(int workers) { return identity(workers, 64); }
             public String identity(int workers, int hashMiB) { return binding.identity(workers, hashMiB); }
             public com.ohinteractive.seedv6.search.driver.EngineFormulation formulation(int workers, int hashMiB) {
