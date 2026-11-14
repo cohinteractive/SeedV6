@@ -1,0 +1,18 @@
+[
+  {
+    "run": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\coverage-smoke",
+    "selection": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\retention-coverage-smoke.json"
+  },
+  {
+    "run": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\coverage-64",
+    "selection": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\retention-coverage-64.json"
+  },
+  {
+    "run": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\wdl25-smoke",
+    "selection": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\retention-wdl25-smoke.json"
+  },
+  {
+    "run": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\wdl25-64",
+    "selection": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\retention-wdl25-64.json"
+  }
+]

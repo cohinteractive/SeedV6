@@ -1,0 +1,47 @@
+{
+  "schema": "seed-bt4-batch-mixture-v1",
+  "train": 67108864,
+  "validation": 524288,
+  "prepared_identity": "f31d471fd96548318141b44498c18ebb9cd9d3acb6e6e56c70efe42bf6c65457",
+  "hashes": {
+    "train.data": "3a4d8d009e730e2700cf5552b48a165c7cc044d84b3bdb6518a3108d440a5729",
+    "train-provenance.bin": "240550f48a92124d90dff520c381b5f4a46e93b7195f38dcdba6011c1e5a4cff",
+    "validation.txt": "1293de0195bd431d451791c6017b9f3a5819b7b5b9bd623b91509ad868c2cfe3"
+  },
+  "sources": [
+    {
+      "path": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data",
+      "manifest_sha256": "728691ec04d8b2e45749b6b04ea951f810ac00342c9907d39ce90116ea9fb0ba",
+      "train": 33554432,
+      "hashes": {
+        "probes.fens": "443f9ab3ac0dce46025a4e4dbd986de8fd5c92ae06c36a6ef1c6a923c8ae0ce7",
+        "proof-labels.jsonl": "c3b03a815e356360f3089866c839a52400b464f1523830d3781ff0b20579ed93",
+        "proof.data": "c4c5f6a00781732543d244a5d8d2d09125acfe42c2d01061b6e3248ba9906b2f",
+        "proof.txt": "d89f7e9b9f69b2ad18d599353c694181af5553afc87a75dd9971d7e18c2ee0d7",
+        "train-provenance.bin": "e8406e73b15d23b48f17656996c7dce3afd41c473830fb91941c255bcb719005",
+        "train.data": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+        "validation.txt": "1293de0195bd431d451791c6017b9f3a5819b7b5b9bd623b91509ad868c2cfe3"
+      }
+    },
+    {
+      "path": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\additional-data",
+      "manifest_sha256": "83897e85be24c47daaf1d590cad15e6ebe1634ee06d670319123c1c14d80f293",
+      "train": 33554432,
+      "hashes": {
+        "probes.fens": "3ea8fd6a258e956813364005c5961ce6352834d0434f1906eb59c568f7835972",
+        "proof-labels.jsonl": "8e9e26e6f54c7b268131ba1aad3de797135ec99aa47b0d116d5b27272fc422c6",
+        "proof.data": "169782b8461ba9559a7caca233ded73a06c18ee0aae1cc1885a2022da2312c66",
+        "proof.txt": "82de8e2886b1d6a27805e16ae57784e3feb165a018fef969f29b5511ee573bd0",
+        "train-provenance.bin": "52ff0e21429b2077856f9243b314a312781b5b2d2c1f29f0d40d9e0856b0360d",
+        "train.data": "1937cf35d0643ed56bae1688d02c66a2218a717cc9eaadabb1667f08174a02d8",
+        "validation.txt": "a22b2e7e8b96725c3641adeb9d71ec65e32969bce2b282d7c6296b8566cbbd98"
+      }
+    }
+  ],
+  "selection": "Alternate complete 4096-record minibatches from first then second; preserve each already shuffled source order; 50:50 fixed mixture.",
+  "provenance": "12-byte global prepared-unit/ordinal/label records, interleaved identically to train.data. Global unit IDs are shared and verified disjoint.",
+  "limitations": [
+    "No cross-source placement dedup or source-game independence claim.",
+    "Validation must be audited against the complete mixture before diagnostic use."
+  ]
+}

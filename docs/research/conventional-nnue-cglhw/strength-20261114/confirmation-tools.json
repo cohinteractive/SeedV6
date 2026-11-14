@@ -1,0 +1,13 @@
+{
+  "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+  "python_executable": "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+  "chess": "1.11.2",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "tools": {
+    "paired_match.py": "4e26736eb57d2263ffe0b7906e18996a507bcf0d684725952e9afcbbdc04f979",
+    "analyze_confirmation.py": "9148f7945bf0efd76f12892ae67f3ae9a779f249cec1b3299d2ac003d161332a",
+    "uci_smoke.py": "d369b95b3582c2e1f15b02574bef5633de2ac4e018554190ecf615dde8650413",
+    "prepare_confirmation_openings.py": "1429625a232589da9d573ccbcc6aa7fc768c9beffd4e73b0495d03842909e34c"
+  },
+  "scope": "Python tools present at independent confirmation start; Java artifacts are bound separately by frozen-runtime.json and protocol.json."
+}

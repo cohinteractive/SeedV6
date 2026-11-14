@@ -1,0 +1,572 @@
+{
+  "spec": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\assessment-spec.json",
+  "spec_sha256": "2413d28e2925ae13eef659f2f5537959d17c7a354698a8a947bff4acf64182de",
+  "results": {
+    "cp64": {
+      "network": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\network.cnnue",
+      "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+      "metadata": {
+        "format": "S6CNU002",
+        "output_buckets": 8,
+        "hidden": 256,
+        "bullet_quantised_sha256": "22999e81ca079f666accabb72498e53d84aaec8e8d5ee272b8dabee2d7b698df",
+        "payload_sha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+        "file_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+        "bytes": 3940952,
+        "parameters": 1970440,
+        "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-training-64\\segments\\000064-37ddad38acef\\run\\seed-cnnue-v1-64\\quantised.bin",
+        "independent_quantization": "all parameters match merged optimizer weights with half-away rounding",
+        "layout": "LE i16: feature-major weights[7680][256], bias[256], heads[8][512], output biases[8]",
+        "arithmetic": "clamp 0..255 then square; long dot; trunc(dot/255); add bias; multiply400; trunc(/16320); clamp +-32511"
+      },
+      "parity": {
+        "status": "PASS",
+        "positions": 259,
+        "hidden": 256,
+        "output_buckets": 8,
+        "exact_features": "Python / Java / pinned Bullet",
+        "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+        "gpu_float_max_abs_raw_error": 1.4548101248124112e-06,
+        "gpu_float_tolerance": 2e-05,
+        "quantization_max_abs_cp_error": 24.75208269284076,
+        "quantization_rms_cp_error": 7.38563862458531,
+        "limitation": "Quantization error is measured separately; no strength or calibration claim"
+      },
+      "validation": {
+        "mean_abs_link": 438.4398087787918,
+        "positions": 6903,
+        "sigmoid_mse": 0.01900681138941922,
+        "zero_score_mse": 0.05917070591983513,
+        "clamped_score_count": 0,
+        "wdl_mse": 0.07254128006619434,
+        "payload_sha256": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+        "teacher_wdl_mse": 0.05398802357046589,
+        "cp_mae": 333.6431986093003
+      },
+      "float_validation": {
+        "positions": 1024,
+        "hidden": 256,
+        "float_sigmoid_mse": 0.01931949895909002,
+        "quantized_sigmoid_mse": 0.019334262102782534,
+        "quantization_rms_link_error": 7.3758911892012184,
+        "quantization_max_abs_link_error": 38.6009577066759,
+        "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+        "validation_sha256": "52368d3a54827fb19870cb8924877bb45d64ab1c1e24289ac201a8017bc038af",
+        "limitation": "Diagnostic evenly spaced subset; CPU float uses independently merged binary32 weights and double accumulation. GPU parity is a separate probe check."
+      },
+      "benchmark": {
+        "network": "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+        "load_ms": 94.1086,
+        "legal_transitions": 255,
+        "incremental_plus_head_ns_per_eval": [
+          1138.695,
+          725.455,
+          730.35
+        ],
+        "full_refresh_plus_head_ns_per_eval": [
+          4199.99,
+          4049.11,
+          3943.165
+        ],
+        "pair2_rolling_plus_head_ns_per_eval": [
+          336.7,
+          88.475,
+          86.85
+        ],
+        "incremental_allocated_bytes_20000": 0,
+        "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+      },
+      "uci": {
+        "status": "PASS",
+        "workers": 1,
+        "network": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\network.cnnue",
+        "lifecycle": "stop/readiness/newgame/repeated search/quit passed",
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "--add-modules=jdk.incubator.vector",
+          "-XX:ActiveProcessorCount=2",
+          "-Xmx768m",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\classes",
+          "com.ohinteractive.seedv6.integration.NnueStrengthUciMain",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\network.cnnue"
+        ],
+        "runtime_lib": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib",
+        "jar_sha256": {
+          "app-uci.jar": "4629ea78ded0bee6cd90af10d5161e514e926cd76861aecd08991a10001879b4",
+          "engine-core.jar": "8d94fcd7188232874663fddc64bb2206f7b3ab8dc540dfccc7513609e2e4c6d2",
+          "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "research.jar": "9577c08d2bfb19e6bf842079b20fcf03e9880b9a637d7b2cf93dfa87601a7d80",
+          "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        }
+      },
+      "search_cost": {
+        "roots": 24,
+        "nodes": 2191612,
+        "elapsed_ns": 5635328600,
+        "nps": 388905.8040022724,
+        "limitation": "Rotated fixed roots/depths with bounded requests. Different evaluations change node counts; NPS is not a speedup or Elo claim."
+      }
+    },
+    "width256": {
+      "network": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\network.cnnue",
+      "network_sha256": "d7d6a1c2f21386b8cd65c2587276f7d90cf968dae5a4a8246b230ca32fdbbd89",
+      "metadata": {
+        "format": "S6CNU002",
+        "output_buckets": 8,
+        "hidden": 256,
+        "bullet_quantised_sha256": "b74ac54546a995e77c78074a7a37ef3baafa3249bc3bccf59a87eda72b504472",
+        "payload_sha256": "89370d701d7b1142969946886df80d0a808b7232e23e73242ef191a37e6a8396",
+        "file_sha256": "d7d6a1c2f21386b8cd65c2587276f7d90cf968dae5a4a8246b230ca32fdbbd89",
+        "bytes": 3940952,
+        "parameters": 1970440,
+        "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\segments\\000064-c2a7ec3287b4\\run\\seed-cnnue-v1-64\\quantised.bin",
+        "independent_quantization": "all parameters match merged optimizer weights with half-away rounding",
+        "layout": "LE i16: feature-major weights[7680][256], bias[256], heads[8][512], output biases[8]",
+        "arithmetic": "clamp 0..255 then square; long dot; trunc(dot/255); add bias; multiply400; trunc(/16320); clamp +-32511"
+      },
+      "parity": {
+        "status": "PASS",
+        "positions": 259,
+        "hidden": 256,
+        "output_buckets": 8,
+        "exact_features": "Python / Java / pinned Bullet",
+        "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+        "gpu_float_max_abs_raw_error": 2.5743682563472703e-06,
+        "gpu_float_tolerance": 2e-05,
+        "quantization_max_abs_cp_error": 42.072298508584026,
+        "quantization_rms_cp_error": 8.734170307127672,
+        "limitation": "Quantization error is measured separately; no strength or calibration claim"
+      },
+      "validation": {
+        "mean_abs_link": 475.6694190931479,
+        "positions": 6903,
+        "sigmoid_mse": 0.01847036620481989,
+        "zero_score_mse": 0.05917070591983513,
+        "clamped_score_count": 0,
+        "wdl_mse": 0.07189777370600896,
+        "payload_sha256": "89370d701d7b1142969946886df80d0a808b7232e23e73242ef191a37e6a8396",
+        "teacher_wdl_mse": 0.05398802357046589,
+        "cp_mae": 351.0675068810662
+      },
+      "float_validation": {
+        "positions": 1024,
+        "hidden": 256,
+        "float_sigmoid_mse": 0.018702056483766757,
+        "quantized_sigmoid_mse": 0.018714579066176525,
+        "quantization_rms_link_error": 8.75040990045132,
+        "quantization_max_abs_link_error": 36.79833854050763,
+        "network_sha256": "d7d6a1c2f21386b8cd65c2587276f7d90cf968dae5a4a8246b230ca32fdbbd89",
+        "validation_sha256": "52368d3a54827fb19870cb8924877bb45d64ab1c1e24289ac201a8017bc038af",
+        "limitation": "Diagnostic evenly spaced subset; CPU float uses independently merged binary32 weights and double accumulation. GPU parity is a separate probe check."
+      },
+      "benchmark": {
+        "network": "89370d701d7b1142969946886df80d0a808b7232e23e73242ef191a37e6a8396",
+        "load_ms": 94.6802,
+        "legal_transitions": 255,
+        "pair2_rolling_plus_head_ns_per_eval": [
+          338.5,
+          86.065,
+          85.79
+        ],
+        "full_refresh_plus_head_ns_per_eval": [
+          4144.775,
+          3935.265,
+          3918.28
+        ],
+        "incremental_plus_head_ns_per_eval": [
+          1182.795,
+          731.0,
+          738.285
+        ],
+        "incremental_allocated_bytes_20000": 0,
+        "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+      },
+      "uci": {
+        "status": "PASS",
+        "workers": 1,
+        "network": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\network.cnnue",
+        "lifecycle": "stop/readiness/newgame/repeated search/quit passed",
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "--add-modules=jdk.incubator.vector",
+          "-XX:ActiveProcessorCount=2",
+          "-Xmx768m",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\classes",
+          "com.ohinteractive.seedv6.integration.NnueStrengthUciMain",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\network.cnnue"
+        ],
+        "runtime_lib": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib",
+        "jar_sha256": {
+          "app-uci.jar": "4629ea78ded0bee6cd90af10d5161e514e926cd76861aecd08991a10001879b4",
+          "engine-core.jar": "8d94fcd7188232874663fddc64bb2206f7b3ab8dc540dfccc7513609e2e4c6d2",
+          "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "research.jar": "9577c08d2bfb19e6bf842079b20fcf03e9880b9a637d7b2cf93dfa87601a7d80",
+          "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        }
+      },
+      "search_cost": {
+        "roots": 24,
+        "nodes": 2253528,
+        "elapsed_ns": 4633402600,
+        "nps": 486365.67864834366,
+        "limitation": "Rotated fixed roots/depths with bounded requests. Different evaluations change node counts; NPS is not a speedup or Elo claim."
+      }
+    },
+    "width512": {
+      "network": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\network.cnnue",
+      "network_sha256": "cf6be8727cecf48f43e2f5c698790502775a386ef806c2150c63a61109c35887",
+      "metadata": {
+        "format": "S6CNU003",
+        "output_buckets": 8,
+        "hidden": 512,
+        "bullet_quantised_sha256": "d857832649ca4e49aa878c6610aac208c6fb25d79c8bed8b62d1e513ac6bc3f8",
+        "payload_sha256": "8605b3ffe800060a834f3dab7ffdcef071c24aae6bbbee1574acef72d7bf1219",
+        "file_sha256": "cf6be8727cecf48f43e2f5c698790502775a386ef806c2150c63a61109c35887",
+        "bytes": 7881816,
+        "parameters": 3940872,
+        "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\segments\\000064-3421783718c9\\run\\seed-cnnue-v1-64\\quantised.bin",
+        "independent_quantization": "all parameters match merged optimizer weights with half-away rounding",
+        "layout": "LE i16: feature-major weights[7680][512], bias[512], heads[8][1024], output biases[8]",
+        "arithmetic": "clamp 0..255 then square; long dot; trunc(dot/255); add bias; multiply400; trunc(/16320); clamp +-32511"
+      },
+      "parity": {
+        "status": "PASS",
+        "positions": 259,
+        "hidden": 512,
+        "output_buckets": 8,
+        "exact_features": "Python / Java / pinned Bullet",
+        "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+        "gpu_float_max_abs_raw_error": 8.985188237886632e-07,
+        "gpu_float_tolerance": 2e-05,
+        "quantization_max_abs_cp_error": 25.788039270604713,
+        "quantization_rms_cp_error": 7.7171661904794275,
+        "limitation": "Quantization error is measured separately; no strength or calibration claim"
+      },
+      "validation": {
+        "cp_mae": 370.7651745617847,
+        "mean_abs_link": 500.0314356077068,
+        "positions": 6903,
+        "sigmoid_mse": 0.019191618123406473,
+        "zero_score_mse": 0.05917070591983513,
+        "clamped_score_count": 0,
+        "wdl_mse": 0.0724073049300456,
+        "payload_sha256": "8605b3ffe800060a834f3dab7ffdcef071c24aae6bbbee1574acef72d7bf1219",
+        "teacher_wdl_mse": 0.05398802357046589
+      },
+      "float_validation": {
+        "positions": 1024,
+        "hidden": 512,
+        "float_sigmoid_mse": 0.020391061958121234,
+        "quantized_sigmoid_mse": 0.020398757466166574,
+        "quantization_rms_link_error": 8.383417478145004,
+        "quantization_max_abs_link_error": 46.610174280328465,
+        "network_sha256": "cf6be8727cecf48f43e2f5c698790502775a386ef806c2150c63a61109c35887",
+        "validation_sha256": "52368d3a54827fb19870cb8924877bb45d64ab1c1e24289ac201a8017bc038af",
+        "limitation": "Diagnostic evenly spaced subset; CPU float uses independently merged binary32 weights and double accumulation. GPU parity is a separate probe check."
+      },
+      "benchmark": {
+        "network": "8605b3ffe800060a834f3dab7ffdcef071c24aae6bbbee1574acef72d7bf1219",
+        "hidden": 512,
+        "backend": "vector-256-long",
+        "trained_incremental_parity": "PASS",
+        "load_ms": 107.0818,
+        "legal_transitions": 255,
+        "incremental_plus_head_ns_per_eval": [
+          1761.185,
+          1354.82,
+          1334.63
+        ],
+        "full_refresh_plus_head_ns_per_eval": [
+          7234.95,
+          6959.88,
+          6970.13
+        ],
+        "pair2_rolling_plus_head_ns_per_eval": [
+          345.525,
+          85.285,
+          86.17
+        ],
+        "incremental_allocated_bytes_20000": 0,
+        "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+      },
+      "uci": {
+        "status": "PASS",
+        "workers": 1,
+        "network": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\network.cnnue",
+        "lifecycle": "stop/readiness/newgame/repeated search/quit passed",
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "--add-modules=jdk.incubator.vector",
+          "-XX:ActiveProcessorCount=2",
+          "-Xmx768m",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\classes",
+          "com.ohinteractive.seedv6.integration.NnueStrengthUciMain",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\network.cnnue"
+        ],
+        "runtime_lib": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib",
+        "jar_sha256": {
+          "app-uci.jar": "4629ea78ded0bee6cd90af10d5161e514e926cd76861aecd08991a10001879b4",
+          "engine-core.jar": "8d94fcd7188232874663fddc64bb2206f7b3ab8dc540dfccc7513609e2e4c6d2",
+          "engine-training.jar": "29bab5a6e2b8e65412cb28f94b54fc1b8ae7d2c4d8266d6a986ef7a8b9e27dad",
+          "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "research.jar": "9577c08d2bfb19e6bf842079b20fcf03e9880b9a637d7b2cf93dfa87601a7d80",
+          "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        }
+      },
+      "search_cost": {
+        "roots": 24,
+        "nodes": 2385648,
+        "elapsed_ns": 12182346600,
+        "nps": 195828.2815561987,
+        "limitation": "Rotated fixed roots/depths with bounded requests. Different evaluations change node counts; NPS is not a speedup or Elo claim."
+      }
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\evaluate_checkpoint.py",
+        "docs/research/conventional-nnue-cglhw/raw/e007-training-64/segments/000064-37ddad38acef/run/seed-cnnue-v1-64",
+        "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\holdout\\validation.txt",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64",
+        "--vector",
+        "--strength-research"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-export.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-export.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\strength_float_check.py",
+        "docs/research/conventional-nnue-cglhw/raw/e007-training-64/segments/000064-37ddad38acef/run/seed-cnnue-v1-64",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\network.cnnue",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\holdout\\validation.txt",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\float-validation.json"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-float.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-float.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.ConventionalNnueBenchmark",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\network.cnnue"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-benchmark.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.StrengthNnueBenchmark",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\network.cnnue"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-research-parity-benchmark.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-research-parity-benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\uci_smoke.py",
+        "--network",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\network.cnnue",
+        "--strength-research",
+        "--vector",
+        "--output",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\uci"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-uci.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\cp64-uci.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\evaluate_checkpoint.py",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\segments\\000064-c2a7ec3287b4\\run\\seed-cnnue-v1-64",
+        "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\holdout\\validation.txt",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final",
+        "--vector",
+        "--strength-research"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-export.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-export.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\strength_float_check.py",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\segments\\000064-c2a7ec3287b4\\run\\seed-cnnue-v1-64",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\network.cnnue",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\holdout\\validation.txt",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\float-validation.json"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-float.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-float.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.ConventionalNnueBenchmark",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\network.cnnue"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-benchmark.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.StrengthNnueBenchmark",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\network.cnnue"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-research-parity-benchmark.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-research-parity-benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\uci_smoke.py",
+        "--network",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\network.cnnue",
+        "--strength-research",
+        "--vector",
+        "--output",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\uci"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-uci.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width256-uci.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\evaluate_checkpoint.py",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\segments\\000064-3421783718c9\\run\\seed-cnnue-v1-64",
+        "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\holdout\\validation.txt",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final",
+        "--vector",
+        "--strength-research"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width512-export.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width512-export.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\strength_float_check.py",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\segments\\000064-3421783718c9\\run\\seed-cnnue-v1-64",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\network.cnnue",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\holdout\\validation.txt",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\float-validation.json"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width512-float.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width512-float.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.StrengthNnueBenchmark",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\network.cnnue"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width512-benchmark.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width512-benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\uci_smoke.py",
+        "--network",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\network.cnnue",
+        "--strength-research",
+        "--vector",
+        "--output",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\uci"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width512-uci.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\width512-uci.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.StrengthSearchProbe",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment-cp64\\network.cnnue",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\exports\\final\\network.cnnue",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\network.cnnue"
+      ],
+      "stdout": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\search-cost.log",
+      "stderr": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\search-cost.stderr"
+    }
+  ],
+  "elapsed_seconds": 67.81827689998318,
+  "validation_sha256": "52368d3a54827fb19870cb8924877bb45d64ab1c1e24289ac201a8017bc038af",
+  "roots_sha256": "732d3587e67baf189fd40e243ea26a35e96d5148f4d2e80cbdb4b3440358e52e",
+  "raw_search": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\search-cost.log",
+  "raw_summary": {
+    "path": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\assessment\\summary.json",
+    "sha256": "55c2953e5487e9c137be0f44ad026ccd16038fd0870966881bb1ebbd0960f46b",
+    "description": "Complete raw search observations and UCI transcripts; this tracked file retains analytical results and reproducibility metadata."
+  }
+}

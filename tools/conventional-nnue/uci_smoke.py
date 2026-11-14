@@ -19,6 +19,7 @@ def main():
     parser.add_argument('--selective-research-classes',type=Path)
     parser.add_argument('--runtime-lib',type=Path,help='Frozen UCI jar directory; default is the installed application')
     parser.add_argument('--vector',action='store_true',help='Explicitly enable the optional Java Vector API module')
+    parser.add_argument('--strength-research',action='store_true',help='Use isolated evaluator comparison with identical explicit CLV_C1')
     args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=False)
     root=Path(__file__).resolve().parents[2]
     libs=(args.runtime_lib or root/'app-uci/build/install/seedv6-uci/lib').resolve()
@@ -32,6 +33,13 @@ def main():
         if not args.network or args.workers!=1:raise ValueError('Selective research needs network and one worker')
         command=command[:5]+[str(libs/'*')+os.pathsep+str(args.selective_research_classes.resolve()),
             'SeedNnueSelectiveResearch',str(args.network.resolve())]
+    if args.strength_research:
+        if not args.network or args.workers!=1 or args.selective_research_classes:
+            raise ValueError('Strength research requires one worker and an explicit network only')
+        workspace=args.runtime_lib.resolve().parent if args.runtime_lib else root/'build/research/runtime';libs=workspace/'lib'
+        jars=sorted(libs.glob('*.jar'));jar_hashes={jar.name:hashlib.sha256(jar.read_bytes()).hexdigest() for jar in jars}
+        command=command[:5]+[str(libs/'*')+os.pathsep+str(workspace/'classes'),
+            'com.ohinteractive.seedv6.integration.NnueStrengthUciMain',str(args.network.resolve())]
     if args.vector:command.insert(1,'--add-modules=jdk.incubator.vector')
     flags=(subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS) if hasattr(subprocess,'CREATE_NO_WINDOW') else 0
     p=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,creationflags=flags)
@@ -53,10 +61,16 @@ def main():
     try:
         send('uci');_,intro=until('uciok')
         identity='evaluator=CONVENTIONAL_NNUE' if args.network else 'evaluator=BRN_PAIR2'
+        if args.strength_research:identity='mode=research formulation=CLV_C1'
         assert any(identity in line for line in intro),intro
         for line in (f'setoption name Threads value {args.workers}','setoption name Hash value 32',
             'setoption name Ponder value false','setoption name UseBook value false','isready'):send(line)
         until('readyok')
+        active_identity=[]
+        if args.strength_research:
+            send('setoption name Show Search Configuration');send('isready');_,active_identity=until('readyok')
+            assert any(all(token in line for token in ('formulation=CLV_C1','flags=3329490943','workers=1','hashMiB=32',
+                'scoreMapping=BT4_Q_LOGIT400_V1','clockPolicy=boundary2-d6-v1')) for line in active_identity),active_identity
         positions=[chess.STARTING_FEN,
             'r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1',
             '4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1',
@@ -70,7 +84,7 @@ def main():
         send('isready');until('readyok');send('ucinewgame');send('position startpos');send('go depth 2');until('bestmove ')
         send('quit');assert p.wait(timeout=10)==0
         assert not any('exception' in line.lower() or 'error' in line.lower() for kind,line in transcript if kind=='err')
-        summary=dict(status='PASS',workers=args.workers,network=str(args.network),identity=intro,
+        summary=dict(status='PASS',workers=args.workers,network=str(args.network),identity=intro,active_identity=active_identity,
             searches=results,lifecycle='stop/readiness/newgame/repeated search/quit passed',command=command,
             runtime_lib=str(libs),jar_sha256=jar_hashes)
         (args.output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))

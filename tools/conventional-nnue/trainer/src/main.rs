@@ -10,7 +10,7 @@ use serde::Deserialize;
 use sha2::{Digest, Sha256};
 use std::{env, fs, io::{BufRead, BufReader, BufWriter, Write}, path::Path};
 
-const HIDDEN: usize = 256;
+
 const BUCKETS: [usize; 32] = [
     0,1,2,3, 4,4,5,5, 6,6,6,6, 7,7,7,7,
     8,8,8,8, 8,8,8,8, 9,9,9,9, 9,9,9,9,
@@ -32,8 +32,12 @@ struct Config {
     lr_gamma: f32,
     #[serde(default = "one")]
     output_buckets: usize,
+    #[serde(default = "default_hidden")]
+    hidden: usize,
+    training_finalization: Option<String>,
 }
 fn one()->usize {1}
+fn default_hidden()->usize {256}
 fn unit_gamma()->f32 {1.0}
 fn digest(path:impl AsRef<Path>)->String {format!("{:x}",Sha256::digest(fs::read(path).unwrap()))}
 
@@ -81,20 +85,24 @@ fn main() {
         }
         "train" => {
             let c:Config=serde_json::from_slice(&fs::read(&args[2]).unwrap()).unwrap();
-            match c.output_buckets {
-                1=>train::<1>(&args[2]),8=>train::<8>(&args[2]),
-                _=>panic!("Only one or eight output buckets are supported"),
+            match (c.hidden,c.output_buckets) {
+                (256,1)=>train::<256,1>(&args[2]),(256,8)=>train::<256,8>(&args[2]),
+                (512,8)=>train::<512,8>(&args[2]),
+                _=>panic!("Only 256x1, 256x8 or 512x8 geometry is supported"),
             }
         },
         _ => panic!("Unknown operation"),
     }
 }
 
-fn train<const OUTPUTS:usize>(config_path: &str) {
+fn train<const HIDDEN:usize,const OUTPUTS:usize>(config_path: &str) {
     assert!(compute_permitted(),"Launch training through nnue-control.cmd train");
     let config_bytes = fs::read(config_path).unwrap();
     let c: Config = serde_json::from_slice(&config_bytes).unwrap();
     assert_eq!(c.output_buckets,OUTPUTS);
+    assert_eq!(c.hidden,HIDDEN);
+    assert!(c.training_finalization.as_deref().is_none_or(|p| p == "explicit-v1"),
+        "Unsupported training retention policy");
     assert_eq!(format!("{:x}",Sha256::digest(fs::read(&c.data).unwrap())),c.data_sha256,"Dataset identity mismatch");
     assert_eq!(format!("{:x}",Sha256::digest(fs::read(&c.probes).unwrap())),c.probes_sha256,"Probe identity mismatch");
     assert!(c.batch_size > 0 && c.batch_size <= 4096);
@@ -125,7 +133,7 @@ fn train<const OUTPUTS:usize>(config_path: &str) {
             "Resume cannot change optimizer/schedule recipe");
         assert_eq!((c.lr_drop_every,c.lr_gamma),(previous.lr_drop_every,previous.lr_gamma),
             "Resume cannot change the persisted global learning-rate schedule");
-        assert_eq!(c.output_buckets,previous.output_buckets,"Resume cannot change model geometry");
+        assert_eq!((c.hidden,c.output_buckets),(previous.hidden,previous.output_buckets),"Resume cannot change model geometry");
         if (c.data_sha256.as_str(),c.probes_sha256.as_str())!=(previous.data_sha256.as_str(),previous.probes_sha256.as_str()) {
             assert!(c.data_fork_reason.as_ref().is_some_and(|s|s.trim().len()>=12),
                 "Dataset/probe change requires an explicit data_fork_reason; this is not exact continuation of the old stream");

@@ -1,0 +1,37 @@
+{
+  "start_utc": "2026-11-13T23:48:22Z",
+  "starting_head": "dc58c03e1abe45a422631d3f4331374413f0a578",
+  "starting_git_status": "clean",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 100
+  },
+  "protected_hashes": {
+    "build-assets/nnue-candidate/conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "VERSION_STATE.txt": "c7366d7991bbb2e04a110d8c629d3e97ba29f51b309e7eda62e7f179f16b8236",
+    "source/CHESS_SEARCH_CONTRACT.md": "4e7c4cced8997dffd646b098710cd78d6e30dbbf9dc167f73eb703bf7dd07981",
+    "source/CHESS_SEARCH_RESEARCH_FRONTIER.md": "a91d81d62b8e25ae64b4339e67c5287d6fb91de72a94fe2e23424c9427b9e479",
+    "docs/SEARCH_AND_EVALUATION_FEATURES.md": "8c931ddfefcef1c9e3e31930505ffe5d0e904cdfce2543d4e2a188c9c7700b53",
+    "tools/conventional-nnue/trainer/Cargo.lock": "be2a6a63ab112d33d0f55b7cdb28b5543980294e6bbf4f0dfc90a534f718e3e5",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\nnue\\conventional\\ConventionalAccumulator.java": "a0f2680fae97c628dc65397080ec20519e4499ce4e877345be37e115d17c0259",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\nnue\\conventional\\ConventionalFeatures.java": "a9a828d631d30138faa78507688fb9fd341e8307e08d26b3c2bba9542f858db6",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\nnue\\conventional\\ConventionalNetwork.java": "7e2b2ade65e3cf84afc49f58cb7ec3b838aead2eb6a390ed1b0d7d78c5b371d8",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\nnue\\conventional\\ConventionalVectorHead.java": "1eb6e27bedeb77ab6300e29ca2a3fc353e1358568bfd645ca435a21a2068320c"
+  },
+  "trainer_sha256": "57a9ee3cd70334a5c6a6bbe3ea42b58985179da4fa81f166f4e14b5540b2c8e3",
+  "hardware": {
+    "cpu": "AMD Ryzen 5 5500",
+    "gpu": "NVIDIA GeForce RTX 4060",
+    "vram_mib": 8188,
+    "ram_kib": 33339348
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "java": "openjdk version \"21\" 2023-09-19\nOpenJDK Runtime Environment (build 21+35-2513)\nOpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)\n",
+  "budgets": {
+    "gpu_training_hours": 12,
+    "match_hours": 6
+  },
+  "scope": "Research sources/tools only; no production promotion or search/board changes"
+}

@@ -1,0 +1,18 @@
+{
+  "source": "docs\\research\\conventional-nnue-cglhw\\raw\\e006-data",
+  "hashes": {
+    "train-provenance.bin": "e8406e73b15d23b48f17656996c7dce3afd41c473830fb91941c255bcb719005",
+    "train.data": "b9306efe0675a0e0c0c3bea9d64e4bccda856f35ebafe79ab5a87472ca5b9e2c",
+    "validation.txt": "1293de0195bd431d451791c6017b9f3a5819b7b5b9bd623b91509ad868c2cfe3"
+  },
+  "training_records": 33554432,
+  "source_validation_records": 524288,
+  "sampled": 8192,
+  "symmetry_exact_overlap": 411,
+  "single_piece_neighbor_overlap": 1289,
+  "retained": 6903,
+  "validation_sha256": "52368d3a54827fb19870cb8924877bb45d64ab1c1e24289ac201a8017bc038af",
+  "seconds": 36.3965739,
+  "method": "Evenly spaced validation ordinals; label-blind. Exclude placement equality and equality after deleting one piece each, allowing rank+color flip and file mirror, ignoring STM. 64-bit Zobrist keys; collisions only conservatively reject additional samples.",
+  "limitation": "No source-game IDs. Does not detect all multi-move relatives; cannot establish game-independent validation. Original validation was used historically and is diagnostic only."
+}

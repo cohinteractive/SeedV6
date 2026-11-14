@@ -255,12 +255,15 @@ def verify_checkpoint(path):
         or set(receipt['files']) != set(FILES)):
         raise ValueError('Checkpoint receipt/configuration mismatch')
     for name in FILES:
-        if not 0 < (path / name).stat().st_size <= 16*1024*1024:
+        if not 0 < (path / name).stat().st_size <= 32*1024*1024:
             raise ValueError('Checkpoint payload outside bounded architecture size')
         if sha(path / name) != receipt['files'][name]: raise ValueError('Checkpoint checksum mismatch: ' + name)
     heads = config.get('output_buckets', 1)
     if type(heads) is not int or heads not in (1, 8): raise ValueError('Unsupported output geometry')
-    shapes = {'l0w': 7680*256, 'l0f': 768*256, 'l0b': 256, 'l1w': 512*heads, 'l1b': heads}
+    hidden = config.get('hidden', 256)
+    if type(hidden) is not int or (hidden, heads) not in ((256, 1), (256, 8), (512, 8)):
+        raise ValueError('Unsupported hidden geometry')
+    shapes = {'l0w': 7680*hidden, 'l0f': 768*hidden, 'l0b': hidden, 'l1w': 2*hidden*heads, 'l1b': heads}
     for name in FILES[2:]:
         data = (path / name).read_bytes(); offset = 0; records = {}
         while offset < len(data):
@@ -269,7 +272,7 @@ def verify_checkpoint(path):
             if key in records or offset > len(data): raise ValueError('Invalid optimizer record')
             records[key] = count
         if records != shapes: raise ValueError('Incomplete optimizer tensors')
-    quant = (path / 'quantised.bin').read_bytes(); payload = (7680*256 + 256 + 513*heads) * 2
+    quant = (path / 'quantised.bin').read_bytes(); payload = (7680*hidden + hidden + (2*hidden+1)*heads) * 2
     if (len(quant) != (payload+63)//64*64 or quant[payload:] != (b'bullet'*11)[:len(quant)-payload]
         or (path / 'raw.bin').stat().st_size != payload * 2):
         raise ValueError('Checkpoint network geometry/padding mismatch')
@@ -280,7 +283,7 @@ def verify_checkpoint(path):
 def recipe(config):
     return tuple(config[key] for key in ('data_sha256', 'probes_sha256', 'seed', 'batch_size',
         'batches_per_superbatch', 'learning_rate', 'wdl')) + (
-            config.get('lr_drop_every', 0), config.get('lr_gamma', 1.0), config.get('output_buckets', 1))
+            config.get('lr_drop_every', 0), config.get('lr_gamma', 1.0), config.get('output_buckets', 1), config.get('hidden', 256))
 
 
 def initial_resume_compatible(request, previous):

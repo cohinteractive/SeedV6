@@ -34,6 +34,8 @@ class Controls(unittest.TestCase):
         self.assertEqual(cc.recipe(old),cc.recipe(dict(old,output_buckets=1)))
         changed=dict(decay,output_buckets=8,data_fork_reason='Dataset fork cannot change architecture')
         self.assertFalse(cc.initial_resume_compatible(changed,decay))
+        self.assertEqual(cc.recipe(old),cc.recipe(dict(old,hidden=256)))
+        self.assertFalse(cc.initial_resume_compatible(dict(old,hidden=512,data_fork_reason='Cannot fork geometry'),old))
 
     def setUp(self):
         self.folder = EVIDENCE / self._testMethodName

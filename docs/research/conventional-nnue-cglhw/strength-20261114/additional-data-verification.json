@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "training_records": 33554432,
+  "proof_records": 66560,
+  "all_training_links_and_results_verified": true,
+  "all_frozen_file_hashes_verified": true,
+  "proof_packing_identical_to_upstream": true,
+  "maximum_probability_error_over_encoding_range": 0.00031125306735640956,
+  "manifest_sha256": "83897e85be24c47daaf1d590cad15e6ebe1634ee06d670319123c1c14d80f293",
+  "trainer_sha256": "57a9ee3cd70334a5c6a6bbe3ea42b58985179da4fa81f166f4e14b5540b2c8e3",
+  "limitation": "All stored labels/provenance checked; board packing compared with upstream on distributed proof sample. Reuses existing tested BINP decoder, without independent source redecoding."
+}

@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "protected_hashes": {
+    "build-assets/nnue-candidate/conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "VERSION_STATE.txt": "c7366d7991bbb2e04a110d8c629d3e97ba29f51b309e7eda62e7f179f16b8236",
+    "source/CHESS_SEARCH_CONTRACT.md": "4e7c4cced8997dffd646b098710cd78d6e30dbbf9dc167f73eb703bf7dd07981",
+    "source/CHESS_SEARCH_RESEARCH_FRONTIER.md": "a91d81d62b8e25ae64b4339e67c5287d6fb91de72a94fe2e23424c9427b9e479",
+    "docs/SEARCH_AND_EVALUATION_FEATURES.md": "8c931ddfefcef1c9e3e31930505ffe5d0e904cdfce2543d4e2a188c9c7700b53",
+    "tools/conventional-nnue/trainer/Cargo.lock": "be2a6a63ab112d33d0f55b7cdb28b5543980294e6bbf4f0dfc90a534f718e3e5",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\nnue\\conventional\\ConventionalAccumulator.java": "a0f2680fae97c628dc65397080ec20519e4499ce4e877345be37e115d17c0259",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\nnue\\conventional\\ConventionalFeatures.java": "a9a828d631d30138faa78507688fb9fd341e8307e08d26b3c2bba9542f858db6",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\nnue\\conventional\\ConventionalNetwork.java": "7e2b2ade65e3cf84afc49f58cb7ec3b838aead2eb6a390ed1b0d7d78c5b371d8",
+    "engine-core\\src\\main\\java\\com\\ohinteractive\\seedv6\\core\\nnue\\conventional\\ConventionalVectorHead.java": "1eb6e27bedeb77ab6300e29ca2a3fc353e1358568bfd645ca435a21a2068320c"
+  },
+  "version_unchanged": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 100
+  },
+  "frozen_runtime_files": 47,
+  "scalar_vector_checks": [
+    {
+      "model": "cp64",
+      "network_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+      "positions": 259,
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-Dseed.nnue.scalar=true",
+        "-XX:ActiveProcessorCount=2",
+        "-Xmx768m",
+        "-cp",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\frozen-runtime\\lib\\*;docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\frozen-runtime\\classes",
+        "com.ohinteractive.seedv6.tools.eval.StrengthNnueProbe",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\wdl25-assessment-cp64\\network.cnnue",
+        "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens"
+      ],
+      "status": "PASS",
+      "scalar_output_sha256": "d271f8ee912f0286c24f35932ce3b1e20c52f13d2e48369b4068e8d0ab852630"
+    },
+    {
+      "model": "wdl25",
+      "network_sha256": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+      "positions": 259,
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-Dseed.nnue.scalar=true",
+        "-XX:ActiveProcessorCount=2",
+        "-Xmx768m",
+        "-cp",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\frozen-runtime\\lib\\*;docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\frozen-runtime\\classes",
+        "com.ohinteractive.seedv6.tools.eval.StrengthNnueProbe",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\wdl25-64\\exports\\final\\network.cnnue",
+        "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens"
+      ],
+      "status": "PASS",
+      "scalar_output_sha256": "cc3a52f8b34bcb4b7affaf702b0e9176ca4c5d20f90daa701cd7dac39643b91d"
+    },
+    {
+      "model": "width512",
+      "network_sha256": "cf6be8727cecf48f43e2f5c698790502775a386ef806c2150c63a61109c35887",
+      "positions": 259,
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-Dseed.nnue.scalar=true",
+        "-XX:ActiveProcessorCount=2",
+        "-Xmx768m",
+        "-cp",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\frozen-runtime\\lib\\*;docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\frozen-runtime\\classes",
+        "com.ohinteractive.seedv6.tools.eval.StrengthNnueProbe",
+        "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64\\exports\\final\\network.cnnue",
+        "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens"
+      ],
+      "status": "PASS",
+      "scalar_output_sha256": "ab92c073d344070e007c4301c63636f7036cb05543612514fd29a2fe4d12a237"
+    }
+  ],
+  "paired_commands_equal_except_network": true,
+  "confirmation_client_resources": {
+    "candidate": {
+      "moves": 27383,
+      "client_move_seconds": 5111.091158799623,
+      "mean_client_move_seconds": 0.1866519796515949
+    },
+    "opponent": {
+      "moves": 27337,
+      "client_move_seconds": 5102.922755301959,
+      "mean_client_move_seconds": 0.18666725519632582
+    }
+  },
+  "match_seconds": {
+    "development": 1263.4620450999937,
+    "confirmation": 10264.0652787,
+    "total": 11527.527323799994
+  },
+  "limits": "Client per-move wall includes protocol overhead; UCI-reported time may omit unfinished iterations. Match totals exclude small controller startup/audit overhead."
+}

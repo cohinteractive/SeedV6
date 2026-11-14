@@ -1,0 +1,19 @@
+{
+  "source": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\holdout\\validation.txt",
+  "source_sha256": "52368d3a54827fb19870cb8924877bb45d64ab1c1e24289ac201a8017bc038af",
+  "indices": [
+    0,
+    575,
+    1150,
+    1725,
+    2301,
+    2876,
+    3451,
+    4026,
+    4602,
+    5177,
+    5752,
+    6327
+  ],
+  "policy": "Twelve evenly spaced filtered diagnostic positions; chosen before candidate evaluation; no outcome or network-score filtering."
+}

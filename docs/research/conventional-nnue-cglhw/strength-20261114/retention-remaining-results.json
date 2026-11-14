@@ -1,0 +1,154 @@
+[
+  {
+    "run_id": "409d394964a1423aa0ed64a73237cb8e",
+    "run": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\coverage-smoke",
+    "workflow": "nnue",
+    "status": "finalized",
+    "plan_sha256": "89af9f2086fc064469fda57d12d2fd27472e201c354ef0eaa947209b539b62fb",
+    "models": [
+      {
+        "path": "exports/final/network.cnnue",
+        "source": "segments/000004-8bbc4cf9011b/run/seed-cnnue-v1-4/quantised.bin",
+        "role": "final"
+      }
+    ],
+    "target_files": 27,
+    "categories": {
+      "initializer copies": {
+        "files": 12,
+        "bytes": 104019024
+      },
+      "optimizer tensors": {
+        "files": 9,
+        "bytes": 78014268
+      },
+      "intermediate model weights/exports": {
+        "files": 6,
+        "bytes": 35468064
+      }
+    },
+    "planned_bytes": 217501356,
+    "remaining_files": 0,
+    "recoverable_bytes": 0,
+    "deleted_files": 27,
+    "deleted_bytes": 217501356,
+    "reconciled_absent_files": 0,
+    "reconciled_absent_bytes": 0,
+    "in_flight": null,
+    "error": null
+  },
+  {
+    "run_id": "ed48e40043ca4650874570b1b521a386",
+    "run": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\coverage-64",
+    "workflow": "nnue",
+    "status": "finalized",
+    "plan_sha256": "3db737f0e15ed34d440870a5850f116eb971eee6ce6504b79f30520561b539a4",
+    "models": [
+      {
+        "path": "exports/final/network.cnnue",
+        "source": "segments/000064-8f2ca04b348c/run/seed-cnnue-v1-64/quantised.bin",
+        "role": "final"
+      }
+    ],
+    "target_files": 475,
+    "categories": {
+      "initializer copies": {
+        "files": 180,
+        "bytes": 1560285360
+      },
+      "optimizer tensors": {
+        "files": 177,
+        "bytes": 1534280604
+      },
+      "intermediate model weights/exports": {
+        "files": 118,
+        "bytes": 697538592
+      }
+    },
+    "planned_bytes": 3792104556,
+    "remaining_files": 0,
+    "recoverable_bytes": 0,
+    "deleted_files": 475,
+    "deleted_bytes": 3792104556,
+    "reconciled_absent_files": 0,
+    "reconciled_absent_bytes": 0,
+    "in_flight": null,
+    "error": null
+  },
+  {
+    "run_id": "6fc4d1e423ea4dfab8e5ebbbe0611312",
+    "run": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\wdl25-smoke",
+    "workflow": "nnue",
+    "status": "finalized",
+    "plan_sha256": "35bf9e9785c261078ab8e620c8fd64b165803d10bb4a2f8551e99a69cf1a60d8",
+    "models": [
+      {
+        "path": "exports/final/network.cnnue",
+        "source": "segments/000004-1c50815b5608/run/seed-cnnue-v1-4/quantised.bin",
+        "role": "final"
+      }
+    ],
+    "target_files": 27,
+    "categories": {
+      "initializer copies": {
+        "files": 12,
+        "bytes": 104019024
+      },
+      "optimizer tensors": {
+        "files": 9,
+        "bytes": 78014268
+      },
+      "intermediate model weights/exports": {
+        "files": 6,
+        "bytes": 35468064
+      }
+    },
+    "planned_bytes": 217501356,
+    "remaining_files": 0,
+    "recoverable_bytes": 0,
+    "deleted_files": 27,
+    "deleted_bytes": 217501356,
+    "reconciled_absent_files": 0,
+    "reconciled_absent_bytes": 0,
+    "in_flight": null,
+    "error": null
+  },
+  {
+    "run_id": "60aff33645f6408da598936806445351",
+    "run": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\wdl25-64",
+    "workflow": "nnue",
+    "status": "finalized",
+    "plan_sha256": "b2867a79ac5f4ec5aa2252b2e03a8e8efb34a6751156c83b495c66023f3ea6a4",
+    "models": [
+      {
+        "path": "exports/final/network.cnnue",
+        "source": "segments/000064-950382f144b5/run/seed-cnnue-v1-64/quantised.bin",
+        "role": "final"
+      }
+    ],
+    "target_files": 475,
+    "categories": {
+      "initializer copies": {
+        "files": 180,
+        "bytes": 1560285360
+      },
+      "optimizer tensors": {
+        "files": 177,
+        "bytes": 1534280604
+      },
+      "intermediate model weights/exports": {
+        "files": 118,
+        "bytes": 697538592
+      }
+    },
+    "planned_bytes": 3792104556,
+    "remaining_files": 0,
+    "recoverable_bytes": 0,
+    "deleted_files": 475,
+    "deleted_bytes": 3792104556,
+    "reconciled_absent_files": 0,
+    "reconciled_absent_bytes": 0,
+    "in_flight": null,
+    "error": null
+  }
+]

@@ -36,7 +36,7 @@ def main():
     p.add_argument('--output',type=Path,required=True);p.add_argument('--manifest',type=Path,required=True)
     p.add_argument('--count',type=int,default=64);p.add_argument('--seed',type=int,required=True)
     a=p.parse_args();compute_gate.require()
-    if not 1<=a.count<=128:raise ValueError('Bounded opening count required')
+    if not 1<=a.count<=512:raise ValueError('Bounded opening count required')
     if a.output.exists() or a.manifest.exists():raise ValueError('Preserve existing frozen selection')
     if sha(a.source)!=a.sha256:raise ValueError('Source identity changed')
     root=Path(__file__).resolve().parents[2];excluded=set();receipts={}

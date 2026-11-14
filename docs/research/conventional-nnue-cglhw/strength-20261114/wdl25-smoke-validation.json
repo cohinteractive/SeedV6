@@ -1,0 +1,1 @@
+{"mean_abs_link":395.3123056419369,"positions":6753,"sigmoid_mse":0.01956567425490335,"zero_score_mse":0.05942563922619872,"clamped_score_count":0,"wdl_mse":0.07239533893838897,"payload_sha256":"6f3d6dee5372c91b78bfdfeb3896b662fe77a911583c83af0c4d2b12e9d2f462","teacher_wdl_mse":0.05380032971764689,"cp_mae":344.0038501406782}

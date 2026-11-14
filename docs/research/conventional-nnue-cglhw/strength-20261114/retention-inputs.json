@@ -1,0 +1,18 @@
+[
+  {
+    "run": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-smoke",
+    "selection": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\retention-width256-smoke.json"
+  },
+  {
+    "run": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64",
+    "selection": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\retention-width256-64.json"
+  },
+  {
+    "run": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-smoke",
+    "selection": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\retention-width512-smoke.json"
+  },
+  {
+    "run": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width512-64",
+    "selection": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\retention-width512-64.json"
+  }
+]

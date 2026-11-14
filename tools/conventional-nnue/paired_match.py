@@ -38,7 +38,7 @@ def durable_text(path, text):
     os.replace(pending, path)
 
 
-def summarize(games):
+def summarize(games, bootstrap=True):
     completed=[g for g in games if g['score'] is not None]
     score=sum(g['score'] for g in completed)
     bounds=[score/len(games),(score+len(games)-len(completed))/len(games)] if games else [0,1]
@@ -48,7 +48,7 @@ def summarize(games):
     pairs={}
     for g in games:pairs.setdefault(g['opening_index'],[]).append(g['score'])
     values=[sum(scores)/2 for scores in pairs.values() if len(scores)==2 and None not in scores]
-    if len(completed)==len(games) and values and len(values)*2==len(games):
+    if bootstrap and len(completed)==len(games) and values and len(values)*2==len(games):
         mean=sum(values)/len(values)
         rng=random.Random(20261022)
         samples=sorted(sum(rng.choice(values) for _ in values)/len(values) for _ in range(10000))
@@ -63,17 +63,25 @@ def summarize(games):
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--construction-comparison',action='store_true',help='Informational Construction V1 versus frozen E008 with identical CP64 inference')
+    p.add_argument('--strength-research',action='store_true',help='Evaluator-only comparison with explicit identical production CLV_C1 search')
+    p.add_argument('--strength-runtime',type=Path,help='Frozen research workspace containing lib/ and classes/')
     p.add_argument('--network',type=Path,required=True);p.add_argument('--openings',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--movetime-ms',type=int,default=50)
     p.add_argument('--max-plies',type=int,default=400)
+    p.add_argument('--max-wall-seconds',type=int,help='Bound total observed match wall time, including prior completed/interrupted games on resume')
     p.add_argument('--resume',action='store_true',help='Verify frozen protocol; skip completed games, replay any interrupted game')
     p.add_argument('--selective-research-classes',type=Path,help='Explicit unaccepted one-worker NNUE research launcher classes')
     p.add_argument('--opponent-network',type=Path,help='Frozen conventional NNUE opponent with the same unpruned search; evaluator comparison')
     p.add_argument('--vector',action='store_true',help='Resolve optional Vector API equally for both engines; commands freeze this choice')
     p.add_argument('--confirmation',action='store_true',help='Identify a separately predeclared fixed-sample confirmation protocol')
+    p.add_argument('--confirmation-family-size',type=int,choices=(1,2),help='Predeclared maximum confirmation attempts; used by the final statistical audit')
     p.add_argument('--policy-comparison',action='store_true',help='Explicit selective-versus-unpruned comparison with byte-identical NNUE files')
     a=p.parse_args()
     compute_gate.require()
+    if a.confirmation_family_size and not a.confirmation:raise ValueError('Confirmation family requires confirmation mode')
+    if a.strength_runtime and not a.strength_research:raise ValueError('Frozen strength runtime requires strength comparison')
+    if a.strength_research and (not a.opponent_network or a.construction_comparison or a.policy_comparison or a.selective_research_classes):
+        raise ValueError('Strength comparison requires two networks and no search-policy overrides')
     if a.construction_comparison:
         if a.policy_comparison or a.selective_research_classes or a.opponent_network:
             raise ValueError('Construction comparison has fixed entry points, not research overrides')
@@ -87,7 +95,8 @@ def main():
     elif a.opponent_network and a.selective_research_classes:
         raise ValueError('The NNUE comparison holds search fixed; omit selective research classes')
     if not 10<=a.movetime_ms<=1000 or not 100<=a.max_plies<=1000:raise ValueError('Unbounded match settings')
-    openings=json.loads(a.openings.read_text());assert 1<=len(openings)<=128
+    if a.max_wall_seconds is not None and not 60<=a.max_wall_seconds<=21600:raise ValueError('Match wall budget must be 60..21600 seconds')
+    openings=json.loads(a.openings.read_text());assert 1<=len(openings)<=(512 if a.strength_research else 128)
     a.output.mkdir(parents=True,exist_ok=a.resume)
     root=Path(__file__).resolve().parents[2]
     jars=root/'app-uci/build/install/seedv6-uci/lib'
@@ -101,6 +110,12 @@ def main():
         commands[0]=base[:5]+[str(jars/'*')+os.pathsep+str(classes),'SeedNnueSelectiveResearch',str(a.network.resolve())]
     if a.construction_comparison:
         commands=[base,base[:-1]+['com.ohinteractive.seedv6.uci.NnueCandidateUciMain','--network',str(a.network.resolve())]]
+    if a.strength_research:
+        workspace=(a.strength_runtime or root/'build/research/runtime').resolve();jars=workspace/'lib';classes=workspace/'classes'
+        if not (classes/'com/ohinteractive/seedv6/integration/NnueStrengthUciMain.class').is_file():
+            raise ValueError('Build installResearchWorkspace first')
+        base=base[:5]+[str(jars/'*')+os.pathsep+str(classes),'com.ohinteractive.seedv6.integration.NnueStrengthUciMain']
+        commands=[base+[str(model.resolve())] for model in (a.network,a.opponent_network)]
     if a.vector:
         for command in commands:command.insert(1,'--add-modules=jdk.incubator.vector')
     protocol=dict(network=str(a.network.resolve()),network_sha256=sha(a.network),openings_sha256=sha(a.openings),
@@ -122,6 +137,12 @@ def main():
         protocol['network_held_identical']=True
     if a.confirmation:
         protocol['purpose']='prospective fixed-sample paired confirmation; frozen candidates/settings/openings; final endpoint only'
+    if a.strength_research:
+        protocol.update(search_profile='CLV_C1',score_mapping='BT4_Q_LOGIT400_V1',
+            purpose=('prospective fixed-sample paired confirmation' if a.confirmation else 'development screen')+'; evaluator-only, identical explicit production search',
+            launcher_sha256={str(f.relative_to(classes)):sha(f) for f in classes.rglob('NnueStrengthUciMain*.class')})
+    if a.max_wall_seconds is not None:protocol['max_wall_seconds']=a.max_wall_seconds
+    if a.confirmation_family_size is not None:protocol['confirmation_family_size']=a.confirmation_family_size
     if a.construction_comparison:
         import platform
         protocol.update(candidate_name='ConstructionV1-NNUE-CP64',opponent_name='E008-NNUE-CP64',
@@ -144,6 +165,11 @@ def main():
     if len(completed)==2*len(openings):
         print('All frozen games already completed; no engines launched',flush=True)
         return
+    previous_seconds=sum(g['elapsed_seconds'] for g in games)
+    previous_seconds+=sum(json.loads(p.read_text()).get('elapsed_seconds',0) for p in a.output.glob('interrupted-*.json'))
+    if a.max_wall_seconds is not None and previous_seconds>=a.max_wall_seconds:
+        print('Observed match wall budget exhausted; no engines launched',flush=True)
+        raise SystemExit(76)
     engines=[];start=time.monotonic()
     flags=subprocess.CREATE_NO_WINDOW|subprocess.BELOW_NORMAL_PRIORITY_CLASS
     try:
@@ -157,18 +183,21 @@ def main():
                 if (opening_index,candidate_white) in completed:continue
                 board=initial.copy();identifier=object();observations=[];game_start=time.monotonic()
                 while not board.is_game_over(claim_draw=True) and len(observations)<a.max_plies:
-                    if not compute_gate.permitted():
+                    budget_expired=a.max_wall_seconds is not None and previous_seconds+time.monotonic()-start>=a.max_wall_seconds
+                    if not compute_gate.permitted() or budget_expired:
                         stem=f'interrupted-{time.time_ns()}'
                         durable_text(a.output/(stem+'.pgn'),str(chess.pgn.Game.from_board(board))+'\n')
                         durable_text(a.output/(stem+'.json'),json.dumps(dict(opening_index=opening_index,
                             candidate_white=candidate_white,moves=observations,
+                            elapsed_seconds=time.monotonic()-game_start,reason='wall-budget' if budget_expired else 'compute-hold',
                             continuation='Resume same protocol with --resume; completed games skipped; this unfinished game restarts from opening.'),indent=2)+'\n')
-                        raise SystemExit(75)
+                        raise SystemExit(76 if budget_expired else 75)
                     candidate_turn=board.turn==candidate_white
+                    move_start=time.monotonic()
                     played=engines[0 if candidate_turn else 1].play(board,chess.engine.Limit(time=a.movetime_ms/1000),
                         game=identifier,info=chess.engine.INFO_BASIC|chess.engine.INFO_SCORE)
                     if played.move not in board.legal_moves:raise RuntimeError('Illegal engine move')
-                    observations.append(dict(move=played.move.uci(),candidate=candidate_turn,nodes=played.info.get('nodes'),
+                    observations.append(dict(move=played.move.uci(),candidate=candidate_turn,wall_seconds=time.monotonic()-move_start,nodes=played.info.get('nodes'),
                         time=played.info.get('time'),depth=played.info.get('depth'),
                         score_cp=played.info['score'].pov(board.turn).score() if 'score' in played.info else None,
                         score_mate=played.info['score'].pov(board.turn).mate() if 'score' in played.info else None))
@@ -188,7 +217,7 @@ def main():
                 durable_text(a.output/(stem+'.json'),json.dumps(dict(result=record,moves=observations),indent=2)+'\n')
                 games.append(record)
                 durable_text(a.output/'games.jsonl',''.join(json.dumps(g)+'\n' for g in games))
-                print(json.dumps(dict(progress=f'{len(games)}/{len(openings)*2}',last=record,summary=summarize(games))),flush=True)
+                print(json.dumps(dict(progress=f'{len(games)}/{len(openings)*2}',last=record,summary=summarize(games,bootstrap=not a.strength_research))),flush=True)
         result=summarize(games);result['elapsed_seconds']=time.monotonic()-start
         durable_text(a.output/'summary.json',json.dumps(result,indent=2)+'\n')
     finally:

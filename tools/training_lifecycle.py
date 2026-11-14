@@ -295,10 +295,12 @@ def verify_nnue_checkpoint(path):
             set(receipt['files']) == set(NNUE_FILES), 'Checkpoint receipt/configuration mismatch')
     for name in NNUE_FILES:
         p = checked(path / name)
-        require(0 < p.stat().st_size <= 16*1024*1024 and digest(p) == receipt['files'][name], 'Checkpoint hash/size: ' + name)
+        require(0 < p.stat().st_size <= 32*1024*1024 and digest(p) == receipt['files'][name], 'Checkpoint hash/size: ' + name)
     heads = config.get('output_buckets', 1)
     require(type(heads) is int and heads in (1, 8), 'Unsupported NNUE geometry')
-    shapes = {'l0w': 7680*256, 'l0f': 768*256, 'l0b': 256, 'l1w': 512*heads, 'l1b': heads}
+    hidden = config.get('hidden', 256)
+    require(type(hidden) is int and (hidden, heads) in ((256, 1), (256, 8), (512, 8)), 'Unsupported NNUE hidden geometry')
+    shapes = {'l0w': 7680*hidden, 'l0f': 768*hidden, 'l0b': hidden, 'l1w': 2*hidden*heads, 'l1b': heads}
     for name in NNUE_FILES[2:]:
         data = (path / name).read_bytes(); offset = 0; records = {}
         while offset < len(data):
@@ -307,7 +309,7 @@ def verify_nnue_checkpoint(path):
             require(key not in records and offset <= len(data), 'Invalid optimizer record')
             records[key] = count
         require(records == shapes, 'Incomplete optimizer tensors')
-    quant = (path / 'quantised.bin').read_bytes(); payload = (7680*256+256+513*heads)*2
+    quant = (path / 'quantised.bin').read_bytes(); payload = (7680*hidden+hidden+(2*hidden+1)*heads)*2
     require(len(quant) == (payload+63)//64*64 and quant[payload:] == (b'bullet'*11)[:len(quant)-payload]
             and (path / 'raw.bin').stat().st_size == payload*2, 'NNUE network geometry/padding mismatch')
     return receipt, config
@@ -430,10 +432,10 @@ def verify_model(path, workflow):
     if workflow == 'nnue':
         require(len(data) >= 72, 'Truncated NNUE export')
         version, features, hidden, buckets, qa, qb, scale, size = struct.unpack_from('<8I', data, 8)
-        heads = {1: 1, 2: 8}.get(version, 0)
+        heads = {1: 1, 2: 8, 3: 8}.get(version, 0)
         require(heads and data[:8] == f'S6CNU00{version}'.encode() and
-                (features, hidden, buckets, qa, qb, scale) == (7680, 256, 10, 255, 64, 400) and
-                size == (7680*256+256+513*heads)*2 and len(data) == size+72 and
+                (features, hidden, buckets, qa, qb, scale) == (7680, 512 if version == 3 else 256, 10, 255, 64, 400) and
+                size == (7680*hidden+hidden+(2*hidden+1)*heads)*2 and len(data) == size+72 and
                 hashlib.sha256(data[72:]).digest() == data[40:72], 'Invalid NNUE export envelope/payload')
     elif workflow == 'PairObjectiveDiagnostic':
         require(len(data) == 795032 and data[:8] == b'S6P2RT01' and

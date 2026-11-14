@@ -70,6 +70,11 @@ needed to play. The [build-61 baseline](docs/engine-baseline-2026-10-22.md) and
 [Pair-2 construction activation](docs/construction-v1-gameplay.md) remain historical
 records. Their scores and experiments are not attributed to the new baseline.
 
+The [NNUE strength campaign](docs/research/conventional-nnue-cglhw/strength-20261114/REPORT.md)
+compares evaluator architectures and training changes against protected CP64 with
+identical CLV_C1 search. Its configurations, measurements and local artifact paths
+are recorded together; production remains the frozen CP64 incumbent.
+
 The separate `seedv6-nnue-cp64` / native `SeedV6-NNUE-CP64` launcher preserves
 **E008 + CP64**, with one worker, for reproducible comparison and historical use.
 See the [candidate guide](docs/nnue-botli-candidate.md). Standard `seedv6-uci` /

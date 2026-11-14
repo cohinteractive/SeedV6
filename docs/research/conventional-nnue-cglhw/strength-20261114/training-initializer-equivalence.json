@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "hashes": {
+    "width256-weights": "fb5d7e389b2680fa0b784dcf62fe6fea30ac6b2972649743a350e9169b66991d",
+    "coverage-smoke-weights": "fb5d7e389b2680fa0b784dcf62fe6fea30ac6b2972649743a350e9169b66991d",
+    "wdl25-smoke-weights": "fb5d7e389b2680fa0b784dcf62fe6fea30ac6b2972649743a350e9169b66991d",
+    "width256-momentum": "337ed7e23807e43926a4e2e77090cd8bcbb701b1a6802986515360601ed26b31",
+    "coverage-smoke-momentum": "337ed7e23807e43926a4e2e77090cd8bcbb701b1a6802986515360601ed26b31",
+    "wdl25-smoke-momentum": "337ed7e23807e43926a4e2e77090cd8bcbb701b1a6802986515360601ed26b31",
+    "width256-velocity": "337ed7e23807e43926a4e2e77090cd8bcbb701b1a6802986515360601ed26b31",
+    "coverage-smoke-velocity": "337ed7e23807e43926a4e2e77090cd8bcbb701b1a6802986515360601ed26b31",
+    "wdl25-smoke-velocity": "337ed7e23807e43926a4e2e77090cd8bcbb701b1a6802986515360601ed26b31"
+  },
+  "meaning": "Exact fresh optimizer initialization shared by same-width schedule control, coverage control and outcome-mixture control; original CP64 has a different historical seed. Deleted first-control initializer identity comes from its verified retention plan."
+}

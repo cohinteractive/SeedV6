@@ -19,6 +19,7 @@ def main():
     p.add_argument('checkpoint',type=Path);p.add_argument('probes',type=Path)
     p.add_argument('validation',type=Path);p.add_argument('output',type=Path)
     p.add_argument('--material',type=Path)
+    p.add_argument('--strength-research',action='store_true',help='Use isolated 256/512 research inference')
     p.add_argument('--vector',action='store_true',help='Verify the optional exact Vector API runtime')
     a=p.parse_args();compute_gate.require();receipt,_=verify_checkpoint(a.checkpoint)
     a.output.mkdir(parents=True,exist_ok=False)
@@ -34,6 +35,7 @@ def main():
     python=[sys.executable,'-B']
     java=['C:/java/jdk-21/bin/java.exe','-XX:ActiveProcessorCount=1','-Xmx512m',
           '-cp',str(root/'research/build/install/research/lib/*'),'com.ohinteractive.seedv6.tools.eval.ConventionalNnueProbe',str(network)]
+    if a.strength_research:java[-2]='com.ohinteractive.seedv6.tools.eval.StrengthNnueProbe'
     if a.vector:java.insert(1,'--add-modules=jdk.incubator.vector')
     run(python+[str(tools/'export_network.py'),str(a.checkpoint/'quantised.bin'),str(network),
         '--fens',str(a.probes),'--reference',str(a.output/'python.jsonl')],a.output/'export.log')

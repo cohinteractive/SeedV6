@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "positions": 259,
+  "hidden": 256,
+  "output_buckets": 8,
+  "exact_features": "Python / Java / pinned Bullet",
+  "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+  "gpu_float_max_abs_raw_error": 8.911564357561019e-07,
+  "gpu_float_tolerance": 2e-05,
+  "quantization_max_abs_cp_error": 41.15356540292214,
+  "quantization_rms_cp_error": 8.555584763164664,
+  "limitation": "Quantization error is measured separately; no strength or calibration claim"
+}

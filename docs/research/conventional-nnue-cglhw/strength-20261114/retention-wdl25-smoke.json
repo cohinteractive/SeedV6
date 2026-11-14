@@ -1,0 +1,24 @@
+{
+  "run_id": "6fc4d1e423ea4dfab8e5ebbbe0611312",
+  "dependencies_resolved": true,
+  "restart_retired": true,
+  "reason": "Completed fixed experiment. Retain full checkpoint 4/64 optimizer endpoints and all tested exports; retire only disposable intermediate weights and initializer copies. Preserve all protocols, logs, negative results and failed attempts.",
+  "models": [
+    {
+      "path": "exports/final/network.cnnue",
+      "source": "segments/000004-1c50815b5608/run/seed-cnnue-v1-4/quantised.bin",
+      "role": "final"
+    }
+  ],
+  "retain": [
+    "segments/000004-1c50815b5608/run/seed-cnnue-v1-4/quantised.bin",
+    "segments/000004-1c50815b5608/run/seed-cnnue-v1-4/raw.bin",
+    "segments/000004-1c50815b5608/run/seed-cnnue-v1-4/optimiser_state/weights.bin",
+    "segments/000004-1c50815b5608/run/seed-cnnue-v1-4/optimiser_state/momentum.bin",
+    "segments/000004-1c50815b5608/run/seed-cnnue-v1-4/optimiser_state/velocity.bin"
+  ],
+  "evidence": [
+    "exports/final/parity.json",
+    "exports/final/validation.json"
+  ]
+}

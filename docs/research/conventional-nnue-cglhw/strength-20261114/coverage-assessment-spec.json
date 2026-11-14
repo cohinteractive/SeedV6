@@ -1,0 +1,23 @@
+{
+  "models": [
+    {
+      "id": "cp64",
+      "checkpoint": "docs/research/conventional-nnue-cglhw/raw/e007-training-64/segments/000064-37ddad38acef/run/seed-cnnue-v1-64",
+      "evaluation": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\coverage-assessment-cp64",
+      "expected_sha256": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+    },
+    {
+      "id": "width256",
+      "checkpoint": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\width256-64\\segments\\000064-c2a7ec3287b4\\run\\seed-cnnue-v1-64",
+      "evaluation": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\coverage-assessment-width256"
+    },
+    {
+      "id": "coverage256",
+      "checkpoint": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\coverage-64\\segments\\000064-8f2ca04b348c\\run\\seed-cnnue-v1-64",
+      "evaluation": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\coverage-64\\exports\\final"
+    }
+  ],
+  "probes": "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens",
+  "validation": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-holdout\\validation.txt",
+  "roots": "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens"
+}

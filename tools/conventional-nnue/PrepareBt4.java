@@ -57,7 +57,7 @@ public final class PrepareBt4 {
     }
     static void add(Map<String,Long> counts,String name) {counts.merge(name,1L,Long::sum);}
     public static void main(String[] args) throws Exception {
-        if(args.length!=6)throw new IllegalArgumentException("source.json output trainUnits validationUnits recordsPerUnit seed");
+        if(args.length!=6 && args.length!=7)throw new IllegalArgumentException("source.json output trainUnits validationUnits recordsPerUnit seed [exclude-manifest.json]");
         permission();long start=System.nanoTime();
         var source=JSON.fromJson(Files.readString(Path.of(args[0])),DataSource.class);source.verify();
         if(source.labelProfile()!=LabelProfile.BT4_Q_V1)throw new IllegalArgumentException("BT4 only");
@@ -67,7 +67,19 @@ public final class PrepareBt4 {
         if(trainUnits<1||valUnits<1||quota<128||quota>65536||(long)trainUnits*quota>33554432)
             throw new IllegalArgumentException("Outside bounded extraction limits");
         var out=Path.of(args[1]);Files.createDirectory(out);
-        var indices=new ArrayList<Integer>();for(int i=0;i<manifest.units().size();i++)indices.add(i);
+        var excluded=new HashSet<Integer>();String exclusionHash=args.length==7?sha(Path.of(args[6])):null;
+        if(args.length==7) {
+            var prior=JsonParser.parseString(Files.readString(Path.of(args[6]))).getAsJsonObject();
+            if(!prior.get("prepared_identity").getAsString().equals(manifest.identity()))
+                throw new IOException("Excluded units belong to a different prepared source");
+            for(var row:prior.getAsJsonArray("units")) {
+                var selected=row.getAsJsonObject();int index=selected.get("index").getAsInt();
+                var unit=JSON.fromJson(selected.get("unit"),PreparedBinpack.Unit.class);
+                if(index<0 || index>=manifest.units().size() || !unit.equals(manifest.units().get(index)) || !excluded.add(index))
+                    throw new IOException("Invalid/duplicate excluded unit descriptor");
+            }
+        }
+        var indices=new ArrayList<Integer>();for(int i=0;i<manifest.units().size();i++)if(!excluded.contains(i))indices.add(i);
         Collections.shuffle(indices,new Random(seed));
         if(trainUnits+valUnits>indices.size())throw new IllegalArgumentException("Too many units");
         // Validation units are processed first. Exact placement+STM dedup across
@@ -148,6 +160,10 @@ public final class PrepareBt4 {
         result.put("proof_records",proofCount);result.put("counts",counts);result.put("units",unitEvidence);result.put("hashes",hashes);
         result.put("target","BT4_Q_LOGIT400_V1: inverse publisher Q, p=clamp((Q+1)/2,.0001,.9999), round(400*logit(p)); stored STM; genuine STM WDL");
         result.put("selection","Seeded shuffle of prepared unit indices; validation units first; first qualifying quota per unit; exact global placement+STM dedup; Fisher-Yates training shuffle");
+        if(args.length==7) {
+            if(!exclusionHash.equals(sha(Path.of(args[6]))))throw new IOException("Exclusion manifest changed during extraction");
+            result.put("excluded_units",Map.of("manifest",args[6],"sha256",exclusionHash,"count",excluded.size()));
+        }
         result.put("provenance","12 LE bytes/record: unit index u32, unit raw ordinal u32, BT4 encoded i16, STM result i8, zero pad; aligned with shuffled train.data");
         result.put("limitations",List.of("Unit-disjoint diagnostic validation; no proof of game or symmetry independence","Bounded prefixes within globally sampled chunks, not a uniform sample of all positions","Logit scores are link values, not original centipawns","Source identity uses sampled fingerprints; consumed prepared units have full SHA256 verification"));
         result.put("seconds",(System.nanoTime()-start)/1e9);
