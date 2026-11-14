@@ -1,0 +1,37 @@
+{
+  "plan_sha256": "58d692d057556cbe92a0e75ccf57e4d2498f5c855acacbdd5252bc95b86504d7",
+  "outcomes": {
+    "long": {
+      "result_sha256": "16127ceb974be0c1537ab5983dfe688bd03c1623e2f55739511c7b840d65dc1f",
+      "technical_gate": true,
+      "disposition": "limited supporting evidence",
+      "wins": 20,
+      "draws": 33,
+      "losses": 11,
+      "elo": 49.184068250484835,
+      "paired_bootstrap_95_elo": [
+        -5.429122875709548,
+        106.34623144029209
+      ],
+      "observed_match_seconds": 2767.501584200014
+    },
+    "workers": {
+      "result_sha256": "e278c9cbb9030ea459781fbdcec8f83e50a0d473b554ee517fed2cce279c2d73",
+      "technical_gate": true,
+      "disposition": "limited supporting evidence",
+      "wins": 23,
+      "draws": 21,
+      "losses": 20,
+      "elo": 16.297987076023777,
+      "paired_bootstrap_95_elo": [
+        -54.735183963203085,
+        88.73949984654256
+      ],
+      "observed_match_seconds": 1260.4570703999489
+    }
+  },
+  "observed_match_seconds": 4027.9586545999628,
+  "limits": "Two descriptive robustness endpoints; no pooled estimate, extension, efficacy stop or retest. Technical failures/caps unverified; negative point crossing even uncertain; interval wholly below even detected harm; nonnegative point limited support only.",
+  "production_promotion": "NOT AUTHORIZED",
+  "owner_acceptance": "NOT CLAIMED"
+}

@@ -1,0 +1,13 @@
+{
+  "operation": "UPDATE",
+  "id": "4660b335-9c02-495f-b137-ab7680b0d972",
+  "path": "C:\\dev\\tl-local\\seed-phase2-complete-9eefc3ea-a932-4c00-88b2-ac2e5b0dd655.json",
+  "bytes": 3067,
+  "sha256": "1eef791daca9d8f98bf6bbed98a7dd627d48601498a80dc1c124446263125990",
+  "schema_sha256": "375582db417afefcae28e2b0cd568ecd60445f6f6aae0da61066b28e0374bbe6",
+  "schema_validation": "PASS",
+  "semantic_size_validation": "PASS",
+  "staging": "NOT OBSERVED",
+  "apply": "NOT PERFORMED",
+  "human_action": "Owner: explicitly assign intended Phase2 thread; review queue order/current state, approve V1 legacy/freshness warning and manually Apply. Non-blocking for completed repository research. No CLOSE operation."
+}

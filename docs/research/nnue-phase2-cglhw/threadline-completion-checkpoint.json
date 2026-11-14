@@ -1,0 +1,20 @@
+{
+  "protocol": "threadline-bundle",
+  "version": 1,
+  "id": "4660b335-9c02-495f-b137-ab7680b0d972",
+  "operation": "UPDATE",
+  "state": {
+    "position": "Phase 2 research is complete; owner acceptance and production promotion are separate. Direct128 checkpoint64 is the strongest supported candidate: independent C001 179W/204D/129L over 512 games, +34.04 Elo against WDL25, paired bootstrap 95% +10.86 to +56.82 at 200ms/W1/Hash32/CLV_C1. All primary gates pass. Bounded robustness adds limited support: 400ms/W1 20W/33D/11L,+49.18[-5.43,+106.35]; 200ms/W2 23W/21D/20L,+16.30[-54.74,+88.74]. These small intervals include harm; no pooling, extension or retest. All 1600 games across 18 endpoints are audited and uncensored. Correctness, efficiency, training/data contrasts and explicit dispositions satisfy the research contract. Compact direct inference is about386ns/update+head with zero measured hot allocation and a1.97MB model. Source-game independence, broader transfer and live-rating gains remain unverified. WDL25,CP64 and build101 remain unchanged; controller idle; no promotion,deployment,push or Apply.",
+    "next": "Owner: consider authorizing a separate direct128 checkpoint64 production-integration and promotion-review work unit. Normal loading currently rejects its experimental format, so integration and appropriate release/platform validation must precede any promotion. No further Phase2 experiment or sampling is selected. Future Codex work should begin from REPORT.md,STATE.md and closeout-verification.json, check local ignored evidence availability, and preserve every completed/failed experiment. Threadline target assignment, current-state/sequence review, V1 freshness approval and manual Apply remain with the owner; this publication does not close or apply the thread."
+  },
+  "captures": [
+    {
+      "kind": "Decision",
+      "body": "Recommend the compact direct model on independent strength and measured computation. Defer the tested deeper/pawn-pair variants: increased predictive capacity did not establish equal-time gains despite matched duration controls. Retain broad data/25% outcome/early decay as the working recipe, without claiming optimality or isolated causal Elo. More seeds,factorial interactions,new supervision,conditional heads and QAT are explicitly deferred; architectural families are not disproved. Sixty-four reserved robustness pairs remain unused, not an automatic extension allowance."
+    },
+    {
+      "kind": "Reference",
+      "body": "C:/projects/seed/java/seedv6-unified/docs/research/nnue-phase2-cglhw/: final REPORT.md,STATE.md,CONTRACT.md,c001-results.json,c001-decision.json,r001-summary.json,r001-qualification.json,closeout-verification.json. Selected network SHA256 defaf21da465d6f63fc13a2299299e927029d82558d663c7bbc801e7c35e9d1c at raw/compact128-base-64-assessment-r1/network.p2nnue. Raw models,data,optimizer states and game outputs are local-only. Unknown authoritative Threadline unresolved items/grouping are preserved by omission; UPDATE does not change lifecycle."
+    }
+  ]
+}

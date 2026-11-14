@@ -1,7 +1,9 @@
 # Phase 2 research state
 
-Status: ACTIVE — C001 passed all predeclared gates; owner acceptance is not claimed.
-R001 bounded clock/worker robustness is qualified and frozen for execution.
+Status: RESEARCH COMPLETE — C001 passed all predeclared gates; both R001
+robustness endpoints are complete and audited. Owner acceptance is not claimed.
+No active research process or selected experiment remains. See REPORT.md for
+the final synthesis, recommendation and explicit deferred/unresolved directions.
 Observed start: 2026-11-14T10:26:04Z. Initial HEAD08877838, clean worktree,
 build101; no exact-root CODEXLOG_CURRENT.md. Branch research/nnue-phase2.
 No production change or acceptance is authorized.
@@ -46,18 +48,18 @@ isolated Windows research, not Mac access. Recheck before expensive launches.
 |---|---|---|
 | A001 | WDL25's useful recipe survives independent initialization; controls separate supervision, coverage and decay | Five64-game screens audited; broad25% reproduction is plausible, no isolated causal Elo or established superiority |
 | D001 | Existing source metadata can support stronger independence claims | Complete: chunk separation established, game independence unproved; D002 supplements input-frequency accounting |
-| B001 | Compact nonlinear downstream capacity can beat width expansion economically | Deep256+16 is correct and diagnostically better, but its first64-game screen is negative; B003 tests a cheaper formulation |
-| B002 | Stable pawn relationships supply efficient capacity | Pawn256 endpoint is correct but its first64-game screen is negative; B003 tests lower-cost128 formulation |
-| S001 | Technically qualified candidates compete with production WDL25 | All512 games audited without caps; only reproduction has positive point estimate, with interval crossing zero; no confirmation selected |
+| B001 | Compact nonlinear downstream capacity can beat width expansion economically | Deep256+16 is correct but costly and negative in screening; tested formulation deferred; compact follow-up also complete |
+| B002 | Stable pawn relationships supply efficient capacity | Pawn256 is correct but costly and negative in screening; tested formulation deferred; compact follow-up also complete |
+| S001 | Technically qualified candidates compete with production WDL25 | All512 games audited without caps; only reproduction has positive point estimate, with interval crossing zero; exploratory evidence retained |
 | D002 | Broader records may still repeat evaluator inputs | Complete:32.48M additional-only fingerprints;2.83% of added records match original; source-game separation remains unproved |
 | B003 | Depth/relations can replace some accumulator width | All three64 endpoints qualified, zero allocation, matched initializers and full curves; warmed comparative cost complete |
-| S002 | Compact128 cost/capacity trade-offs can compete in equal time | All192 games audited, no caps: direct+49, deep-22, pawn-11 Elo; none independently confirmed |
+| S002 | Compact128 cost/capacity trade-offs can compete in equal time | All192 games audited, no caps: direct+49, deep-22, pawn-11 Elo; direct subsequently confirmed in C001 |
 | B004 | A matched duration extension can resolve remaining training adequacy | All three128 endpoints qualified;988.99 additional native seconds; unchanged geometry/cost, improved diagnostics |
 | D003 | Quantization may change predictive comparisons or calibration | Complete:6753 positions/model, Java aggregates match, predictive ranking unchanged; no demonstrated material quantization limitation |
 | A002 | More training of standard256 may change the recommendation | Complete:64 exact optimizer transitions,320.77 native seconds, all qualification gates pass |
 | S003 | Equally trained128/256 formulations can compete in equal time | All256 games audited without caps; standard+38,direct+22,pawn+11,deep-16; exploratory only |
 | C001 | The selected compact direct model improves over production WDL25 | Complete: 179W/204D/129L, +34.04 Elo, paired95% +10.86..+56.82; all three gates pass |
-| R001 | The confirmed candidate transfers to longer clocks and two workers | Qualified/frozen: two fixed 64-game conditions, 7200 total match seconds; final outcomes pending |
+| R001 | The confirmed candidate transfers to longer clocks and two workers | Complete:400ms/W1 +49.18[-5.43,+106.35];200ms/W2 +16.30[-54.74,+88.74];128 audited games, limited support only |
 
 This is a dynamic decision table, not a mandatory implementation checklist.
 Conditional subnetworks, other activations, widths, quantization and threat features
@@ -74,13 +76,23 @@ selection bias and equal-time search-cost interactions.
 
 ## Restart
 
-Read CONTRACT.md, this file and selected experiment protocol/results. Check Git
-diff, protected hashes and nnue-control.cmd status. Preserve all completed and
-failed raw directories; verify exact recipes and receipts before resumption.
-No full engine suite, GUI/package build, deployment, push or promotion is selected.
-Build101 remains unchanged for uncommitted/research-tooling work.
+This research programme is complete. Do not restart finished drivers or expand
+sampling from remaining allowances. Read CONTRACT.md, REPORT.md and the final
+evidence before new work. All experiments, including failures, remain preserved
+at recorded local raw paths; verify local availability before analysis.
 
-## First execution findings
+Recommended next work is a separately owner-authorized production integration
+and promotion review of direct128 checkpoint64. It requires normal loader/format
+integration and appropriate release/platform validation; no default change,
+deployment, Mac/BotLi access, push or shared-policy work is authorized here.
+The current production remains WDL25/build101, with CP64 retained. Threadline
+manual review/Apply is non-blocking for this completed repository research.
+
+## Historical execution findings
+
+The entries below preserve observed execution history and prior decisions.
+Earlier "next", "active" or incomplete-status statements describe those earlier
+checkpoints; the current completion/restart boundary above supersedes them.
 
 A001 reproduction reached checkpoint64. The259 Python/Rust/Java probes pass exact
 feature/integer/full-refresh agreement and GPU float tolerance. Trained legal-walk
@@ -602,9 +614,8 @@ PERFORMED. Manual target/sequence/current-state review, V1 legacy/freshness
 approval and Apply remain with the owner and do not block research. Unknown
 unresolved items/grouping remain omitted. Publication manifests retain all details.
 
-Completion criteria: NOT SATISFIED. Direct128 checkpoint64 is independently
-stronger under the primary tested conditions; R001 qualification/robustness and
-final synthesis remain. No promotion or deployment is authorized.
+At the C001 checkpoint, completion was not yet satisfied: R001 qualification,
+robustness and final synthesis remained. No promotion or deployment was authorized.
 
 ## R001 execution boundary
 
@@ -638,3 +649,66 @@ Raw outputs raw/r001-long and raw/r001-workers. No interim efficacy decisions,
 sample extension, retest or pooled score. Driver produces independently audited
 r001-long-results.json, r001-workers-results.json and r001-summary.json. Remaining
 64 robustness pairs are unused and are not an automatic extension allowance.
+
+C001 result and R001 qualification/frozen preparation committed as f29d418a.
+WDL25/CP64/VERSION_STATE hashes still match baseline; build101 is unchanged.
+Current R001 driver is running; the actual long-clock native protocol matches
+the selected hashes,400ms/W1/Hash32/CLV_C1,800 plies and4800-second allowance.
+
+Material confirmed-result Threadline UPDATE ce512350-b829-4266-b43c-5b64e9eca3a7
+published to C:/dev/tl-local/seed-phase2-confirmed-53afdc4c-db38-449b-90ed-1fef30c9db8e.json.
+2439 bytes, SHA256 d9786854afbbd9678bb0c176dc2680b66d5e736bddcef1e8c461cdb40b0dd55d.
+Current V1 schema/semantics/size and final bytes pass. Dedicated Playwright still
+lists only about:blank; staging NOT OBSERVED and Apply NOT PERFORMED. Owner target
+assignment, sequence/current-state review, legacy/freshness approval and manual
+Apply remain non-blocking for research. Unknown residuals/grouping omitted.
+See threadline-c001-result-checkpoint.json and threadline-c001-result-publication.json.
+
+R001 long-clock endpoint completed:20W/33D/11L, no caps, +49.18 Elo,
+paired bootstrap95% -5.43..+106.35. All64 games pass independent legal/artifact
+audit (r001-long-results.json). This is limited support, not established gain at
+400ms. The already scheduled two-worker condition is now active; its actual
+protocol verifies200ms/W2/Hash32/CLV_C1, selected model hashes and2400s allowance.
+Do not change its frozen endpoint in response to the long-clock score.
+
+## Final research outcome
+
+R001 driver observed exit0; final W2 legal/artifact audit ended
+2026-11-14T23:34:05Z with exit0. Controller NORMAL, active=null, owned_processes=0.
+Two-worker endpoint:23W/21D/20L, no caps, +16.30 Elo, paired bootstrap95%
+-54.74..+88.74. Both R001 technical gates pass and both classifications are
+"limited supporting evidence" under the frozen protocol. Neither small sample
+proves gain or noninferiority. No scores were pooled and no games were extended.
+R001 used4027.96 observed match seconds of7200; remaining64 reserved pairs unused.
+
+All1600 research games are independently audited and uncensored. Total observed
+match accounting is35079.53s (9.744h), not exact host-session timing. C001 remains
+the single primary result:179W/204D/129L, +34.04 Elo, paired95% +10.86..+56.82.
+Direct128 checkpoint64 is the strongest supported model under those conditions.
+Its exact network SHA256 is defaf21da465d6f63fc13a2299299e927029d82558d663c7bbc801e7c35e9d1c;
+artifact raw/compact128-base-64-assessment-r1/network.p2nnue. Original WDL25,
+CP64 and build101 remain protected. No acceptance, promotion or deployment.
+
+CONTRACT completion criteria are satisfied by the final REPORT evidence and
+explicit dispositions. No further research run is selected. Depth/relational
+variants, additional duration, more seeds/factorial interactions, conditional
+subnetworks and new supervision are deferred for the specific reasons in REPORT.
+Game-level data independence, broader-clock/worker/platform transfer and sustained
+live-rating effect remain unresolved limits, not claimed successes or hidden gates.
+
+Final postcondition checks PASS (closeout-verification.json):18 report/ledger
+identities, local game-file availability,15 screen-model hashes,141 frozen
+runtime files, original trainer, WDL25/CP64 and exact VERSION_STATE bytes.
+Representative bulk paths remain ignored; no raw output staged. Existing legal
+audits were verified, not repeated. Research-only source/tooling changes do not
+alter the normal application build or feature inventory; build101 remains intact.
+
+Final instructed Threadline operation is UPDATE, not CLOSE. Candidate
+4660b335-9c02-495f-b137-ab7680b0d972 was atomically published to
+C:/dev/tl-local/seed-phase2-complete-9eefc3ea-a932-4c00-88b2-ac2e5b0dd655.json.
+3067 bytes; SHA2561eef791daca9d8f98bf6bbed98a7dd627d48601498a80dc1c124446263125990.
+Current schema/semantic/size and final-byte checks PASS. Dedicated Playwright
+shows only about:blank; staging NOT OBSERVED, Apply NOT PERFORMED. Owner target
+assignment, current-state/sequence review, V1 legacy/freshness approval and manual
+Apply remain non-blocking. Unknown accepted residuals and grouping omitted.
+See threadline-completion-checkpoint.json and threadline-completion-publication.json.

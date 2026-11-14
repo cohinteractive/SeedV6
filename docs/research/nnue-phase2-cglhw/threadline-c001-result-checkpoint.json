@@ -1,0 +1,20 @@
+{
+  "protocol": "threadline-bundle",
+  "version": 1,
+  "id": "ce512350-b829-4266-b43c-5b64e9eca3a7",
+  "operation": "UPDATE",
+  "state": {
+    "position": "Active Phase 2 research: direct128 checkpoint64 passed its single independent primary confirmation against production WDL25. All 512 games were uncensored and independently audited: 179 wins, 204 draws, 129 losses; 54.8828% score, +34.04 Elo, paired bootstrap 95% +10.86 to +56.82. Technical, statistical and prospective +20-point-Elo gates all passed. This establishes improvement at 200ms/W1/Hash32/CLV_C1 on the tested Windows Java21 runtime, not universal gain. All 15 development endpoints remain separate exploratory evidence. R001 robustness is qualified and frozen; its 400ms/W1 condition has started, followed by 200ms/W2. Results are pending. Production WDL25, CP64 and build101 remain unchanged; no promotion, deployment or owner acceptance.",
+    "next": "Codex: resume from repository STATE.md and r001-plan.json. Check existing driver/controller ownership before any resume; do not duplicate or modify frozen work. Finish the two fixed 64-game robustness conditions and independent audits, report each paired interval without pooling or retesting, then complete evidence-based dispositions and final synthesis. Production integration/promotion requires a separate owner-authorized work unit."
+  },
+  "captures": [
+    {
+      "kind": "Codex result",
+      "body": "R001 qualification: 82,474 actual two-worker candidate evaluations matched full rebuild, including 29,784 helper-thread evaluations; four bounded roots covered qsearch, legal PVs, unwind and restart. Both models passed W1/W2 UCI checks; 16 bounded W1 requests matched v4/v5 exactly. Eight targeted Java and five Python checks passed. Runtime changes are isolated worker enablement and source-revision metadata; other engine jar entries match. Research commit f29d418a preserves C001 and frozen R001 preparation."
+    },
+    {
+      "kind": "Reference",
+      "body": "C:/projects/seed/java/seedv6-unified/docs/research/nnue-phase2-cglhw/: REPORT.md, STATE.md, C001.md, c001-results.json, c001-decision.json, R001.md, r001-plan.json and r001-qualification.json. Source-game independence and untested-platform/live-rating transfer remain limitations. Unknown authoritative Threadline residuals/grouping are preserved by omission. File publication is not observed staging, Apply or acceptance."
+    }
+  ]
+}

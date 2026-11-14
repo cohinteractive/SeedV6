@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "completed_games": 1600,
+  "censored_games": 0,
+  "endpoint_audits": 18,
+  "protected_sha256": {
+    "build-assets/production/conventional-wdl25.cnnue": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+  },
+  "version_sha256": "c6b4b3592bbbd16c8882a7e8044e838cbfff7085ec535236723488cd9f8976c7",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 101
+  },
+  "original_trainer_sha256": "57a9ee3cd70334a5c6a6bbe3ea42b58985179da4fa81f166f4e14b5540b2c8e3",
+  "runtime_checks": {
+    "3": {
+      "manifest_sha256": "0c5609dc51ceba0bfed01f734536380be28185546a37827933b80147df2c8776",
+      "files_verified": 47
+    },
+    "4": {
+      "manifest_sha256": "72ea0b9ea508855e9f49696223083fbe5dc010caba7fefadf5a25b92eba464d1",
+      "files_verified": 47
+    },
+    "5": {
+      "manifest_sha256": "980dfb113dff606f5fb9b466319be07dd6823285a2503d59113829db7d02f7c9",
+      "files_verified": 47
+    }
+  },
+  "verified_screen_models": 15,
+  "endpoint_report_sha256": {
+    "screen-deep16-results.json": "c984557ee25812fadaffaca04cea43377d225565d479b9873d87c7db55cca029",
+    "screen-replica-results.json": "65c0f25218bcfd55068f86d29cfe3307c9f27e1f9c43efaf678d56a51a756a67",
+    "screen-narrow-results.json": "3a052446880b543bdd4ffc7754b148bc99d745bf09401405cb7164d5455f31af",
+    "screen-teacher-results.json": "8c7c7d26369bcec3bdfa91d2b1b50e0b1f093c467597a39c4d5752159eafcab0",
+    "screen-wdl50-results.json": "f07e3a0a4f19873e57f920a312a68d27d62765dbb1154c0073ffd4a19f497cdf",
+    "screen-pawnpairs-results.json": "455d71cd7e4d5189fc914e27a8f3a36bf5171b352fbb63995e7687c25a2b3c5d",
+    "screen-kernel-results.json": "3898bb76e4d61baeeaaf1df0bb8c156f71fefa7cc0551a8b430d3a5355bcd08e",
+    "screen-late-results.json": "9b1249c69e0c0cad64fc2cda59fac0a0d1f47d46401d5078af245888f6a4be7b",
+    "screen-compact128-deep16-results.json": "a0de924ffe406b2fbccf040f816a11b5cf97c7e07efa0685d425522d47513681",
+    "screen-compact128-base-results.json": "faee69f2bd57e671426a665f7a1382d741a923d24bcbab4e3206b041823dc9a4",
+    "screen-compact128-pawnpairs-results.json": "ba28cc5623a07fd4bf040bafe35680e928e095e1097036705269e0aec58185b1",
+    "screen-duration128-pawnpairs-results.json": "3c27a0ecb97e2a0c043c67ae3fa23b7aa70dba4b9d5fb88b2a12d225e0a7e6f8",
+    "screen-duration128-deep16-results.json": "766a9b48eba7c41758adb592bb30299bd29fd3e7ec30b7cc1fc674d0880a86eb",
+    "screen-duration128-replica256-results.json": "a24667ea2e2de8f2377991b9e6335dfe4d298c6d651daaca5d414929b8f0aa02",
+    "screen-duration128-base-results.json": "698909892681c1091c0627a38b46e94e26cb91312a09658bfa4e57661e94e75c",
+    "c001-results.json": "4d16bbf0c8a74900817597e65a339cd8aeb0c7780e3c7cad8f67e73751fd9ede",
+    "r001-long-results.json": "16127ceb974be0c1537ab5983dfe688bd03c1623e2f55739511c7b840d65dc1f",
+    "r001-workers-results.json": "e278c9cbb9030ea459781fbdcec8f83e50a0d473b554ee517fed2cce279c2d73"
+  },
+  "raw_representatives_ignored": [
+    "\"C:\\\\projects\\\\seed\\\\java\\\\seedv6-unified\\\\docs\\\\research\\\\nnue-phase2-cglhw\\\\raw\\\\c001-direct128-64\\\\games.jsonl\"",
+    "\"C:\\\\projects\\\\seed\\\\java\\\\seedv6-unified\\\\docs\\\\research\\\\nnue-phase2-cglhw\\\\raw\\\\r001-long\\\\000-white.pgn\"",
+    "\"C:\\\\projects\\\\seed\\\\java\\\\seedv6-unified\\\\docs\\\\research\\\\nnue-phase2-cglhw\\\\raw\\\\r001-workers\\\\000-white.json\"",
+    "\"C:\\\\projects\\\\seed\\\\java\\\\seedv6-unified\\\\docs\\\\research\\\\nnue-phase2-cglhw\\\\raw\\\\frozen-runtime-v5\\\\lib\\\\engine-core.jar\"",
+    "\"C:\\\\projects\\\\seed\\\\java\\\\seedv6-unified\\\\docs\\\\research\\\\nnue-phase2-cglhw\\\\raw\\\\b-deep16-64-assessment-r3\\\\network.p2nnue\""
+  ],
+  "controller": {
+    "mode": "NORMAL",
+    "active": null,
+    "owned_processes": 0
+  },
+  "research_complete": true,
+  "owner_acceptance": "NOT CLAIMED",
+  "promotion": "NOT AUTHORIZED",
+  "deployment": "NOT PERFORMED",
+  "push": "NOT PERFORMED",
+  "limits": "Postcondition rehash and local-availability checks; existing independent legal replay audits were verified, not rerun. Raw data/weights/games remain local-only. No full engine suite, release/package, Mac, BotLi or live-rating validation."
+}

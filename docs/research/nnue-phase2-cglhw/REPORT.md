@@ -1,20 +1,25 @@
 # SeedV6 NNUE strength research — Phase 2
 
-**Interim synthesis: research remains active.** All development experiments below
-are complete. C001 passed independent confirmation; bounded robustness is next.
-No Phase2 evaluator has been accepted or promoted. Production WDL25/build101 and historical CP64 are
-unchanged. [STATE.md](STATE.md) records the current operation and restart boundary.
+**Research complete; production unchanged.** The direct 128-unit model at
+checkpoint 64 is the strongest supported candidate: independently confirmed
+**+34.04 Elo over WDL25, paired 95% +10.86 to +56.82**, at 200ms/move and one
+worker. Bounded longer-clock and two-worker checks provide limited support.
+All 1,600 games across development, primary confirmation and robustness passed
+audit without censoring. No evaluator has been accepted, promoted or deployed.
+[STATE.md](STATE.md) records the completion and preservation boundaries.
 
-## Current finding and confirmation choice
+## Recommendation
 
-The best development point estimate belongs to a direct128-unit network trained
-for64 superbatches:25W/23D/16L against WDL25, +49.18 Elo, paired bootstrap95%
--10.86..+112.33. Its interval includes a loss. The standard256 training controls
-are close enough that the development data do not establish a reliable ranking.
+Advance direct128 checkpoint 64 to a **separately authorized production-integration
+and promotion review**. It combines a confirmed equal-time gain with lower
+measured evaluation cost and a 1.97MB network. The current production loader
+rejects its experimental format, so this is not a drop-in promotion or a release
+approval. Keep WDL25/build101 and historical CP64 intact pending that separate work.
 
-The smaller direct model combines a credible screen result with a substantial
-measured cost reduction. It is the single candidate selected for independent
-confirmation. Its network SHA256 is
+The candidate's 64-game development estimate was +49 Elo with an interval spanning
+zero; selection was followed by exactly one independent 512-game confirmation.
+Close standard256 controls remain unconfirmed alternatives, not proven inferior.
+The selected network SHA256 is
 `defaf21da465d6f63fc13a2299299e927029d82558d663c7bbc801e7c35e9d1c`;
 the local artifact and complete qualification are identified in
 [compact128-base-64-assessment.json](compact128-base-64-assessment.json).
@@ -28,14 +33,14 @@ or relational NNUE designs.
 
 ## Completed development evidence
 
-Each row is64 games on the same32 paired development openings,200ms/move,W1,
-32MiB hash, CLV_C1 and frozen Java21 research runtimes. All960 games were legally
+Each row is 64 games on the same 32 paired development openings,200ms/move,W1,
+32MiB hash, CLV_C1 and frozen Java21 research runtimes. All 960 games were legally
 replayed and artifact-audited, with no censored outcomes. The repeated opening
 pool makes these exploratory selection results. Intervals below are descriptive
-paired bootstrap95%, not multiplicity-adjusted acceptance. No scores are pooled
+paired bootstrap 95%, not multiplicity-adjusted acceptance. No scores are pooled
 across candidates or with confirmation.
 
-| Formulation | Width | Superbatches | W/D/L | Elo estimate [paired95%] |
+| Formulation | Width | Superbatches | W/D/L | Elo estimate [paired 95%] |
 |---|---:|---:|---:|---:|
 | WDL25 reproduction | 256 | 64 | 22/26/16 | +32.7 [-32.7, +100.4] |
 | Teacher-only | 256 | 64 | 16/25/23 | -38.2 [-106.3, +27.2] |
@@ -55,7 +60,7 @@ across candidates or with confirmation.
 
 Full endpoint identities, audits, uncertainty and observed match costs are in
 [screening-summary.json](screening-summary.json) and its referenced result files.
-The completed screens consumed20,371.17 observed match seconds (5.659h), including
+The completed screens consumed 20,371.17 observed match seconds (5.659h), including
 their recorded warmup. This is experimental match accounting, not exact host
 session duration.
 
@@ -64,29 +69,29 @@ session duration.
 A001 uses one independent initialization seed and matched base tensors to compare
 the WDL25 recipe with teacher-only supervision,50% outcome supervision, narrower
 data and later decay. The broad mixture and early decay improve the common
-diagnostics in these conditional comparisons.50% outcome supervision is worse
+diagnostics in these conditional comparisons. 50% outcome supervision is worse
 both diagnostically and in its screen. Teacher-only supervision has lower
-prediction loss than the25% reproduction but a worse screen score.
+prediction loss than the 25% reproduction but a worse screen score.
 
 The post-hoc paired score contrasts favor the broad mixture and25% over50%
 supervision in this sample. The teacher-only and decay contrasts remain wide.
 This is not a full factorial experiment, a multi-seed effect estimate, an optimal
-outcome ratio, or a decomposition of Phase1's historical+63.8 Elo. In particular,
+outcome ratio, or a decomposition of Phase1's historical +63.8 Elo. In particular,
 the narrow/broad contrast changes coverage, weighting and passes per record:
-the33M source receives eight passes by64 superbatches, the67M mixture four.
+the 33M source receives eight passes by 64 superbatches, the 67M mixture four.
 See [A001.md](A001.md), [a001-diagnostic-summary.json](a001-diagnostic-summary.json)
 and [s001-summary.json](s001-summary.json).
 
-B004 continues all three compact models from64 to128 with exact weights,
+B004 continues all three compact models from 64 to 128 with exact weights,
 momentum, velocity, data order and global learning-rate continuation. A002 adds
 the corresponding standard256 control. All reach eight mixture passes. The
-additional native wall costs are988.99s for the compact trio and320.77s for
+additional native wall costs are 988.99s for the compact trio and 320.77s for
 standard256. These are recorded native/segment wall measurements with applicable
-checkpoint overhead, not GPU-active time. All64 standard optimizer transitions were independently checked
+checkpoint overhead, not GPU-active time. All 64 standard optimizer transitions were independently checked
 against their immediate parents. The compact last16-superbatch loss improvements
-have diminished to roughly0.3–0.4%; this is not proof of convergence.
+have diminished to roughly 0.3–0.4%; this is not proof of convergence.
 
-All four descriptive paired64-to128 score-difference intervals include zero.
+All four descriptive paired64-to 128 score-difference intervals include zero.
 There is consequently no established causal strength benefit from the duration
 extension here. More training is not selected solely because loss still decreases.
 The protocols and exact continuation evidence are [B004.md](B004.md),
@@ -102,10 +107,10 @@ exact/symmetric and one-piece-neighbor contamination, but remains **not verified
 source-game independent**.
 
 D002 hashes the exact67,108,864-record mixture and audits canonical STM-relative,
-file-mirrored placement fingerprints. It finds65,642,886 fingerprints overall,
-686,069 shared between sources, and32,478,841 additional-only fingerprints. Only
+file-mirrored placement fingerprints. It finds 65,642,886 fingerprints overall,
+686,069 shared between sources, and 32,478,841 additional-only fingerprints. Only
 951,243 of the added33,554,432 records (2.83%) match original-source inputs. Total
-duplicate records are2.18%. This materially strengthens the coverage assessment;
+duplicate records are 2.18%. This materially strengthens the coverage assessment;
 it does not identify independent games.63-bit fingerprints are probabilistic,
 with the documented approximate collision bound, not an exact uniqueness proof.
 See [d001-data-audit.json](d001-data-audit.json) and
@@ -113,10 +118,10 @@ See [d001-data-audit.json](d001-data-audit.json) and
 
 ## Architectures and inference economics
 
-The nonlinear formulation adds a shared16-unit SCReLU residual layer and eight
+The nonlinear formulation adds a shared 16-unit SCReLU residual layer and eight
 material-selected residual outputs to the direct path. The relational formulation
-adds4560 unordered pawn-pair inputs, activating same/adjacent-file relationships
-with explicit incremental maintenance. Both were tested with dual256 and dual128
+adds 4560 unordered pawn-pair inputs, activating same/adjacent-file relationships
+with explicit incremental maintenance. Both were tested with dual 256 and dual 128
 accumulators. The compact trio also includes a direct128 control. Score scale400,
 QA255/QB64, eight material heads and the search configuration are preserved.
 The explicit experimental formats are rejected by the production loader.
@@ -125,14 +130,14 @@ The width256 additions are expensive and lose their initial screens. Reducing
 width makes depth substantially cheaper and pawn pairs closer to production's
 whole-search throughput, but neither establishes a playing advantage. Stable
 pawn relationships still impose update and refresh work. The separate instrumented
-fixed-root runs show evaluation on about90% of nodes, so downstream work is paid
+fixed-root runs show evaluation on about 90% of nodes, so downstream work is paid
 frequently. These invocation counts are workload-specific.
 
-For the selected direct128 checkpoint64 candidate, the repeated warmed study
-measures923086 mean NPS versus645837 for WDL25; the fixed legal-walk update+head
-cost is about386ns with zero measured hot allocation. Its file is1,970,524 bytes.
-Primitive model-array payload is1,974,544 bytes and a257-state accumulator stack
-has287,840 bytes of array payload, excluding Java headers/alignment and process
+For the selected direct128 checkpoint 64 candidate, the repeated warmed study
+measures 923086 mean NPS versus 645837 for WDL25; the fixed legal-walk update+head
+cost is about 386ns with zero measured hot allocation. Its file is 1,970,524 bytes.
+Primitive model-array payload is 1,974,544 bytes and a 257-state accumulator stack
+has 287,840 bytes of array payload, excluding Java headers/alignment and process
 RSS. Different learned evaluations change trees: the NPS ratio is **not an
 intrinsic kernel speedup or an Elo estimate**.
 
@@ -148,9 +153,9 @@ The final matched128-superbatch cost study measures the following mean NPS:
 | Standard256 reproduction | 655453 |
 
 Separate JVMs retain a complete warmup pass, measure a second pass, and reverse
-model order on the second repeat. All48 same-payload requests match exact nodes,
+model order on the second repeat. All 48 same-payload requests match exact nodes,
 scores, depths, completion and configuration. A separate read-only comparison of
-existing v3/v4 WDL25 observations matches144 requests across the runtime epochs;
+existing v3/v4 WDL25 observations matches 144 requests across the runtime epochs;
 this is bounded evidence, not an exhaustive or cross-platform proof. Hardware
 cache/branch counters were not collected. Sources:
 [compact128-cost.json](compact128-cost.json),
@@ -163,12 +168,12 @@ Validation covers independent Python/Rust/Java feature extraction, native export
 GPU float tolerances, arbitrary-precision integer references, Java scalar/vector
 agreement, full refresh versus incremental sums, special moves, king mirroring,
 siblings/undo, null/qsearch state and worker-state transfer. Every selected model
-passes259 fixture probes and a real UCI lifecycle check. Trained legal-walk
+passes 259 fixture probes and a real UCI lifecycle check. Trained legal-walk
 checks and measured evaluator allocation gates also pass.
 
-Initial Java validation ran22 targeted tests, followed by focused reruns after
+Initial Java validation ran 22 targeted tests, followed by focused reruns after
 kernel corrections. Compact integration ran four Compact and four existing
-Phase2 tests, all passing; these counts include reruns. Focused Python feature,
+Phase 2 tests, all passing; these counts include reruns. Focused Python feature,
 quantization, warmup, wall-budget and durable-output checks also passed. The full
 engine suite, GUI/package release tests, Mac execution and BotLi deployment were
 deliberately outside this isolated research validation.
@@ -181,10 +186,10 @@ the allocation. A tested activation-cache revision reduced the deep head's cost.
 Failed/export/allocation and slower optimization attempts remain in local raw
 evidence; they are not represented as successful models.
 
-D003 evaluates float and quantized forms of all three compact128 checkpoint128
-models on all6753 diagnostic positions and matches Java quantized aggregates.
-Teacher-MSE changes from quantization are+0.00001239 (direct),+0.00003673 (deep),
-and-0.00001634 (pawn); ranking is unchanged. Deep's change is about0.23%, and
+D003 evaluates float and quantized forms of all three compact128 checkpoint 128
+models on all 6753 diagnostic positions and matches Java quantized aggregates.
+Teacher-MSE changes from quantization are +0.00001239 (direct),+0.00003673 (deep),
+and -0.00001634 (pawn); ranking is unchanged. Deep's change is about 0.23%, and
 its lower absolute-score calibration is already present in floating inference.
 This does not prove quantization irrelevant to games, but does not identify a
 major predictive defect warranting quantization-aware retraining here. Full
@@ -197,43 +202,98 @@ repeated. An unexecuted C001 preparation driver was corrected to handle missing
 Elo fields for censored summaries; both preparation versions are preserved and
 all scientific parameters compare equal. The active plan is v2.
 
-## Independent confirmation and remaining work
+## Independent confirmation and robustness
 
-**C001 passed all three predeclared gates.** The selected checkpoint64 direct128
-model finished 179W/204D/129L: 54.8828% score, +34.04 Elo, paired bootstrap95%
-+10.86..+56.82 and normal95% +11.15..+57.22. All 512 games are uncensored;
+**C001 passed all three predeclared gates.** The selected checkpoint 64 direct128
+model finished 179W/204D/129L: 54.8828% score, +34.04 Elo, paired bootstrap 95%
++10.86..+56.82 and normal 95% +11.15..+57.22. All 512 games are uncensored;
 independent legal replay and frozen-artifact audits pass. See
 [c001-results.json](c001-results.json) and [c001-decision.json](c001-decision.json).
-It played WDL25 on256 reserved opening pairs, with no development-score
-pooling. Roots were verified legal, unique, previously unused in Phase2 matches and disjoint from
+It played WDL25 on 256 reserved opening pairs, with no development-score
+pooling. Roots were verified legal, unique, previously unused in Phase 2 matches and disjoint from
 development/cost/parity fixtures. Related opening-family dependence can remain.
 
-The frozen settings are runtime v4,200ms,W1,Hash32,CLV_C1,-Xbatch, the same fixed
-warmup and an800-ply censoring ceiling. The match budget is14400 observed seconds.
-There is exactly one primary confirmation attempt. Advancement requires all512
-uncensored and audited games, both paired normal95% and bootstrap95% lower bounds
-above50% score, and a point estimate of at least+20 Elo. No alternate candidate
+The frozen settings were runtime v4,200ms,W1,Hash32,CLV_C1,-Xbatch, the same fixed
+warmup and an 800-ply censoring ceiling. The match used 10,680.41 observed seconds
+within its 14,400-second budget. There was exactly one primary confirmation attempt.
+Advancement required all 512
+uncensored and audited games, both paired normal 95% and bootstrap 95% lower bounds
+above 50% score, and a point estimate of at least +20 Elo. No alternate candidate
 or unlucky-result retest is selected. See [C001.md](C001.md) and
 [c001-plan-v2.json](c001-plan-v2.json).
 
-R001 selects bounded longer-clock and two-worker checks on separate robustness
+R001 completed bounded longer-clock and two-worker checks on separate robustness
 roots. Isolated launcher/harness enablement is qualified: 82,474 actual W2
 evaluations match full rebuild, including 29,784 helper-thread evaluations;
 both models pass W1/W2 UCI lifecycle checks, and 16 bounded W1 requests match
 exactly across v4/v5. Eight targeted Java and five Python checks pass. The only
 other runtime-byte change is sourceRevision metadata inside engine-core.jar;
 all its other entries match. Preparation failures remain preserved and described
-in STATE.md. The two fixed follow-ups are 64 games at400ms/W1 and64 at200ms/W2,
-with separate32-pair roots and a combined7200-second allowance. Results remain
-pending. See [R001.md](R001.md), [r001-plan.json](r001-plan.json) and
+in STATE.md. The two fixed follow-ups were 64 games at 400 ms/W1 and 64 at 200 ms/W2,
+with separate 32-pair roots. They used 4,027.96 observed seconds within the combined
+7,200-second allowance. See [R001.md](R001.md), [r001-plan.json](r001-plan.json) and
 [r001-qualification.json](r001-qualification.json).
+
+| Endpoint | Games | W/D/L | Elo estimate [paired bootstrap 95%] | Interpretation |
+|---|---:|---:|---:|---|
+| C001:200ms,W1 | 512 | 179/204/129 | +34.04 [+10.86,+56.82] | All predeclared primary gates pass |
+| R001:400ms,W1 | 64 | 20/33/11 | +49.18 [-5.43,+106.35] | Limited supporting evidence |
+| R001:200ms,W2 | 64 | 23/21/20 | +16.30 [-54.74,+88.74] | Limited supporting evidence |
+
+Both robustness conditions are technically valid and uncensored. Their wide
+intervals include losses: they neither establish gains in those conditions nor
+prove noninferiority. There is no pooled estimate, sample extension or retest.
+The remaining 64 reserved robustness pairs stay unused. Full endpoint evidence is
+[r001-long-results.json](r001-long-results.json),
+[r001-workers-results.json](r001-workers-results.json) and
+[r001-summary.json](r001-summary.json).
+
+Across this Phase 2 programme, 1,600 games consumed 35,079.53 observed match seconds (9.744h),
+including recorded warmup/interruption accounting. This excludes training,
+qualification, analysis and authoring, and is not exact host-session timing.
 
 Further architecture-specific supervision tuning, conditional subnetworks,
 additional features, more seeds and longer training remain untested possibilities.
 None is selected merely to pursue a favorable result. Source-game independence,
 untested clocks/workers/platforms and sustained live-rating effect remain limits.
-Research completion and the final recommendation await R001 and final synthesis;
-completion is not owner acceptance or deployment.
+These limitations restrict transfer and causal claims; they do not erase the
+independent primary result. Completion is not owner acceptance or deployment.
+
+## Direction and disposition
+
+The strongest supported Phase 2 candidate is **direct128, checkpoint 64**, under
+the primary tested conditions. Its smaller accumulator and inexpensive direct
+head provide a better observed strength/cost trade-off than the implemented
+depth and pawn-pair additions. This is a comparison of complete trained
+formulations; it does not isolate a causal width effect or establish that every
+compact network beats every 256-unit network. The close standard256 development
+controls remain unconfirmed alternatives.
+
+| Direction | Disposition and reason |
+|---|---|
+| Direct128 checkpoint 64 | Recommend a separate production-integration and promotion review. Primary strength, correctness and efficiency evidence support this direction; the bounded robustness results add limited support. |
+| Deep256 and pawn256 | Defer the tested formulations: their extra runtime cost accompanies negative development results. Preserve the correct implementations and evidence; do not reject whole architectural families. |
+| Deep128 and pawn128 | Defer further variants in this programme. Both received matched four- and eight-pass training, correctness/performance checks and equal-time screens. Better diagnostics did not establish a strength gain, and no major export/quantization defect remains identified. |
+| Additional duration | Stop the tested extension at 128 superbatches. All four paired duration contrasts include zero; diminishing loss improvements alone do not justify more matches or training. This is not proof of convergence. |
+| Broad data,25% outcome,early decay | Retain as the useful working recipe. Independent initialization reproduces its diagnostic behavior and yields a competitive screen. 50% mixing is disfavored here; optimal ratio, interactions and causal Elo contributions remain unresolved. |
+| More seeds or full factorial study | Defer. These could estimate variability and interactions, but are not needed to validate the selected fixed model's independent result. Do not reinterpret one seed as a population estimate. |
+| Game-separated/newer supervision | Defer to a provenance-focused data study. Existing packed metadata cannot prove source-game separation; fixing that requires traceable game identities or a new controlled extraction. Existing diagnostic results retain this limitation. |
+| Conditional subnetworks,new heads/features,QAT | Untested/deferred. Current eight material heads remain fixed; measured cost and quantization evidence do not identify a concrete correction warranting another variant now. These possibilities are not disproved. |
+| Mac,longer time controls,sustained live rating | Unverified. Local robustness cannot establish them; production integration, promotion and deployment require separate owner authority. |
+
+No additional model, seed, confirmation candidate or sample extension is selected.
+The recommendation follows measured playing strength and computation, rather than
+the lowest prediction loss or the most elaborate architecture.
+
+The contract's research completion criteria are satisfied: a reproducible
+independent-initialization recipe study and controlled factors with explicit
+isolation limits; materially improved data-overlap/provenance knowledge; meaningful
+depth and relational experiments at two widths with a matched duration extension;
+independent correctness and measured efficiency; audited equal-time screening,
+independent confirmation and bounded robustness; and a supported next direction
+with failures and residual hypotheses explicitly dispositioned. No selected
+research operation remains. The programme stops on that evidence, not its elapsed
+time, experiment count or an assumed universal strength guarantee.
 
 ## Preservation and delivery boundary
 
@@ -247,6 +307,23 @@ negative and frozen experiments remain preserved.
 Production WDL25 and CP64 hashes and VERSION_STATE build101 remain unchanged.
 There is no push, deployment or promotion. A compact-model promotion would need
 separate production integration/authorization; the normal loader currently rejects
-its experimental format. Threadline candidates are separately schema-validated
-file publications, not observed application or acceptance; their paths/IDs and
-remaining manual actions are recorded in STATE.md and publication manifests.
+its experimental format. [closeout-verification.json](closeout-verification.json)
+records the final protected hashes, all 18 endpoint reports/ledgers, 15 preserved
+screen models, 141 runtime files across v3/v4/v5, ignored-output checks and idle
+controller. These are postcondition identity/availability checks; the already
+completed legal audits were verified rather than rerun. Initial tracked state
+was clean at 08877838; Phase 2 commits and the final evidence are attributable to
+this work. Earlier experiments and unrelated local evidence remain preserved.
+
+The final Threadline checkpoint is an **UPDATE**, UUID
+`4660b335-9c02-495f-b137-ab7680b0d972`, published atomically to
+`C:/dev/tl-local/seed-phase2-complete-9eefc3ea-a932-4c00-88b2-ac2e5b0dd655.json`.
+Schema, semantics, size and final bytes pass; 3067 bytes, SHA256
+`1eef791daca9d8f98bf6bbed98a7dd627d48601498a80dc1c124446263125990`.
+Dedicated Playwright exposes only about:blank: staging is **not observed** and
+Apply is **not performed**. No CLOSE or automatic target assignment occurred.
+The owner must select the intended thread, review queue order/current state,
+approve V1's legacy/freshness warning and manually Apply. This is non-blocking
+for completed repository research. Earlier publications and all identifiers are
+in STATE.md and the `threadline-*-publication.json` manifests; unknown current
+Threadline residuals/grouping were preserved by omission.
