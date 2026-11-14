@@ -1,0 +1,13 @@
+{
+  "operation": "UPDATE",
+  "id": "bc66e42c-e5b1-440b-9b24-545be867f5ec",
+  "path": "C:\\dev\\tl-local\\seed-phase2-confirmation-bfb51800-2aa9-43a5-b820-03d105dc6f1b.json",
+  "bytes": 2770,
+  "sha256": "cb0db99e2e69f7b27d6d77316570cee90630b664c8de7ed3946eccc5be0e8365",
+  "schema_sha256": "375582db417afefcae28e2b0cd568ecd60445f6f6aae0da61066b28e0374bbe6",
+  "schema_validation": "PASS",
+  "semantic_size_validation": "PASS",
+  "staging": "NOT OBSERVED",
+  "apply": "NOT PERFORMED",
+  "human_action": "Explicitly assign intended Phase2 thread; review queue sequence/current state, approve V1 legacy/freshness warning and manually Apply. Non-blocking for research."
+}

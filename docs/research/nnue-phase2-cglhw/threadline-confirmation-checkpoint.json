@@ -1,0 +1,20 @@
+{
+  "protocol": "threadline-bundle",
+  "version": 1,
+  "id": "bc66e42c-e5b1-440b-9b24-545be867f5ec",
+  "operation": "UPDATE",
+  "state": {
+    "position": "Active research; production WDL25/CP64 and build101 remain unchanged. All15 fixed development endpoints are complete:960 audited games, zero caps. Added depth/pawn features and longer training improve diagnostics without established strength gains. Direct128 checkpoint64 has the highest exploratory estimate:25W/23D/16L,+49 Elo, paired95% -11..+112; standard256 checkpoint128 is+38,-22..+106. Ranking remains uncertain. Data audits establish substantial additional input coverage, not source-game independence. Matched duration controls and float/quantized diagnostics are complete; predictive ranking survives quantization. C001 has selected and launched exactly one independent512-game confirmation of direct128 checkpoint64 against WDL25, using256 reserved pairs and frozen runtime v4. Final results are pending; no evaluator is accepted or promoted. Research completion criteria remain unsatisfied.",
+    "next": "Codex: continue from STATE.md and active c001-plan-v2.json. Check controller/process ownership before any resume. Await the full fixed endpoint and independent legal/artifact/statistical audit; no interim efficacy decisions, alternate candidate or unlucky-result retest. Apply the frozen complete/uncensored, paired95% lower-bounds-above-even and point>=20-Elo gates. Only if all pass, separately qualify bounded longer-clock/two-worker robustness before final synthesis. Production integration/promotion requires a separate owner decision."
+  },
+  "captures": [
+    {
+      "kind": "Decision",
+      "body": "C001 selection is exploratory, not a statistical ranking: compact direct128 checkpoint64, SHA256 defaf21da465d6f63fc13a2299299e927029d82558d663c7bbc801e7c35e9d1c.512 games,200ms,W1,Hash32,CLV_C1,-Xbatch,two20k-node warmup passes,800-ply censor ceiling,14400-second match budget,one primary attempt. No development-score pooling. Roots are legal/unique/previously unused in Phase2 and disjoint from development,cost and parity roots; related opening-family dependence can remain. Current research launcher is explicitlyW1-only; actualW2 needs isolated enablement and targeted validation."
+    },
+    {
+      "kind": "Reference",
+      "body": "Repository: C:/projects/seed/java/seedv6-unified/docs/research/nnue-phase2-cglhw/. CONTRACT.md and STATE.md govern/restart the research; REPORT.md is an interim synthesis. C001.md,c001-plan-v2.json and screening-summary.json identify the frozen confirmation and all prior evidence. Unknown current Threadline unresolved items/grouping are preserved by omission. Publication is not staging, application, acceptance or deployment."
+    }
+  ]
+}

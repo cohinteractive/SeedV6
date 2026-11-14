@@ -1,7 +1,7 @@
 # Phase 2 research state
 
-Status: ACTIVE — training/duration/quantization controls qualified; none accepted.
-S003 four matched128-superbatch screens are running before independent confirmation.
+Status: ACTIVE — all15 development endpoints audited; none accepted.
+C001 single512-game independent confirmation of direct128 checkpoint64 is active.
 Observed start: 2026-11-14T10:26:04Z. Initial HEAD08877838, clean worktree,
 build101; no exact-root CODEXLOG_CURRENT.md. Branch research/nnue-phase2.
 No production change or acceptance is authorized.
@@ -55,7 +55,8 @@ isolated Windows research, not Mac access. Recheck before expensive launches.
 | B004 | A matched duration extension can resolve remaining training adequacy | All three128 endpoints qualified;988.99 additional native seconds; unchanged geometry/cost, improved diagnostics |
 | D003 | Quantization may change predictive comparisons or calibration | Complete:6753 positions/model, Java aggregates match, predictive ranking unchanged; no demonstrated material quantization limitation |
 | A002 | More training of standard256 may change the recommendation | Complete:64 exact optimizer transitions,320.77 native seconds, all qualification gates pass |
-| S003 | Equally trained128/256 formulations can compete in equal time | Frozen plan active: pawn128, deep128, standard256, direct128;64 games each, independent endpoint audits |
+| S003 | Equally trained128/256 formulations can compete in equal time | All256 games audited without caps; standard+38,direct+22,pawn+11,deep-16; exploratory only |
+| C001 | The selected compact direct model improves over production WDL25 | One512-game independent endpoint active; fixed technical/statistical/+20 practical gates, no alternate attempt |
 
 This is a dynamic decision table, not a mandatory implementation checklist.
 Conditional subnetworks, other activations, widths, quantization and threat features
@@ -467,14 +468,94 @@ These different learned-tree rates are not intrinsic speedups or Elo. S003.md
 selects one fixed screen per128 endpoint with the predeclared9600-second combined
 allowance. Independent confirmation/robustness partitions remain unused.
 
-Current operation: `run_duration_screens.py --runtime-version 4 --candidates base
+Completed operation: `run_duration_screens.py --runtime-version 4 --candidates base
 deep16 pawnpairs replica256 --decision docs/research/nnue-phase2-cglhw/S003.md`.
 Driver log raw/duration-screen-driver-01.log; plan duration128-screen-plan.json.
 Frozen order: duration128-pawnpairs, duration128-deep16, duration128-replica256,
-duration128-base. Inspect its process/controller before resumption; no concurrent
-expensive work, duplicate driver, interim score selection or frozen-file changes.
-No further training/model variants are currently selected. Complete these fixed
-endpoints, then decide independent confirmation and disposition of residuals.
+duration128-base; driver observed exit0. Do not repeat its completed games.
+No further training/model variants are selected.
+
+Duration/quantization controls, S002 outcomes and frozen S003 preparation committed
+asdbbdfc0c6b116695af4759bffcb3e4a4f245e336. All28 staged files were inspected;
+JSON/Python syntax and CRLF-aware whitespace checks pass,13 bulk evidence paths
+are verified ignored. Full training/game/per-position outputs remain local-only.
+Build101, WDL25 and CP64 bytes remain unchanged; no push or promotion.
+
+First S003 endpoint: pawn128 at checkpoint128 is19W/28D/17L, no caps,
+exploratory+10.86 Elo, paired95% -60.31..+77.25; legal/artifact audit passes
+(`screen-duration128-pawnpairs-results.json`). It is inconclusive and supplies
+no established gain despite improved diagnostics. The other three fixed
+comparisons continue unchanged; no independent confirmation is yet selected.
+
+Second S003 endpoint: deep128+16 at checkpoint128 is16W/29D/19L, no caps,
+exploratory-16.30 Elo, paired95% -77.25..+43.66; legal/artifact audit passes
+(`screen-duration128-deep16-results.json`). Improved diagnostics from duration
+do not establish an equal-time benefit. Across the tested widths/durations,
+neither implemented nonlinear/relational addition has a demonstrated gain.
+Further variants are not selected without a concrete new information-bearing
+limitation; these are conditional results, not global architectural capacity limits.
+The standard256 and direct128 duration screens continue unchanged.
+
+Third S003 endpoint: standard256 at checkpoint128 is24W/23D/17L, no caps,
+exploratory+38.15 Elo, paired95% -21.74..+106.35; legal/artifact audit passes
+(`screen-duration128-replica256-results.json`). This is promising but unconfirmed;
+the point estimate is close to its64 reproduction's+32.67, so duration has no
+established causal strength gain here. Only the direct128 final screen remains.
+Wait for that full audit before selecting or freezing independent confirmation.
+
+Final S003 endpoint: direct128 at checkpoint128 is21W/26D/17L, no caps,
+exploratory+21.74 Elo, paired95% -43.66..+94.55; legal/artifact audit passes
+(`screen-duration128-base-results.json`). All15 development endpoints are complete:
+960 audited games, no caps,20,371.17 observed match seconds (5.659h), with no pooled
+strength estimate. `screening-summary.json` records every endpoint/hash and the
+post-hoc duration contrasts. All four duration score-difference intervals include
+zero; improved diagnostic loss did not establish a duration strength gain.
+
+C001.md selects **direct128 checkpoint64**, SHA256
+defaf21da465d6f63fc13a2299299e927029d82558d663c7bbc801e7c35e9d1c,
+for exactly one independent512-game confirmation. Highest exploratory point+49.18,
+strong measured cost profile, full correctness qualification; not a statistically
+established ranking over the close standard256 controls. Select this existing
+endpoint rather than the lowest-loss/latest model, and retain all alternatives
+as unconfirmed. No alternate primary confirmation or unlucky-result retest is selected.
+
+The reserved256 confirmation pairs match the original pool and were verified legal,
+unique, previously unused in Phase2, and disjoint from development/cost/parity roots. Related
+opening-family dependence can remain. Runtime v4,200ms/W1/Hash32/CLV_C1,-Xbatch,
+two20k-node warmup passes,800-ply censor ceiling and14400s total match budget.
+Gates:512 complete/uncensored and audited; both paired normal95/bootstrap95 lower
+score bounds>0.5; point Elo>=20. Passing advances to separately qualified robustness,
+not production promotion. The128 robustness pairs remain unused.
+The entire256-pair confirmation partition is now consumed/reserved by C001's
+single fixed attempt; do not reuse it to select or test an alternate candidate.
+
+An unexecuted preparation-only driver assumed Elo fields exist for censored
+summaries. Corrected before any preflight/game: absent statistics now leave the
+practical gate false and report null, without imputation. Initial c001-plan.json
+and source snapshot raw/c001-preparation-v1 are preserved. **Active plan is
+c001-plan-v2.json**; all scientific parameters compare exactly equal to the first
+plan, only reporting safety/driver identity changed. No completed protocol was rewritten.
+
+Current operation: `run_confirmation.py`, log raw/c001-driver-01.log, native match
+output raw/c001-direct128-64. Inspect this process/controller before resuming;
+do not launch a duplicate or inspect interim scores for efficacy. It will run
+the fixed endpoint, independent legal/artifact audit and c001-decision.json gates.
+Do not modify the pinned runtime/models/openings/match/audit/UCI tools or driver.
+Both C001 preflights pass; the actual native protocol matches the selected model
+and incumbent hashes,200ms/W1/Hash32/CLV_C1,800-ply censor ceiling,14400s and
+family size1. REPORT.md now consolidates the completed evidence and explicitly
+marks C001/results/research completion as pending. A read-only comparison of
+existing cost observations matches144 WDL25 v3/v4 bounded requests exactly
+(runtime-v3-v4-equivalence.json); this is not a new/exhaustive runtime test.
+
+Robustness preparation finding (static inspection): NnueStrengthUciMain explicitly
+accepts only one worker, and uci_smoke.py rejects strength-research workers2 even
+though generic UCI advertises a wider Threads range. Existing worker-transfer unit
+checks are not an observed two-worker research search. If a candidate approaches
+promotion suitability, actual multiworker testing needs isolated research-launcher/
+harness enablement, a new frozen runtime and targeted parallel evaluation-state/
+UCI checks. Do not infer worker2 coverage from the advertised option. This does not
+block the current fixed W1 tests; no such enablement or robustness game has occurred.
 Completed S001 used immutable v3; these source edits did not change its games.
 Always inspect controller/process ownership before resuming. Logs use
 raw/compact-*-01.log and raw/compact-driver-01.log.
@@ -505,5 +586,15 @@ again shows only about:blank: staging is NOT OBSERVED; Apply NOT PERFORMED.
 Manual target assignment, sequence/current-state review, V1 legacy/freshness
 approval and Apply remain with the owner, non-blocking for repository research.
 See `threadline-s001-checkpoint.json` and `threadline-s001-publication.json`.
+
+C001 pre-result UPDATE candidate `bc66e42c-e5b1-440b-9b24-545be867f5ec`
+published atomically to
+`C:/dev/tl-local/seed-phase2-confirmation-bfb51800-2aa9-43a5-b820-03d105dc6f1b.json`.
+2770 bytes; SHA256cb0db99e2e69f7b27d6d77316570cee90630b664c8de7ed3946eccc5be0e8365.
+Current V1 schema/semantic/size checks and exact final bytes pass. Dedicated
+Playwright still exposes only about:blank: staging NOT OBSERVED, Apply NOT
+PERFORMED. Manual target/sequence/current-state review, V1 legacy/freshness
+approval and Apply remain with the owner and do not block research. Unknown
+unresolved items/grouping remain omitted. Publication manifests retain all details.
 
 Completion criteria: NOT SATISFIED. No new strength winner or promotion recommendation.

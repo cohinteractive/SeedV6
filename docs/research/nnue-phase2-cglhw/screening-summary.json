@@ -1,0 +1,246 @@
+{
+  "endpoints": {
+    "deep16": {
+      "wins": 8,
+      "draws": 33,
+      "losses": 23,
+      "score": 0.3828125,
+      "elo": -82.97240450477112,
+      "paired_bootstrap_95_elo": [
+        -149.7835651290059,
+        -27.198831638044446
+      ],
+      "report_sha256": "c984557ee25812fadaffaca04cea43377d225565d479b9873d87c7db55cca029",
+      "observed_match_seconds": 1436.9783259999822
+    },
+    "replica": {
+      "wins": 22,
+      "draws": 26,
+      "losses": 16,
+      "score": 0.546875,
+      "elo": 32.668018580527814,
+      "paired_bootstrap_95_elo": [
+        -32.66801858052781,
+        100.42240828085704
+      ],
+      "report_sha256": "65c0f25218bcfd55068f86d29cfe3307c9f27e1f9c43efaf678d56a51a756a67",
+      "observed_match_seconds": 1436.1221507999871
+    },
+    "narrow": {
+      "wins": 14,
+      "draws": 23,
+      "losses": 27,
+      "score": 0.3984375,
+      "elo": -71.5682196298182,
+      "paired_bootstrap_95_elo": [
+        -136.9690723288825,
+        -10.86089841744591
+      ],
+      "report_sha256": "3a052446880b543bdd4ffc7754b148bc99d745bf09401405cb7164d5455f31af",
+      "observed_match_seconds": 1271.6164599999902
+    },
+    "teacher": {
+      "wins": 16,
+      "draws": 25,
+      "losses": 23,
+      "score": 0.4453125,
+      "elo": -38.15339721863354,
+      "paired_bootstrap_95_elo": [
+        -106.34623144029209,
+        27.198831638044453
+      ],
+      "report_sha256": "8c7c7d26369bcec3bdfa91d2b1b50e0b1f093c467597a39c4d5752159eafcab0",
+      "observed_match_seconds": 1398.298154100019
+    },
+    "wdl50": {
+      "wins": 14,
+      "draws": 21,
+      "losses": 29,
+      "score": 0.3828125,
+      "elo": -82.97240450477112,
+      "paired_bootstrap_95_elo": [
+        -143.33015984736542,
+        -21.74306492903708
+      ],
+      "report_sha256": "f07e3a0a4f19873e57f920a312a68d27d62765dbb1154c0073ffd4a19f497cdf",
+      "observed_match_seconds": 1397.1207787000167
+    },
+    "pawnpairs": {
+      "wins": 12,
+      "draws": 28,
+      "losses": 24,
+      "score": 0.40625,
+      "elo": -65.92409945839687,
+      "paired_bootstrap_95_elo": [
+        -130.69415835955323,
+        -5.429122875709548
+      ],
+      "report_sha256": "455d71cd7e4d5189fc914e27a8f3a36bf5171b352fbb63995e7687c25a2b3c5d",
+      "observed_match_seconds": 1295.2748296000063
+    },
+    "kernel": {
+      "wins": 19,
+      "draws": 20,
+      "losses": 25,
+      "score": 0.453125,
+      "elo": -32.66801858052781,
+      "paired_bootstrap_95_elo": [
+        -77.24983934178462,
+        10.860898417445911
+      ],
+      "report_sha256": "3898bb76e4d61baeeaaf1df0bb8c156f71fefa7cc0551a8b430d3a5355bcd08e",
+      "observed_match_seconds": 1305.852611499984
+    },
+    "late": {
+      "wins": 16,
+      "draws": 29,
+      "losses": 19,
+      "score": 0.4765625,
+      "elo": -16.297987076023766,
+      "paired_bootstrap_95_elo": [
+        -77.24983934178462,
+        43.65778777002723
+      ],
+      "report_sha256": "9b1249c69e0c0cad64fc2cda59fac0a0d1f47d46401d5078af245888f6a4be7b",
+      "observed_match_seconds": 1346.307242400013
+    },
+    "compact128-deep16": {
+      "wins": 17,
+      "draws": 26,
+      "losses": 21,
+      "score": 0.46875,
+      "elo": -21.74306492903708,
+      "paired_bootstrap_95_elo": [
+        -82.97240450477112,
+        38.153397218633565
+      ],
+      "report_sha256": "a0de924ffe406b2fbccf040f816a11b5cf97c7e07efa0685d425522d47513681",
+      "observed_match_seconds": 1392.9662777000049
+    },
+    "compact128-base": {
+      "wins": 25,
+      "draws": 23,
+      "losses": 16,
+      "score": 0.5703125,
+      "elo": 49.184068250484835,
+      "paired_bootstrap_95_elo": [
+        -10.86089841744591,
+        112.3306438302777
+      ],
+      "report_sha256": "faee69f2bd57e671426a665f7a1382d741a923d24bcbab4e3206b041823dc9a4",
+      "observed_match_seconds": 1291.6991485999897
+    },
+    "compact128-pawnpairs": {
+      "wins": 14,
+      "draws": 34,
+      "losses": 16,
+      "score": 0.484375,
+      "elo": -10.86089841744591,
+      "paired_bootstrap_95_elo": [
+        -77.24983934178462,
+        60.31415751636439
+      ],
+      "report_sha256": "ba28cc5623a07fd4bf040bafe35680e928e095e1097036705269e0aec58185b1",
+      "observed_match_seconds": 1362.3729791999795
+    },
+    "duration128-pawnpairs": {
+      "wins": 19,
+      "draws": 28,
+      "losses": 17,
+      "score": 0.515625,
+      "elo": 10.860898417445911,
+      "paired_bootstrap_95_elo": [
+        -60.314157516364396,
+        77.24983934178465
+      ],
+      "report_sha256": "3c27a0ecb97e2a0c043c67ae3fa23b7aa70dba4b9d5fb88b2a12d225e0a7e6f8",
+      "observed_match_seconds": 1400.7319924000185
+    },
+    "duration128-deep16": {
+      "wins": 16,
+      "draws": 29,
+      "losses": 19,
+      "score": 0.4765625,
+      "elo": -16.297987076023766,
+      "paired_bootstrap_95_elo": [
+        -77.24983934178462,
+        43.65778777002723
+      ],
+      "report_sha256": "766a9b48eba7c41758adb592bb30299bd29fd3e7ec30b7cc1fc674d0880a86eb",
+      "observed_match_seconds": 1408.6428944999934
+    },
+    "duration128-replica256": {
+      "wins": 24,
+      "draws": 23,
+      "losses": 17,
+      "score": 0.5546875,
+      "elo": 38.153397218633565,
+      "paired_bootstrap_95_elo": [
+        -21.74306492903708,
+        106.34623144029209
+      ],
+      "report_sha256": "a24667ea2e2de8f2377991b9e6335dfe4d298c6d651daaca5d414929b8f0aa02",
+      "observed_match_seconds": 1372.5564055999857
+    },
+    "duration128-base": {
+      "wins": 21,
+      "draws": 26,
+      "losses": 17,
+      "score": 0.53125,
+      "elo": 21.74306492903707,
+      "paired_bootstrap_95_elo": [
+        -43.65778777002721,
+        94.5548643771729
+      ],
+      "report_sha256": "698909892681c1091c0627a38b46e94e26cb91312a09658bfa4e57661e94e75c",
+      "observed_match_seconds": 1254.6266846999933
+    }
+  },
+  "plans_sha256": {
+    "screen-plan.json": "47768e20a608dd1f1e314d81e0a91b1e9edc151f6f155aa9c96acce69fb090b6",
+    "compact128-screen-plan.json": "a1de54917bd44e5af12a4f1bfda15507408ab556e215be9652e8e3fc92e636c9",
+    "duration128-screen-plan.json": "3947787e8ddb834ddc608296cc6367da7c2d807cd46bb22eaad0df4e71fcc118"
+  },
+  "total_games": 960,
+  "total_censored": 0,
+  "duration_contrasts": {
+    "direct128": {
+      "earlier": "compact128-base",
+      "later": "duration128-base",
+      "score_difference": -0.0390625,
+      "paired_bootstrap_95": [
+        -0.1484375,
+        0.0625
+      ]
+    },
+    "deep128": {
+      "earlier": "compact128-deep16",
+      "later": "duration128-deep16",
+      "score_difference": 0.0078125,
+      "paired_bootstrap_95": [
+        -0.1171875,
+        0.125
+      ]
+    },
+    "pawn128": {
+      "earlier": "compact128-pawnpairs",
+      "later": "duration128-pawnpairs",
+      "score_difference": 0.03125,
+      "paired_bootstrap_95": [
+        -0.140625,
+        0.1953125
+      ]
+    },
+    "standard256": {
+      "earlier": "replica",
+      "later": "duration128-replica256",
+      "score_difference": 0.0078125,
+      "paired_bootstrap_95": [
+        -0.125,
+        0.140625
+      ]
+    }
+  },
+  "observed_match_seconds": 20371.166935799964,
+  "limits": "All development endpoints use reused32 paired roots; contrasts are post-hoc/descriptive, not multiplicity-adjusted acceptance or direct head-to-head Elo. No pooled strength estimate."
+}

@@ -1,0 +1,60 @@
+{
+  "reference": "comparative-cost.json",
+  "reference_runtime": "v3",
+  "compared_runtime": "v4",
+  "fields": [
+    "round",
+    "root",
+    "nodes",
+    "score",
+    "depth",
+    "completed",
+    "configuration",
+    "payload"
+  ],
+  "checks": [
+    {
+      "comparison": "compact128-cost.json",
+      "repeat": 0,
+      "requests": 24,
+      "status": "EXACT MATCH"
+    },
+    {
+      "comparison": "compact128-cost.json",
+      "repeat": 1,
+      "requests": 24,
+      "status": "EXACT MATCH"
+    },
+    {
+      "comparison": "compact128-128-cost.json",
+      "repeat": 0,
+      "requests": 24,
+      "status": "EXACT MATCH"
+    },
+    {
+      "comparison": "compact128-128-cost.json",
+      "repeat": 1,
+      "requests": 24,
+      "status": "EXACT MATCH"
+    },
+    {
+      "comparison": "compact128-128-controlled-cost.json",
+      "repeat": 0,
+      "requests": 24,
+      "status": "EXACT MATCH"
+    },
+    {
+      "comparison": "compact128-128-controlled-cost.json",
+      "repeat": 1,
+      "requests": 24,
+      "status": "EXACT MATCH"
+    }
+  ],
+  "source_sha256": {
+    "comparative-cost.json": "cd633c8b36613b1ca20f3099476deb6c99bd75158052981784a6457c3010cdc0",
+    "compact128-cost.json": "a8e7ede971afe2de7379fcd986180bfb583e1c7674601b34c51ad764b99d6974",
+    "compact128-128-cost.json": "fa655e0e4477b6d5546083569ecda106698a7d97132b4955b3c8de02adfeb2cf",
+    "compact128-128-controlled-cost.json": "8dd29dede07339fa1dc96619b85f576f29b8094f38d5956876871aa66122c917"
+  },
+  "limitation": "Read-only comparison of existing bounded fixed-root results; not a new runtime test, exhaustive equivalence proof or timing-equivalence claim."
+}
