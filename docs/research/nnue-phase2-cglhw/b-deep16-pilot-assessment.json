@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "schema": "S6P2N001",
+    "architecture": "deep16",
+    "hidden": 256,
+    "output_buckets": 8,
+    "features": 7680,
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\network.p2nnue",
+    "network_sha256": "953fdf9f4187795ddea11a2476b73f9698e299aca34132e91f55d7c9c7e98a52",
+    "payload_sha256": "1ccb2f202402edf6b4a38db3d743d2e209060c34f46e9d14d02ae90add007ed9",
+    "bytes": 3957644,
+    "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot\\segments\\000004-bf32c569a1a4\\run\\seed-phase2-4",
+    "receipt_sha256": "9b2b5dd5116077d199ae7fd4a6f4bf7d11f6a3ca3dece23694badf720b7db824"
+  },
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "exact": "Independent Python, Rust features, Java scalar/vector/full-refresh/raw sums",
+    "gpu_max_abs_raw_error": 5.007388708122562e-07,
+    "quantization_rms_link_error": 9.277703369572253,
+    "quantization_max_abs_link_error": 33.801018413954694
+  },
+  "validation": {
+    "teacher_wdl_mse": 0.05380032971764689,
+    "cp_mae": 338.3505108840515,
+    "mean_abs_link": 343.9083370353917,
+    "positions": 6753,
+    "sigmoid_mse": 0.018490047586405347,
+    "zero_score_mse": 0.05942563922619872,
+    "clamped_score_count": 0,
+    "wdl_mse": 0.07079028499074862,
+    "payload_sha256": "1ccb2f202402edf6b4a38db3d743d2e209060c34f46e9d14d02ae90add007ed9"
+  },
+  "activation_diagnostic": {
+    "probe_accumulator_count": 132608,
+    "zero_fraction": 0.6945206925675675,
+    "clipped_high_fraction": 0.005731177606177606,
+    "minimum": -1413,
+    "maximum": 545,
+    "mean_abs_residual_link": 215.4588727382845,
+    "limitation": "Probe activations only, not the distribution of searched nodes.",
+    "downstream_zero_fraction": 0.7980212355212355,
+    "downstream_clipped_high_fraction": 0.0472972972972973
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\cargo-target\\release\\seed-phase2-nnue.exe",
+        "features",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens",
+        "deep16"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\bullet-features.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\bullet-features.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\research\\build\\install\\research\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.Phase2NnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\network.p2nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\java-vector.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\java-vector.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-Dseed.nnue.scalar=true",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\research\\build\\install\\research\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.Phase2NnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\network.p2nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\java-scalar.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\java-scalar.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\research\\build\\install\\research\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.Phase2NnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\network.p2nnue",
+        "--validation",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-holdout\\validation.txt"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\validation.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-pilot-assessment-r2\\validation.stderr"
+    }
+  ],
+  "validation_sha256": "2742eb3acdfcc0d6c45e040fd1183e48f9cd430174b2542078570fa7e3ea8271",
+  "elapsed_seconds": 5.1218470000021625,
+  "limitation": "Diagnostic holdout is not source-game independent; benchmark and NPS are not strength acceptance. Instrumented invocation run is separate from timing."
+}

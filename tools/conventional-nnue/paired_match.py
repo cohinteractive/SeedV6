@@ -60,6 +60,21 @@ def summarize(games, bootstrap=True):
     return result
 
 
+def warm_engines(engines, fens, nodes, observations):
+    """Fixed node work outside scored games; independent game identities clear TT.
+
+    Caller persists partial observations even on failure. No score-dependent order.
+    """
+    for round_index in range(2):
+        for root_index, fen in enumerate(fens):
+            for index, engine in enumerate(engines):
+                compute_gate.require();board=chess.Board(fen);start=time.monotonic()
+                played=engine.play(board,chess.engine.Limit(nodes=nodes),game=object(),info=chess.engine.INFO_BASIC)
+                if played.move not in board.legal_moves:raise RuntimeError('Illegal warmup move')
+                observations.append(dict(round=round_index,root=root_index,engine=index,move=played.move.uci(),
+                                         wall_seconds=time.monotonic()-start,reported_nodes=played.info.get('nodes')))
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--construction-comparison',action='store_true',help='Informational Construction V1 versus frozen E008 with identical CP64 inference')
@@ -75,6 +90,9 @@ def main():
     p.add_argument('--vector',action='store_true',help='Resolve optional Vector API equally for both engines; commands freeze this choice')
     p.add_argument('--confirmation',action='store_true',help='Identify a separately predeclared fixed-sample confirmation protocol')
     p.add_argument('--confirmation-family-size',type=int,choices=(1,2),help='Predeclared maximum confirmation attempts; used by the final statistical audit')
+    p.add_argument('--warmup-fens',type=Path,help='Optional frozen1..16 nonterminal FENs; two fixed-node passes before scored play')
+    p.add_argument('--warmup-nodes',type=int,default=20000)
+    p.add_argument('--jvm-batch',action='store_true',help='Use identical -Xbatch JIT mode on both engines')
     p.add_argument('--policy-comparison',action='store_true',help='Explicit selective-versus-unpruned comparison with byte-identical NNUE files')
     a=p.parse_args()
     compute_gate.require()
@@ -97,6 +115,11 @@ def main():
     if not 10<=a.movetime_ms<=1000 or not 100<=a.max_plies<=1000:raise ValueError('Unbounded match settings')
     if a.max_wall_seconds is not None and not 60<=a.max_wall_seconds<=21600:raise ValueError('Match wall budget must be 60..21600 seconds')
     openings=json.loads(a.openings.read_text());assert 1<=len(openings)<=(512 if a.strength_research else 128)
+    warmup=[]
+    if a.warmup_fens:
+        warmup=a.warmup_fens.read_text().splitlines()
+        if not 1<=len(warmup)<=16 or not 1000<=a.warmup_nodes<=100000:raise ValueError('Unbounded warmup')
+        if any(not chess.Board(fen).is_valid() or chess.Board(fen).is_game_over(claim_draw=True) for fen in warmup):raise ValueError('Invalid/terminal warmup root')
     a.output.mkdir(parents=True,exist_ok=a.resume)
     root=Path(__file__).resolve().parents[2]
     jars=root/'app-uci/build/install/seedv6-uci/lib'
@@ -118,6 +141,8 @@ def main():
         commands=[base+[str(model.resolve())] for model in (a.network,a.opponent_network)]
     if a.vector:
         for command in commands:command.insert(1,'--add-modules=jdk.incubator.vector')
+    if a.jvm_batch:
+        for command in commands:command.insert(1,'-Xbatch')
     protocol=dict(network=str(a.network.resolve()),network_sha256=sha(a.network),openings_sha256=sha(a.openings),
         openings=openings,movetime_ms=a.movetime_ms,max_plies=a.max_plies,threads=1,hash_mib=32,
         use_book=False,ponder=False,concurrent_games=1,commands=commands,
@@ -143,6 +168,8 @@ def main():
             launcher_sha256={str(f.relative_to(classes)):sha(f) for f in classes.rglob('NnueStrengthUciMain*.class')})
     if a.max_wall_seconds is not None:protocol['max_wall_seconds']=a.max_wall_seconds
     if a.confirmation_family_size is not None:protocol['confirmation_family_size']=a.confirmation_family_size
+    if warmup:protocol['warmup']=dict(path=str(a.warmup_fens.resolve()),fens=warmup,sha256=sha(a.warmup_fens),nodes=a.warmup_nodes,passes=2,
+                                    policy='Unscored identical fixed-node roots before games; distinct game identities; no score filter')
     if a.construction_comparison:
         import platform
         protocol.update(candidate_name='ConstructionV1-NNUE-CP64',opponent_name='E008-NNUE-CP64',
@@ -167,6 +194,7 @@ def main():
         return
     previous_seconds=sum(g['elapsed_seconds'] for g in games)
     previous_seconds+=sum(json.loads(p.read_text()).get('elapsed_seconds',0) for p in a.output.glob('interrupted-*.json'))
+    previous_seconds+=sum(json.loads(p.read_text()).get('elapsed_seconds',0) for p in a.output.glob('warmup-*.json'))
     if a.max_wall_seconds is not None and previous_seconds>=a.max_wall_seconds:
         print('Observed match wall budget exhausted; no engines launched',flush=True)
         raise SystemExit(76)
@@ -176,6 +204,13 @@ def main():
         for cmd in commands:
             engine=chess.engine.SimpleEngine.popen_uci(cmd,timeout=30,creationflags=flags)
             engine.configure({'Threads':1,'Hash':32,'UseBook':False});engines.append(engine)
+        if warmup:
+            observations=[];warmup_start=time.monotonic();warmup_complete=False
+            try:
+                warm_engines(engines,warmup,a.warmup_nodes,observations);warmup_complete=True
+            finally:
+                durable_text(a.output/f'warmup-{time.time_ns()}.json',json.dumps(dict(complete=warmup_complete,
+                    elapsed_seconds=time.monotonic()-warmup_start,observations=observations),indent=2)+'\n')
         for opening_index,opening in enumerate(openings):
             initial=chess.Board()
             for move in opening['moves'].split():initial.push_uci(move)

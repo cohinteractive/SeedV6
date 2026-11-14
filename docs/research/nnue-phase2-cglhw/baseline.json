@@ -1,0 +1,22 @@
+{
+  "schema": "seed-nnue-phase2-baseline-v1",
+  "head": "088778388e27595acd5a44af7ff7d312f19f7c5f",
+  "protected_sha256": {
+    "build-assets/production/conventional-wdl25.cnnue": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b"
+  },
+  "verified_inputs": {
+    "build-assets/production/conventional-wdl25.cnnue": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+    "build-assets/nnue-candidate/conventional-cp64.cnnue": "8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b",
+    "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-data\\train.data": "3a4d8d009e730e2700cf5552b48a165c7cc044d84b3bdb6518a3108d440a5729",
+    "docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens": "ad203156178b08943202514ed7a046dff1591e4059b8ae2c16eaa540e9299076",
+    "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-data\\train-provenance.bin": "240550f48a92124d90dff520c381b5f4a46e93b7195f38dcdba6011c1e5a4cff",
+    "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-data\\validation.txt": "1293de0195bd431d451791c6017b9f3a5819b7b5b9bd623b91509ad868c2cfe3",
+    "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-holdout\\validation.txt": "2742eb3acdfcc0d6c45e040fd1183e48f9cd430174b2542078570fa7e3ea8271"
+  },
+  "trainer_sha256": "57a9ee3cd70334a5c6a6bbe3ea42b58985179da4fa81f166f4e14b5540b2c8e3",
+  "frozen_runtime_verified_files": 47,
+  "version_bytes_base64": "ewogICJtYWpvciI6IDAsCiAgIm1pbm9yIjogMCwKICAicGF0Y2giOiAwLAogICJidWlsZCI6IDEwMQp9Cg==",
+  "version_sha256": "c6b4b3592bbbd16c8882a7e8044e838cbfff7085ec535236723488cd9f8976c7",
+  "no_root_journal": true
+}

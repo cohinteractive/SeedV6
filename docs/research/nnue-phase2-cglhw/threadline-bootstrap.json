@@ -1,0 +1,25 @@
+{
+  "protocol": "threadline-bundle",
+  "version": 1,
+  "id": "17030feb-f225-4713-9aa4-c3065adcc796",
+  "operation": "CREATE",
+  "state": {
+    "title": "SeedV6 NNUE Strength Research \u2014 Phase 2",
+    "purpose": "Develop substantially stronger, computationally efficient NNUE evaluators through controlled training and architecture research under unchanged SeedV6 search.",
+    "position": "Active research on branch research/nnue-phase2 from build101/08877838. Contract and resumable programme established in docs/research/nnue-phase2-cglhw. Protected WDL25/CP64, broad training data, diagnostic holdout and47 frozen runtime files rehashed successfully. Independent-seed WDL25 reproduction reached checkpoint64;259 cross-language parity probes, trained incremental checks and UCI pass. Teacher/outcome MSE0.017226/0.069416 and zero measured hot allocation; no Phase2 strength result yet. Training-factor controls are executing; compact16-unit downstream residual and stable pawn-pair pilots are specified. Production unchanged; completion criteria unsatisfied.",
+    "unresolved": [
+      "WDL25 recipe strength reproduction and causal contributions of supervision, data coverage and decay remain unestablished.",
+      "Existing validation is filtered for position/symmetry neighbors, but full source-game independence remains unproven.",
+      "Compact deeper and relational architectures still need implementation validation, training, measured Java/search cost and equal-time games.",
+      "Candidate selection requires fresh paired screens and prospectively frozen independent confirmation with uncertainty/selection accounting.",
+      "No production promotion, deployment or BotLi change is authorized; any future promotion needs a separate owner decision."
+    ],
+    "next": "Codex: continue the governed programme from repository STATE.md, finish matched training controls, validate architecture pilots and run justified fixed paired comparisons against WDL25. Respect existing compute controls and preserve all raw evidence."
+  },
+  "captures": [
+    {
+      "kind": "Reference",
+      "body": "Repository: C:/projects/seed/java/seedv6-unified/docs/research/nnue-phase2-cglhw/CONTRACT.md and STATE.md. Baseline hashes: baseline.json. Reproduction evidence: a001-replica-assessment.json and referenced local raw/. Phase1 evidence remains at docs/research/conventional-nnue-cglhw/strength-20261114/REPORT.md. Publication is not application or acceptance."
+    }
+  ]
+}

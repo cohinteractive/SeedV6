@@ -1,0 +1,13 @@
+{
+  "reference": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-replica-pilot\\segments\\000001-10faa4f0b7ce\\run\\initial\\weights.bin",
+  "reference_sha256": "c27139999d72df534e2be0b9b13711942e9406668ded227569f8b8d37eb93a1e",
+  "candidate": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-pawnpairs-pilot\\segments\\000001-df51f997735f\\run\\initial\\weights.bin",
+  "candidate_sha256": "1bdf2ef0dce08010ae4db7062cda26ab0b55f47adb4ddfcab7ad2c72e3b4fabb",
+  "base_tensors_exact": {
+    "l0b": true,
+    "l0f": true,
+    "l0w": true,
+    "l1b": true,
+    "l1w": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "operation": "CREATE",
+  "id": "17030feb-f225-4713-9aa4-c3065adcc796",
+  "path": "C:\\dev\\tl-local\\seed-phase2-488fb569-3e18-4aa7-9a56-225b48001b3d.json",
+  "bytes": 2482,
+  "sha256": "0cf4a8dc1ad6ebc9f80be8231f696caaac20ca59755a72acf1ae03260ac830f3",
+  "schema_sha256": "375582db417afefcae28e2b0cd568ecd60445f6f6aae0da61066b28e0374bbe6",
+  "schema_validation": "PASS",
+  "semantic_size_validation": "PASS",
+  "staging": "NOT OBSERVED",
+  "apply": "NOT PERFORMED",
+  "human_action": "Review and manually Apply in Threadline; not blocking independent repository research"
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "seed-phase2-data-independence-audit-v1",
+  "inputs": {
+    "docs\\research\\conventional-nnue-cglhw\\e006-data-manifest.json": "7e50e3825620202ba9dd55ef6d5a98c6ce7052d93ace2117c653a15e393a43c5",
+    "docs\\research\\conventional-nnue-cglhw\\strength-20261114\\additional-data-manifest.json": "83897e85be24c47daaf1d590cad15e6ebe1634ee06d670319123c1c14d80f293"
+  },
+  "prepared_identity": "f31d471fd96548318141b44498c18ebb9cd9d3acb6e6e56c70efe42bf6c65457",
+  "records_by_source_split": [
+    {
+      "train_shard0": 17825792,
+      "train_shard1": 15728640,
+      "validation_shard0": 327680,
+      "validation_shard1": 196608
+    },
+    {
+      "train_shard0": 17727488,
+      "train_shard1": 15826944,
+      "validation_shard0": 196608,
+      "validation_shard1": 327680
+    }
+  ],
+  "training_units": 2048,
+  "diagnostic_validation_units": 16,
+  "cross_extraction_unit_overlap": 0,
+  "training_validation_unit_overlap": 0,
+  "adjacent_train_validation_chunks": [
+    {
+      "validation_index": 12614,
+      "training_index": 12616,
+      "shard": 0
+    },
+    {
+      "validation_index": 14198,
+      "training_index": 14196,
+      "shard": 0
+    },
+    {
+      "validation_index": 10498,
+      "training_index": 10496,
+      "shard": 0
+    }
+  ],
+  "diagnostic_sha256": "2742eb3acdfcc0d6c45e040fd1183e48f9cd430174b2542078570fa7e3ea8271",
+  "diagnostic_positions": 6753,
+  "verified_baseline": "baseline.json rehashes actual data/provenance/holdout and original47-file runtime",
+  "decoder": {
+    "path": "engine-training/src/main/java/com/ohinteractive/seedv6/training/data/BinpackDecoder.java",
+    "sha256": "a9ef6ea31525d28bd1f70011ce5eacbe1c7c73c60608ccbbd4f09b95902fd459",
+    "observed": "Each BINP chunk is decoded independently. Each base carries its own board, ply, result and continuation count; Record exposes no source game ID. Prepared-unit/ordinal provenance identifies consumed positions, not globally unique games."
+  },
+  "established": [
+    "Consumed training/validation prepared units are disjoint, including the additional extraction.",
+    "Both training months are represented in the combined training set; existing validation is not a source-month holdout.",
+    "Supervised DirectSequentialDataLoader uses global batch offset modulo record count. Broad64 endpoint is four dataset passes; narrow64 is eight."
+  ],
+  "limits": [
+    "No game ID or guarantee that a source game occurs in only one base/chunk: disjoint chunks do not establish game separation.",
+    "Source descriptor uses sampled source fingerprints; consumed prepared chunks have full SHA256 checks. This is not a full hash of every original compressed source byte.",
+    "Outcome targets are traceable source labels; independent audit of original game outcomes/adjudication quality is unavailable.",
+    "Jan/Feb teacher labels use FEN-only context. Repetition/history quality is not repaired by broader coverage.",
+    "A new source-month holdout would require withholding a month from new training; it cannot retroactively clean current WDL25.",
+    "Filtered diagnostic is useful for matched comparisons but must not be represented as independent strength evidence."
+  ],
+  "disposition": "Continue controlled experiments with explicit limits; use separate opening pools for strength. Do not discard existing data or claim unavailable source-game proof. Revisit a source-separated corpus if architecture ranking remains plausibly data-limited."
+}

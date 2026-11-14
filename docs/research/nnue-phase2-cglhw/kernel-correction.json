@@ -1,0 +1,26 @@
+{
+  "problem": "Forty allocated bytes per vector dot; deep16 calls seventeen dots/evaluation",
+  "before_deep_allocated_bytes_per_100000": 68000000,
+  "before_base_allocated_bytes_per_100000": 4000000,
+  "first_revision": "Static species and combined long reduction retained same allocation; rejected",
+  "observed_allocation_stack": [
+    "jdk/incubator/vector/Int256Vector.iotaShuffle",
+    "jdk/incubator/vector/Int256Vector.iotaShuffle",
+    "jdk/incubator/vector/IntVector.sliceTemplate",
+    "jdk/incubator/vector/Int256Vector.slice",
+    "jdk/incubator/vector/Int256Vector.slice"
+  ],
+  "correction": "Precompute half-rotation VectorShuffle; rearrange once and convert high half with part0",
+  "after_deep_allocated_bytes_per_100000": 0,
+  "trained_incremental_parity": "PASS",
+  "evidence_sha256": {
+    "docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-64-assessment-r2\\benchmark.jsonl": "ac93cd98a4574ab9ffad6980a8f2f7f3451f5ea1b015a8b784ec8cc88205927a",
+    "docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel\\phase2-cost.jsonl": "81cfa87ee3f760f2d66baf557870af2cb8b2715ec2c93edf5f87f1407245c4d6",
+    "docs\\research\\nnue-phase2-cglhw\\raw\\kernel-r2-benchmark-02.log": "4022788a51aa3d90ecfe4fe18bde3d56b19f6241ec029defa5f08dcc948c8a0f",
+    "docs\\research\\nnue-phase2-cglhw\\raw\\kernel-r3-benchmark.log": "1bcd777ee0223a2ab2f310e93021ceed3f9973e399b7c8809ed848f4f8fbfb48",
+    "docs\\research\\nnue-phase2-cglhw\\raw\\kernel-r2-allocation.jfr": "ea2629c67e59547cd5d4fbd7bec735e82f9dcd3d173c73916e430e0dfecc1c18",
+    "docs\\research\\nnue-phase2-cglhw\\raw\\kernel-r2-allocation-samples.json": "d7a2b0fc484c60740b553895b59312e8749369f7c447e388142148e7115ebb5f"
+  },
+  "failed_invocation": "kernel-r2-benchmark.log: unquoted PowerShell -XX flag was split before JVM startup; corrected quoted invocation retained separately",
+  "scope": "Experimental kernel only; no production source/weight or network training change"
+}

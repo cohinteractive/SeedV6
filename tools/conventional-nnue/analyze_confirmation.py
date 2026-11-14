@@ -72,6 +72,21 @@ def main():
         assert {f.name:sha(f) for f in directories[0].glob('*.class')}==protocol['selective_research_classes_sha256']
     if 'opponent_network' in protocol:assert sha(Path(protocol['opponent_network']))==protocol['opponent_network_sha256']
     else:assert sha(root/'build-assets/production/bre-pair2-g32.brn-pair2')==protocol['baseline_sha256']
+    if 'warmup' in protocol:
+        warmup=protocol['warmup'];assert sha(Path(warmup['path']))==warmup['sha256']
+        assert Path(warmup['path']).read_text().splitlines()==warmup['fens']
+        assert warmup['passes']==2 and 1000<=warmup['nodes']<=100000
+        complete=0
+        for file in a.match.glob('warmup-*.json'):
+            record=json.loads(file.read_text());observations=record['observations']
+            expected=[(r,i,e) for r in range(2) for i in range(len(warmup['fens'])) for e in range(2)]
+            assert [(x['round'],x['root'],x['engine']) for x in observations]==expected[:len(observations)]
+            for row in observations:
+                assert chess.Move.from_uci(row['move']) in chess.Board(warmup['fens'][row['root']]).legal_moves
+                assert row['wall_seconds']>=0
+            if record['complete']:
+                assert len(observations)==len(expected);complete+=1
+        assert complete>0,'Missing complete frozen warmup'
     games=[json.loads(line) for line in (a.match/'games.jsonl').read_text().splitlines()]
     assert len(games)==2*len(openings),'Incomplete fixed sample'
     seen=set();pairs={};files={};terminations={}

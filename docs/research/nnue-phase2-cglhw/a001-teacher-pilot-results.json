@@ -1,0 +1,28 @@
+{
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "hidden": 256,
+    "output_buckets": 8,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 5.773924986463008e-07,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 23.592401962488793,
+    "quantization_rms_cp_error": 6.843534459705937,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "validation": {
+    "cp_mae": 343.76662224196656,
+    "teacher_wdl_mse": 0.05380032971764689,
+    "payload_sha256": "622e6202a0f23cb6064c69cd2438df06c8eaec594368c5a5d48af4c5f733beb6",
+    "wdl_mse": 0.07218220649224236,
+    "clamped_score_count": 0,
+    "zero_score_mse": 0.05942563922619872,
+    "sigmoid_mse": 0.01946608318097326,
+    "positions": 6753,
+    "mean_abs_link": 398.96934695690805
+  },
+  "manifest_sha256": "2509647de62990eba116a98da5e9de10823429504945c19d54c53a4f17f7225b",
+  "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-pilot-eval"
+}

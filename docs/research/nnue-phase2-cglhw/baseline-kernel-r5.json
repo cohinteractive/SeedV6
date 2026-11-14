@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "source": "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\conventional-wdl25.cnnue",
+    "source_sha256": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\wdl25.p2nnue",
+    "network_sha256": "8c74ee9d73cd444ba2e8e574f21821788617f3ccb6624fd17f423654517a226d",
+    "payload_sha256": "efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7",
+    "transformation": "Envelope only; exact quantized payload retained"
+  },
+  "parity": "Exact259-row feature/accumulator/score/full-refresh match",
+  "experimental_cost": {
+    "architecture": "base",
+    "payload": "efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7",
+    "backend": "vector-bounded-int",
+    "transitions": 255,
+    "pawn_transitions": 47,
+    "perspective_refreshes": 35,
+    "incremental_parity": "PASS",
+    "update_ns": [
+      630.892,
+      634.266,
+      636.401,
+      632.878,
+      625.744
+    ],
+    "head_ns": [
+      56.72,
+      56.261,
+      56.301,
+      56.455,
+      56.797
+    ],
+    "update_plus_head_ns": [
+      682.143,
+      673.145,
+      664.939,
+      664.456,
+      680.041
+    ],
+    "refresh_ns": [
+      3711.039,
+      3776.869,
+      3712.168,
+      3708.744,
+      3720.819
+    ],
+    "allocated_bytes_100000": 0,
+    "limitation": "255-transition deterministic walk; cache/branch counters not collected. Search probe and equal-time games are separate."
+  },
+  "production_cost": {
+    "architecture": "production256",
+    "payload": "efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7",
+    "backend": "vector-256-long",
+    "transitions": 255,
+    "pawn_transitions": 47,
+    "perspective_refreshes": 35,
+    "incremental_parity": "PASS",
+    "update_ns": [
+      648.008,
+      617.76,
+      700.506,
+      629.41,
+      617.839
+    ],
+    "head_ns": [
+      111.04,
+      111.722,
+      110.842,
+      113.1,
+      110.061
+    ],
+    "update_plus_head_ns": [
+      725.761,
+      730.352,
+      730.38,
+      732.823,
+      742.319
+    ],
+    "refresh_ns": [
+      3873.012,
+      3914.614,
+      3897.684,
+      3913.902,
+      3877.784
+    ],
+    "allocated_bytes_100000": 0,
+    "limitation": "255-transition deterministic walk; cache/branch counters not collected. Search probe and equal-time games are separate."
+  },
+  "commands": [
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\research\\build\\install\\research\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.ConventionalNnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\conventional-wdl25.cnnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\production-parity.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\production-parity.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\research\\build\\install\\research\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.Phase2NnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\wdl25.p2nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\experimental-parity.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\experimental-parity.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\research\\build\\install\\research\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.Phase2NnueBenchmark",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\wdl25.p2nnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\phase2-cost.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\phase2-cost.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\research\\build\\install\\research\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.ProductionNnueCostBenchmark",
+        "C:\\projects\\seed\\java\\seedv6-unified\\build-assets\\production\\conventional-wdl25.cnnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\production-cost.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\production-cost.stderr"
+    }
+  ],
+  "limitation": "Identical deterministic255-transition walk, operation loops, warmup/repeats and JVM options; separate monomorphic production/research kernels. Microbenchmark is not equal-time strength. Base payload control separates arithmetic-kernel cost from architecture."
+}

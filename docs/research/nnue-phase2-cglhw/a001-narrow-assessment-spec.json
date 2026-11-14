@@ -1,0 +1,12 @@
+{
+  "models": [
+    {
+      "id": "narrow",
+      "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-narrow-64\\segments\\000064-1808308f1f5b\\run\\seed-cnnue-v1-64",
+      "evaluation": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-narrow-final-eval"
+    }
+  ],
+  "probes": "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens",
+  "validation": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-holdout\\validation.txt",
+  "roots": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens"
+}

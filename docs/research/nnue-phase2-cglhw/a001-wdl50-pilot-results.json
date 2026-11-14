@@ -1,0 +1,28 @@
+{
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "hidden": 256,
+    "output_buckets": 8,
+    "exact_features": "Python / Java / pinned Bullet",
+    "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+    "gpu_float_max_abs_raw_error": 5.883701692521726e-07,
+    "gpu_float_tolerance": 2e-05,
+    "quantization_max_abs_cp_error": 27.904583006921996,
+    "quantization_rms_cp_error": 7.948694966418446,
+    "limitation": "Quantization error is measured separately; no strength or calibration claim"
+  },
+  "validation": {
+    "clamped_score_count": 0,
+    "zero_score_mse": 0.05942563922619872,
+    "sigmoid_mse": 0.020207252537372686,
+    "positions": 6753,
+    "mean_abs_link": 388.40693025322076,
+    "cp_mae": 346.6133570265067,
+    "teacher_wdl_mse": 0.05380032971764689,
+    "payload_sha256": "66402d12ec281bc9a394ca0b7abeb499a8f5e6b43408171ac78f6c863ea9247f",
+    "wdl_mse": 0.07251247556170026
+  },
+  "manifest_sha256": "931b105fb84d52ed1a221716b0f4b3c8c49c406899ddebce1fd1cd211c541af1",
+  "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-wdl50-pilot-eval"
+}

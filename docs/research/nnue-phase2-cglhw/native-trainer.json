@@ -1,0 +1,7 @@
+{
+  "path": "docs\\research\\nnue-phase2-cglhw\\raw\\trainer-df64721c3964ce80a70a5b7f7335fd4a223900a73a489178a3c74cd680413797.exe",
+  "sha256": "df64721c3964ce80a70a5b7f7335fd4a223900a73a489178a3c74cd680413797",
+  "source": "tools/conventional-nnue/trainer/src/phase2.rs",
+  "source_sha256": "1aece79937426e8a6ddf4657f3e591eb5f6e5c51f8735f952135a933583000bd",
+  "bullet": "579b78b37a694cacd6e9ede4706386c15c34837c"
+}

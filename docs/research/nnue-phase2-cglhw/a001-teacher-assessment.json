@@ -1,0 +1,589 @@
+{
+  "spec": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\a001-teacher-assessment-spec.json",
+  "spec_sha256": "3a0d8e860340449cb4e5f7d5309dccb7e435628fb22329712f83abb231756f37",
+  "results": {
+    "teacher": {
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue",
+      "network_sha256": "89393a3e85e471439ecb6bdd420b9e737e6ee1a6b71303c6b0a57dd96aaae759",
+      "metadata": {
+        "format": "S6CNU002",
+        "output_buckets": 8,
+        "hidden": 256,
+        "bullet_quantised_sha256": "c007830a18e6c46829907753a75ef2a449a5576f253a6292398e27a15210da06",
+        "payload_sha256": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+        "file_sha256": "89393a3e85e471439ecb6bdd420b9e737e6ee1a6b71303c6b0a57dd96aaae759",
+        "bytes": 3940952,
+        "parameters": 1970440,
+        "source": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-64\\segments\\000064-6b5896fa279c\\run\\seed-cnnue-v1-64\\quantised.bin",
+        "independent_quantization": "all parameters match merged optimizer weights with half-away rounding",
+        "layout": "LE i16: feature-major weights[7680][256], bias[256], heads[8][512], output biases[8]",
+        "arithmetic": "clamp 0..255 then square; long dot; trunc(dot/255); add bias; multiply400; trunc(/16320); clamp +-32511"
+      },
+      "parity": {
+        "status": "PASS",
+        "positions": 259,
+        "hidden": 256,
+        "output_buckets": 8,
+        "exact_features": "Python / Java / pinned Bullet",
+        "exact_integer": "Python arbitrary precision / Java incremental / Java unit-major full rebuild",
+        "gpu_float_max_abs_raw_error": 1.3027722527425567e-06,
+        "gpu_float_tolerance": 2e-05,
+        "quantization_max_abs_cp_error": 26.600385809201953,
+        "quantization_rms_cp_error": 7.1816738470968495,
+        "limitation": "Quantization error is measured separately; no strength or calibration claim"
+      },
+      "validation": {
+        "cp_mae": 335.343551014364,
+        "mean_abs_link": 465.2067229379535,
+        "positions": 6753,
+        "sigmoid_mse": 0.01690615552907825,
+        "zero_score_mse": 0.05942563922619872,
+        "clamped_score_count": 0,
+        "wdl_mse": 0.06937119474581571,
+        "payload_sha256": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+        "teacher_wdl_mse": 0.05380032971764689
+      },
+      "float_validation": {
+        "positions": 1024,
+        "hidden": 256,
+        "float_sigmoid_mse": 0.017001610101228654,
+        "quantized_sigmoid_mse": 0.017051602049871318,
+        "quantization_rms_link_error": 7.51386693140592,
+        "quantization_max_abs_link_error": 25.44909099304914,
+        "network_sha256": "89393a3e85e471439ecb6bdd420b9e737e6ee1a6b71303c6b0a57dd96aaae759",
+        "validation_sha256": "2742eb3acdfcc0d6c45e040fd1183e48f9cd430174b2542078570fa7e3ea8271",
+        "limitation": "Diagnostic evenly spaced subset; CPU float uses independently merged binary32 weights and double accumulation. GPU parity is a separate probe check."
+      },
+      "benchmark": {
+        "network": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+        "load_ms": 93.2518,
+        "legal_transitions": 255,
+        "incremental_plus_head_ns_per_eval": [
+          1157.885,
+          731.075,
+          727.85
+        ],
+        "full_refresh_plus_head_ns_per_eval": [
+          4133.92,
+          3921.04,
+          3913.085
+        ],
+        "pair2_rolling_plus_head_ns_per_eval": [
+          316.475,
+          86.51,
+          86.59
+        ],
+        "incremental_allocated_bytes_20000": 0,
+        "limitation": "one deterministic legal walk; microbenchmark only; no NPS/Elo inference"
+      },
+      "uci": {
+        "status": "PASS",
+        "workers": 1,
+        "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue",
+        "identity": [
+          "WARNING: Using incubator modules: jdk.incubator.vector",
+          "id name SeedV6-100",
+          "id author Charles Clark",
+          "option name Threads type spin default 1 min 1 max 16",
+          "option name Hash type spin default 64 min 1 max 1024",
+          "option name Clear Hash type button",
+          "option name ClockPolicy type combo default BOUNDARY2 var BOUNDARY2 var FACTUAL",
+          "option name UseBook type check default false",
+          "option name OwnBook type check default false",
+          "option name Show Search Configuration type button",
+          "info string mode=research formulation=CLV_C1 schema=S6CNU002 hidden=256 heads=8 payload=cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=3329490943 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF ttMiB=64",
+          "uciok"
+        ],
+        "active_identity": [
+          "info string mode=research formulation=CLV_C1 schema=S6CNU002 hidden=256 heads=8 payload=cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6 head=vector-256-long scoreMapping=BT4_Q_LOGIT400_V1 flags=3329490943 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF ttMiB=32",
+          "readyok"
+        ],
+        "searches": [
+          {
+            "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+            "bestmove": "e2e4",
+            "last_info": "info depth 5 score cp 121 nodes 5816 time 284 nps 20430 pv e2e4 e7e6 d2d4 d7d5 e4e5"
+          },
+          {
+            "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+            "bestmove": "e4d5",
+            "last_info": "info depth 6 score cp 205 nodes 61181 time 154 nps 395370 pv e4d5 f6d5 e1c1 e5e4 c3e4 e8g8"
+          },
+          {
+            "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+            "bestmove": "e5d6",
+            "last_info": "info depth 13 score cp 0 nodes 135889 time 221 nps 614093 pv e5d6 e8d7 e1d1 d7d6"
+          },
+          {
+            "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+            "bestmove": "h2h1q",
+            "last_info": "info depth 9 score cp 2512 nodes 136472 time 201 nps 676299 pv h2h1q e1f2 e8e7 f2e2 e7f6 e2d2 h1a1 a7a8q a1a8"
+          }
+        ],
+        "lifecycle": "stop/readiness/newgame/repeated search/quit passed",
+        "command": [
+          "C:/java/jdk-21/bin/java.exe",
+          "--add-modules=jdk.incubator.vector",
+          "-XX:ActiveProcessorCount=2",
+          "-Xmx768m",
+          "-Djava.awt.headless=true",
+          "-cp",
+          "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\classes",
+          "com.ohinteractive.seedv6.integration.NnueStrengthUciMain",
+          "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue"
+        ],
+        "runtime_lib": "C:\\projects\\seed\\java\\seedv6-unified\\build\\research\\runtime\\lib",
+        "jar_sha256": {
+          "app-uci.jar": "c27675cfea06f908016fa2b2d41d8f5c6e904e3445b8fc74aacd43432b216fa3",
+          "engine-core.jar": "29bc16e86df220cca13f64b8e4aed325813236af1b44fe4d1fc38d8cd13c9462",
+          "engine-training.jar": "759cf48176bfcd2510fb513ab25724a011646abf2314fb9635169b12e084db18",
+          "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+          "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+          "research.jar": "9577c08d2bfb19e6bf842079b20fcf03e9880b9a637d7b2cf93dfa87601a7d80",
+          "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+          "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+        }
+      },
+      "search_cost": {
+        "roots": 24,
+        "nodes": 2522664,
+        "elapsed_ns": 10632680600,
+        "nps": 237255.69260492976,
+        "limitation": "Rotated fixed roots/depths with bounded requests. Different evaluations change node counts; NPS is not a speedup or Elo claim."
+      }
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\evaluate_checkpoint.py",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-64\\segments\\000064-6b5896fa279c\\run\\seed-cnnue-v1-64",
+        "docs/research/conventional-nnue-cglhw/raw/e007-probes/probes.fens",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-holdout\\validation.txt",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval",
+        "--vector",
+        "--strength-research"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-export.log",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-export.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\strength_float_check.py",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-64\\segments\\000064-6b5896fa279c\\run\\seed-cnnue-v1-64",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-holdout\\validation.txt",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\float-validation.json"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-float.log",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-float.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.ConventionalNnueBenchmark",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-benchmark.log",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.StrengthNnueBenchmark",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-research-parity-benchmark.log",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-research-parity-benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\uci_smoke.py",
+        "--network",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue",
+        "--strength-research",
+        "--vector",
+        "--output",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\uci"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-uci.log",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\teacher-uci.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "research/build/install/research/lib/*",
+        "com.ohinteractive.seedv6.tools.eval.StrengthSearchProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\search-cost.log",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\search-cost.stderr"
+    }
+  ],
+  "elapsed_seconds": 25.103501499979757,
+  "validation_sha256": "2742eb3acdfcc0d6c45e040fd1183e48f9cd430174b2542078570fa7e3ea8271",
+  "roots_sha256": "732d3587e67baf189fd40e243ea26a35e96d5148f4d2e80cbdb4b3440358e52e",
+  "raw_search": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-assessment\\search-cost.log",
+  "search_rows": [
+    {
+      "round": 0,
+      "root": 0,
+      "fen": "rnbqr1k1/pp2bppp/4pn2/2p5/2P5/B3PN2/P2PBPPP/RN1Q1RK1 w - - 1 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 69064,
+      "elapsed_ns": 2040087700,
+      "depth": 7,
+      "completed": true,
+      "score": 46
+    },
+    {
+      "round": 0,
+      "root": 1,
+      "fen": "1Nn5/2P4p/8/1k1ppp1P/8/6P1/5P2/5K2 w - - 1 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 9591,
+      "elapsed_ns": 51555000,
+      "depth": 7,
+      "completed": true,
+      "score": 177
+    },
+    {
+      "round": 0,
+      "root": 2,
+      "fen": "r2r2k1/1p3p2/4q1p1/2PN3p/1PP1n3/4P1P1/1R5P/3Q1RK1 b - - 0 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 117743,
+      "elapsed_ns": 1148799400,
+      "depth": 7,
+      "completed": true,
+      "score": -144
+    },
+    {
+      "round": 0,
+      "root": 3,
+      "fen": "8/2b4p/2p1Bppk/p1P5/pr1pP3/K2P3P/1P4R1/8 w - - 8 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 56281,
+      "elapsed_ns": 176626700,
+      "depth": 7,
+      "completed": true,
+      "score": -268
+    },
+    {
+      "round": 0,
+      "root": 4,
+      "fen": "1r2r1k1/1pb1qpp1/2n1pn1p/pBPp1b2/3P4/P3PN2/1B1N1PPP/2RQ1RK1 w - - 5 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 194074,
+      "elapsed_ns": 1248779900,
+      "depth": 7,
+      "completed": true,
+      "score": 45
+    },
+    {
+      "round": 0,
+      "root": 5,
+      "fen": "r1b1kbnr/ppp2p2/2n4p/5qp1/2B5/2p2N2/PP1N1PPP/R1BQ1RK1 w kq - 0 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 200000,
+      "elapsed_ns": 1731736100,
+      "depth": 7,
+      "completed": false,
+      "score": -2147483648
+    },
+    {
+      "round": 0,
+      "root": 6,
+      "fen": "8/6bp/1N1B2k1/1p6/4PK2/1r2P3/6P1/1n5R b - - 13 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 30506,
+      "elapsed_ns": 260361000,
+      "depth": 7,
+      "completed": true,
+      "score": -37
+    },
+    {
+      "round": 0,
+      "root": 7,
+      "fen": "2r1k2r/pp4p1/2nbppp1/3p4/3Pn3/1PN1PN1P/1P1B1PP1/R3R1K1 w k - 0 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 200000,
+      "elapsed_ns": 337940600,
+      "depth": 7,
+      "completed": false,
+      "score": -2147483648
+    },
+    {
+      "round": 0,
+      "root": 8,
+      "fen": "2b3k1/5ppp/1p2pn2/p2pN3/3P4/6P1/PP2PPBP/6K1 w - - 0 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 59483,
+      "elapsed_ns": 134157600,
+      "depth": 7,
+      "completed": true,
+      "score": 109
+    },
+    {
+      "round": 0,
+      "root": 9,
+      "fen": "1r6/6k1/7p/r7/2B3P1/p3R2P/4NK2/8 w - - 1 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 77974,
+      "elapsed_ns": 237198200,
+      "depth": 7,
+      "completed": true,
+      "score": 14
+    },
+    {
+      "round": 0,
+      "root": 10,
+      "fen": "3r2k1/1p6/5npp/3b4/6P1/3N1N1P/1P1KP3/7R b - - 4 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 82159,
+      "elapsed_ns": 1027944400,
+      "depth": 7,
+      "completed": true,
+      "score": -125
+    },
+    {
+      "round": 0,
+      "root": 11,
+      "fen": "r2q1rk1/pb1nbppp/1p3n2/3P4/2B5/2NQPN2/PB3PPP/R3K2R b KQ - 2 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 164457,
+      "elapsed_ns": 280952700,
+      "depth": 7,
+      "completed": true,
+      "score": -148
+    },
+    {
+      "round": 1,
+      "root": 0,
+      "fen": "rnbqr1k1/pp2bppp/4pn2/2p5/2P5/B3PN2/P2PBPPP/RN1Q1RK1 w - - 1 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 69064,
+      "elapsed_ns": 101043500,
+      "depth": 7,
+      "completed": true,
+      "score": 46
+    },
+    {
+      "round": 1,
+      "root": 1,
+      "fen": "1Nn5/2P4p/8/1k1ppp1P/8/6P1/5P2/5K2 w - - 1 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 9591,
+      "elapsed_ns": 14069000,
+      "depth": 7,
+      "completed": true,
+      "score": 177
+    },
+    {
+      "round": 1,
+      "root": 2,
+      "fen": "r2r2k1/1p3p2/4q1p1/2PN3p/1PP1n3/4P1P1/1R5P/3Q1RK1 b - - 0 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 117743,
+      "elapsed_ns": 163841900,
+      "depth": 7,
+      "completed": true,
+      "score": -144
+    },
+    {
+      "round": 1,
+      "root": 3,
+      "fen": "8/2b4p/2p1Bppk/p1P5/pr1pP3/K2P3P/1P4R1/8 w - - 8 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 56281,
+      "elapsed_ns": 84991300,
+      "depth": 7,
+      "completed": true,
+      "score": -268
+    },
+    {
+      "round": 1,
+      "root": 4,
+      "fen": "1r2r1k1/1pb1qpp1/2n1pn1p/pBPp1b2/3P4/P3PN2/1B1N1PPP/2RQ1RK1 w - - 5 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 194074,
+      "elapsed_ns": 295269200,
+      "depth": 7,
+      "completed": true,
+      "score": 45
+    },
+    {
+      "round": 1,
+      "root": 5,
+      "fen": "r1b1kbnr/ppp2p2/2n4p/5qp1/2B5/2p2N2/PP1N1PPP/R1BQ1RK1 w kq - 0 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 200000,
+      "elapsed_ns": 291765700,
+      "depth": 7,
+      "completed": false,
+      "score": -2147483648
+    },
+    {
+      "round": 1,
+      "root": 6,
+      "fen": "8/6bp/1N1B2k1/1p6/4PK2/1r2P3/6P1/1n5R b - - 13 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 30506,
+      "elapsed_ns": 41957800,
+      "depth": 7,
+      "completed": true,
+      "score": -37
+    },
+    {
+      "round": 1,
+      "root": 7,
+      "fen": "2r1k2r/pp4p1/2nbppp1/3p4/3Pn3/1PN1PN1P/1P1B1PP1/R3R1K1 w k - 0 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 200000,
+      "elapsed_ns": 324079300,
+      "depth": 7,
+      "completed": false,
+      "score": -2147483648
+    },
+    {
+      "round": 1,
+      "root": 8,
+      "fen": "2b3k1/5ppp/1p2pn2/p2pN3/3P4/6P1/PP2PPBP/6K1 w - - 0 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 59483,
+      "elapsed_ns": 95652000,
+      "depth": 7,
+      "completed": true,
+      "score": 109
+    },
+    {
+      "round": 1,
+      "root": 9,
+      "fen": "1r6/6k1/7p/r7/2B3P1/p3R2P/4NK2/8 w - - 1 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 77974,
+      "elapsed_ns": 111184000,
+      "depth": 7,
+      "completed": true,
+      "score": 14
+    },
+    {
+      "round": 1,
+      "root": 10,
+      "fen": "3r2k1/1p6/5npp/3b4/6P1/3N1N1P/1P1KP3/7R b - - 4 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 82159,
+      "elapsed_ns": 130769000,
+      "depth": 7,
+      "completed": true,
+      "score": -125
+    },
+    {
+      "round": 1,
+      "root": 11,
+      "fen": "r2q1rk1/pb1nbppp/1p3n2/3P4/2B5/2NQPN2/PB3PPP/R3K2R b KQ - 2 1",
+      "payload": "cb0fc1475adc8bd38e20f4b341ad7d71486b47d828ce2c76588ef272c5e82ce6",
+      "hidden": 256,
+      "backend": "vector-256-long",
+      "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+      "nodes": 164457,
+      "elapsed_ns": 301918600,
+      "depth": 7,
+      "completed": true,
+      "score": -148
+    }
+  ]
+}

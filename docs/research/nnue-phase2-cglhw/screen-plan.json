@@ -1,0 +1,85 @@
+{
+  "schema": "seed-phase2-screen-plan-v1",
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v3",
+  "runtime_manifest_sha256": "0c5609dc51ceba0bfed01f734536380be28185546a37827933b80147df2c8776",
+  "runtime_version": 3,
+  "incumbent": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-wdl25.cnnue",
+  "incumbent_sha256": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+  "candidates": [
+    {
+      "id": "deep16",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-deep16-64-assessment-r3\\network.p2nnue",
+      "sha256": "36397cec7bb116aff84427a04a29a057778dc086e93430ee35f91fbf315ed106",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\b-deep16-64-assessment.json",
+      "evidence_sha256": "d14854802a2ecbae139bebbed056a5b5d9e521d3e1514c2224854d723bf7d7de"
+    },
+    {
+      "id": "replica",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-replica-final-eval\\network.cnnue",
+      "sha256": "aae2a91f4554ab16c47997fa3d263fa98250301071286ae3a2ac9bc728e2faef",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\a001-replica-assessment.json",
+      "evidence_sha256": "1d057f0551df36522b56935f34d6c967ee6e302142208b45aa916177226a67df"
+    },
+    {
+      "id": "narrow",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-narrow-final-eval\\network.cnnue",
+      "sha256": "4bbf8bb1e419f487c720714f07aa013e1460abdaa94895ba37baf862a3bb7507",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\a001-narrow-assessment.json",
+      "evidence_sha256": "9441f0bfa5d98b0b09c119f38b4ed4aa4d55efe33c8f4d67767784614e144a34"
+    },
+    {
+      "id": "teacher",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-teacher-final-eval\\network.cnnue",
+      "sha256": "89393a3e85e471439ecb6bdd420b9e737e6ee1a6b71303c6b0a57dd96aaae759",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\a001-teacher-assessment.json",
+      "evidence_sha256": "bbbcf05a76506454c3e310738a198b9eedacd1e7deaabe77c449aaba88afbad9"
+    },
+    {
+      "id": "wdl50",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-wdl50-final-eval\\network.cnnue",
+      "sha256": "4522e25bbc167d0125a69148bfb547005be73978653c213b13c51f7e4f3b6f3c",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\a001-wdl50-assessment.json",
+      "evidence_sha256": "d5bda1ca0582e1c7bf37d6c5e120df63eff8b6f30700c9002118cb91e5abe95f"
+    },
+    {
+      "id": "pawnpairs",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\b-pawnpairs-64-assessment-r3\\network.p2nnue",
+      "sha256": "20acb85c1bb3a767d3c9bcbc5b6e128c700089fc10661bf9b5e5851fa74c65cd",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\b-pawnpairs-64-assessment.json",
+      "evidence_sha256": "0baf7b06731b9d1507d45adc87aa73fd711bd6c2eb006d2ae0b0b7bb13f3ca2c"
+    },
+    {
+      "id": "kernel",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\baseline-kernel-r5\\wdl25.p2nnue",
+      "sha256": "8c74ee9d73cd444ba2e8e574f21821788617f3ccb6624fd17f423654517a226d",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\baseline-kernel-r5.json",
+      "evidence_sha256": "f10b644d76a3294122b00569bd870f13774d51da686f7df59fb3610fe4445f95"
+    },
+    {
+      "id": "late",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-late-final-eval\\network.cnnue",
+      "sha256": "15f550544927a4b5d0eb968a7d4d467fcf5112b4121b2e54d5b4290f72a262de",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\a001-late-assessment.json",
+      "evidence_sha256": "ac898c4b4be4218da0b06962417bdfebe85a724232356079df33286a4662e617"
+    }
+  ],
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\screen-openings.json",
+  "openings_sha256": "57f0868cdf2d2570da920f2f7401d3bdd174d8826401adfc90218f47a49bf69d",
+  "warmup": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+  "warmup_sha256": "732d3587e67baf189fd40e243ea26a35e96d5148f4d2e80cbdb4b3440358e52e",
+  "comparative_cost_sha256": "cd633c8b36613b1ca20f3099476deb6c99bd75158052981784a6457c3010cdc0",
+  "movetime_ms": 200,
+  "max_plies": 600,
+  "per_match_wall_seconds": 2400,
+  "aggregate_wall_seconds": 14400,
+  "worker": 1,
+  "hash_mib": 32,
+  "search": "CLV_C1",
+  "jvm_batch": true,
+  "tools_sha256": {
+    "paired_match.py": "162cea96bf931631007ae2eefbd475ddf7cbad83012381fffb44f09b71917efc",
+    "analyze_confirmation.py": "991eaff258a3bde07b06808e2adf9a76aaf91dcf8a2824d17b937e4913c21862",
+    "uci_smoke.py": "d369b95b3582c2e1f15b02574bef5633de2ac4e018554190ecf615dde8650413"
+  },
+  "policy": "64 fixed games/candidate; paired shared roots are exploratory; no efficacy stopping or extension. Any confirmation is independent and separately frozen."
+}
