@@ -13,8 +13,10 @@ import compute_gate
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--runtime-version',type=int,required=True);a=p.parse_args()
-    compute_gate.require();out=BASE/'raw/compact128-cost';out.mkdir(exist_ok=False);start=time.monotonic()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--runtime-version',type=int,required=True)
+    p.add_argument('--checkpoint',type=int,choices=[64,128],default=64);a=p.parse_args()
+    label='compact128' if a.checkpoint==64 else 'compact128-128'
+    compute_gate.require();out=BASE/f'raw/{label}-cost';out.mkdir(exist_ok=False);start=time.monotonic()
     manifest=BASE/f'frozen-runtime-v{a.runtime_version}.json';runtime=json.loads(manifest.read_text());workspace=Path(runtime['path'])
     for name,digest in runtime['files'].items():assert sha(workspace/name)==digest
     assert sha(runtime['incumbent'])==runtime['incumbent_sha256']
@@ -26,7 +28,7 @@ def main():
             dict(id='wdl25-kernel',probe=prefix+'Phase2SearchProbe',network=kernel['network'])]
     footprints={}
     for name in ('base','deep16','pawnpairs'):
-        evidence=BASE/f'compact128-{name}-64-assessment.json';report=json.loads(evidence.read_text());meta=report['metadata']
+        evidence=BASE/f'compact128-{name}-{a.checkpoint}-assessment.json';report=json.loads(evidence.read_text());meta=report['metadata']
         assert report['parity']['status']=='PASS' and report['uci']['status']=='PASS' and report['benchmark']['allocated_bytes_100000']==0
         assert meta['hidden']==128 and sha(meta['network'])==meta['network_sha256']
         models.append(dict(id='compact128-'+name,probe=prefix+'CompactSearchProbe',network=meta['network'],evidence_sha256=sha(evidence)))
@@ -66,12 +68,12 @@ def main():
         equivalent.append(dict(repeat=repeat,requests=len(left),node_score_depth_completion_configuration='EXACT MATCH'))
     summary={model['id']:dict(nps_trials=[r['nps'] for r in reports if r['id']==model['id']],
               mean_nps=statistics.mean(r['nps'] for r in reports if r['id']==model['id'])) for model in models}
-    result=dict(summary=summary,footprints=footprints,models=models,reports=reports,commands=commands,
+    result=dict(checkpoint=a.checkpoint,summary=summary,footprints=footprints,models=models,reports=reports,commands=commands,
         equal_payload_search_equivalence=equivalent,runtime_manifest_sha256=sha(manifest),roots_sha256=sha(roots),
         helper_source_sha256=sha(helper),helper_class_sha256=sha(classes/'WarmedCost.class'),elapsed_seconds=time.monotonic()-start,
         policy='Separate JVM per model/repeat; full warmup pass retained, second pass measured; reverse trial order on repeat2.',
         limitation='Learned evaluations change search trees. NPS is neither intrinsic kernel speedup nor Elo. Hardware cache/branch counters unavailable in this experiment.')
-    write(BASE/'compact128-cost.json',result);write(out/'summary.json',result);print(json.dumps(summary,indent=2))
+    write(BASE/f'{label}-cost.json',result);write(out/'summary.json',result);print(json.dumps(summary,indent=2))
 
 
 if __name__=='__main__':main()
