@@ -1,7 +1,7 @@
 # Phase 2 research state
 
-Status: ACTIVE — S001/D002 and compact128 training/cost qualification completed.
-S002 selects three fixed compact128 development screens; no candidate is accepted.
+Status: ACTIVE — training/duration/quantization controls qualified; none accepted.
+S003 four matched128-superbatch screens are running before independent confirmation.
 Observed start: 2026-11-14T10:26:04Z. Initial HEAD08877838, clean worktree,
 build101; no exact-root CODEXLOG_CURRENT.md. Branch research/nnue-phase2.
 No production change or acceptance is authorized.
@@ -51,7 +51,11 @@ isolated Windows research, not Mac access. Recheck before expensive launches.
 | S001 | Technically qualified candidates compete with production WDL25 | All512 games audited without caps; only reproduction has positive point estimate, with interval crossing zero; no confirmation selected |
 | D002 | Broader records may still repeat evaluator inputs | Complete:32.48M additional-only fingerprints;2.83% of added records match original; source-game separation remains unproved |
 | B003 | Depth/relations can replace some accumulator width | All three64 endpoints qualified, zero allocation, matched initializers and full curves; warmed comparative cost complete |
-| S002 | Compact128 cost/capacity trade-offs can compete in equal time | Plan frozen; fixed64-game screens active in order deep128, direct128, pawn128 |
+| S002 | Compact128 cost/capacity trade-offs can compete in equal time | All192 games audited, no caps: direct+49, deep-22, pawn-11 Elo; none independently confirmed |
+| B004 | A matched duration extension can resolve remaining training adequacy | All three128 endpoints qualified;988.99 additional native seconds; unchanged geometry/cost, improved diagnostics |
+| D003 | Quantization may change predictive comparisons or calibration | Complete:6753 positions/model, Java aggregates match, predictive ranking unchanged; no demonstrated material quantization limitation |
+| A002 | More training of standard256 may change the recommendation | Complete:64 exact optimizer transitions,320.77 native seconds, all qualification gates pass |
+| S003 | Equally trained128/256 formulations can compete in equal time | Frozen plan active: pawn128, deep128, standard256, direct128;64 games each, independent endpoint audits |
 
 This is a dynamic decision table, not a mandatory implementation checklist.
 Conditional subnetworks, other activations, widths, quantization and threat features
@@ -339,9 +343,8 @@ The direct128 control reached64 and passed259 exact parity probes, GPU tolerance
 trained incremental/full checks and UCI; zero hot allocation. Teacher/outcome MSE
 .017893933/.070308064, quantization RMS5.96 link units, update+head about386ns
 on the fixed walk (`compact128-base-64-assessment.json`). Prediction loss is
-slightly worse than the256 reproduction; the controlled warmed whole-search
-comparison and strength test remain pending. Deep128 and pawn128 continue in the
-fixed sequence.
+slightly worse than the256 reproduction; the later common cost comparison and
+fixed strength endpoints are recorded below.
 
 Deep128+16 also reached64 and qualified: all259 parity probes, GPU tolerance,
 trained incremental/full and UCI pass; zero allocation, update+head about668ns.
@@ -360,19 +363,131 @@ All base initializer tensors match across the three compact recipes. Full loss
 curves are retained; final-quarter means continue improving modestly.
 S002.md selects all three for one fixed screen each with explicit economic
 justification. Confirmation/robustness partitions remain unused.
+
+Completed S001/D002, compact implementation/qualification and frozen S002 plan
+committed as1507592eb4aa556555503de69d8c6ad7609dbe6e on research/nnue-phase2.
+No push; build101 retained because these are isolated research changes. All58
+staged files were inspected, JSON/Python syntax and CRLF-aware whitespace checks
+passed; ten representative bulk evidence paths were verified ignored. No raw
+models, checkpoints, games or runtime copies were staged. Four final-runtime UCI
+preflights pass; actual S002 protocol verifies200ms/W1/Hash32/CLV_C1/600-ply cap.
+
+First S002 endpoint: deep128+16 is17W/26D/21L, no caps, exploratory-21.74 Elo,
+paired95% -82.97..+38.15; independent legal/artifact audit passes
+(`screen-compact128-deep16-results.json`). Its point result is closer to WDL25
+than deep256's, but there is no established advantage or cross-width causal Elo
+estimate. Direct128 and pawn128 continue unchanged in the frozen order.
+
+Second S002 endpoint: direct128 is25W/23D/16L, no caps, exploratory+49.18 Elo,
+paired95% -10.86..+112.33; independent legal/artifact audit passes
+(`screen-compact128-base-results.json`). It is the best screen point estimate so
+far and a credible confirmation candidate, not an established improvement or
+ranking. Its weaker prediction loss and higher measured throughput reinforce
+the distinction between diagnostic accuracy and practical equal-time strength.
+B004 was predeclared/committed before this result and continues unchanged.
+
+Third S002 endpoint: pawn128 is14W/34D/16L, no caps, exploratory-10.86 Elo,
+paired95% -77.25..+60.31; independent legal/artifact audit passes
+(`screen-compact128-pawnpairs-results.json`). Direct128 leads the exploratory
+point estimates; neither added representation has established an advantage.
+S002 finished successfully; controller NORMAL/idle/zero owned processes verified
+before B004. Available disk219,805,708,288 bytes at that check.
+
+B004 is prospectively selected from the near-competitive deep128 result and
+still-improving compact loss curves: continue all three matched models once to128,
+with exact optimizer/data/schedule continuation and unchanged inference. This is
+a test of training duration, not an assertion that undertraining caused the result.
+Budget1800 native seconds for the trio; no compute starts until S002 releases the
+controller. New model-dependent gates and a separate strength decision follow.
+Prospective protocol and initial driver preparation committed as
+2b05699dcdc3101b2eda7fd247a73d59278719eb before either remaining S002 result.
+`continue_compact.py` completed the three exact-state continuations after verifying
+all S002 audits, with observed exit0. Driver log
+raw/duration128-driver-01.log. Runtime v4 and the frozen compact trainer are
+reused; duration128-plan.json pins protocol, parent receipts and exact Python
+tool bytes. Its guard treats an audited cap as censored rather than a missing
+game; actual S002 had zero caps. No checkpoint128 strength test has started.
+Do not retrain completed endpoints; inspect controller ownership before new work.
+
+Direct128 reached checkpoint128 and passed all259 parity/GPU/incremental/UCI
+gates, with zero hot allocation and about383ns/update+head. Teacher/outcome MSE
+improves from .017893933/.070308064 to .017420831/.069720512; mean absolute link
+468.38 and quantization RMS7.79 (`compact128-base-128-assessment.json`). This
+narrows the diagnostic gap to the256 reproduction at unchanged inference
+geometry, without establishing a strength gain. The remaining endpoints and
+common warmed comparison completed next, as recorded below.
+
+All B004 endpoints and the common cost comparison subsequently completed.
+Additional native seconds: base282.89, deep314.06, pawn392.04 (988.99 total).
+All128 receipts use global LR .000125 and exact optimizer continuation. Last16
+mean training losses are .015818625/.01450825/.014761125; improvements from the
+preceding16 means have diminished to roughly0.3–0.4%, without proving convergence.
+Pawn128 at checkpoint128 qualifies with teacher/outcome MSE
+.017149732/.070462918, RMS quantization error7.45, zero allocation and about642ns
+update+head. Warmed mean NPS in compact128-128-cost.json: production630067,
+fast-kernel687663, direct953499, deep735745, pawn624167. All48 equal-weight control
+requests match exactly. These learned-tree NPS differences are not Elo evidence.
+
+Deep128 at checkpoint128 has also qualified: teacher/outcome MSE
+.016184664/.068778838, zero allocation, about674ns/update+head and all259
+parity/incremental/UCI gates pass. Sampled quantization RMS10.13 and maximum52.73
+link units (`compact128-deep16-128-assessment.json`). D003 is selected before
+any128 games: quantify float-versus-quantized teacher/outcome loss, signed/RMS
+error and material-head breakdown on the same6753 diagnostics for all three
+final128 models. Use existing independent Python oracle, cross-check quantized
+aggregates against Java, retain per-position data under raw/quantization-128.
+Budget600s/one CPU, only after B004 releases the controller. No new labels,
+model changes, strength inference or claim of source-game independence. This
+tests whether quantization is an observed limitation rather than assuming it.
+
+D003 completed in30.64s (`quantization-128.json`), all6753-position quantized
+aggregates matching independent Java assessments. Float-to-quantized teacher-MSE
+deltas: base+0.00001239, deep+0.00003673, pawn-0.00001634; outcome deltas
+-0.00001030/+0.00006625/-0.00004708. Ranking is unchanged. Deep's teacher delta is
+about0.23%; its low absolute-score calibration persists in floating inference
+(391.85 vs391.76 quantized), rather than being an export-induced collapse.
+RMS score errors are7.40/9.92/7.85, with full per-position evidence under
+raw/quantization-128. This does not prove quantization irrelevant to games, but
+does not identify a major predictive limitation warranting QAT in this programme.
+
+A002.md closes a remaining control gap before any128 games: standard256 receives
+the same eight-pass training endpoint as the compact models. Its independent-seed
+64 parent and original trainer hash57a9ee3c... are verified; it uses the existing
+conventional kernel. Thus no width-only causal Elo claim is intended. Budget900s
+supervised training/1800s overall, plus at most2400 game seconds if qualified.
+`continue_standard.py --runtime-version 4` completed with observed exit0, log raw/a002-driver-01.log;
+a002-plan.json pins the protocol, parent, trainer, tool and runtime identities.
+Its64 optimizer initial states match their immediate parents byte for byte.
+A002 teacher/outcome MSE .016887551/.069223508,259 parity/GPU checks and UCI pass,
+zero allocation; standard network SHA25679de7381cf98c24a3e04304c50f92392e3792464a1810c0d136fd0e874cafeaa.
+The new182.37s controlled cost study compares all four endpoints together:
+WDL25 production653885 NPS, fast-kernel684325, direct128955203, deep128734965,
+pawn128620493, standard256655453; all48 equal-weight requests match exactly.
+These different learned-tree rates are not intrinsic speedups or Elo. S003.md
+selects one fixed screen per128 endpoint with the predeclared9600-second combined
+allowance. Independent confirmation/robustness partitions remain unused.
+
+Current operation: `run_duration_screens.py --runtime-version 4 --candidates base
+deep16 pawnpairs replica256 --decision docs/research/nnue-phase2-cglhw/S003.md`.
+Driver log raw/duration-screen-driver-01.log; plan duration128-screen-plan.json.
+Frozen order: duration128-pawnpairs, duration128-deep16, duration128-replica256,
+duration128-base. Inspect its process/controller before resumption; no concurrent
+expensive work, duplicate driver, interim score selection or frozen-file changes.
+No further training/model variants are currently selected. Complete these fixed
+endpoints, then decide independent confirmation and disposition of residuals.
 Completed S001 used immutable v3; these source edits did not change its games.
 Always inspect controller/process ownership before resuming. Logs use
 raw/compact-*-01.log and raw/compact-driver-01.log.
 The compact training driver retained full loss curves and completed its prospective
 reversed-order cost comparison. `run_compact_screens.py --runtime-version 4
 --candidates base deep16 pawnpairs --decision docs/research/nnue-phase2-cglhw/S002.md`
-is now active; driver log raw/compact-screen-driver-01.log. Its frozen plan order
-is deep128, direct128, pawn128. Inspect its process/controller before resume;
-do not duplicate it, modify the frozen decision/runtime/tools or inspect interim
-scores for selection. All192 games receive independent endpoint audits.
-Python AST parsing passes for all20 Phase2 scripts; this is static validation,
-not an executed compact pipeline. A recent resource check found227,009,224,704
-bytes of available disk; this is observed capacity, not a resource reservation.
+finished with observed exit0; driver log raw/compact-screen-driver-01.log. Its
+frozen order was deep128, direct128, pawn128. All192 games passed independent
+endpoint audits. Do not repeat completed games or modify the frozen artifacts.
+Python syntax/CLI checks are preparation checks; completed runtime/model gates
+are separately evidenced above. S003 subsequently froze its qualified models
+and prospective decision. All five final-runtime UCI preflights pass. The actual
+first-game protocol verifies200ms/W1/Hash32/CLV_C1,600-ply censoring and2400s limit.
 
 Threadline CREATE `17030feb-f225-4713-9aa4-c3065adcc796` published atomically to
 `C:/dev/tl-local/seed-phase2-488fb569-3e18-4aa7-9a56-225b48001b3d.json`.

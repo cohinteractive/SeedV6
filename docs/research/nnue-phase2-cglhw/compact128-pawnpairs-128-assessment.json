@@ -1,0 +1,1092 @@
+{
+  "metadata": {
+    "schema": "S6P2N002",
+    "architecture": "pawnpairs",
+    "hidden": 128,
+    "output_buckets": 8,
+    "features": 12240,
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue",
+    "network_sha256": "bf502f99d0173a73b95f43841dbe43052ea9d080c7b2b5246169b274c5c64a5b",
+    "payload_sha256": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+    "bytes": 3137884,
+    "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128\\segments\\000128-f251b6f64803\\run\\seed-phase2-128",
+    "receipt_sha256": "5691be740af6fb8aa6510d5cef7d849fbd0b176d3d217a400602a8ddb2d8bf52"
+  },
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "exact": "Independent Python, Rust features, Java scalar/vector/full-refresh/raw sums",
+    "gpu_max_abs_raw_error": 2.0445591921713913e-06,
+    "quantization_rms_link_error": 7.448865997030814,
+    "quantization_max_abs_link_error": 22.253540126140138
+  },
+  "validation": {
+    "teacher_wdl_mse": 0.05380032971764689,
+    "cp_mae": 344.4478009773434,
+    "mean_abs_link": 486.65422775062933,
+    "positions": 6753,
+    "sigmoid_mse": 0.017149732272906792,
+    "zero_score_mse": 0.05942563922619872,
+    "clamped_score_count": 0,
+    "wdl_mse": 0.07046291778183889,
+    "payload_sha256": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a"
+  },
+  "activation_diagnostic": {
+    "probe_accumulator_count": 66304,
+    "zero_fraction": 0.6871078667953668,
+    "clipped_high_fraction": 0.009124638030888031,
+    "minimum": -3873,
+    "maximum": 910,
+    "mean_abs_residual_link": 0.0,
+    "limitation": "Probe activations only, not the distribution of searched nodes."
+  },
+  "benchmark": {
+    "architecture": "pawnpairs",
+    "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+    "backend": "vector-bounded-int",
+    "transitions": 255,
+    "pawn_transitions": 47,
+    "perspective_refreshes": 35,
+    "incremental_parity": "PASS",
+    "update_ns": [
+      612.05,
+      609.999,
+      608.52,
+      608.612,
+      608.656
+    ],
+    "head_ns": [
+      28.924,
+      29.268,
+      28.694,
+      28.792,
+      29.192
+    ],
+    "update_plus_head_ns": [
+      644.598,
+      635.597,
+      645.897,
+      637.084,
+      644.812
+    ],
+    "refresh_ns": [
+      3481.84,
+      3492.321,
+      3461.61,
+      3521.796,
+      3494.998
+    ],
+    "allocated_bytes_100000": 0,
+    "limitation": "255-transition deterministic walk; cache/branch counters not collected. Search probe and equal-time games are separate."
+  },
+  "uci": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue",
+    "identity": [
+      "WARNING: Using incubator modules: jdk.incubator.vector",
+      "id name SeedV6-101",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name ClockPolicy type combo default BOUNDARY2 var BOUNDARY2 var FACTUAL",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "option name Show Search Configuration type button",
+      "info string mode=research formulation=CLV_C1 schema=S6P2N002 architecture=pawnpairs hidden=128 heads=8 payload=783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a head=vector-bounded-int scoreMapping=BT4_Q_LOGIT400_V1 flags=3329490943 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF ttMiB=64",
+      "uciok"
+    ],
+    "active_identity": [
+      "info string mode=research formulation=CLV_C1 schema=S6P2N002 architecture=pawnpairs hidden=128 heads=8 payload=783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a head=vector-bounded-int scoreMapping=BT4_Q_LOGIT400_V1 flags=3329490943 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF ttMiB=32",
+      "readyok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "e2e4",
+        "last_info": "info depth 6 score cp 52 nodes 11396 time 214 nps 53188 pv e2e4 e7e5 b1c3 b8c6 f1c4 f8c5"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e4d5",
+        "last_info": "info depth 6 score cp 210 nodes 49571 time 135 nps 365018 pv e4d5 f6d5 e1c1 d5e3 d2e3 e5d4 f3d4 c6d4 d1d4"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e5d6",
+        "last_info": "info depth 13 score cp 0 nodes 140718 time 198 nps 710425 pv e5d6 e8d7 e1e2 d7d6"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 8 score cp 1867 nodes 69798 time 101 nps 686039 pv h2h1q e1e2 e8f7 e2f2 f7f6 a7a8q h1a8 f2e1"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed",
+    "command": [
+      "C:/java/jdk-21/bin/java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-XX:ActiveProcessorCount=2",
+      "-Xmx768m",
+      "-Djava.awt.headless=true",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\classes",
+      "com.ohinteractive.seedv6.integration.NnueStrengthUciMain",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue"
+    ],
+    "runtime_lib": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib",
+    "jar_sha256": {
+      "app-uci.jar": "c27675cfea06f908016fa2b2d41d8f5c6e904e3445b8fc74aacd43432b216fa3",
+      "engine-core.jar": "c41fa3823f45c19eaa0e694b82289f015227d03bed9a91c0f005dd27c11a5b5f",
+      "engine-training.jar": "759cf48176bfcd2510fb513ab25724a011646abf2314fb9635169b12e084db18",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "754bce2fa85bca5a8f7214ea5f60156f270bfc278e4b79e40664faa94de42e35",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "search_cost": {
+    "nps": 237767.58796407285,
+    "nodes": 2360276,
+    "elapsed_ns": 9926819800,
+    "rows": [
+      {
+        "round": 0,
+        "root": 0,
+        "fen": "rnbqr1k1/pp2bppp/4pn2/2p5/2P5/B3PN2/P2PBPPP/RN1Q1RK1 w - - 1 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 60506,
+        "elapsed_ns": 2479914500,
+        "depth": 7,
+        "completed": true,
+        "score": 26,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 1,
+        "fen": "1Nn5/2P4p/8/1k1ppp1P/8/6P1/5P2/5K2 w - - 1 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 7812,
+        "elapsed_ns": 21347600,
+        "depth": 7,
+        "completed": true,
+        "score": 124,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 2,
+        "fen": "r2r2k1/1p3p2/4q1p1/2PN3p/1PP1n3/4P1P1/1R5P/3Q1RK1 b - - 0 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 122911,
+        "elapsed_ns": 785537100,
+        "depth": 7,
+        "completed": true,
+        "score": -248,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 3,
+        "fen": "8/2b4p/2p1Bppk/p1P5/pr1pP3/K2P3P/1P4R1/8 w - - 8 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 23007,
+        "elapsed_ns": 105393300,
+        "depth": 7,
+        "completed": true,
+        "score": -288,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 4,
+        "fen": "1r2r1k1/1pb1qpp1/2n1pn1p/pBPp1b2/3P4/P3PN2/1B1N1PPP/2RQ1RK1 w - - 5 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 161015,
+        "elapsed_ns": 2111280400,
+        "depth": 7,
+        "completed": true,
+        "score": 65,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 5,
+        "fen": "r1b1kbnr/ppp2p2/2n4p/5qp1/2B5/2p2N2/PP1N1PPP/R1BQ1RK1 w kq - 0 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 200000,
+        "elapsed_ns": 1291348700,
+        "depth": 7,
+        "completed": false,
+        "score": -2147483648,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 6,
+        "fen": "8/6bp/1N1B2k1/1p6/4PK2/1r2P3/6P1/1n5R b - - 13 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 30053,
+        "elapsed_ns": 192640300,
+        "depth": 7,
+        "completed": true,
+        "score": -199,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 7,
+        "fen": "2r1k2r/pp4p1/2nbppp1/3p4/3Pn3/1PN1PN1P/1P1B1PP1/R3R1K1 w k - 0 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 200000,
+        "elapsed_ns": 403466300,
+        "depth": 7,
+        "completed": false,
+        "score": -2147483648,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 8,
+        "fen": "2b3k1/5ppp/1p2pn2/p2pN3/3P4/6P1/PP2PPBP/6K1 w - - 0 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 48173,
+        "elapsed_ns": 137705700,
+        "depth": 7,
+        "completed": true,
+        "score": 71,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 9,
+        "fen": "1r6/6k1/7p/r7/2B3P1/p3R2P/4NK2/8 w - - 1 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 57933,
+        "elapsed_ns": 67112800,
+        "depth": 7,
+        "completed": true,
+        "score": 51,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 10,
+        "fen": "3r2k1/1p6/5npp/3b4/6P1/3N1N1P/1P1KP3/7R b - - 4 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 108099,
+        "elapsed_ns": 140324300,
+        "depth": 7,
+        "completed": true,
+        "score": -115,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 11,
+        "fen": "r2q1rk1/pb1nbppp/1p3n2/3P4/2B5/2NQPN2/PB3PPP/R3K2R b KQ - 2 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 160629,
+        "elapsed_ns": 274078500,
+        "depth": 7,
+        "completed": true,
+        "score": -56,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 0,
+        "fen": "rnbqr1k1/pp2bppp/4pn2/2p5/2P5/B3PN2/P2PBPPP/RN1Q1RK1 w - - 1 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 60506,
+        "elapsed_ns": 104512400,
+        "depth": 7,
+        "completed": true,
+        "score": 26,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 1,
+        "fen": "1Nn5/2P4p/8/1k1ppp1P/8/6P1/5P2/5K2 w - - 1 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 7812,
+        "elapsed_ns": 12471700,
+        "depth": 7,
+        "completed": true,
+        "score": 124,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 2,
+        "fen": "r2r2k1/1p3p2/4q1p1/2PN3p/1PP1n3/4P1P1/1R5P/3Q1RK1 b - - 0 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 122911,
+        "elapsed_ns": 166019100,
+        "depth": 7,
+        "completed": true,
+        "score": -248,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 3,
+        "fen": "8/2b4p/2p1Bppk/p1P5/pr1pP3/K2P3P/1P4R1/8 w - - 8 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 23007,
+        "elapsed_ns": 38237000,
+        "depth": 7,
+        "completed": true,
+        "score": -288,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 4,
+        "fen": "1r2r1k1/1pb1qpp1/2n1pn1p/pBPp1b2/3P4/P3PN2/1B1N1PPP/2RQ1RK1 w - - 5 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 161015,
+        "elapsed_ns": 273033400,
+        "depth": 7,
+        "completed": true,
+        "score": 65,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 5,
+        "fen": "r1b1kbnr/ppp2p2/2n4p/5qp1/2B5/2p2N2/PP1N1PPP/R1BQ1RK1 w kq - 0 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 200000,
+        "elapsed_ns": 309790500,
+        "depth": 7,
+        "completed": false,
+        "score": -2147483648,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 6,
+        "fen": "8/6bp/1N1B2k1/1p6/4PK2/1r2P3/6P1/1n5R b - - 13 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 30053,
+        "elapsed_ns": 33500600,
+        "depth": 7,
+        "completed": true,
+        "score": -199,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 7,
+        "fen": "2r1k2r/pp4p1/2nbppp1/3p4/3Pn3/1PN1PN1P/1P1B1PP1/R3R1K1 w k - 0 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 200000,
+        "elapsed_ns": 401125900,
+        "depth": 7,
+        "completed": false,
+        "score": -2147483648,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 8,
+        "fen": "2b3k1/5ppp/1p2pn2/p2pN3/3P4/6P1/PP2PPBP/6K1 w - - 0 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 48173,
+        "elapsed_ns": 105412100,
+        "depth": 7,
+        "completed": true,
+        "score": 71,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 9,
+        "fen": "1r6/6k1/7p/r7/2B3P1/p3R2P/4NK2/8 w - - 1 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 57933,
+        "elapsed_ns": 68483400,
+        "depth": 7,
+        "completed": true,
+        "score": 51,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 10,
+        "fen": "3r2k1/1p6/5npp/3b4/6P1/3N1N1P/1P1KP3/7R b - - 4 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 108099,
+        "elapsed_ns": 141425300,
+        "depth": 7,
+        "completed": true,
+        "score": -115,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 11,
+        "fen": "r2q1rk1/pb1nbppp/1p3n2/3P4/2B5/2NQPN2/PB3PPP/R3K2R b KQ - 2 1",
+        "payload": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 160629,
+        "elapsed_ns": 262658900,
+        "depth": 7,
+        "completed": true,
+        "score": -56,
+        "diagnostic_counters": {
+          "feature_additions": 0,
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0
+        }
+      }
+    ]
+  },
+  "search_invocations": [
+    {
+      "root": 0,
+      "round": 0,
+      "nodes": 60506,
+      "counts": {
+        "feature_additions": 744235,
+        "evaluations": 57764,
+        "perspective_refreshes": 3740,
+        "enabled": true,
+        "children": 60114
+      }
+    },
+    {
+      "root": 1,
+      "round": 0,
+      "nodes": 7812,
+      "counts": {
+        "feature_additions": 121618,
+        "evaluations": 7242,
+        "perspective_refreshes": 3656,
+        "enabled": true,
+        "children": 7661
+      }
+    },
+    {
+      "root": 2,
+      "round": 0,
+      "nodes": 122911,
+      "counts": {
+        "feature_additions": 1612768,
+        "evaluations": 109217,
+        "perspective_refreshes": 25602,
+        "enabled": true,
+        "children": 122205
+      }
+    },
+    {
+      "root": 3,
+      "round": 0,
+      "nodes": 23007,
+      "counts": {
+        "feature_additions": 338944,
+        "evaluations": 20182,
+        "perspective_refreshes": 5733,
+        "enabled": true,
+        "children": 22682
+      }
+    },
+    {
+      "root": 4,
+      "round": 0,
+      "nodes": 161015,
+      "counts": {
+        "feature_additions": 2261561,
+        "evaluations": 147897,
+        "perspective_refreshes": 18512,
+        "enabled": true,
+        "children": 160447
+      }
+    },
+    {
+      "root": 5,
+      "round": 0,
+      "nodes": 200000,
+      "counts": {
+        "feature_additions": 2963059,
+        "evaluations": 172714,
+        "perspective_refreshes": 35011,
+        "enabled": true,
+        "children": 199256
+      }
+    },
+    {
+      "root": 6,
+      "round": 0,
+      "nodes": 30053,
+      "counts": {
+        "feature_additions": 229543,
+        "evaluations": 26046,
+        "perspective_refreshes": 7118,
+        "enabled": true,
+        "children": 29818
+      }
+    },
+    {
+      "root": 7,
+      "round": 0,
+      "nodes": 200000,
+      "counts": {
+        "feature_additions": 3816911,
+        "evaluations": 184656,
+        "perspective_refreshes": 39669,
+        "enabled": true,
+        "children": 199071
+      }
+    },
+    {
+      "root": 8,
+      "round": 0,
+      "nodes": 48173,
+      "counts": {
+        "feature_additions": 952671,
+        "evaluations": 44966,
+        "perspective_refreshes": 11432,
+        "enabled": true,
+        "children": 47810
+      }
+    },
+    {
+      "root": 9,
+      "round": 0,
+      "nodes": 57933,
+      "counts": {
+        "feature_additions": 489989,
+        "evaluations": 51108,
+        "perspective_refreshes": 19035,
+        "enabled": true,
+        "children": 57294
+      }
+    },
+    {
+      "root": 10,
+      "round": 0,
+      "nodes": 108099,
+      "counts": {
+        "feature_additions": 1291544,
+        "evaluations": 92464,
+        "perspective_refreshes": 38203,
+        "enabled": true,
+        "children": 107700
+      }
+    },
+    {
+      "root": 11,
+      "round": 0,
+      "nodes": 160629,
+      "counts": {
+        "feature_additions": 2161199,
+        "evaluations": 144993,
+        "perspective_refreshes": 28314,
+        "enabled": true,
+        "children": 159831
+      }
+    },
+    {
+      "root": 0,
+      "round": 1,
+      "nodes": 60506,
+      "counts": {
+        "feature_additions": 744235,
+        "evaluations": 57764,
+        "perspective_refreshes": 3740,
+        "enabled": true,
+        "children": 60114
+      }
+    },
+    {
+      "root": 1,
+      "round": 1,
+      "nodes": 7812,
+      "counts": {
+        "feature_additions": 121618,
+        "evaluations": 7242,
+        "perspective_refreshes": 3656,
+        "enabled": true,
+        "children": 7661
+      }
+    },
+    {
+      "root": 2,
+      "round": 1,
+      "nodes": 122911,
+      "counts": {
+        "feature_additions": 1612768,
+        "evaluations": 109217,
+        "perspective_refreshes": 25602,
+        "enabled": true,
+        "children": 122205
+      }
+    },
+    {
+      "root": 3,
+      "round": 1,
+      "nodes": 23007,
+      "counts": {
+        "feature_additions": 338944,
+        "evaluations": 20182,
+        "perspective_refreshes": 5733,
+        "enabled": true,
+        "children": 22682
+      }
+    },
+    {
+      "root": 4,
+      "round": 1,
+      "nodes": 161015,
+      "counts": {
+        "feature_additions": 2261561,
+        "evaluations": 147897,
+        "perspective_refreshes": 18512,
+        "enabled": true,
+        "children": 160447
+      }
+    },
+    {
+      "root": 5,
+      "round": 1,
+      "nodes": 200000,
+      "counts": {
+        "feature_additions": 2963059,
+        "evaluations": 172714,
+        "perspective_refreshes": 35011,
+        "enabled": true,
+        "children": 199256
+      }
+    },
+    {
+      "root": 6,
+      "round": 1,
+      "nodes": 30053,
+      "counts": {
+        "feature_additions": 229543,
+        "evaluations": 26046,
+        "perspective_refreshes": 7118,
+        "enabled": true,
+        "children": 29818
+      }
+    },
+    {
+      "root": 7,
+      "round": 1,
+      "nodes": 200000,
+      "counts": {
+        "feature_additions": 3816911,
+        "evaluations": 184656,
+        "perspective_refreshes": 39669,
+        "enabled": true,
+        "children": 199071
+      }
+    },
+    {
+      "root": 8,
+      "round": 1,
+      "nodes": 48173,
+      "counts": {
+        "feature_additions": 952671,
+        "evaluations": 44966,
+        "perspective_refreshes": 11432,
+        "enabled": true,
+        "children": 47810
+      }
+    },
+    {
+      "root": 9,
+      "round": 1,
+      "nodes": 57933,
+      "counts": {
+        "feature_additions": 489989,
+        "evaluations": 51108,
+        "perspective_refreshes": 19035,
+        "enabled": true,
+        "children": 57294
+      }
+    },
+    {
+      "root": 10,
+      "round": 1,
+      "nodes": 108099,
+      "counts": {
+        "feature_additions": 1291544,
+        "evaluations": 92464,
+        "perspective_refreshes": 38203,
+        "enabled": true,
+        "children": 107700
+      }
+    },
+    {
+      "root": 11,
+      "round": 1,
+      "nodes": 160629,
+      "counts": {
+        "feature_additions": 2161199,
+        "evaluations": 144993,
+        "perspective_refreshes": 28314,
+        "enabled": true,
+        "children": 159831
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\trainer-compact128-db946920a14e790e84a799a42b3d01c809fa63fb48d02b17617066bfbbdf71f7.exe",
+        "features",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens",
+        "pawnpairs"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\bullet-features.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\bullet-features.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactNnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\java-vector.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\java-vector.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-Dseed.nnue.scalar=true",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactNnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\java-scalar.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\java-scalar.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactNnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue",
+        "--validation",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-holdout\\validation.txt"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\validation.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\validation.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactNnueBenchmark",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\benchmark.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\uci_smoke.py",
+        "--network",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue",
+        "--strength-research",
+        "--vector",
+        "--runtime-lib",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib",
+        "--output",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\uci"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\uci.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\uci.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactSearchProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\search-cost.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\search-cost.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-Dseed.phase2.count=true",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactSearchProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\search-invocations.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\search-invocations.stderr"
+    }
+  ],
+  "validation_sha256": "2742eb3acdfcc0d6c45e040fd1183e48f9cd430174b2542078570fa7e3ea8271",
+  "trainer_sha256": "db946920a14e790e84a799a42b3d01c809fa63fb48d02b17617066bfbbdf71f7",
+  "runtime_jars": {
+    "app-uci.jar": "c27675cfea06f908016fa2b2d41d8f5c6e904e3445b8fc74aacd43432b216fa3",
+    "engine-core.jar": "c41fa3823f45c19eaa0e694b82289f015227d03bed9a91c0f005dd27c11a5b5f",
+    "engine-training.jar": "759cf48176bfcd2510fb513ab25724a011646abf2314fb9635169b12e084db18",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "754bce2fa85bca5a8f7214ea5f60156f270bfc278e4b79e40664faa94de42e35",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "elapsed_seconds": 36.68267119998927,
+  "limitation": "Diagnostic holdout is not source-game independent; benchmark and NPS are not strength acceptance. Instrumented invocation run is separate from timing."
+}

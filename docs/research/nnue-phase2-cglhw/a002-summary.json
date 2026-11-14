@@ -1,0 +1,9 @@
+{
+  "additional_native_seconds": 320.7745342000853,
+  "verified_optimizer_continuations": 64,
+  "parent": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a001-replica-64\\segments\\000064-53694d5ea74b\\run\\seed-cnnue-v1-64",
+  "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a002-replica256-128\\segments\\000128-12dc9222f8cf\\run\\seed-cnnue-v1-128",
+  "receipt_sha256": "ec607d6ff803830172f21bfaaea6409cb8dee9ae18842d678bfcd9479d535cbd",
+  "assessment_sha256": "034d9d5ac2e97000b1147d742ba82b0b5907d571069cc47d8699e77e126894f8",
+  "training_plan_sha256": "4d6aff202825714402d9fec9b878d3eed18b870c2a6a9909f63d9a024fce7f63"
+}

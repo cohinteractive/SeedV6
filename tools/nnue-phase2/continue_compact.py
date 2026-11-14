@@ -18,7 +18,8 @@ def main():
     # No expensive work or recipe creation until all frozen S002 endpoints exist.
     for name in ('base','deep16','pawnpairs'):
         result=json.loads((BASE/f'screen-compact128-{name}-results.json').read_text())
-        assert result['games']==result['completed']==64
+        # A legally audited600-ply cap is a censored endpoint, not a missing game.
+        assert result['games']==64 and result['completed']+result['censored']==64
         assert result['legal_replay_and_outcome_audit']==result['frozen_artifact_recheck']=='PASS'
     manifest=BASE/f'frozen-runtime-v{a.runtime_version}.json';runtime=json.loads(manifest.read_text())
     for name,digest in runtime['files'].items():assert sha(Path(runtime['path'])/name)==digest
@@ -26,6 +27,8 @@ def main():
     assert sha(binary)==trainer['sha256'] and sha(source)==trainer['source_sha256']
     plan=dict(protocol_sha256=sha(BASE/'B004.md'),runtime_manifest_sha256=sha(manifest),trainer_manifest_sha256=sha(BASE/'compact-trainer.json'),
               start_superbatch=65,end_superbatch=128,native_wall_budget_seconds=1800,supervisor_wall_budget_seconds=3600,parents={})
+    plan['tools_sha256']={name:sha(ROOT/'tools/nnue-phase2'/name) for name in
+                         ('continue_compact.py','train_architecture.py','assess_architecture.py','codec.py','compare_compact_costs.py')}
     for name in ('base','deep16','pawnpairs'):
         report=json.loads((BASE/f'compact128-{name}-64-assessment.json').read_text());parent=Path(report['metadata']['checkpoint'])
         config,receipt=verify_checkpoint(parent);assert config['hidden']==128 and receipt['completed_superbatch']==64

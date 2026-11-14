@@ -14,8 +14,12 @@ import compute_gate
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--runtime-version',type=int,required=True)
-    p.add_argument('--checkpoint',type=int,choices=[64,128],default=64);a=p.parse_args()
+    p.add_argument('--checkpoint',type=int,choices=[64,128],default=64)
+    p.add_argument('--standard-assessment',type=Path);a=p.parse_args()
     label='compact128' if a.checkpoint==64 else 'compact128-128'
+    if a.standard_assessment:
+        assert a.checkpoint==128
+        label+='-controlled'
     compute_gate.require();out=BASE/f'raw/{label}-cost';out.mkdir(exist_ok=False);start=time.monotonic()
     manifest=BASE/f'frozen-runtime-v{a.runtime_version}.json';runtime=json.loads(manifest.read_text());workspace=Path(runtime['path'])
     for name,digest in runtime['files'].items():assert sha(workspace/name)==digest
@@ -39,6 +43,11 @@ def main():
         footprints[name]=dict(file_bytes=meta['bytes'],model_array_payload_bytes=model,
                               accumulator_array_payload_bytes=state,stack257_array_payload_bytes=257*state,
                               limitation='Calculated from fixed geometry, excludes Java headers/alignment; not process RSS.')
+    if a.standard_assessment:
+        standard=json.loads(a.standard_assessment.read_text())['results']['replica256']
+        assert standard['metadata']['hidden']==256 and standard['parity']['status']==standard['uci']['status']=='PASS'
+        assert standard['benchmark']['incremental_allocated_bytes_20000']==0 and sha(standard['network'])==standard['network_sha256']
+        models.append(dict(id='replica256',probe=prefix+'StrengthSearchProbe',network=standard['network'],evidence_sha256=sha(a.standard_assessment)))
     java=['C:/java/jdk-21/bin/java.exe','--add-modules=jdk.incubator.vector','-XX:ActiveProcessorCount=1','-Xmx512m','-Xbatch',
           '-cp',str(classes)+os.pathsep+str(workspace/'lib/*'),'WarmedCost']
     roots=PRIOR/'cost-roots.fens';reports=[];commands=[]

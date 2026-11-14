@@ -1,0 +1,13 @@
+{
+  "protocol_sha256": "66cd1575817abce35026760578e6af30f8be211eec926548d539ab7432aac6e6",
+  "parent_receipt_sha256": "2999851732e42ab0ef7ed988c3ad114c3435a24f1db518260415dc92b3f3074a",
+  "recipe_sha256": "17271d369204f4a7122b9f051fdacf32cd99b079e152297010d468b3d1d6b1df",
+  "trainer": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\trainer-conventional-57a9ee3cd70334a5c6a6bbe3ea42b58985179da4fa81f166f4e14b5540b2c8e3.exe",
+  "trainer_sha256": "57a9ee3cd70334a5c6a6bbe3ea42b58985179da4fa81f166f4e14b5540b2c8e3",
+  "runtime_manifest_sha256": "72ea0b9ea508855e9f49696223083fbe5dc010caba7fefadf5a25b92eba464d1",
+  "supervisor_budget_seconds": 1800,
+  "training_budget_seconds": 900,
+  "driver_sha256": "aa909cfdc23b512426703f16aed95c5d03f313c06527bcf06b5820fbfd3bc817",
+  "assessment_tool_sha256": "39d401cfa259cf1ae3e6c3027b620f2c09134ad3cca85f95e3935ebcc4c46cb4",
+  "cost_tool_sha256": "7889f378ed6aa04508e0c458c351b23389301dea73eca380d116c71d0384eb60"
+}

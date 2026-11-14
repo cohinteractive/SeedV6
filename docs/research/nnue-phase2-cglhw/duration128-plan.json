@@ -1,0 +1,33 @@
+{
+  "protocol_sha256": "d827e1e2744dd0e639cfd35339977c0d0af42e5a8e707e27d21e4b5aecd29192",
+  "runtime_manifest_sha256": "72ea0b9ea508855e9f49696223083fbe5dc010caba7fefadf5a25b92eba464d1",
+  "trainer_manifest_sha256": "98664d6ef65c3de07ee61b6e843e2a727dc1802de9244f0ef062f1a299a10185",
+  "start_superbatch": 65,
+  "end_superbatch": 128,
+  "native_wall_budget_seconds": 1800,
+  "supervisor_wall_budget_seconds": 3600,
+  "parents": {
+    "base": {
+      "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-64\\segments\\000064-ec5473eeed0a\\run\\seed-phase2-64",
+      "receipt_sha256": "4d77aa18a231571fe9d83e5dc89ec2d911e5c690d10e2a0ca748675ffa43b38d",
+      "assessment_sha256": "5fbd5e2e732cc60824eee1ec123b80b4ee53ecdec7a247b43c4d025059071c73"
+    },
+    "deep16": {
+      "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-deep16-64\\segments\\000064-e9f33d8cd525\\run\\seed-phase2-64",
+      "receipt_sha256": "6d15ce4b6b596bec2d6f021b1968be5c877f1e093e21bb03350ed70f96996a12",
+      "assessment_sha256": "3d280ff587e8211e25d47802d038cc96b7093259b9841708bd9df9f50dc7f00e"
+    },
+    "pawnpairs": {
+      "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-64\\segments\\000064-b7ba921fe17e\\run\\seed-phase2-64",
+      "receipt_sha256": "d3e0b8509edfcce9b5a5293e8270658bdb3d71b6e9b96c158d333b7cbbdd9b8b",
+      "assessment_sha256": "b1ca927f3a36a5666b2556f3f9ea97d3faf4ab2b372187d4946ba426707aca4e"
+    }
+  },
+  "tools_sha256": {
+    "continue_compact.py": "7826c1ff91670145b60fa842b14b9386ae747eaf878a878038594b0ff2597135",
+    "train_architecture.py": "7ac7c1c704c405d5fc97d5a63bdd1cd53afc3fcc662d5bfb6de30d83409c3d53",
+    "assess_architecture.py": "62049e13046b8ab2c3f558d4a153193b162cfe805fbb8cef1352506c0176e734",
+    "codec.py": "a298a2d3923aa3de16433e93d8284d14b0c15ea5cb5cab9acbb300c4de071685",
+    "compare_compact_costs.py": "e1b786c8614d0a6b6c21c76fdb9c1f81afbb7b1d7e7c8a9b4f921b94935ecc1e"
+  }
+}

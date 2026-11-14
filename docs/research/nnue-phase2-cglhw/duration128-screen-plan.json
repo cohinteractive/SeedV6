@@ -1,0 +1,65 @@
+{
+  "schema": "seed-phase2-duration128-screen-v1",
+  "training_superbatch": 128,
+  "order_seed": 2026111507,
+  "runtime": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4",
+  "runtime_manifest_sha256": "72ea0b9ea508855e9f49696223083fbe5dc010caba7fefadf5a25b92eba464d1",
+  "runtime_version": 4,
+  "incumbent": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-wdl25.cnnue",
+  "incumbent_sha256": "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
+  "candidates": [
+    {
+      "id": "duration128-pawnpairs",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128-assessment-r1\\network.p2nnue",
+      "sha256": "bf502f99d0173a73b95f43841dbe43052ea9d080c7b2b5246169b274c5c64a5b",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\compact128-pawnpairs-128-assessment.json",
+      "evidence_sha256": "0b5cb3665de619a4282bffbd4bd8fad1f4a0d896dc61371e7533d4e1b184dd85"
+    },
+    {
+      "id": "duration128-deep16",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-deep16-128-assessment-r1\\network.p2nnue",
+      "sha256": "52d615a6a5558553e4436f17b8f675b699910ae76ec7654b23b64f4928bd91aa",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\compact128-deep16-128-assessment.json",
+      "evidence_sha256": "216b05b0195094dd313c39fd189867832f3ab9f72e0c73cb730e266bda3dcc7a"
+    },
+    {
+      "id": "duration128-replica256",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\a002-replica256-eval-r1\\network.cnnue",
+      "sha256": "79de7381cf98c24a3e04304c50f92392e3792464a1810c0d136fd0e874cafeaa",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\a002-replica256-assessment.json",
+      "evidence_sha256": "034d9d5ac2e97000b1147d742ba82b0b5907d571069cc47d8699e77e126894f8"
+    },
+    {
+      "id": "duration128-base",
+      "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue",
+      "sha256": "4c81a45d8afee73872753164853f6c21eb58a67368888d32a4d2734a3a298dcb",
+      "evidence": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\compact128-base-128-assessment.json",
+      "evidence_sha256": "0ce7eae0caefaf35b6965ad669bc98e9ed9e5f4e2ebbc2854def8aad16ad53db"
+    }
+  ],
+  "decision": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\S003.md",
+  "decision_sha256": "7497b97740601ceadece2959cc035778dc193b5511287aa029d50349be961af6",
+  "openings": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\screen-openings.json",
+  "openings_sha256": "57f0868cdf2d2570da920f2f7401d3bdd174d8826401adfc90218f47a49bf69d",
+  "warmup": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+  "warmup_sha256": "732d3587e67baf189fd40e243ea26a35e96d5148f4d2e80cbdb4b3440358e52e",
+  "cost_report_sha256": "8dd29dede07339fa1dc96619b85f576f29b8094f38d5956876871aa66122c917",
+  "duration_summary_sha256": "321bba164fad9637e827700bf520cc0e0c67db0a6f1204f2624d7d9360683e87",
+  "standard_summary_sha256": "605731be1bd72420e2870df78a805a0207fc75aaeed8a261c48b1c2c1628a2e5",
+  "movetime_ms": 200,
+  "max_plies": 600,
+  "per_match_wall_seconds": 2400,
+  "aggregate_wall_seconds": 9600,
+  "workers": 1,
+  "hash_mib": 32,
+  "search": "CLV_C1",
+  "jvm_batch": true,
+  "tool_hashes": {
+    "paired_match.py": "162cea96bf931631007ae2eefbd475ddf7cbad83012381fffb44f09b71917efc",
+    "analyze_confirmation.py": "991eaff258a3bde07b06808e2adf9a76aaf91dcf8a2824d17b937e4913c21862",
+    "uci_smoke.py": "d369b95b3582c2e1f15b02574bef5633de2ac4e018554190ecf615dde8650413"
+  },
+  "driver_sha256": "2cd5bdfc06d3dade6f627ca48f7ffae012efa5f7ebdeb3e5e30e1d6490f91b94",
+  "charge_helper_sha256": "26ba72b47e661c302077723aafcf0b3983dc10e5c29f1b200746ad65e10709f4",
+  "policy": "64 fixed games/candidate on reused development roots. Selection dependence explicit; no efficacy stopping or resampling; confirmation remains separate."
+}

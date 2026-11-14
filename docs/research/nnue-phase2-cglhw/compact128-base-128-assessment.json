@@ -1,0 +1,1092 @@
+{
+  "metadata": {
+    "schema": "S6P2N002",
+    "architecture": "base",
+    "hidden": 128,
+    "output_buckets": 8,
+    "features": 7680,
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue",
+    "network_sha256": "4c81a45d8afee73872753164853f6c21eb58a67368888d32a4d2734a3a298dcb",
+    "payload_sha256": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+    "bytes": 1970524,
+    "checkpoint": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128\\segments\\000128-b28b3c68265d\\run\\seed-phase2-128",
+    "receipt_sha256": "e1865179661f00866eab9641bf861794add73632e4bcaf54412559dd5b420292"
+  },
+  "parity": {
+    "status": "PASS",
+    "positions": 259,
+    "exact": "Independent Python, Rust features, Java scalar/vector/full-refresh/raw sums",
+    "gpu_max_abs_raw_error": 1.8349491437419374e-06,
+    "quantization_rms_link_error": 7.788037133907734,
+    "quantization_max_abs_link_error": 24.802974096294093
+  },
+  "validation": {
+    "mean_abs_link": 468.37672145713015,
+    "cp_mae": 340.6003257811343,
+    "teacher_wdl_mse": 0.05380032971764689,
+    "payload_sha256": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+    "wdl_mse": 0.06972051184341815,
+    "clamped_score_count": 0,
+    "zero_score_mse": 0.05942563922619872,
+    "sigmoid_mse": 0.017420830959955048,
+    "positions": 6753
+  },
+  "activation_diagnostic": {
+    "probe_accumulator_count": 66304,
+    "zero_fraction": 0.6403384411196911,
+    "clipped_high_fraction": 0.012593508687258687,
+    "minimum": -1684,
+    "maximum": 1148,
+    "mean_abs_residual_link": 0.0,
+    "limitation": "Probe activations only, not the distribution of searched nodes."
+  },
+  "benchmark": {
+    "architecture": "base",
+    "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+    "backend": "vector-bounded-int",
+    "transitions": 255,
+    "pawn_transitions": 47,
+    "perspective_refreshes": 35,
+    "incremental_parity": "PASS",
+    "update_ns": [
+      357.114,
+      354.905,
+      353.755,
+      352.46,
+      354.979
+    ],
+    "head_ns": [
+      30.42,
+      28.306,
+      29.004,
+      28.484,
+      28.283
+    ],
+    "update_plus_head_ns": [
+      383.994,
+      383.273,
+      384.618,
+      383.552,
+      382.048
+    ],
+    "refresh_ns": [
+      1975.417,
+      1970.454,
+      2309.003,
+      1980.337,
+      2007.043
+    ],
+    "allocated_bytes_100000": 0,
+    "limitation": "255-transition deterministic walk; cache/branch counters not collected. Search probe and equal-time games are separate."
+  },
+  "uci": {
+    "status": "PASS",
+    "workers": 1,
+    "network": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue",
+    "identity": [
+      "WARNING: Using incubator modules: jdk.incubator.vector",
+      "id name SeedV6-101",
+      "id author Charles Clark",
+      "option name Threads type spin default 1 min 1 max 16",
+      "option name Hash type spin default 64 min 1 max 1024",
+      "option name Clear Hash type button",
+      "option name ClockPolicy type combo default BOUNDARY2 var BOUNDARY2 var FACTUAL",
+      "option name UseBook type check default false",
+      "option name OwnBook type check default false",
+      "option name Show Search Configuration type button",
+      "info string mode=research formulation=CLV_C1 schema=S6P2N002 architecture=base hidden=128 heads=8 payload=6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6 head=vector-bounded-int scoreMapping=BT4_Q_LOGIT400_V1 flags=3329490943 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=64;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF ttMiB=64",
+      "uciok"
+    ],
+    "active_identity": [
+      "info string mode=research formulation=CLV_C1 schema=S6P2N002 architecture=base hidden=128 heads=8 payload=6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6 head=vector-bounded-int scoreMapping=BT4_Q_LOGIT400_V1 flags=3329490943 configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER clockPolicy=boundary2-d6-v1 book=OFF tablebase=OFF ttMiB=32",
+      "readyok"
+    ],
+    "searches": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "bestmove": "e2e4",
+        "last_info": "info depth 7 score cp 74 nodes 26261 time 227 nps 115645 pv e2e4 e7e5 g1f3 b8c6 d2d4 e5d4 f3d4 d7d5 d4c6 b7c6"
+      },
+      {
+        "fen": "r3k2r/pppq1ppp/2n1bn2/3pp3/3PP3/2N1BN2/PPPQ1PPP/R3K2R w KQkq - 0 1",
+        "bestmove": "e4d5",
+        "last_info": "info depth 7 score cp 178 nodes 136566 time 188 nps 725230 pv e4d5 f6d5 e1c1 e5d4 e3d4 e8c8 d4g7"
+      },
+      {
+        "fen": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+        "bestmove": "e1e2",
+        "last_info": "info depth 12 score cp 47 nodes 138162 time 234 nps 589283 pv e1e2 e8d8 e2e3 d8d7 e3d3 d7e7 d3e3 e7d7 e3d3 d5d4 d3c4 d7e6 c4d4"
+      },
+      {
+        "fen": "4k3/P7/8/8/8/8/7p/4K3 b - - 0 1",
+        "bestmove": "h2h1q",
+        "last_info": "info depth 9 score cp 2166 nodes 184309 time 203 nps 905136 pv h2h1q e1e2 e8d7 e2f2 d7e6 f2e2 e6e5 e2f2 h1e4"
+      }
+    ],
+    "lifecycle": "stop/readiness/newgame/repeated search/quit passed",
+    "command": [
+      "C:/java/jdk-21/bin/java.exe",
+      "--add-modules=jdk.incubator.vector",
+      "-XX:ActiveProcessorCount=2",
+      "-Xmx768m",
+      "-Djava.awt.headless=true",
+      "-cp",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*;C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\classes",
+      "com.ohinteractive.seedv6.integration.NnueStrengthUciMain",
+      "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue"
+    ],
+    "runtime_lib": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib",
+    "jar_sha256": {
+      "app-uci.jar": "c27675cfea06f908016fa2b2d41d8f5c6e904e3445b8fc74aacd43432b216fa3",
+      "engine-core.jar": "c41fa3823f45c19eaa0e694b82289f015227d03bed9a91c0f005dd27c11a5b5f",
+      "engine-training.jar": "759cf48176bfcd2510fb513ab25724a011646abf2314fb9635169b12e084db18",
+      "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "research.jar": "754bce2fa85bca5a8f7214ea5f60156f270bfc278e4b79e40664faa94de42e35",
+      "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+      "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+    }
+  },
+  "search_cost": {
+    "nps": 238417.466849632,
+    "nodes": 2134210,
+    "elapsed_ns": 8951567300,
+    "rows": [
+      {
+        "round": 0,
+        "root": 0,
+        "fen": "rnbqr1k1/pp2bppp/4pn2/2p5/2P5/B3PN2/P2PBPPP/RN1Q1RK1 w - - 1 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 63542,
+        "elapsed_ns": 2080841900,
+        "depth": 7,
+        "completed": true,
+        "score": 25,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 1,
+        "fen": "1Nn5/2P4p/8/1k1ppp1P/8/6P1/5P2/5K2 w - - 1 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 7795,
+        "elapsed_ns": 46140200,
+        "depth": 7,
+        "completed": true,
+        "score": 119,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 2,
+        "fen": "r2r2k1/1p3p2/4q1p1/2PN3p/1PP1n3/4P1P1/1R5P/3Q1RK1 b - - 0 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 115913,
+        "elapsed_ns": 1159632100,
+        "depth": 7,
+        "completed": true,
+        "score": -86,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 3,
+        "fen": "8/2b4p/2p1Bppk/p1P5/pr1pP3/K2P3P/1P4R1/8 w - - 8 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 18653,
+        "elapsed_ns": 57742800,
+        "depth": 7,
+        "completed": true,
+        "score": -260,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 4,
+        "fen": "1r2r1k1/1pb1qpp1/2n1pn1p/pBPp1b2/3P4/P3PN2/1B1N1PPP/2RQ1RK1 w - - 5 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 163881,
+        "elapsed_ns": 673940700,
+        "depth": 7,
+        "completed": true,
+        "score": 52,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 5,
+        "fen": "r1b1kbnr/ppp2p2/2n4p/5qp1/2B5/2p2N2/PP1N1PPP/R1BQ1RK1 w kq - 0 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 200000,
+        "elapsed_ns": 241242300,
+        "depth": 7,
+        "completed": false,
+        "score": -2147483648,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 6,
+        "fen": "8/6bp/1N1B2k1/1p6/4PK2/1r2P3/6P1/1n5R b - - 13 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 19847,
+        "elapsed_ns": 543737600,
+        "depth": 7,
+        "completed": true,
+        "score": -23,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 7,
+        "fen": "2r1k2r/pp4p1/2nbppp1/3p4/3Pn3/1PN1PN1P/1P1B1PP1/R3R1K1 w k - 0 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 104166,
+        "elapsed_ns": 165137900,
+        "depth": 7,
+        "completed": true,
+        "score": -234,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 8,
+        "fen": "2b3k1/5ppp/1p2pn2/p2pN3/3P4/6P1/PP2PPBP/6K1 w - - 0 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 90225,
+        "elapsed_ns": 1110236400,
+        "depth": 7,
+        "completed": true,
+        "score": 80,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 9,
+        "fen": "1r6/6k1/7p/r7/2B3P1/p3R2P/4NK2/8 w - - 1 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 62228,
+        "elapsed_ns": 563694000,
+        "depth": 7,
+        "completed": true,
+        "score": 48,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 10,
+        "fen": "3r2k1/1p6/5npp/3b4/6P1/3N1N1P/1P1KP3/7R b - - 4 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 83252,
+        "elapsed_ns": 1025091700,
+        "depth": 7,
+        "completed": true,
+        "score": -73,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 0,
+        "root": 11,
+        "fen": "r2q1rk1/pb1nbppp/1p3n2/3P4/2B5/2NQPN2/PB3PPP/R3K2R b KQ - 2 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 137603,
+        "elapsed_ns": 164564000,
+        "depth": 7,
+        "completed": true,
+        "score": -68,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 0,
+        "fen": "rnbqr1k1/pp2bppp/4pn2/2p5/2P5/B3PN2/P2PBPPP/RN1Q1RK1 w - - 1 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 63542,
+        "elapsed_ns": 70769600,
+        "depth": 7,
+        "completed": true,
+        "score": 25,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 1,
+        "fen": "1Nn5/2P4p/8/1k1ppp1P/8/6P1/5P2/5K2 w - - 1 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 7795,
+        "elapsed_ns": 8021600,
+        "depth": 7,
+        "completed": true,
+        "score": 119,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 2,
+        "fen": "r2r2k1/1p3p2/4q1p1/2PN3p/1PP1n3/4P1P1/1R5P/3Q1RK1 b - - 0 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 115913,
+        "elapsed_ns": 105204100,
+        "depth": 7,
+        "completed": true,
+        "score": -86,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 3,
+        "fen": "8/2b4p/2p1Bppk/p1P5/pr1pP3/K2P3P/1P4R1/8 w - - 8 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 18653,
+        "elapsed_ns": 18794900,
+        "depth": 7,
+        "completed": true,
+        "score": -260,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 4,
+        "fen": "1r2r1k1/1pb1qpp1/2n1pn1p/pBPp1b2/3P4/P3PN2/1B1N1PPP/2RQ1RK1 w - - 5 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 163881,
+        "elapsed_ns": 179376800,
+        "depth": 7,
+        "completed": true,
+        "score": 52,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 5,
+        "fen": "r1b1kbnr/ppp2p2/2n4p/5qp1/2B5/2p2N2/PP1N1PPP/R1BQ1RK1 w kq - 0 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 200000,
+        "elapsed_ns": 200569600,
+        "depth": 7,
+        "completed": false,
+        "score": -2147483648,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 6,
+        "fen": "8/6bp/1N1B2k1/1p6/4PK2/1r2P3/6P1/1n5R b - - 13 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 19847,
+        "elapsed_ns": 18365800,
+        "depth": 7,
+        "completed": true,
+        "score": -23,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 7,
+        "fen": "2r1k2r/pp4p1/2nbppp1/3p4/3Pn3/1PN1PN1P/1P1B1PP1/R3R1K1 w k - 0 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 104166,
+        "elapsed_ns": 107736200,
+        "depth": 7,
+        "completed": true,
+        "score": -234,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 8,
+        "fen": "2b3k1/5ppp/1p2pn2/p2pN3/3P4/6P1/PP2PPBP/6K1 w - - 0 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 90225,
+        "elapsed_ns": 103841000,
+        "depth": 7,
+        "completed": true,
+        "score": 80,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 9,
+        "fen": "1r6/6k1/7p/r7/2B3P1/p3R2P/4NK2/8 w - - 1 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 62228,
+        "elapsed_ns": 63204900,
+        "depth": 7,
+        "completed": true,
+        "score": 48,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 10,
+        "fen": "3r2k1/1p6/5npp/3b4/6P1/3N1N1P/1P1KP3/7R b - - 4 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 83252,
+        "elapsed_ns": 83351100,
+        "depth": 7,
+        "completed": true,
+        "score": -73,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      },
+      {
+        "round": 1,
+        "root": 11,
+        "fen": "r2q1rk1/pb1nbppp/1p3n2/3P4/2B5/2NQPN2/PB3PPP/R3K2R b KQ - 2 1",
+        "payload": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+        "hidden": 128,
+        "backend": "vector-bounded-int",
+        "configuration": "flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,CAUTION,CHECK_EXTENSION,RECAPTURE_EXTENSION,FUTILITY,REVERSE_FUTILITY,HISTORY_PROTECTION,NOMINAL_FUTILITY,VERIFIED_NULL,HEURISTIC_TT_MEMORY,REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;extensionCap=1;workers=1;hashMiB=32;aspiration=ADAPTIVE16;parallel=OWNER",
+        "nodes": 137603,
+        "elapsed_ns": 160330100,
+        "depth": 7,
+        "completed": true,
+        "score": -68,
+        "diagnostic_counters": {
+          "evaluations": 0,
+          "perspective_refreshes": 0,
+          "enabled": false,
+          "children": 0,
+          "feature_additions": 0
+        }
+      }
+    ]
+  },
+  "search_invocations": [
+    {
+      "root": 0,
+      "round": 0,
+      "nodes": 63542,
+      "counts": {
+        "evaluations": 60805,
+        "feature_additions": 409979,
+        "children": 63083,
+        "enabled": true,
+        "perspective_refreshes": 3791
+      }
+    },
+    {
+      "root": 1,
+      "round": 0,
+      "nodes": 7795,
+      "counts": {
+        "evaluations": 7210,
+        "feature_additions": 65226,
+        "children": 7639,
+        "enabled": true,
+        "perspective_refreshes": 3586
+      }
+    },
+    {
+      "root": 2,
+      "round": 0,
+      "nodes": 115913,
+      "counts": {
+        "evaluations": 102440,
+        "feature_additions": 949102,
+        "children": 115332,
+        "enabled": true,
+        "perspective_refreshes": 23935
+      }
+    },
+    {
+      "root": 3,
+      "round": 0,
+      "nodes": 18653,
+      "counts": {
+        "evaluations": 16446,
+        "feature_additions": 147038,
+        "children": 18371,
+        "enabled": true,
+        "perspective_refreshes": 4247
+      }
+    },
+    {
+      "root": 4,
+      "round": 0,
+      "nodes": 163881,
+      "counts": {
+        "evaluations": 152007,
+        "feature_additions": 1264492,
+        "children": 163117,
+        "enabled": true,
+        "perspective_refreshes": 17380
+      }
+    },
+    {
+      "root": 5,
+      "round": 0,
+      "nodes": 200000,
+      "counts": {
+        "evaluations": 168963,
+        "feature_additions": 1794374,
+        "children": 199665,
+        "enabled": true,
+        "perspective_refreshes": 35729
+      }
+    },
+    {
+      "root": 6,
+      "round": 0,
+      "nodes": 19847,
+      "counts": {
+        "evaluations": 16911,
+        "feature_additions": 137822,
+        "children": 19606,
+        "enabled": true,
+        "perspective_refreshes": 4904
+      }
+    },
+    {
+      "root": 7,
+      "round": 0,
+      "nodes": 104166,
+      "counts": {
+        "evaluations": 96569,
+        "feature_additions": 950617,
+        "children": 103421,
+        "enabled": true,
+        "perspective_refreshes": 20557
+      }
+    },
+    {
+      "root": 8,
+      "round": 0,
+      "nodes": 90225,
+      "counts": {
+        "evaluations": 84870,
+        "feature_additions": 704654,
+        "children": 89527,
+        "enabled": true,
+        "perspective_refreshes": 17484
+      }
+    },
+    {
+      "root": 9,
+      "round": 0,
+      "nodes": 62228,
+      "counts": {
+        "evaluations": 55527,
+        "feature_additions": 419220,
+        "children": 61667,
+        "enabled": true,
+        "perspective_refreshes": 17994
+      }
+    },
+    {
+      "root": 10,
+      "round": 0,
+      "nodes": 83252,
+      "counts": {
+        "evaluations": 72284,
+        "feature_additions": 688435,
+        "children": 82963,
+        "enabled": true,
+        "perspective_refreshes": 25832
+      }
+    },
+    {
+      "root": 11,
+      "round": 0,
+      "nodes": 137603,
+      "counts": {
+        "evaluations": 124234,
+        "feature_additions": 1225822,
+        "children": 136802,
+        "enabled": true,
+        "perspective_refreshes": 24028
+      }
+    },
+    {
+      "root": 0,
+      "round": 1,
+      "nodes": 63542,
+      "counts": {
+        "evaluations": 60805,
+        "feature_additions": 409979,
+        "children": 63083,
+        "enabled": true,
+        "perspective_refreshes": 3791
+      }
+    },
+    {
+      "root": 1,
+      "round": 1,
+      "nodes": 7795,
+      "counts": {
+        "evaluations": 7210,
+        "feature_additions": 65226,
+        "children": 7639,
+        "enabled": true,
+        "perspective_refreshes": 3586
+      }
+    },
+    {
+      "root": 2,
+      "round": 1,
+      "nodes": 115913,
+      "counts": {
+        "evaluations": 102440,
+        "feature_additions": 949102,
+        "children": 115332,
+        "enabled": true,
+        "perspective_refreshes": 23935
+      }
+    },
+    {
+      "root": 3,
+      "round": 1,
+      "nodes": 18653,
+      "counts": {
+        "evaluations": 16446,
+        "feature_additions": 147038,
+        "children": 18371,
+        "enabled": true,
+        "perspective_refreshes": 4247
+      }
+    },
+    {
+      "root": 4,
+      "round": 1,
+      "nodes": 163881,
+      "counts": {
+        "evaluations": 152007,
+        "feature_additions": 1264492,
+        "children": 163117,
+        "enabled": true,
+        "perspective_refreshes": 17380
+      }
+    },
+    {
+      "root": 5,
+      "round": 1,
+      "nodes": 200000,
+      "counts": {
+        "evaluations": 168963,
+        "feature_additions": 1794374,
+        "children": 199665,
+        "enabled": true,
+        "perspective_refreshes": 35729
+      }
+    },
+    {
+      "root": 6,
+      "round": 1,
+      "nodes": 19847,
+      "counts": {
+        "evaluations": 16911,
+        "feature_additions": 137822,
+        "children": 19606,
+        "enabled": true,
+        "perspective_refreshes": 4904
+      }
+    },
+    {
+      "root": 7,
+      "round": 1,
+      "nodes": 104166,
+      "counts": {
+        "evaluations": 96569,
+        "feature_additions": 950617,
+        "children": 103421,
+        "enabled": true,
+        "perspective_refreshes": 20557
+      }
+    },
+    {
+      "root": 8,
+      "round": 1,
+      "nodes": 90225,
+      "counts": {
+        "evaluations": 84870,
+        "feature_additions": 704654,
+        "children": 89527,
+        "enabled": true,
+        "perspective_refreshes": 17484
+      }
+    },
+    {
+      "root": 9,
+      "round": 1,
+      "nodes": 62228,
+      "counts": {
+        "evaluations": 55527,
+        "feature_additions": 419220,
+        "children": 61667,
+        "enabled": true,
+        "perspective_refreshes": 17994
+      }
+    },
+    {
+      "root": 10,
+      "round": 1,
+      "nodes": 83252,
+      "counts": {
+        "evaluations": 72284,
+        "feature_additions": 688435,
+        "children": 82963,
+        "enabled": true,
+        "perspective_refreshes": 25832
+      }
+    },
+    {
+      "root": 11,
+      "round": 1,
+      "nodes": 137603,
+      "counts": {
+        "evaluations": 124234,
+        "feature_additions": 1225822,
+        "children": 136802,
+        "enabled": true,
+        "perspective_refreshes": 24028
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\trainer-compact128-db946920a14e790e84a799a42b3d01c809fa63fb48d02b17617066bfbbdf71f7.exe",
+        "features",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens",
+        "base"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\bullet-features.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\bullet-features.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactNnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\java-vector.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\java-vector.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-Dseed.nnue.scalar=true",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactNnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\raw\\e007-probes\\probes.fens"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\java-scalar.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\java-scalar.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactNnueProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue",
+        "--validation",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\raw\\mixed-holdout\\validation.txt"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\validation.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\validation.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactNnueBenchmark",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\benchmark.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\benchmark.stderr"
+    },
+    {
+      "command": [
+        "C:\\projects\\seed\\java\\seedv6-unified\\build\\conventional-nnue\\venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\projects\\seed\\java\\seedv6-unified\\tools\\conventional-nnue\\uci_smoke.py",
+        "--network",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue",
+        "--strength-research",
+        "--vector",
+        "--runtime-lib",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib",
+        "--output",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\uci"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\uci.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\uci.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactSearchProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\search-cost.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\search-cost.stderr"
+    },
+    {
+      "command": [
+        "C:/java/jdk-21/bin/java.exe",
+        "-Dseed.phase2.count=true",
+        "--add-modules=jdk.incubator.vector",
+        "-XX:ActiveProcessorCount=1",
+        "-Xmx512m",
+        "-Xbatch",
+        "-cp",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\frozen-runtime-v4\\lib\\*",
+        "com.ohinteractive.seedv6.tools.eval.CompactSearchProbe",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\conventional-nnue-cglhw\\strength-20261114\\cost-roots.fens",
+        "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\network.p2nnue"
+      ],
+      "stdout": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\search-invocations.jsonl",
+      "stderr": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128-assessment-r1\\search-invocations.stderr"
+    }
+  ],
+  "validation_sha256": "2742eb3acdfcc0d6c45e040fd1183e48f9cd430174b2542078570fa7e3ea8271",
+  "trainer_sha256": "db946920a14e790e84a799a42b3d01c809fa63fb48d02b17617066bfbbdf71f7",
+  "runtime_jars": {
+    "app-uci.jar": "c27675cfea06f908016fa2b2d41d8f5c6e904e3445b8fc74aacd43432b216fa3",
+    "engine-core.jar": "c41fa3823f45c19eaa0e694b82289f015227d03bed9a91c0f005dd27c11a5b5f",
+    "engine-training.jar": "759cf48176bfcd2510fb513ab25724a011646abf2314fb9635169b12e084db18",
+    "error_prone_annotations-2.27.0.jar": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+    "gson-2.11.0.jar": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+    "research.jar": "754bce2fa85bca5a8f7214ea5f60156f270bfc278e4b79e40664faa94de42e35",
+    "sqlite-jdbc-3.53.4.0.jar": "bcb1f51e36f940867e83342f9efbf5968ac44a6bef4d397bb4af7b17b45cd2fb",
+    "zstd-jni-1.5.7-20.jar": "b9995fa20dce1007b8c4bead9532776088a44be0a228a2fa71da8d8ce70d797e"
+  },
+  "elapsed_seconds": 32.15844460000517,
+  "limitation": "Diagnostic holdout is not source-game independent; benchmark and NPS are not strength acceptance. Instrumented invocation run is separate from timing."
+}

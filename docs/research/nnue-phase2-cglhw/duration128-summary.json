@@ -1,0 +1,119 @@
+{
+  "base": {
+    "additional_native_seconds": 282.89352829995914,
+    "validation64": {
+      "wdl_mse": 0.07030806386638536,
+      "payload_sha256": "969dd242ad58c5927d53d87b6c26d0f898a6e9cccc93b5ae0331cc7cabb239be",
+      "teacher_wdl_mse": 0.05380032971764689,
+      "cp_mae": 339.6949503924182,
+      "mean_abs_link": 452.533984895602,
+      "positions": 6753,
+      "sigmoid_mse": 0.017893932860233882,
+      "zero_score_mse": 0.05942563922619872,
+      "clamped_score_count": 0
+    },
+    "validation128": {
+      "mean_abs_link": 468.37672145713015,
+      "cp_mae": 340.6003257811343,
+      "teacher_wdl_mse": 0.05380032971764689,
+      "payload_sha256": "6bc49e8942f84fbf7a9221d567e6e616fe81f25f4f5786153fadef81d1f62ad6",
+      "wdl_mse": 0.06972051184341815,
+      "clamped_score_count": 0,
+      "zero_score_mse": 0.05942563922619872,
+      "sigmoid_mse": 0.017420830959955048,
+      "positions": 6753
+    },
+    "reported_16_superbatch_means": [
+      0.019727,
+      0.017901875,
+      0.0168929375,
+      0.0166785,
+      0.016216875,
+      0.0161199375,
+      0.0158690625,
+      0.015818625
+    ],
+    "full_curve": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-base-128\\full-loss-curve.json",
+    "curve_sha256": "d5f512bd3c1473c7cc092d2d377cfe16c846170ebb0bf5b9581b47c82facb330",
+    "assessment_sha256": "0ce7eae0caefaf35b6965ad669bc98e9ed9e5f4e2ebbc2854def8aad16ad53db",
+    "effective_lr_at128": 0.0001250000059371814
+  },
+  "deep16": {
+    "additional_native_seconds": 314.05973670003004,
+    "validation64": {
+      "mean_abs_link": 381.8781282393011,
+      "positions": 6753,
+      "sigmoid_mse": 0.01653534031165335,
+      "zero_score_mse": 0.05942563922619872,
+      "clamped_score_count": 0,
+      "wdl_mse": 0.0693777012905361,
+      "payload_sha256": "8baaea523a09fbb9ad4f8c732e4bd5325492cbcaef4dc35f88d5076d55777d41",
+      "teacher_wdl_mse": 0.05380032971764689,
+      "cp_mae": 301.617207167185
+    },
+    "validation128": {
+      "clamped_score_count": 0,
+      "zero_score_mse": 0.05942563922619872,
+      "sigmoid_mse": 0.01618466421031107,
+      "positions": 6753,
+      "mean_abs_link": 391.76454908929367,
+      "cp_mae": 292.772989782319,
+      "teacher_wdl_mse": 0.05380032971764689,
+      "payload_sha256": "56a77b0501f536379ba8f6a2caa10d22b62b4588ba7691d3a5922ef40e41eb0b",
+      "wdl_mse": 0.06877883848236148
+    },
+    "reported_16_superbatch_means": [
+      0.018596375,
+      0.01677875,
+      0.01571375,
+      0.0154756875,
+      0.014963625,
+      0.0148519375,
+      0.014567375,
+      0.01450825
+    ],
+    "full_curve": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-deep16-128\\full-loss-curve.json",
+    "curve_sha256": "4a0e666eb63f68d7a19d1d9f4f41d633a53357a162542a231e6b3c0925909d73",
+    "assessment_sha256": "216b05b0195094dd313c39fd189867832f3ab9f72e0c73cb730e266bda3dcc7a",
+    "effective_lr_at128": 0.0001250000059371814
+  },
+  "pawnpairs": {
+    "additional_native_seconds": 392.0353423000488,
+    "validation64": {
+      "clamped_score_count": 0,
+      "zero_score_mse": 0.05942563922619872,
+      "sigmoid_mse": 0.01744666275985673,
+      "positions": 6753,
+      "mean_abs_link": 470.84525396120245,
+      "cp_mae": 342.00829261069157,
+      "teacher_wdl_mse": 0.05380032971764689,
+      "payload_sha256": "4b8d08373db6d354cc5d2dc3ce3e07a3d94fdb294aba68049208ca233a2d737c",
+      "wdl_mse": 0.07060029578965114
+    },
+    "validation128": {
+      "teacher_wdl_mse": 0.05380032971764689,
+      "cp_mae": 344.4478009773434,
+      "mean_abs_link": 486.65422775062933,
+      "positions": 6753,
+      "sigmoid_mse": 0.017149732272906792,
+      "zero_score_mse": 0.05942563922619872,
+      "clamped_score_count": 0,
+      "wdl_mse": 0.07046291778183889,
+      "payload_sha256": "783ff04737379a9c23afe8b6888d32bd68401e9942cd2bf9fb7d113726f3181a"
+    },
+    "reported_16_superbatch_means": [
+      0.019143375,
+      0.0170883125,
+      0.01596575,
+      0.01572675,
+      0.0152108125,
+      0.0150998125,
+      0.014819125,
+      0.014761125
+    ],
+    "full_curve": "C:\\projects\\seed\\java\\seedv6-unified\\docs\\research\\nnue-phase2-cglhw\\raw\\compact128-pawnpairs-128\\full-loss-curve.json",
+    "curve_sha256": "17d41695ce0deb5c33ad2a9bab8a20627bd103a8d623dc5d109256fc8df647a7",
+    "assessment_sha256": "0b5cb3665de619a4282bffbd4bd8fad1f4a0d896dc61371e7533d4e1b184dd85",
+    "effective_lr_at128": 0.0001250000059371814
+  }
+}
