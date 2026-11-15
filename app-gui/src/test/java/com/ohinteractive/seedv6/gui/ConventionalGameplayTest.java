@@ -21,7 +21,7 @@ class ConventionalGameplayTest {
     @Test void promotedAndHistoricalArenaBindingsRemainDistinctAndRoundTrip() throws Exception {
         var panel = edt(() -> new PlayEnginePanel("arenaFixedA", temporary, null, () -> {}));
         try {
-            for (var mode : new PlayEvaluator.Mode[]{PlayEvaluator.Mode.CONVENTIONAL_WDL25, PlayEvaluator.Mode.CONVENTIONAL_CP64}) {
+            for (var mode : new PlayEvaluator.Mode[]{PlayEvaluator.Mode.CONVENTIONAL_DIRECT128, PlayEvaluator.Mode.CONVENTIONAL_WDL25, PlayEvaluator.Mode.CONVENTIONAL_CP64}) {
                 edt(() -> { panel.evaluator.setSelectedItem(mode); return null; });
                 var fixed = edt(panel::fixedCompetitor);
                 var record = temporary.resolve(mode.name() + "-competitor.json");
@@ -45,11 +45,11 @@ class ConventionalGameplayTest {
         var white = edt(() -> new PlayEnginePanel("white", temporary, preferences, () -> {}));
         var black = edt(() -> new PlayEnginePanel("black", temporary, null, () -> {}));
         try {
-            assertEquals(PlayEvaluator.Mode.CONVENTIONAL_WDL25, edt(white::selectedMode));
+            assertEquals(PlayEvaluator.Mode.CONVENTIONAL_DIRECT128, edt(white::selectedMode));
             edt(() -> { black.evaluator.setSelectedItem(PlayEvaluator.Mode.BREP2_32); return null; });
-            assertEquals(4, edt(() -> white.evaluator.getItemCount()));
+            assertEquals(5, edt(() -> white.evaluator.getItemCount()));
             edt(() -> { white.evaluator.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64); return null; });
-            assertEquals("Conventional NNUE CP64", edt(white::selectionDescription));
+            assertEquals(ConventionalNnueEngine.Model.CP64.description(), edt(white::selectionDescription));
             assertTrue(edt(white::validSelection)); assertNull(edt(white::selectedRoot));
             assertEquals(PlayEvaluator.Mode.CONVENTIONAL_CP64.name(), preferences.get("evaluator", ""));
             var restored = edt(() -> new PlayEnginePanel("white", temporary, preferences, () -> {}));

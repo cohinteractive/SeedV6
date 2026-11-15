@@ -61,16 +61,18 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
     enum Mode {
         HANDCRAFTED("HCE"), BEST_NNUE("Best NNUE"),
         POLICY4_PAIR2("Policy 4 / Pair-2 g32"), CONSTRUCTION_V1("construction-v1 / Pair-2 g32 (experimental)"),
-        CONVENTIONAL_CP64("Conventional NNUE CP64"), BREP2_32("BREP2-32"),
-        CONVENTIONAL_WDL25("Conventional NNUE WDL25");
-        static Mode[] competitiveChoices() { return new Mode[]{HANDCRAFTED, BREP2_32, CONVENTIONAL_WDL25, CONVENTIONAL_CP64}; }
-        boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25; }
+        CONVENTIONAL_CP64(ConventionalNnueEngine.Model.CP64.description()), BREP2_32("BREP2-32"),
+        CONVENTIONAL_WDL25(ConventionalNnueEngine.Model.WDL25.description()),
+        CONVENTIONAL_DIRECT128(ConventionalNnueEngine.Model.DIRECT128.description());
+        static Mode[] competitiveChoices() { return new Mode[]{HANDCRAFTED, BREP2_32, CONVENTIONAL_DIRECT128, CONVENTIONAL_WDL25, CONVENTIONAL_CP64}; }
+        boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25 || this == CONVENTIONAL_DIRECT128; }
         boolean competitive() { return this == HANDCRAFTED || this == BREP2_32 || conventional(); }
         boolean bundled() { return pinned() || conventional() || this == BREP2_32; }
         ConventionalNnueEngine.Model model() {
             return switch (this) {
                 case CONVENTIONAL_CP64 -> ConventionalNnueEngine.Model.CP64;
                 case CONVENTIONAL_WDL25 -> ConventionalNnueEngine.Model.WDL25;
+                case CONVENTIONAL_DIRECT128 -> ConventionalNnueEngine.Model.DIRECT128;
                 default -> throw new IllegalArgumentException("Not conventional NNUE: " + this);
             };
         }
@@ -80,6 +82,7 @@ record PlayEvaluator(Mode mode, String checkpointId, String networkHash, SearchE
                 case BREP2_32 -> BaselineEngine.Evaluator.BREP2_32;
                 case CONVENTIONAL_CP64 -> BaselineEngine.Evaluator.CONVENTIONAL_CP64;
                 case CONVENTIONAL_WDL25 -> BaselineEngine.Evaluator.CONVENTIONAL_WDL25;
+                case CONVENTIONAL_DIRECT128 -> BaselineEngine.Evaluator.CONVENTIONAL_DIRECT128;
                 default -> throw new IllegalArgumentException("Not competitive: " + this);
             };
         }

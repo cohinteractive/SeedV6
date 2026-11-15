@@ -17,10 +17,10 @@ import native_packaging as p
 import native_package_checks as checks
 
 
-# Independent accepted WDL25 fixture: never assembled from verifier constants or
+# Independent accepted DIRECT128 fixture: never assembled from verifier constants or
 # from the runtime being checked. HCE/BREP2 and historical E008 are not this default.
-def wdl25_identity(workers=1, hash_mib=64):
-    return ('baseline=construction-v1-wdl25 search=construction-v1 searchProfile=CLV_C1 '
+def direct128_identity(workers=1, hash_mib=64):
+    return ('baseline=construction-v1-direct128 search=construction-v1 searchProfile=CLV_C1 '
             f'flags={3329490943} '
             'configuration=flat-pvs-v1[QXRAY,LMR,LMP,EFFORT,COMPLETED_HINTS,CAPTURE_HISTORY,'
             'CONTINUATION,KILLERS,COUNTERMOVES,NOMINAL_HISTORY,BAD_TACTICAL_LAST,IMPROVING,'
@@ -30,32 +30,32 @@ def wdl25_identity(workers=1, hash_mib=64):
             + 'REQUEST_LEARNING,HISTORY_EFFORT,TACTICAL_VERIFICATION,TT_CRITICAL_RELIEF];futility=100d;reverse=200d;'
             f'extensionCap=1;workers={workers};hashMiB={hash_mib};aspiration=ADAPTIVE16;'
             f'parallel={"OWNER" if workers == 1 else "EAGER_ROOT"} '
-            'evaluator=CONVENTIONAL_NNUE model=WDL25 checkpoint=64 schema=S6CNU002 heads=8 '
-            'networkSha256=a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab '
-            'payload=efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7 '
+            'evaluator=CONVENTIONAL_NNUE model=DIRECT128 checkpoint=64 schema=S6CNU003 hidden=128 heads=8 '
+            'networkSha256=ef6ff57d3a373f7c8aa96c9c06508df0470a139bb10f283fbe0241f2f1bf3e67 '
+            'payload=969dd242ad58c5927d53d87b6c26d0f898a6e9cccc93b5ae0331cc7cabb239be '
             'head=scalar-long scoreMapping=BT4_Q_LOGIT400_V1 score=side-to-move-cp build=74 source=fixture')
 
 
-def wdl25_handshake(identity=None):
+def direct128_handshake(identity=None):
     return ['id name SeedV6-74',
             'option name Threads type spin default 1 min 1 max 16',
             'option name Hash type spin default 64 min 1 max 1024',
             'option name Clear Hash type button',
             'option name UseBook type check default false',
             'option name OwnBook type check default false',
-            'info string ' + (wdl25_identity() if identity is None else identity), 'uciok']
+            'info string ' + (direct128_identity() if identity is None else identity), 'uciok']
 
 
 class PackagingSafety(unittest.TestCase):
     def test_cp64_remains_explicit_rollback_not_default(self):
-        identity=wdl25_identity().replace('construction-v1-wdl25','construction-v1-cp64').replace('model=WDL25','model=CP64').replace(
-            'a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab',
+        identity=direct128_identity().replace('construction-v1-direct128','construction-v1-cp64').replace('model=DIRECT128','model=CP64').replace(
+            'ef6ff57d3a373f7c8aa96c9c06508df0470a139bb10f283fbe0241f2f1bf3e67',
             '8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b').replace(
-            'efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7',
-            '5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6')
+            '969dd242ad58c5927d53d87b6c26d0f898a6e9cccc93b5ae0331cc7cabb239be',
+            '5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6').replace('schema=S6CNU003','schema=S6CNU002').replace('hidden=128','hidden=256')
         checks.verify_baseline_identity(identity,1,64,'cp64')
         with self.assertRaises(RuntimeError):checks.verify_baseline_identity(identity,1,64)
-        with self.assertRaises(RuntimeError):checks.verify_baseline_identity(wdl25_identity(),1,64,'cp64')
+        with self.assertRaises(RuntimeError):checks.verify_baseline_identity(direct128_identity(),1,64,'cp64')
     def setUp(self):
         root = p.ROOT / 'build/packaging/tests'; root.mkdir(parents=True, exist_ok=True)
         self.temp = tempfile.TemporaryDirectory(dir=root)
@@ -64,18 +64,18 @@ class PackagingSafety(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def test_wdl25_identity_accepts_supported_workers_hash_and_backends(self):
+    def test_direct128_identity_accepts_supported_workers_hash_and_backends(self):
         for workers in range(1, 17):
             for hash_mib in (1, 8, 64, 1024):
                 for backend in ('scalar-long', 'vector-128-long', 'vector-256-long'):
-                    checks.verify_baseline_identity(wdl25_identity(workers, hash_mib).replace(
+                    checks.verify_baseline_identity(direct128_identity(workers, hash_mib).replace(
                         'head=scalar-long', 'head=' + backend), workers, hash_mib)
 
-    def test_wdl25_identity_rejects_stale_or_wrong_search_and_evaluator(self):
+    def test_direct128_identity_rejects_stale_or_wrong_search_and_evaluator(self):
         for old, new in (
                 ('flags=3329490943', 'flags=3407871'), ('searchProfile=CLV_C1', 'searchProfile=LEGACY'),
                 ('flags=3329490943', 'flags=262143'), ('flags=3329490943', 'flags=33294909430'),
-                ('baseline=construction-v1-wdl25', 'baseline=construction-v1-BREP2_32'),
+                ('baseline=construction-v1-direct128', 'baseline=construction-v1-BREP2_32'),
                 ('search=construction-v1', 'search=E008_QXRAY_LMR_WINDOW_EFFORT_HINTS'),
                 ('flat-pvs-v1[', 'recursive-pvs['), (',NOMINAL_FUTILITY', ''), (',VERIFIED_NULL', ''), (',REQUEST_LEARNING', ''), (',HISTORY_EFFORT', ''), (',TACTICAL_VERIFICATION', ''),
                 ('flags=3329490943', 'flags=104071167'), ('searchProfile=CLV_C1', 'searchProfile=HL_G1'),
@@ -83,13 +83,14 @@ class PackagingSafety(unittest.TestCase):
                 ('parallel=OWNER', 'parallel=ROOT_REUSE'), ('workers=1;', 'workers=4;'),
                 ('hashMiB=64;', 'hashMiB=8;'), ('evaluator=CONVENTIONAL_NNUE', 'evaluator=HCE'),
                 ('evaluator=CONVENTIONAL_NNUE', 'evaluator=BREP2_32'), ('checkpoint=64', 'checkpoint=32'),
-                ('schema=S6CNU002', 'schema=S6CNU001'), ('heads=8', 'heads=1'),
-                ('networkSha256=a25', 'networkSha256=b25'), ('payload=efd', 'payload=ffd'),
+                ('schema=S6CNU003', 'schema=S6CNU001'), ('hidden=128', 'hidden=256'),
+                ('heads=8', 'heads=1'),
+                ('networkSha256=ef6', 'networkSha256=b25'), ('payload=969', 'payload=ffd'),
                 ('scoreMapping=BT4_Q_LOGIT400_V1', 'scoreMapping=OTHER'),
                 ('score=side-to-move-cp', 'score=white-cp')):
             with self.subTest(field=old), self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
-                checks.verify_baseline_identity(wdl25_identity().replace(old, new), 1, 64)
-        for identity in (wdl25_identity().replace('flags=3329490943 ', ''), wdl25_identity() + ' flags=262143'):
+                checks.verify_baseline_identity(direct128_identity().replace(old, new), 1, 64)
+        for identity in (direct128_identity().replace('flags=3329490943 ', ''), direct128_identity() + ' flags=262143'):
             with self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
                 checks.verify_baseline_identity(identity, 1, 64)
 
@@ -104,34 +105,34 @@ class PackagingSafety(unittest.TestCase):
                              ('parallel=' + schedule, 'parallel=INDEPENDENT'),
                              ('searchProfile=CLV_C1', 'searchProfile=MW_C4_W4')]:
                 with self.subTest(workers=workers, field=old), self.assertRaises(RuntimeError):
-                    checks.verify_baseline_identity(wdl25_identity(workers).replace(old, new), workers, 64)
+                    checks.verify_baseline_identity(direct128_identity(workers).replace(old, new), workers, 64)
 
     def test_uci_identity_cannot_borrow_fields_from_other_protocol_lines(self):
-        checks.verify_uci_identity(wdl25_handshake(), 1, 64)
+        checks.verify_uci_identity(direct128_handshake(), 1, 64)
         for names in ([], ['id name SeedV6-74', 'id name SeedV6-74'],
                       ['id name SeedV6 Construction V1 NNUE CP64 0.0.0 (build 74)'],
                       ['id name SeedV6-74 source=fixture'], ['id name SeedV6-unknown']):
             with self.assertRaisesRegex(RuntimeError, 'Wrong UCI identity'):
-                checks.verify_uci_identity(names + wdl25_handshake()[1:], 1, 64)
-        bad = wdl25_handshake(wdl25_identity().replace('flags=3329490943', 'flags=262143'))
+                checks.verify_uci_identity(names + direct128_handshake()[1:], 1, 64)
+        bad = direct128_handshake(direct128_identity().replace('flags=3329490943', 'flags=262143'))
         bad.insert(-1, 'info string flags=3329490943')
-        for lines in (bad, wdl25_handshake() + ['info string ' + wdl25_identity()],
-                      [line for line in wdl25_handshake() if not line.startswith('info string baseline=')]):
+        for lines in (bad, direct128_handshake() + ['info string ' + direct128_identity()],
+                      [line for line in direct128_handshake() if not line.startswith('info string baseline=')]):
             with self.assertRaises(RuntimeError):
                 checks.verify_uci_identity(lines, 1, 64)
         for option in ('Threads', 'Hash'):
             bad = [line.replace('max 16', 'max 1') if option == 'Threads' else line.replace(
-                'default 64', 'default 8') for line in wdl25_handshake()]
+                'default 64', 'default 8') for line in direct128_handshake()]
             with self.assertRaisesRegex(RuntimeError, 'option'):
                 checks.verify_uci_identity(bad, 1, 64)
 
     def test_native_gate_checks_cold_default_before_setting_options(self):
-        for identity in (wdl25_identity().replace('flags=3329490943', 'flags=3407871'),
-                         wdl25_identity().replace('searchProfile=CLV_C1', 'searchProfile=LEGACY'),
-                         wdl25_identity().replace('flags=3329490943', 'flags=262143'), wdl25_identity(1, 8)):
+        for identity in (direct128_identity().replace('flags=3329490943', 'flags=3407871'),
+                         direct128_identity().replace('searchProfile=CLV_C1', 'searchProfile=LEGACY'),
+                         direct128_identity().replace('flags=3329490943', 'flags=262143'), direct128_identity(1, 8)):
             with patch.object(checks, 'Engine') as engine_class:
                 engine = engine_class.return_value
-                engine.until.return_value = wdl25_handshake(identity)
+                engine.until.return_value = direct128_handshake(identity)
                 with self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
                     checks.verify_uci(self.work / 'launcher', self.work, {}, self.work / 'model')
                 self.assertEqual([('uci',)], [call.args for call in engine.send.call_args_list])
@@ -453,7 +454,7 @@ class PackagingSafety(unittest.TestCase):
         context = {'platform': platform, 'model': str(model), 'modelSha256': p.sha(model), 'jdk': str(self.work / 'jdk'),
                    'version': {'major': 0, 'minor': 0, 'patch': 0, 'build': 35}}
         identity = {'model.sha256': p.sha(model), 'version': '0.0.0', 'build': '35',
-                    'baseline.identity': wdl25_identity()}
+                    'baseline.identity': direct128_identity()}
         commands = []
         def native(command, **kwargs):
             commands.append(command)
@@ -555,7 +556,7 @@ class PackagingSafety(unittest.TestCase):
         for app in ('gui', 'uci'):
             stage = self.work / app; stage.mkdir()
             identity = dict(p.production_manifest()['identity'], **{
-                'baseline.identity': wdl25_identity().replace('flags=3329490943', 'flags=262143')})
+                'baseline.identity': direct128_identity().replace('flags=3329490943', 'flags=262143')})
             with patch.object(p, 'model_probe', return_value=identity), patch.object(p, 'run') as native:
                 with self.assertRaisesRegex(RuntimeError, 'baseline search/evaluator identity'):
                     p.build_image(context, app, stage, [])

@@ -8,7 +8,7 @@ import static com.ohinteractive.seedv6.gui.ConventionalGuiProbe.edt;
 
 class BaselineScoreTest {
     @Test void scoresScaleExactlyOnceWithExplicitUnitsAndKeepMateSeparate() throws Exception {
-        for (var mode : new PlayEvaluator.Mode[]{PlayEvaluator.Mode.CONVENTIONAL_WDL25, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayEvaluator.Mode.BREP2_32, PlayEvaluator.Mode.HANDCRAFTED}) {
+        for (var mode : new PlayEvaluator.Mode[]{PlayEvaluator.Mode.CONVENTIONAL_DIRECT128, PlayEvaluator.Mode.CONVENTIONAL_WDL25, PlayEvaluator.Mode.CONVENTIONAL_CP64, PlayEvaluator.Mode.BREP2_32, PlayEvaluator.Mode.HANDCRAFTED}) {
         var binding = mode == PlayEvaluator.Mode.HANDCRAFTED ? PlayEvaluator.handcrafted() : PlayEvaluator.bundled(mode);
         for (int side : new int[]{Value.WHITE, Value.BLACK}) {
             var info = new GameController.SearchInfo("Idle", 5, "cp 550", 10, 10, "", "DEPTH", 1, side);

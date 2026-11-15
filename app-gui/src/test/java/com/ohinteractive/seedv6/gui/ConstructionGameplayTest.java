@@ -67,10 +67,10 @@ class ConstructionGameplayTest {
             edt(() -> { panel.loadFixed(LearningArenaConfig.Competitor.pinned(com.ohinteractive.seedv6.search.driver.PinnedSearch.Policy.CONSTRUCTION_V1)); return null; });
             assertEquals(PlayEvaluator.Mode.CONSTRUCTION_V1, edt(panel::selectedMode));
             assertFalse(edt(() -> panel.evaluator.isEnabled()));
-            assertEquals(4, edt(() -> panel.evaluator.getItemCount()));
+            assertEquals(5, edt(() -> panel.evaluator.getItemCount()));
             assertTrue(edt(() -> ((javax.swing.JLabel) field(panel, "description")).getText()).startsWith("Saved historical configuration:"));
             edt(() -> { panel.clearFixed(); return null; });
-            assertEquals(PlayEvaluator.Mode.CONVENTIONAL_WDL25, edt(panel::selectedMode));
+            assertEquals(PlayEvaluator.Mode.CONVENTIONAL_DIRECT128, edt(panel::selectedMode));
             assertTrue(edt(() -> panel.evaluator.isEnabled()));
             edt(() -> { panel.loadFixed(LearningArenaConfig.Competitor.competitive(com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_CP64));
                 panel.clearFixed(); panel.evaluator.setSelectedItem(PlayEvaluator.Mode.BREP2_32); return null; });

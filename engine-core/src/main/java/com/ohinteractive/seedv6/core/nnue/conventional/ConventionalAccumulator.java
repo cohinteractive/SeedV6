@@ -8,11 +8,14 @@ import java.util.Objects;
  * Board placement deltas cover all move types; null moves change head order only. */
 public final class ConventionalAccumulator {
     private final ConventionalNetwork network;
-    private final int[][] values = new int[2][ConventionalNetwork.HIDDEN];
+    private final int[][] values;
     private final long[] placement = new long[4];
     private boolean prepared;
 
-    ConventionalAccumulator(ConventionalNetwork network) { this.network = Objects.requireNonNull(network); }
+    ConventionalAccumulator(ConventionalNetwork network) {
+        this.network = Objects.requireNonNull(network);
+        values = new int[2][network.hidden()];
+    }
 
     public void rebuild(long[] board) {
         ConventionalFeatures.requireBoard(board);
@@ -43,7 +46,7 @@ public final class ConventionalAccumulator {
                 refresh(childBoard, side);
                 continue;
             }
-            System.arraycopy(parent.values[side], 0, values[side], 0, ConventionalNetwork.HIDDEN);
+            System.arraycopy(parent.values[side], 0, values[side], 0, network.hidden());
             long squares = changed;
             while (squares != 0) {
                 int sq = Long.numberOfTrailingZeros(squares); squares &= squares - 1;
@@ -58,7 +61,7 @@ public final class ConventionalAccumulator {
 
     public void copyFrom(long[] board, ConventionalAccumulator source) {
         requireSource(board, source);
-        for (int side = 0; side < 2; side++) System.arraycopy(source.values[side], 0, values[side], 0, ConventionalNetwork.HIDDEN);
+        for (int side = 0; side < 2; side++) System.arraycopy(source.values[side], 0, values[side], 0, network.hidden());
         remember(board);
     }
 
@@ -70,7 +73,7 @@ public final class ConventionalAccumulator {
 
     public int raw(int perspective, int unit) {
         if (!prepared) throw new IllegalStateException("Accumulator is not prepared");
-        return values[Objects.checkIndex(perspective, 2)][Objects.checkIndex(unit, ConventionalNetwork.HIDDEN)];
+        return values[Objects.checkIndex(perspective, 2)][Objects.checkIndex(unit, network.hidden())];
     }
 
     private void requireSource(long[] board, ConventionalAccumulator source) {

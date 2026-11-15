@@ -64,7 +64,9 @@ public record LearningArenaState(int version, String id, String binding, Learnin
         private static String conventionalIdentity(LearningArenaConfig.Evaluator evaluator) {
             var model = evaluator == LearningArenaConfig.Evaluator.CONVENTIONAL_CP64
                     ? com.ohinteractive.seedv6.search.driver.ConventionalNnueEngine.Model.CP64
-                    : com.ohinteractive.seedv6.search.driver.ConventionalNnueEngine.Model.WDL25;
+                    : evaluator == LearningArenaConfig.Evaluator.CONVENTIONAL_WDL25
+                    ? com.ohinteractive.seedv6.search.driver.ConventionalNnueEngine.Model.WDL25
+                    : com.ohinteractive.seedv6.search.driver.ConventionalNnueEngine.Model.DIRECT128;
             return model.name().toLowerCase(Locale.ROOT) + "-" + model.sha256();
         }
     }

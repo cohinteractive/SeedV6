@@ -26,8 +26,8 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
         return new LearningArenaConfig(name, a, b, null, 0, 0, 0, seed, arena, Mode.MATCH_ONLY);
     }
     public enum Evaluator {
-        HCE, POLICY4_PAIR2, CONSTRUCTION_V1, HCE_CONSTRUCTION, BREP2_32, CONVENTIONAL_CP64, CONVENTIONAL_WDL25;
-        public boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25; }
+        HCE, POLICY4_PAIR2, CONSTRUCTION_V1, HCE_CONSTRUCTION, BREP2_32, CONVENTIONAL_CP64, CONVENTIONAL_WDL25, CONVENTIONAL_DIRECT128;
+        public boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25 || this == CONVENTIONAL_DIRECT128; }
         public boolean competitive() { return this == HCE_CONSTRUCTION || this == BREP2_32 || conventional(); }
         public com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator baseline() {
             return switch (this) {
@@ -35,6 +35,7 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
                 case BREP2_32 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.BREP2_32;
                 case CONVENTIONAL_CP64 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_CP64;
                 case CONVENTIONAL_WDL25 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_WDL25;
+                case CONVENTIONAL_DIRECT128 -> com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.CONVENTIONAL_DIRECT128;
                 default -> throw new IllegalArgumentException("Historical profile has no current baseline binding");
             };
         }
@@ -79,6 +80,7 @@ public record LearningArenaConfig(String name, Competitor a, Competitor b, DataS
                 case BREP2_32 -> Evaluator.BREP2_32;
                 case CONVENTIONAL_CP64 -> Evaluator.CONVENTIONAL_CP64;
                 case CONVENTIONAL_WDL25 -> Evaluator.CONVENTIONAL_WDL25;
+                case CONVENTIONAL_DIRECT128 -> Evaluator.CONVENTIONAL_DIRECT128;
             };
             return new Competitor(evaluator.label(), choice == com.ohinteractive.seedv6.search.driver.BaselineEngine.Evaluator.BREP2_32
                     ? TrainingArchitecture.BRN_PAIR2 : null, 0, 1, null, null, null, evaluator);

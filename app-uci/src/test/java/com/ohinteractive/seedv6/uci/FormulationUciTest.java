@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FormulationUciTest {
     @Test void explicitBundledSelectionKeepsProductionSearchAndRejectsTypos() throws Exception {
         var normal = BaselineUciConfiguration.load();
-        assertTrue(normal.identity(1).contains("model=WDL25"));
+        assertTrue(normal.identity(1).contains("model=DIRECT128"));
         for (String name : new String[]{"wdl25", "cp64"}) {
             var binding = BaselineUciConfiguration.load(name);
             assertTrue(binding.identity(4).contains("model=" + name.toUpperCase(java.util.Locale.ROOT)));
@@ -47,7 +47,7 @@ class FormulationUciTest {
                 assertTrue(identity.contains("searchProfile=CLV_C1 "));
                 assertTrue(identity.contains("flags=3329490943"));
                 assertTrue(identity.contains("parallel=" + (workers == 1 ? "OWNER" : "EAGER_ROOT")));
-                assertTrue(identity.contains("evaluator=CONVENTIONAL_NNUE model=WDL25 checkpoint=64"));
+                assertTrue(identity.contains("evaluator=CONVENTIONAL_NNUE model=DIRECT128 checkpoint=64"));
                 assertTrue(identity.contains("clockPolicy=" + ClockPolicy.FACTUAL.identity()));
                 assertTrue(text.contains(configuration.withClockPolicy(ClockPolicy.FACTUAL).formulation(workers, 1).configurationId()));
             }

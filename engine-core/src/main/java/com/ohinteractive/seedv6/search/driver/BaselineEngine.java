@@ -19,8 +19,8 @@ import com.ohinteractive.seedv6.search.tablebase.RootTablebase;
  * Historical ProductionSearch, PinnedSearch and ConventionalNnueEngine retain their identities. */
 public final class BaselineEngine {
     public enum Evaluator {
-        HCE, BREP2_32, CONVENTIONAL_CP64, CONVENTIONAL_WDL25;
-        public boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25; }
+        HCE, BREP2_32, CONVENTIONAL_CP64, CONVENTIONAL_WDL25, CONVENTIONAL_DIRECT128;
+        public boolean conventional() { return this == CONVENTIONAL_CP64 || this == CONVENTIONAL_WDL25 || this == CONVENTIONAL_DIRECT128; }
     }
     /** Adopted conventional production policy; explicit research controls bypass payload selection. */
     public enum SearchProfile {
@@ -48,7 +48,7 @@ public final class BaselineEngine {
         this.evaluation = evaluation;
         this.conventional = conventional;
     }
-    public static BaselineEngine load() throws IOException { return load(Evaluator.CONVENTIONAL_WDL25); }
+    public static BaselineEngine load() throws IOException { return load(Evaluator.CONVENTIONAL_DIRECT128); }
     public static BaselineEngine load(Evaluator evaluator) throws IOException {
         return load(evaluator, ClockPolicy.configured());
     }
@@ -61,9 +61,10 @@ public final class BaselineEngine {
         return switch (evaluator) {
             case HCE -> new BaselineEngine(evaluator, SearchEvaluation.handcrafted(), null, clockPolicy, profile);
             case BREP2_32 -> new BaselineEngine(evaluator, SearchEvaluation.brnPair2(ProductionModel.bundled()), null, clockPolicy, profile);
-            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25 -> {
+            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25, CONVENTIONAL_DIRECT128 -> {
                 var network = ConventionalNnueEngine.loadBundled(evaluator == Evaluator.CONVENTIONAL_CP64
-                        ? ConventionalNnueEngine.Model.CP64 : ConventionalNnueEngine.Model.WDL25);
+                        ? ConventionalNnueEngine.Model.CP64 : evaluator == Evaluator.CONVENTIONAL_WDL25
+                        ? ConventionalNnueEngine.Model.WDL25 : ConventionalNnueEngine.Model.DIRECT128);
                 yield new BaselineEngine(evaluator, network.evaluation(), network, clockPolicy, profile);
             }
         };
@@ -129,7 +130,8 @@ public final class BaselineEngine {
     }
     private static boolean adoptedConventional(SearchEvaluation evaluation) {
         return evaluation.matchesConventionalPayload(ConventionalNnueEngine.Model.CP64.payloadSha256())
-                || evaluation.matchesConventionalPayload(ConventionalNnueEngine.Model.WDL25.payloadSha256());
+                || evaluation.matchesConventionalPayload(ConventionalNnueEngine.Model.WDL25.payloadSha256())
+                || evaluation.matchesConventionalPayload(ConventionalNnueEngine.Model.DIRECT128.payloadSha256());
     }
     public SingleDepthSearch create(int workers, int hashMiB) {
         return clockPolicy.apply(selectedConfiguration(workers, hashMiB).create(evaluation));
@@ -153,9 +155,9 @@ public final class BaselineEngine {
             case HCE -> "evaluator=HCE";
             case BREP2_32 -> "evaluator=BREP2_32 checkpoint=" + ProductionModel.CHECKPOINT
                     + " networkSha256=" + ProductionModel.SHA256 + " mapping=BRN_PAIR2_MATERIAL_RESIDUAL_QUARTER_V1";
-            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25 -> "evaluator=CONVENTIONAL_NNUE model=" + conventional.selection()
+            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25, CONVENTIONAL_DIRECT128 -> "evaluator=CONVENTIONAL_NNUE model=" + conventional.selection()
                     + " checkpoint=64 schema=" + conventional.model().schema()
-                    + " heads=" + conventional.model().outputBuckets() + " networkSha256=" + conventional.selection().sha256()
+                    + " hidden=" + conventional.model().hidden() + " heads=" + conventional.model().outputBuckets() + " networkSha256=" + conventional.selection().sha256()
                     + " payload=" + conventional.model().payloadSha256() + " head=" + conventional.model().headBackend()
                     + " scoreMapping=" + ConventionalNnueEngine.SCORE_MAPPING;
         };
@@ -165,7 +167,7 @@ public final class BaselineEngine {
             case HCE -> "HCE (handcrafted)";
             case BREP2_32 -> "BREP2-32 · checkpoint " + ProductionModel.CHECKPOINT
                     + " · SHA-256 " + ProductionModel.SHA256.substring(0, 12);
-            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25 -> "Conventional NNUE " + conventional.selection() + " · " + conventional.model().schema()
+            case CONVENTIONAL_CP64, CONVENTIONAL_WDL25, CONVENTIONAL_DIRECT128 -> conventional.selection().description() + " checkpoint 64" + " · " + conventional.model().schema()
                     + " · " + conventional.model().outputBuckets() + " heads · SHA-256 "
                     + conventional.selection().sha256().substring(0, 12);
         };

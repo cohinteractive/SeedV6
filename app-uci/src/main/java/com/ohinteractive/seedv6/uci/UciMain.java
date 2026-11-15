@@ -8,7 +8,7 @@ public final class UciMain {
                 if (key.startsWith("seedv6.uci.") && !key.equals("seedv6.uci.model"))
                     throw new IllegalArgumentException("Legacy/research property is not a standalone production option: " + key);
             if (args.length != 0 && (args.length != 2 || !(args[0].equals("--model") || args[0].equals("--nnue") || args[0].equals("--network"))))
-                throw new IllegalArgumentException("Usage: seedv6-uci [--network wdl25|cp64 | --model <pinned baseline.brn-pair2> | --nnue <network.cnnue>]");
+                throw new IllegalArgumentException("Usage: seedv6-uci [--network direct128|wdl25|cp64 | --model <pinned baseline.brn-pair2> | --nnue <network.cnnue>]");
             boolean conventional = args.length == 2 && args[0].equals("--nnue");
             boolean bundled = args.length == 2 && args[0].equals("--network");
             if ((conventional || bundled) && System.getProperty("seedv6.uci.model") != null)

@@ -1,0 +1,19 @@
+{
+  "description": "128-unit direct-output SCReLU NNUE trained with 25% game-outcome / 75% teacher targets, selected at checkpoint 64",
+  "schema": "S6CNU003",
+  "features": 7680,
+  "hidden_per_perspective": 128,
+  "output_heads": 8,
+  "checkpoint": 64,
+  "qa": 255,
+  "qb": 64,
+  "scale": 400,
+  "bytes": 1970520,
+  "sha256": "ef6ff57d3a373f7c8aa96c9c06508df0470a139bb10f283fbe0241f2f1bf3e67",
+  "payload_sha256": "969dd242ad58c5927d53d87b6c26d0f898a6e9cccc93b5ae0331cc7cabb239be",
+  "source_artifact": "docs/research/nnue-phase2-cglhw/raw/compact128-base-64-assessment-r1/network.p2nnue",
+  "source_sha256": "defaf21da465d6f63fc13a2299299e927029d82558d663c7bbc801e7c35e9d1c",
+  "source_bytes": 1970524,
+  "conversion": "tools/promote_direct128.py; header only; all payload bytes unchanged",
+  "assessment": "docs/research/nnue-phase2-cglhw/compact128-base-64-assessment.json"
+}

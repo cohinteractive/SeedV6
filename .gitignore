@@ -25,6 +25,8 @@
 !/build-assets/production/manifest.json
 !/build-assets/production/conventional-wdl25.cnnue
 !/build-assets/production/conventional-wdl25.json
+!/build-assets/production/conventional-direct128.cnnue
+!/build-assets/production/conventional-direct128.json
 # Frozen runtime export for the explicit NNUE UCI candidate, not training output.
 !/build-assets/nnue-candidate/
 /build-assets/nnue-candidate/*

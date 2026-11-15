@@ -12,9 +12,10 @@ final class BaselineUciConfiguration {
     }
     static UciConfiguration load(String network) throws IOException {
         return bind(BaselineEngine.load(switch (network.toLowerCase(java.util.Locale.ROOT)) {
+            case "direct128" -> BaselineEngine.Evaluator.CONVENTIONAL_DIRECT128;
             case "wdl25" -> BaselineEngine.Evaluator.CONVENTIONAL_WDL25;
             case "cp64" -> BaselineEngine.Evaluator.CONVENTIONAL_CP64;
-            default -> throw new IllegalArgumentException("Bundled network must be wdl25 or cp64");
+            default -> throw new IllegalArgumentException("Bundled network must be direct128, wdl25 or cp64");
         }));
     }
     private static UciConfiguration bind(BaselineEngine binding) {

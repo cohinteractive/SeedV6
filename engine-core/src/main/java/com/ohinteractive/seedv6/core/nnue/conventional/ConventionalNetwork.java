@@ -13,9 +13,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HexFormat;
 
-/** Immutable versioned Bullet export: 10 mirrored buckets, 256x2 SCReLU, one/eight heads.
+/** Immutable versioned Bullet export: 10 mirrored buckets, 128/256x2 SCReLU, direct heads.
  * No material term, tanh, legacy NNUE mapping or implicit production selection. */
 public final class ConventionalNetwork {
+    /** Historical S6CNU001/002 width; use hidden() for a loaded model's geometry. */
     public static final int HIDDEN = 256, QA = 255, QB = 64, SCALE = 400;
     /** Legacy S6CNU001 geometry; S6CNU002 has eight output heads in the same header envelope. */
     public static final int PARAMETERS = ConventionalFeatures.COUNT * HIDDEN + HIDDEN * 3 + 1;
@@ -26,22 +27,32 @@ public final class ConventionalNetwork {
     private final int[] output;
     private final Head vectorHead;
     private final int outputBuckets;
+    private final int hidden, version;
     private final String payloadSha256;
 
-    private ConventionalNetwork(byte[] payload, String hash, int outputBuckets) {
+    private ConventionalNetwork(byte[] payload, String hash, int outputBuckets, int hidden, int version) throws IOException {
         this.outputBuckets = outputBuckets;
+        this.hidden = hidden;
+        this.version = version;
         var data = ByteBuffer.wrap(payload).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer();
-        weights = new short[ConventionalFeatures.COUNT * HIDDEN];
-        bias = new short[HIDDEN]; output = new int[2 * HIDDEN * outputBuckets];
+        weights = new short[ConventionalFeatures.COUNT * hidden];
+        bias = new short[hidden]; output = new int[2 * hidden * outputBuckets];
         outputBias = new short[outputBuckets];
         data.get(weights); data.get(bias);
-        for (int i = 0; i < output.length; i++) output[i] = data.get();
+        for (int i = 0; i < output.length; i++) {
+            output[i] = data.get();
+            // S6CNU003's bounded kernel relies on this format-level invariant.
+            if (version == 3 && Math.abs(output[i]) > 127)
+                throw new IOException("Unbounded S6CNU003 output weight");
+        }
         data.get(outputBias);
         payloadSha256 = hash;
         // Lazy linkage keeps the ordinary headless runtime independent of the optional module.
-        vectorHead = !Boolean.getBoolean("seed.nnue.scalar")
-                && ModuleLayer.boot().findModule("jdk.incubator.vector").isPresent()
-                && ConventionalVectorHead.supported() ? new ConventionalVectorHead() : null;
+        boolean vector = !Boolean.getBoolean("seed.nnue.scalar")
+                && ModuleLayer.boot().findModule("jdk.incubator.vector").isPresent();
+        vectorHead = !vector ? null : version == 3
+                ? (Direct128VectorHead.supported() ? new Direct128VectorHead() : null)
+                : (ConventionalVectorHead.supported() ? new ConventionalVectorHead() : null);
     }
 
     public static ConventionalNetwork load(Path path) throws IOException {
@@ -53,12 +64,14 @@ public final class ConventionalNetwork {
         if (header.length != HEADER_BYTES) throw new IOException("Truncated conventional NNUE header");
         var h = ByteBuffer.wrap(header).order(ByteOrder.LITTLE_ENDIAN);
         byte[] magic = new byte[8]; h.get(magic);
-        int version = magic[7] == '2' ? 2 : 1;
+        int version = magic[7] - '0';
+        if (version < 1 || version > 3) throw new IOException("Unsupported conventional NNUE version");
         byte[] expectedMagic = MAGIC.clone(); expectedMagic[7] = (byte) ('0' + version);
         if (!Arrays.equals(magic, expectedMagic)) throw new IOException("Unsupported conventional NNUE identity");
         int heads = version == 1 ? 1 : 8;
-        int payloadBytes = (ConventionalFeatures.COUNT * HIDDEN + HIDDEN + heads * (2 * HIDDEN + 1)) * 2;
-        int[] expected = {version, ConventionalFeatures.COUNT, HIDDEN, 10, QA, QB, SCALE, payloadBytes};
+        int hidden = version == 3 ? 128 : HIDDEN;
+        int payloadBytes = (ConventionalFeatures.COUNT * hidden + hidden + heads * (2 * hidden + 1)) * 2;
+        int[] expected = {version, ConventionalFeatures.COUNT, hidden, 10, QA, QB, SCALE, payloadBytes};
         for (int value : expected) if (h.getInt() != value) throw new IOException("Unsupported conventional NNUE schema");
         byte[] hash = new byte[32]; h.get(hash);
         byte[] payload = input.readNBytes(payloadBytes);
@@ -67,12 +80,13 @@ public final class ConventionalNetwork {
         try { actual = MessageDigest.getInstance("SHA-256").digest(payload); }
         catch (NoSuchAlgorithmException impossible) { throw new AssertionError(impossible); }
         if (!MessageDigest.isEqual(hash, actual)) throw new IOException("Conventional NNUE checksum mismatch");
-        return new ConventionalNetwork(payload, HexFormat.of().formatHex(actual), heads);
+        return new ConventionalNetwork(payload, HexFormat.of().formatHex(actual), heads, hidden, version);
     }
 
     public String payloadSha256() { return payloadSha256; }
     public int outputBuckets() { return outputBuckets; }
-    public String schema() { return outputBuckets == 1 ? "S6CNU001" : "S6CNU002"; }
+    public int hidden() { return hidden; }
+    public String schema() { return "S6CNU00" + version; }
     public String headBackend() { return vectorHead == null ? "scalar-long" : vectorHead.name(); }
     interface Head {
         long dot(int[] us, int[] them, int[] weights, int offset);
@@ -85,10 +99,10 @@ public final class ConventionalNetwork {
         return (pieces - 2) / 4;
     }
     public ConventionalAccumulator newAccumulator() { return new ConventionalAccumulator(this); }
-    void reset(int[] destination) { for (int i = 0; i < HIDDEN; i++) destination[i] = bias[i]; }
+    void reset(int[] destination) { for (int i = 0; i < hidden; i++) destination[i] = bias[i]; }
     void add(int index, int sign, int[] destination) {
-        int offset = index * HIDDEN;
-        for (int i = 0; i < HIDDEN; i++) destination[i] += sign * weights[offset + i];
+        int offset = index * hidden;
+        for (int i = 0; i < hidden; i++) destination[i] += sign * weights[offset + i];
     }
 
     int score(int[] us, int[] them) {
@@ -96,12 +110,12 @@ public final class ConventionalNetwork {
         return score(us, them, 0);
     }
     int score(int[] us, int[] them, int bucket) {
-        int offset = java.util.Objects.checkIndex(bucket, outputBuckets) * 2 * HIDDEN;
+        int offset = java.util.Objects.checkIndex(bucket, outputBuckets) * 2 * hidden;
         if (vectorHead != null) return scale(vectorHead.dot(us, them, output, offset), bucket);
         long sum = 0;
-        for (int i = 0; i < HIDDEN; i++) {
+        for (int i = 0; i < hidden; i++) {
             int a = Math.clamp(us[i], 0, QA), b = Math.clamp(them[i], 0, QA);
-            sum += (long) a * a * output[offset + i] + (long) b * b * output[offset + HIDDEN + i];
+            sum += (long) a * a * output[offset + i] + (long) b * b * output[offset + hidden + i];
         }
         return scale(sum, bucket);
     }
@@ -118,19 +132,19 @@ public final class ConventionalNetwork {
     public int fullRebuild(long[] board) {
         ConventionalFeatures.requireBoard(board);
         int stm = Board.player((int) board[Board.STATUS]);
-        int bucket = bucket(board), offset = bucket * 2 * HIDDEN;
+        int bucket = bucket(board), offset = bucket * 2 * hidden;
         long sum = 0;
         for (int side = 0; side < 2; side++) {
             int perspective = side == 0 ? stm : stm ^ 1;
             int king = ConventionalFeatures.king(board, perspective);
-            for (int i = 0; i < HIDDEN; i++) {
+            for (int i = 0; i < hidden; i++) {
                 int raw = bias[i];
                 for (int square = 0; square < 64; square++) {
                     int piece = Board.getSquare(board[0], board[1], board[2], board[3], square);
-                    if (piece != Value.NONE) raw += weights[ConventionalFeatures.index(perspective, king, piece, square) * HIDDEN + i];
+                    if (piece != Value.NONE) raw += weights[ConventionalFeatures.index(perspective, king, piece, square) * hidden + i];
                 }
                 long a = Math.clamp(raw, 0, QA);
-                sum += a * a * output[offset + side * HIDDEN + i];
+                sum += a * a * output[offset + side * hidden + i];
             }
         }
         return scale(sum, bucket);

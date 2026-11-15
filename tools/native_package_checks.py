@@ -25,8 +25,10 @@ def check(ok, message):
         raise RuntimeError(message)
 
 
-def verify_baseline_identity(identity, workers, hash_mib, network='wdl25'):
+def verify_baseline_identity(identity, workers, hash_mib, network='direct128'):
     pins = {
+        'direct128': ('ef6ff57d3a373f7c8aa96c9c06508df0470a139bb10f283fbe0241f2f1bf3e67',
+                      '969dd242ad58c5927d53d87b6c26d0f898a6e9cccc93b5ae0331cc7cabb239be'),
         'wdl25': ('a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab',
                   'efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7'),
         'cp64': ('8431626c2fca81e0a1e9ccd5e45ddd8829e6e3282c756c21fad75b06d075bb2b',
@@ -42,7 +44,7 @@ def verify_baseline_identity(identity, workers, hash_mib, network='wdl25'):
                      f'parallel={"OWNER" if workers == 1 else "EAGER_ROOT"}')
     expected = {'baseline': 'construction-v1-' + network, 'search': 'construction-v1', 'model': network.upper(),
                 'searchProfile': 'CLV_C1', 'flags': str(CP64_CLV_C1_FLAGS), 'configuration': configuration,
-                'evaluator': 'CONVENTIONAL_NNUE', 'checkpoint': '64', 'schema': 'S6CNU002', 'heads': '8',
+                'evaluator': 'CONVENTIONAL_NNUE', 'checkpoint': '64', 'schema': 'S6CNU003' if network == 'direct128' else 'S6CNU002', 'heads': '8', 'hidden': '128' if network == 'direct128' else '256',
                 'networkSha256': pins[network][0], 'payload': pins[network][1],
                 'scoreMapping': 'BT4_Q_LOGIT400_V1', 'score': 'side-to-move-cp'}
     # Exact, unique fields on one identity; substring matches could accept a wrong
@@ -54,7 +56,7 @@ def verify_baseline_identity(identity, workers, hash_mib, network='wdl25'):
               f'expected {value!r}, observed {observed!r}')
 
 
-def verify_uci_identity(handshake, workers, hash_mib, network='wdl25'):
+def verify_uci_identity(handshake, workers, hash_mib, network='direct128'):
     names = [line for line in handshake if line.startswith('id name')]
     check(len(names) == 1 and re.fullmatch(r'id name SeedV6-(0|[1-9][0-9]*)', names[0]),
           'Wrong UCI identity')
@@ -308,7 +310,7 @@ def verify_uci(launcher, stage, env, model):
         check(result.returncode != 0 and not result.stdout and 'SeedV6 UCI startup/runtime error:' in result.stderr,
               'Invalid model did not fail cleanly: ' + name)
     checks.append('Missing/corrupt/incompatible model fails nonzero on stderr without protocol/fallback')
-    for network in ('wdl25', 'cp64'):
+    for network in ('direct128', 'wdl25', 'cp64'):
         engine = Engine([launcher, '--network', network], cwd, env, allowed_stderr=(VECTOR_WARNING,))
         try:
             engine.send('uci'); verify_uci_identity(engine.until('uciok'), 1, 64, network)
@@ -322,14 +324,14 @@ def verify_uci(launcher, stage, env, model):
             engine.close(); searches += 1
             transcripts.append({'network':network,'sent':engine.sent,'stdout':engine.lines,'stderr':engine.errors})
         finally:engine.kill()
-    checks.append('Explicit bundled WDL25 and CP64 both load and search under identical production CLV_C1')
+    checks.append('Explicit bundled 128-unit direct-output NNUE (25% outcome / 75% teacher), WDL25 and CP64 all load and search under identical production CLV_C1')
     return {'status': 'passed', 'searches': searches, 'checks': checks, 'transcripts': transcripts,
             'externalJava': 'PATH empty; JAVA_HOME/JDK_HOME removed', 'guiTraining': 'absent'}
 
 
 def verify_baseline_assets(stage, env, java, app):
-    """The default fails closed with damaged WDL25, even with valid CP64/BREP2 present."""
-    entry = 'models/conventional-wdl25.cnnue'
+    """The default fails closed with damaged direct128, even with valid CP64/BREP2 present."""
+    entry = 'models/conventional-direct128.cnnue'
     for kind in ('missing', 'truncated', 'corrupt', 'incompatible'):
         import tempfile
         directory = Path(tempfile.mkdtemp(prefix='baseline-network-'+kind+'-',dir=stage))
@@ -347,7 +349,7 @@ def verify_baseline_assets(stage, env, java, app):
             cwd=directory, env=env, input='uci\n', capture_output=True, text=True, timeout=10)
         check(result.returncode != 0 and not result.stdout and 'checkpoint-64 NNUE' in result.stderr,
               'Default did not reject embedded network: ' + kind + ': ' + result.stderr)
-    return 'Missing, truncated, corrupt and incompatible embedded WDL25 fail closed; no CP64/BREP2 fallback'
+    return 'Missing, truncated, corrupt and incompatible embedded direct128 fail closed; no CP64/BREP2 fallback'
 
 
 def verify_nnue(launcher, stage, env, java, app):

@@ -28,17 +28,29 @@ public final class ConventionalNnueEngine {
     /** CP64's frozen teacher-link target scale; UCI cp is the reporting convention. */
     public static final String SCORE_MAPPING = "BT4_Q_LOGIT400_V1";
     public enum Model {
-        CP64(NETWORK, SHA256, "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6"),
+        CP64(NETWORK, SHA256, "5da0253642ab33b8e446b5b1c5764750be008cd3dbacc7cd1992a95bf4a881f6",
+                NETWORK_BYTES, 256, "S6CNU002", "256-unit direct-output NNUE, teacher targets (CP64)"),
         WDL25("/models/conventional-wdl25.cnnue",
                 "a25e76fcdfe1b854452685bec87bc759bed2ed166312579e024410f0903517ab",
-                "efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7");
-        private final String resource, sha256, payloadSha256;
-        Model(String resource, String sha256, String payloadSha256) {
+                "efdf8fef2ab863fcf7798df9bb8b2ea0b4958ab6af14deaa59d568dded1815c7",
+                NETWORK_BYTES, 256, "S6CNU002", "256-unit direct-output NNUE, 25% outcome / 75% teacher (WDL25)"),
+        DIRECT128("/models/conventional-direct128.cnnue",
+                "ef6ff57d3a373f7c8aa96c9c06508df0470a139bb10f283fbe0241f2f1bf3e67",
+                "969dd242ad58c5927d53d87b6c26d0f898a6e9cccc93b5ae0331cc7cabb239be",
+                1_970_520, 128, "S6CNU003", "128-unit direct-output NNUE, 25% outcome / 75% teacher (direct128)");
+        private final String resource, sha256, payloadSha256, schema, description;
+        private final int bytes, hidden;
+        Model(String resource, String sha256, String payloadSha256, int bytes, int hidden, String schema, String description) {
             this.resource = resource; this.sha256 = sha256; this.payloadSha256 = payloadSha256;
+            this.bytes = bytes; this.hidden = hidden; this.schema = schema; this.description = description;
         }
         public String resource() { return resource; }
         public String sha256() { return sha256; }
         public String payloadSha256() { return payloadSha256; }
+        public int bytes() { return bytes; }
+        public int hidden() { return hidden; }
+        public String schema() { return schema; }
+        public String description() { return description; }
     }
     private final Model selection;
     private final ConventionalNetwork model;
@@ -68,16 +80,16 @@ public final class ConventionalNnueEngine {
     }
     public static ConventionalNetwork readPinned(Model selection, InputStream input) throws IOException {
         if (input == null) throw new IOException("Missing required checkpoint-64 NNUE asset " + selection.resource());
-        byte[] bytes = input.readNBytes(NETWORK_BYTES + 1);
+        byte[] bytes = input.readNBytes(selection.bytes() + 1);
         final String hash;
         try { hash = HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes)); }
         catch (NoSuchAlgorithmException impossible) { throw new AssertionError(impossible); }
-        if (bytes.length != NETWORK_BYTES || !selection.sha256().equals(hash))
+        if (bytes.length != selection.bytes() || !selection.sha256().equals(hash))
             throw new IOException("Required checkpoint-64 NNUE length/SHA-256 mismatch");
         var model = ConventionalNetwork.read(new ByteArrayInputStream(bytes));
-        if (!model.schema().equals("S6CNU002") || model.outputBuckets() != 8
+        if (!model.schema().equals(selection.schema()) || model.hidden() != selection.hidden() || model.outputBuckets() != 8
                 || !selection.payloadSha256().equals(model.payloadSha256()))
-            throw new IOException("Required S6CNU002 eight-head network is incompatible");
+            throw new IOException("Required " + selection.schema() + " eight-head network is incompatible");
         return model;
     }
 

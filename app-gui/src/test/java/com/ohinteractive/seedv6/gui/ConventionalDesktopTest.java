@@ -25,8 +25,8 @@ class ConventionalDesktopTest {
             edt(() -> {
                 frame.setVisible(true); frame.setSize(1500, 1000);
                 var choices = named(frame, "playEvaluator", JComboBox.class);
-                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_WDL25, choices.getSelectedItem());
-                assertEquals(4, choices.getItemCount());
+                assertEquals(PlayEvaluator.Mode.CONVENTIONAL_DIRECT128, choices.getSelectedItem());
+                assertEquals(5, choices.getItemCount());
                 choices.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_CP64);
                 named(frame, "gameSettings", JButton.class).doClick();
                 capture(frame, "selection");

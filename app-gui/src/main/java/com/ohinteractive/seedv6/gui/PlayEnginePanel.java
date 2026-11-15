@@ -44,11 +44,11 @@ final class PlayEnginePanel extends JPanel {
                         ? "HCE" : value == PlayEvaluator.Mode.BEST_NNUE ? "Network (production Search)" : value, index, selected, focus);
             }
         });
-        var savedMode = PlayEvaluator.Mode.CONVENTIONAL_WDL25;
+        var savedMode = PlayEvaluator.Mode.CONVENTIONAL_DIRECT128;
         if (preferences != null && !side.equals("opponent")) {
             try { savedMode = PlayEvaluator.Mode.valueOf(preferences.get("evaluator", savedMode.name())); }
             catch (IllegalArgumentException obsolete) { legacySelection = preferences.get("evaluator", "unknown"); }
-            if (!savedMode.competitive()) { legacySelection = savedMode.name(); savedMode = PlayEvaluator.Mode.CONVENTIONAL_WDL25; }
+            if (!savedMode.competitive()) { legacySelection = savedMode.name(); savedMode = PlayEvaluator.Mode.CONVENTIONAL_DIRECT128; }
         }
         evaluator.setSelectedItem(savedMode);
         if (!side.equals("opponent")) {
@@ -107,6 +107,7 @@ final class PlayEnginePanel extends JPanel {
                     case BREP2_32 -> PlayEvaluator.Mode.BREP2_32;
                     case CONVENTIONAL_CP64 -> PlayEvaluator.Mode.CONVENTIONAL_CP64;
                     case CONVENTIONAL_WDL25 -> PlayEvaluator.Mode.CONVENTIONAL_WDL25;
+                    case CONVENTIONAL_DIRECT128 -> PlayEvaluator.Mode.CONVENTIONAL_DIRECT128;
                     default -> throw new IllegalStateException();
                 } : competitor.isPinned() ? competitor.evaluator() == LearningArenaConfig.Evaluator.CONSTRUCTION_V1
                 ? PlayEvaluator.Mode.CONSTRUCTION_V1 : PlayEvaluator.Mode.POLICY4_PAIR2
@@ -121,7 +122,7 @@ final class PlayEnginePanel extends JPanel {
     }
     void clearFixed() {
         fixedBinding = null;
-        if (!selectedMode().competitive()) evaluator.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_WDL25);
+        if (!selectedMode().competitive()) evaluator.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_DIRECT128);
         description.setToolTipText(null);
         setEditable(true);
     }

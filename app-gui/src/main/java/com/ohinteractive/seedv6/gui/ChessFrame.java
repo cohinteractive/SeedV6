@@ -498,11 +498,11 @@ final class ChessFrame extends JFrame implements GameController.View {
     }
 
     private void restorePlaySettings() {
-        evaluatorBox.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_WDL25);
+        evaluatorBox.setSelectedItem(PlayEvaluator.Mode.CONVENTIONAL_DIRECT128);
         if (playPreferences == null) return;
         restoreEnum(modeBox, GameController.GameMode.class, "mode");
         restoreEnum(humanSideBox, GameController.HumanSide.class, "humanSide");
-        String saved = playPreferences.get("evaluator", PlayEvaluator.Mode.CONVENTIONAL_WDL25.name());
+        String saved = playPreferences.get("evaluator", PlayEvaluator.Mode.CONVENTIONAL_DIRECT128.name());
         try {
             var selection = PlayEvaluator.Mode.valueOf(saved);
             if (!selection.competitive()) throw new IllegalArgumentException();

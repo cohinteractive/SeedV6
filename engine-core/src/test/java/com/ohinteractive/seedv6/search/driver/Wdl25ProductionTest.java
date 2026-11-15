@@ -7,8 +7,8 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Wdl25ProductionTest {
-    @Test void defaultAndRollbackHaveDistinctVerifiedWeightsAndIdenticalProductionSearch() throws Exception {
-        var normal = BaselineEngine.load();
+    @Test void explicitMixtureAndTeacherModelsKeepDistinctWeightsAndProductionSearch() throws Exception {
+        var normal = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_WDL25);
         var rollback = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_CP64);
         assertEquals(BaselineEngine.Evaluator.CONVENTIONAL_WDL25, normal.evaluator());
         assertEquals(ConventionalNnueEngine.Model.WDL25, normal.conventional().selection());
@@ -53,7 +53,7 @@ class Wdl25ProductionTest {
             "r2q1rk1/pb1p1pbp/np2pnp1/2p5/2PP4/1P2PN1P/PB2BPP1/RN1Q1RK1 w - - 5 1",
             "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1"};
         int[] expected = {-50, -5732, -6, 936, 4257, -200, 80, -375, -137, 70, -6};
-        var model = BaselineEngine.load().conventional().model();
+        var model = BaselineEngine.load(BaselineEngine.Evaluator.CONVENTIONAL_WDL25).conventional().model();
         var accumulator = model.newAccumulator();
         for (int i = 0; i < fens.length; i++) {
             var board = Board.fromFen(fens[i]); accumulator.rebuild(board);
