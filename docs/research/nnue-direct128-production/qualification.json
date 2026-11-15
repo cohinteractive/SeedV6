@@ -1,0 +1,211 @@
+{
+  "status": "PASS_WITH_OWNER_REQUESTED_NATIVE_GUI_SKIP",
+  "date": "2026-11-15",
+  "platform": "Windows x64",
+  "implementation_commit": "21757aaacdb70e761a05cf98f9da3e7003f58b37",
+  "version": {
+    "major": 0,
+    "minor": 0,
+    "patch": 0,
+    "build": 102
+  },
+  "formulation": "128-unit direct-output SCReLU NNUE trained with 25% game-outcome / 75% teacher targets; checkpoint 64",
+  "source_sha256": "defaf21da465d6f63fc13a2299299e927029d82558d663c7bbc801e7c35e9d1c",
+  "production_sha256": "ef6ff57d3a373f7c8aa96c9c06508df0470a139bb10f283fbe0241f2f1bf3e67",
+  "payload_sha256": "969dd242ad58c5927d53d87b6c26d0f898a6e9cccc93b5ae0331cc7cabb239be",
+  "original_payload_unchanged": true,
+  "search_profile": "CLV_C1",
+  "flags": 3329490943,
+  "score_mapping": "BT4_Q_LOGIT400_V1",
+  "tests": {
+    "tests-r2-engine-core": {
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "tests-r2-research": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "tests-r2-app-uci": {
+      "tests": 29,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "tests-r2-app-gui": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "scalar-engine-core": {
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "scalar-app-uci": {
+      "tests": 29,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "packaging_tests": {
+    "total": 42,
+    "passed": 41,
+    "skipped": 1,
+    "reason": "Windows symlink creation requires privileges"
+  },
+  "parity": {
+    "independent_integer_positions": 259,
+    "exact_matched_search_requests": 48
+  },
+  "performance": {
+    "legal_walk_transitions": 255,
+    "iterations_for_allocation": 100000,
+    "kernels": {
+      "jdk-21-research": {
+        "median_update_plus_evaluation_ns": 524.106,
+        "allocated_bytes_100000": 0,
+        "backend": "vector-bounded-int"
+      },
+      "jdk-21-production": {
+        "median_update_plus_evaluation_ns": 464.436,
+        "allocated_bytes_100000": 0,
+        "backend": "vector-bounded-int"
+      },
+      "jdk-21-rollback": {
+        "median_update_plus_evaluation_ns": 751.915,
+        "allocated_bytes_100000": 0,
+        "backend": "vector-256-long"
+      },
+      "jdk-21-packaging-research": {
+        "median_update_plus_evaluation_ns": 409.289,
+        "allocated_bytes_100000": 0,
+        "backend": "vector-bounded-int"
+      },
+      "jdk-21-packaging-production": {
+        "median_update_plus_evaluation_ns": 401.62699,
+        "allocated_bytes_100000": 0,
+        "backend": "vector-bounded-int"
+      },
+      "jdk-21-packaging-rollback": {
+        "median_update_plus_evaluation_ns": 774.47099,
+        "allocated_bytes_100000": 0,
+        "backend": "vector-256-long"
+      }
+    },
+    "search_nps": {
+      "production": {
+        "trials": [
+          865615.430951266,
+          904935.7076983243
+        ],
+        "mean": 885275.5693247952
+      },
+      "research": {
+        "trials": [
+          870948.663388955,
+          844949.0448203001
+        ],
+        "mean": 857948.8541046276
+      },
+      "rollback": {
+        "trials": [
+          628192.2850800832,
+          603546.4387971571
+        ],
+        "mean": 615869.3619386202
+      }
+    }
+  },
+  "parallel": {
+    "2": {
+      "status": "PASS",
+      "evaluations_by_thread": {
+        "main": 49222,
+        "seedv6-search-helper": 31453
+      },
+      "states": 8
+    },
+    "4": {
+      "status": "PASS",
+      "evaluations_by_thread": {
+        "main": 32741,
+        "seedv6-search-helper": 56646
+      },
+      "states": 16
+    },
+    "16": {
+      "status": "PASS",
+      "evaluations_by_thread": {
+        "main": 20745,
+        "seedv6-search-helper": 77325
+      },
+      "states": 64
+    }
+  },
+  "artifacts": {
+    "gui": {
+      "image": "dist\\windows\\current\\SeedV6-GUI",
+      "archive": "dist\\windows\\current\\SeedV6-GUI-windows-x64.zip",
+      "archive_sha256": "19932678f0f1795c38b26e86267112679580c83f1e0d5a5d80a7c37792b1201d",
+      "core_jar_sha256": "de5bb1d0f24d56aa91b9a37ed853b65157ac46e34069e5e39f25f86fa71fa14d",
+      "receipt": "dist\\windows\\current\\candidate.json",
+      "status": "VERIFIED_LOCAL_CANDIDATE",
+      "source_status": [],
+      "image_checks": "headless-resources-jni-passed",
+      "extracted_checks": "headless-resources-jni-passed"
+    },
+    "uci": {
+      "image": "releases\\current\\windows-x64\\SeedV6-UCI",
+      "archive": "releases\\current\\windows-x64\\SeedV6-UCI-windows-x64.zip",
+      "archive_sha256": "2658964eb5af5bea6f2bd6c13973dfb620ebac2c2ac8f1c39178b005fdb15585",
+      "core_jar_sha256": "de5bb1d0f24d56aa91b9a37ed853b65157ac46e34069e5e39f25f86fa71fa14d",
+      "receipt": "releases\\current\\windows-x64\\candidate.json",
+      "status": "VERIFIED_LOCAL_CANDIDATE",
+      "source_status": [],
+      "image_checks": "passed",
+      "extracted_checks": "passed",
+      "searches_image": 66,
+      "searches_extracted_zip": 66
+    }
+  },
+  "limitations": [
+    "Native packaged GUI interaction explicitly skipped by owner; earlier automated Swing checks passed.",
+    "No new strength tournament; accepted Phase 2 evidence unchanged.",
+    "No unrelated full/long-running suites, hardware cache/branch counters, Mac or BotLi work."
+  ],
+  "machine_preferences": {
+    "changed": [
+      "play: CONVENTIONAL_CP64 -> CONVENTIONAL_DIRECT128",
+      "black: CONVENTIONAL_CP64 -> CONVENTIONAL_DIRECT128"
+    ],
+    "preserved": "white: BREP2_32",
+    "backup": "raw/play-preferences-before.xml"
+  },
+  "evidence": {
+    "raw\\direct128-compile.log": "db0e1de49f1a17f84c20ba102479bd0901dc9435f7dd03d5e895d92cb961a931",
+    "raw\\direct128-measurements.log": "1d02c4c0ab47bc2bce392b26b8529fe7190fbd64ace6c11b5aa9f2ada6da529c",
+    "raw\\direct128-package101.log": "b9de400647d5dafbeafe63168a110349c245fe12b82172ee66178799485ad559",
+    "raw\\direct128-packaging-tests-r1.log": "9cd59197a843e60469eb5712cdfd3092ba1613010ba1d2f4b14120dbfe10f34b",
+    "raw\\direct128-packaging-tests-r2.log": "d1291785e20d88130b6a0ecf9d005956eac10d0ab210b6df3afa955f80be6eff",
+    "raw\\direct128-packaging-tests-r3.log": "c5a6f1fe34fc6a3bfaeb29b49e2562185e562d4fc5f2c94835edf0bccaa2e72e",
+    "raw\\direct128-runtime.log": "d83b424609a3b7a227bad8ae7de22ab31f5f1347a13174e74601c4efac1657b3",
+    "raw\\direct128-scalar-tests.log": "56a13a3e320a9a10f118d8ba71a76353d82f3ad9600ccffd7f47a6e098691330",
+    "raw\\direct128-tests-r1.log": "9706b0d3beffda23c1aaf0ab25acc7b5b4000da47e2e5f9d6af499ef43bfe6d0",
+    "raw\\direct128-tests-r2.log": "bb14d55e6ad33d745960bdee41a267986eaad330973cc90dc74f723d3ecac502",
+    "raw\\package102-passed.log": "75eb47214ee6ce105be3b7ca24e661a3682a1f3de3ba296ca6b8fa90a28b2696",
+    "raw\\package102-source-guard.log": "402cbae631774ba10c2ceecc2b688523112ae05bcb78a7dfa74dc75fa3a64fc6",
+    "raw\\measurements-r1\\summary.json": "fd7b85f19705ace749ec44960150b095e9ed700da426bed50c72b93091001017",
+    "raw\\gui102-candidate.json": "fd496f1b6a2349688a1e9c828cb56ca48f88f0dd5be2b151e4f590c1ee74db5e",
+    "raw\\uci102-candidate.json": "7bffa1b60c0f7654e4fa6328b0992ff9b3a4360c372c2d12b6587d57375e6657",
+    "raw\\gui102-build-manifest.json": "b3e8d2cd6c47177ad0fb0ded1bc15edebf1e3517e2d3327b19f447ef4bd9ebfd",
+    "raw\\uci102-build-manifest.json": "b1376ac0915b3e83959f062d522aeddfc751cb7eb431a4b2b40ff31acf42ba1e"
+  }
+}
