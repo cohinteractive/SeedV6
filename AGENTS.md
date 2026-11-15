@@ -67,3 +67,16 @@ configuration establish feature behavior; the applicable Search canon,
 establishes adopted production policy. Historical implementations, research results,
 experimental candidates or configurations, and planned features do not belong in
 this inventory.
+
+## Owner-controlled public README
+
+Root `README.md` is owner-controlled public documentation describing the SeedV6
+chess engine. Codex must not modify it opportunistically during normal development,
+research, refactoring, testing, benchmarking, releases or routine documentation
+maintenance. Only an explicit owner request to update the public README authorizes
+changes to that file; general implementation or documentation authorization does not.
+
+Maintain routine technical documentation in appropriate existing documentation
+locations, including `docs/SEARCH_AND_EVALUATION_FEATURES.md` when its established
+maintenance rule applies. An explicitly authorized README update may use Codex for
+inspection, drafting, editing and validation within its authorized scope.
